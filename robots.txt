@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://personatests.com/sitemap.xml
+
+# Block any admin or sensitive areas (if added in future)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_netlify/
+
+# Allow all personality tests and pages
+Allow: /index.html
+Allow: /privacy.html
+Allow: /terms.html

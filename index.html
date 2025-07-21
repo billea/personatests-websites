@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonaTests - Free Personality Tests | MBTI, Big Five & More</title>
+    <meta name="description" content="Discover your personality with reliable tests! MBTI, Big Five, Love Language & more. Get detailed premium reports for $2.99. Check your vibe! ✨">
+    <meta name="keywords" content="personality test, MBTI test, Big Five test, love language test, free personality quiz, relationship compatibility, career test">
+    <meta property="og:title" content="PersonaTests - Free Personality Tests That Actually Slap">
+    <meta property="og:description" content="Discover your personality with PersonaTests! Free MBTI, Big Five, and trending tests. Check your vibe today! ✨">
+    <meta property="og:url" content="https://personatests.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://personatests.com/personatests-social.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PersonaTests - What's Your Personality?">
+    <meta name="twitter:description" content="Take scientifically-backed personality tests and discover your true self! ✨">
+    <meta name="twitter:image" content="https://personatests.com/personatests-social.png">
+    <link rel="canonical" href="https://personatests.com">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        // Track test starts
+        function trackTestStart(testType) {
+            gtag('event', 'test_start', {
+                'test_type': testType,
+                'page_title': document.title
+            });
+        }
+        
+        // Track test completions
+        function trackTestComplete(testType, result) {
+            gtag('event', 'test_complete', {
+                'test_type': testType,
+                'result': result
+            });
+        }
+        
+        // Track premium report views
+        function trackPremiumView(testType) {
+            gtag('event', 'premium_view', {
+                'test_type': testType,
+                'currency': 'USD',
+                'value': 2.99
+            });
+        }
+    </script>
+    
+    <!-- Google AdSense Head Code (Replace with your actual AdSense code) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>✨ PersonaTests</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#tests">Tests</a></li>
+                    <li><a href="#couples">Couples</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;">My Results</a></li>
+                    <li><a href="#" onclick="showLogin()" id="loginLink">Login ✨</a></li>
+                    <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Your Personality ✨</h1>
+                    <p class="hero-subtitle">Take scientifically-backed personality tests that actually get you. From MBTI to Big Five, uncover what makes you uniquely you! 🔥</p>
+                    <div class="hero-cta">
+                        <button class="cta-button" onclick="startTest('mbti')">
+                            <span class="cta-text">Check My Vibe</span>
+                            <span class="cta-emoji">🚀</span>
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">2M+</span>
+                            <span class="stat-label">Tests Taken</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">16</span>
+                            <span class="stat-label">Personality Types</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Accuracy Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Tests Section -->
+        <section id="tests" class="tests-section">
+            <div class="container">
+                <h2 class="section-title">Discover Your Personality ✨</h2>
+                <p class="section-subtitle">Which test speaks to you? All are scientifically-backed and designed to be engaging! 💫</p>
+                
+                <!-- Legal Disclaimer -->
+                <div class="legal-disclaimer" style="background: linear-gradient(135deg, #ff9a56, #ff6b95); color: white; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center;">
+                    <h4 style="margin-bottom: 1rem;">🎯 Important: For Entertainment & Self-Reflection Only</h4>
+                    <p style="margin-bottom: 1rem;">These tests are fun tools for self-awareness, not professional psychological assessments. Results should not be used for medical, employment, or legal decisions.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">💝 Need support? National Crisis Text Line: Text HOME to 741741 | Suicide Prevention: 988</p>
+                </div>
+                
+                <!-- AdSense Banner Ad - Above Tests -->
+                <div class="ad-container" style="text-align: center; margin: 2rem 0;">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
+                <div class="tests-grid">
+                    
+                    <!-- MBTI Test -->
+                    <div class="test-card featured">
+                        <div class="test-badge">🔥 Trending</div>
+                        <div class="test-icon">✨</div>
+                        <h3>16 Personality Vibes</h3>
+                        <p>The ultimate personality test that actually gets you. Are you INTJ mastermind energy or ENFP golden retriever vibes? Time to find out! 💅</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 10-15 min</span>
+                            <span class="questions">📝 60 questions</span>
+                            <span class="popularity">🔥 2M+ taken</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="startTest('mbti')">Discover My Type ✨</button>
+                    </div>
+
+                    <!-- Big Five Test -->
+                    <div class="test-card">
+                        <div class="test-icon">📊</div>
+                        <h3>Big Five Personality Check</h3>
+                        <p>The science-backed test that psychology professors actually approve of. Get your personality breakdown across 5 major traits! 🧠</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 8-12 min</span>
+                            <span class="questions">📝 50 questions</span>
+                            <span class="vibe">🧠 Science-backed</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('bigfive')">Take The Test</button>
+                    </div>
+
+                    <!-- Emotional Intelligence -->
+                    <div class="test-card">
+                        <div class="test-icon">🧡</div>
+                        <h3>Emotional Intelligence (EQ)</h3>
+                        <p>How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 8-12 min</span>
+                            <span class="questions">📝 20 questions</span>
+                            <span class="vibe">💝 Emotional skills</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('eq')">Check My EQ</button>
+                    </div>
+
+                    <!-- IQ Test -->
+                    <div class="test-card">
+                        <div class="test-icon">🧩</div>
+                        <h3>Brain Teaser Challenge</h3>
+                        <p>Fun logic puzzles and brain games! This is just for entertainment - real IQ testing needs professional administration. Let's see how you do! 🤓</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 15-20 min</span>
+                            <span class="questions">📝 30 questions</span>
+                            <span class="vibe">🤓 Just for fun</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('iq')">Take Brain Challenge</button>
+                    </div>
+
+                    <!-- DISC Assessment -->
+                    <div class="test-card">
+                        <div class="test-icon">🎯</div>
+                        <h3>DISC Personality Check</h3>
+                        <p>Discover your communication style! Are you Dominant, Influential, Steady, or Conscientious? Perfect for understanding work and relationship dynamics! 💼</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 8-12 min</span>
+                            <span class="questions">📝 28 questions</span>
+                            <span class="vibe">💼 Work & relationships</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('disc')">Find My Style</button>
+                    </div>
+
+                    <!-- Conflict Style Test -->
+                    <div class="test-card">
+                        <div class="test-icon">⚖️</div>
+                        <h3>Conflict Style Assessment</h3>
+                        <p>How do you handle disagreements? Discover whether you're a collaborator, competitor, accommodator, avoider, or compromiser! 🤝</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 5-8 min</span>
+                            <span class="questions">📝 15 questions</span>
+                            <span class="vibe">🤝 Relationship skills</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('conflict')">Check My Style</button>
+                    </div>
+
+                    <!-- Character Strengths (VIA) -->
+                    <div class="test-card">
+                        <div class="test-icon">💎</div>
+                        <h3>Character Strengths (VIA)</h3>
+                        <p>Uncover your core character strengths! From creativity to leadership to kindness - discover what makes you uniquely awesome! ✨</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 10-15 min</span>
+                            <span class="questions">📝 24 questions</span>
+                            <span class="vibe">✨ Personal growth</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('via')">Find My Strengths</button>
+                    </div>
+
+                    <!-- Focus & Energy Patterns -->
+                    <div class="test-card">
+                        <div class="test-icon">⚡</div>
+                        <h3>Focus & Energy Style</h3>
+                        <p>Discover your unique attention and energy patterns! This is for fun self-reflection only - not a medical assessment. ⚡</p>
+                        <div class="disclaimer-note" style="font-size: 0.8rem; color: #666; margin: 0.5rem 0;">⚠️ For entertainment only. Not diagnostic. Consult professionals for medical concerns.</div>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 5-8 min</span>
+                            <span class="questions">📝 18 questions</span>
+                            <span class="vibe">⚡ Self-reflection</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('adhd')">Check My Style</button>
+                    </div>
+
+                    <!-- Stress Management Style -->
+                    <div class="test-card">
+                        <div class="test-icon">🌱</div>
+                        <h3>Stress Management Style</h3>
+                        <p>Discover how you handle stress and pressure! This is for fun self-awareness only - not medical advice. 💚</p>
+                        <div class="disclaimer-note" style="font-size: 0.8rem; color: #666; margin: 0.5rem 0;">⚠️ Entertainment only. If struggling with anxiety/stress, contact: Crisis Text Line: 741741 or speak with a mental health professional.</div>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 3-5 min</span>
+                            <span class="questions">📝 10 questions</span>
+                            <span class="vibe">💚 Self-reflection</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('anxiety')">Check My Style</button>
+                    </div>
+
+                    <!-- Emotional Regulation Style -->
+                    <div class="test-card">
+                        <div class="test-icon">🌻</div>
+                        <h3>Emotional Regulation Style</h3>
+                        <p>Understand how you process emotions! This is for self-reflection and entertainment only - not a mental health assessment. 🌻</p>
+                        <div class="disclaimer-note" style="font-size: 0.8rem; color: #666; margin: 0.5rem 0;">⚠️ For fun only. If you're struggling emotionally, please reach out: National Suicide Prevention Lifeline: 988 or contact a licensed therapist.</div>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 3-5 min</span>
+                            <span class="questions">📝 9 questions</span>
+                            <span class="vibe">🌻 Self-awareness</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('depression')">Check My Style</button>
+                    </div>
+
+                </div>
+                
+                <!-- AdSense Rectangle Ad - Between Test Sections -->
+                <div class="ad-container" style="text-align: center; margin: 3rem 0;">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="rectangle"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
+                <!-- Trending Tests Section -->
+                <h2 class="section-title" style="margin-top: 4rem;">Trending Now 🔥</h2>
+                <p class="section-subtitle">The hottest personality tests everyone's talking about! Perfect for sharing with friends and social media 📱</p>
+                <div class="tests-grid">
+                
+                    <!-- Love Language Test -->
+                    <div class="test-card trending">
+                        <div class="test-badge trending">🔥 Viral</div>
+                        <div class="test-icon">💕</div>
+                        <h3>Love Language Test</h3>
+                        <p>Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 3-5 min</span>
+                            <span class="questions">📝 5 questions</span>
+                            <span class="vibe">💕 Love & Relationships</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('loveLanguage')">Find My Love Language</button>
+                    </div>
+
+                    <!-- Pet Personality Test -->
+                    <div class="test-card trending">
+                        <div class="test-badge trending">🔥 Popular</div>
+                        <div class="test-icon">🐾</div>
+                        <h3>What Pet Matches Your Personality?</h3>
+                        <p>Are you a loyal dog, independent cat, playful hamster, or something else? Find your perfect pet match based on your personality! 🐱</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 4-6 min</span>
+                            <span class="questions">📝 6 questions</span>
+                            <span class="vibe">🐾 Fun & Lifestyle</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('petPersonality')">Find My Pet Match</button>
+                    </div>
+
+                    <!-- Career Test -->
+                    <div class="test-card trending">
+                        <div class="test-badge trending">🔥 New</div>
+                        <div class="test-icon">💼</div>
+                        <h3>What's Your Ideal Career Path?</h3>
+                        <p>Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 4-6 min</span>
+                            <span class="questions">📝 5 questions</span>
+                            <span class="vibe">💼 Career & Growth</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('careerPersonality')">Find My Career</button>
+                    </div>
+
+                    <!-- Relationship Style Test -->
+                    <div class="test-card trending">
+                        <div class="test-badge trending">🔥 Trending</div>
+                        <div class="test-icon">💝</div>
+                        <h3>What's Your Relationship Style?</h3>
+                        <p>How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨</p>
+                        <div class="test-meta">
+                            <span class="duration">⏱️ 4-6 min</span>
+                            <span class="questions">📝 5 questions</span>
+                            <span class="vibe">💝 Love & Relationships</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="startTest('relationshipStyle')">Find My Style</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Couples Section -->
+        <section id="couples" class="couples-section">
+            <div class="container">
+                <h2 class="section-title">Couple Compatibility ❤️</h2>
+                <p class="section-subtitle">Take tests individually, then connect with your partner to discover your relationship dynamics and compatibility insights! 💕</p>
+                
+                <div class="couples-grid">
+                    <div class="couple-card">
+                        <div class="couple-icon">👫</div>
+                        <h3>Share Your Results</h3>
+                        <p>After taking any test, get a unique sharing ID to connect with your partner and compare your vibes!</p>
+                        <button class="btn btn-secondary" onclick="showCouplesModal()">Connect With Partner</button>
+                    </div>
+                    
+                    <div class="couple-card">
+                        <div class="couple-icon">💖</div>
+                        <h3>Compatibility Analysis</h3>
+                        <p>Get detailed insights into your relationship dynamics, communication styles, and areas of harmony or growth!</p>
+                        <button class="btn btn-secondary" onclick="showCouplesModal()">View Our Match</button>
+                    </div>
+                    
+                    <div class="couple-card">
+                        <div class="couple-icon">🌟</div>
+                        <h3>Relationship Growth</h3>
+                        <p>Discover tips and strategies to strengthen your bond based on both of your personality types and results!</p>
+                        <button class="btn btn-secondary" onclick="showCouplesModal()">Grow Together</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AdSense Banner Ad - Before Features -->
+        <div class="ad-container" style="text-align: center; margin: 3rem 0; background: #f8fafc; padding: 2rem;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose PersonaTests? ✨</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Actually Scientific</h3>
+                        <p>Our tests are based on real psychology research, not just random questions. We're not playing around! 🧠</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Results</h3>
+                        <p>Get your personality breakdown immediately. No waiting, no delays, just pure instant gratification! ⚡</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Your Secrets Are Safe</h3>
+                        <p>We keep your answers private. No selling your data, no weird emails. Just you and your results! 🤝</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <h3>Works Everywhere</h3>
+                        <p>Take tests on your phone, laptop, tablet - literally anywhere you want to discover your personality! 📱</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Test Modal -->
+    <div id="testModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="testTitle">Personality Test</h2>
+                <div class="modal-controls">
+                    <button class="btn-home" onclick="exitToHome()" title="Exit to Home">🏠 Home</button>
+                    <span class="close" onclick="closeTest()" title="Exit Test">&times;</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <span id="progressText" class="progress-text">Question 1 of 60</span>
+            </div>
+            <div id="testContent" class="test-content">
+                <!-- Test questions will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content results-modal">
+            <div class="modal-header">
+                <h2>Your Test Results</h2>
+                <span class="close" onclick="closeResults()">&times;</span>
+            </div>
+            <div id="resultsContent" class="results-content">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="authTitle">Login to Save Your Results ✨</h2>
+                <span class="close" onclick="closeLogin()">&times;</span>
+            </div>
+            <div class="auth-content">
+                <div id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <button class="btn btn-primary" onclick="login()">Login & Save My Results ✨</button>
+                    <p class="auth-switch">New here? <a href="#" onclick="switchToRegister()">Create an account</a></p>
+                </div>
+                
+                <div id="registerForm" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="registerName">Name</label>
+                        <input type="text" id="registerName" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerAge">Age Group</label>
+                        <select id="registerAge" required>
+                            <option value="">Select your age range</option>
+                            <option value="teen">13-17 (Teen)</option>
+                            <option value="young-adult">18-25 (Young Adult)</option>
+                            <option value="adult">26-35 (Adult)</option>
+                            <option value="mature">36-50 (Mature Adult)</option>
+                            <option value="senior">50+ (Senior)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" placeholder="••••••••" required>
+                    </div>
+                    <button class="btn btn-primary" onclick="register()">Create Account ✨</button>
+                    <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Personality Dashboard ✨</h2>
+                <span class="close" onclick="closeProfile()">&times;</span>
+            </div>
+            <div id="profileContent" class="profile-content">
+                <!-- Profile content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Couples Modal -->
+    <div id="couplesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Couple Compatibility ❤️</h2>
+                <span class="close" onclick="closeCouplesModal()">&times;</span>
+            </div>
+            <div id="couplesContent" class="couples-content">
+                <!-- Couples content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Report Purchase Modal -->
+    <div id="premiumModal" class="premium-modal">
+        <div class="premium-modal-content">
+            <div class="premium-modal-header">
+                <h2>💎 Get Your Premium Report</h2>
+                <span class="close" onclick="closePremiumModal()" style="position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: white;">&times;</span>
+            </div>
+            <div class="premium-modal-body">
+                <div id="premiumContent">
+                    <!-- Premium purchase content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>✨ PersonaTests</h3>
+                    <p>Discover your personality with scientifically-backed tests that get you.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Tests</h4>
+                    <ul>
+                        <li><a href="#" onclick="startTest('mbti')">16 Personality Types</a></li>
+                        <li><a href="#" onclick="startTest('bigfive')">Big Five Test</a></li>
+                        <li><a href="#" onclick="startTest('iq')">Brain Teaser Challenge</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>More Info</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PersonaTests. All rights reserved. Made with ✨ for discovering your true personality.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
