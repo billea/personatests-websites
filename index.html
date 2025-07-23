@@ -39,6 +39,8 @@
         /* Language Selector Styles */
         .language-selector {
             position: relative;
+            display: flex !important;
+            align-items: center;
         }
         
         .language-dropdown {
@@ -46,17 +48,22 @@
         }
         
         .language-btn {
-            display: flex;
+            display: flex !important;
             align-items: center;
             gap: 8px;
             padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.4) !important;
             border-radius: 8px;
-            color: white;
+            color: white !important;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 14px;
+            font-weight: 500;
+            min-width: 80px;
+            justify-content: center;
+            z-index: 999;
+            position: relative;
         }
         
         .language-btn:hover {
@@ -110,6 +117,29 @@
         .language-option:last-child {
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
+        }
+        
+        /* Ensure language selector is visible in navigation */
+        .nav-menu .language-selector {
+            margin-left: 15px;
+        }
+        
+        /* Mobile responsiveness for language selector */
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-left: 10px;
+            }
+            
+            .language-btn {
+                padding: 6px 10px;
+                min-width: 70px;
+                font-size: 13px;
+            }
+            
+            .language-options {
+                min-width: 160px;
+                right: -10px;
+            }
         }
     </style>
     
@@ -177,9 +207,9 @@
                     <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;" data-translate="nav.results">My Results</a></li>
                     <li><a href="#" onclick="showLogin()" id="loginLink" data-translate="nav.login">Login ✨</a></li>
                     <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;" data-translate="nav.logout">Logout</a></li>
-                    <li class="language-selector">
+                    <li class="language-selector" style="display: block !important; visibility: visible !important;">
                         <div class="language-dropdown">
-                            <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            <button class="language-btn" onclick="toggleLanguageDropdown()" style="display: flex !important; visibility: visible !important;">
                                 <span class="flag-icon">🇺🇸</span>
                                 <span class="language-text">EN</span>
                                 <span class="dropdown-arrow">▼</span>
