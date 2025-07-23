@@ -471,12 +471,12 @@
             <div class="auth-content">
                 <div id="loginForm" class="auth-form">
                     <div class="form-group">
-                        <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                        <label for="loginEmail" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">📧 Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; font-size: 16px;">
                     </div>
                     <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        <label for="loginPassword" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">🔒 Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; font-size: 16px;">
                     </div>
                     <button class="btn btn-primary" onclick="login()">Login & Save My Results ✨</button>
                     <p class="auth-switch">New here? <a href="#" onclick="switchToRegister()">Create an account</a></p>
@@ -484,12 +484,12 @@
                 
                 <div id="registerForm" class="auth-form" style="display: none;">
                     <div class="form-group">
-                        <label for="registerName">Name</label>
-                        <input type="text" id="registerName" placeholder="Your name" required>
+                        <label for="registerName" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">👤 Full Name</label>
+                        <input type="text" id="registerName" placeholder="Enter your full name" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; font-size: 16px;">
                     </div>
                     <div class="form-group">
-                        <label for="registerAge">Age Group</label>
-                        <select id="registerAge" required>
+                        <label for="registerAge" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">🎂 Age Group</label>
+                        <select id="registerAge" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; font-size: 16px; background: white;">
                             <option value="">Select your age range</option>
                             <option value="teen">13-17 (Teen)</option>
                             <option value="young-adult">18-25 (Young Adult)</option>
@@ -499,12 +499,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                        <label for="registerEmail" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">📧 Email Address</label>
+                        <input type="email" id="registerEmail" placeholder="your@email.com" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; font-size: 16px;">
                     </div>
                     <div class="form-group">
-                        <label for="registerPassword">Password</label>
-                        <input type="password" id="registerPassword" placeholder="••••••••" required>
+                        <label for="registerPassword" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">🔒 Password</label>
+                        <input type="password" id="registerPassword" placeholder="Create a secure password" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; font-size: 16px;">
                     </div>
                     <button class="btn btn-primary" onclick="register()">Create Account ✨</button>
                     <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Login here</a></p>
