@@ -4,6 +4,97 @@ let currentQuestionIndex = 0;
 let userAnswers = [];
 let testData = {};
 
+// Firebase Configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDrIchldLRg4rsPVsmSDWIDDnBbYIjdClo",
+    authDomain: "personatest-c8eb1.firebaseapp.com",
+    projectId: "personatest-c8eb1",
+    storageBucket: "personatest-c8eb1.firebasestorage.app",
+    messagingSenderId: "56769105558",
+    appId: "1:56769105558:web:8e13f979f8b7541ec5fcb7"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Firebase Auth State Listener
+auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        // User is signed in - get additional data from Firestore
+        try {
+            const userDoc = await db.collection('users').doc(user.uid).get();
+            if (userDoc.exists) {
+                currentUser = {
+                    uid: user.uid,
+                    email: user.email,
+                    ...userDoc.data()
+                };
+            } else {
+                currentUser = {
+                    uid: user.uid,
+                    email: user.email,
+                    name: 'User'
+                };
+            }
+            updateAuthUI();
+        } catch (error) {
+            console.error('Error getting user data:', error);
+        }
+    } else {
+        // User is signed out
+        currentUser = null;
+        updateAuthUI();
+    }
+});
+
+// Update authentication UI
+function updateAuthUI() {
+    const loginLink = document.getElementById('loginLink');
+    const logoutLink = document.getElementById('logoutLink');
+    const profileLink = document.getElementById('profileLink');
+    
+    if (loginLink && logoutLink && profileLink) {
+        if (currentUser) {
+            // User is logged in
+            loginLink.style.display = 'none';
+            logoutLink.style.display = 'inline';
+            profileLink.style.display = 'inline';
+        } else {
+            // User is logged out
+            loginLink.style.display = 'inline';
+            logoutLink.style.display = 'none';
+            profileLink.style.display = 'none';
+        }
+    }
+}
+
+// Save test result to Firebase
+function saveTestResultToFirebase(testType, result) {
+    if (!currentUser || !currentUser.uid) {
+        console.log('No user logged in, skipping save to Firebase');
+        return;
+    }
+    
+    const testResult = {
+        testType: testType,
+        result: result,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        date: new Date().toISOString()
+    };
+    
+    // Save to user's test results subcollection
+    db.collection('users').doc(currentUser.uid)
+        .collection('testResults').add(testResult)
+        .then(() => {
+            console.log('Test result saved to Firebase');
+        })
+        .catch((error) => {
+            console.error('Error saving test result:', error);
+        });
+}
+
 // Stripe Configuration
 const STRIPE_PUBLISHABLE_KEY = 'pk_test_51RnwPt1zgojmRZcvyMqAGsWCkGiYJKKbW7TrG0TwKphbY45p0XHHGEeowBviUwIB5d4odMDgMw4Rz8X8YUfYHATX005yTDQBGq';
 let stripe;
@@ -4046,42 +4137,32 @@ function register() {
     }
     
     if (password.length < 6) {
-        alert('Password must be at least 6 characters long!');
+        alert('Password must be at least 6 characters!');
         return;
     }
     
-    // Check if user already exists
-    const existingUsers = JSON.parse(localStorage.getItem('vibecheck_users') || '[]');
-    if (existingUsers.find(user => user.email === email)) {
-        alert('An account with this email already exists! Try logging in instead.');
-        switchToLogin();
-        return;
-    }
-    
-    // Create new user
-    const newUser = {
-        id: Date.now().toString(),
-        name: name,
-        age: age,
-        email: email,
-        password: password, // In a real app, this would be hashed
-        joinDate: new Date().toISOString(),
-        testResults: [],
-        shareableResults: [] // For couples sharing
-    };
-    
-    // Save to users list
-    existingUsers.push(newUser);
-    localStorage.setItem('vibecheck_users', JSON.stringify(existingUsers));
-    
-    // Log in the user
-    currentUser = newUser;
-    localStorage.setItem('vibecheck_user', JSON.stringify(currentUser));
-    
-    updateNavigation(true);
-    closeLogin();
-    
-    alert(`Welcome to Vibecheck, ${name}! Your account has been created and you're now logged in ✨`);
+    // Create user with Firebase Auth
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            
+            // Save additional user data to Firestore
+            return db.collection('users').doc(user.uid).set({
+                name: name,
+                age: age,
+                email: email,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                testResults: []
+            });
+        })
+        .then(() => {
+            alert('Account created successfully! 🎉');
+            closeLogin();
+            updateAuthUI();
+        })
+        .catch((error) => {
+            alert('Error creating account: ' + error.message);
+        });
 }
 
 function login() {
@@ -4093,30 +4174,26 @@ function login() {
         return;
     }
     
-    // Find user
-    const existingUsers = JSON.parse(localStorage.getItem('vibecheck_users') || '[]');
-    const user = existingUsers.find(u => u.email === email && u.password === password);
-    
-    if (!user) {
-        alert('Invalid email or password. Please try again or create a new account.');
-        return;
-    }
-    
-    // Log in the user
-    currentUser = user;
-    localStorage.setItem('vibecheck_user', JSON.stringify(currentUser));
-    
-    updateNavigation(true);
-    closeLogin();
-    
-    alert(`Welcome back, ${user.name}! ✨`);
+    // Sign in with Firebase Auth
+    auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            alert(`Welcome back! ✨`);
+            closeLogin();
+            updateAuthUI();
+        })
+        .catch((error) => {
+            alert('Error signing in: ' + error.message);
+        });
 }
 
 function logout() {
-    currentUser = null;
-    localStorage.removeItem('vibecheck_user');
-    updateNavigation(false);
-    alert('You\'ve been logged out. Thanks for checking your vibes! ✨');
+    auth.signOut().then(() => {
+        alert('Logged out successfully!');
+        updateAuthUI();
+    }).catch((error) => {
+        alert('Error logging out: ' + error.message);
+    });
 }
 
 // Profile Functions
@@ -4238,27 +4315,23 @@ function saveTestResult(testType, testName, shortResult, fullResult) {
     }
     
     const resultData = {
-        id: Date.now().toString(),
         testType: testType,
         testName: testName,
         shortResult: shortResult,
         fullResult: fullResult,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         date: new Date().toISOString()
     };
     
-    // Add to user's results
-    currentUser.testResults.push(resultData);
-    
-    // Update user in storage
-    localStorage.setItem('vibecheck_user', JSON.stringify(currentUser));
-    
-    // Also update the users list
-    const existingUsers = JSON.parse(localStorage.getItem('vibecheck_users') || '[]');
-    const userIndex = existingUsers.findIndex(u => u.id === currentUser.id);
-    if (userIndex !== -1) {
-        existingUsers[userIndex] = currentUser;
-        localStorage.setItem('vibecheck_users', JSON.stringify(existingUsers));
-    }
+    // Save to Firebase Firestore
+    db.collection('users').doc(currentUser.uid)
+        .collection('testResults').add(resultData)
+        .then(() => {
+            console.log('Test result saved successfully');
+        })
+        .catch((error) => {
+            console.error('Error saving test result:', error);
+        });
 }
 
 // Add login prompt to results
