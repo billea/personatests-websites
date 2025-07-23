@@ -35,6 +35,82 @@
             margin: 0 !important;
             min-height: 48px !important;
         }
+        
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+        }
+        
+        .language-dropdown {
+            position: relative;
+        }
+        
+        .language-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .flag-icon {
+            font-size: 16px;
+        }
+        
+        .dropdown-arrow {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            min-width: 180px;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #1e293b;
+            font-size: 14px;
+        }
+        
+        .language-option:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .language-option:first-child {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        
+        .language-option:last-child {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
     </style>
     
     <!-- Google Analytics -->
@@ -94,13 +170,60 @@
                     <h1>✨ PersonaTests</h1>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#tests">Tests</a></li>
-                    <li><a href="#couples">Couples</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;">My Results</a></li>
-                    <li><a href="#" onclick="showLogin()" id="loginLink">Login ✨</a></li>
-                    <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;">Logout</a></li>
+                    <li><a href="#tests" data-translate="nav.tests">Tests</a></li>
+                    <li><a href="#couples" data-translate="nav.couples">Couples</a></li>
+                    <li><a href="#about" data-translate="nav.about">About</a></li>
+                    <li><a href="#blog" data-translate="nav.blog">Blog</a></li>
+                    <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;" data-translate="nav.results">My Results</a></li>
+                    <li><a href="#" onclick="showLogin()" id="loginLink" data-translate="nav.login">Login ✨</a></li>
+                    <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;" data-translate="nav.logout">Logout</a></li>
+                    <li class="language-selector">
+                        <div class="language-dropdown">
+                            <button class="language-btn" onclick="toggleLanguageDropdown()">
+                                <span class="flag-icon">🇺🇸</span>
+                                <span class="language-text">EN</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            <div class="language-options" id="languageOptions" style="display: none;">
+                                <div class="language-option" onclick="changeLanguage('en')">
+                                    <span class="flag-icon">🇺🇸</span>
+                                    <span>English</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('es')">
+                                    <span class="flag-icon">🇪🇸</span>
+                                    <span>Español</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('fr')">
+                                    <span class="flag-icon">🇫🇷</span>
+                                    <span>Français</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('de')">
+                                    <span class="flag-icon">🇩🇪</span>
+                                    <span>Deutsch</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('it')">
+                                    <span class="flag-icon">🇮🇹</span>
+                                    <span>Italiano</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('pt')">
+                                    <span class="flag-icon">🇵🇹</span>
+                                    <span>Português</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('ja')">
+                                    <span class="flag-icon">🇯🇵</span>
+                                    <span>日本語</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('ko')">
+                                    <span class="flag-icon">🇰🇷</span>
+                                    <span>한국어</span>
+                                </div>
+                                <div class="language-option" onclick="changeLanguage('zh')">
+                                    <span class="flag-icon">🇨🇳</span>
+                                    <span>中文</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -111,26 +234,26 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Discover Your Personality ✨</h1>
-                    <p class="hero-subtitle">Take scientifically-backed personality tests that actually get you. From MBTI to Big Five, uncover what makes you uniquely you! 🔥</p>
+                    <h1 class="hero-title" data-translate="hero.title">Discover Your Personality ✨</h1>
+                    <p class="hero-subtitle" data-translate="hero.subtitle">Take scientifically-backed personality tests that actually get you. From MBTI to Big Five, uncover what makes you uniquely you! 🔥</p>
                     <div class="hero-cta">
                         <button class="cta-button" onclick="startTest('mbti')">
-                            <span class="cta-text">Check My Vibe</span>
+                            <span class="cta-text" data-translate="hero.cta">Check My Vibe</span>
                             <span class="cta-emoji">🚀</span>
                         </button>
                     </div>
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="stat-number">14+</span>
-                            <span class="stat-label">Test Categories</span>
+                            <span class="stat-label" data-translate="stats.categories">Test Categories</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">89%</span>
-                            <span class="stat-label">Scientific Reliability</span>
+                            <span class="stat-label" data-translate="stats.reliability">Scientific Reliability</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">FREE</span>
-                            <span class="stat-label">Always Available</span>
+                            <span class="stat-label" data-translate="stats.available">Always Available</span>
                         </div>
                     </div>
                 </div>

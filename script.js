@@ -3,6 +3,337 @@ let currentTest = null;
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let testData = {};
+let currentLanguage = 'en';
+
+// Language translations
+const translations = {
+    en: {
+        nav: {
+            tests: "Tests",
+            couples: "Couples", 
+            about: "About",
+            blog: "Blog",
+            results: "My Results",
+            login: "Login ✨",
+            logout: "Logout"
+        },
+        hero: {
+            title: "Discover Your Personality ✨",
+            subtitle: "Take scientifically-backed personality tests that actually get you. From MBTI to Big Five, uncover what makes you uniquely you! 🔥",
+            cta: "Check My Vibe"
+        },
+        stats: {
+            categories: "Test Categories",
+            reliability: "Scientific Reliability", 
+            available: "Always Available"
+        }
+    },
+    es: {
+        nav: {
+            tests: "Pruebas",
+            couples: "Parejas",
+            about: "Acerca de",
+            blog: "Blog", 
+            results: "Mis Resultados",
+            login: "Iniciar Sesión ✨",
+            logout: "Cerrar Sesión"
+        },
+        hero: {
+            title: "Descubre Tu Personalidad ✨",
+            subtitle: "Realiza pruebas de personalidad con respaldo científico que realmente te entienden. ¡Desde MBTI hasta Big Five, descubre qué te hace único! 🔥",
+            cta: "Conoce Mi Vibra"
+        },
+        stats: {
+            categories: "Categorías de Pruebas",
+            reliability: "Confiabilidad Científica",
+            available: "Siempre Disponible"
+        }
+    },
+    fr: {
+        nav: {
+            tests: "Tests",
+            couples: "Couples",
+            about: "À Propos", 
+            blog: "Blog",
+            results: "Mes Résultats",
+            login: "Connexion ✨",
+            logout: "Déconnexion"
+        },
+        hero: {
+            title: "Découvrez Votre Personnalité ✨",
+            subtitle: "Passez des tests de personnalité scientifiquement validés qui vous comprennent vraiment. Du MBTI au Big Five, découvrez ce qui vous rend unique ! 🔥",
+            cta: "Découvrir Mon Style"
+        },
+        stats: {
+            categories: "Catégories de Tests",
+            reliability: "Fiabilité Scientifique",
+            available: "Toujours Disponible"
+        }
+    },
+    de: {
+        nav: {
+            tests: "Tests",
+            couples: "Paare",
+            about: "Über Uns",
+            blog: "Blog",
+            results: "Meine Ergebnisse", 
+            login: "Anmelden ✨",
+            logout: "Abmelden"
+        },
+        hero: {
+            title: "Entdecke Deine Persönlichkeit ✨",
+            subtitle: "Mache wissenschaftlich fundierte Persönlichkeitstests, die dich wirklich verstehen. Von MBTI bis Big Five - entdecke, was dich einzigartig macht! 🔥",
+            cta: "Meine Persönlichkeit Entdecken"
+        },
+        stats: {
+            categories: "Test-Kategorien",
+            reliability: "Wissenschaftliche Zuverlässigkeit",
+            available: "Immer Verfügbar"
+        }
+    },
+    it: {
+        nav: {
+            tests: "Test",
+            couples: "Coppie",
+            about: "Chi Siamo",
+            blog: "Blog",
+            results: "I Miei Risultati",
+            login: "Accedi ✨", 
+            logout: "Esci"
+        },
+        hero: {
+            title: "Scopri La Tua Personalità ✨",
+            subtitle: "Fai test di personalità scientificamente validi che ti capiscono davvero. Da MBTI a Big Five, scopri cosa ti rende unico! 🔥",
+            cta: "Scopri La Mia Personalità"
+        },
+        stats: {
+            categories: "Categorie di Test",
+            reliability: "Affidabilità Scientifica",
+            available: "Sempre Disponibile"
+        }
+    },
+    pt: {
+        nav: {
+            tests: "Testes",
+            couples: "Casais", 
+            about: "Sobre",
+            blog: "Blog",
+            results: "Meus Resultados",
+            login: "Entrar ✨",
+            logout: "Sair"
+        },
+        hero: {
+            title: "Descubra Sua Personalidade ✨",
+            subtitle: "Faça testes de personalidade cientificamente validados que realmente te entendem. Do MBTI ao Big Five, descubra o que te torna único! 🔥",
+            cta: "Descobrir Minha Personalidade"
+        },
+        stats: {
+            categories: "Categorias de Testes",
+            reliability: "Confiabilidade Científica", 
+            available: "Sempre Disponível"
+        }
+    },
+    ja: {
+        nav: {
+            tests: "テスト",
+            couples: "カップル",
+            about: "について",
+            blog: "ブログ",
+            results: "私の結果",
+            login: "ログイン ✨",
+            logout: "ログアウト"
+        },
+        hero: {
+            title: "あなたの性格を発見 ✨",
+            subtitle: "科学的に裏付けられた性格テストで、本当のあなたを理解しましょう。MBTIからビッグファイブまで、あなたの個性を発見！🔥",
+            cta: "私の性格をチェック"
+        },
+        stats: {
+            categories: "テストカテゴリー",
+            reliability: "科学的信頼性",
+            available: "いつでも利用可能"
+        }
+    },
+    ko: {
+        nav: {
+            tests: "테스트",
+            couples: "커플",
+            about: "소개",
+            blog: "블로그", 
+            results: "내 결과",
+            login: "로그인 ✨",
+            logout: "로그아웃"
+        },
+        hero: {
+            title: "당신의 성격을 발견하세요 ✨",
+            subtitle: "과학적으로 검증된 성격 테스트로 진정한 자신을 이해해보세요. MBTI부터 빅파이브까지, 당신만의 독특함을 발견하세요! 🔥",
+            cta: "내 성격 확인하기"
+        },
+        stats: {
+            categories: "테스트 카테고리",
+            reliability: "과학적 신뢰도",
+            available: "항상 이용 가능"
+        }
+    },
+    zh: {
+        nav: {
+            tests: "测试",
+            couples: "情侣",
+            about: "关于我们",
+            blog: "博客",
+            results: "我的结果", 
+            login: "登录 ✨",
+            logout: "退出"
+        },
+        hero: {
+            title: "发现你的个性 ✨",
+            subtitle: "进行科学验证的个性测试，真正了解你自己。从MBTI到大五人格，发现你的独特之处！🔥",
+            cta: "查看我的个性"
+        },
+        stats: {
+            categories: "测试类别",
+            reliability: "科学可靠性",
+            available: "随时可用"
+        }
+    }
+};
+
+// Language functionality
+function toggleLanguageDropdown() {
+    const dropdown = document.getElementById('languageOptions');
+    const arrow = document.querySelector('.dropdown-arrow');
+    
+    if (dropdown.style.display === 'none') {
+        dropdown.style.display = 'block';
+        arrow.style.transform = 'rotate(180deg)';
+    } else {
+        dropdown.style.display = 'none';
+        arrow.style.transform = 'rotate(0deg)';
+    }
+}
+
+function changeLanguage(langCode) {
+    currentLanguage = langCode;
+    
+    // Update language button
+    const languageBtn = document.querySelector('.language-btn');
+    const flagMapping = {
+        'en': '🇺🇸',
+        'es': '🇪🇸', 
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'it': '🇮🇹',
+        'pt': '🇵🇹',
+        'ja': '🇯🇵',
+        'ko': '🇰🇷',
+        'zh': '🇨🇳'
+    };
+    
+    const textMapping = {
+        'en': 'EN',
+        'es': 'ES',
+        'fr': 'FR', 
+        'de': 'DE',
+        'it': 'IT',
+        'pt': 'PT',
+        'ja': '日本',
+        'ko': '한국',
+        'zh': '中文'
+    };
+    
+    languageBtn.querySelector('.flag-icon').textContent = flagMapping[langCode];
+    languageBtn.querySelector('.language-text').textContent = textMapping[langCode];
+    
+    // Hide dropdown
+    document.getElementById('languageOptions').style.display = 'none';
+    document.querySelector('.dropdown-arrow').style.transform = 'rotate(0deg)';
+    
+    // Update all translated elements
+    updatePageLanguage();
+    
+    // Save language preference
+    localStorage.setItem('preferredLanguage', langCode);
+}
+
+function updatePageLanguage() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
+    
+    // Update all elements with data-translate attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const keys = key.split('.');
+        let value = lang;
+        
+        // Navigate through nested translation object
+        for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+        }
+        
+        if (value) {
+            element.textContent = value;
+        }
+    });
+    
+    // Update specific elements that don't use data-translate
+    updateHeroSection();
+    updateStatsSection();
+}
+
+function updateHeroSection() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
+    
+    const titleElement = document.querySelector('.hero-title');
+    const subtitleElement = document.querySelector('.hero-subtitle');
+    const ctaElement = document.querySelector('.cta-text');
+    
+    if (titleElement) titleElement.textContent = lang.hero.title;
+    if (subtitleElement) subtitleElement.textContent = lang.hero.subtitle;
+    if (ctaElement) ctaElement.textContent = lang.hero.cta;
+}
+
+function updateStatsSection() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
+    
+    const statLabels = document.querySelectorAll('.stat-label');
+    if (statLabels.length >= 3) {
+        statLabels[0].textContent = lang.stats.categories;
+        statLabels[1].textContent = lang.stats.reliability;
+        statLabels[2].textContent = lang.stats.available;
+    }
+}
+
+// Initialize language from localStorage or browser preference
+function initializeLanguage() {
+    const savedLang = localStorage.getItem('preferredLanguage');
+    const browserLang = navigator.language.split('-')[0];
+    
+    // Use saved language, or browser language if supported, otherwise default to English
+    const supportedLangs = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
+    let initialLang = 'en';
+    
+    if (savedLang && supportedLangs.includes(savedLang)) {
+        initialLang = savedLang;
+    } else if (supportedLangs.includes(browserLang)) {
+        initialLang = browserLang;
+    }
+    
+    if (initialLang !== 'en') {
+        changeLanguage(initialLang);
+    }
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const languageSelector = document.querySelector('.language-selector');
+    if (languageSelector && !languageSelector.contains(event.target)) {
+        document.getElementById('languageOptions').style.display = 'none';
+        document.querySelector('.dropdown-arrow').style.transform = 'rotate(0deg)';
+    }
+});
 
 // Firebase Configuration
 const firebaseConfig = {
@@ -4014,6 +4345,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStripe();
     // Initialize EmailJS
     initializeEmailJS();
+    // Initialize language
+    initializeLanguage();
     // Format card number input
     document.addEventListener('input', function(e) {
         if (e.target.id === 'cardNumber') {
