@@ -207,48 +207,170 @@
                     <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;" data-translate="nav.results">My Results</a></li>
                     <li><a href="#" onclick="showLogin()" id="loginLink" data-translate="nav.login">Login ✨</a></li>
                     <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;" data-translate="nav.logout">Logout</a></li>
-                    <li class="language-selector" style="display: block !important; visibility: visible !important;">
-                        <div class="language-dropdown">
-                            <button class="language-btn" onclick="toggleLanguageDropdown()" style="display: flex !important; visibility: visible !important;">
-                                <span class="flag-icon">🇺🇸</span>
-                                <span class="language-text">EN</span>
-                                <span class="dropdown-arrow">▼</span>
+                    <li style="background: red; padding: 10px; margin: 5px;">
+                        <span style="color: white; font-weight: bold;">TEST - Can you see this red box?</span>
+                    </li>
+                    <li class="language-selector" style="display: block !important; visibility: visible !important; position: relative;">
+                        <div class="language-dropdown" style="position: relative;">
+                            <button class="language-btn" onclick="toggleLanguageDropdown()" style="
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                color: white;
+                                border: 2px solid rgba(255, 255, 255, 0.3);
+                                border-radius: 12px;
+                                padding: 10px 15px;
+                                font-size: 14px;
+                                font-weight: 600;
+                                cursor: pointer;
+                                display: flex !important;
+                                align-items: center;
+                                gap: 8px;
+                                transition: all 0.3s ease;
+                                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                                min-width: 80px;
+                                justify-content: center;
+                                visibility: visible !important;
+                            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.3)'" onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)'">
+                                <span class="flag-icon" style="font-size: 16px;">🇺🇸</span>
+                                <span class="language-text" style="font-size: 13px; font-weight: bold;">EN</span>
+                                <span class="dropdown-arrow" style="font-size: 10px; transition: transform 0.3s ease;">▼</span>
                             </button>
-                            <div class="language-options" id="languageOptions" style="display: none;">
-                                <div class="language-option" onclick="changeLanguage('en')">
-                                    <span class="flag-icon">🇺🇸</span>
+                            <div class="language-options" id="languageOptions" style="
+                                display: none;
+                                position: absolute;
+                                top: 110%;
+                                right: 0;
+                                background: white;
+                                border: 2px solid rgba(102, 126, 234, 0.2);
+                                border-radius: 12px;
+                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                                min-width: 180px;
+                                z-index: 1000;
+                                overflow: hidden;
+                                backdrop-filter: blur(10px);
+                            ">
+                                <div class="language-option" onclick="changeLanguage('en', '🇺🇸', 'EN')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇺🇸</span>
                                     <span>English</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('es')">
-                                    <span class="flag-icon">🇪🇸</span>
+                                <div class="language-option" onclick="changeLanguage('es', '🇪🇸', 'ES')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇪🇸</span>
                                     <span>Español</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('fr')">
-                                    <span class="flag-icon">🇫🇷</span>
+                                <div class="language-option" onclick="changeLanguage('fr', '🇫🇷', 'FR')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇫🇷</span>
                                     <span>Français</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('de')">
-                                    <span class="flag-icon">🇩🇪</span>
+                                <div class="language-option" onclick="changeLanguage('de', '🇩🇪', 'DE')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇩🇪</span>
                                     <span>Deutsch</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('it')">
-                                    <span class="flag-icon">🇮🇹</span>
+                                <div class="language-option" onclick="changeLanguage('it', '🇮🇹', 'IT')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇮🇹</span>
                                     <span>Italiano</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('pt')">
-                                    <span class="flag-icon">🇵🇹</span>
+                                <div class="language-option" onclick="changeLanguage('pt', '🇵🇹', 'PT')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇵🇹</span>
                                     <span>Português</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('ja')">
-                                    <span class="flag-icon">🇯🇵</span>
+                                <div class="language-option" onclick="changeLanguage('ja', '🇯🇵', 'JA')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇯🇵</span>
                                     <span>日本語</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('ko')">
-                                    <span class="flag-icon">🇰🇷</span>
+                                <div class="language-option" onclick="changeLanguage('ko', '🇰🇷', 'KO')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇰🇷</span>
                                     <span>한국어</span>
                                 </div>
-                                <div class="language-option" onclick="changeLanguage('zh')">
-                                    <span class="flag-icon">🇨🇳</span>
+                                <div class="language-option" onclick="changeLanguage('zh', '🇨🇳', 'ZH')" style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    padding: 12px 16px;
+                                    cursor: pointer;
+                                    transition: all 0.2s ease;
+                                    color: #1e293b;
+                                    font-weight: 500;
+                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
+                                    <span class="flag-icon" style="font-size: 18px;">🇨🇳</span>
                                     <span>中文</span>
                                 </div>
                             </div>
