@@ -19,6 +19,24 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Fix for form inputs -->
+    <style>
+        #registerPassword, #loginPassword, .form-input {
+            display: block !important;
+            width: 100% !important;
+            padding: 12px !important;
+            border: 2px solid #e2e8f0 !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            box-sizing: border-box !important;
+            background: white !important;
+            color: #1e293b !important;
+            font-family: inherit !important;
+            margin: 0 !important;
+            min-height: 48px !important;
+        }
+    </style>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HHZDGS6XVX"></script>
     <script>
@@ -504,7 +522,7 @@
                     </div>
                     <div class="form-group">
                         <label for="registerPassword" style="font-weight: bold; color: #1e293b; margin-bottom: 8px; display: block; font-size: 14px;">🔒 Password</label>
-                        <input type="password" id="registerPassword" name="registerPassword" placeholder="Create a secure password" required style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; width: 100%; box-sizing: border-box; font-size: 16px; display: block;">
+                        <input type="password" id="registerPassword" name="registerPassword" placeholder="Create a secure password" required class="form-input">
                     </div>
                     <button class="btn btn-primary" onclick="register()">Create Account ✨</button>
                     <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Login here</a></p>
