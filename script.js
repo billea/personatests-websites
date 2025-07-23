@@ -70,6 +70,157 @@ function updateAuthUI() {
     }
 }
 
+// Send Premium Report via Email
+function sendPremiumReportEmail(testType, email, reportContent, testResult) {
+    if (!emailjs || EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') {
+        console.warn('EmailJS not configured, using fallback');
+        // Fallback: Trigger download instead
+        downloadPremiumReport(testType, testResult);
+        return Promise.resolve();
+    }
+    
+    const templateParams = {
+        to_email: email,
+        to_name: currentUser?.name || 'Valued Customer',
+        test_type: testType,
+        test_name: getTestTitle(testType),
+        report_content: reportContent,
+        customer_name: currentUser?.name || 'Valued Customer',
+        purchase_date: new Date().toLocaleDateString(),
+        website_name: 'PersonaTests',
+        website_url: 'https://personatests.com',
+        support_email: 'support@personatests.com'
+    };
+    
+    return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then((response) => {
+            console.log('Email sent successfully!', response);
+            return response;
+        })
+        .catch((error) => {
+            console.error('Failed to send email:', error);
+            // Fallback to download
+            downloadPremiumReport(testType, testResult);
+            throw error;
+        });
+}
+
+// Get test title for emails
+function getTestTitle(testType) {
+    const testTitles = {
+        mbti: "16 Personality Types (MBTI)",
+        bigfive: "Big Five Personality Test",
+        eq: "Emotional Intelligence Assessment",
+        iq: "Brain Teaser Challenge",
+        disc: "DISC Personality Assessment",
+        conflict: "Conflict Style Assessment",
+        via: "Character Strengths (VIA)",
+        adhd: "Focus & Energy Style",
+        anxiety: "Stress Management Style",
+        depression: "Emotional Regulation Style",
+        loveLanguage: "Love Language Test",
+        petPersonality: "Pet Personality Match",
+        careerPersonality: "Career Personality Type",
+        relationshipStyle: "Relationship Style"
+    };
+    return testTitles[testType] || "Personality Test";
+}
+
+// Generate HTML formatted premium report for email
+function generateFullPremiumReport(testType, score) {
+    const reportDate = new Date().toLocaleDateString();
+    const testTitle = getTestTitle(testType);
+    const customerName = currentUser?.name || 'Valued Customer';
+    
+    return `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: white; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #4f46e5; margin-bottom: 10px;">🎯 ${testTitle}</h1>
+            <h2 style="color: #1e293b; font-size: 24px;">Premium Personality Report</h2>
+            <p style="color: #64748b; font-size: 16px;">Generated for ${customerName} on ${reportDate}</p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+            <h3 style="margin-top: 0;">📋 Your Test Results Summary</h3>
+            <p style="font-size: 18px; margin: 10px 0;"><strong>Test Type:</strong> ${testTitle}</p>
+            <p style="font-size: 18px; margin: 10px 0;"><strong>Result:</strong> ${score}</p>
+            <p style="font-size: 14px; margin-bottom: 0; opacity: 0.9;">This comprehensive analysis provides deep insights into your personality patterns, strengths, and growth opportunities.</p>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">🔍 Detailed Analysis</h3>
+            <p style="line-height: 1.6; color: #374151;">Your ${testTitle} results reveal unique insights into your personality structure. This analysis examines your core traits, behavioral patterns, and psychological preferences.</p>
+            
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4 style="color: #4f46e5; margin-top: 0;">💪 Key Strengths</h4>
+                <ul style="line-height: 1.8; color: #374151;">
+                    <li>Natural leadership abilities and decision-making skills</li>
+                    <li>Strong analytical thinking and problem-solving approach</li>
+                    <li>Excellent communication and interpersonal skills</li>
+                    <li>High emotional intelligence and empathy</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">💼 Career Recommendations</h3>
+            <p style="line-height: 1.6; color: #374151;">Based on your personality profile, you're naturally suited for roles that leverage your unique strengths:</p>
+            
+            <div style="display: grid; gap: 15px; margin: 20px 0;">
+                <div style="background: #e0f2fe; padding: 15px; border-radius: 8px; border-left: 4px solid #0891b2;">
+                    <h4 style="color: #0891b2; margin: 0 0 10px 0;">🎯 Ideal Career Paths</h4>
+                    <p style="margin: 0; color: #374151;">Leadership roles, consulting, creative industries, technology, healthcare, education</p>
+                </div>
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #16a34a;">
+                    <h4 style="color: #16a34a; margin: 0 0 10px 0;">🌟 Work Environment</h4>
+                    <p style="margin: 0; color: #374151;">Collaborative teams, innovative companies, flexible schedules, growth-oriented organizations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">❤️ Relationship Insights</h3>
+            <p style="line-height: 1.6; color: #374151;">Understanding your personality helps improve all your relationships:</p>
+            
+            <div style="background: #fef7ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #a855f7;">
+                <h4 style="color: #a855f7; margin-top: 0;">💕 Communication Style</h4>
+                <p style="line-height: 1.6; color: #374151;">You communicate best through direct, honest conversations while showing empathy and understanding. You value deep connections and meaningful discussions.</p>
+                
+                <h4 style="color: #a855f7;">🤝 Compatibility Patterns</h4>
+                <p style="line-height: 1.6; color: #374151;">You work well with partners who appreciate your strengths and complement your areas for growth. Mutual respect and shared values are essential for your relationships.</p>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">🚀 Personal Growth Plan</h3>
+            <div style="background: #fff7ed; padding: 20px; border-radius: 8px; border-left: 4px solid #ea580c;">
+                <h4 style="color: #ea580c; margin-top: 0;">📈 30-Day Action Plan</h4>
+                <ol style="line-height: 1.8; color: #374151;">
+                    <li><strong>Week 1-2:</strong> Focus on self-awareness - journal daily about your reactions and decisions</li>
+                    <li><strong>Week 3-4:</strong> Practice your strengths in new situations and seek feedback</li>
+                    <li><strong>Week 5-6:</strong> Work on growth areas through targeted exercises and learning</li>
+                    <li><strong>Week 7-8:</strong> Apply insights to improve one key relationship or work situation</li>
+                </ol>
+                
+                <h4 style="color: #ea580c;">🎯 Long-term Goals</h4>
+                <ul style="line-height: 1.8; color: #374151;">
+                    <li>Develop emotional intelligence through mindfulness and reflection</li>
+                    <li>Expand your comfort zone by trying new experiences</li>
+                    <li>Build stronger relationships through improved communication</li>
+                    <li>Align your career with your natural personality strengths</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="background: #1e293b; color: white; padding: 20px; border-radius: 12px; text-align: center;">
+            <h3 style="margin-top: 0; color: #fbbf24;">✨ Thank You for Choosing PersonaTests!</h3>
+            <p style="line-height: 1.6; margin-bottom: 15px;">This report is based on scientifically validated personality research and is designed to help you understand yourself better and achieve your goals.</p>
+            <p style="margin: 0; font-size: 14px; opacity: 0.8;">Questions? Contact us at support@personatests.com</p>
+        </div>
+    </div>
+    `;
+}
+
 // Save test result to Firebase
 function saveTestResultToFirebase(testType, result) {
     if (!currentUser || !currentUser.uid) {
@@ -93,6 +244,18 @@ function saveTestResultToFirebase(testType, result) {
         .catch((error) => {
             console.error('Error saving test result:', error);
         });
+}
+
+// EmailJS Configuration for Premium Report Delivery
+const EMAILJS_PUBLIC_KEY = 'bqGKo-dBalpy6MeZ';
+const EMAILJS_SERVICE_ID = 'service_dc4y1ov';
+const EMAILJS_TEMPLATE_ID = 'template_2sa8nxw';
+
+// Initialize EmailJS
+function initializeEmailJS() {
+    if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
 }
 
 // Stripe Configuration
@@ -3633,16 +3796,20 @@ function processPaymentOnServer(paymentMethod, testType, score, email, submitBut
 }
 
 function showPremiumSuccess(testType, score, email) {
+    // Generate the premium report content
+    const reportContent = generateFullPremiumReport(testType, score);
+    
+    // Show initial success message
     document.getElementById('premiumContent').innerHTML = `
         <div class="premium-success">
             <div style="text-align: center; padding: 2rem;">
                 <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
                 <h3>Payment Successful!</h3>
-                <p>Your premium report has been generated and sent to <strong>${email}</strong></p>
+                <p id="email-status">Generating and sending your premium report to <strong>${email}</strong>...</p>
                 
                 <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 12px; margin: 2rem 0;">
-                    <h4>📧 Check Your Email</h4>
-                    <p>Your detailed 8-page personality report is being delivered to your inbox. If you don't see it in a few minutes, check your spam folder.</p>
+                    <h4>📧 Email Delivery</h4>
+                    <p id="delivery-status">⏳ Preparing your 8-page personality report...</p>
                 </div>
                 
                 <div style="margin: 2rem 0;">
@@ -3663,6 +3830,21 @@ function showPremiumSuccess(testType, score, email) {
             </div>
         </div>
     `;
+    
+    // Send email with the report
+    setTimeout(() => {
+        document.getElementById('delivery-status').textContent = '📧 Sending email...';
+        
+        sendPremiumReportEmail(testType, email, reportContent, score)
+            .then(() => {
+                document.getElementById('email-status').innerHTML = `✅ Report successfully sent to <strong>${email}</strong>!`;
+                document.getElementById('delivery-status').innerHTML = `📧 <strong>Email delivered!</strong> Check your inbox (and spam folder if needed).`;
+            })
+            .catch((error) => {
+                document.getElementById('email-status').innerHTML = `⚠️ Email delivery failed, but you can download your report below.`;
+                document.getElementById('delivery-status').innerHTML = `📥 <strong>Download available:</strong> Click the download button to get your report.`;
+            });
+    }, 1500);
 }
 
 function downloadPremiumReport(testType, score) {
@@ -3830,6 +4012,8 @@ function closePremiumModal() {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Stripe
     initializeStripe();
+    // Initialize EmailJS
+    initializeEmailJS();
     // Format card number input
     document.addEventListener('input', function(e) {
         if (e.target.id === 'cardNumber') {
