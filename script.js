@@ -4,6 +4,60 @@ let currentQuestionIndex = 0;
 let userAnswers = [];
 let testData = {};
 
+// Stripe Configuration
+const STRIPE_PUBLISHABLE_KEY = 'pk_test_51RnwPt1zgojmRZcvyMqAGsWCkGiYJKKbW7TrG0TwKphbY45p0XHHGEeowBviUwIB5d4odMDgMw4Rz8X8YUfYHATX005yTDQBGq';
+let stripe;
+let elements;
+
+// Initialize Stripe when script loads
+function initializeStripe() {
+    if (typeof Stripe !== 'undefined' && STRIPE_PUBLISHABLE_KEY !== 'YOUR_STRIPE_PUBLISHABLE_KEY_HERE') {
+        stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+        elements = stripe.elements();
+    }
+}
+
+// Initialize Stripe Elements for payment form
+let cardElement;
+function initializeStripeElements() {
+    if (!stripe || !elements) {
+        console.warn('Stripe not initialized');
+        return;
+    }
+    
+    // Create an instance of the card Element
+    cardElement = elements.create('card', {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#424770',
+                '::placeholder': {
+                    color: '#aab7c4',
+                },
+            },
+            invalid: {
+                color: '#9e2146',
+            },
+        },
+    });
+    
+    // Add an instance of the card Element into the card-element div
+    const cardElementDiv = document.getElementById('stripe-card-element');
+    if (cardElementDiv) {
+        cardElement.mount('#stripe-card-element');
+        
+        // Handle real-time validation errors from the card Element
+        cardElement.on('change', function(event) {
+            const displayError = document.getElementById('stripe-card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+    }
+}
+
 // Reliability and validation functions
 function getReliabilityDisplay(testType) {
     const test = tests[testType];
@@ -3320,6 +3374,11 @@ function purchasePremiumReport(testType, score, resultData) {
     // Generate premium content based on test type
     const premiumContent = generatePremiumContent(testType, score, resultData);
     document.getElementById('premiumContent').innerHTML = premiumContent;
+    
+    // Initialize Stripe Elements after modal content is loaded
+    setTimeout(() => {
+        initializeStripeElements();
+    }, 100);
 }
 
 function generatePremiumContent(testType, score, resultData) {
@@ -3373,24 +3432,11 @@ function generatePremiumContent(testType, score, resultData) {
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Card Number</label>
-                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Expiry Date</label>
-                                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
-                            </div>
-                            <div class="form-group">
-                                <label>CVV</label>
-                                <input type="text" id="cvv" placeholder="123" maxlength="4" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" id="cardName" placeholder="John Smith" required>
+                                <label>Payment Details</label>
+                                <div id="stripe-card-element" style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+                                    <!-- Stripe Elements will create form elements here -->
+                                </div>
+                                <div id="stripe-card-errors" role="alert" style="color: #e74c3c; margin-top: 8px; font-size: 14px;"></div>
                             </div>
                         </div>
                         
@@ -3417,29 +3463,82 @@ function generatePremiumContent(testType, score, resultData) {
 function processPremiumPayment(event, testType, score) {
     event.preventDefault();
     
-    // Get form data
+    // Get email
     const email = document.getElementById('premiumEmail').value;
-    const cardNumber = document.getElementById('cardNumber').value;
-    const expiryDate = document.getElementById('expiryDate').value;
-    const cvv = document.getElementById('cvv').value;
-    const cardName = document.getElementById('cardName').value;
-    
-    // Basic validation
-    if (!email || !cardNumber || !expiryDate || !cvv || !cardName) {
-        alert('Please fill in all payment details.');
+    if (!email) {
+        alert('Please enter your email address.');
         return;
     }
     
     // Show processing state
     const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
     submitButton.innerHTML = '⏳ Processing Payment...';
     submitButton.disabled = true;
     
-    // Simulate payment processing (replace with real Stripe integration)
-    setTimeout(() => {
-        // For demo purposes, we'll simulate a successful payment
+    // Check if Stripe is properly initialized
+    if (!stripe || !elements) {
+        // Fallback to demo mode if Stripe not configured
+        console.warn('Stripe not configured, using demo mode');
+        setTimeout(() => {
+            showPremiumSuccess(testType, score, email);
+        }, 2000);
+        return;
+    }
+    
+    // Create payment method with Stripe
+    stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: {
+            email: email,
+        },
+    }).then(function(result) {
+        if (result.error) {
+            // Show error to customer
+            document.getElementById('stripe-card-errors').textContent = result.error.message;
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        } else {
+            // Send payment method to your server for processing
+            processPaymentOnServer(result.paymentMethod, testType, score, email, submitButton, originalText);
+        }
+    });
+}
+
+// Process payment on server (you'll need to implement the server endpoint)
+function processPaymentOnServer(paymentMethod, testType, score, email, submitButton, originalText) {
+    // This would normally send to your server to complete the payment
+    // For now, we'll simulate a successful payment
+    
+    fetch('/api/process-payment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            payment_method_id: paymentMethod.id,
+            email: email,
+            test_type: testType,
+            score: score,
+            amount: 299, // $2.99 in cents
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showPremiumSuccess(testType, score, email);
+        } else {
+            document.getElementById('stripe-card-errors').textContent = data.error || 'Payment failed. Please try again.';
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }
+    })
+    .catch(error => {
+        // For demo purposes, simulate success
+        console.warn('Payment endpoint not available, using demo mode');
         showPremiumSuccess(testType, score, email);
-    }, 2000);
+    });
 }
 
 function showPremiumSuccess(testType, score, email) {
@@ -3638,6 +3737,8 @@ function closePremiumModal() {
 
 // Card number formatting
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Stripe
+    initializeStripe();
     // Format card number input
     document.addEventListener('input', function(e) {
         if (e.target.id === 'cardNumber') {
