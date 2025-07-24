@@ -1,5 +1,7 @@
 /* Reset and Base Styles */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,6 +14,10 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     background-attachment: fixed;
     min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -370,11 +376,23 @@ body {
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1rem;
     width: 100%;
     position: relative;
-    z-index: 1000;
+    z-index: 10;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.btn:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
 }
 
 .btn-primary {
@@ -384,12 +402,19 @@ body {
     border-radius: 25px;
     font-weight: 700;
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    will-change: transform;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
     background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+    transition-duration: 0.1s;
 }
 
 .btn-secondary {
@@ -399,14 +424,21 @@ body {
     border-radius: 25px;
     font-weight: 600;
     backdrop-filter: blur(10px);
+    will-change: transform;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border-color: transparent;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary:active {
+    transform: translateY(-1px);
+    transition-duration: 0.1s;
 }
 
 /* Features Section */
@@ -1210,6 +1242,73 @@ body {
 /* Hide ads for premium users (will be implemented later) */
 .premium-user .ad-container {
     display: none;
+}
+
+/* Form Input Improvements */
+#registerPassword, #loginPassword, .form-input {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    box-sizing: border-box !important;
+    background: white !important;
+    color: #1e293b !important;
+    font-family: inherit !important;
+    margin: 0 !important;
+    min-height: 48px !important;
+}
+
+/* Language Selector Improvements */
+.language-flags {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    margin-left: 20px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.language-bg-animation {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08), rgba(240,147,251,0.08));
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Flag wrapper styles are now inline in HTML for the SVG flags */
+
+/* Mobile responsiveness for language selector */
+@media (max-width: 768px) {
+    .language-flags {
+        margin-left: 10px;
+        padding: 10px 15px;
+        gap: 8px;
+    }
+    
+    .flag-emoji {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-flags {
+        margin-left: 5px;
+        padding: 8px 12px;
+        gap: 6px;
+    }
+    
+    .flag-emoji {
+        font-size: 20px;
+    }
 }
 
 /* Premium Report Upsell Styling */

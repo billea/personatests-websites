@@ -1047,128 +1047,153 @@ function toggleLanguageDropdown() {
 }
 
 function changeLanguage(langCode) {
-    // Validate language code
-    if (!translations[langCode]) {
-        console.error('❌ Invalid language code:', langCode);
-        return;
+    try {
+        console.log('🌍 Starting language change to:', langCode);
+        
+        // Validate language code
+        if (!translations[langCode]) {
+            console.error('❌ Invalid language code:', langCode);
+            return;
+        }
+        
+        // Update global language variable
+        currentLanguage = langCode;
+        console.log('🔄 Updated currentLanguage to:', currentLanguage);
+        
+        // Save preference immediately to prevent conflicts
+        try {
+            localStorage.setItem('preferredLanguage', langCode);
+            console.log('💾 Language preference saved:', langCode);
+            
+            // Verify it was saved
+            const saved = localStorage.getItem('preferredLanguage');
+            console.log('✅ Verified saved preference:', saved);
+        } catch (e) {
+            console.warn('Could not save language preference:', e);
+        }
+        
+        // Batch DOM updates for better performance
+        requestAnimationFrame(() => {
+            console.log('🔄 Applying language changes...');
+            const lang = translations[langCode];
+            updateTranslatedElements(lang);
+            updateLanguageVisualIndicators(langCode);
+            updateSpecificSections(lang);
+            console.log('✅ Language change completed for:', langCode);
+        });
+        
+    } catch (error) {
+        console.error('Error changing language:', error);
     }
-    
-    // Update global language variable
-    currentLanguage = langCode;
-    
-    // Save language preference immediately
-    localStorage.setItem('preferredLanguage', langCode);
-    
-    // Force update all translated elements
-    const lang = translations[langCode];
+}
+
+// Helper function to update translated elements
+function updateTranslatedElements(lang) {
     const elements = document.querySelectorAll('[data-translate]');
     
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
-        const keys = key.split('.');
-        let value = lang;
+        if (!key) return;
         
-        // Navigate through nested translation object
-        for (let k of keys) {
-            value = value[k];
-            if (!value) break;
-        }
-        
-        if (value) {
+        const value = getNestedTranslation(lang, key);
+        if (value && element.textContent !== value) {
             element.textContent = value;
         }
     });
-    
-    // Update visual feedback for flags
-    document.querySelectorAll('.flag-wrapper').forEach(wrapper => {
-        wrapper.style.opacity = '0.7';
-        wrapper.style.transform = 'scale(1)';
+}
+
+// Optimized nested object access
+function getNestedTranslation(obj, key) {
+    return key.split('.').reduce((current, k) => current?.[k], obj);
+}
+
+// Update visual language indicators with CSS classes instead of inline styles
+function updateLanguageVisualIndicators(langCode) {
+    const flags = document.querySelectorAll('.flag-wrapper');
+    flags.forEach(flag => {
+        flag.classList.toggle('selected', flag.dataset.lang === langCode);
     });
+}
+
+// Optimized page language update
+function updatePageLanguage() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
     
-    // Highlight selected flag
-    const selectedFlag = document.querySelector(`[onclick="changeLanguage('${langCode}')"]`);
-    if (selectedFlag) {
-        selectedFlag.style.opacity = '1';
-        selectedFlag.style.transform = 'scale(1.1)';
-    }
+    updateTranslatedElements(lang);
+    updateSpecificSections(lang);
+}
+
+// Update sections that don't use data-translate
+function updateSpecificSections(lang = translations[currentLanguage]) {
+    if (!lang) return;
     
-    // Force update other sections
     try {
-        updateHeroSection();
-        updateStatsSection();
+        updateHeroSection(lang);
+        updateStatsSection(lang);
     } catch (e) {
         console.warn('⚠️ Error updating additional sections:', e);
     }
 }
 
-function updatePageLanguage() {
-    const lang = translations[currentLanguage];
-    if (!lang) return;
+function updateHeroSection(lang = translations[currentLanguage]) {
+    if (!lang?.hero) return;
     
-    // Update all elements with data-translate attribute
-    document.querySelectorAll('[data-translate]').forEach(element => {
-        const key = element.getAttribute('data-translate');
-        const keys = key.split('.');
-        let value = lang;
-        
-        // Navigate through nested translation object
-        for (let k of keys) {
-            value = value[k];
-            if (!value) break;
-        }
-        
-        if (value) {
-            element.textContent = value;
+    const elements = {
+        title: document.querySelector('.hero-title'),
+        subtitle: document.querySelector('.hero-subtitle'),
+        cta: document.querySelector('.cta-text')
+    };
+    
+    Object.entries(elements).forEach(([key, element]) => {
+        if (element && lang.hero[key]) {
+            element.textContent = lang.hero[key];
         }
     });
-    
-    // Update specific elements that don't use data-translate
-    updateHeroSection();
-    updateStatsSection();
 }
 
-function updateHeroSection() {
-    const lang = translations[currentLanguage];
-    if (!lang) return;
-    
-    const titleElement = document.querySelector('.hero-title');
-    const subtitleElement = document.querySelector('.hero-subtitle');
-    const ctaElement = document.querySelector('.cta-text');
-    
-    if (titleElement) titleElement.textContent = lang.hero.title;
-    if (subtitleElement) subtitleElement.textContent = lang.hero.subtitle;
-    if (ctaElement) ctaElement.textContent = lang.hero.cta;
-}
-
-function updateStatsSection() {
-    const lang = translations[currentLanguage];
-    if (!lang) return;
+function updateStatsSection(lang = translations[currentLanguage]) {
+    if (!lang?.stats) return;
     
     const statLabels = document.querySelectorAll('.stat-label');
-    if (statLabels.length >= 3) {
-        statLabels[0].textContent = lang.stats.categories;
-        statLabels[1].textContent = lang.stats.reliability;
-        statLabels[2].textContent = lang.stats.available;
-    }
+    const statsKeys = ['categories', 'reliability', 'available'];
+    
+    statsKeys.forEach((key, index) => {
+        if (statLabels[index] && lang.stats[key]) {
+            statLabels[index].textContent = lang.stats[key];
+        }
+    });
 }
 
-// Initialize language from localStorage or browser preference
+// Initialize language from localStorage or browser preference - Optimized
 function initializeLanguage() {
-    const savedLang = localStorage.getItem('preferredLanguage');
-    const browserLang = navigator.language.split('-')[0];
-    
-    // Use saved language, or browser language if supported, otherwise default to English
-    const supportedLangs = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
-    let initialLang = 'en';
-    
-    if (savedLang && supportedLangs.includes(savedLang)) {
-        initialLang = savedLang;
-    } else if (supportedLangs.includes(browserLang)) {
-        initialLang = browserLang;
-    }
-    
-    if (initialLang !== 'en') {
-        changeLanguage(initialLang);
+    try {
+        const supportedLangs = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
+        let initialLang = 'en';
+        
+        // Try saved language first
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && supportedLangs.includes(savedLang)) {
+            initialLang = savedLang;
+        } else {
+            // Fallback to browser language
+            const browserLang = navigator.language?.split('-')[0];
+            if (browserLang && supportedLangs.includes(browserLang)) {
+                initialLang = browserLang;
+            }
+        }
+        
+        // Only change if different from default
+        if (initialLang !== 'en') {
+            changeLanguage(initialLang);
+        } else {
+            // Ensure English flag is marked as selected
+            updateLanguageVisualIndicators('en');
+        }
+        
+    } catch (error) {
+        console.warn('Error initializing language, falling back to English:', error);
+        updateLanguageVisualIndicators('en');
     }
 }
 
@@ -5428,22 +5453,18 @@ document.head.insertAdjacentHTML('beforeend', additionalCSS);
 // User Management System
 let currentUser = null;
 
-// Initialize user system on page load - SINGLE INITIALIZATION POINT
+// Initialize user system on page load - SINGLE INITIALIZATION POINT  
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 SINGLE INITIALIZATION STARTING...');
     
+    // DISABLE AUTOMATIC LANGUAGE INITIALIZATION TO PREVENT CONFLICTS
     // Load saved language preference (ignore browser language to prevent Chinese flashing)
     const savedLanguage = localStorage.getItem('preferredLanguage');
     console.log('📱 Saved language:', savedLanguage);
     
-    // Only use saved language preference, default to English to prevent auto-detection issues
-    if (savedLanguage && translations[savedLanguage]) {
-        console.log('✅ Using saved language:', savedLanguage);
-        changeLanguage(savedLanguage);
-    } else {
-        console.log('✅ Using default language: en');
-        changeLanguage('en');
-    }
+    // TEMPORARILY DISABLED - Let languages be purely manual
+    console.log('⚠️ Language initialization DISABLED to prevent conflicts');
+    console.log('🕰️ Languages will only change via manual flag clicks');
     
     // Initialize user authentication
     checkUserLogin();
