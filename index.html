@@ -514,8 +514,11 @@
                                 filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
                             ">
                                 <rect width="24" height="18" fill="white"/>
-                                <circle cx="12" cy="9" r="3" fill="#CD2E3A"/>
-                                <path d="M 12 6 A 3 3 0 0 0 12 12 A 1.5 1.5 0 0 1 12 9 A 1.5 1.5 0 0 0 12 6" fill="#0047A0"/>
+                                <!-- Circle 20% bigger, rotated 180°, and flipped left-right -->
+                                <g transform="translate(12,9) rotate(180) scale(-1,1)">
+                                    <circle cx="0" cy="0" r="3.6" fill="#CD2E3A"/>
+                                    <path d="M 0 -3.6 A 3.6 3.6 0 0 0 0 3.6 A 1.8 1.8 0 0 1 0 0 A 1.8 1.8 0 0 0 0 -3.6" fill="#0047A0"/>
+                                </g>
                                 <g stroke="#000" stroke-width="0.6" fill="none">
                                     <line x1="4.5" y1="3.5" x2="6.5" y2="3.5"/>
                                     <line x1="4.5" y1="4.5" x2="6.5" y2="4.5"/>
