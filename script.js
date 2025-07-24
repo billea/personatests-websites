@@ -26,6 +26,99 @@ const translations = {
             categories: "Test Categories",
             reliability: "Scientific Reliability", 
             available: "Always Available"
+        },
+        tests: {
+            sectionTitle: "Discover Your Personality ✨",
+            sectionSubtitle: "Which test speaks to you? All are scientifically-backed and designed to be engaging! 💫",
+            disclaimer: "🎯 Important: For Entertainment & Self-Reflection Only",
+            disclaimerText: "These assessments are designed for fun and self-reflection, not professional diagnosis. If you need mental health support, please consult a licensed healthcare provider.",
+            mbti: "16 Personality Vibes",
+            mbtiDesc: "The ultimate personality test that actually gets you. Are you INTJ mastermind energy or ENFP golden retriever vibes? Time to find out! 💅",
+            bigfive: "Big Five Personality Check", 
+            bigfiveDesc: "The science-backed test that psychology professors actually approve of. Get your personality breakdown across 5 major traits! 🧠",
+            eq: "Emotional Intelligence (EQ)",
+            eqDesc: "How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝",
+            iq: "Brain Teaser Challenge",
+            iqDesc: "Fun logic puzzles and brain games! This is just for entertainment - real IQ testing needs professional administration. Let's see how you do! 🤓",
+            disc: "DISC Personality Check",
+            discDesc: "Discover your communication style! Are you Dominant, Influential, Steady, or Conscientious? Perfect for understanding work and relationship dynamics! 💼",
+            conflict: "Conflict Style Assessment", 
+            conflictDesc: "How do you handle disagreements? Discover whether you're a collaborator, competitor, accommodator, avoider, or compromiser! 🤝",
+            strengths: "Character Strengths (VIA)",
+            strengthsDesc: "Uncover your core character strengths! From creativity to leadership to kindness - discover what makes you uniquely awesome! ✨",
+            adhd: "Focus & Energy Style",
+            adhdDesc: "Discover your unique attention and energy patterns! This is for fun self-reflection only - not a medical assessment. ⚡",
+            anxiety: "Stress Management Style", 
+            anxietyDesc: "Discover how you handle stress and pressure! This is for fun self-awareness only - not medical advice. 💚",
+            depression: "Emotional Regulation Style",
+            depressionDesc: "Understand how you process emotions! This is for self-reflection and entertainment only - not a mental health assessment. 🌻",
+            trendingTitle: "Trending Now 🔥",
+            trendingSubtitle: "The hottest personality tests everyone's talking about! Perfect for sharing with friends and social media 📱",
+            love: "Love Language Test",
+            loveDesc: "Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖",
+            pet: "What Pet Matches Your Personality?",
+            petDesc: "Are you a loyal dog, independent cat, playful hamster, or something else? Find your perfect pet match based on your personality! 🐱",
+            career: "What's Your Ideal Career Path?",
+            careerDesc: "Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀",
+            relationship: "What's Your Relationship Style?",
+            relationshipDesc: "How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨",
+            buttons: {
+                discoverType: "Discover My Type ✨",
+                takeTest: "Take The Test",
+                takeBrainChallenge: "Take Brain Challenge",
+                checkEQ: "Check My EQ",
+                findStyle: "Find My Style",
+                checkStyle: "Check My Style",
+                findStrengths: "Find My Strengths",
+                findLoveLanguage: "Find My Love Language",
+                findPetMatch: "Find My Pet Match",
+                findCareer: "Find My Career"
+            }
+        },
+        couples: {
+            title: "Couple Compatibility ❤️",
+            subtitle: "Take tests individually, then connect with your partner to discover your relationship dynamics and compatibility insights! 💕",
+            shareResults: "Share Your Results",
+            shareDesc: "After taking any test, get a unique sharing ID to connect with your partner and compare your vibes!",
+            shareButton: "Connect With Partner",
+            compatibility: "Compatibility Analysis",
+            compatibilityDesc: "Get detailed insights into your relationship dynamics, communication styles, and areas of harmony or growth!",
+            compatibilityButton: "View Our Match",
+            growth: "Relationship Growth",
+            growthDesc: "Discover tips and strategies to strengthen your bond based on both of your personality types and results!",
+            growthButton: "Grow Together"
+        },
+        whyChoose: {
+            title: "Why Choose PersonaTests? ✨",
+            scientific: "Actually Scientific",
+            scientificDesc: "Our tests are based on real psychology research, not just random questions. We're not playing around! 🧠",
+            instant: "Instant Results",
+            instantDesc: "Get your personality breakdown immediately. No waiting, no delays, just pure instant gratification! ⚡",
+            safe: "Your Secrets Are Safe",
+            safeDesc: "We keep your answers private. No selling your data, no weird emails. Just you and your results! 🔒",
+            everywhere: "Works Everywhere",
+            everywhereDesc: "Take tests on your phone, laptop, tablet - literally anywhere you want to discover your personality! 📱"
+        },
+        whyMatters: {
+            title: "Why Personality Testing Matters",
+            selfAwareness: "Self-Awareness",
+            selfAwarenessDesc: "Understand your natural tendencies, strengths, and areas for growth to make better life decisions.",
+            careerDevelopment: "Career Development", 
+            careerDevelopmentDesc: "Discover career paths that align with your personality for increased job satisfaction and success.",
+            betterRelationships: "Better Relationships",
+            betterRelationshipsDesc: "Improve communication and understanding in personal and professional relationships."
+        },
+        footer: {
+            description: "Discover your personality with scientifically-backed tests that get you.",
+            popularTests: "Popular Tests",
+            sixteenTypes: "16 Personality Types",
+            bigFive: "Big Five Test",
+            brainTeaser: "Brain Teaser Challenge",
+            moreInfo: "More Info",
+            aboutUs: "About Us",
+            blog: "Blog",
+            privacyPolicy: "Privacy Policy",
+            termsOfService: "Terms of Service"
         }
     },
     es: {
@@ -47,6 +140,99 @@ const translations = {
             categories: "Categorías de Pruebas",
             reliability: "Confiabilidad Científica",
             available: "Siempre Disponible"
+        },
+        tests: {
+            sectionTitle: "Descubre Tu Personalidad ✨",
+            sectionSubtitle: "¿Qué prueba te llama la atención? ¡Todas tienen respaldo científico y están diseñadas para ser atractivas! 💫",
+            disclaimer: "🎯 Importante: Solo para Entretenimiento y Autorreflexión",
+            disclaimerText: "Estas evaluaciones están diseñadas para diversión y autorreflexión, no para diagnóstico profesional. Si necesitas apoyo de salud mental, consulta a un proveedor de atención médica licenciado.",
+            mbti: "16 Tipos de Personalidad",
+            mbtiDesc: "¡Descubre tu tipo de personalidad único con la evaluación clásica Myers-Briggs! ¿Eres un pensador introvertido o un extrovertido emocional?",
+            bigfive: "Test de los Cinco Grandes", 
+            bigfiveDesc: "¡El estándar de oro de la psicología de la personalidad! Explora tu apertura, conciencia, extraversión, amabilidad y neuroticismo.",
+            eq: "Inteligencia Emocional (IE)",
+            eqDesc: "¿Qué tan bien lees las emociones y navegas situaciones sociales? ¡Pon a prueba tus superpoderes emocionales!",
+            iq: "Desafío Mental",
+            iqDesc: "¡Pon a prueba tus habilidades de resolución de problemas! Rompecabezas lógicos divertidos para desafiar tu mente.",
+            disc: "Test de Personalidad DISC",
+            discDesc: "¿Eres Dominante, Influyente, Estable o Concienzudo? ¡Perfecto para entender estilos de trabajo y relaciones!",
+            conflict: "Evaluación de Estilo de Conflicto", 
+            conflictDesc: "¿Cómo manejas los desacuerdos? Descubre si eres un colaborador, competidor o conciliador.",
+            strengths: "Fortalezas de Carácter (VIA)",
+            strengthsDesc: "¡Descubre tus principales fortalezas de carácter! Desde creatividad hasta bondad, encuentra lo que te hace brillar.",
+            adhd: "Estilo de Enfoque y Energía",
+            adhdDesc: "Explora tus patrones de atención y niveles de energía. ¡Genial para entender tu estilo de productividad!",
+            anxiety: "Estilo de Manejo del Estrés", 
+            anxietyDesc: "¿Cómo manejas la presión? Aprende tus patrones de estrés y descubre estrategias saludables de afrontamiento.",
+            depression: "Estilo de Regulación Emocional",
+            depressionDesc: "Comprende tus patrones emocionales y resistencia. ¡Perfecto para crecimiento personal y autoconocimiento!",
+            trendingTitle: "Tendencia Ahora 🔥",
+            trendingSubtitle: "¡Las pruebas de personalidad más populares de las que todos hablan! Perfectas para compartir con amigos y redes sociales 📱",
+            love: "Test del Lenguaje del Amor",
+            loveDesc: "¿Palabras de afirmación, tiempo de calidad o contacto físico? ¡Descubre cómo das y recibes amor mejor!",
+            pet: "¿Qué Mascota Combina con Tu Personalidad?",
+            petDesc: "¿Eres una persona leal de perros, amante independiente de gatos, o algo más exótico? ¡Encuentra tu combinación animal perfecta!",
+            career: "¿Cuál es Tu Camino Profesional Ideal?",
+            careerDesc: "¡Descubre la carrera que coincide con tu personalidad! ¿Eres líder, creador, ayudante, analista o emprendedor? 🚀",
+            relationship: "¿Cuál es Tu Estilo de Relación?",
+            relationshipDesc: "¿Cómo amas y te conectas con otros? ¡Descubre tu estilo único de relación y qué te hace especial en el amor! ✨",
+            buttons: {
+                discoverType: "Descubrir Mi Tipo ✨",
+                takeTest: "Hacer la Prueba",
+                takeBrainChallenge: "Hacer Desafío Mental",
+                checkEQ: "Revisar Mi IE",
+                findStyle: "Encontrar Mi Estilo",
+                checkStyle: "Revisar Mi Estilo",
+                findStrengths: "Encontrar Mis Fortalezas",
+                findLoveLanguage: "Encontrar Mi Lenguaje del Amor",
+                findPetMatch: "Encontrar Mi Mascota",
+                findCareer: "Encontrar Mi Carrera"
+            }
+        },
+        couples: {
+            title: "Compatibilidad de Parejas ❤️",
+            subtitle: "¡Tomen las pruebas individualmente, luego conéctense con su pareja para descubrir la dinámica de su relación y conocimientos de compatibilidad! 💕",
+            shareResults: "Compartir Tus Resultados",
+            shareDesc: "¡Después de tomar cualquier prueba, obtén un ID único para conectarte con tu pareja y comparar sus vibras!",
+            shareButton: "Conectar con Pareja",
+            compatibility: "Análisis de Compatibilidad",
+            compatibilityDesc: "¡Obtén información detallada sobre la dinámica de tu relación, estilos de comunicación y áreas de armonía o crecimiento!",
+            compatibilityButton: "Ver Nuestra Compatibilidad",
+            growth: "Crecimiento de Relación",
+            growthDesc: "¡Descubre consejos y estrategias para fortalecer tu vínculo basado en ambos tipos de personalidad y resultados!",
+            growthButton: "Crecer Juntos"
+        },
+        whyChoose: {
+            title: "¿Por Qué Elegir PersonaTests? ✨",
+            scientific: "Realmente Científico",
+            scientificDesc: "Nuestras pruebas se basan en investigación psicológica real, no solo preguntas aleatorias. ¡No estamos jugando! 🧠",
+            instant: "Resultados Instantáneos",
+            instantDesc: "Obtén tu análisis de personalidad inmediatamente. ¡Sin esperas, sin demoras, solo gratificación instantánea pura! ⚡",
+            safe: "Tus Secretos Están Seguros",
+            safeDesc: "Mantenemos tus respuestas privadas. Sin vender tus datos, sin correos raros. ¡Solo tú y tus resultados! 🔒",
+            everywhere: "Funciona En Todas Partes",
+            everywhereDesc: "¡Toma pruebas en tu teléfono, laptop, tablet - literalmente donde quieras descubrir tu personalidad! 📱"
+        },
+        whyMatters: {
+            title: "Por Qué Importan las Pruebas de Personalidad",
+            selfAwareness: "Autoconocimiento",
+            selfAwarenessDesc: "Comprende tus tendencias naturales, fortalezas y áreas de crecimiento para tomar mejores decisiones en la vida.",
+            careerDevelopment: "Desarrollo Profesional",
+            careerDevelopmentDesc: "Descubre caminos profesionales que se alineen con tu personalidad para mayor satisfacción laboral y éxito.",
+            betterRelationships: "Mejores Relaciones",
+            betterRelationshipsDesc: "Mejora la comunicación y comprensión en relaciones personales y profesionales."
+        },
+        footer: {
+            description: "Descubre tu personalidad con pruebas científicamente respaldadas que te entienden.",
+            popularTests: "Pruebas Populares",
+            sixteenTypes: "16 Tipos de Personalidad",
+            bigFive: "Test de los Cinco Grandes",
+            brainTeaser: "Desafío Mental",
+            moreInfo: "Más Información",
+            aboutUs: "Sobre Nosotros",
+            blog: "Blog",
+            privacyPolicy: "Política de Privacidad",
+            termsOfService: "Términos de Servicio"
         }
     },
     fr: {
@@ -68,6 +254,99 @@ const translations = {
             categories: "Catégories de Tests",
             reliability: "Fiabilité Scientifique",
             available: "Toujours Disponible"
+        },
+        tests: {
+            sectionTitle: "Découvrez Votre Personnalité ✨",
+            sectionSubtitle: "Quel test vous attire ? Tous sont scientifiquement validés et conçus pour être engageants ! 💫",
+            disclaimer: "🎯 Important : Pour le Divertissement et l'Autoréflexion Uniquement",
+            disclaimerText: "Ces évaluations sont conçues pour le plaisir et l'autoréflexion, pas pour un diagnostic professionnel. Si vous avez besoin d'un soutien en santé mentale, veuillez consulter un fournisseur de soins de santé agréé.",
+            mbti: "16 Types de Personnalité",
+            mbtiDesc: "Le test de personnalité ultime qui vous comprend vraiment. Êtes-vous une énergie de cerveau INTJ ou des vibrations de golden retriever ENFP ? Il est temps de le découvrir ! 💅",
+            bigfive: "Test des Cinq Grands",
+            bigfiveDesc: "Le test scientifiquement validé que les professeurs de psychologie approuvent réellement. Obtenez votre analyse de personnalité sur 5 traits majeurs ! 🧠",
+            eq: "Intelligence Émotionnelle (QE)",
+            eqDesc: "À quel point comprenez-vous les émotions - les vôtres et celles des autres ? Testez votre conscience de soi, votre empathie et vos compétences sociales ! 💝",
+            iq: "Défi Cérébral",
+            iqDesc: "Puzzles logiques amusants et jeux cérébraux ! C'est juste pour le divertissement - les vrais tests de QI nécessitent une administration professionnelle. Voyons comment vous vous en sortez ! 🤓",
+            disc: "Test de Personnalité DISC",
+            discDesc: "Découvrez votre style de communication ! Êtes-vous Dominant, Influent, Stable ou Consciencieux ? Parfait pour comprendre les dynamiques de travail et de relation ! 💼",
+            conflict: "Évaluation du Style de Conflit",
+            conflictDesc: "Comment gérez-vous les désaccords ? Découvrez si vous êtes un collaborateur, compétiteur, accommodant, évitant ou compromettant ! 🤝",
+            strengths: "Forces de Caractère (VIA)",
+            strengthsDesc: "Découvrez vos principales forces de caractère ! De la créativité au leadership en passant par la gentillesse - découvrez ce qui vous rend uniquement génial ! ✨",
+            adhd: "Style de Concentration et d'Énergie",
+            adhdDesc: "Découvrez vos modèles uniques d'attention et d'énergie ! C'est juste pour l'autoréflexion amusante - pas une évaluation médicale. ⚡",
+            anxiety: "Style de Gestion du Stress",
+            anxietyDesc: "Découvrez comment vous gérez le stress et la pression ! C'est juste pour le plaisir et la conscience de soi - pas des conseils médicaux. 💚",
+            depression: "Style de Régulation Émotionnelle",
+            depressionDesc: "Comprenez comment vous traitez les émotions ! C'est juste pour l'autoréflexion et le divertissement - pas une évaluation de santé mentale. 🌻",
+            trendingTitle: "Tendances Actuelles 🔥",
+            trendingSubtitle: "Les tests de personnalité dont tout le monde parle ! Parfaits pour partager avec des amis et sur les réseaux sociaux 📱",
+            love: "Test du Langage d'Amour",
+            loveDesc: "Découvrez comment vous donnez et recevez l'amour ! Êtes-vous toucher physique, mots d'affirmation ou autre chose ? Parfait pour les couples ! 💖",
+            pet: "Quel Animal Correspond à Votre Personnalité ?",
+            petDesc: "Êtes-vous un chien loyal, un chat indépendant, un hamster joueur ou autre chose ? Trouvez votre animal parfait basé sur votre personnalité ! 🐱",
+            career: "Quel est Votre Parcours Professionnel Idéal ?",
+            careerDesc: "Découvrez la carrière qui correspond à votre personnalité ! Êtes-vous un leader, créateur, aide, analyste ou entrepreneur ? 🚀",
+            relationship: "Quel est Votre Style Relationnel ?",
+            relationshipDesc: "Comment aimez-vous et vous connectez-vous avec les autres ? Découvrez votre style relationnel unique et ce qui vous fait vibrer en amour ! ✨",
+            buttons: {
+                discoverType: "Découvrir Mon Type ✨",
+                takeTest: "Faire le Test",
+                takeBrainChallenge: "Relever le Défi Cérébral",
+                checkEQ: "Vérifier Mon QE",
+                findStyle: "Trouver Mon Style",
+                checkStyle: "Vérifier Mon Style",
+                findStrengths: "Trouver Mes Forces",
+                findLoveLanguage: "Trouver Mon Langage d'Amour",
+                findPetMatch: "Trouver Mon Animal",
+                findCareer: "Trouver Ma Carrière"
+            }
+        },
+        couples: {
+            title: "Compatibilité de Couple ❤️",
+            subtitle: "Passez les tests individuellement, puis connectez-vous avec votre partenaire pour découvrir votre dynamique relationnelle et insights de compatibilité ! 💕",
+            shareResults: "Partagez Vos Résultats",
+            shareDesc: "Après avoir passé un test, obtenez un ID unique pour vous connecter avec votre partenaire et comparer vos vibes !",
+            shareButton: "Se Connecter avec le Partenaire",
+            compatibility: "Analyse de Compatibilité",
+            compatibilityDesc: "Obtenez des insights détaillés sur votre dynamique relationnelle, styles de communication et zones d'harmonie ou de croissance !",
+            compatibilityButton: "Voir Notre Compatibilité",
+            growth: "Croissance Relationnelle",
+            growthDesc: "Découvrez des conseils et stratégies pour renforcer votre lien basé sur vos types de personnalité et résultats !",
+            growthButton: "Grandir Ensemble"
+        },
+        whyChoose: {
+            title: "Pourquoi Choisir PersonaTests ? ✨",
+            scientific: "Réellement Scientifique",
+            scientificDesc: "Nos tests sont basés sur de vraies recherches en psychologie, pas juste des questions aléatoires. Nous ne plaisantons pas ! 🧠",
+            instant: "Résultats Instantanés",
+            instantDesc: "Obtenez votre analyse de personnalité immédiatement. Pas d'attente, pas de délais, juste une gratification instantanée pure ! ⚡",
+            safe: "Vos Secrets Sont En Sécurité",
+            safeDesc: "Nous gardons vos réponses privées. Pas de vente de données, pas d'emails bizarres. Juste vous et vos résultats ! 🔒",
+            everywhere: "Fonctionne Partout",
+            everywhereDesc: "Passez les tests sur votre téléphone, ordinateur portable, tablette - littéralement où vous voulez découvrir votre personnalité ! 📱"
+        },
+        whyMatters: {
+            title: "Pourquoi les Tests de Personnalité Sont Importants",
+            selfAwareness: "Conscience de Soi",
+            selfAwarenessDesc: "Comprenez vos tendances naturelles, vos forces et vos domaines d'amélioration pour prendre de meilleures décisions de vie.",
+            careerDevelopment: "Développement de Carrière",
+            careerDevelopmentDesc: "Découvrez des parcours professionnels qui s'alignent avec votre personnalité pour une satisfaction et un succès accrus au travail.",
+            betterRelationships: "Meilleures Relations",
+            betterRelationshipsDesc: "Améliorez la communication et la compréhension dans les relations personnelles et professionnelles."
+        },
+        footer: {
+            description: "Découvrez votre personnalité avec des tests scientifiquement validés qui vous comprennent.",
+            popularTests: "Tests Populaires",
+            sixteenTypes: "16 Types de Personnalité",
+            bigFive: "Test des Cinq Grands",
+            brainTeaser: "Défi Cérébral",
+            moreInfo: "Plus d'Infos",
+            aboutUs: "À Propos",
+            blog: "Blog",
+            privacyPolicy: "Politique de Confidentialité",
+            termsOfService: "Conditions de Service"
         }
     },
     de: {
@@ -89,6 +368,98 @@ const translations = {
             categories: "Test-Kategorien",
             reliability: "Wissenschaftliche Zuverlässigkeit",
             available: "Immer Verfügbar"
+        },
+        tests: {
+            sectionTitle: "Entdecke Deine Persönlichkeit ✨",
+            sectionSubtitle: "Welcher Test spricht dich an? Alle sind wissenschaftlich fundiert und spannend gestaltet! 💫",
+            disclaimer: "🎯 Wichtig: Nur zur Unterhaltung und Selbstreflexion",
+            mbti: "16 Persönlichkeitstypen",
+            mbtiDesc: "Der ultimative Persönlichkeitstest, der dich wirklich versteht. Bist du INTJ-Mastermind-Energie oder ENFP-Golden-Retriever-Vibes? Zeit, es herauszufinden! 💅",
+            bigfive: "Big Five Persönlichkeitstest",
+            bigfiveDesc: "Der wissenschaftlich fundierte Test, den Psychologie-Professoren tatsächlich befürworten. Erhalte deine Persönlichkeitsaufschlüsselung in 5 Hauptmerkmalen! 🧠",
+            eq: "Emotionale Intelligenz (EQ)",
+            eqDesc: "Wie gut verstehst du Emotionen - deine eigenen und die anderer? Teste dein Selbstbewusstsein, Empathie und soziale Fähigkeiten! 💝",
+            iq: "Gehirntraining-Challenge",
+            iqDesc: "Lustige Logikrätsel und Gehirnspiele! Das ist nur zur Unterhaltung - echte IQ-Tests benötigen professionelle Durchführung. Mal sehen, wie du abschneidest! 🤓",
+            disc: "DISC Persönlichkeitstest",
+            discDesc: "Entdecke deinen Kommunikationsstil! Bist du Dominant, Einflussreich, Stetig oder Gewissenhaft? Perfekt um Arbeits- und Beziehungsdynamiken zu verstehen! 💼",
+            conflict: "Konfliktstil-Bewertung",
+            conflictDesc: "Wie gehst du mit Meinungsverschiedenheiten um? Entdecke, ob du ein Kollaborator, Konkurrent, Vermittler, Vermeider oder Kompromissler bist! 🤝",
+            strengths: "Charakterstärken (VIA)",
+            strengthsDesc: "Entdecke deine wichtigsten Charakterstärken! Von Kreativität über Führung bis Freundlichkeit - entdecke, was dich einzigartig großartig macht! ✨",
+            adhd: "Fokus- und Energiestil",
+            adhdDesc: "Entdecke deine einzigartigen Aufmerksamkeits- und Energiemuster! Das ist nur zur lustigen Selbstreflexion - keine medizinische Bewertung. ⚡",
+            anxiety: "Stressmanagement-Stil",
+            anxietyDesc: "Entdecke, wie du mit Stress und Druck umgehst! Das ist nur zum Spaß für Selbstbewusstsein - keine medizinische Beratung. 💚",
+            depression: "Emotionsregulations-Stil",
+            depressionDesc: "Verstehe, wie du Emotionen verarbeitest! Das ist nur zur Selbstreflexion und Unterhaltung - keine psychische Gesundheitsbewertung. 🌻",
+            trendingTitle: "Gerade Angesagt 🔥",
+            trendingSubtitle: "Die heißesten Persönlichkeitstests, über die alle sprechen! Perfekt zum Teilen mit Freunden und in sozialen Medien 📱",
+            love: "Liebessprache-Test",
+            loveDesc: "Entdecke, wie du Liebe gibst und empfängst! Bist du körperliche Berührung, Worte der Bestätigung oder etwas anderes? Perfekt für Paare! 💖",
+            pet: "Welches Haustier passt zu deiner Persönlichkeit?",
+            petDesc: "Bist du ein loyaler Hund, eine unabhängige Katze, ein verspielter Hamster oder etwas anderes? Finde dein perfektes Haustier basierend auf deiner Persönlichkeit! 🐱",
+            career: "Was ist dein idealer Karriereweg?",
+            careerDesc: "Entdecke die Karriere, die zu deiner Persönlichkeit passt! Bist du ein Anführer, Schöpfer, Helfer, Analyst oder Unternehmer? 🚀",
+            relationship: "Was ist dein Beziehungsstil?",
+            relationshipDesc: "Wie liebst und verbindest du dich mit anderen? Entdecke deinen einzigartigen Beziehungsstil und was dich in der Liebe antreibt! ✨",
+            buttons: {
+                discoverType: "Meinen Typ Entdecken ✨",
+                takeTest: "Test Machen",
+                takeBrainChallenge: "Gehirn-Challenge Machen",
+                checkEQ: "Meine EQ Prüfen",
+                findStyle: "Meinen Stil Finden",
+                checkStyle: "Meinen Stil Prüfen",
+                findStrengths: "Meine Stärken Finden",
+                findLoveLanguage: "Meine Liebessprache Finden",
+                findPetMatch: "Mein Haustier Finden",
+                findCareer: "Meine Karriere Finden"
+            }
+        },
+        couples: {
+            title: "Paar-Kompatibilität ❤️",
+            subtitle: "Macht die Tests einzeln, dann verbindet euch mit eurem Partner, um eure Beziehungsdynamik und Kompatibilitäts-Insights zu entdecken! 💕",
+            shareResults: "Teile Deine Ergebnisse",
+            shareDesc: "Nach jedem Test erhältst du eine einzigartige Sharing-ID, um dich mit deinem Partner zu verbinden und eure Vibes zu vergleichen!",
+            shareButton: "Mit Partner Verbinden",
+            compatibility: "Kompatibilitäts-Analyse",
+            compatibilityDesc: "Erhalte detaillierte Einblicke in eure Beziehungsdynamik, Kommunikationsstile und Bereiche der Harmonie oder des Wachstums!",
+            compatibilityButton: "Unsere Übereinstimmung Sehen",
+            growth: "Beziehungswachstum",
+            growthDesc: "Entdecke Tipps und Strategien zur Stärkung eurer Bindung basierend auf beiden Persönlichkeitstypen und Ergebnissen!",
+            growthButton: "Zusammen Wachsen"
+        },
+        whyChoose: {
+            title: "Warum PersonaTests Wählen? ✨",
+            scientific: "Wirklich Wissenschaftlich",
+            scientificDesc: "Unsere Tests basieren auf echter psychologischer Forschung, nicht nur zufälligen Fragen. Wir machen keine Spass! 🧠",
+            instant: "Sofortige Ergebnisse",
+            instantDesc: "Erhalte deine Persönlichkeitsaufschlüsselung sofort. Kein Warten, keine Verzögerungen, nur pure sofortige Befriedigung! ⚡",
+            safe: "Deine Geheimnisse Sind Sicher",
+            safeDesc: "Wir halten deine Antworten privat. Kein Verkauf deiner Daten, keine seltsamen E-Mails. Nur du und deine Ergebnisse! 🔒",
+            everywhere: "Funktioniert Überall",
+            everywhereDesc: "Mache Tests auf deinem Handy, Laptop, Tablet - buchstäblich überall, wo du deine Persönlichkeit entdecken willst! 📱"
+        },
+        whyMatters: {
+            title: "Warum Persönlichkeitstests Wichtig Sind",
+            selfAwareness: "Selbstbewusstsein",
+            selfAwarenessDesc: "Verstehe deine natürlichen Tendenzen, Stärken und Verbesserungsbereiche, um bessere Lebensentscheidungen zu treffen.",
+            careerDevelopment: "Karriereentwicklung",
+            careerDevelopmentDesc: "Entdecke Karrierewege, die zu deiner Persönlichkeit passen, für mehr Arbeitszufriedenheit und Erfolg.",
+            betterRelationships: "Bessere Beziehungen",
+            betterRelationshipsDesc: "Verbessere die Kommunikation und das Verständnis in persönlichen und beruflichen Beziehungen."
+        },
+        footer: {
+            description: "Entdecke deine Persönlichkeit mit wissenschaftlich fundierten Tests, die dich verstehen.",
+            popularTests: "Beliebte Tests",
+            sixteenTypes: "16 Persönlichkeitstypen",
+            bigFive: "Big Five Test",
+            brainTeaser: "Gehirn-Challenge",
+            moreInfo: "Mehr Infos",
+            aboutUs: "Über Uns",
+            blog: "Blog",
+            privacyPolicy: "Datenschutzrichtlinie",
+            termsOfService: "Nutzungsbedingungen"
         }
     },
     it: {
@@ -110,6 +481,98 @@ const translations = {
             categories: "Categorie di Test",
             reliability: "Affidabilità Scientifica",
             available: "Sempre Disponibile"
+        },
+        tests: {
+            sectionTitle: "Scopri La Tua Personalità ✨",
+            sectionSubtitle: "Quale test ti attrae? Tutti sono scientificamente validati e progettati per essere coinvolgenti! 💫",
+            disclaimer: "🎯 Importante: Solo per Intrattenimento e Autoriflessione",
+            mbti: "16 Tipi di Personalità",
+            mbtiDesc: "Il test di personalità definitivo che ti capisce davvero. Sei energia da mastermind INTJ o vibes da golden retriever ENFP? È ora di scoprirlo! 💅",
+            bigfive: "Test dei Big Five",
+            bigfiveDesc: "Il test scientificamente validato che i professori di psicologia approvano davvero. Ottieni la tua analisi della personalità su 5 tratti principali! 🧠",
+            eq: "Intelligenza Emotiva (IE)",
+            eqDesc: "Quanto bene comprendi le emozioni - le tue e quelle degli altri? Testa la tua autoconsapevolezza, empatia e abilità sociali! 💝",
+            iq: "Sfida Mentale",
+            iqDesc: "Puzzle logici divertenti e giochi mentali! Questo è solo per intrattenimento - i veri test di QI richiedono somministrazione professionale. Vediamo come te la cavi! 🤓",
+            disc: "Test di Personalità DISC",
+            discDesc: "Scopri il tuo stile di comunicazione! Sei Dominante, Influente, Stabile o Coscienzioso? Perfetto per capire le dinamiche lavorative e relazionali! 💼",
+            conflict: "Valutazione dello Stile di Conflitto",
+            conflictDesc: "Come gestisci i disaccordi? Scopri se sei un collaboratore, competitore, accomodante, evitatore o compromissore! 🤝",
+            strengths: "Punti di Forza del Carattere (VIA)",
+            strengthsDesc: "Scopri i tuoi punti di forza caratteriali principali! Dalla creatività alla leadership alla gentilezza - scopri cosa ti rende unico e fantastico! ✨",
+            adhd: "Stile di Attenzione ed Energia",
+            adhdDesc: "Scopri i tuoi modelli unici di attenzione ed energia! Questo è solo per divertente autoriflessione - non una valutazione medica. ⚡",
+            anxiety: "Stile di Gestione dello Stress",
+            anxietyDesc: "Scopri come gestisci stress e pressione! Questo è solo per divertimento e autoconsapevolezza - non consigli medici. 💚",
+            depression: "Stile di Regolazione Emotiva",
+            depressionDesc: "Comprendi come elabori le emozioni! Questo è solo per autoriflessione e intrattenimento - non una valutazione della salute mentale. 🌻",
+            trendingTitle: "Di Tendenza Ora 🔥",
+            trendingSubtitle: "I test di personalità più caldi di cui tutti parlano! Perfetti da condividere con amici e sui social media 📱",
+            love: "Test del Linguaggio dell'Amore",
+            loveDesc: "Scopri come dai e ricevi amore! Sei tocco fisico, parole di affermazione o qualcos'altro? Perfetto per le coppie! 💖",
+            pet: "Quale Animale Corrisponde alla Tua Personalità?",
+            petDesc: "Sei un cane leale, un gatto indipendente, un criceto giocherellone o qualcos'altro? Trova il tuo animale perfetto basato sulla tua personalità! 🐱",
+            career: "Qual è Il Tuo Percorso Professionale Ideale?",
+            careerDesc: "Scopri la carriera che corrisponde alla tua personalità! Sei un leader, creatore, aiutante, analista o imprenditore? 🚀",
+            relationship: "Qual è Il Tuo Stile Relazionale?",
+            relationshipDesc: "Come ami e ti connetti con gli altri? Scopri il tuo stile relazionale unico e cosa ti fa brillare in amore! ✨",
+            buttons: {
+                discoverType: "Scopri Il Mio Tipo ✨",
+                takeTest: "Fai Il Test",
+                takeBrainChallenge: "Affronta La Sfida Mentale",
+                checkEQ: "Controlla La Mia IE",
+                findStyle: "Trova Il Mio Stile",
+                checkStyle: "Controlla Il Mio Stile",
+                findStrengths: "Trova Le Mie Forze",
+                findLoveLanguage: "Trova Il Mio Linguaggio Dell'Amore",
+                findPetMatch: "Trova Il Mio Animale",
+                findCareer: "Trova La Mia Carriera"
+            }
+        },
+        couples: {
+            title: "Compatibilità di Coppia ❤️",
+            subtitle: "Fate i test individualmente, poi collegatevi con il vostro partner per scoprire le dinamiche della vostra relazione e insights di compatibilità! 💕",
+            shareResults: "Condividi I Tuoi Risultati",
+            shareDesc: "Dopo aver fatto qualsiasi test, ottieni un ID unico per connetterti con il tuo partner e confrontare le vostre vibes!",
+            shareButton: "Connetti Con Il Partner",
+            compatibility: "Analisi di Compatibilità",
+            compatibilityDesc: "Ottieni insights dettagliati sulle dinamiche della vostra relazione, stili di comunicazione e aree di armonia o crescita!",
+            compatibilityButton: "Vedi La Nostra Compatibilità",
+            growth: "Crescita della Relazione",
+            growthDesc: "Scopri consigli e strategie per rafforzare il vostro legame basato su entrambi i vostri tipi di personalità e risultati!",
+            growthButton: "Crescere Insieme"
+        },
+        whyChoose: {
+            title: "Perché Scegliere PersonaTests? ✨",
+            scientific: "Realmente Scientifico",
+            scientificDesc: "I nostri test sono basati su vera ricerca psicologica, non solo domande casuali. Non stiamo scherzando! 🧠",
+            instant: "Risultati Istantanei",
+            instantDesc: "Ottieni la tua analisi della personalità immediatamente. Nessuna attesa, nessun ritardo, solo pura gratificazione istantanea! ⚡",
+            safe: "I Tuoi Segreti Sono Al Sicuro",
+            safeDesc: "Manteniamo le tue risposte private. Nessuna vendita dei tuoi dati, nessuna email strana. Solo tu e i tuoi risultati! 🔒",
+            everywhere: "Funziona Ovunque",
+            everywhereDesc: "Fai i test sul tuo telefono, laptop, tablet - letteralmente ovunque tu voglia scoprire la tua personalità! 📱"
+        },
+        whyMatters: {
+            title: "Perché i Test di Personalità Sono Importanti",
+            selfAwareness: "Autoconsapevolezza",
+            selfAwarenessDesc: "Comprendi le tue tendenze naturali, i punti di forza e le aree di crescita per prendere decisioni di vita migliori.",
+            careerDevelopment: "Sviluppo della Carriera",
+            careerDevelopmentDesc: "Scopri percorsi di carriera che si allineano con la tua personalità per maggiore soddisfazione lavorativa e successo.",
+            betterRelationships: "Relazioni Migliori",
+            betterRelationshipsDesc: "Migliora la comunicazione e la comprensione nelle relazioni personali e professionali."
+        },
+        footer: {
+            description: "Scopri la tua personalità con test scientificamente validati che ti capiscono.",
+            popularTests: "Test Popolari",
+            sixteenTypes: "16 Tipi di Personalità",
+            bigFive: "Test dei Big Five",
+            brainTeaser: "Sfida Mentale",
+            moreInfo: "Maggiori Info",
+            aboutUs: "Chi Siamo",
+            blog: "Blog",
+            privacyPolicy: "Politica sulla Privacy",
+            termsOfService: "Termini di Servizio"
         }
     },
     pt: {
@@ -131,6 +594,98 @@ const translations = {
             categories: "Categorias de Testes",
             reliability: "Confiabilidade Científica", 
             available: "Sempre Disponível"
+        },
+        tests: {
+            sectionTitle: "Descubra Sua Personalidade ✨",
+            sectionSubtitle: "Qual teste fala com você? Todos são cientificamente fundamentados e projetados para serem envolventes! 💫",
+            disclaimer: "🎯 Importante: Apenas para Entretenimento e Autorreflexão",
+            mbti: "16 Tipos de Personalidade",
+            mbtiDesc: "O teste de personalidade definitivo que realmente te entende. Você é energia de mente mestra INTJ ou vibes de golden retriever ENFP? Hora de descobrir! 💅",
+            bigfive: "Teste dos Cinco Grandes",
+            bigfiveDesc: "O teste cientificamente fundamentado que os professores de psicologia realmente aprovam. Obtenha sua análise de personalidade em 5 traços principais! 🧠",
+            eq: "Inteligência Emocional (IE)",
+            eqDesc: "Quão bem você entende emoções - suas e dos outros? Teste sua autoconsciência, empatia e habilidades sociais! 💝",
+            iq: "Desafio Mental",
+            iqDesc: "Quebra-cabeças lógicos divertidos e jogos mentais! Isso é apenas para entretenimento - testes de QI reais precisam de administração profissional. Vamos ver como você se sai! 🤓",
+            disc: "Teste de Personalidade DISC",
+            discDesc: "Descubra seu estilo de comunicação! Você é Dominante, Influente, Estável ou Consciencioso? Perfeito para entender dinâmicas de trabalho e relacionamento! 💼",
+            conflict: "Avaliação de Estilo de Conflito",
+            conflictDesc: "Como você lida com desacordos? Descubra se você é um colaborador, competidor, acomodador, evitador ou negociador! 🤝",
+            strengths: "Forças de Caráter (VIA)",
+            strengthsDesc: "Descubra suas principais forças de caráter! Da criatividade à liderança à bondade - descubra o que te torna únicamente incrível! ✨",
+            adhd: "Estilo de Foco e Energia",
+            adhdDesc: "Descubra seus padrões únicos de atenção e energia! Isso é apenas para autorreflexão divertida - não uma avaliação médica. ⚡",
+            anxiety: "Estilo de Gerenciamento de Estresse",
+            anxietyDesc: "Descubra como você lida com estresse e pressão! Isso é apenas para diversão e autoconsciência - não aconselhamento médico. 💚",
+            depression: "Estilo de Regulação Emocional",
+            depressionDesc: "Entenda como você processa emoções! Isso é apenas para autorreflexão e entretenimento - não uma avaliação de saúde mental. 🌻",
+            trendingTitle: "Tendência Agora 🔥",
+            trendingSubtitle: "Os testes de personalidade mais quentes sobre os quais todos estão falando! Perfeitos para compartilhar com amigos e nas redes sociais 📱",
+            love: "Teste da Linguagem do Amor",
+            loveDesc: "Descubra como você dá e recebe amor! Você é toque físico, palavras de afirmação ou algo mais? Perfeito para casais! 💖",
+            pet: "Qual Animal Combina com Sua Personalidade?",
+            petDesc: "Você é um cachorro leal, gato independente, hamster brincalhão ou algo mais? Encontre seu animal perfeito baseado na sua personalidade! 🐱",
+            career: "Qual é Seu Caminho Profissional Ideal?",
+            careerDesc: "Descubra a carreira que combina com sua personalidade! Você é um líder, criador, ajudante, analista ou empreendedor? 🚀",
+            relationship: "Qual é Seu Estilo de Relacionamento?",
+            relationshipDesc: "Como você ama e se conecta com outros? Descubra seu estilo único de relacionamento e o que te faz brilhar no amor! ✨",
+            buttons: {
+                discoverType: "Descobrir Meu Tipo ✨",
+                takeTest: "Fazer o Teste",
+                takeBrainChallenge: "Fazer Desafio Mental",
+                checkEQ: "Verificar Minha IE",
+                findStyle: "Encontrar Meu Estilo",
+                checkStyle: "Verificar Meu Estilo",
+                findStrengths: "Encontrar Minhas Forças",
+                findLoveLanguage: "Encontrar Minha Linguagem do Amor",
+                findPetMatch: "Encontrar Meu Animal",
+                findCareer: "Encontrar Minha Carreira"
+            }
+        },
+        couples: {
+            title: "Compatibilidade de Casais ❤️",
+            subtitle: "Façam os testes individualmente, depois conectem-se com seu parceiro para descobrir a dinâmica do relacionamento e insights de compatibilidade! 💕",
+            shareResults: "Compartilhe Seus Resultados",
+            shareDesc: "Depois de fazer qualquer teste, obtenha um ID único para se conectar com seu parceiro e comparar suas vibes!",
+            shareButton: "Conectar com Parceiro",
+            compatibility: "Análise de Compatibilidade",
+            compatibilityDesc: "Obtenha insights detalhados sobre a dinâmica do seu relacionamento, estilos de comunicação e áreas de harmonia ou crescimento!",
+            compatibilityButton: "Ver Nossa Compatibilidade",
+            growth: "Crescimento do Relacionamento",
+            growthDesc: "Descubra dicas e estratégias para fortalecer sua união baseado em ambos os tipos de personalidade e resultados!",
+            growthButton: "Crescer Juntos"
+        },
+        whyChoose: {
+            title: "Por Que Escolher PersonaTests? ✨",
+            scientific: "Realmente Científico",
+            scientificDesc: "Nossos testes são baseados em pesquisa psicológica real, não apenas perguntas aleatórias. Não estamos brincando! 🧠",
+            instant: "Resultados Instantâneos",
+            instantDesc: "Obtenha sua análise de personalidade imediatamente. Sem espera, sem atrasos, apenas gratificação instantânea pura! ⚡",
+            safe: "Seus Segredos Estão Seguros",
+            safeDesc: "Mantemos suas respostas privadas. Sem venda de seus dados, sem emails estranhos. Apenas você e seus resultados! 🔒",
+            everywhere: "Funciona Em Qualquer Lugar",
+            everywhereDesc: "Faça testes no seu telefone, laptop, tablet - literalmente em qualquer lugar que você queira descobrir sua personalidade! 📱"
+        },
+        whyMatters: {
+            title: "Por Que os Testes de Personalidade São Importantes",
+            selfAwareness: "Autoconhecimento",
+            selfAwarenessDesc: "Compreenda suas tendências naturais, pontos fortes e áreas para crescimento para tomar melhores decisões de vida.",
+            careerDevelopment: "Desenvolvimento de Carreira",
+            careerDevelopmentDesc: "Descubra caminhos de carreira que se alinhem com sua personalidade para maior satisfação no trabalho e sucesso.",
+            betterRelationships: "Relacionamentos Melhores",
+            betterRelationshipsDesc: "Melhore a comunicação e o entendimento em relacionamentos pessoais e profissionais."
+        },
+        footer: {
+            description: "Descubra sua personalidade com testes cientificamente fundamentados que te entendem.",
+            popularTests: "Testes Populares",
+            sixteenTypes: "16 Tipos de Personalidade",
+            bigFive: "Teste dos Cinco Grandes",
+            brainTeaser: "Desafio Mental",
+            moreInfo: "Mais Informações",
+            aboutUs: "Sobre Nós",
+            blog: "Blog",
+            privacyPolicy: "Política de Privacidade",
+            termsOfService: "Termos de Serviço"
         }
     },
     ja: {
@@ -152,6 +707,99 @@ const translations = {
             categories: "テストカテゴリー",
             reliability: "科学的信頼性",
             available: "いつでも利用可能"
+        },
+        tests: {
+            sectionTitle: "あなたの性格を発見 ✨",
+            sectionSubtitle: "どのテストがあなたに合いますか？すべて科学的に裏付けられ、魅力的に設計されています！💫",
+            disclaimer: "🎯 重要：娯楽と自己反省のみを目的としています",
+            disclaimerText: "これらの評価は楽しみと自己反省のために設計されており、専門的な診断ではありません。メンタルヘルスのサポートが必要な場合は、認可された医療提供者にご相談ください。",
+            mbti: "16の性格タイプ",
+            mbtiDesc: "あなたを本当に理解する究極の性格テスト。INTJマスターマインドエネルギーかENFPゴールデンレトリバーバイブか？見つける時です！💅",
+            bigfive: "ビッグファイブ性格テスト",
+            bigfiveDesc: "心理学教授が実際に承認する科学的裏付けのあるテスト。5つの主要特性であなたの性格分析を取得！🧠",
+            eq: "感情知能（EQ）",
+            eqDesc: "あなたは感情をどれくらい理解していますか？あなた自身と他者の？自己認識、共感、社会的スキルをテストしましょう！💝",
+            iq: "脳力チャレンジ",
+            iqDesc: "楽しい論理パズルと脳ゲーム！これは娯楽のみです - 本物のIQテストには専門的な管理が必要です。どうですか！🤓",
+            disc: "DISC性格テスト",
+            discDesc: "あなたのコミュニケーションスタイルを発見！支配的、影響力がある、安定している、慎重？仕事と人間関係の動力学を理解するのに最適！💼",
+            conflict: "対立スタイル評価",
+            conflictDesc: "意見の相違をどう扱いますか？あなたが協力者、競争者、適応者、回避者、妥協者かを発見！🤝",
+            strengths: "キャラクター強み（VIA）",
+            strengthsDesc: "あなたの核となるキャラクター強みを発見！創造性からリーダーシップ、親切さまで - あなたをユニークに素晴らしくするものを発見！✨",
+            adhd: "集中とエネルギースタイル",
+            adhdDesc: "あなたのユニークな注意とエネルギーパターンを発見！これは楽しい自己反省のみです - 医学的評価ではありません。⚡",
+            anxiety: "ストレス管理スタイル",
+            anxietyDesc: "ストレスと圧力をどう扱うかを発見！これは楽しい自己認識のみです - 医学的アドバイスではありません。💚",
+            depression: "感情調整スタイル",
+            depressionDesc: "感情をどう処理するかを理解！これは自己反省と娯楽のみです - メンタルヘルス評価ではありません。🌻",
+            trendingTitle: "今トレンド 🔥",
+            trendingSubtitle: "みんなが話している最もホットな性格テスト！友達やソーシャルメディアで共有するのに最適📱",
+            love: "愛の言語テスト",
+            loveDesc: "愛をどう与え、受け取るかを発見！身体的接触、肯定の言葉、それとも他の何か？カップルに最適！💖",
+            pet: "あなたの性格に合うペットは？",
+            petDesc: "忠実な犬、独立した猫、遊び好きなハムスター、それとも他の何か？あなたの性格に基づいて完璧なペットを見つけて！🐱",
+            career: "あなたの理想のキャリアパスは？",
+            careerDesc: "あなたの性格に合うキャリアを発見！リーダー、クリエイター、ヘルパー、アナリスト、起業家？🚀",
+            relationship: "あなたの恐愛スタイルは？",
+            relationshipDesc: "どのように愛し、他者と繋がりますか？あなたのユニークな恐愛スタイルと愛におけるあなたの魅力を発見！✨",
+            buttons: {
+                discoverType: "私のタイプを発見 ✨",
+                takeTest: "テストを受ける",
+                takeBrainChallenge: "脳チャレンジを受ける",
+                checkEQ: "私のEQをチェック",
+                findStyle: "私のスタイルを見つける",
+                checkStyle: "私のスタイルをチェック",
+                findStrengths: "私の強みを見つける",
+                findLoveLanguage: "私の愛の言語を見つける",
+                findPetMatch: "私のペットを見つける",
+                findCareer: "私のキャリアを見つける"
+            }
+        },
+        couples: {
+            title: "カップルの相性 ❤️",
+            subtitle: "個別にテストを受け、パートナーと繋がって関係のダイナミクスと相性の洞察を発見しましょう！💕",
+            shareResults: "結果をシェア",
+            shareDesc: "任意のテストを受けた後、パートナーと繋がってバイブを比較するためのユニークなIDを取得！",
+            shareButton: "パートナーと繋がる",
+            compatibility: "相性分析",
+            compatibilityDesc: "関係のダイナミクス、コミュニケーションスタイル、調和や成長の領域について詳細な洞察を得る！",
+            compatibilityButton: "私たちの相性を見る",
+            growth: "関係の成長",
+            growthDesc: "両方の性格タイプと結果に基づいて絆を強化するコツと戦略を発見！",
+            growthButton: "一緒に成長する"
+        },
+        whyChoose: {
+            title: "なぜPersonaTestsを選ぶの？ ✨",
+            scientific: "真に科学的",
+            scientificDesc: "私たちのテストは本物の心理学研究に基づいており、単なるランダムな質問ではありません。真剣です！🧠",
+            instant: "即座の結果",
+            instantDesc: "性格分析を即座に取得。待時間なし、遅延なし、純粋な即座満足！⚡",
+            safe: "あなたの秘密は安全",
+            safeDesc: "回答をプライベートに保ちます。データの販売や変なメールはありません。あなたと結果だけ！🔒",
+            everywhere: "どこでも動作",
+            everywhereDesc: "スマホ、ラップトップ、タブレットでテストを受けられます - 文字通りどこででも性格を発見！📱"
+        },
+        whyMatters: {
+            title: "性格テストが重要な理由",
+            selfAwareness: "自己認識",
+            selfAwarenessDesc: "あなたの自然な傾向、強み、成長分野を理解して、より良い人生の決断を下しましょう。",
+            careerDevelopment: "キャリア開発",
+            careerDevelopmentDesc: "あなたの性格に合うキャリアパスを発見し、仕事の満足度と成功を高めましょう。",
+            betterRelationships: "より良い人間関係",
+            betterRelationshipsDesc: "個人的および職業的な関係において、コミュニケーションと理解を向上させましょう。"
+        },
+        footer: {
+            description: "あなたを理解する科学的に裏付けされたテストで性格を発見。",
+            popularTests: "人気テスト",
+            sixteenTypes: "16の性格タイプ",
+            bigFive: "ビッグファイブテスト",
+            brainTeaser: "脳チャレンジ",
+            moreInfo: "詳細情報",
+            aboutUs: "私たちについて",
+            blog: "ブログ",
+            privacyPolicy: "プライバシーポリシー",
+            termsOfService: "利用規約"
         }
     },
     ko: {
@@ -173,6 +821,99 @@ const translations = {
             categories: "테스트 카테고리",
             reliability: "과학적 신뢰도",
             available: "항상 이용 가능"
+        },
+        tests: {
+            sectionTitle: "당신의 성격을 발견하세요 ✨",
+            sectionSubtitle: "어떤 테스트가 당신에게 어필하나요? 모든 테스트는 과학적으로 검증되고 매력적으로 설계되었습니다! 💫",
+            disclaimer: "🎯 중요: 오락과 자기성찰 목적으로만",
+            disclaimerText: "이 평가들은 재미와 자기성찰을 위해 설계되었으며, 전문적인 진단이 아닙니다. 정신건강 지원이 필요하시면 공인 의료 제공자에게 상담하세요.",
+            mbti: "16가지 성격 유형",
+            mbtiDesc: "당신을 진정으로 이해하는 궁극의 성격 테스트. INTJ 마스터마인드 에너지인가요, ENFP 골든 리트리버 바이브인가요? 알아볼 시간입니다! 💅",
+            bigfive: "빅파이브 성격 테스트",
+            bigfiveDesc: "심리학 교수들이 실제로 승인하는 과학적 기반 테스트. 5가지 주요 특성에 대한 성격 분석을 받아보세요! 🧠",
+            eq: "감성지능 (EQ)",
+            eqDesc: "감정을 얼마나 잘 이해하시나요 - 당신 자신과 다른 사람들의? 자기 인식, 공감, 사회적 기술을 테스트해보세요! 💝",
+            iq: "두뇌 도전",
+            iqDesc: "재미있는 논리 퍼즐과 두뇌 게임! 이것은 오락용입니다 - 실제 IQ 테스트는 전문적 관리가 필요합니다. 어떻게 하실지 봅시다! 🤓",
+            disc: "DISC 성격 테스트",
+            discDesc: "당신의 의사소통 스타일을 발견하세요! 지배적, 영향력 있는, 안정적, 성실한 중 어느 것인가요? 업무와 관계 역학을 이해하는 데 완벽합니다! 💼",
+            conflict: "갈등 스타일 평가",
+            conflictDesc: "의견 불일치를 어떻게 다루시나요? 당신이 협력자, 경쟁자, 수용자, 회피자, 타협자 중 어느 것인지 발견하세요! 🤝",
+            strengths: "캐릭터 강점 (VIA)",
+            strengthsDesc: "핵심 캐릭터 강점을 발견하세요! 창의성부터 리더십, 친절함까지 - 당신을 독특하게 멋지게 만드는 것을 발견하세요! ✨",
+            adhd: "집중력과 에너지 스타일",
+            adhdDesc: "당신만의 독특한 주의력과 에너지 패턴을 발견하세요! 이것은 재미있는 자기성찰을 위한 것입니다 - 의학적 평가가 아닙니다. ⚡",
+            anxiety: "스트레스 관리 스타일",
+            anxietyDesc: "스트레스와 압박을 어떻게 다루는지 발견하세요! 이것은 재미와 자기 인식을 위한 것입니다 - 의학적 조언이 아닙니다. 💚",
+            depression: "감정 조절 스타일",
+            depressionDesc: "감정을 어떻게 처리하는지 이해하세요! 이것은 자기성찰과 오락을 위한 것입니다 - 정신건강 평가가 아닙니다. 🌻",
+            trendingTitle: "지금 트렌딩 🔥",
+            trendingSubtitle: "모든 사람이 이야기하는 가장 핫한 성격 테스트! 친구들과 소셜 미디어에서 공유하기 완벽합니다 📱",
+            love: "사랑의 언어 테스트",
+            loveDesc: "사랑을 어떻게 주고받는지 발견하세요! 신체적 접촉, 격려의 말, 아니면 다른 것인가요? 커플에게 완벽합니다! 💖",
+            pet: "당신의 성격에 맞는 애완동물은?",
+            petDesc: "충성스러운 개, 독립적인 고양이, 장난기 많은 햄스터, 아니면 다른 것? 당신의 성격을 기반으로 완벽한 애완동물을 찾으세요! 🐱",
+            career: "당신의 이상적인 커리어 경로는?",
+            careerDesc: "당신의 성격에 맞는 커리어를 발견하세요! 리더, 크리에이터, 도우미, 분석가, 아니면 기업가? 🚀",
+            relationship: "당신의 연애 스타일은?",
+            relationshipDesc: "어떻게 사랑하고 다른 사람들과 연결되나요? 당신만의 독특한 연애 스타일과 사랑에서 당신을 뜯보이게 하는 것을 발견하세요! ✨",
+            buttons: {
+                discoverType: "내 유형 발견하기 ✨",
+                takeTest: "테스트 하기",
+                takeBrainChallenge: "두뇌 도전 하기",
+                checkEQ: "내 EQ 확인하기",
+                findStyle: "내 스타일 찾기",
+                checkStyle: "내 스타일 확인하기",
+                findStrengths: "내 강점 찾기",
+                findLoveLanguage: "내 사랑의 언어 찾기",
+                findPetMatch: "내 애완동물 찾기",
+                findCareer: "내 직업 찾기"
+            }
+        },
+        couples: {
+            title: "커플 상성 ❤️",
+            subtitle: "개별적으로 테스트를 하고, 파트너와 연결하여 관계 역학과 상성 통찰력을 발견하세요! 💕",
+            shareResults: "결과 공유하기",
+            shareDesc: "어떤 테스트를 한 후에도 고유한 공유 ID를 받아 파트너와 연결하고 서로의 바이브를 비교하세요!",
+            shareButton: "파트너와 연결하기",
+            compatibility: "상성 분석",
+            compatibilityDesc: "관계 역학, 소통 스타일, 조화나 성장 영역에 대한 상세한 통찰력을 얻으세요!",
+            compatibilityButton: "우리의 상성 보기",
+            growth: "관계 성장",
+            growthDesc: "둘 다의 성격 유형과 결과를 바탕으로 유대를 강화할 팁과 전략을 발견하세요!",
+            growthButton: "함께 성장하기"
+        },
+        whyChoose: {
+            title: "왜 PersonaTests를 선택해야 할까요? ✨",
+            scientific: "진짜 과학적",
+            scientificDesc: "우리의 테스트는 진짜 심리학 연구에 기반하고 있습니다. 단순한 랜덤 질문이 아닙니다. 진지합니다! 🧠",
+            instant: "즉시 결과",
+            instantDesc: "성격 분석을 즉시 받아보세요. 기다림도, 지연도 없이, 순수한 즉석 만족! ⚡",
+            safe: "당신의 비밀은 안전합니다",
+            safeDesc: "답변을 비공개로 유지합니다. 데이터 판매도, 이상한 이메일도 없습니다. 당신과 결과만! 🔒",
+            everywhere: "어디서나 작동",
+            everywhereDesc: "핸드폰, 노트북, 태블릿에서 테스트를 하세요 - 말 그대로 어디서나 성격을 발견할 수 있습니다! 📱"
+        },
+        whyMatters: {
+            title: "성격 테스트가 중요한 이유",
+            selfAwareness: "자기 인식",
+            selfAwarenessDesc: "자연스러운 성향, 강점, 성장 영역을 이해하여 더 나은 인생 결정을 내리세요.",
+            careerDevelopment: "직업 개발",
+            careerDevelopmentDesc: "성격에 맞는 직업 경로를 발견하여 직업 만족도와 성공을 높이세요.",
+            betterRelationships: "더 나은 관계",
+            betterRelationshipsDesc: "개인적이고 전문적인 관계에서 소통과 이해를 향상시키세요."
+        },
+        footer: {
+            description: "당신을 이해하는 과학적으로 백업된 테스트로 성격을 발견하세요.",
+            popularTests: "인기 테스트",
+            sixteenTypes: "16가지 성격 유형",
+            bigFive: "빅파이브 테스트",
+            brainTeaser: "두뇌 도전",
+            moreInfo: "추가 정보",
+            aboutUs: "소개",
+            blog: "블로그",
+            privacyPolicy: "개인정보 보호정책",
+            termsOfService: "서비스 약관"
         }
     },
     zh: {
@@ -194,6 +935,99 @@ const translations = {
             categories: "测试类别",
             reliability: "科学可靠性",
             available: "随时可用"
+        },
+        tests: {
+            sectionTitle: "发现你的个性 ✨",
+            sectionSubtitle: "哪个测试吸引你？所有测试都经过科学验证，设计精美！💫",
+            disclaimer: "🎯 重要：仅供娱乐和自我反思",
+            disclaimerText: "这些评估是为了娱乐和自我反思而设计的，不是专业诊断。如果您需要心理健康支持，请咨询执照医疗提供者。",
+            mbti: "16种人格类型",
+            mbtiDesc: "真正理解你的终极人格测试。你是INTJ策划大师能量还是ENFP金毛猎犬氛围？是时候找出答案了！💅",
+            bigfive: "大五人格测试",
+            bigfiveDesc: "心理学教授真正认可的科学测试。获得5个主要特征的人格分析！🧠",
+            eq: "情商(EQ)",
+            eqDesc: "你对情绪的理解有多好——你自己和他人的？测试你的自我意识、同理心和社交技巧！💝",
+            iq: "大脑挑战",
+            iqDesc: "有趣的逻辑谜题和大脑游戏！这只是为了娱乐——真正的智商测试需要专业管理。看看你表现如何！🤓",
+            disc: "DISC人格测试",
+            discDesc: "发现你的沟通风格！你是支配型、影响型、稳定型还是谨慎型？非常适合理解工作和关系动态！💼",
+            conflict: "冲突风格评估",
+            conflictDesc: "你如何处理分歧？发现你是合作者、竞争者、迁就者、回避者还是妥协者！🤝",
+            strengths: "性格优势(VIA)",
+            strengthsDesc: "发现你的核心性格优势！从创造力到领导力再到善良——发现让你独特出色的品质！✨",
+            adhd: "专注与能量风格",
+            adhdDesc: "发现你独特的注意力和能量模式！这只是为了有趣的自我反思——不是医学评估。⚡",
+            anxiety: "压力管理风格",
+            anxietyDesc: "发现你如何处理压力和压迫！这只是为了乐趣和自我意识——不是医学建议。💚",
+            depression: "情绪调节风格",
+            depressionDesc: "了解你如何处理情绪！这只是为了自我反思和娱乐——不是心理健康评估。🌻",
+            trendingTitle: "现在流行 🔥",
+            trendingSubtitle: "大家都在谈论的最热门人格测试！非常适合与朋友和社交媒体分享📱",
+            love: "爱的语言测试",
+            loveDesc: "发现你如何给予和接受爱！你是身体接触、肯定话语还是其他什么？非常适合情侣！💖",
+            pet: "哪种宠物适合你的个性？",
+            petDesc: "你是忠诚的狗、独立的猫、顽皮的仓鼠还是其他什么？根据你的个性找到完美的宠物！🐱",
+            career: "你的理想职业道路是什么？",
+            careerDesc: "发现符合你个性的职业！你是领导者、创造者、帮助者、分析师还是企业家？🚀",
+            relationship: "你的恋爱风格是什么？",
+            relationshipDesc: "你如何爱与他人连接？发现你独特的恋爱风格和让你在爱情中闪闪发光的特质！✨",
+            buttons: {
+                discoverType: "发现我的类型 ✨",
+                takeTest: "开始测试",
+                takeBrainChallenge: "开始大脑挑战",
+                checkEQ: "检查我的情商",
+                findStyle: "找到我的风格",
+                checkStyle: "检查我的风格",
+                findStrengths: "找到我的优势",
+                findLoveLanguage: "找到我的爱的语言",
+                findPetMatch: "找到我的宠物",
+                findCareer: "找到我的职业"
+            }
+        },
+        couples: {
+            title: "情侣兼容性 ❤️",
+            subtitle: "各自做测试，然后与伴侣连接，发现您的关系动态和兼容性洞察！💕",
+            shareResults: "分享你的结果",
+            shareDesc: "做任何测试后，获取独特的分享 ID 与伴侣连接并比较你们的氛围！",
+            shareButton: "与伴侣连接",
+            compatibility: "兼容性分析",
+            compatibilityDesc: "获取关于您的关系动态、沟通风格以及和谐或成长领域的详细见解！",
+            compatibilityButton: "查看我们的匹配",
+            growth: "关系成长",
+            growthDesc: "根据你们两人的个性类型和结果，发现加强绽带的技巧和策略！",
+            growthButton: "一起成长"
+        },
+        whyChoose: {
+            title: "为什么选择 PersonaTests？ ✨",
+            scientific: "真正科学",
+            scientificDesc: "我们的测试基于真正的心理学研究，不仅仅是随机问题。我们不在开玩笑！🧠",
+            instant: "即时结果",
+            instantDesc: "立即获取您的个性划分。无需等待，无延迟，只有纯粹的即时满足！⚡",
+            safe: "您的秘密很安全",
+            safeDesc: "我们保持您的答案私密。不出售您的数据，不发奇怪邮件。只有您和您的结果！🔒",
+            everywhere: "随处可用",
+            everywhereDesc: "在您的手机、笔记本电脑、平板电脑上进行测试 - 在您想发现个性的任何地方！📱"
+        },
+        whyMatters: {
+            title: "为什么人格测试很重要",
+            selfAwareness: "自我认知",
+            selfAwarenessDesc: "了解您的自然倾向、优势和成长领域，做出更好的人生决策。",
+            careerDevelopment: "职业发展",
+            careerDevelopmentDesc: "发现与您的个性相符的职业道路，获得更高的工作满意度和成功。",
+            betterRelationships: "更好的关系",
+            betterRelationshipsDesc: "在个人和职业关系中改善沟通和理解。"
+        },
+        footer: {
+            description: "通过科学验证的测试发现您的个性，这些测试能够理解您。",
+            popularTests: "热门测试",
+            sixteenTypes: "16种人格类型",
+            bigFive: "大五人格测试",
+            brainTeaser: "大脑挑战",
+            moreInfo: "更多信息",
+            aboutUs: "关于我们",
+            blog: "博客",
+            privacyPolicy: "隐私政策",
+            termsOfService: "服务条款"
         }
     }
 };
@@ -213,46 +1047,58 @@ function toggleLanguageDropdown() {
 }
 
 function changeLanguage(langCode) {
+    // Validate language code
+    if (!translations[langCode]) {
+        console.error('❌ Invalid language code:', langCode);
+        return;
+    }
+    
+    // Update global language variable
     currentLanguage = langCode;
     
-    // Update language button
-    const languageBtn = document.querySelector('.language-btn');
-    const flagMapping = {
-        'en': '🇺🇸',
-        'es': '🇪🇸', 
-        'fr': '🇫🇷',
-        'de': '🇩🇪',
-        'it': '🇮🇹',
-        'pt': '🇵🇹',
-        'ja': '🇯🇵',
-        'ko': '🇰🇷',
-        'zh': '🇨🇳'
-    };
-    
-    const textMapping = {
-        'en': 'EN',
-        'es': 'ES',
-        'fr': 'FR', 
-        'de': 'DE',
-        'it': 'IT',
-        'pt': 'PT',
-        'ja': '日本',
-        'ko': '한국',
-        'zh': '中文'
-    };
-    
-    languageBtn.querySelector('.flag-icon').textContent = flagMapping[langCode];
-    languageBtn.querySelector('.language-text').textContent = textMapping[langCode];
-    
-    // Hide dropdown
-    document.getElementById('languageOptions').style.display = 'none';
-    document.querySelector('.dropdown-arrow').style.transform = 'rotate(0deg)';
-    
-    // Update all translated elements
-    updatePageLanguage();
-    
-    // Save language preference
+    // Save language preference immediately
     localStorage.setItem('preferredLanguage', langCode);
+    
+    // Force update all translated elements
+    const lang = translations[langCode];
+    const elements = document.querySelectorAll('[data-translate]');
+    
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const keys = key.split('.');
+        let value = lang;
+        
+        // Navigate through nested translation object
+        for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+        }
+        
+        if (value) {
+            element.textContent = value;
+        }
+    });
+    
+    // Update visual feedback for flags
+    document.querySelectorAll('.flag-wrapper').forEach(wrapper => {
+        wrapper.style.opacity = '0.7';
+        wrapper.style.transform = 'scale(1)';
+    });
+    
+    // Highlight selected flag
+    const selectedFlag = document.querySelector(`[onclick="changeLanguage('${langCode}')"]`);
+    if (selectedFlag) {
+        selectedFlag.style.opacity = '1';
+        selectedFlag.style.transform = 'scale(1.1)';
+    }
+    
+    // Force update other sections
+    try {
+        updateHeroSection();
+        updateStatsSection();
+    } catch (e) {
+        console.warn('⚠️ Error updating additional sections:', e);
+    }
 }
 
 function updatePageLanguage() {
@@ -4345,8 +5191,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStripe();
     // Initialize EmailJS
     initializeEmailJS();
-    // Initialize language
-    initializeLanguage();
+    // Initialize language - DISABLED to prevent conflicts
+    // initializeLanguage();
     // Format card number input
     document.addEventListener('input', function(e) {
         if (e.target.id === 'cardNumber') {
@@ -4582,10 +5428,51 @@ document.head.insertAdjacentHTML('beforeend', additionalCSS);
 // User Management System
 let currentUser = null;
 
-// Initialize user system on page load
+// Initialize user system on page load - SINGLE INITIALIZATION POINT
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 SINGLE INITIALIZATION STARTING...');
+    
+    // Load saved language preference (ignore browser language to prevent Chinese flashing)
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    console.log('📱 Saved language:', savedLanguage);
+    
+    // Only use saved language preference, default to English to prevent auto-detection issues
+    if (savedLanguage && translations[savedLanguage]) {
+        console.log('✅ Using saved language:', savedLanguage);
+        changeLanguage(savedLanguage);
+    } else {
+        console.log('✅ Using default language: en');
+        changeLanguage('en');
+    }
+    
+    // Initialize user authentication
     checkUserLogin();
+    
+    console.log('🎉 SINGLE INITIALIZATION COMPLETE');
 });
+
+// Backup initialization - DISABLED to prevent conflicts
+// window.addEventListener('load', function() {
+//     console.log('🔄 BACKUP INITIALIZATION...');
+//     
+//     // Double-check that language selector is working
+//     setTimeout(() => {
+//         const elements = document.querySelectorAll('[data-translate]');
+//         console.log('🔍 Double-check: Found', elements.length, 'translatable elements');
+//         
+//         // If no elements have been translated, force English
+//         const untranslatedElements = Array.from(elements).filter(el => 
+//             el.textContent.includes('data-translate') || el.textContent.trim() === ''
+//         );
+//         
+//         if (untranslatedElements.length > 0) {
+//             console.log('⚠️ Found untranslated elements, forcing English...');
+//             changeLanguage('en');
+//         }
+//         
+//         console.log('✅ Backup initialization complete');
+//     }, 500);
+// });
 
 function checkUserLogin() {
     const savedUser = localStorage.getItem('vibecheck_user');

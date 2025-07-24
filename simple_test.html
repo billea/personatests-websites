@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Language Test</title>
+</head>
+<body>
+    <h1>Simple Test</h1>
+    <button onclick="alert('Button works!')">Test Alert</button>
+    <button onclick="testChangeLanguage('ko')">Test Korean</button>
+    
+    <p data-translate="tests.career">Career Test</p>
+    <p data-translate="tests.relationship">Relationship Test</p>
+    
+    <script src="script.js"></script>
+    <script>
+        function testChangeLanguage(lang) {
+            alert('Testing: ' + lang);
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            } else {
+                alert('changeLanguage function not found!');
+            }
+        }
+        
+        setTimeout(() => {
+            alert('Status check:\n' +
+                'currentLanguage: ' + (typeof currentLanguage !== 'undefined' ? currentLanguage : 'undefined') + '\n' +
+                'translations: ' + typeof translations + '\n' +
+                'changeLanguage: ' + typeof changeLanguage);
+        }, 2000);
+    </script>
+</body>
+</html>

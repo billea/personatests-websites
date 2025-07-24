@@ -18,6 +18,7 @@
     <link rel="canonical" href="https://personatests.com">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     
     <!-- Fix for form inputs -->
     <style>
@@ -202,178 +203,375 @@
                 <ul class="nav-menu">
                     <li><a href="#tests" data-translate="nav.tests">Tests</a></li>
                     <li><a href="#couples" data-translate="nav.couples">Couples</a></li>
-                    <li><a href="#about" data-translate="nav.about">About</a></li>
+                    <li><a href="about.html" data-translate="nav.about">About</a></li>
                     <li><a href="#blog" data-translate="nav.blog">Blog</a></li>
                     <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;" data-translate="nav.results">My Results</a></li>
                     <li><a href="#" onclick="showLogin()" id="loginLink" data-translate="nav.login">Login ✨</a></li>
                     <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;" data-translate="nav.logout">Logout</a></li>
-                    <li style="background: red; padding: 10px; margin: 5px;">
-                        <span style="color: white; font-weight: bold;">TEST - Can you see this red box?</span>
-                    </li>
-                    <li class="language-selector" style="display: block !important; visibility: visible !important; position: relative;">
-                        <div class="language-dropdown" style="position: relative;">
-                            <button class="language-btn" onclick="toggleLanguageDropdown()" style="
-                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                                color: white;
-                                border: 2px solid rgba(255, 255, 255, 0.3);
-                                border-radius: 12px;
-                                padding: 10px 15px;
-                                font-size: 14px;
-                                font-weight: 600;
-                                cursor: pointer;
-                                display: flex !important;
-                                align-items: center;
-                                gap: 8px;
-                                transition: all 0.3s ease;
-                                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                                min-width: 80px;
-                                justify-content: center;
-                                visibility: visible !important;
-                            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.3)'" onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)'">
-                                <span class="flag-icon" style="font-size: 16px;">🇺🇸</span>
-                                <span class="language-text" style="font-size: 13px; font-weight: bold;">EN</span>
-                                <span class="dropdown-arrow" style="font-size: 10px; transition: transform 0.3s ease;">▼</span>
-                            </button>
-                            <div class="language-options" id="languageOptions" style="
-                                display: none;
-                                position: absolute;
-                                top: 110%;
-                                right: 0;
+                    <!-- Language Selector - Unicode Flag Emojis -->
+                    <!-- Professional SVG Flag Language Selector -->
+                    <li class="language-flags" style="
+                        display: flex !important; 
+                        align-items: center; 
+                        gap: 12px; 
+                        margin-left: 20px; 
+                        padding: 15px 20px; 
+                        background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); 
+                        border-radius: 25px; 
+                        backdrop-filter: blur(20px); 
+                        border: 2px solid rgba(255,255,255,0.3); 
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4);
+                        position: relative;
+                        overflow: hidden;
+                    ">
+                        <!-- Subtle animated background -->
+                        <div style="
+                            position: absolute;
+                            top: 0; left: 0; right: 0; bottom: 0;
+                            background: linear-gradient(45deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08), rgba(240,147,251,0.08));
+                            opacity: 0.5;
+                            pointer-events: none;
+                        "></div>
+                        
+                        <!-- English (US) -->
+                        <div class="flag-wrapper" onclick="changeLanguage('en')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="English">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
                                 background: white;
-                                border: 2px solid rgba(102, 126, 234, 0.2);
-                                border-radius: 12px;
-                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                                min-width: 180px;
-                                z-index: 1000;
-                                overflow: hidden;
-                                backdrop-filter: blur(10px);
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
                             ">
-                                <div class="language-option" onclick="changeLanguage('en', '🇺🇸', 'EN')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇺🇸</span>
-                                    <span>English</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('es', '🇪🇸', 'ES')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇪🇸</span>
-                                    <span>Español</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('fr', '🇫🇷', 'FR')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇫🇷</span>
-                                    <span>Français</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('de', '🇩🇪', 'DE')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇩🇪</span>
-                                    <span>Deutsch</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('it', '🇮🇹', 'IT')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇮🇹</span>
-                                    <span>Italiano</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('pt', '🇵🇹', 'PT')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇵🇹</span>
-                                    <span>Português</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('ja', '🇯🇵', 'JA')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇯🇵</span>
-                                    <span>日本語</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('ko', '🇰🇷', 'KO')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇰🇷</span>
-                                    <span>한국어</span>
-                                </div>
-                                <div class="language-option" onclick="changeLanguage('zh', '🇨🇳', 'ZH')" style="
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    padding: 12px 16px;
-                                    cursor: pointer;
-                                    transition: all 0.2s ease;
-                                    color: #1e293b;
-                                    font-weight: 500;
-                                " onmouseover="this.style.backgroundColor='rgba(102, 126, 234, 0.1)'; this.style.color='#667eea'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1e293b'">
-                                    <span class="flag-icon" style="font-size: 18px;">🇨🇳</span>
-                                    <span>中文</span>
-                                </div>
-                            </div>
+                                <rect width="24" height="18" fill="#B22234"/>
+                                <rect width="24" height="1.38" y="1.38" fill="white"/>
+                                <rect width="24" height="1.38" y="4.15" fill="white"/>
+                                <rect width="24" height="1.38" y="6.92" fill="white"/>
+                                <rect width="24" height="1.38" y="9.69" fill="white"/>
+                                <rect width="24" height="1.38" y="12.46" fill="white"/>
+                                <rect width="24" height="1.38" y="15.23" fill="white"/>
+                                <rect width="10" height="9.69" fill="#3C3B6E"/>
+                                <g fill="white">
+                                    <circle cx="1.5" cy="1.2" r="0.3"/>
+                                    <circle cx="3" cy="1.2" r="0.3"/>
+                                    <circle cx="4.5" cy="1.2" r="0.3"/>
+                                    <circle cx="6" cy="1.2" r="0.3"/>
+                                    <circle cx="7.5" cy="1.2" r="0.3"/>
+                                    <circle cx="9" cy="1.2" r="0.3"/>
+                                    <circle cx="2.25" cy="2.4" r="0.3"/>
+                                    <circle cx="3.75" cy="2.4" r="0.3"/>
+                                    <circle cx="5.25" cy="2.4" r="0.3"/>
+                                    <circle cx="6.75" cy="2.4" r="0.3"/>
+                                    <circle cx="8.25" cy="2.4" r="0.3"/>
+                                    <circle cx="1.5" cy="3.6" r="0.3"/>
+                                    <circle cx="3" cy="3.6" r="0.3"/>
+                                    <circle cx="4.5" cy="3.6" r="0.3"/>
+                                    <circle cx="6" cy="3.6" r="0.3"/>
+                                    <circle cx="7.5" cy="3.6" r="0.3"/>
+                                    <circle cx="9" cy="3.6" r="0.3"/>
+                                    <circle cx="2.25" cy="4.8" r="0.3"/>
+                                    <circle cx="3.75" cy="4.8" r="0.3"/>
+                                    <circle cx="5.25" cy="4.8" r="0.3"/>
+                                    <circle cx="6.75" cy="4.8" r="0.3"/>
+                                    <circle cx="8.25" cy="4.8" r="0.3"/>
+                                    <circle cx="1.5" cy="6" r="0.3"/>
+                                    <circle cx="3" cy="6" r="0.3"/>
+                                    <circle cx="4.5" cy="6" r="0.3"/>
+                                    <circle cx="6" cy="6" r="0.3"/>
+                                    <circle cx="7.5" cy="6" r="0.3"/>
+                                    <circle cx="9" cy="6" r="0.3"/>
+                                    <circle cx="2.25" cy="7.2" r="0.3"/>
+                                    <circle cx="3.75" cy="7.2" r="0.3"/>
+                                    <circle cx="5.25" cy="7.2" r="0.3"/>
+                                    <circle cx="6.75" cy="7.2" r="0.3"/>
+                                    <circle cx="8.25" cy="7.2" r="0.3"/>
+                                    <circle cx="1.5" cy="8.4" r="0.3"/>
+                                    <circle cx="3" cy="8.4" r="0.3"/>
+                                    <circle cx="4.5" cy="8.4" r="0.3"/>
+                                    <circle cx="6" cy="8.4" r="0.3"/>
+                                    <circle cx="7.5" cy="8.4" r="0.3"/>
+                                    <circle cx="9" cy="8.4" r="0.3"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- Spanish -->
+                        <div class="flag-wrapper" onclick="changeLanguage('es')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="Español">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="24" height="18" fill="#AA151B"/>
+                                <rect width="24" height="9" y="4.5" fill="#F1BF00"/>
+                            </svg>
+                        </div>
+
+                        <!-- French -->
+                        <div class="flag-wrapper" onclick="changeLanguage('fr')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="Français">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="8" height="18" fill="#002395"/>
+                                <rect width="8" height="18" x="8" fill="white"/>
+                                <rect width="8" height="18" x="16" fill="#ED2939"/>
+                            </svg>
+                        </div>
+
+                        <!-- German -->
+                        <div class="flag-wrapper" onclick="changeLanguage('de')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="Deutsch">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="24" height="6" fill="#000"/>
+                                <rect width="24" height="6" y="6" fill="#DD0000"/>
+                                <rect width="24" height="6" y="12" fill="#FFCE00"/>
+                            </svg>
+                        </div>
+
+                        <!-- Italian -->
+                        <div class="flag-wrapper" onclick="changeLanguage('it')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="Italiano">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="8" height="18" fill="#009246"/>
+                                <rect width="8" height="18" x="8" fill="white"/>
+                                <rect width="8" height="18" x="16" fill="#CE2B37"/>
+                            </svg>
+                        </div>
+
+                        <!-- Portuguese -->
+                        <div class="flag-wrapper" onclick="changeLanguage('pt')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="Português">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="24" height="18" fill="#FF0000"/>
+                                <rect width="9.6" height="18" fill="#006600"/>
+                                <circle cx="9.6" cy="9" r="3" fill="#FFD700" stroke="#000" stroke-width="0.2"/>
+                                <circle cx="9.6" cy="9" r="2.2" fill="white"/>
+                                <rect width="1.5" height="1.5" x="8.85" y="8.25" fill="#FF0000"/>
+                            </svg>
+                        </div>
+
+                        <!-- Japanese -->
+                        <div class="flag-wrapper" onclick="changeLanguage('ja')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="日本語">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="24" height="18" fill="white"/>
+                                <circle cx="12" cy="9" r="4.5" fill="#BC002D"/>
+                            </svg>
+                        </div>
+
+                        <!-- Korean -->
+                        <div class="flag-wrapper" onclick="changeLanguage('ko')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="한국어">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="24" height="18" fill="white"/>
+                                <circle cx="12" cy="9" r="3" fill="#CD2E3A"/>
+                                <path d="M 12 6 A 3 3 0 0 0 12 12 A 1.5 1.5 0 0 1 12 9 A 1.5 1.5 0 0 0 12 6" fill="#0047A0"/>
+                                <g stroke="#000" stroke-width="0.6" fill="none">
+                                    <line x1="4.5" y1="3.5" x2="6.5" y2="3.5"/>
+                                    <line x1="4.5" y1="4.5" x2="6.5" y2="4.5"/>
+                                    <line x1="4.5" y1="5.5" x2="6.5" y2="5.5"/>
+                                    <line x1="17.5" y1="12.5" x2="18.5" y2="12.5"/>
+                                    <line x1="19.5" y1="12.5" x2="20.5" y2="12.5"/>
+                                    <line x1="17.5" y1="13.5" x2="18.5" y2="13.5"/>
+                                    <line x1="19.5" y1="13.5" x2="20.5" y2="13.5"/>
+                                    <line x1="17.5" y1="14.5" x2="18.5" y2="14.5"/>
+                                    <line x1="19.5" y1="14.5" x2="20.5" y2="14.5"/>
+                                    <line x1="17.5" y1="3.5" x2="18.5" y2="3.5"/>
+                                    <line x1="19.5" y1="3.5" x2="20.5" y2="3.5"/>
+                                    <line x1="17.5" y1="4.5" x2="20.5" y2="4.5"/>
+                                    <line x1="17.5" y1="5.5" x2="18.5" y2="5.5"/>
+                                    <line x1="19.5" y1="5.5" x2="20.5" y2="5.5"/>
+                                    <line x1="4.5" y1="12.5" x2="6.5" y2="12.5"/>
+                                    <line x1="4.5" y1="13.5" x2="5.5" y2="13.5"/>
+                                    <line x1="5.5" y1="13.5" x2="6.5" y2="13.5"/>
+                                    <line x1="4.5" y1="14.5" x2="6.5" y2="14.5"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- Chinese -->
+                        <div class="flag-wrapper" onclick="changeLanguage('zh')" style="
+                            position: relative;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            transform-origin: center;
+                            z-index: 2;
+                        " 
+                        onmouseover="
+                            this.style.transform='scale(1.2) translateY(-2px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4px 12px rgba(0,0,0,0.3)) brightness(1.1)';
+                        " 
+                        onmouseout="
+                            this.style.transform='scale(1) translateY(0px)'; 
+                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';
+                        "
+                        title="中文">
+                            <svg class="flag-svg" viewBox="0 0 24 18" width="28" height="21" style="
+                                border-radius: 4px;
+                                border: 1px solid rgba(255,255,255,0.4);
+                                background: white;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1);
+                            ">
+                                <rect width="24" height="18" fill="#DE2910"/>
+                                <g fill="#FFDE00">
+                                    <polygon points="4,3 4.6,4.8 6.8,4.8 5.1,6.1 5.7,7.9 4,6.6 2.3,7.9 2.9,6.1 1.2,4.8 3.4,4.8"/>
+                                    <polygon points="8,2 8.3,2.6 9,2.6 8.5,3 8.8,3.6 8,3.2 7.2,3.6 7.5,3 7,2.6 7.7,2.6"/>
+                                    <polygon points="9.5,4 9.8,4.6 10.5,4.6 10,5 10.3,5.6 9.5,5.2 8.7,5.6 9,5 8.5,4.6 9.2,4.6"/>
+                                    <polygon points="9.5,7 9.8,7.6 10.5,7.6 10,8 10.3,8.6 9.5,8.2 8.7,8.6 9,8 8.5,7.6 9.2,7.6"/>
+                                    <polygon points="8,9 8.3,9.6 9,9.6 8.5,10 8.8,10.6 8,10.2 7.2,10.6 7.5,10 7,9.6 7.7,9.6"/>
+                                </g>
+                            </svg>
                         </div>
                     </li>
                 </ul>
@@ -415,17 +613,24 @@
         <!-- Featured Tests Section -->
         <section id="tests" class="tests-section">
             <div class="container">
-                <h2 class="section-title">Discover Your Personality ✨</h2>
-                <p class="section-subtitle">Which test speaks to you? All are scientifically-backed and designed to be engaging! 💫</p>
+                <h2 class="section-title" data-translate="tests.sectionTitle">Discover Your Personality ✨</h2>
+                <p class="section-subtitle" data-translate="tests.sectionSubtitle">Which test speaks to you? All are scientifically-backed and designed to be engaging! 💫</p>
                 
                 <!-- Legal Disclaimer -->
                 <div class="legal-disclaimer" style="background: linear-gradient(135deg, #ff9a56, #ff6b95); color: white; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center;">
-                    <h4 style="margin-bottom: 1rem;">🎯 Important: For Entertainment & Self-Reflection Only</h4>
-                    <p style="margin-bottom: 1rem;">These tests are fun tools for self-awareness, not professional psychological assessments. Results should not be used for medical, employment, or legal decisions.</p>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">💝 Need support? National Crisis Text Line: Text HOME to 741741 | Suicide Prevention: 988</p>
+                    <h4 style="margin-bottom: 1rem;" data-translate="tests.disclaimer">🎯 Important: For Entertainment & Self-Reflection Only</h4>
+                    <p style="margin-bottom: 1rem;" data-translate="tests.disclaimerText">These tests are fun tools for self-awareness, not professional psychological assessments. Results should not be used for medical, employment, or legal decisions.</p>
                 </div>
                 
-                <!-- AdSense Banner Ad - Above Tests -->
+                <!-- Content Enhancement for Better AdSense Compliance -->
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 15px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <h3 style="color: #1e293b; text-align: center; margin-bottom: 1rem; font-size: 1.5rem;">🧠 The Science Behind Personality Testing</h3>
+                    <p style="color: #64748b; text-align: center; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        Our personality assessments are built on decades of psychological research, utilizing validated frameworks like the Big Five model, Myers-Briggs principles, and emotional intelligence theories. Each test is designed to provide meaningful insights into your unique psychological profile, helping you understand your strengths, preferences, and growth opportunities.
+                    </p>
+                </div>
+
+                <!-- AdSense Banner Ad - Above Tests (Now with substantial context) -->
                 <div class="ad-container" style="text-align: center; margin: 2rem 0;">
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -444,139 +649,156 @@
                     <div class="test-card featured">
                         <div class="test-badge">🔥 Trending</div>
                         <div class="test-icon">✨</div>
-                        <h3>16 Personality Vibes</h3>
-                        <p>The ultimate personality test that actually gets you. Are you INTJ mastermind energy or ENFP golden retriever vibes? Time to find out! 💅</p>
+                        <h3 data-translate="tests.mbti">16 Personality Vibes</h3>
+                        <p data-translate="tests.mbtiDesc">The ultimate personality test that actually gets you. Are you INTJ mastermind energy or ENFP golden retriever vibes? Time to find out! 💅</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 10-15 min</span>
                             <span class="questions">📝 60 questions</span>
                             <span class="popularity">🔥 2M+ taken</span>
                         </div>
-                        <button class="btn btn-primary" onclick="startTest('mbti')">Discover My Type ✨</button>
+                        <button class="btn btn-primary" onclick="startTest('mbti')" data-translate="tests.buttons.discoverType">Discover My Type ✨</button>
                     </div>
 
                     <!-- Big Five Test -->
                     <div class="test-card">
                         <div class="test-icon">📊</div>
-                        <h3>Big Five Personality Check</h3>
-                        <p>The science-backed test that psychology professors actually approve of. Get your personality breakdown across 5 major traits! 🧠</p>
+                        <h3 data-translate="tests.bigfive">Big Five Personality Check</h3>
+                        <p data-translate="tests.bigfiveDesc">The science-backed test that psychology professors actually approve of. Get your personality breakdown across 5 major traits! 🧠</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 8-12 min</span>
                             <span class="questions">📝 50 questions</span>
                             <span class="vibe">🧠 Science-backed</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('bigfive')">Take The Test</button>
+                        <button class="btn btn-secondary" onclick="startTest('bigfive')" data-translate="tests.buttons.takeTest">Take The Test</button>
                     </div>
 
                     <!-- Emotional Intelligence -->
                     <div class="test-card">
                         <div class="test-icon">🧡</div>
-                        <h3>Emotional Intelligence (EQ)</h3>
-                        <p>How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝</p>
+                        <h3 data-translate="tests.eq">Emotional Intelligence (EQ)</h3>
+                        <p data-translate="tests.eqDesc">How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 8-12 min</span>
                             <span class="questions">📝 20 questions</span>
                             <span class="vibe">💝 Emotional skills</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('eq')">Check My EQ</button>
+                        <button class="btn btn-secondary" onclick="startTest('eq')" data-translate="tests.buttons.checkEQ">Check My EQ</button>
                     </div>
 
                     <!-- IQ Test -->
                     <div class="test-card">
                         <div class="test-icon">🧩</div>
-                        <h3>Brain Teaser Challenge</h3>
-                        <p>Fun logic puzzles and brain games! This is just for entertainment - real IQ testing needs professional administration. Let's see how you do! 🤓</p>
+                        <h3 data-translate="tests.iq">Brain Teaser Challenge</h3>
+                        <p data-translate="tests.iqDesc">Fun logic puzzles and brain games! This is just for entertainment - real IQ testing needs professional administration. Let's see how you do! 🤓</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 15-20 min</span>
                             <span class="questions">📝 30 questions</span>
                             <span class="vibe">🤓 Just for fun</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('iq')">Take Brain Challenge</button>
+                        <button class="btn btn-secondary" onclick="startTest('iq')" data-translate="tests.buttons.takeBrainChallenge">Take Brain Challenge</button>
                     </div>
 
                     <!-- DISC Assessment -->
                     <div class="test-card">
                         <div class="test-icon">🎯</div>
-                        <h3>DISC Personality Check</h3>
-                        <p>Discover your communication style! Are you Dominant, Influential, Steady, or Conscientious? Perfect for understanding work and relationship dynamics! 💼</p>
+                        <h3 data-translate="tests.disc">DISC Personality Check</h3>
+                        <p data-translate="tests.discDesc">Discover your communication style! Are you Dominant, Influential, Steady, or Conscientious? Perfect for understanding work and relationship dynamics! 💼</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 8-12 min</span>
                             <span class="questions">📝 28 questions</span>
                             <span class="vibe">💼 Work & relationships</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('disc')">Find My Style</button>
+                        <button class="btn btn-secondary" onclick="startTest('disc')" data-translate="tests.buttons.findStyle">Find My Style</button>
                     </div>
 
                     <!-- Conflict Style Test -->
                     <div class="test-card">
                         <div class="test-icon">⚖️</div>
-                        <h3>Conflict Style Assessment</h3>
-                        <p>How do you handle disagreements? Discover whether you're a collaborator, competitor, accommodator, avoider, or compromiser! 🤝</p>
+                        <h3 data-translate="tests.conflict">Conflict Style Assessment</h3>
+                        <p data-translate="tests.conflictDesc">How do you handle disagreements? Discover whether you're a collaborator, competitor, accommodator, avoider, or compromiser! 🤝</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 5-8 min</span>
                             <span class="questions">📝 15 questions</span>
                             <span class="vibe">🤝 Relationship skills</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('conflict')">Check My Style</button>
+                        <button class="btn btn-secondary" onclick="startTest('conflict')" data-translate="tests.buttons.checkStyle">Check My Style</button>
                     </div>
 
                     <!-- Character Strengths (VIA) -->
                     <div class="test-card">
                         <div class="test-icon">💎</div>
-                        <h3>Character Strengths (VIA)</h3>
-                        <p>Uncover your core character strengths! From creativity to leadership to kindness - discover what makes you uniquely awesome! ✨</p>
+                        <h3 data-translate="tests.strengths">Character Strengths (VIA)</h3>
+                        <p data-translate="tests.strengthsDesc">Uncover your core character strengths! From creativity to leadership to kindness - discover what makes you uniquely awesome! ✨</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 10-15 min</span>
                             <span class="questions">📝 24 questions</span>
                             <span class="vibe">✨ Personal growth</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('via')">Find My Strengths</button>
+                        <button class="btn btn-secondary" onclick="startTest('via')" data-translate="tests.buttons.findStrengths">Find My Strengths</button>
                     </div>
 
                     <!-- Focus & Energy Patterns -->
                     <div class="test-card">
                         <div class="test-icon">⚡</div>
-                        <h3>Focus & Energy Style</h3>
-                        <p>Discover your unique attention and energy patterns! This is for fun self-reflection only - not a medical assessment. ⚡</p>
+                        <h3 data-translate="tests.adhd">Focus & Energy Style</h3>
+                        <p data-translate="tests.adhdDesc">Discover your unique attention and energy patterns! This is for fun self-reflection only - not a medical assessment. ⚡</p>
                         <div class="disclaimer-note" style="font-size: 0.8rem; color: #666; margin: 0.5rem 0;">⚠️ For entertainment only. Not diagnostic. Consult professionals for medical concerns.</div>
                         <div class="test-meta">
                             <span class="duration">⏱️ 5-8 min</span>
                             <span class="questions">📝 18 questions</span>
                             <span class="vibe">⚡ Self-reflection</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('adhd')">Check My Style</button>
+                        <button class="btn btn-secondary" onclick="startTest('adhd')" data-translate="tests.buttons.checkStyle">Check My Style</button>
                     </div>
 
                     <!-- Stress Management Style -->
                     <div class="test-card">
                         <div class="test-icon">🌱</div>
-                        <h3>Stress Management Style</h3>
-                        <p>Discover how you handle stress and pressure! This is for fun self-awareness only - not medical advice. 💚</p>
-                        <div class="disclaimer-note" style="font-size: 0.8rem; color: #666; margin: 0.5rem 0;">⚠️ Entertainment only. If struggling with anxiety/stress, contact: Crisis Text Line: 741741 or speak with a mental health professional.</div>
+                        <h3 data-translate="tests.anxiety">Stress Management Style</h3>
+                        <p data-translate="tests.anxietyDesc">Discover how you handle stress and pressure! This is for fun self-awareness only - not medical advice. 💚</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 3-5 min</span>
                             <span class="questions">📝 10 questions</span>
                             <span class="vibe">💚 Self-reflection</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('anxiety')">Check My Style</button>
+                        <button class="btn btn-secondary" onclick="startTest('anxiety')" data-translate="tests.buttons.checkStyle">Check My Style</button>
                     </div>
 
                     <!-- Emotional Regulation Style -->
                     <div class="test-card">
                         <div class="test-icon">🌻</div>
-                        <h3>Emotional Regulation Style</h3>
-                        <p>Understand how you process emotions! This is for self-reflection and entertainment only - not a mental health assessment. 🌻</p>
-                        <div class="disclaimer-note" style="font-size: 0.8rem; color: #666; margin: 0.5rem 0;">⚠️ For fun only. If you're struggling emotionally, please reach out: National Suicide Prevention Lifeline: 988 or contact a licensed therapist.</div>
+                        <h3 data-translate="tests.depression">Emotional Regulation Style</h3>
+                        <p data-translate="tests.depressionDesc">Understand how you process emotions! This is for self-reflection and entertainment only - not a mental health assessment. 🌻</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 3-5 min</span>
                             <span class="questions">📝 9 questions</span>
                             <span class="vibe">🌻 Self-awareness</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('depression')">Check My Style</button>
+                        <button class="btn btn-secondary" onclick="startTest('depression')" data-translate="tests.buttons.checkStyle">Check My Style</button>
                     </div>
 
                 </div>
                 
-                <!-- AdSense Rectangle Ad - Between Test Sections -->
+                <!-- Educational Content Section -->
+                <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 3rem; border-radius: 20px; margin: 3rem 0; text-align: center;">
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;" data-translate="whyMatters.title">🎯 Why Personality Testing Matters</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                            <h4 style="margin-bottom: 1rem;" data-translate="whyMatters.selfAwareness">🧠 Self-Awareness</h4>
+                            <p style="opacity: 0.9; line-height: 1.6;" data-translate="whyMatters.selfAwarenessDesc">Understand your natural tendencies, strengths, and areas for growth to make better life decisions.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                            <h4 style="margin-bottom: 1rem;" data-translate="whyMatters.careerDevelopment">💼 Career Development</h4>
+                            <p style="opacity: 0.9; line-height: 1.6;" data-translate="whyMatters.careerDevelopmentDesc">Discover career paths that align with your personality for increased job satisfaction and success.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                            <h4 style="margin-bottom: 1rem;" data-translate="whyMatters.betterRelationships">❤️ Better Relationships</h4>
+                            <p style="opacity: 0.9; line-height: 1.6;" data-translate="whyMatters.betterRelationshipsDesc">Improve communication and understanding in personal and professional relationships.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AdSense Rectangle Ad - Between Test Sections (Now with educational context) -->
                 <div class="ad-container" style="text-align: center; margin: 3rem 0;">
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -589,64 +811,64 @@
                 </div>
                 
                 <!-- Trending Tests Section -->
-                <h2 class="section-title" style="margin-top: 4rem;">Trending Now 🔥</h2>
-                <p class="section-subtitle">The hottest personality tests everyone's talking about! Perfect for sharing with friends and social media 📱</p>
+                <h2 class="section-title" style="margin-top: 4rem;" data-translate="tests.trendingTitle">Trending Now 🔥</h2>
+                <p class="section-subtitle" data-translate="tests.trendingSubtitle">The hottest personality tests everyone's talking about! Perfect for sharing with friends and social media 📱</p>
                 <div class="tests-grid">
                 
                     <!-- Love Language Test -->
                     <div class="test-card trending">
                         <div class="test-badge trending">🔥 Viral</div>
                         <div class="test-icon">💕</div>
-                        <h3>Love Language Test</h3>
-                        <p>Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖</p>
+                        <h3 data-translate="tests.love">Love Language Test</h3>
+                        <p data-translate="tests.loveDesc">Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 3-5 min</span>
                             <span class="questions">📝 5 questions</span>
                             <span class="vibe">💕 Love & Relationships</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('loveLanguage')">Find My Love Language</button>
+                        <button class="btn btn-secondary" onclick="startTest('loveLanguage')" data-translate="tests.buttons.findLoveLanguage">Find My Love Language</button>
                     </div>
 
                     <!-- Pet Personality Test -->
                     <div class="test-card trending">
                         <div class="test-badge trending">🔥 Popular</div>
                         <div class="test-icon">🐾</div>
-                        <h3>What Pet Matches Your Personality?</h3>
-                        <p>Are you a loyal dog, independent cat, playful hamster, or something else? Find your perfect pet match based on your personality! 🐱</p>
+                        <h3 data-translate="tests.pet">What Pet Matches Your Personality?</h3>
+                        <p data-translate="tests.petDesc">Are you a loyal dog, independent cat, playful hamster, or something else? Find your perfect pet match based on your personality! 🐱</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 4-6 min</span>
                             <span class="questions">📝 6 questions</span>
                             <span class="vibe">🐾 Fun & Lifestyle</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('petPersonality')">Find My Pet Match</button>
+                        <button class="btn btn-secondary" onclick="startTest('petPersonality')" data-translate="tests.buttons.findPetMatch">Find My Pet Match</button>
                     </div>
 
                     <!-- Career Test -->
                     <div class="test-card trending">
                         <div class="test-badge trending">🔥 New</div>
                         <div class="test-icon">💼</div>
-                        <h3>What's Your Ideal Career Path?</h3>
-                        <p>Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀</p>
+                        <h3 data-translate="tests.career">What's Your Ideal Career Path?</h3>
+                        <p data-translate="tests.careerDesc">Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 4-6 min</span>
                             <span class="questions">📝 5 questions</span>
                             <span class="vibe">💼 Career & Growth</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('careerPersonality')">Find My Career</button>
+                        <button class="btn btn-secondary" onclick="startTest('careerPersonality')" data-translate="tests.buttons.findCareer">Find My Career</button>
                     </div>
 
                     <!-- Relationship Style Test -->
                     <div class="test-card trending">
                         <div class="test-badge trending">🔥 Trending</div>
                         <div class="test-icon">💝</div>
-                        <h3>What's Your Relationship Style?</h3>
-                        <p>How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨</p>
+                        <h3 data-translate="tests.relationship">What's Your Relationship Style?</h3>
+                        <p data-translate="tests.relationshipDesc">How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨</p>
                         <div class="test-meta">
                             <span class="duration">⏱️ 4-6 min</span>
                             <span class="questions">📝 5 questions</span>
                             <span class="vibe">💝 Love & Relationships</span>
                         </div>
-                        <button class="btn btn-secondary" onclick="startTest('relationshipStyle')">Find My Style</button>
+                        <button class="btn btn-secondary" onclick="startTest('relationshipStyle')" data-translate="tests.buttons.findStyle">Find My Style</button>
                     </div>
 
                 </div>
@@ -656,29 +878,29 @@
         <!-- Couples Section -->
         <section id="couples" class="couples-section">
             <div class="container">
-                <h2 class="section-title">Couple Compatibility ❤️</h2>
-                <p class="section-subtitle">Take tests individually, then connect with your partner to discover your relationship dynamics and compatibility insights! 💕</p>
+                <h2 class="section-title" data-translate="couples.title">Couple Compatibility ❤️</h2>
+                <p class="section-subtitle" data-translate="couples.subtitle">Take tests individually, then connect with your partner to discover your relationship dynamics and compatibility insights! 💕</p>
                 
                 <div class="couples-grid">
                     <div class="couple-card">
                         <div class="couple-icon">👫</div>
-                        <h3>Share Your Results</h3>
-                        <p>After taking any test, get a unique sharing ID to connect with your partner and compare your vibes!</p>
-                        <button class="btn btn-secondary" onclick="showCouplesModal()">Connect With Partner</button>
+                        <h3 data-translate="couples.shareResults">Share Your Results</h3>
+                        <p data-translate="couples.shareDesc">After taking any test, get a unique sharing ID to connect with your partner and compare your vibes!</p>
+                        <button class="btn btn-secondary" onclick="showCouplesModal()" data-translate="couples.shareButton">Connect With Partner</button>
                     </div>
                     
                     <div class="couple-card">
                         <div class="couple-icon">💖</div>
-                        <h3>Compatibility Analysis</h3>
-                        <p>Get detailed insights into your relationship dynamics, communication styles, and areas of harmony or growth!</p>
-                        <button class="btn btn-secondary" onclick="showCouplesModal()">View Our Match</button>
+                        <h3 data-translate="couples.compatibility">Compatibility Analysis</h3>
+                        <p data-translate="couples.compatibilityDesc">Get detailed insights into your relationship dynamics, communication styles, and areas of harmony or growth!</p>
+                        <button class="btn btn-secondary" onclick="showCouplesModal()" data-translate="couples.compatibilityButton">View Our Match</button>
                     </div>
                     
                     <div class="couple-card">
                         <div class="couple-icon">🌟</div>
-                        <h3>Relationship Growth</h3>
-                        <p>Discover tips and strategies to strengthen your bond based on both of your personality types and results!</p>
-                        <button class="btn btn-secondary" onclick="showCouplesModal()">Grow Together</button>
+                        <h3 data-translate="couples.growth">Relationship Growth</h3>
+                        <p data-translate="couples.growthDesc">Discover tips and strategies to strengthen your bond based on both of your personality types and results!</p>
+                        <button class="btn btn-secondary" onclick="showCouplesModal()" data-translate="couples.growthButton">Grow Together</button>
                     </div>
                 </div>
             </div>
@@ -700,27 +922,27 @@
         <!-- Features Section -->
         <section class="features-section">
             <div class="container">
-                <h2 class="section-title">Why Choose PersonaTests? ✨</h2>
+                <h2 class="section-title" data-translate="whyChoose.title">Why Choose PersonaTests? ✨</h2>
                 <div class="features-grid">
                     <div class="feature">
                         <div class="feature-icon">🔬</div>
-                        <h3>Actually Scientific</h3>
-                        <p>Our tests are based on real psychology research, not just random questions. We're not playing around! 🧠</p>
+                        <h3 data-translate="whyChoose.scientific">Actually Scientific</h3>
+                        <p data-translate="whyChoose.scientificDesc">Our tests are based on real psychology research, not just random questions. We're not playing around! 🧠</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">⚡</div>
-                        <h3>Instant Results</h3>
-                        <p>Get your personality breakdown immediately. No waiting, no delays, just pure instant gratification! ⚡</p>
+                        <h3 data-translate="whyChoose.instant">Instant Results</h3>
+                        <p data-translate="whyChoose.instantDesc">Get your personality breakdown immediately. No waiting, no delays, just pure instant gratification! ⚡</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">🔒</div>
-                        <h3>Your Secrets Are Safe</h3>
-                        <p>We keep your answers private. No selling your data, no weird emails. Just you and your results! 🤝</p>
+                        <h3 data-translate="whyChoose.safe">Your Secrets Are Safe</h3>
+                        <p data-translate="whyChoose.safeDesc">We keep your answers private. No selling your data, no weird emails. Just you and your results! 🔒</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">📱</div>
-                        <h3>Works Everywhere</h3>
-                        <p>Take tests on your phone, laptop, tablet - literally anywhere you want to discover your personality! 📱</p>
+                        <h3 data-translate="whyChoose.everywhere">Works Everywhere</h3>
+                        <p data-translate="whyChoose.everywhereDesc">Take tests on your phone, laptop, tablet - literally anywhere you want to discover your personality! 📱</p>
                     </div>
                 </div>
             </div>
@@ -860,23 +1082,23 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>✨ PersonaTests</h3>
-                    <p>Discover your personality with scientifically-backed tests that get you.</p>
+                    <p data-translate="footer.description">Discover your personality with scientifically-backed tests that get you.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Popular Tests</h4>
+                    <h4 data-translate="footer.popularTests">Popular Tests</h4>
                     <ul>
-                        <li><a href="#" onclick="startTest('mbti')">16 Personality Types</a></li>
-                        <li><a href="#" onclick="startTest('bigfive')">Big Five Test</a></li>
-                        <li><a href="#" onclick="startTest('iq')">Brain Teaser Challenge</a></li>
+                        <li><a href="#" onclick="startTest('mbti')" data-translate="footer.sixteenTypes">16 Personality Types</a></li>
+                        <li><a href="#" onclick="startTest('bigfive')" data-translate="footer.bigFive">Big Five Test</a></li>
+                        <li><a href="#" onclick="startTest('iq')" data-translate="footer.brainTeaser">Brain Teaser Challenge</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>More Info</h4>
+                    <h4 data-translate="footer.moreInfo">More Info</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="about.html" data-translate="footer.aboutUs">About Us</a></li>
+                        <li><a href="#blog" data-translate="footer.blog">Blog</a></li>
+                        <li><a href="privacy.html" data-translate="footer.privacyPolicy">Privacy Policy</a></li>
+                        <li><a href="terms.html" data-translate="footer.termsOfService">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Language Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test-card { 
+            background: white; 
+            padding: 20px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        .flag { 
+            display: inline-block; 
+            margin: 5px; 
+            padding: 10px 15px; 
+            background: #007bff; 
+            color: white; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+        }
+        .flag:hover { background: #0056b3; }
+        .status { 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            background: #d1ecf1; 
+            border: 1px solid #bee5eb; 
+        }
+    </style>
+</head>
+<body>
+    <h1>🚨 Emergency Language Selector Test</h1>
+    
+    <div class="status" id="status">Testing...</div>
+    
+    <div>
+        <h2>Click to test language switching:</h2>
+        <div class="flag" onclick="testLang('en')">🇺🇸 English</div>
+        <div class="flag" onclick="testLang('ko')">🇰🇷 Korean</div>
+        <div class="flag" onclick="testLang('es')">🇪🇸 Spanish</div>
+    </div>
+    
+    <div class="test-card">
+        <h3>Career Test (tests.career):</h3>
+        <p id="career-text" data-translate="tests.career">Loading...</p>
+    </div>
+    
+    <div class="test-card">
+        <h3>Career Description (tests.careerDesc):</h3>
+        <p id="career-desc" data-translate="tests.careerDesc">Loading...</p>
+    </div>
+    
+    <div class="test-card">
+        <h3>Relationship Test (tests.relationship):</h3>
+        <p id="relationship-text" data-translate="tests.relationship">Loading...</p>
+    </div>
+    
+    <div class="test-card">
+        <h3>Hero Title (hero.title):</h3>
+        <p id="hero-text" data-translate="hero.title">Loading...</p>
+    </div>
+    
+    <script src="script.js"></script>
+    
+    <script>
+        let testCurrentLanguage = 'en';
+        
+        function testLang(langCode) {
+            document.getElementById('status').innerHTML = `🔄 Testing language change to: ${langCode}`;
+            console.log('=== TESTING LANGUAGE CHANGE ===');
+            console.log('Requested language:', langCode);
+            console.log('Translations object exists:', typeof translations !== 'undefined');
+            
+            if (typeof translations === 'undefined') {
+                document.getElementById('status').innerHTML = '❌ ERROR: Translations object not loaded!';
+                return;
+            }
+            
+            if (!translations[langCode]) {
+                document.getElementById('status').innerHTML = `❌ ERROR: No translations for ${langCode}!`;
+                return;
+            }
+            
+            testCurrentLanguage = langCode;
+            
+            // Test specific translations
+            const tests = [
+                { id: 'career-text', key: 'tests.career' },
+                { id: 'career-desc', key: 'tests.careerDesc' },
+                { id: 'relationship-text', key: 'tests.relationship' },
+                { id: 'hero-text', key: 'hero.title' }
+            ];
+            
+            let results = [];
+            
+            tests.forEach(test => {
+                const element = document.getElementById(test.id);
+                const translation = getTranslation(translations[langCode], test.key);
+                
+                if (translation) {
+                    element.textContent = translation;
+                    results.push(`✅ ${test.key}: SUCCESS`);
+                } else {
+                    element.textContent = `[MISSING: ${test.key}]`;
+                    results.push(`❌ ${test.key}: FAILED`);
+                }
+            });
+            
+            document.getElementById('status').innerHTML = `
+                <h4>Results for ${langCode}:</h4>
+                ${results.map(r => `<div>${r}</div>`).join('')}
+            `;
+            
+            // Also try calling the main function if it exists
+            if (typeof changeLanguage === 'function') {
+                console.log('Calling main changeLanguage function...');
+                changeLanguage(langCode);
+            }
+        }
+        
+        function getTranslation(langObj, key) {
+            const keys = key.split('.');
+            let value = langObj;
+            
+            for (let k of keys) {
+                value = value[k];
+                if (!value) return null;
+            }
+            
+            return value;
+        }
+        
+        // Initialize
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof translations !== 'undefined') {
+                    document.getElementById('status').innerHTML = '✅ Translations loaded! Click flags above to test.';
+                    testLang('en');
+                } else {
+                    document.getElementById('status').innerHTML = '❌ Translations not loaded!';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

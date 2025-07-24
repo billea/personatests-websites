@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Language Test</title>
+</head>
+<body>
+    <h1>Minimal Language Selector Test</h1>
+    
+    <button onclick="testChangeLanguage('ko')">Test Korean</button>
+    <button onclick="testChangeLanguage('en')">Test English</button>
+    
+    <div id="output"></div>
+    
+    <p data-translate="hero.title">Default text</p>
+    <p data-translate="tests.career">Default career text</p>
+    
+    <script>
+        // Minimal translations for testing
+        const translations = {
+            en: {
+                hero: { title: "English Title" },
+                tests: { career: "English Career" }
+            },
+            ko: {
+                hero: { title: "한국어 제목" },
+                tests: { career: "한국어 커리어" }
+            }
+        };
+        
+        let currentLanguage = 'en';
+        
+        function testChangeLanguage(langCode) {
+            console.log('Testing language change to:', langCode);
+            currentLanguage = langCode;
+            
+            const elementsToTranslate = document.querySelectorAll('[data-translate]');
+            console.log('Found elements:', elementsToTranslate.length);
+            
+            elementsToTranslate.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const keys = key.split('.');
+                let value = translations[currentLanguage];
+                
+                for (let k of keys) {
+                    value = value[k];
+                    if (!value) break;
+                }
+                
+                if (value) {
+                    element.textContent = value;
+                    console.log('Updated', key, 'to:', value);
+                } else {
+                    console.log('No translation for:', key);
+                }
+            });
+            
+            document.getElementById('output').innerHTML = `Language changed to: ${langCode}`;
+        }
+        
+        // Test on load
+        window.onload = function() {
+            console.log('Page loaded, testing...');
+            testChangeLanguage('en');
+        };
+    </script>
+</body>
+</html>

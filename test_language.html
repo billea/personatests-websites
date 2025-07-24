@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selector Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .flag { cursor: pointer; margin: 10px; padding: 10px; border: 1px solid #ccc; }
+        .test-text { margin: 20px 0; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Language Selector Debug Test</h1>
+    
+    <div>
+        <h2>Click a flag to test:</h2>
+        <div class="flag-wrapper flag" onclick="changeLanguage('en')">🇺🇸 English</div>
+        <div class="flag-wrapper flag" onclick="changeLanguage('ko')">🇰🇷 Korean</div>
+        <div class="flag-wrapper flag" onclick="changeLanguage('es')">🇪🇸 Spanish</div>
+    </div>
+    
+    <div class="test-text">
+        <h3>Test Translation Elements:</h3>
+        <p data-translate="hero.title">Discover Your Personality ✨</p>
+        <p data-translate="tests.mbti">16 Personality Vibes</p>
+        <p data-translate="tests.career">What's Your Ideal Career Path?</p>
+    </div>
+    
+    <div id="console-output" style="background: #000; color: #0f0; padding: 10px; font-family: monospace; height: 300px; overflow-y: scroll;">
+        <h3 style="color: white;">Console Output:</h3>
+    </div>
+    
+    <script src="script.js"></script>
+    
+    <script>
+        // Capture console.log and display it on the page
+        const originalLog = console.log;
+        const consoleOutput = document.getElementById('console-output');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const p = document.createElement('p');
+            p.textContent = args.join(' ');
+            p.style.margin = '2px 0';
+            consoleOutput.appendChild(p);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+        
+        // Test function
+        function testLanguageSystem() {
+            console.log('=== MANUAL TEST START ===');
+            console.log('Current language:', currentLanguage);
+            console.log('Translations available:', Object.keys(translations));
+            console.log('Flag wrappers found:', document.querySelectorAll('.flag-wrapper').length);
+            console.log('Elements with data-translate:', document.querySelectorAll('[data-translate]').length);
+        }
+        
+        // Run test after page loads
+        window.addEventListener('load', function() {
+            setTimeout(testLanguageSystem, 1000);
+        });
+    </script>
+</body>
+</html>

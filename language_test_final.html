@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Language Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+        .flag-wrapper { 
+            display: inline-block; 
+            margin: 10px; 
+            padding: 10px 20px; 
+            background: #f0f0f0; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        .flag-wrapper:hover { background: #e0e0e0; }
+        .test-content { 
+            margin: 20px 0; 
+            padding: 20px; 
+            background: #f9f9f9; 
+            border-radius: 8px; 
+        }
+        .test-item { 
+            margin: 10px 0; 
+            padding: 10px; 
+            background: white; 
+            border-left: 4px solid #4f46e5; 
+        }
+    </style>
+</head>
+<body>
+    <h1>🌍 Language Selector Final Test</h1>
+    
+    <div style="margin: 20px 0;">
+        <h2>Select Language:</h2>
+        <div class="flag-wrapper" onclick="changeLanguage('en')">🇺🇸 English</div>
+        <div class="flag-wrapper" onclick="changeLanguage('ko')">🇰🇷 한국어</div>
+        <div class="flag-wrapper" onclick="changeLanguage('es')">🇪🇸 Español</div>
+        <div class="flag-wrapper" onclick="changeLanguage('fr')">🇫🇷 Français</div>
+    </div>
+    
+    <div class="test-content">
+        <h2>🧪 Translation Test Elements</h2>
+        
+        <div class="test-item">
+            <strong>Hero Title:</strong>
+            <span data-translate="hero.title">Discover Your Personality ✨</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>Career Test:</strong>
+            <span data-translate="tests.career">What's Your Ideal Career Path?</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>Career Description:</strong>
+            <span data-translate="tests.careerDesc">Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>Relationship Test:</strong>
+            <span data-translate="tests.relationship">What's Your Relationship Style?</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>MBTI Test:</strong>
+            <span data-translate="tests.mbti">16 Personality Vibes</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>Navigation - Tests:</strong>
+            <span data-translate="nav.tests">Tests</span>
+        </div>
+    </div>
+    
+    <div style="margin: 20px 0; padding: 15px; background: #e6f3ff; border-radius: 8px;">
+        <h3>✅ Success Criteria:</h3>
+        <ul>
+            <li>Clicking flags should change all text above</li>
+            <li>Korean flag should show Korean text</li>
+            <li>English flag should show English text</li>
+            <li>Visual feedback on selected flag</li>
+            <li>Language preference saved to localStorage</li>
+        </ul>
+    </div>
+    
+    <script src="script.js"></script>
+    
+    <script>
+        // Simple visual feedback for testing
+        function updateFlagVisuals(selectedLang) {
+            document.querySelectorAll('.flag-wrapper').forEach(flag => {
+                flag.style.opacity = '0.7';
+                flag.style.transform = 'scale(1)';
+            });
+            
+            // Find and highlight the selected flag
+            const flags = document.querySelectorAll('.flag-wrapper');
+            const langMap = { 'en': 0, 'ko': 1, 'es': 2, 'fr': 3 };
+            if (langMap[selectedLang] !== undefined) {
+                flags[langMap[selectedLang]].style.opacity = '1';
+                flags[langMap[selectedLang]].style.transform = 'scale(1.05)';
+                flags[langMap[selectedLang]].style.background = '#d4edda';
+            }
+        }
+        
+        // Override the changeLanguage function to add our visual feedback
+        const originalChangeLanguage = window.changeLanguage;
+        window.changeLanguage = function(langCode) {
+            if (originalChangeLanguage) {
+                originalChangeLanguage(langCode);
+            } else {
+                // Fallback if the main function isn't loaded
+                console.log('Main changeLanguage function not found, using fallback');
+                currentLanguage = langCode;
+                updatePageLanguage();
+                localStorage.setItem('preferredLanguage', langCode);
+            }
+            updateFlagVisuals(langCode);
+        };
+        
+        // Initialize on load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                updateFlagVisuals(currentLanguage || 'en');
+                console.log('✅ Language test initialized');
+                console.log('Current language:', currentLanguage);
+                console.log('Translations loaded:', typeof translations !== 'undefined');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

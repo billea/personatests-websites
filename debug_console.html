@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Console</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .console { background: #000; color: #0f0; padding: 20px; height: 400px; overflow-y: scroll; }
+        .error { color: #f00; }
+        .warn { color: #ff0; }
+        .info { color: #0ff; }
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Language Selector Debug Console</h1>
+    
+    <div>
+        <button onclick="testLang('ko')">Test Korean</button>
+        <button onclick="testLang('es')">Test Spanish</button>
+        <button onclick="testLang('en')">Test English</button>
+        <button onclick="showStatus()">Show Status</button>
+        <button onclick="clearConsole()">Clear</button>
+    </div>
+    
+    <div class="console" id="console"></div>
+    
+    <script src="script.js"></script>
+    
+    <script>
+        const consoleDiv = document.getElementById('console');
+        
+        // Override console functions
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function addToConsole(text, type = 'info') {
+            const p = document.createElement('p');
+            p.className = type;
+            p.textContent = new Date().toLocaleTimeString() + ' - ' + text;
+            consoleDiv.appendChild(p);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'info');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole('ERROR: ' + args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole('WARN: ' + args.join(' '), 'warn');
+        };
+        
+        function testLang(lang) {
+            addToConsole('=== TESTING LANGUAGE: ' + lang + ' ===', 'info');
+            
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(lang);
+            } else {
+                addToConsole('ERROR: changeLanguage function not found!', 'error');
+            }
+        }
+        
+        function showStatus() {
+            addToConsole('=== SYSTEM STATUS ===', 'info');
+            addToConsole('Current language: ' + (window.currentLanguage || 'undefined'), 'info');
+            addToConsole('Translations object: ' + typeof translations, 'info');
+            addToConsole('changeLanguage function: ' + typeof changeLanguage, 'info');
+            addToConsole('Data-translate elements: ' + document.querySelectorAll('[data-translate]').length, 'info');
+            addToConsole('Flag wrappers: ' + document.querySelectorAll('.flag-wrapper').length, 'info');
+        }
+        
+        function clearConsole() {
+            consoleDiv.innerHTML = '';
+        }
+        
+        // Auto-status on load
+        window.addEventListener('load', function() {
+            setTimeout(showStatus, 1000);
+        });
+    </script>
+</body>
+</html>
