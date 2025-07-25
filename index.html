@@ -710,26 +710,26 @@
                             </svg>
                         </div>
                 </div>
-                
-                <!-- Mobile Language Selector (Hidden on Desktop) -->
-                <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem; margin-top: 1rem;">
-                    <div style="text-align: center;">
-                        <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
-                        <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
-                            <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
-                            <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
-                            <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
-                            <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
-                            <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
-                            <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
-                            <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
-                            <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
-                            <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
-                        </select>
-                    </div>
-                </div>
             </div>
         </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
     </header>
 
     <main>
