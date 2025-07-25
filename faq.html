@@ -6,6 +6,77 @@
     <title>Frequently Asked Questions - PersonaTests</title>
     <meta name="description" content="Get answers to common questions about PersonaTests personality assessments, privacy, accuracy, and premium reports.">
     <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        @media (max-width: 768px) {
+            main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 80px) !important;
+            }
+            
+            .container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            /* FAQ Header Mobile */
+            main h1 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            main p {
+                font-size: 1rem !important;
+            }
+            
+            /* FAQ Content Container */
+            main > .container > div {
+                background: rgba(255, 255, 255, 0.95) !important;
+                border-radius: 20px !important;
+                padding: 2rem 1.5rem !important;
+            }
+            
+            /* FAQ Sections */
+            section {
+                margin-bottom: 2rem !important;
+            }
+            
+            section h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            section h3 {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            section p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            /* Final CTA Section */
+            main > .container > div > div:last-child {
+                background: linear-gradient(135deg, #667eea, #764ba2) !important;
+                border-radius: 12px !important;
+                padding: 2rem 1rem !important;
+                text-align: center !important;
+            }
+            
+            /* CTA Buttons */
+            main a {
+                display: inline-block !important;
+                margin: 0.5rem !important;
+                padding: 0.75rem 1.5rem !important;
+                border-radius: 25px !important;
+                font-size: 0.9rem !important;
+                text-decoration: none !important;
+                font-weight: 600 !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -14,7 +85,15 @@
                 <div class="logo">
                     <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
                 </div>
-                <ul class="nav-menu">
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tests">Tests</a></li>
                     <li><a href="about.html">About</a></li>
@@ -23,6 +102,24 @@
                 </ul>
             </div>
         </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
     </header>
 
     <main style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); min-height: 100vh;">
@@ -151,5 +248,7 @@
             <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a> | <a href="contact.html" style="color: #94a3b8;">Contact Us</a></p>
         </div>
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

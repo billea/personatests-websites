@@ -6,6 +6,127 @@
     <title>Contact Us - PersonaTests</title>
     <meta name="description" content="Get in touch with PersonaTests for support, questions, or feedback about our personality tests and assessments.">
     <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Contact Page Mobile Optimizations */
+        .contact-main {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 80px) !important;
+            }
+            
+            .contact-container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            /* Contact Hero Mobile */
+            .contact-hero {
+                text-align: center !important;
+                margin-bottom: 2rem !important;
+                color: white !important;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+                font-weight: bold !important;
+            }
+            
+            .contact-hero p {
+                font-size: 1rem !important;
+                opacity: 0.9 !important;
+            }
+            
+            /* Contact Form Container Mobile */
+            .contact-form-container {
+                background: rgba(255, 255, 255, 0.95) !important;
+                border-radius: 20px !important;
+                padding: 2rem 1.5rem !important;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            /* Form Grid Mobile */
+            .form-grid {
+                display: block !important;
+                gap: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .form-grid > div {
+                margin-bottom: 1rem !important;
+            }
+            
+            /* Form Inputs Mobile */
+            .form-input, .contact-form input, .contact-form select, .contact-form textarea {
+                width: 100% !important;
+                padding: 1rem !important;
+                border: 2px solid #e2e8f0 !important;
+                border-radius: 12px !important;
+                font-size: 16px !important;
+                box-sizing: border-box !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            /* Button Mobile */
+            .contact-form button {
+                width: 100% !important;
+                padding: 1rem 2rem !important;
+                font-size: 1rem !important;
+                border-radius: 25px !important;
+                margin-top: 1rem !important;
+            }
+            
+            /* Response Times Mobile */
+            .response-times {
+                background: #f1f5f9 !important;
+                padding: 1.5rem 1rem !important;
+                border-radius: 12px !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .response-grid {
+                display: block !important;
+                gap: 1rem !important;
+            }
+            
+            .response-grid > div {
+                text-align: center !important;
+                margin-bottom: 1rem !important;
+                padding: 1rem !important;
+                background: white !important;
+                border-radius: 8px !important;
+            }
+            
+            /* FAQ Mobile */
+            .faq-item {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .faq-item h4 {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .faq-item p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -14,7 +135,15 @@
                 <div class="logo">
                     <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
                 </div>
-                <ul class="nav-menu">
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tests">Tests</a></li>
                     <li><a href="about.html">About</a></li>
@@ -24,19 +153,37 @@
                 </ul>
             </div>
         </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
     </header>
 
-    <main style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); min-height: 100vh;">
-        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+    <main class="contact-main">
+        <div class="contact-container">
             
             <!-- Contact Hero -->
-            <div style="text-align: center; margin-bottom: 3rem; color: white;">
-                <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: bold;">Contact Us 💬</h1>
-                <p style="font-size: 1.2rem; opacity: 0.9;">We'd love to hear from you! Get support, share feedback, or ask questions.</p>
+            <div class="contact-hero">
+                <h1>Contact Us 💬</h1>
+                <p>We'd love to hear from you! Get support, share feedback, or ask questions.</p>
             </div>
 
             <!-- Contact Methods -->
-            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); margin-bottom: 2rem;">
+            <div class="contact-form-container">
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
                     
@@ -44,8 +191,8 @@
                     <div style="grid-column: 1 / -1; background: #f8fafc; border-radius: 12px; padding: 2rem; border-left: 4px solid #4f46e5;">
                         <h3 style="color: #1e293b; margin-bottom: 1.5rem; text-align: center;">📝 Send Us a Message</h3>
                         
-                        <form id="contactForm" style="max-width: 600px; margin: 0 auto;">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <form id="contactForm" class="contact-form" style="max-width: 600px; margin: 0 auto;">
+                            <div class="form-grid">
                                 <div>
                                     <label style="display: block; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">Name *</label>
                                     <input type="text" id="contactName" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
@@ -162,6 +309,7 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
         // Simple form handler that works without external services
         document.getElementById('contactForm').addEventListener('submit', function(e) {

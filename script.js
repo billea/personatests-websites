@@ -5,6 +5,58 @@ let userAnswers = [];
 let testData = {};
 let currentLanguage = 'en';
 
+// Mobile Menu Functionality
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (mobileMenu && menuToggle) {
+        // Toggle active states
+        mobileMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (mobileMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+}
+
+// Close mobile menu when clicking on a menu item
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (mobileMenu && menuToggle) {
+        mobileMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (mobileMenu && menuToggle && 
+        !mobileMenu.contains(event.target) && 
+        !menuToggle.contains(event.target) &&
+        mobileMenu.classList.contains('active')) {
+        closeMobileMenu();
+    }
+});
+
+// Add click event to all menu links to close mobile menu
+document.addEventListener('DOMContentLoaded', function() {
+    const menuLinks = document.querySelectorAll('.nav-menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+});
+
 // Language translations
 const translations = {
     en: {
