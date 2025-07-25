@@ -142,38 +142,29 @@
                 right: -10px;
             }
             
-            /* Mobile-specific language flags */
-            .language-flags {
+            /* Hide desktop language flags on mobile */
+            .desktop-language-flags {
                 display: none !important;
             }
             
+            /* Show mobile language selector */
             .mobile-language-selector {
                 display: block !important;
-                margin-left: 10px;
             }
             
-            .mobile-language-selector select {
-                background: rgba(255, 255, 255, 0.2) !important;
-                border: 2px solid rgba(255, 255, 255, 0.4) !important;
-                border-radius: 8px !important;
-                color: white !important;
-                padding: 8px 12px !important;
-                font-size: 14px !important;
-                font-weight: 500 !important;
-                cursor: pointer !important;
-                outline: none !important;
-            }
-            
-            .mobile-language-selector select option {
-                background: #1e293b !important;
-                color: white !important;
-                padding: 8px !important;
+            /* Navigation adjustments for mobile */
+            .nav {
+                position: relative;
             }
         }
         
         @media (min-width: 769px) {
             .mobile-language-selector {
                 display: none !important;
+            }
+            
+            .desktop-language-flags {
+                display: flex !important;
             }
         }
         
@@ -349,9 +340,10 @@
                     <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;" data-translate="nav.results">My Results</a></li>
                     <li><a href="#" onclick="showLogin()" id="loginLink" data-translate="nav.login">Login ✨</a></li>
                     <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;" data-translate="nav.logout">Logout</a></li>
-                    <!-- Language Selector - Unicode Flag Emojis -->
-                    <!-- Professional SVG Flag Language Selector -->
-                    <li class="language-flags" style="
+                </ul>
+                
+                <!-- Desktop Language Selector (Hidden on Mobile) -->
+                <div class="desktop-language-flags" style="
                         display: flex !important; 
                         align-items: center; 
                         gap: 12px; 
@@ -717,23 +709,25 @@
                                 </g>
                             </svg>
                         </div>
-                    </li>
-                    
-                    <!-- Mobile Language Selector (Hidden on Desktop) -->
-                    <li class="mobile-language-selector" style="display: none;">
-                        <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: white; padding: 8px 12px; font-size: 14px; font-weight: 500; cursor: pointer; outline: none;">
-                            <option value="en" style="background: #1e293b; color: white;">🇺🇸 English</option>
-                            <option value="es" style="background: #1e293b; color: white;">🇪🇸 Español</option>
-                            <option value="fr" style="background: #1e293b; color: white;">🇫🇷 Français</option>
-                            <option value="de" style="background: #1e293b; color: white;">🇩🇪 Deutsch</option>
-                            <option value="it" style="background: #1e293b; color: white;">🇮🇹 Italiano</option>
-                            <option value="pt" style="background: #1e293b; color: white;">🇵🇹 Português</option>
-                            <option value="ja" style="background: #1e293b; color: white;">🇯🇵 日本語</option>
-                            <option value="ko" style="background: #1e293b; color: white;">🇰🇷 한국어</option>
-                            <option value="zh" style="background: #1e293b; color: white;">🇨🇳 中文</option>
+                </div>
+                
+                <!-- Mobile Language Selector (Hidden on Desktop) -->
+                <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem; margin-top: 1rem;">
+                    <div style="text-align: center;">
+                        <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                        <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                            <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                            <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                            <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                            <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                            <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                            <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                            <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                            <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                            <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
                         </select>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
