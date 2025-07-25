@@ -127,17 +127,23 @@
         
         /* Modern Mobile Navigation Design */
         @media (max-width: 768px) {
-            /* Hide desktop language flags on mobile */
+            /* FORCE hide desktop language flags on mobile */
             .desktop-language-flags {
                 display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -9999px !important;
             }
             
             /* Show mobile language selector */
             .mobile-language-selector {
                 display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
-            /* Mobile Header Improvements */
+            /* Mobile Header Improvements - REDUCE HEIGHT */
             .header {
                 position: fixed !important;
                 top: 0 !important;
@@ -148,11 +154,13 @@
                 backdrop-filter: blur(20px) !important;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+                height: auto !important;
+                min-height: auto !important;
             }
             
             .nav {
                 position: relative;
-                padding: 0.75rem 0;
+                padding: 0.5rem 0;
             }
             
             .nav-container {
@@ -161,11 +169,13 @@
                 align-items: center !important;
                 padding: 0 1rem !important;
                 position: relative;
+                min-height: 50px !important;
+                height: 50px !important;
             }
             
-            /* Logo improvements */
+            /* Logo improvements - SMALLER */
             .logo h1 {
-                font-size: 1.4rem !important;
+                font-size: 1.2rem !important;
                 margin: 0 !important;
                 font-weight: 700 !important;
                 background: linear-gradient(135deg, #fff, #f0f9ff);
@@ -173,18 +183,23 @@
                 -webkit-background-clip: text;
                 color: transparent;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                line-height: 1 !important;
             }
             
-            /* Hamburger Menu Button */
+            /* Hamburger Menu Button - SMALLER */
             .mobile-menu-toggle {
                 display: flex !important;
                 flex-direction: column;
                 cursor: pointer;
-                padding: 8px;
+                padding: 6px;
                 background: rgba(255, 255, 255, 0.1);
-                border-radius: 8px;
+                border-radius: 6px;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 transition: all 0.3s ease;
+                width: 36px;
+                height: 36px;
+                justify-content: center;
+                align-items: center;
             }
             
             .mobile-menu-toggle:hover {
@@ -193,10 +208,10 @@
             }
             
             .mobile-menu-toggle span {
-                width: 24px;
-                height: 3px;
+                width: 20px;
+                height: 2px;
                 background: white;
-                margin: 2px 0;
+                margin: 1.5px 0;
                 border-radius: 2px;
                 transition: all 0.3s ease;
             }
@@ -262,34 +277,39 @@
                 border-color: rgba(255, 255, 255, 0.3) !important;
             }
             
-            /* Mobile Language Selector Improvements */
+            /* Mobile Language Selector Improvements - COMPACT */
             .mobile-language-selector {
                 background: rgba(255, 255, 255, 0.08) !important;
                 border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-                padding: 1.5rem 1rem !important;
+                padding: 1rem !important;
                 margin: 0 !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                backdrop-filter: blur(20px) !important;
             }
             
             .mobile-language-selector label {
-                font-size: 0.9rem !important;
+                font-size: 0.8rem !important;
                 font-weight: 600 !important;
-                margin-bottom: 0.75rem !important;
+                margin-bottom: 0.5rem !important;
                 color: rgba(255, 255, 255, 0.9) !important;
             }
             
             .mobile-language-selector select {
                 background: rgba(255, 255, 255, 0.95) !important;
                 border: 2px solid rgba(255, 255, 255, 0.2) !important;
-                border-radius: 12px !important;
-                padding: 1rem 1.25rem !important;
-                font-size: 1rem !important;
+                border-radius: 8px !important;
+                padding: 0.75rem 1rem !important;
+                font-size: 0.9rem !important;
                 font-weight: 500 !important;
                 color: #1e293b !important;
                 cursor: pointer !important;
                 outline: none !important;
                 width: 100% !important;
-                max-width: 280px !important;
+                max-width: 200px !important;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
                 transition: all 0.3s ease !important;
             }
@@ -299,9 +319,15 @@
                 box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
             }
             
-            /* Add body padding to account for fixed header */
+            /* Add body padding to account for SMALLER fixed header and bottom language selector */
             body {
-                padding-top: 80px !important;
+                padding-top: 60px !important;
+                padding-bottom: 80px !important;
+            }
+            
+            /* Ensure mobile menu appears correctly */
+            .nav-menu {
+                top: 60px !important;
             }
         }
         

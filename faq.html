@@ -9,9 +9,57 @@
     
     <style>
         @media (max-width: 768px) {
+            /* FORCE hide desktop language flags */
+            .desktop-language-flags {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -9999px !important;
+            }
+            
+            /* Compact mobile header */
+            .header {
+                height: auto !important;
+                min-height: auto !important;
+            }
+            
+            .nav {
+                padding: 0.5rem 0 !important;
+            }
+            
+            .nav-container {
+                min-height: 50px !important;
+                height: 50px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem !important;
+                line-height: 1 !important;
+            }
+            
+            /* Adjust body padding */
+            body {
+                padding-top: 60px !important;
+                padding-bottom: 80px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
             main {
                 padding: 2rem 0 !important;
-                min-height: calc(100vh - 80px) !important;
+                min-height: calc(100vh - 140px) !important;
             }
             
             .container {
