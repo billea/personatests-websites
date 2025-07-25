@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PersonaTests</title>
+    <meta name="description" content="Get in touch with PersonaTests for support, questions, or feedback about our personality tests and assessments.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tests">Tests</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); min-height: 100vh;">
+        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+            
+            <!-- Contact Hero -->
+            <div style="text-align: center; margin-bottom: 3rem; color: white;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: bold;">Contact Us 💬</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9;">We'd love to hear from you! Get support, share feedback, or ask questions.</p>
+            </div>
+
+            <!-- Contact Methods -->
+            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); margin-bottom: 2rem;">
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    
+                    <!-- Contact Form -->
+                    <div style="grid-column: 1 / -1; background: #f8fafc; border-radius: 12px; padding: 2rem; border-left: 4px solid #4f46e5;">
+                        <h3 style="color: #1e293b; margin-bottom: 1.5rem; text-align: center;">📝 Send Us a Message</h3>
+                        
+                        <form id="contactForm" style="max-width: 600px; margin: 0 auto;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div>
+                                    <label style="display: block; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">Name *</label>
+                                    <input type="text" id="contactName" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">Email *</label>
+                                    <input type="email" id="contactEmail" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">Subject *</label>
+                                <select id="contactSubject" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background: white; box-sizing: border-box;">
+                                    <option value="">Select a topic...</option>
+                                    <option value="General Support">General Support</option>
+                                    <option value="Test Results Issue">Test Results Issue</option>
+                                    <option value="Premium Report">Premium Report Question</option>
+                                    <option value="Privacy/Data Request">Privacy or Data Request</option>
+                                    <option value="Technical Issue">Technical Issue</option>
+                                    <option value="Partnership">Business/Partnership Inquiry</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">Message *</label>
+                                <textarea id="contactMessage" required rows="5" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; resize: vertical; box-sizing: border-box;" placeholder="Please describe your question or issue in detail..."></textarea>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <button type="submit" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.75rem 2rem; border: none; border-radius: 25px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Send Message 📤</button>
+                            </div>
+                            
+                            <div id="formMessage" style="margin-top: 1rem; text-align: center; display: none;"></div>
+                        </form>
+                        
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 2rem; text-align: center;">
+                            <p style="color: #059669; margin: 0; font-size: 0.9rem;">💚 We typically respond within 24-48 hours. For urgent issues, please check our FAQ page first!</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 2rem; background: #fffbeb; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+                        <h3 style="color: #1e293b; margin-bottom: 1rem;">Quick Support</h3>
+                        <p style="color: #64748b; margin-bottom: 1rem;">Check our FAQ page for immediate answers to common questions</p>
+                        <a href="faq.html" style="color: #f59e0b; font-weight: bold; text-decoration: none;">Visit FAQ Page →</a>
+                    </div>
+                    
+                </div>
+
+                <!-- Website Information -->
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">PersonaTests</h3>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;">Digital Personality Assessment Platform</p>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;">Created for entertainment and self-discovery</p>
+                    <p style="opacity: 0.9; font-size: 0.9rem;">Operating since 2025</p>
+                </div>
+
+                <!-- Response Times -->
+                <div style="background: #f1f5f9; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h3 style="color: #1e293b; margin-bottom: 1rem; text-align: center;">📅 Response Times</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center;">
+                            <div style="font-weight: bold; color: #4f46e5;">General Support</div>
+                            <div style="color: #64748b;">24-48 hours</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-weight: bold; color: #10b981;">Privacy Requests</div>
+                            <div style="color: #64748b;">48-72 hours</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-weight: bold; color: #f59e0b;">Business Inquiries</div>
+                            <div style="color: #64748b;">3-5 business days</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div>
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem; text-align: center;">Frequently Asked Questions 🤔</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #4f46e5; margin-bottom: 0.5rem;">How do I delete my account and data?</h4>
+                        <p style="color: #64748b; line-height: 1.6;">Email privacy@personatests.com with your account email address. We'll delete all your data within 30 days as required by GDPR and CCPA.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #4f46e5; margin-bottom: 0.5rem;">Are your personality tests accurate?</h4>
+                        <p style="color: #64748b; line-height: 1.6;">Our tests are based on established psychological frameworks but are for entertainment and self-reflection only. They're not professional psychological assessments.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #4f46e5; margin-bottom: 0.5rem;">Can I use test results for employment decisions?</h4>
+                        <p style="color: #64748b; line-height: 1.6;">No. Our tests are for entertainment only and should never be used for medical, employment, or legal decisions. Only licensed professionals can provide such assessments.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #4f46e5; margin-bottom: 0.5rem;">How do premium reports work?</h4>
+                        <p style="color: #64748b; line-height: 1.6;">Premium reports ($2.99) provide detailed insights and are delivered via email within 24 hours. All payments are securely processed through Stripe.</p>
+                    </div>
+                    
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Back to Tests</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #1e293b; color: white; padding: 2rem 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handler that works without external services
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitButton.innerHTML = 'Processing... ⏳';
+            submitButton.disabled = true;
+            
+            // Get form data
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // Simulate processing delay
+            setTimeout(function() {
+                // Show success message
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#059669';
+                formMessage.innerHTML = `
+                    <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <h4 style="color: #059669; margin: 0 0 0.5rem 0;">✅ Message Received!</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: #065f46;">
+                            Thank you, <strong>${name}</strong>! Your message about "<em>${subject}</em>" has been received. 
+                            We'll respond to <strong>${email}</strong> within 24-48 hours.
+                        </p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
+                            <strong>What happens next:</strong> We'll review your message and send a personalized response to your email address.
+                        </p>
+                    </div>
+                `;
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Reset button state
+                submitButton.innerHTML = 'Send Another Message 📤';
+                submitButton.disabled = false;
+                
+                // Optional: Log the form data to console (for development)
+                console.log('Form submission:', {
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message,
+                    timestamp: new Date().toLocaleString()
+                });
+                
+            }, 1500); // 1.5 second delay to simulate processing
+        });
+    </script>
+</body>
+</html>

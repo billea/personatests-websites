@@ -141,6 +141,142 @@
                 min-width: 160px;
                 right: -10px;
             }
+            
+            /* Mobile-specific language flags */
+            .language-flags {
+                display: none !important;
+            }
+            
+            .mobile-language-selector {
+                display: block !important;
+                margin-left: 10px;
+            }
+            
+            .mobile-language-selector select {
+                background: rgba(255, 255, 255, 0.2) !important;
+                border: 2px solid rgba(255, 255, 255, 0.4) !important;
+                border-radius: 8px !important;
+                color: white !important;
+                padding: 8px 12px !important;
+                font-size: 14px !important;
+                font-weight: 500 !important;
+                cursor: pointer !important;
+                outline: none !important;
+            }
+            
+            .mobile-language-selector select option {
+                background: #1e293b !important;
+                color: white !important;
+                padding: 8px !important;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-language-selector {
+                display: none !important;
+            }
+        }
+        
+        /* Additional Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Navigation improvements */
+            .nav-container {
+                padding: 0 1rem !important;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+            }
+            
+            .nav-menu li {
+                margin: 0 0.5rem !important;
+            }
+            
+            .nav-menu a {
+                font-size: 14px !important;
+                padding: 0.5rem !important;
+            }
+            
+            /* Logo adjustments */
+            .logo h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Hero section mobile */
+            .hero-title {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Button improvements */
+            .cta-button {
+                font-size: 1rem !important;
+                padding: 1rem 1.5rem !important;
+            }
+            
+            /* Stats section */
+            .hero-stats {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            .stat {
+                min-width: auto !important;
+            }
+            
+            /* Tests grid mobile */
+            .tests-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .couples-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            /* Container padding */
+            .container {
+                padding: 0 1rem !important;
+            }
+            
+            /* Modal improvements */
+            .modal-content {
+                margin: 5% auto !important;
+                width: 95% !important;
+                max-width: none !important;
+            }
+            
+            /* Form inputs */
+            .form-input {
+                font-size: 16px !important; /* Prevents zoom on iOS */
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem !important;
+            }
+            
+            .nav-menu {
+                font-size: 13px !important;
+            }
+            
+            .test-card, .couple-card, .feature {
+                padding: 1.5rem !important;
+            }
         }
     </style>
     
@@ -207,8 +343,9 @@
                 <ul class="nav-menu">
                     <li><a href="#tests" data-translate="nav.tests">Tests</a></li>
                     <li><a href="#couples" data-translate="nav.couples">Couples</a></li>
-                    <li><a href="#about" data-translate="nav.about">About</a></li>
+                    <li><a href="about.html" data-translate="nav.about">About</a></li>
                     <li><a href="#blog" data-translate="nav.blog">Blog</a></li>
+                    <li><a href="contact.html" data-translate="nav.contact">Contact</a></li>
                     <li><a href="#" onclick="showProfile()" id="profileLink" style="display: none;" data-translate="nav.results">My Results</a></li>
                     <li><a href="#" onclick="showLogin()" id="loginLink" data-translate="nav.login">Login ✨</a></li>
                     <li><a href="#" onclick="logout()" id="logoutLink" style="display: none;" data-translate="nav.logout">Logout</a></li>
@@ -581,6 +718,21 @@
                             </svg>
                         </div>
                     </li>
+                    
+                    <!-- Mobile Language Selector (Hidden on Desktop) -->
+                    <li class="mobile-language-selector" style="display: none;">
+                        <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: white; padding: 8px 12px; font-size: 14px; font-weight: 500; cursor: pointer; outline: none;">
+                            <option value="en" style="background: #1e293b; color: white;">🇺🇸 English</option>
+                            <option value="es" style="background: #1e293b; color: white;">🇪🇸 Español</option>
+                            <option value="fr" style="background: #1e293b; color: white;">🇫🇷 Français</option>
+                            <option value="de" style="background: #1e293b; color: white;">🇩🇪 Deutsch</option>
+                            <option value="it" style="background: #1e293b; color: white;">🇮🇹 Italiano</option>
+                            <option value="pt" style="background: #1e293b; color: white;">🇵🇹 Português</option>
+                            <option value="ja" style="background: #1e293b; color: white;">🇯🇵 日本語</option>
+                            <option value="ko" style="background: #1e293b; color: white;">🇰🇷 한국어</option>
+                            <option value="zh" style="background: #1e293b; color: white;">🇨🇳 中文</option>
+                        </select>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -630,17 +782,9 @@
                     <p style="font-size: 0.9rem; opacity: 0.9;">💝 Need support? National Crisis Text Line: Text HOME to 741741 | Suicide Prevention: 988</p>
                 </div>
                 
-                <!-- AdSense Banner Ad - Above Tests -->
-                <div class="ad-container" style="text-align: center; margin: 2rem 0;">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-4191191355361"
-                         data-ad-slot="AUTO"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                <!-- AdSense Banner Ad - Removed temporarily for approval -->
+                <div class="ad-placeholder" style="text-align: center; margin: 2rem 0; padding: 2rem; background: #f8fafc; border: 2px dashed #e2e8f0; border-radius: 8px;">
+                    <p style="color: #64748b; font-style: italic;">Ad space reserved - Will display after AdSense approval</p>
                 </div>
                 
                 <div class="tests-grid">
@@ -781,16 +925,9 @@
 
                 </div>
                 
-                <!-- AdSense Rectangle Ad - Between Test Sections -->
-                <div class="ad-container" style="text-align: center; margin: 3rem 0;">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-4191191355361"
-                         data-ad-slot="AUTO"
-                         data-ad-format="rectangle"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                <!-- AdSense Rectangle Ad - Removed temporarily for approval -->
+                <div class="ad-placeholder" style="text-align: center; margin: 3rem 0; padding: 2rem; background: #f8fafc; border: 2px dashed #e2e8f0; border-radius: 8px;">
+                    <p style="color: #64748b; font-style: italic;">Ad space reserved - Will display after AdSense approval</p>
                 </div>
                 
                 <!-- Trending Tests Section -->
@@ -889,17 +1026,9 @@
             </div>
         </section>
 
-        <!-- AdSense Banner Ad - Before Features -->
-        <div class="ad-container" style="text-align: center; margin: 3rem 0; background: #f8fafc; padding: 2rem;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-4191191355361"
-                 data-ad-slot="AUTO"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+        <!-- AdSense Banner Ad - Removed temporarily for approval -->
+        <div class="ad-placeholder" style="text-align: center; margin: 3rem 0; background: #f8fafc; padding: 2rem; border: 2px dashed #e2e8f0; border-radius: 8px;">
+            <p style="color: #64748b; font-style: italic;">Ad space reserved - Will display after AdSense approval</p>
         </div>
 
         <!-- Features Section -->
@@ -927,6 +1056,58 @@
                         <h3 data-translate="whyChoose.everywhere">Works Everywhere</h3>
                         <p data-translate="whyChoose.everywhereDesc">Take tests on your phone, laptop, tablet - literally anywhere you want to discover your personality! 📱</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog/Resources Section -->
+        <section id="blog" class="blog-section" style="background: #f8fafc; padding: 4rem 0;">
+            <div class="container">
+                <h2 class="section-title" style="color: #1e293b;">Psychology Insights & Tips 📚</h2>
+                <p class="section-subtitle" style="color: #64748b;">Learn about personality psychology, self-improvement, and relationship insights</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    
+                    <article style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <h3 style="color: #4f46e5; margin-bottom: 1rem;">Understanding Your MBTI Type</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">Discover how the 16 personality types framework can help you understand your preferences in how you perceive the world and make decisions. Learn about cognitive functions and type development.</p>
+                        <div style="color: #10b981; font-size: 0.9rem; font-weight: bold;">• Cognitive Functions • Personality Development • Type Dynamics</div>
+                    </article>
+                    
+                    <article style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <h3 style="color: #4f46e5; margin-bottom: 1rem;">The Science of Emotional Intelligence</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">Explore how emotional intelligence impacts your relationships, career success, and overall well-being. Learn practical strategies to develop your EQ skills and emotional awareness.</p>
+                        <div style="color: #10b981; font-size: 0.9rem; font-weight: bold;">• Self-Awareness • Empathy • Social Skills</div>
+                    </article>
+                    
+                    <article style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <h3 style="color: #4f46e5; margin-bottom: 1rem;">Building Better Relationships</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">Learn how understanding personality differences can strengthen your relationships. Discover communication strategies, conflict resolution techniques, and compatibility insights.</p>
+                        <div style="color: #10b981; font-size: 0.9rem; font-weight: bold;">• Communication • Compatibility • Conflict Resolution</div>
+                    </article>
+                    
+                    <article style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <h3 style="color: #4f46e5; margin-bottom: 1rem;">Career Alignment & Growth</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">Discover how your personality type influences your ideal work environment, leadership style, and career satisfaction. Find roles that align with your natural strengths and preferences.</p>
+                        <div style="color: #10b981; font-size: 0.9rem; font-weight: bold;">• Career Matching • Leadership Styles • Work Preferences</div>
+                    </article>
+                    
+                    <article style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <h3 style="color: #4f46e5; margin-bottom: 1rem;">Personal Development Journey</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">Use personality insights to guide your self-improvement efforts. Learn about growth areas, stress management, and how to leverage your unique strengths for personal success.</p>
+                        <div style="color: #10b981; font-size: 0.9rem; font-weight: bold;">• Self-Improvement • Stress Management • Strengths Development</div>
+                    </article>
+                    
+                    <article style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <h3 style="color: #4f46e5; margin-bottom: 1rem;">Mental Health & Personality</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 1.5rem;">Understand the connection between personality and mental well-being. Learn about coping strategies, resilience building, and when personality insights can support (but never replace) professional help.</p>
+                        <div style="color: #10b981; font-size: 0.9rem; font-weight: bold;">• Well-being • Coping Strategies • Professional Support</div>
+                    </article>
+                    
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <p style="color: #64748b; font-style: italic;">More psychology articles and insights coming soon! ✨</p>
                 </div>
             </div>
         </section>
@@ -1078,7 +1259,9 @@
                 <div class="footer-section">
                     <h4 data-translate="footer.moreInfo">More Info</h4>
                     <ul>
-                        <li><a href="#about" data-translate="footer.aboutUs">About Us</a></li>
+                        <li><a href="about.html" data-translate="footer.aboutUs">About Us</a></li>
+                        <li><a href="faq.html" data-translate="footer.faq">FAQ</a></li>
+                        <li><a href="contact.html" data-translate="footer.contact">Contact</a></li>
                         <li><a href="#blog" data-translate="footer.blog">Blog</a></li>
                         <li><a href="privacy.html" data-translate="footer.privacyPolicy">Privacy Policy</a></li>
                         <li><a href="terms.html" data-translate="footer.termsOfService">Terms of Service</a></li>
@@ -1086,7 +1269,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 PersonaTests. All rights reserved. Made with ✨ for discovering your true personality.</p>
+                <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a> | <a href="contact.html" style="color: #94a3b8;">Contact Us</a></p>
             </div>
         </div>
     </footer>
