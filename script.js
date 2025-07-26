@@ -65,6 +65,7 @@ const translations = {
             couples: "Couples", 
             about: "About",
             blog: "Blog",
+            contact: "Contact",
             results: "My Results",
             login: "Login ✨",
             logout: "Logout"
@@ -159,6 +160,11 @@ const translations = {
             careerDevelopmentDesc: "Discover career paths that align with your personality for increased job satisfaction and success.",
             betterRelationships: "Better Relationships",
             betterRelationshipsDesc: "Improve communication and understanding in personal and professional relationships."
+        },
+        blog: {
+            title: "Psychology Insights & Tips 📚",
+            subtitle: "Learn about personality psychology, self-improvement, and relationship insights",
+            coming_soon: "More psychology articles and insights coming soon! ✨"
         },
         footer: {
             description: "Discover your personality with scientifically-backed tests that get you.",
@@ -274,6 +280,11 @@ const translations = {
             betterRelationships: "Mejores Relaciones",
             betterRelationshipsDesc: "Mejora la comunicación y comprensión en relaciones personales y profesionales."
         },
+        blog: {
+            title: "Conocimientos y Consejos de Psicología 📚",
+            subtitle: "Aprende sobre psicología de la personalidad, autoayuda y perspectivas de relaciones",
+            coming_soon: "¡Próximamente más artículos y conocimientos de psicología! ✨"
+        },
         footer: {
             description: "Descubre tu personalidad con pruebas científicamente respaldadas que te entienden.",
             popularTests: "Pruebas Populares",
@@ -388,6 +399,11 @@ const translations = {
             betterRelationships: "Meilleures Relations",
             betterRelationshipsDesc: "Améliorez la communication et la compréhension dans les relations personnelles et professionnelles."
         },
+        blog: {
+            title: "Conseils et Perspectives en Psychologie 📚",
+            subtitle: "Apprenez sur la psychologie de la personnalité, l'amélioration de soi et les relations",
+            coming_soon: "Plus d'articles et de perspectives en psychologie bientôt ! ✨"
+        },
         footer: {
             description: "Découvrez votre personnalité avec des tests scientifiquement validés qui vous comprennent.",
             popularTests: "Tests Populaires",
@@ -500,6 +516,11 @@ const translations = {
             careerDevelopmentDesc: "Entdecke Karrierewege, die zu deiner Persönlichkeit passen, für mehr Arbeitszufriedenheit und Erfolg.",
             betterRelationships: "Bessere Beziehungen",
             betterRelationshipsDesc: "Verbessere die Kommunikation und das Verständnis in persönlichen und beruflichen Beziehungen."
+        },
+        blog: {
+            title: "Psychologie Einblicke & Tipps 📚",
+            subtitle: "Lerne über Persönlichkeitspsychologie, Selbstverbesserung und Beziehungseinblicke",
+            coming_soon: "Weitere Psychologie-Artikel und Einblicke kommen bald! ✨"
         },
         footer: {
             description: "Entdecke deine Persönlichkeit mit wissenschaftlich fundierten Tests, die dich verstehen.",
@@ -614,6 +635,11 @@ const translations = {
             betterRelationships: "Relazioni Migliori",
             betterRelationshipsDesc: "Migliora la comunicazione e la comprensione nelle relazioni personali e professionali."
         },
+        blog: {
+            title: "Approfondimenti e Consigli di Psicologia 📚",
+            subtitle: "Impara sulla psicologia della personalità, miglioramento personale e relazioni",
+            coming_soon: "Altri articoli e approfondimenti di psicologia in arrivo! ✨"
+        },
         footer: {
             description: "Scopri la tua personalità con test scientificamente validati che ti capiscono.",
             popularTests: "Test Popolari",
@@ -726,6 +752,11 @@ const translations = {
             careerDevelopmentDesc: "Descubra caminhos de carreira que se alinhem com sua personalidade para maior satisfação no trabalho e sucesso.",
             betterRelationships: "Relacionamentos Melhores",
             betterRelationshipsDesc: "Melhore a comunicação e o entendimento em relacionamentos pessoais e profissionais."
+        },
+        blog: {
+            title: "Insights e Dicas de Psicologia 📚",
+            subtitle: "Aprenda sobre psicologia da personalidade, autoajuda e relacionamentos",
+            coming_soon: "Mais artigos e insights de psicologia em breve! ✨"
         },
         footer: {
             description: "Descubra sua personalidade com testes cientificamente fundamentados que te entendem.",
@@ -841,6 +872,11 @@ const translations = {
             betterRelationships: "より良い人間関係",
             betterRelationshipsDesc: "個人的および職業的な関係において、コミュニケーションと理解を向上させましょう。"
         },
+        blog: {
+            title: "心理学の洞察とヒント 📚",
+            subtitle: "パーソナリティ心理学、自己改善、人間関係の洞察について学ぶ",
+            coming_soon: "より多くの心理学記事と洞察が近日公開！ ✨"
+        },
         footer: {
             description: "あなたを理解する科学的に裏付けされたテストで性格を発見。",
             popularTests: "人気テスト",
@@ -955,6 +991,11 @@ const translations = {
             betterRelationships: "더 좋은 관계",
             betterRelationshipsDesc: "개인적이든 업무적이든 더 나은 소통과 이해로 관계를 개선해보세요."
         },
+        blog: {
+            title: "심리학 인사이트 & 팁 📚",
+            subtitle: "성격 심리학, 자기계발, 관계에 대한 통찰력을 배워보세요",
+            coming_soon: "더 많은 심리학 기사와 인사이트가 곧 공개됩니다! ✨"
+        },
         footer: {
             description: "당신을 이해하는 과학적으로 백업된 테스트로 성격을 발견하세요.",
             popularTests: "인기 테스트",
@@ -1068,6 +1109,11 @@ const translations = {
             careerDevelopmentDesc: "发现与您的个性相符的职业道路，获得更高的工作满意度和成功。",
             betterRelationships: "更好的关系",
             betterRelationshipsDesc: "在个人和职业关系中改善沟通和理解。"
+        },
+        blog: {
+            title: "心理学洞察与技巧 📚",
+            subtitle: "学习人格心理学、自我提升和人际关系洞察",
+            coming_soon: "更多心理学文章和洞察即将推出！ ✨"
         },
         footer: {
             description: "通过科学验证的测试发现您的个性，这些测试能够理解您。",
@@ -4046,10 +4092,10 @@ function showAnxietyResults(result) {
                 <p style="margin-bottom: 1rem;"><strong>This is a fun self-reflection tool, NOT a mental health assessment!</strong> Only licensed mental health professionals can diagnose anxiety disorders.</p>
                 <p style="margin-bottom: 1rem;"><strong>If you're struggling with anxiety, stress, or worry, please reach out:</strong></p>
                 <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
-                    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
-                    <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
-                    <li><strong>Licensed therapist or counselor</strong></li>
-                    <li><strong>Your healthcare provider</strong></li>
+                    <li><strong>Licensed therapist or counselor in your area</strong></li>
+                    <li><strong>Your local healthcare provider</strong></li>
+                    <li><strong>Local mental health crisis services</strong></li>
+                    <li><strong>Emergency services if in immediate danger</strong></li>
                 </ul>
                 <p style="margin-bottom: 0;">You deserve support and care. This quiz is just for fun - not medical advice! 💝</p>
             </div>
@@ -4058,7 +4104,7 @@ function showAnxietyResults(result) {
         ${addLoginPromptToResults()}
         
         <div class="crisis-info" style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px; margin-top: 2rem;">
-            <p><strong>Crisis Support:</strong> If you're in crisis, please reach out to the 988 Suicide & Crisis Lifeline (call or text 988) or go to your nearest emergency room.</p>
+            <p><strong>Crisis Support:</strong> If you're in crisis, please contact local emergency services or your nearest emergency room.</p>
         </div>
     `;
     
@@ -4107,11 +4153,10 @@ function showDepressionResults(result) {
                 <p style="margin-bottom: 1rem;"><strong>This is for entertainment and self-reflection only - NOT a clinical assessment!</strong> Only licensed mental health professionals can diagnose depression or mood disorders.</p>
                 <p style="margin-bottom: 1rem;"><strong>If you're struggling with your mood or mental health, please seek support:</strong></p>
                 <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
-                    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
-                    <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
-                    <li><strong>Licensed therapist, counselor, or psychologist</strong></li>
+                    <li><strong>Licensed therapist, counselor, or psychologist in your area</strong></li>
                     <li><strong>Your primary care physician</strong></li>
-                    <li><strong>Mental health crisis center</strong></li>
+                    <li><strong>Local mental health crisis services</strong></li>
+                    <li><strong>Emergency services if in immediate danger</strong></li>
                 </ul>
                 <p style="margin-bottom: 0;"><strong>You matter and you deserve support.</strong> This quiz cannot replace professional care! 💚</p>
             </div>
@@ -4122,9 +4167,9 @@ function showDepressionResults(result) {
         <div class="crisis-info" style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px; margin-top: 2rem;">
             <p><strong>Crisis Support:</strong> If you're having thoughts of self-harm, please reach out immediately:</p>
             <ul>
-                <li>988 Suicide & Crisis Lifeline: Call or text 988</li>
-                <li>Crisis Text Line: Text HOME to 741741</li>
+                <li>Contact local emergency services or crisis hotlines</li>
                 <li>Go to your nearest emergency room</li>
+                <li>Call emergency services (911, 112, etc. depending on your country)</li>
             </ul>
         </div>
     `;
