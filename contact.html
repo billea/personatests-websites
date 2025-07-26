@@ -289,10 +289,10 @@
                                     <option value="">Select a topic...</option>
                                     <option value="General Support">General Support</option>
                                     <option value="Test Results Issue">Test Results Issue</option>
-                                    <option value="Premium Report">Premium Report Question</option>
-                                    <option value="Privacy/Data Request">Privacy or Data Request</option>
+                                    <option value="Premium Report Question">Premium Report Question</option>
+                                    <option value="Privacy or Data Request">Privacy or Data Request</option>
                                     <option value="Technical Issue">Technical Issue</option>
-                                    <option value="Partnership">Business/Partnership Inquiry</option>
+                                    <option value="Business Partnership Inquiry">Business/Partnership Inquiry</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
@@ -424,30 +424,31 @@
                 website: 'PersonaTests.com'
             };
             
-            // Send confirmation email to user AND notification to admin
+            // Send both admin notification AND auto-reply to user
             Promise.all([
-                // 1. Send auto-reply confirmation to user
-                emailjs.send('service_dc4y1ov', 'template_tohci7f', {
-                    to_email: email,
-                    to_name: name,
-                    subject: subject,
-                    message: message,
-                    timestamp: new Date().toLocaleString(),
-                    website: 'PersonaTests.com'
-                }),
-                // 2. Send notification to admin (you) with user inquiry details
+                // 1. Send notification to admin (you)
                 emailjs.send('service_dc4y1ov', 'template_serra05', {
                     from_name: name,
                     from_email: email,
                     subject: subject,
                     message: message,
                     timestamp: new Date().toLocaleString(),
-                    website: 'PersonaTests.com',
-                    admin_email: 'personatests.business@gmail.com' // Your admin email
+                    website: 'PersonaTests.com'
+                }),
+                // 2. Send auto-reply confirmation to user
+                emailjs.send('service_dc4y1ov', 'template_tohci7f', {
+                    to_name: name,
+                    to_email: email,
+                    test_name: 'Contact Form Inquiry',
+                    subject: subject,
+                    message: message,
+                    timestamp: new Date().toLocaleString(),
+                    website: 'PersonaTests.com'
                 })
             ])
                 .then(function(response) {
                     // Success - show success message
+                    console.log('✅ EmailJS Success:', response);
                     formMessage.style.display = 'block';
                     formMessage.style.color = '#059669';
                     formMessage.innerHTML = `
@@ -460,6 +461,9 @@
                             <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
                                 <strong>What happens next:</strong> We'll review your message and send a personalized response to your email address.
                             </p>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
+                                <strong>Debug Info:</strong> Email sent with response status: ${response.status}
+                            </p>
                         </div>
                     `;
                     
@@ -469,18 +473,23 @@
                     // Reset button state
                     submitButton.innerHTML = 'Send Another Message 📤';
                     submitButton.disabled = false;
-                    
-                    console.log('Email sent successfully:', response);
                 })
                 .catch(function(error) {
-                    // Error - show error message
+                    // Error - show error message with debug info
+                    console.error('❌ EmailJS Error:', error);
                     formMessage.style.display = 'block';
                     formMessage.style.color = '#dc2626';
                     formMessage.innerHTML = `
                         <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #fca5a5; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
                             <h4 style="color: #dc2626; margin: 0 0 0.5rem 0;">❌ Message Failed to Send</h4>
                             <p style="margin: 0; font-size: 0.9rem; color: #991b1b;">
-                                Sorry, there was an error sending your message. Please try again or contact us directly at support@personatests.com
+                                Sorry, there was an error sending your message. Please try again or contact us directly at personatests.business@gmail.com
+                            </p>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #991b1b;">
+                                <strong>Debug Info:</strong> ${error.text || error.message || 'Unknown error'}
+                            </p>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #991b1b;">
+                                <strong>Error Status:</strong> ${error.status || 'N/A'}
                             </p>
                         </div>
                     `;
@@ -488,8 +497,6 @@
                     // Reset button state
                     submitButton.innerHTML = 'Try Again 📤';
                     submitButton.disabled = false;
-                    
-                    console.error('Email send failed:', error);
                 });
         });
     </script>
