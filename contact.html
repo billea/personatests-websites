@@ -390,8 +390,14 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
     <script>
-        // Simple form handler that works without external services
+        // Initialize EmailJS
+        emailjs.init('bqGKo-dBalpy6MeZE'); // Your actual public key
+        
+        // Enhanced contact form handler with EmailJS
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -399,7 +405,7 @@
             const submitButton = e.target.querySelector('button[type="submit"]');
             
             // Show loading state
-            submitButton.innerHTML = 'Processing... ⏳';
+            submitButton.innerHTML = 'Sending... ⏳';
             submitButton.disabled = true;
             
             // Get form data
@@ -408,41 +414,83 @@
             const subject = document.getElementById('contactSubject').value;
             const message = document.getElementById('contactMessage').value;
             
-            // Simulate processing delay
-            setTimeout(function() {
-                // Show success message
-                formMessage.style.display = 'block';
-                formMessage.style.color = '#059669';
-                formMessage.innerHTML = `
-                    <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                        <h4 style="color: #059669; margin: 0 0 0.5rem 0;">✅ Message Received!</h4>
-                        <p style="margin: 0; font-size: 0.9rem; color: #065f46;">
-                            Thank you, <strong>${name}</strong>! Your message about "<em>${subject}</em>" has been received. 
-                            We'll respond to <strong>${email}</strong> within 24-48 hours.
-                        </p>
-                        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
-                            <strong>What happens next:</strong> We'll review your message and send a personalized response to your email address.
-                        </p>
-                    </div>
-                `;
-                
-                // Reset form
-                document.getElementById('contactForm').reset();
-                
-                // Reset button state
-                submitButton.innerHTML = 'Send Another Message 📤';
-                submitButton.disabled = false;
-                
-                // Optional: Log the form data to console (for development)
-                console.log('Form submission:', {
-                    name: name,
-                    email: email,
+            // Prepare template parameters
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message,
+                timestamp: new Date().toLocaleString(),
+                website: 'PersonaTests.com'
+            };
+            
+            // Send confirmation email to user AND notification to admin
+            Promise.all([
+                // 1. Send auto-reply confirmation to user
+                emailjs.send('service_dc4y1ov', 'template_tohci7f', {
+                    to_email: email,
+                    to_name: name,
                     subject: subject,
                     message: message,
-                    timestamp: new Date().toLocaleString()
+                    timestamp: new Date().toLocaleString(),
+                    website: 'PersonaTests.com'
+                }),
+                // 2. Send notification to admin (you) with user inquiry details
+                emailjs.send('service_dc4y1ov', 'template_serra05', {
+                    from_name: name,
+                    from_email: email,
+                    subject: subject,
+                    message: message,
+                    timestamp: new Date().toLocaleString(),
+                    website: 'PersonaTests.com',
+                    admin_email: 'personatests.business@gmail.com' // Your admin email
+                })
+            ])
+                .then(function(response) {
+                    // Success - show success message
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = '#059669';
+                    formMessage.innerHTML = `
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                            <h4 style="color: #059669; margin: 0 0 0.5rem 0;">✅ Message Sent Successfully!</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #065f46;">
+                                Thank you, <strong>${name}</strong>! Your message about "<em>${subject}</em>" has been sent successfully. 
+                                We'll respond to <strong>${email}</strong> within 24-48 hours.
+                            </p>
+                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
+                                <strong>What happens next:</strong> We'll review your message and send a personalized response to your email address.
+                            </p>
+                        </div>
+                    `;
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    
+                    // Reset button state
+                    submitButton.innerHTML = 'Send Another Message 📤';
+                    submitButton.disabled = false;
+                    
+                    console.log('Email sent successfully:', response);
+                })
+                .catch(function(error) {
+                    // Error - show error message
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = '#dc2626';
+                    formMessage.innerHTML = `
+                        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #fca5a5; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                            <h4 style="color: #dc2626; margin: 0 0 0.5rem 0;">❌ Message Failed to Send</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #991b1b;">
+                                Sorry, there was an error sending your message. Please try again or contact us directly at support@personatests.com
+                            </p>
+                        </div>
+                    `;
+                    
+                    // Reset button state
+                    submitButton.innerHTML = 'Try Again 📤';
+                    submitButton.disabled = false;
+                    
+                    console.error('Email send failed:', error);
                 });
-                
-            }, 1500); // 1.5 second delay to simulate processing
         });
     </script>
 </body>
