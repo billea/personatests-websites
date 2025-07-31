@@ -5,58 +5,6 @@ let userAnswers = [];
 let testData = {};
 let currentLanguage = 'en';
 
-// Mobile Menu Functionality
-function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    
-    if (mobileMenu && menuToggle) {
-        // Toggle active states
-        mobileMenu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        if (mobileMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }
-}
-
-// Close mobile menu when clicking on a menu item
-function closeMobileMenu() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    
-    if (mobileMenu && menuToggle) {
-        mobileMenu.classList.remove('active');
-        menuToggle.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    
-    if (mobileMenu && menuToggle && 
-        !mobileMenu.contains(event.target) && 
-        !menuToggle.contains(event.target) &&
-        mobileMenu.classList.contains('active')) {
-        closeMobileMenu();
-    }
-});
-
-// Add click event to all menu links to close mobile menu
-document.addEventListener('DOMContentLoaded', function() {
-    const menuLinks = document.querySelectorAll('.nav-menu a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-});
-
 // Language translations
 const translations = {
     en: {
@@ -65,7 +13,6 @@ const translations = {
             couples: "Couples", 
             about: "About",
             blog: "Blog",
-            contact: "Contact",
             results: "My Results",
             login: "Login ✨",
             logout: "Logout"
@@ -161,11 +108,6 @@ const translations = {
             betterRelationships: "Better Relationships",
             betterRelationshipsDesc: "Improve communication and understanding in personal and professional relationships."
         },
-        blog: {
-            title: "Psychology Insights & Tips 📚",
-            subtitle: "Learn about personality psychology, self-improvement, and relationship insights",
-            coming_soon: "More psychology articles and insights coming soon! ✨"
-        },
         footer: {
             description: "Discover your personality with scientifically-backed tests that get you.",
             popularTests: "Popular Tests",
@@ -192,7 +134,7 @@ const translations = {
         hero: {
             title: "Descubre Tu Personalidad ✨",
             subtitle: "Realiza pruebas de personalidad con respaldo científico que realmente te entienden. ¡Desde MBTI hasta Big Five, descubre qué te hace único! 🔥",
-            cta: "Descubre Mi Personalidad"
+            cta: "Conoce Mi Vibra"
         },
         stats: {
             categories: "Categorías de Pruebas",
@@ -201,9 +143,9 @@ const translations = {
         },
         tests: {
             sectionTitle: "Descubre Tu Personalidad ✨",
-            sectionSubtitle: "¿Cuál test te interesa más? ¡Todos tienen base científica y son súper divertidos! 💫",
+            sectionSubtitle: "¿Qué prueba te llama la atención? ¡Todas tienen respaldo científico y están diseñadas para ser atractivas! 💫",
             disclaimer: "🎯 Importante: Solo para Entretenimiento y Autorreflexión",
-            disclaimerText: "Estos tests son para diversión y autoconocimiento, no para diagnóstico profesional. Si necesitas ayuda psicológica, consulta a un profesional de la salud.",
+            disclaimerText: "Estas evaluaciones están diseñadas para diversión y autorreflexión, no para diagnóstico profesional. Si necesitas apoyo de salud mental, consulta a un proveedor de atención médica licenciado.",
             mbti: "16 Tipos de Personalidad",
             mbtiDesc: "¡Descubre tu tipo de personalidad único con la evaluación clásica Myers-Briggs! ¿Eres un pensador introvertido o un extrovertido emocional?",
             bigfive: "Test de los Cinco Grandes", 
@@ -263,7 +205,7 @@ const translations = {
         whyChoose: {
             title: "¿Por Qué Elegir PersonaTests? ✨",
             scientific: "Realmente Científico",
-            scientificDesc: "Nuestros tests se basan en investigación psicológica real, no solo preguntas aleatorias. ¡Hablamos en serio! 🧠",
+            scientificDesc: "Nuestras pruebas se basan en investigación psicológica real, no solo preguntas aleatorias. ¡No estamos jugando! 🧠",
             instant: "Resultados Instantáneos",
             instantDesc: "Obtén tu análisis de personalidad inmediatamente. ¡Sin esperas, sin demoras, solo gratificación instantánea pura! ⚡",
             safe: "Tus Secretos Están Seguros",
@@ -279,11 +221,6 @@ const translations = {
             careerDevelopmentDesc: "Descubre caminos profesionales que se alineen con tu personalidad para mayor satisfacción laboral y éxito.",
             betterRelationships: "Mejores Relaciones",
             betterRelationshipsDesc: "Mejora la comunicación y comprensión en relaciones personales y profesionales."
-        },
-        blog: {
-            title: "Conocimientos y Consejos de Psicología 📚",
-            subtitle: "Aprende sobre psicología de la personalidad, autoayuda y perspectivas de relaciones",
-            coming_soon: "¡Próximamente más artículos y conocimientos de psicología! ✨"
         },
         footer: {
             description: "Descubre tu personalidad con pruebas científicamente respaldadas que te entienden.",
@@ -310,7 +247,7 @@ const translations = {
         },
         hero: {
             title: "Découvrez Votre Personnalité ✨",
-            subtitle: "Faites des tests de personnalité avec base scientifique qui vous comprennent vraiment. Du MBTI au Big Five, découvrez ce qui vous rend unique ! 🔥",
+            subtitle: "Passez des tests de personnalité scientifiquement validés qui vous comprennent vraiment. Du MBTI au Big Five, découvrez ce qui vous rend unique ! 🔥",
             cta: "Découvrir Mon Style"
         },
         stats: {
@@ -320,11 +257,11 @@ const translations = {
         },
         tests: {
             sectionTitle: "Découvrez Votre Personnalité ✨",
-            sectionSubtitle: "Quel test vous intéresse ? Tous ont une base scientifique et sont super amusants ! 💫",
+            sectionSubtitle: "Quel test vous attire ? Tous sont scientifiquement validés et conçus pour être engageants ! 💫",
             disclaimer: "🎯 Important : Pour le Divertissement et l'Autoréflexion Uniquement",
-            disclaimerText: "Ces tests sont faits pour s'amuser et mieux se connaître, pas pour un diagnostic professionnel. Si vous avez besoin d'aide psychologique, consultez un professionnel de santé qualifié.",
+            disclaimerText: "Ces évaluations sont conçues pour le plaisir et l'autoréflexion, pas pour un diagnostic professionnel. Si vous avez besoin d'un soutien en santé mentale, veuillez consulter un fournisseur de soins de santé agréé.",
             mbti: "16 Types de Personnalité",
-            mbtiDesc: "Le test de personnalité ultime qui vous cerne vraiment. Êtes-vous plutôt INTJ stratège ou ENFP enthousiaste ? C'est le moment de le découvrir ! 💅",
+            mbtiDesc: "Le test de personnalité ultime qui vous comprend vraiment. Êtes-vous une énergie de cerveau INTJ ou des vibrations de golden retriever ENFP ? Il est temps de le découvrir ! 💅",
             bigfive: "Test des Cinq Grands",
             bigfiveDesc: "Le test scientifiquement validé que les professeurs de psychologie approuvent réellement. Obtenez votre analyse de personnalité sur 5 traits majeurs ! 🧠",
             eq: "Intelligence Émotionnelle (QE)",
@@ -382,9 +319,9 @@ const translations = {
         whyChoose: {
             title: "Pourquoi Choisir PersonaTests ? ✨",
             scientific: "Réellement Scientifique",
-            scientificDesc: "Nos tests sont basés sur de vraies recherches en psychologie, pas juste des questions aléatoires. C'est du sérieux ! 🧠",
+            scientificDesc: "Nos tests sont basés sur de vraies recherches en psychologie, pas juste des questions aléatoires. Nous ne plaisantons pas ! 🧠",
             instant: "Résultats Instantanés",
-            instantDesc: "Obtenez votre analyse de personnalité immédiatement. Pas d'attente, pas de délais, juste une satisfaction immédiate ! ⚡",
+            instantDesc: "Obtenez votre analyse de personnalité immédiatement. Pas d'attente, pas de délais, juste une gratification instantanée pure ! ⚡",
             safe: "Vos Secrets Sont En Sécurité",
             safeDesc: "Nous gardons vos réponses privées. Pas de vente de données, pas d'emails bizarres. Juste vous et vos résultats ! 🔒",
             everywhere: "Fonctionne Partout",
@@ -398,11 +335,6 @@ const translations = {
             careerDevelopmentDesc: "Découvrez des parcours professionnels qui s'alignent avec votre personnalité pour une satisfaction et un succès accrus au travail.",
             betterRelationships: "Meilleures Relations",
             betterRelationshipsDesc: "Améliorez la communication et la compréhension dans les relations personnelles et professionnelles."
-        },
-        blog: {
-            title: "Conseils et Perspectives en Psychologie 📚",
-            subtitle: "Apprenez sur la psychologie de la personnalité, l'amélioration de soi et les relations",
-            coming_soon: "Plus d'articles et de perspectives en psychologie bientôt ! ✨"
         },
         footer: {
             description: "Découvrez votre personnalité avec des tests scientifiquement validés qui vous comprennent.",
@@ -429,8 +361,8 @@ const translations = {
         },
         hero: {
             title: "Entdecke Deine Persönlichkeit ✨",
-            subtitle: "Mach wissenschaftlich fundierte Persönlichkeitstests, die dich wirklich verstehen. Von MBTI bis Big Five - finde heraus, was dich besonders macht! 🔥",
-            cta: "Jetzt Testen"
+            subtitle: "Mache wissenschaftlich fundierte Persönlichkeitstests, die dich wirklich verstehen. Von MBTI bis Big Five - entdecke, was dich einzigartig macht! 🔥",
+            cta: "Meine Persönlichkeit Entdecken"
         },
         stats: {
             categories: "Test-Kategorien",
@@ -439,22 +371,22 @@ const translations = {
         },
         tests: {
             sectionTitle: "Entdecke Deine Persönlichkeit ✨",
-            sectionSubtitle: "Welcher Test gefällt dir? Alle sind wissenschaftlich und richtig spannend! 💫",
+            sectionSubtitle: "Welcher Test spricht dich an? Alle sind wissenschaftlich fundiert und spannend gestaltet! 💫",
             disclaimer: "🎯 Wichtig: Nur zur Unterhaltung und Selbstreflexion",
             mbti: "16 Persönlichkeitstypen",
-            mbtiDesc: "Der klassische Persönlichkeitstest! Bist du eher ein INTJ-Stratege oder ein ENFP-Enthusiast? Finde es heraus! 💅",
+            mbtiDesc: "Der ultimative Persönlichkeitstest, der dich wirklich versteht. Bist du INTJ-Mastermind-Energie oder ENFP-Golden-Retriever-Vibes? Zeit, es herauszufinden! 💅",
             bigfive: "Big Five Persönlichkeitstest",
-            bigfiveDesc: "Der Test, den sogar Psychologen cool finden! Erfahre alles über deine 5 wichtigsten Persönlichkeitsmerkmale! 🧠",
+            bigfiveDesc: "Der wissenschaftlich fundierte Test, den Psychologie-Professoren tatsächlich befürworten. Erhalte deine Persönlichkeitsaufschlüsselung in 5 Hauptmerkmalen! 🧠",
             eq: "Emotionale Intelligenz (EQ)",
-            eqDesc: "Wie gut verstehst du Gefühle - deine eigenen und die von anderen? Teste deine emotionalen Superkräfte! 💝",
+            eqDesc: "Wie gut verstehst du Emotionen - deine eigenen und die anderer? Teste dein Selbstbewusstsein, Empathie und soziale Fähigkeiten! 💝",
             iq: "Gehirntraining-Challenge",
-            iqDesc: "Coole Logikrätsel für dein Gehirn! Nur zum Spaß - echte IQ-Tests gibt's beim Psychologen. Trotzdem spannend! 🤓",
+            iqDesc: "Lustige Logikrätsel und Gehirnspiele! Das ist nur zur Unterhaltung - echte IQ-Tests benötigen professionelle Durchführung. Mal sehen, wie du abschneidest! 🤓",
             disc: "DISC Persönlichkeitstest",
-            discDesc: "Finde deinen Kommunikationsstil! Bist du dominant, einflussreich, ruhig oder gewissenhaft? Super für Job und Beziehungen! 💼",
+            discDesc: "Entdecke deinen Kommunikationsstil! Bist du Dominant, Einflussreich, Stetig oder Gewissenhaft? Perfekt um Arbeits- und Beziehungsdynamiken zu verstehen! 💼",
             conflict: "Konfliktstil-Bewertung",
-            conflictDesc: "Wie gehst du mit Streit um? Bist du eher Teamplayer, Kämpfer oder Friedensstifter? 🤝",
+            conflictDesc: "Wie gehst du mit Meinungsverschiedenheiten um? Entdecke, ob du ein Kollaborator, Konkurrent, Vermittler, Vermeider oder Kompromissler bist! 🤝",
             strengths: "Charakterstärken (VIA)",
-            strengthsDesc: "Finde deine größten Stärken! Von Kreativität bis Hilfsbereitschaft - entdecke, was dich besonders macht! ✨",
+            strengthsDesc: "Entdecke deine wichtigsten Charakterstärken! Von Kreativität über Führung bis Freundlichkeit - entdecke, was dich einzigartig großartig macht! ✨",
             adhd: "Fokus- und Energiestil",
             adhdDesc: "Entdecke deine einzigartigen Aufmerksamkeits- und Energiemuster! Das ist nur zur lustigen Selbstreflexion - keine medizinische Bewertung. ⚡",
             anxiety: "Stressmanagement-Stil",
@@ -517,11 +449,6 @@ const translations = {
             betterRelationships: "Bessere Beziehungen",
             betterRelationshipsDesc: "Verbessere die Kommunikation und das Verständnis in persönlichen und beruflichen Beziehungen."
         },
-        blog: {
-            title: "Psychologie Einblicke & Tipps 📚",
-            subtitle: "Lerne über Persönlichkeitspsychologie, Selbstverbesserung und Beziehungseinblicke",
-            coming_soon: "Weitere Psychologie-Artikel und Einblicke kommen bald! ✨"
-        },
         footer: {
             description: "Entdecke deine Persönlichkeit mit wissenschaftlich fundierten Tests, die dich verstehen.",
             popularTests: "Beliebte Tests",
@@ -547,8 +474,8 @@ const translations = {
         },
         hero: {
             title: "Scopri La Tua Personalità ✨",
-            subtitle: "Fai test di personalità scientifici che ti capiscono davvero. Da MBTI a Big Five, scopri cosa ti rende speciale! 🔥",
-            cta: "Inizia Il Test"
+            subtitle: "Fai test di personalità scientificamente validi che ti capiscono davvero. Da MBTI a Big Five, scopri cosa ti rende unico! 🔥",
+            cta: "Scopri La Mia Personalità"
         },
         stats: {
             categories: "Categorie di Test",
@@ -557,16 +484,16 @@ const translations = {
         },
         tests: {
             sectionTitle: "Scopri La Tua Personalità ✨",
-            sectionSubtitle: "Quale test ti piace di più? Tutti sono scientifici e divertenti! 💫",
+            sectionSubtitle: "Quale test ti attrae? Tutti sono scientificamente validati e progettati per essere coinvolgenti! 💫",
             disclaimer: "🎯 Importante: Solo per Intrattenimento e Autoriflessione",
             mbti: "16 Tipi di Personalità",
-            mbtiDesc: "Il test di personalità più famoso! Sei un INTJ strategico o un ENFP entusiasta? Scoprilo subito! 💅",
+            mbtiDesc: "Il test di personalità definitivo che ti capisce davvero. Sei energia da mastermind INTJ o vibes da golden retriever ENFP? È ora di scoprirlo! 💅",
             bigfive: "Test dei Big Five",
-            bigfiveDesc: "Il test che piace anche agli psicologi! Scopri i tuoi 5 tratti di personalità principali! 🧠",
+            bigfiveDesc: "Il test scientificamente validato che i professori di psicologia approvano davvero. Ottieni la tua analisi della personalità su 5 tratti principali! 🧠",
             eq: "Intelligenza Emotiva (IE)",
-            eqDesc: "Quanto capisci le emozioni - tue e degli altri? Testa i tuoi superpoteri emotivi! 💝",
+            eqDesc: "Quanto bene comprendi le emozioni - le tue e quelle degli altri? Testa la tua autoconsapevolezza, empatia e abilità sociali! 💝",
             iq: "Sfida Mentale",
-            iqDesc: "Puzzle logici e giochi per la mente! Solo per divertimento - i veri test di QI li fa lo psicologo. Vediamo come te la cavi! 🤓",
+            iqDesc: "Puzzle logici divertenti e giochi mentali! Questo è solo per intrattenimento - i veri test di QI richiedono somministrazione professionale. Vediamo come te la cavi! 🤓",
             disc: "Test di Personalità DISC",
             discDesc: "Scopri il tuo stile di comunicazione! Sei Dominante, Influente, Stabile o Coscienzioso? Perfetto per capire le dinamiche lavorative e relazionali! 💼",
             conflict: "Valutazione dello Stile di Conflitto",
@@ -635,11 +562,6 @@ const translations = {
             betterRelationships: "Relazioni Migliori",
             betterRelationshipsDesc: "Migliora la comunicazione e la comprensione nelle relazioni personali e professionali."
         },
-        blog: {
-            title: "Approfondimenti e Consigli di Psicologia 📚",
-            subtitle: "Impara sulla psicologia della personalità, miglioramento personale e relazioni",
-            coming_soon: "Altri articoli e approfondimenti di psicologia in arrivo! ✨"
-        },
         footer: {
             description: "Scopri la tua personalità con test scientificamente validati che ti capiscono.",
             popularTests: "Test Popolari",
@@ -665,8 +587,8 @@ const translations = {
         },
         hero: {
             title: "Descubra Sua Personalidade ✨",
-            subtitle: "Faça testes de personalidade científicos que realmente te entendem. Do MBTI ao Big Five, descubra o que te torna especial! 🔥",
-            cta: "Fazer Meu Teste"
+            subtitle: "Faça testes de personalidade cientificamente validados que realmente te entendem. Do MBTI ao Big Five, descubra o que te torna único! 🔥",
+            cta: "Descobrir Minha Personalidade"
         },
         stats: {
             categories: "Categorias de Testes",
@@ -675,16 +597,16 @@ const translations = {
         },
         tests: {
             sectionTitle: "Descubra Sua Personalidade ✨",
-            sectionSubtitle: "Qual teste você quer fazer? Todos são científicos e super divertidos! 💫",
+            sectionSubtitle: "Qual teste fala com você? Todos são cientificamente fundamentados e projetados para serem envolventes! 💫",
             disclaimer: "🎯 Importante: Apenas para Entretenimento e Autorreflexão",
             mbti: "16 Tipos de Personalidade",
-            mbtiDesc: "O teste de personalidade mais famoso! Você é um INTJ estratégico ou um ENFP entusiasmado? Descubra agora! 💅",
+            mbtiDesc: "O teste de personalidade definitivo que realmente te entende. Você é energia de mente mestra INTJ ou vibes de golden retriever ENFP? Hora de descobrir! 💅",
             bigfive: "Teste dos Cinco Grandes",
-            bigfiveDesc: "O teste que até os psicólogos adoram! Descubra seus 5 traços de personalidade principais! 🧠",
+            bigfiveDesc: "O teste cientificamente fundamentado que os professores de psicologia realmente aprovam. Obtenha sua análise de personalidade em 5 traços principais! 🧠",
             eq: "Inteligência Emocional (IE)",
-            eqDesc: "O quanto você entende emoções - suas e dos outros? Teste seus superpoderes emocionais! 💝",
+            eqDesc: "Quão bem você entende emoções - suas e dos outros? Teste sua autoconsciência, empatia e habilidades sociais! 💝",
             iq: "Desafio Mental",
-            iqDesc: "Quebra-cabeças lógicos e jogos para o cérebro! Só por diversão - teste de QI real é com psicólogo. Vamos ver como você se sai! 🤓",
+            iqDesc: "Quebra-cabeças lógicos divertidos e jogos mentais! Isso é apenas para entretenimento - testes de QI reais precisam de administração profissional. Vamos ver como você se sai! 🤓",
             disc: "Teste de Personalidade DISC",
             discDesc: "Descubra seu estilo de comunicação! Você é Dominante, Influente, Estável ou Consciencioso? Perfeito para entender dinâmicas de trabalho e relacionamento! 💼",
             conflict: "Avaliação de Estilo de Conflito",
@@ -753,11 +675,6 @@ const translations = {
             betterRelationships: "Relacionamentos Melhores",
             betterRelationshipsDesc: "Melhore a comunicação e o entendimento em relacionamentos pessoais e profissionais."
         },
-        blog: {
-            title: "Insights e Dicas de Psicologia 📚",
-            subtitle: "Aprenda sobre psicologia da personalidade, autoajuda e relacionamentos",
-            coming_soon: "Mais artigos e insights de psicologia em breve! ✨"
-        },
         footer: {
             description: "Descubra sua personalidade com testes cientificamente fundamentados que te entendem.",
             popularTests: "Testes Populares",
@@ -782,9 +699,9 @@ const translations = {
             logout: "ログアウト"
         },
         hero: {
-            title: "あなたの性格を見つけよう ✨",
-            subtitle: "科学的な性格テストで本当の自分を知ろう。MBTIからビッグファイブまで、あなたの個性を発見！🔥",
-            cta: "テストを始める"
+            title: "あなたの性格を発見 ✨",
+            subtitle: "科学的に裏付けられた性格テストで、本当のあなたを理解しましょう。MBTIからビッグファイブまで、あなたの個性を発見！🔥",
+            cta: "私の性格をチェック"
         },
         stats: {
             categories: "テストカテゴリー",
@@ -793,17 +710,17 @@ const translations = {
         },
         tests: {
             sectionTitle: "あなたの性格を発見 ✨",
-            sectionSubtitle: "どのテストがお気に入り？すべて科学的で楽しいよ！💫",
+            sectionSubtitle: "どのテストがあなたに合いますか？すべて科学的に裏付けられ、魅力的に設計されています！💫",
             disclaimer: "🎯 重要：娯楽と自己反省のみを目的としています",
             disclaimerText: "これらの評価は楽しみと自己反省のために設計されており、専門的な診断ではありません。メンタルヘルスのサポートが必要な場合は、認可された医療提供者にご相談ください。",
             mbti: "16の性格タイプ",
-            mbtiDesc: "定番の性格テスト！INTJの戦略家タイプかENFPの熱血タイプか？今すぐ発見しよう！💅",
+            mbtiDesc: "あなたを本当に理解する究極の性格テスト。INTJマスターマインドエネルギーかENFPゴールデンレトリバーバイブか？見つける時です！💅",
             bigfive: "ビッグファイブ性格テスト",
-            bigfiveDesc: "心理学者も認める本格テスト！あなたの5大性格特性を知ろう！🧠",
+            bigfiveDesc: "心理学教授が実際に承認する科学的裏付けのあるテスト。5つの主要特性であなたの性格分析を取得！🧠",
             eq: "感情知能（EQ）",
-            eqDesc: "自分や他人の感情をどのくらい理解してる？感情の超能力をテストしよう！💝",
+            eqDesc: "あなたは感情をどれくらい理解していますか？あなた自身と他者の？自己認識、共感、社会的スキルをテストしましょう！💝",
             iq: "脳力チャレンジ",
-            iqDesc: "楽しい脳トレパズル！お遊びだけど - 本格IQテストは心理士さんとやろうね。やってみよう！🤓",
+            iqDesc: "楽しい論理パズルと脳ゲーム！これは娯楽のみです - 本物のIQテストには専門的な管理が必要です。どうですか！🤓",
             disc: "DISC性格テスト",
             discDesc: "あなたのコミュニケーションスタイルを発見！支配的、影響力がある、安定している、慎重？仕事と人間関係の動力学を理解するのに最適！💼",
             conflict: "対立スタイル評価",
@@ -872,11 +789,6 @@ const translations = {
             betterRelationships: "より良い人間関係",
             betterRelationshipsDesc: "個人的および職業的な関係において、コミュニケーションと理解を向上させましょう。"
         },
-        blog: {
-            title: "心理学の洞察とヒント 📚",
-            subtitle: "パーソナリティ心理学、自己改善、人間関係の洞察について学ぶ",
-            coming_soon: "より多くの心理学記事と洞察が近日公開！ ✨"
-        },
         footer: {
             description: "あなたを理解する科学的に裏付けされたテストで性格を発見。",
             popularTests: "人気テスト",
@@ -901,9 +813,9 @@ const translations = {
             logout: "로그아웃"
         },
         hero: {
-            title: "나의 성격을 알아보세요 ✨",
-            subtitle: "과학적으로 검증된 성격 테스트로 진짜 나를 찾아보세요. MBTI부터 빅파이브까지, 나만의 특별함을 발견해보세요! 🔥",
-            cta: "내 성격 알아보기"
+            title: "당신의 성격을 발견하세요 ✨",
+            subtitle: "과학적으로 검증된 성격 테스트로 진정한 자신을 이해해보세요. MBTI부터 빅파이브까지, 당신만의 독특함을 발견하세요! 🔥",
+            cta: "내 성격 확인하기"
         },
         stats: {
             categories: "테스트 카테고리",
@@ -911,18 +823,18 @@ const translations = {
             available: "항상 이용 가능"
         },
         tests: {
-            sectionTitle: "나의 성격을 알아보세요 ✨",
-            sectionSubtitle: "어떤 테스트가 가장 궁금하신가요? 모든 테스트는 과학적으로 검증되었고 재미있게 설계되었어요! 💫",
-            disclaimer: "🎯 중요: 재미와 자기계발 목적으로만",
-            disclaimerText: "이 테스트들은 재미와 자기계발을 위한 것으로, 전문적인 진단 도구가 아닙니다. 전문적인 도움이 필요하시면 자격을 갖춘 전문가에게 상담받으세요.",
+            sectionTitle: "당신의 성격을 발견하세요 ✨",
+            sectionSubtitle: "어떤 테스트가 당신에게 어필하나요? 모든 테스트는 과학적으로 검증되고 매력적으로 설계되었습니다! 💫",
+            disclaimer: "🎯 중요: 오락과 자기성찰 목적으로만",
+            disclaimerText: "이 평가들은 재미와 자기성찰을 위해 설계되었으며, 전문적인 진단이 아닙니다. 정신건강 지원이 필요하시면 공인 의료 제공자에게 상담하세요.",
             mbti: "16가지 성격 유형",
-            mbtiDesc: "나를 정말로 알 수 있는 최고의 성격 테스트! INTJ 전략가 타입인가요, ENFP 활동가 타입인가요? 지금 바로 확인해보세요! 💅",
-            bigfive: "빅파이브 성격 검사",
-            bigfiveDesc: "심리학자들이 인정하는 과학적 성격 테스트예요. 5가지 핵심 성격 특성으로 나를 분석해보세요! 🧠",
+            mbtiDesc: "당신을 진정으로 이해하는 궁극의 성격 테스트. INTJ 마스터마인드 에너지인가요, ENFP 골든 리트리버 바이브인가요? 알아볼 시간입니다! 💅",
+            bigfive: "빅파이브 성격 테스트",
+            bigfiveDesc: "심리학 교수들이 실제로 승인하는 과학적 기반 테스트. 5가지 주요 특성에 대한 성격 분석을 받아보세요! 🧠",
             eq: "감성지능 (EQ)",
-            eqDesc: "내 감정과 다른 사람의 감정을 얼마나 잘 이해할까요? 자기인식, 공감능력, 사회적 기술을 확인해보세요! 💝",
-            iq: "두뇌 테스트",
-            iqDesc: "재미있는 논리 퍼즐과 두뇌 게임이에요! 단순히 재미를 위한 것으로, 실제 IQ 테스트는 전문가가 진행해야 해요. 도전해볼까요? 🤓",
+            eqDesc: "감정을 얼마나 잘 이해하시나요 - 당신 자신과 다른 사람들의? 자기 인식, 공감, 사회적 기술을 테스트해보세요! 💝",
+            iq: "두뇌 도전",
+            iqDesc: "재미있는 논리 퍼즐과 두뇌 게임! 이것은 오락용입니다 - 실제 IQ 테스트는 전문적 관리가 필요합니다. 어떻게 하실지 봅시다! 🤓",
             disc: "DISC 성격 테스트",
             discDesc: "당신의 의사소통 스타일을 발견하세요! 지배적, 영향력 있는, 안정적, 성실한 중 어느 것인가요? 업무와 관계 역학을 이해하는 데 완벽합니다! 💼",
             conflict: "갈등 스타일 평가",
@@ -941,10 +853,10 @@ const translations = {
             loveDesc: "사랑을 어떻게 주고받는지 발견하세요! 신체적 접촉, 격려의 말, 아니면 다른 것인가요? 커플에게 완벽합니다! 💖",
             pet: "당신의 성격에 맞는 애완동물은?",
             petDesc: "충성스러운 개, 독립적인 고양이, 장난기 많은 햄스터, 아니면 다른 것? 당신의 성격을 기반으로 완벽한 애완동물을 찾으세요! 🐱",
-            career: "나에게 맞는 직업은?",
-            careerDesc: "내 성격에 딱 맞는 직업을 찾아보세요! 리더형, 창작자형, 도움이형, 분석가형, 아니면 사업가형? 🚀",
-            relationship: "나만의 연애 스타일은?",
-            relationshipDesc: "나는 어떻게 사랑하고 사람들과 관계를 맺을까요? 내만의 특별한 연애 스타일과 매력포인트를 알아보세요! ✨",
+            career: "당신의 이상적인 커리어 경로는?",
+            careerDesc: "당신의 성격에 맞는 커리어를 발견하세요! 리더, 크리에이터, 도우미, 분석가, 아니면 기업가? 🚀",
+            relationship: "당신의 연애 스타일은?",
+            relationshipDesc: "어떻게 사랑하고 다른 사람들과 연결되나요? 당신만의 독특한 연애 스타일과 사랑에서 당신을 뜯보이게 하는 것을 발견하세요! ✨",
             buttons: {
                 discoverType: "내 유형 발견하기 ✨",
                 takeTest: "테스트 하기",
@@ -959,14 +871,14 @@ const translations = {
             }
         },
         couples: {
-            title: "커플 궁합 ❤️",
-            subtitle: "각자 테스트를 해보고, 연인과 함께 우리의 궁합과 관계 스타일을 알아보세요! 💕",
+            title: "커플 상성 ❤️",
+            subtitle: "개별적으로 테스트를 하고, 파트너와 연결하여 관계 역학과 상성 통찰력을 발견하세요! 💕",
             shareResults: "결과 공유하기",
             shareDesc: "어떤 테스트를 한 후에도 고유한 공유 ID를 받아 파트너와 연결하고 서로의 바이브를 비교하세요!",
             shareButton: "파트너와 연결하기",
-            compatibility: "궁합 분석",
-            compatibilityDesc: "우리의 관계 스타일과 소통 방식, 잘 맞는 부분과 성장할 부분을 자세히 알아보세요!",
-            compatibilityButton: "우리 궁합 보기",
+            compatibility: "상성 분석",
+            compatibilityDesc: "관계 역학, 소통 스타일, 조화나 성장 영역에 대한 상세한 통찰력을 얻으세요!",
+            compatibilityButton: "우리의 상성 보기",
             growth: "관계 성장",
             growthDesc: "둘 다의 성격 유형과 결과를 바탕으로 유대를 강화할 팁과 전략을 발견하세요!",
             growthButton: "함께 성장하기"
@@ -984,17 +896,12 @@ const translations = {
         },
         whyMatters: {
             title: "성격 테스트가 중요한 이유",
-            selfAwareness: "자기 이해",
-            selfAwarenessDesc: "내 성향과 강점, 성장할 부분을 알고 더 나은 인생 선택을 해보세요.",
-            careerDevelopment: "진로 개발",
-            careerDevelopmentDesc: "내 성격에 맞는 직업을 찾아 직업 만족도와 성공률을 높여보세요.",
-            betterRelationships: "더 좋은 관계",
-            betterRelationshipsDesc: "개인적이든 업무적이든 더 나은 소통과 이해로 관계를 개선해보세요."
-        },
-        blog: {
-            title: "심리학 인사이트 & 팁 📚",
-            subtitle: "성격 심리학, 자기계발, 관계에 대한 통찰력을 배워보세요",
-            coming_soon: "더 많은 심리학 기사와 인사이트가 곧 공개됩니다! ✨"
+            selfAwareness: "자기 인식",
+            selfAwarenessDesc: "자연스러운 성향, 강점, 성장 영역을 이해하여 더 나은 인생 결정을 내리세요.",
+            careerDevelopment: "직업 개발",
+            careerDevelopmentDesc: "성격에 맞는 직업 경로를 발견하여 직업 만족도와 성공을 높이세요.",
+            betterRelationships: "더 나은 관계",
+            betterRelationshipsDesc: "개인적이고 전문적인 관계에서 소통과 이해를 향상시키세요."
         },
         footer: {
             description: "당신을 이해하는 과학적으로 백업된 테스트로 성격을 발견하세요.",
@@ -1021,8 +928,8 @@ const translations = {
         },
         hero: {
             title: "发现你的个性 ✨",
-            subtitle: "做科学的个性测试，真正了解自己。从MBTI到大五人格，找到你的独特之处！🔥",
-            cta: "开始测试"
+            subtitle: "进行科学验证的个性测试，真正了解你自己。从MBTI到大五人格，发现你的独特之处！🔥",
+            cta: "查看我的个性"
         },
         stats: {
             categories: "测试类别",
@@ -1031,17 +938,17 @@ const translations = {
         },
         tests: {
             sectionTitle: "发现你的个性 ✨",
-            sectionSubtitle: "哪个测试你最感兴趣？所有都是科学的且超好玩！💫",
+            sectionSubtitle: "哪个测试吸引你？所有测试都经过科学验证，设计精美！💫",
             disclaimer: "🎯 重要：仅供娱乐和自我反思",
             disclaimerText: "这些评估是为了娱乐和自我反思而设计的，不是专业诊断。如果您需要心理健康支持，请咨询执照医疗提供者。",
             mbti: "16种人格类型",
-            mbtiDesc: "经典人格测试！你是INTJ策略家还是ENFP热情家？马上来看看！💅",
+            mbtiDesc: "真正理解你的终极人格测试。你是INTJ策划大师能量还是ENFP金毛猎犬氛围？是时候找出答案了！💅",
             bigfive: "大五人格测试",
-            bigfiveDesc: "连心理学家都在用的测试！了解你的5大人格特质！🧠",
+            bigfiveDesc: "心理学教授真正认可的科学测试。获得5个主要特征的人格分析！🧠",
             eq: "情商(EQ)",
-            eqDesc: "你多了解自己和别人的情绪？测试一下你的情商超能力！💝",
+            eqDesc: "你对情绪的理解有多好——你自己和他人的？测试你的自我意识、同理心和社交技巧！💝",
             iq: "大脑挑战",
-            iqDesc: "有趣的逻辑谜题和脑力游戏！只是玩玩 - 真正的IQ测试要找心理学家。来试试吧！🤓",
+            iqDesc: "有趣的逻辑谜题和大脑游戏！这只是为了娱乐——真正的智商测试需要专业管理。看看你表现如何！🤓",
             disc: "DISC人格测试",
             discDesc: "发现你的沟通风格！你是支配型、影响型、稳定型还是谨慎型？非常适合理解工作和关系动态！💼",
             conflict: "冲突风格评估",
@@ -1110,11 +1017,6 @@ const translations = {
             betterRelationships: "更好的关系",
             betterRelationshipsDesc: "在个人和职业关系中改善沟通和理解。"
         },
-        blog: {
-            title: "心理学洞察与技巧 📚",
-            subtitle: "学习人格心理学、自我提升和人际关系洞察",
-            coming_soon: "更多心理学文章和洞察即将推出！ ✨"
-        },
         footer: {
             description: "通过科学验证的测试发现您的个性，这些测试能够理解您。",
             popularTests: "热门测试",
@@ -1145,153 +1047,128 @@ function toggleLanguageDropdown() {
 }
 
 function changeLanguage(langCode) {
-    try {
-        console.log('🌍 Starting language change to:', langCode);
-        
-        // Validate language code
-        if (!translations[langCode]) {
-            console.error('❌ Invalid language code:', langCode);
-            return;
-        }
-        
-        // Update global language variable
-        currentLanguage = langCode;
-        console.log('🔄 Updated currentLanguage to:', currentLanguage);
-        
-        // Save preference immediately to prevent conflicts
-        try {
-            localStorage.setItem('preferredLanguage', langCode);
-            console.log('💾 Language preference saved:', langCode);
-            
-            // Verify it was saved
-            const saved = localStorage.getItem('preferredLanguage');
-            console.log('✅ Verified saved preference:', saved);
-        } catch (e) {
-            console.warn('Could not save language preference:', e);
-        }
-        
-        // Batch DOM updates for better performance
-        requestAnimationFrame(() => {
-            console.log('🔄 Applying language changes...');
-            const lang = translations[langCode];
-            updateTranslatedElements(lang);
-            updateLanguageVisualIndicators(langCode);
-            updateSpecificSections(lang);
-            console.log('✅ Language change completed for:', langCode);
-        });
-        
-    } catch (error) {
-        console.error('Error changing language:', error);
+    // Validate language code
+    if (!translations[langCode]) {
+        console.error('❌ Invalid language code:', langCode);
+        return;
     }
-}
-
-// Helper function to update translated elements
-function updateTranslatedElements(lang) {
+    
+    // Update global language variable
+    currentLanguage = langCode;
+    
+    // Save language preference immediately
+    localStorage.setItem('preferredLanguage', langCode);
+    
+    // Force update all translated elements
+    const lang = translations[langCode];
     const elements = document.querySelectorAll('[data-translate]');
     
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
-        if (!key) return;
+        const keys = key.split('.');
+        let value = lang;
         
-        const value = getNestedTranslation(lang, key);
-        if (value && element.textContent !== value) {
+        // Navigate through nested translation object
+        for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+        }
+        
+        if (value) {
             element.textContent = value;
         }
     });
-}
-
-// Optimized nested object access
-function getNestedTranslation(obj, key) {
-    return key.split('.').reduce((current, k) => current?.[k], obj);
-}
-
-// Update visual language indicators with CSS classes instead of inline styles
-function updateLanguageVisualIndicators(langCode) {
-    const flags = document.querySelectorAll('.flag-wrapper');
-    flags.forEach(flag => {
-        flag.classList.toggle('selected', flag.dataset.lang === langCode);
+    
+    // Update visual feedback for flags
+    document.querySelectorAll('.flag-wrapper').forEach(wrapper => {
+        wrapper.style.opacity = '0.7';
+        wrapper.style.transform = 'scale(1)';
     });
-}
-
-// Optimized page language update
-function updatePageLanguage() {
-    const lang = translations[currentLanguage];
-    if (!lang) return;
     
-    updateTranslatedElements(lang);
-    updateSpecificSections(lang);
-}
-
-// Update sections that don't use data-translate
-function updateSpecificSections(lang = translations[currentLanguage]) {
-    if (!lang) return;
+    // Highlight selected flag
+    const selectedFlag = document.querySelector(`[onclick="changeLanguage('${langCode}')"]`);
+    if (selectedFlag) {
+        selectedFlag.style.opacity = '1';
+        selectedFlag.style.transform = 'scale(1.1)';
+    }
     
+    // Force update other sections
     try {
-        updateHeroSection(lang);
-        updateStatsSection(lang);
+        updateHeroSection();
+        updateStatsSection();
     } catch (e) {
         console.warn('⚠️ Error updating additional sections:', e);
     }
 }
 
-function updateHeroSection(lang = translations[currentLanguage]) {
-    if (!lang?.hero) return;
+function updatePageLanguage() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
     
-    const elements = {
-        title: document.querySelector('.hero-title'),
-        subtitle: document.querySelector('.hero-subtitle'),
-        cta: document.querySelector('.cta-text')
-    };
-    
-    Object.entries(elements).forEach(([key, element]) => {
-        if (element && lang.hero[key]) {
-            element.textContent = lang.hero[key];
+    // Update all elements with data-translate attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const keys = key.split('.');
+        let value = lang;
+        
+        // Navigate through nested translation object
+        for (let k of keys) {
+            value = value[k];
+            if (!value) break;
+        }
+        
+        if (value) {
+            element.textContent = value;
         }
     });
+    
+    // Update specific elements that don't use data-translate
+    updateHeroSection();
+    updateStatsSection();
 }
 
-function updateStatsSection(lang = translations[currentLanguage]) {
-    if (!lang?.stats) return;
+function updateHeroSection() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
+    
+    const titleElement = document.querySelector('.hero-title');
+    const subtitleElement = document.querySelector('.hero-subtitle');
+    const ctaElement = document.querySelector('.cta-text');
+    
+    if (titleElement) titleElement.textContent = lang.hero.title;
+    if (subtitleElement) subtitleElement.textContent = lang.hero.subtitle;
+    if (ctaElement) ctaElement.textContent = lang.hero.cta;
+}
+
+function updateStatsSection() {
+    const lang = translations[currentLanguage];
+    if (!lang) return;
     
     const statLabels = document.querySelectorAll('.stat-label');
-    const statsKeys = ['categories', 'reliability', 'available'];
-    
-    statsKeys.forEach((key, index) => {
-        if (statLabels[index] && lang.stats[key]) {
-            statLabels[index].textContent = lang.stats[key];
-        }
-    });
+    if (statLabels.length >= 3) {
+        statLabels[0].textContent = lang.stats.categories;
+        statLabels[1].textContent = lang.stats.reliability;
+        statLabels[2].textContent = lang.stats.available;
+    }
 }
 
-// Initialize language from localStorage or browser preference - Optimized
+// Initialize language from localStorage or browser preference
 function initializeLanguage() {
-    try {
-        const supportedLangs = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
-        let initialLang = 'en';
-        
-        // Try saved language first
-        const savedLang = localStorage.getItem('preferredLanguage');
-        if (savedLang && supportedLangs.includes(savedLang)) {
-            initialLang = savedLang;
-        } else {
-            // Fallback to browser language
-            const browserLang = navigator.language?.split('-')[0];
-            if (browserLang && supportedLangs.includes(browserLang)) {
-                initialLang = browserLang;
-            }
-        }
-        
-        // Only change if different from default
-        if (initialLang !== 'en') {
-            changeLanguage(initialLang);
-        } else {
-            // Ensure English flag is marked as selected
-            updateLanguageVisualIndicators('en');
-        }
-        
-    } catch (error) {
-        console.warn('Error initializing language, falling back to English:', error);
-        updateLanguageVisualIndicators('en');
+    const savedLang = localStorage.getItem('preferredLanguage');
+    const browserLang = navigator.language.split('-')[0];
+    
+    // Use saved language, or browser language if supported, otherwise default to English
+    const supportedLangs = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh'];
+    let initialLang = 'en';
+    
+    if (savedLang && supportedLangs.includes(savedLang)) {
+        initialLang = savedLang;
+    } else if (supportedLangs.includes(browserLang)) {
+        initialLang = browserLang;
+    }
+    
+    if (initialLang !== 'en') {
+        changeLanguage(initialLang);
     }
 }
 
@@ -4092,10 +3969,10 @@ function showAnxietyResults(result) {
                 <p style="margin-bottom: 1rem;"><strong>This is a fun self-reflection tool, NOT a mental health assessment!</strong> Only licensed mental health professionals can diagnose anxiety disorders.</p>
                 <p style="margin-bottom: 1rem;"><strong>If you're struggling with anxiety, stress, or worry, please reach out:</strong></p>
                 <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
-                    <li><strong>Licensed therapist or counselor in your area</strong></li>
-                    <li><strong>Your local healthcare provider</strong></li>
-                    <li><strong>Local mental health crisis services</strong></li>
-                    <li><strong>Emergency services if in immediate danger</strong></li>
+                    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                    <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
+                    <li><strong>Licensed therapist or counselor</strong></li>
+                    <li><strong>Your healthcare provider</strong></li>
                 </ul>
                 <p style="margin-bottom: 0;">You deserve support and care. This quiz is just for fun - not medical advice! 💝</p>
             </div>
@@ -4104,7 +3981,7 @@ function showAnxietyResults(result) {
         ${addLoginPromptToResults()}
         
         <div class="crisis-info" style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px; margin-top: 2rem;">
-            <p><strong>Crisis Support:</strong> If you're in crisis, please contact local emergency services or your nearest emergency room.</p>
+            <p><strong>Crisis Support:</strong> If you're in crisis, please reach out to the 988 Suicide & Crisis Lifeline (call or text 988) or go to your nearest emergency room.</p>
         </div>
     `;
     
@@ -4153,10 +4030,11 @@ function showDepressionResults(result) {
                 <p style="margin-bottom: 1rem;"><strong>This is for entertainment and self-reflection only - NOT a clinical assessment!</strong> Only licensed mental health professionals can diagnose depression or mood disorders.</p>
                 <p style="margin-bottom: 1rem;"><strong>If you're struggling with your mood or mental health, please seek support:</strong></p>
                 <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
-                    <li><strong>Licensed therapist, counselor, or psychologist in your area</strong></li>
+                    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                    <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
+                    <li><strong>Licensed therapist, counselor, or psychologist</strong></li>
                     <li><strong>Your primary care physician</strong></li>
-                    <li><strong>Local mental health crisis services</strong></li>
-                    <li><strong>Emergency services if in immediate danger</strong></li>
+                    <li><strong>Mental health crisis center</strong></li>
                 </ul>
                 <p style="margin-bottom: 0;"><strong>You matter and you deserve support.</strong> This quiz cannot replace professional care! 💚</p>
             </div>
@@ -4167,9 +4045,9 @@ function showDepressionResults(result) {
         <div class="crisis-info" style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px; margin-top: 2rem;">
             <p><strong>Crisis Support:</strong> If you're having thoughts of self-harm, please reach out immediately:</p>
             <ul>
-                <li>Contact local emergency services or crisis hotlines</li>
+                <li>988 Suicide & Crisis Lifeline: Call or text 988</li>
+                <li>Crisis Text Line: Text HOME to 741741</li>
                 <li>Go to your nearest emergency room</li>
-                <li>Call emergency services (911, 112, etc. depending on your country)</li>
             </ul>
         </div>
     `;
@@ -5550,18 +5428,22 @@ document.head.insertAdjacentHTML('beforeend', additionalCSS);
 // User Management System
 let currentUser = null;
 
-// Initialize user system on page load - SINGLE INITIALIZATION POINT  
+// Initialize user system on page load - SINGLE INITIALIZATION POINT
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 SINGLE INITIALIZATION STARTING...');
     
-    // DISABLE AUTOMATIC LANGUAGE INITIALIZATION TO PREVENT CONFLICTS
     // Load saved language preference (ignore browser language to prevent Chinese flashing)
     const savedLanguage = localStorage.getItem('preferredLanguage');
     console.log('📱 Saved language:', savedLanguage);
     
-    // TEMPORARILY DISABLED - Let languages be purely manual
-    console.log('⚠️ Language initialization DISABLED to prevent conflicts');
-    console.log('🕰️ Languages will only change via manual flag clicks');
+    // Only use saved language preference, default to English to prevent auto-detection issues
+    if (savedLanguage && translations[savedLanguage]) {
+        console.log('✅ Using saved language:', savedLanguage);
+        changeLanguage(savedLanguage);
+    } else {
+        console.log('✅ Using default language: en');
+        changeLanguage('en');
+    }
     
     // Initialize user authentication
     checkUserLogin();
