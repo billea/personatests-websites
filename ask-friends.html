@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Who Knows Me Best - PersonaTests</title>
+    <meta name="description" content="Ever wonder what your friends really think about your personality, style, or quirks? Create personalized questions and get surprising answers!">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense Verification Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4191191359538611"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        /* Ask Friends Feature Styles */
+        .ask-friends-main {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+        }
+        
+        .ask-friends-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Hero Section */
+        .ask-friends-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .ask-friends-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ask-friends-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .viral-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Question Creator */
+        .question-creator {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .creator-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .tab-button {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: #64748b;
+        }
+        
+        .tab-button.active {
+            color: #4f46e5;
+            border-bottom-color: #4f46e5;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Question Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            border-color: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
+        }
+        
+        .category-card.selected {
+            border-color: #4f46e5;
+            background: #eef2ff;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-desc {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* Question Builder */
+        .question-builder {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .question-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .question-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+        
+        .question-suggestions {
+            margin-bottom: 1.5rem;
+        }
+        
+        .suggestion-chip {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.25rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .suggestion-chip:hover {
+            background: #c7d2fe;
+        }
+        
+        /* Question List */
+        .question-list {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .question-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .question-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .question-text {
+            flex: 1;
+            color: #1e293b;
+        }
+        
+        .question-category-tag {
+            background: #4f46e5;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0 1rem;
+        }
+        
+        .remove-btn {
+            color: #ef4444;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+        }
+        
+        .remove-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: scale(1.1);
+            color: #dc2626;
+        }
+        
+        /* Enhanced Question Item Styling */
+        .question-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .question-item:hover {
+            border-color: #4f46e5;
+            background: #f8fafc;
+        }
+        
+        .question-content {
+            flex: 1;
+            margin-right: 1rem;
+        }
+        
+        .question-text {
+            font-size: 1rem;
+            color: #1e293b;
+            line-height: 1.4;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+        
+        .question-text:hover {
+            background: #f0f4ff;
+            color: #4f46e5;
+        }
+        
+        .question-edit-input {
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+        }
+        
+        .question-edit-input:focus {
+            outline: none;
+            border-color: #4f46e5 !important;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .question-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .edit-btn {
+            color: #4f46e5;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            background: rgba(79, 70, 229, 0.1);
+            border: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+        }
+        
+        .edit-btn:hover {
+            background: rgba(79, 70, 229, 0.2);
+            transform: scale(1.1);
+            color: #3730a3;
+        }
+        
+        .question-category-tag {
+            background: #4f46e5;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0 1rem;
+            white-space: nowrap;
+        }
+        
+        /* Share Section */
+        .share-section {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .share-url {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: white;
+            font-family: monospace;
+            user-select: all;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .share-btn.primary {
+            background: white;
+            color: #4f46e5;
+        }
+        
+        .share-btn.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* NUCLEAR OPTION: Force hide ALL desktop language elements */
+            .desktop-language-flags,
+            .desktop-language-flags *,
+            div[style*="display: flex"],
+            div[style*="gap: 12px"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -99999px !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+            
+            /* Consistent 56px mobile header */
+            .header {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+            }
+            
+            .nav {
+                height: 56px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .nav-container {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem !important;
+                line-height: 1.2 !important;
+                font-weight: 800 !important;
+                color: white !important;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+            }
+            
+            /* Show hamburger menu on mobile */
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            /* Hide desktop menu on mobile */
+            .nav-menu {
+                display: none !important;
+            }
+            
+            .nav-menu.active {
+                display: flex !important;
+            }
+            
+            /* Optimized body padding */
+            body {
+                padding-top: 56px !important;
+                padding-bottom: 60px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
+            .ask-friends-main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 140px) !important;
+            }
+            
+            .ask-friends-container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            .ask-friends-hero h1 {
+                font-size: 2rem !important;
+            }
+            
+            .ask-friends-hero p {
+                font-size: 1rem !important;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .creator-tabs {
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+            }
+            
+            .tab-button {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .share-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .share-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
+                </div>
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tests">Tests</a></li>
+                    <li><a href="ask-friends.html" class="active">See Who Knows Me Best</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="ask-friends-main">
+        <div class="ask-friends-container">
+            
+            <!-- Hero Section -->
+            <div class="ask-friends-hero">
+                <div class="viral-badge" data-translate="tests.askfriends.viralBadge">💭 CURIOSITY GAME</div>
+                <h1 data-translate="tests.askfriends.heroTitle">See Who Knows Me Best 🧩</h1>
+                <p data-translate="tests.askfriends.heroSubtitle">Create questions about yourself, provide YOUR answers, then see who knows you best! Friends will try to match your answers and get scored on how well they know you.</p>
+            </div>
+
+            <!-- Question Creator -->
+            <div class="question-creator">
+                <div class="creator-tabs">
+                    <button class="tab-button active" onclick="switchTab('categories')" data-translate="tests.askfriends.categoryTab">📋 Categories</button>
+                    <button class="tab-button" onclick="switchTab('custom')" data-translate="tests.askfriends.customTab">🎨 Custom Questions</button>
+                    <button class="tab-button" onclick="switchTab('preview')">👀 Preview</button>
+                </div>
+                
+                <!-- Categories Tab -->
+                <div id="categories-tab" class="tab-content active">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;" data-translate="tests.askfriends.categoriesTitle">What do you want to know about yourself?</h3>
+                    <div class="category-grid">
+                        <div class="category-card" onclick="selectCategory('music')" data-category="music">
+                            <div class="category-icon">🎵</div>
+                            <div class="category-title">Music & Entertainment</div>
+                            <div class="category-desc">Songs, movies, shows you love</div>
+                        </div>
+                        <div class="category-card" onclick="selectCategory('food')" data-category="food">
+                            <div class="category-icon">🍕</div>
+                            <div class="category-title">Food & Lifestyle</div>
+                            <div class="category-desc">Favorite foods, restaurants, habits</div>
+                        </div>
+                        <div class="category-card" onclick="selectCategory('personality')" data-category="personality">
+                            <div class="category-icon">🧠</div>
+                            <div class="category-title">Personality Traits</div>
+                            <div class="category-desc">How others see your personality</div>
+                        </div>
+                        <div class="category-card" onclick="selectCategory('style')" data-category="style">
+                            <div class="category-icon">👗</div>
+                            <div class="category-title">Style & Fashion</div>
+                            <div class="category-desc">Your fashion sense and style</div>
+                        </div>
+                        <div class="category-card" onclick="selectCategory('social')" data-category="social">
+                            <div class="category-icon">👥</div>
+                            <div class="category-title">Social & Relationships</div>
+                            <div class="category-desc">How you interact with others</div>
+                        </div>
+                        <div class="category-card" onclick="selectCategory('hobbies')" data-category="hobbies">
+                            <div class="category-icon">🎨</div>
+                            <div class="category-title">Hobbies & Interests</div>
+                            <div class="category-desc">Your passions and activities</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Custom Questions Tab -->
+                <div id="custom-tab" class="tab-content">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;" data-translate="tests.askfriends.customInstructions">Create your own personalized questions that you're curious about!</h3>
+                    <div class="question-builder">
+                        <input type="text" class="question-input" id="customQuestion" data-translate-placeholder="tests.askfriends.customPlaceholder" placeholder="What's something you're curious to know about yourself?">
+                        <div class="question-suggestions">
+                            <p style="color: #64748b; margin-bottom: 1rem; font-weight: bold;">💡 Question Ideas:</p>
+                            <span class="suggestion-chip" onclick="useQuestion('What song reminds you of me?')">What song reminds you of me?</span>
+                            <span class="suggestion-chip" onclick="useQuestion('What superpower would suit me best?')">What superpower would suit me best?</span>
+                            <span class="suggestion-chip" onclick="useQuestion('What movie character am I most like?')">What movie character am I most like?</span>
+                            <span class="suggestion-chip" onclick="useQuestion('What would I be famous for?')">What would I be famous for?</span>
+                            <span class="suggestion-chip" onclick="useQuestion('What is my biggest strength?')">What is my biggest strength?</span>
+                            <span class="suggestion-chip" onclick="useQuestion('What animal represents my personality?')">What animal represents my personality?</span>
+                        </div>
+                        <button onclick="addCustomQuestion()" style="background: #4f46e5; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer;" data-translate="tests.askfriends.addCustomQuestion">
+                            Add Question ➕
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Preview Tab -->
+                <div id="preview-tab" class="tab-content">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;">Your Question Set</h3>
+                    <div class="question-list" id="questionList">
+                        <p style="color: #64748b; text-align: center; font-style: italic;">Select categories or add custom questions to see them here!</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button id="generateBtn" class="cta-button" onclick="console.log('🔴 BUTTON CLICKED!'); generateQuestionSet(); return false;" style="background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);" data-translate="tests.askfriends.createButton">
+                            Create My Question Set 🚀
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Share Section (Initially Hidden) -->
+            <div id="shareSection" class="share-section" style="display: none;">
+                <h2 style="margin-bottom: 1rem;" data-translate="tests.askfriends.questionSetReady">🎉 Your Question Set is Ready!</h2>
+                <p style="margin-bottom: 1.5rem;" data-translate="tests.askfriends.shareInstructions">Share this link with your friends and see what they think about you!</p>
+                
+                <div class="share-url" id="shareUrl">
+                    https://personatests.com/answer/abc123
+                </div>
+                
+                <div class="share-buttons">
+                    <button class="share-btn primary" onclick="copyLink()" data-translate="tests.askfriends.copyLink">
+                        📋 Copy Link
+                    </button>
+                    <button class="share-btn secondary" onclick="shareWithEmail()" data-translate="tests.askfriends.emailFriend">
+                        📧 Email Friend
+                    </button>
+                    <button class="share-btn secondary" onclick="quickShare()" style="background: #3b82f6; color: white;" data-translate="tests.askfriends.quickShare">
+                        🚀 Quick Share
+                    </button>
+                    <a href="#" class="share-btn secondary" id="whatsappShare" data-translate="tests.askfriends.whatsappShare">
+                        💬 WhatsApp
+                    </a>
+                    <a href="#" class="share-btn secondary" id="twitterShare" data-translate="tests.askfriends.twitterShare">
+                        🐦 Twitter
+                    </a>
+                    <a href="#" class="share-btn secondary" id="facebookShare" data-translate="tests.askfriends.facebookShare">
+                        📘 Facebook
+                    </a>
+                    <a href="results-dashboard.html" class="share-btn secondary">
+                        📊 View Results
+                    </a>
+                </div>
+                
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 12px;">
+                    <h4 style="margin-bottom: 1rem;" data-translate="tests.askfriends.trackResultsTitle">📊 Track Your Results</h4>
+                    <p style="margin-bottom: 1rem; opacity: 0.9;" data-translate="tests.askfriends.trackResultsDesc">Your friends' responses will be collected here. We'll email you when someone answers!</p>
+                    <input type="text" data-translate-placeholder="tests.askfriends.namePlaceholder" placeholder="Your name (optional)" style="width: 100%; padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: white; margin-bottom: 1rem;" id="creatorName">
+                    <input type="email" data-translate-placeholder="tests.askfriends.emailPlaceholder" placeholder="Your email for notifications" style="width: 100%; padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: white; margin-bottom: 1rem;" id="creatorEmail">
+                    <button onclick="saveCreatorEmail()" style="background: white; color: #4f46e5; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;">
+                        Save & Start Tracking 📧
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer style="background: #1e293b; color: white; padding: 2rem 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Ask Friends Feature JavaScript
+        let selectedCategories = [];
+        let customQuestions = [];
+        let questionSetId = null; // Global variable for the created question set ID
+        let questionDatabase = {
+            music: [
+                "What song describes my personality?",
+                "What genre of music fits me best?", 
+                "What artist would I collaborate with?",
+                "What would be my walk-on song?",
+                "What music era do I belong in?"
+            ],
+            food: [
+                "What food am I most like?",
+                "What would I order at a restaurant?",
+                "What's my comfort food?",
+                "What cuisine matches my personality?",
+                "What would I bring to a potluck?"
+            ],
+            personality: [
+                "What's my biggest strength?",
+                "What superpower would I have?",
+                "What's my spirit animal?",
+                "What movie character am I like?",
+                "What's my most unique trait?"
+            ],
+            style: [
+                "How would you describe my style?",
+                "What color represents me?",
+                "What fashion era suits me?",
+                "What would be my signature accessory?",
+                "What outfit would I wear to an event?"
+            ],
+            social: [
+                "What role do I play in our friend group?",
+                "How do I make others feel?",
+                "What's my social superpower?",
+                "What kind of friend am I?",
+                "How do I handle conflicts?"
+            ],
+            hobbies: [
+                "What hobby should I try next?",
+                "What would I be passionate about?",
+                "What skill would I master quickly?",
+                "What creative outlet suits me?",
+                "What adventure would I love?"
+            ]
+        };
+        
+        function switchTab(tabName) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+            document.getElementById(tabName + '-tab').style.display = 'block';
+            
+            if (tabName === 'preview') {
+                updateQuestionPreview();
+            }
+        }
+        
+        function selectCategory(category) {
+            const card = document.querySelector(`[data-category="${category}"]`);
+            
+            if (selectedCategories.includes(category)) {
+                // Deselect
+                selectedCategories = selectedCategories.filter(c => c !== category);
+                card.classList.remove('selected');
+            } else {
+                // Select
+                selectedCategories.push(category);
+                card.classList.add('selected');
+            }
+            
+            updateQuestionPreview();
+        }
+        
+        function useQuestion(question) {
+            document.getElementById('customQuestion').value = question;
+        }
+        
+        function addCustomQuestion() {
+            const questionInput = document.getElementById('customQuestion');
+            const question = questionInput.value.trim();
+            
+            if (question && !customQuestions.includes(question)) {
+                customQuestions.push(question);
+                questionInput.value = '';
+                updateQuestionPreview();
+                
+                // Switch to preview tab
+                switchTab('preview');
+                document.querySelector('[onclick="switchTab(\'preview\')"]').classList.add('active');
+            }
+        }
+        
+        // Store individual questions from categories to allow granular editing
+        let individualQuestions = [];
+        let removedCategoryQuestions = []; // Track individually removed category questions
+        
+        // Function to save user's answer for a question
+        function saveUserAnswer(index, answer) {
+            console.log(`💾 Saving user answer for question ${index}:`, answer);
+            if (index >= 0 && index < individualQuestions.length) {
+                individualQuestions[index].userAnswer = answer.trim();
+                console.log(`✅ User answer saved:`, individualQuestions[index]);
+            }
+        }
+        
+        function updateQuestionPreview() {
+            const questionList = document.getElementById('questionList');
+            
+            // Save current user answers before rebuilding
+            const savedAnswers = {};
+            individualQuestions.forEach(q => {
+                if (q.userAnswer) {
+                    savedAnswers[`${q.text}_${q.category}_${q.type}`] = q.userAnswer;
+                }
+            });
+            
+            // Rebuild individual questions array from selected categories
+            individualQuestions = [];
+            
+            // Add category questions (3 per category) but exclude individually removed ones
+            selectedCategories.forEach(category => {
+                const categoryQuestions = questionDatabase[category].slice(0, 3);
+                categoryQuestions.forEach(question => {
+                    // Check if this specific question was individually removed
+                    const isRemoved = removedCategoryQuestions.some(removed => 
+                        removed.text === question && removed.category === category
+                    );
+                    
+                    if (!isRemoved) {
+                        const answerKey = `${question}_${category}_category`;
+                        individualQuestions.push({
+                            text: question,
+                            category: category,
+                            type: 'category',
+                            id: `${category}_${individualQuestions.length}`,
+                            userAnswer: savedAnswers[answerKey] || ''
+                        });
+                    }
+                });
+            });
+            
+            // Add custom questions
+            customQuestions.forEach(question => {
+                const answerKey = `${question}_custom_custom`;
+                individualQuestions.push({
+                    text: question,
+                    category: 'custom',
+                    type: 'custom',
+                    id: `custom_${individualQuestions.length}`,
+                    userAnswer: savedAnswers[answerKey] || ''
+                });
+            });
+            
+            // Generate HTML for all questions
+            let questionsHtml = '';
+            
+            if (individualQuestions.length === 0) {
+                questionsHtml = '<p style="color: #64748b; text-align: center; font-style: italic;">Select categories or add custom questions to see them here!</p>';
+            } else {
+                // Add header with total count and add button
+                questionsHtml += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                        <div style="color: #64748b; font-weight: bold;">
+                            📝 ${individualQuestions.length} Questions Ready
+                        </div>
+                        <button onclick="addQuestionFromPreview()" style="background: #4f46e5; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; cursor: pointer;">
+                            ➕ Add Question
+                        </button>
+                    </div>
+                `;
+                
+                // Add each question with edit capabilities and user answer input
+                individualQuestions.forEach((q, index) => {
+                    // Escape HTML entities to prevent issues
+                    const escapedText = q.text.replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+                    const userAnswer = q.userAnswer || '';
+                    const escapedUserAnswer = userAnswer.replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+                    
+                    questionsHtml += `
+                        <div class="question-item" id="question_${index}" style="flex-direction: column; align-items: stretch; padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div class="question-content" style="flex: 1; margin-right: 1rem;">
+                                    <div class="question-text" id="text_${index}" onclick="editQuestion(${index})" style="cursor: pointer;" title="Click to edit">
+                                        ${q.text}
+                                    </div>
+                                    <input type="text" class="question-edit-input" id="edit_${index}" value="${escapedText}" style="display: none; width: 100%; padding: 0.5rem; border: 2px solid #4f46e5; border-radius: 4px; font-size: 1rem;" onblur="saveQuestionEdit(${index})" onkeypress="handleEditKeypress(event, ${index})">
+                                </div>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <span class="question-category-tag">${q.category}</span>
+                                    <button class="edit-btn" onclick="editQuestion(${index})" title="Edit question" type="button">✏️</button>
+                                    <button class="remove-btn" onclick="console.log('🔴 Button clicked for index:', ${index}); removeIndividualQuestion(${index}); return false;" title="Remove question" type="button">🗑️</button>
+                                </div>
+                            </div>
+                            <div class="user-answer-section" style="background: #f8fafc; border-radius: 8px; padding: 1rem; border-left: 4px solid #4f46e5;">
+                                <label style="display: block; color: #4f46e5; font-weight: bold; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                    🎯 Your Answer (so friends can try to match it):
+                                </label>
+                                <input type="text" class="user-answer-input" id="userAnswer_${index}" value="${escapedUserAnswer}" 
+                                       placeholder="What's your actual answer to this question?" 
+                                       style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 1rem; box-sizing: border-box;" 
+                                       oninput="saveUserAnswer(${index}, this.value)" 
+                                       title="Enter your real answer - friends will try to guess this!">
+                                <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.5rem;">
+                                    💡 Friends will see this question and try to guess your answer. The more they match, the better they know you!
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            questionList.innerHTML = questionsHtml;
+        }
+        
+        // New enhanced functions for individual question management
+        function removeIndividualQuestion(index) {
+            console.log('🗑️ removeIndividualQuestion called with index:', index);
+            console.log('individualQuestions array length:', individualQuestions.length);
+            
+            if (index < 0 || index >= individualQuestions.length) {
+                console.error('❌ Invalid index:', index, 'Array length:', individualQuestions.length);
+                return;
+            }
+            
+            const question = individualQuestions[index];
+            console.log('🎯 Removing question:', question);
+            
+            if (question.type === 'custom') {
+                // Remove from custom questions array
+                const oldLength = customQuestions.length;
+                customQuestions = customQuestions.filter(q => q !== question.text);
+                console.log('✅ Custom question removed. Old length:', oldLength, 'New length:', customQuestions.length);
+            } else if (question.type === 'category') {
+                // Add to removed category questions list
+                removedCategoryQuestions.push({
+                    text: question.text,
+                    category: question.category
+                });
+                console.log('✅ Category question marked as removed:', question.text);
+                console.log('📝 Total removed category questions:', removedCategoryQuestions.length);
+            }
+            
+            // Always update the preview to reflect changes
+            updateQuestionPreview();
+            console.log('🔄 Preview updated');
+        }
+        
+        function addQuestionFromPreview() {
+            const newQuestion = prompt('Enter your new question:');
+            if (newQuestion && newQuestion.trim() !== '') {
+                const trimmedQuestion = newQuestion.trim();
+                if (!customQuestions.includes(trimmedQuestion)) {
+                    customQuestions.push(trimmedQuestion);
+                    updateQuestionPreview();
+                } else {
+                    alert('This question already exists in your list!');
+                }
+            }
+        }
+        
+        function editQuestion(index) {
+            const textElement = document.getElementById(`text_${index}`);
+            const editElement = document.getElementById(`edit_${index}`);
+            
+            if (textElement && editElement) {
+                textElement.style.display = 'none';
+                editElement.style.display = 'block';
+                editElement.focus();
+                editElement.select();
+            }
+        }
+        
+        function saveQuestionEdit(index) {
+            const textElement = document.getElementById(`text_${index}`);
+            const editElement = document.getElementById(`edit_${index}`);
+            const newText = editElement.value.trim();
+            
+            if (newText === '') {
+                alert('Question cannot be empty!');
+                editElement.focus();
+                return;
+            }
+            
+            // Update the question text
+            const question = individualQuestions[index];
+            if (question.type === 'custom') {
+                // Update in custom questions array
+                const oldText = question.text;
+                const customIndex = customQuestions.indexOf(oldText);
+                if (customIndex !== -1) {
+                    customQuestions[customIndex] = newText;
+                }
+            } else {
+                // For category questions, add as custom question
+                if (!customQuestions.includes(newText)) {
+                    customQuestions.push(newText);
+                }
+            }
+            
+            // Hide edit input and show text
+            editElement.style.display = 'none';
+            textElement.style.display = 'block';
+            
+            // Update the display
+            updateQuestionPreview();
+        }
+        
+        function handleEditKeypress(event, index) {
+            if (event.key === 'Enter') {
+                saveQuestionEdit(index);
+            } else if (event.key === 'Escape') {
+                // Cancel edit
+                const textElement = document.getElementById(`text_${index}`);
+                const editElement = document.getElementById(`edit_${index}`);
+                editElement.style.display = 'none';
+                textElement.style.display = 'block';
+            }
+        }
+        
+        // Legacy functions (kept for compatibility but improved)
+        function removeQuestion(question, category) {
+            selectedCategories = selectedCategories.filter(c => c !== category);
+            const categoryCard = document.querySelector(`[data-category="${category}"]`);
+            if (categoryCard) {
+                categoryCard.classList.remove('selected');
+            }
+            updateQuestionPreview();
+        }
+        
+        function removeCustomQuestion(question) {
+            customQuestions = customQuestions.filter(q => q !== question);
+            updateQuestionPreview();
+        }
+        
+        async function generateQuestionSet() {
+            console.log('🚀=== GENERATE QUESTION SET DEBUG START ===');
+            console.log('⏰ Timestamp:', new Date().toISOString());
+            console.log('🌐 User Agent:', navigator.userAgent);
+            console.log('🔗 Current URL:', window.location.href);
+            
+            // Step 0: Simple Firebase check
+            console.log('🚩 STEP 0: Checking Firebase...');
+            if (typeof firebase === 'undefined' || !firebase.apps || !firebase.apps.length) {
+                console.error('❌ STEP 0 FAILED: Firebase not available');
+                alert('Firebase is not initialized. Please refresh the page and try again.');
+                return;
+            }
+            
+            if (!socialFirebase || !socialFirebase.isInitialized) {
+                console.error('❌ STEP 0 FAILED: SocialFirebase not available');
+                alert('SocialFirebase service is not ready. Please refresh the page and try again.');
+                return;
+            }
+            
+            console.log('✅ STEP 0 COMPLETE: Firebase and SocialFirebase ready!');
+            
+            // Step 1: Validate input data
+            console.log('📊 STEP 1: Validating input data...');
+            console.log('📋 selectedCategories:', JSON.stringify(selectedCategories, null, 2));
+            console.log('📝 customQuestions:', JSON.stringify(customQuestions, null, 2));
+            console.log('📄 individualQuestions count:', individualQuestions.length);
+            console.log('🗑️ removedCategoryQuestions count:', removedCategoryQuestions.length);
+            console.log('📄 individualQuestions full data:', JSON.stringify(individualQuestions, null, 2));
+            
+            if (selectedCategories.length === 0 && customQuestions.length === 0) {
+                console.log('❌ VALIDATION FAILED: No categories or custom questions selected');
+                alert('Please select at least one category or add a custom question!');
+                return;
+            }
+            
+            // Check if user has provided answers for the questions
+            const questionsWithoutAnswers = individualQuestions.filter(q => !q.userAnswer || q.userAnswer.trim() === '');
+            if (questionsWithoutAnswers.length > 0) {
+                console.log('❌ VALIDATION FAILED: Missing user answers');
+                console.log('Questions without answers:', questionsWithoutAnswers.map(q => q.text));
+                alert(`Please provide your answers for all questions!\n\nMissing answers for:\n${questionsWithoutAnswers.map(q => `• ${q.text}`).join('\n')}\n\nYour friends need to know what they're trying to guess! 🎯`);
+                return;
+            }
+            console.log('✅ STEP 1 COMPLETE: Input validation passed');
+            
+            // Step 2: Find and prepare UI elements
+            console.log('🎯 STEP 2: Preparing UI elements...');
+            const generateBtn = document.getElementById('generateBtn') || document.querySelector('.cta-button');
+            if (!generateBtn) {
+                console.error('❌ CRITICAL ERROR: Generate button not found!');
+                console.log('🔍 Available buttons:', document.querySelectorAll('button'));
+                console.log('🔍 Available elements with generateBtn ID:', document.getElementById('generateBtn'));
+                console.log('🔍 Available elements with cta-button class:', document.querySelector('.cta-button'));
+                alert('Error: Generate button not found. Please refresh the page.');
+                return;
+            }
+            
+            console.log('✅ Generate button found:', generateBtn);
+            console.log('🏷️ Button ID:', generateBtn.id);
+            console.log('🏷️ Button classes:', generateBtn.className);
+            console.log('📝 Button text:', generateBtn.innerHTML);
+            
+            const originalText = generateBtn.innerHTML;
+            try {
+                generateBtn.innerHTML = '⏳ Creating your questions...';
+                generateBtn.disabled = true;
+                console.log('✅ STEP 2 COMPLETE: UI state updated');
+            } catch (uiError) {
+                console.error('❌ UI Error:', uiError);
+                throw new Error('Failed to update UI: ' + uiError.message);
+            }
+            
+            try {
+                // Step 3: Gather creator information
+                console.log('👤 STEP 3: Gathering creator information...');
+                let creatorName, creatorEmail;
+                try {
+                    const creatorNameElement = document.getElementById('creatorName');
+                    const creatorEmailElement = document.getElementById('creatorEmail');
+                    
+                    console.log('🔍 Creator name element:', creatorNameElement);
+                    console.log('🔍 Creator email element:', creatorEmailElement);
+                    
+                    creatorName = creatorNameElement?.value?.trim() || 'Anonymous';
+                    creatorEmail = creatorEmailElement?.value?.trim() || '';
+                    
+                    console.log('👤 Creator name:', creatorName);
+                    console.log('📧 Creator email:', creatorEmail ? creatorEmail : '(not provided)');
+                    console.log('✅ STEP 3 COMPLETE: Creator info gathered');
+                } catch (creatorError) {
+                    console.error('❌ Error gathering creator info:', creatorError);
+                    creatorName = 'Anonymous';
+                    creatorEmail = '';
+                    console.log('⚠️ Using fallback creator info');
+                }
+                
+                // Step 4: Process questions data
+                console.log('📝 STEP 4: Processing questions data...');
+                const finalCategoryQuestions = [];
+                const finalCustomQuestions = [];
+                
+                try {
+                    console.log('🔄 Processing individual questions...');
+                    individualQuestions.forEach((q, index) => {
+                        console.log(`📋 Processing question ${index + 1}:`, JSON.stringify(q, null, 2));
+                        if (q.type === 'category') {
+                            finalCategoryQuestions.push({
+                                text: q.text,
+                                category: q.category,
+                                userAnswer: q.userAnswer || ''
+                            });
+                            console.log(`✅ Added category question: ${q.text} (User answer: ${q.userAnswer || 'none'})`);
+                        } else if (q.type === 'custom') {
+                            finalCustomQuestions.push({
+                                text: q.text,
+                                userAnswer: q.userAnswer || ''
+                            });
+                            console.log(`✅ Added custom question: ${q.text} (User answer: ${q.userAnswer || 'none'})`);
+                        } else {
+                            console.warn(`⚠️ Unknown question type: ${q.type}`);
+                        }
+                    });
+                    
+                    console.log('📊 Final category questions:', JSON.stringify(finalCategoryQuestions, null, 2));
+                    console.log('📊 Final custom questions:', JSON.stringify(finalCustomQuestions, null, 2));
+                    console.log('✅ STEP 4 COMPLETE: Questions processed');
+                } catch (processingError) {
+                    console.error('❌ Error processing questions:', processingError);
+                    throw new Error('Failed to process questions: ' + processingError.message);
+                }
+                
+                // Step 5: Create data payload
+                console.log('📦 STEP 5: Creating data payload...');
+                let questionSetData;
+                try {
+                    questionSetData = {
+                        creatorName: creatorName,
+                        creatorEmail: creatorEmail,
+                        categories: selectedCategories,
+                        customQuestions: finalCustomQuestions,
+                        individualCategoryQuestions: finalCategoryQuestions,
+                        removedCategoryQuestions: removedCategoryQuestions,
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent,
+                        url: window.location.href
+                    };
+                    
+                    console.log('📦 Question set data created:', JSON.stringify(questionSetData, null, 2));
+                    console.log('📏 Data payload size:', JSON.stringify(questionSetData).length, 'characters');
+                    
+                    // Validate required fields
+                    if (!questionSetData.creatorName) {
+                        throw new Error('Creator name is missing');
+                    }
+                    if (finalCategoryQuestions.length === 0 && finalCustomQuestions.length === 0) {
+                        throw new Error('No questions to save');
+                    }
+                    
+                    console.log('✅ STEP 5 COMPLETE: Data payload created and validated');
+                } catch (payloadError) {
+                    console.error('❌ Error creating payload:', payloadError);
+                    throw new Error('Failed to create data payload: ' + payloadError.message);
+                }
+                
+                // Step 6: Check Firebase availability
+                console.log('🔥 STEP 6: Checking Firebase availability...');
+                try {
+                    // Check Firebase SDK
+                    if (typeof firebase === 'undefined') {
+                        console.error('❌ Firebase SDK is not loaded');
+                        console.log('🔍 Available globals:', Object.keys(window).filter(k => k.toLowerCase().includes('fire')));
+                        throw new Error('Firebase SDK is not loaded. Please refresh the page and try again.');
+                    }
+                    console.log('✅ Firebase SDK is available');
+                    console.log('🔥 Firebase version:', firebase.SDK_VERSION || 'unknown');
+                    
+                    // Check Firebase apps
+                    if (!firebase.apps || !firebase.apps.length) {
+                        console.error('❌ Firebase is not initialized');
+                        console.log('🔍 Firebase apps:', firebase.apps);
+                        throw new Error('Firebase is not initialized. Please refresh the page and try again.');
+                    }
+                    console.log('✅ Firebase is initialized');
+                    console.log('📱 Firebase apps count:', firebase.apps.length);
+                    console.log('📱 Firebase app names:', firebase.apps.map(app => app.name));
+                    
+                    // Check Firestore
+                    if (!firebase.firestore) {
+                        console.error('❌ Firestore is not available');
+                        throw new Error('Firestore is not available. Please refresh the page and try again.');
+                    }
+                    console.log('✅ Firestore is available');
+                    
+                    // Check socialFirebase service (it might be null if still initializing)
+                    if (typeof socialFirebase === 'undefined' || socialFirebase === null) {
+                        console.error('❌ socialFirebase service is not available');
+                        console.log('🔍 socialFirebase type:', typeof socialFirebase);
+                        console.log('🔍 socialFirebase value:', socialFirebase);
+                        console.log('🔍 window.socialFirebase:', window.socialFirebase);
+                        console.log('🔍 Available globals:', Object.keys(window).filter(k => k.toLowerCase().includes('social')));
+                        
+                        // Try to use window.socialFirebase as fallback
+                        if (window.socialFirebase) {
+                            console.log('🔄 Using window.socialFirebase as fallback');
+                            window.socialFirebase = window.socialFirebase;
+                        } else {
+                            throw new Error('Firebase service is not loaded. Please refresh the page and try again.');
+                        }
+                    }
+                    
+                    const serviceToCheck = socialFirebase || window.socialFirebase;
+                    if (serviceToCheck) {
+                        console.log('✅ SocialFirebase service is available');
+                        console.log('🔧 SocialFirebase methods:', Object.getOwnPropertyNames(serviceToCheck));
+                        console.log('🔧 SocialFirebase prototype methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(serviceToCheck)));
+                        console.log('🏁 Service initialized status:', serviceToCheck.isInitialized);
+                    }
+                    
+                    console.log('✅ STEP 6 COMPLETE: Firebase availability confirmed');
+                } catch (firebaseCheckError) {
+                    console.error('❌ Firebase check failed:', firebaseCheckError);
+                    throw firebaseCheckError;
+                }
+                
+                // Step 7: Test Firebase connectivity
+                console.log('🔍 STEP 7: Testing Firebase connectivity...');
+                try {
+                    const db = firebase.firestore();
+                    console.log('📊 Firestore instance created:', !!db);
+                    
+                    // Test basic connectivity with a simple read operation
+                    console.log('🧪 Testing connectivity with test document...');
+                    const testDoc = await db.collection('test').doc('connectivity').get();
+                    console.log('✅ Connectivity test passed');
+                    console.log('📄 Test document exists:', testDoc.exists);
+                    console.log('📊 Test document data:', testDoc.data());
+                    
+                    console.log('✅ STEP 7 COMPLETE: Firebase connectivity confirmed');
+                } catch (connectivityError) {
+                    console.error('❌ Firebase connectivity test failed:', connectivityError);
+                    console.error('🔥 Connectivity error message:', connectivityError.message);
+                    console.error('🔥 Connectivity error code:', connectivityError.code);
+                    console.error('🔥 Connectivity error stack:', connectivityError.stack);
+                    throw new Error('Cannot connect to Firebase: ' + connectivityError.message);
+                }
+                
+                // Step 8: Wait for Firebase to be fully ready
+                console.log('⏳ STEP 8: Ensuring Firebase is fully ready...');
+                try {
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                    console.log('✅ STEP 8 COMPLETE: Ready state confirmed');
+                } catch (readyError) {
+                    console.error('❌ Ready state error:', readyError);
+                    // Continue anyway
+                }
+                
+                // Step 9: Create question set in Firebase
+                console.log('💾 STEP 9: Creating question set in Firebase...');
+                let questionSetId;
+                try {
+                    // Get the correct service instance
+                    const serviceInstance = socialFirebase || window.socialFirebase;
+                    if (!serviceInstance) {
+                        throw new Error('SocialFirebase service is not available');
+                    }
+                    
+                    console.log('🔥 Using service instance:', serviceInstance);
+                    console.log('🔥 Service initialized:', serviceInstance.isInitialized);
+                    console.log('🔥 Calling createQuestionSet...');
+                    console.log('📤 Data being sent:', JSON.stringify(questionSetData, null, 2));
+                    
+                    // Test if the method exists
+                    if (typeof serviceInstance.createQuestionSet !== 'function') {
+                        console.error('❌ createQuestionSet is not a function');
+                        console.log('🔧 Service instance type:', typeof serviceInstance);
+                        console.log('🔧 Available methods:', Object.getOwnPropertyNames(serviceInstance));
+                        console.log('🔧 Available prototype methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(serviceInstance)));
+                        throw new Error('createQuestionSet method is not available');
+                    }
+                    
+                    const startTime = Date.now();
+                    console.log('⏳ Calling createQuestionSet method...');
+                    questionSetId = await serviceInstance.createQuestionSet(questionSetData);
+                    const endTime = Date.now();
+                    const duration = endTime - startTime;
+                    
+                    console.log('✅ Question set created successfully!');
+                    console.log('🆔 Question set ID:', questionSetId);
+                    console.log('⏱️ Creation took:', duration + 'ms');
+                    
+                    // Validate the returned ID
+                    if (!questionSetId || typeof questionSetId !== 'string') {
+                        throw new Error('Invalid question set ID returned: ' + questionSetId);
+                    }
+                    
+                    console.log('✅ STEP 9 COMPLETE: Question set saved to Firebase');
+                } catch (firebaseError) {
+                    console.error('🔥 ===== FIREBASE ERROR DETAILS =====');
+                    console.error('🔥 Error object:', firebaseError);
+                    console.error('🔥 Error message:', firebaseError.message);
+                    console.error('🔥 Error code:', firebaseError.code);
+                    console.error('🔥 Error name:', firebaseError.name);
+                    console.error('🔥 Error stack:', firebaseError.stack);
+                    
+                    // Try to extract more details
+                    if (firebaseError.details) {
+                        console.error('🔥 Error details:', firebaseError.details);
+                    }
+                    if (firebaseError.metadata) {
+                        console.error('🔥 Error metadata:', firebaseError.metadata);
+                    }
+                    
+                    // Serialize the entire error object
+                    try {
+                        console.error('🔥 Full error JSON:', JSON.stringify(firebaseError, Object.getOwnPropertyNames(firebaseError), 2));
+                    } catch (serializationError) {
+                        console.error('🔥 Could not serialize error:', serializationError);
+                    }
+                    
+                    console.error('🔥 ===============================');
+                    
+                    throw new Error(`Firebase error: ${firebaseError.message || firebaseError.code || 'Unknown error'}`);
+                }
+                
+                // Step 10: Update UI with success
+                console.log('🎉 STEP 10: Updating UI with success...');
+                try {
+                    // Update share URL
+                    const shareUrl = `${window.location.origin}/answer.html?id=${questionSetId}`;
+                    console.log('🔗 Share URL:', shareUrl);
+                    
+                    const shareUrlElement = document.getElementById('shareUrl');
+                    if (!shareUrlElement) {
+                        console.error('❌ Share URL element not found');
+                        throw new Error('Share URL element not found');
+                    }
+                    shareUrlElement.textContent = shareUrl;
+                    console.log('✅ Share URL updated in DOM');
+                    
+                    // Update social sharing links
+                    const shareText = "Check out these questions about me and let me know what you think! 🤔✨";
+                    const encodedShareText = encodeURIComponent(shareText);
+                    const encodedShareUrl = encodeURIComponent(shareUrl);
+                    
+                    console.log('🔗 Updating social sharing links...');
+                    
+                    // WhatsApp
+                    const whatsappShare = document.getElementById('whatsappShare');
+                    if (whatsappShare) {
+                        whatsappShare.href = `https://wa.me/?text=${encodedShareText + ' ' + encodedShareUrl}`;
+                        console.log('✅ WhatsApp link updated');
+                    }
+                    
+                    // Twitter
+                    const twitterShare = document.getElementById('twitterShare');
+                    if (twitterShare) {
+                        twitterShare.href = `https://twitter.com/intent/tweet?text=${encodedShareText}&url=${encodedShareUrl}`;
+                        console.log('✅ Twitter link updated');
+                    }
+                    
+                    // Facebook
+                    const facebookShare = document.getElementById('facebookShare');
+                    if (facebookShare) {
+                        facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`;
+                        console.log('✅ Facebook link updated');
+                    }
+                    
+                    // Save to localStorage and global variables
+                    try {
+                        localStorage.setItem('lastQuestionSetId', questionSetId);
+                        window.questionSetId = questionSetId; // Also save to window object
+                        console.log('✅ Question set ID saved to localStorage and window object');
+                    } catch (storageError) {
+                        console.warn('⚠️ Could not save to localStorage:', storageError);
+                    }
+                    
+                    // Show share section
+                    const shareSection = document.getElementById('shareSection');
+                    if (!shareSection) {
+                        console.error('❌ Share section not found');
+                        throw new Error('Share section not found');
+                    }
+                    
+                    shareSection.style.display = 'block';
+                    console.log('✅ Share section displayed');
+                    
+                    // Scroll to share section
+                    try {
+                        shareSection.scrollIntoView({ behavior: 'smooth' });
+                        console.log('✅ Scrolled to share section');
+                    } catch (scrollError) {
+                        console.warn('⚠️ Could not scroll to share section:', scrollError);
+                    }
+                    
+                    console.log('✅ STEP 10 COMPLETE: UI updated successfully');
+                } catch (uiUpdateError) {
+                    console.error('❌ UI update error:', uiUpdateError);
+                    throw new Error('Failed to update UI: ' + uiUpdateError.message);
+                }
+                
+                console.log('🎉 ===== SUCCESS: Question set created with ID:', questionSetId, '=====');
+                
+            } catch (error) {
+                console.error('💥 ===== CRITICAL ERROR =====');
+                console.error('💥 Error:', error);
+                console.error('💥 Error message:', error.message);
+                console.error('💥 Error stack:', error.stack);
+                console.error('💥 Error name:', error.name);
+                
+                // Try to serialize the entire error
+                try {
+                    console.error('💥 Full error object:', JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
+                } catch (serializationError) {
+                    console.error('💥 Could not serialize error:', serializationError);
+                }
+                
+                console.error('💥 ==========================');
+                
+                // Show user-friendly error message
+                const userMessage = `Failed to create question set: ${error.message || 'Unknown error occurred'}`;
+                alert(userMessage);
+                
+            } finally {
+                // Step 11: Reset UI state
+                console.log('🔄 STEP 11: Resetting UI state...');
+                try {
+                    generateBtn.innerHTML = originalText;
+                    generateBtn.disabled = false;
+                    console.log('✅ STEP 11 COMPLETE: UI state reset');
+                } catch (resetError) {
+                    console.error('❌ Error resetting UI:', resetError);
+                }
+                
+                console.log('🏁 ===== GENERATE QUESTION SET DEBUG END ===');
+            }
+        }
+        
+        function copyLink() {
+            const shareUrl = document.getElementById('shareUrl').textContent;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✅ Copied!';
+                button.style.background = '#10b981';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'white';
+                }, 2000);
+            });
+        }
+        
+        function saveCreatorEmail() {
+            const email = document.getElementById('creatorEmail').value;
+            if (email && email.includes('@')) {
+                // In production, save email for notifications
+                alert('Great! We\'ll email you when friends respond to your questions. 📧');
+                event.target.innerHTML = '✅ Saved!';
+                event.target.style.background = '#10b981';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOMContentLoaded event fired');
+            
+            // Check if coming from a share link
+            const urlParams = new URLSearchParams(window.location.search);
+            const sharedId = urlParams.get('shared');
+            if (sharedId) {
+                // Show sharing success message
+                const hero = document.querySelector('.ask-friends-hero');
+                hero.innerHTML = `
+                    <div class="viral-badge">🎉 SHARED SUCCESSFULLY</div>
+                    <h1>Your Friends Will Love This! 🚀</h1>
+                    <p>Your question set has been shared. Check back later to see their responses!</p>
+                `;
+            }
+            
+            // Monitor Firebase and SocialFirebase initialization
+            let checkCount = 0;
+            const maxChecks = 50; // 5 seconds total
+            
+            const checkInitialization = () => {
+                checkCount++;
+                console.log(`🔍 Initialization check #${checkCount}...`);
+                console.log('🔥 Firebase loaded:', typeof firebase !== 'undefined');
+                console.log('📱 Firebase apps:', firebase?.apps?.length || 0);
+                console.log('🔧 SocialFirebase global:', typeof socialFirebase !== 'undefined');
+                console.log('🌐 Window.socialFirebase:', typeof window.socialFirebase !== 'undefined');
+                
+                if (typeof firebase !== 'undefined') {
+                    console.log('🔥 Firebase app names:', firebase.apps?.map(app => app.name) || []);
+                    if (firebase.apps && firebase.apps.length > 0) {
+                        console.log('✅ Firebase is initialized!');
+                        
+                        if (socialFirebase || window.socialFirebase) {
+                            const service = socialFirebase || window.socialFirebase;
+                            console.log('✅ SocialFirebase service available!');
+                            console.log('🏁 Service initialized status:', service?.isInitialized);
+                            
+                            if (service?.isInitialized) {
+                                console.log('🎉 All systems ready!');
+                                return; // Stop checking
+                            }
+                        }
+                    }
+                }
+                
+                if (checkCount < maxChecks) {
+                    setTimeout(checkInitialization, 100);
+                } else {
+                    console.error('❌ Initialization timeout after', maxChecks * 100, 'ms');
+                    console.error('📊 Final status:', {
+                        firebase: typeof firebase !== 'undefined',
+                        firebaseApps: firebase?.apps?.length || 0,
+                        socialFirebase: typeof socialFirebase !== 'undefined',
+                        windowSocialFirebase: typeof window.socialFirebase !== 'undefined'
+                    });
+                }
+            };
+            
+            // Start checking after a brief delay
+            setTimeout(checkInitialization, 100);
+        });
+    </script>
+    
+    <!-- Firebase SDK with loading detection -->
+    <script 
+        src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"
+        onload="console.log('✅ Firebase App script loaded successfully')"
+        onerror="console.error('❌ FAILED to load Firebase App script from CDN'); window.firebaseLoadError = true;">
+    </script>
+    <script 
+        src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"
+        onload="console.log('✅ Firebase Auth script loaded successfully')"
+        onerror="console.error('❌ FAILED to load Firebase Auth script from CDN');">
+    </script>
+    <script 
+        src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"
+        onload="console.log('✅ Firebase Firestore script loaded successfully')"
+        onerror="console.error('❌ FAILED to load Firebase Firestore script from CDN');">
+    </script>
+    
+    <!-- Initialize Firebase directly since script.js has conflicts -->
+    <script>
+        console.log('🔥 Initializing Firebase directly...');
+        
+        // Firebase configuration (same as script.js)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDrIchldLRg4rsPVsmSDWIDDnBbYIjdClo",
+            authDomain: "personatest-c8eb1.firebaseapp.com",
+            projectId: "personatest-c8eb1",
+            storageBucket: "personatest-c8eb1.firebasestorage.app",
+            messagingSenderId: "56769105558",
+            appId: "1:56769105558:web:8e13f979f8b7541ec5fcb7"
+        };
+        
+        try {
+            // Check if Firebase is available
+            if (typeof firebase === 'undefined') {
+                throw new Error('Firebase SDK not loaded');
+            }
+            
+            console.log('✅ Firebase SDK available');
+            
+            // Initialize Firebase
+            if (!firebase.apps || firebase.apps.length === 0) {
+                firebase.initializeApp(firebaseConfig);
+                console.log('✅ Firebase app initialized');
+            } else {
+                console.log('✅ Firebase already initialized');
+            }
+            
+            // Verify initialization
+            console.log('📱 Firebase apps:', firebase.apps.length);
+            console.log('🔗 Project ID:', firebase.app().options.projectId);
+            
+            // Mark as ready
+            window.firebaseReady = true;
+            console.log('🚩 Firebase ready flag set');
+            
+        } catch (error) {
+            console.error('❌ Firebase initialization error:', error);
+            window.firebaseReady = false;
+        }
+    </script>
+    
+    <!-- Load main script for translations and utilities -->
+    <script src="script.js"></script>
+    
+    <!-- Load Firebase Social Service after Firebase is initialized -->
+    <script src="firebase-social.js"></script>
+    
+    <!-- Ensure SocialFirebase initializes after Firebase is ready -->
+    <script>
+        // Wait for both Firebase and SocialFirebase to be ready
+        function waitForFirebaseAndSocial() {
+            return new Promise((resolve, reject) => {
+                const maxAttempts = 100; // 10 seconds max
+                let attempts = 0;
+                
+                const check = () => {
+                    attempts++;
+                    console.log(`🔍 Initialization check #${attempts}...`);
+                    
+                    if (window.firebaseReady && window.socialFirebase && window.socialFirebase.isInitialized) {
+                        console.log('🎉 Both Firebase and SocialFirebase are ready!');
+                        resolve();
+                    } else if (attempts >= maxAttempts) {
+                        console.error('❌ Timeout waiting for Firebase initialization');
+                        reject(new Error('Firebase initialization timeout'));
+                    } else {
+                        console.log('⏳ Still waiting... Firebase ready:', window.firebaseReady, 'SocialFirebase ready:', !!(window.socialFirebase && window.socialFirebase.isInitialized));
+                        setTimeout(check, 100);
+                    }
+                };
+                
+                check();
+            });
+        }
+        
+        // Make the wait function globally available
+        window.waitForFirebaseAndSocial = waitForFirebaseAndSocial;
+    </script>
+    
+    <!-- EmailJS for notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init('bqGKo-dBalpy6MeZE');
+        
+        // Test function to verify EmailJS configuration
+        window.testEmailJS = async function() {
+            console.log('🧪 Testing EmailJS configuration...');
+            
+            const testEmail = prompt('Enter your email address to test EmailJS delivery:');
+            if (!testEmail || !testEmail.includes('@')) {
+                console.log('❌ Test cancelled or invalid email');
+                return;
+            }
+            
+            try {
+                const response = await emailjs.send('service_dc4y1ov', 'template_360_feedback_request', {
+                    to_email: testEmail,
+                    reviewer_name: 'Test User',
+                    subject_name: 'EmailJS Test',
+                    relationship: 'tester',
+                    feedback_url: 'https://personatests.com/test',
+                    assessment_areas: 'EmailJS delivery test',
+                    site_name: 'PersonaTests'
+                });
+                
+                console.log('✅ Test email sent successfully!', response);
+                alert(`✅ Test email sent to ${testEmail}!\n\nCheck your inbox (and spam folder) for a test email.\nSubject: "EmailJS Test wants your feedback!"`);
+                
+            } catch (error) {
+                console.error('❌ Test email failed:', error);
+                alert(`❌ Test email failed: ${error.text || error.message}`);
+            }
+        };
+        
+        // Send sharing invitation email using EmailJS only
+        async function sendSharingInvitation(email, shareUrl, creatorName) {
+            console.log('📤=== QUESTION SET SHARE EMAIL START ===');
+            console.log('📧 Target email:', email);
+            console.log('🔗 Share URL:', shareUrl);
+            console.log('👤 Creator name:', creatorName);
+            
+            try {
+                // Use our new EmailService instead of old EmailJS
+                if (!window.emailService) {
+                    console.error('❌ EmailService not initialized');
+                    return false;
+                }
+                
+                // Extract questions from current question set for email preview
+                const questions = [];
+                const questionElements = document.querySelectorAll('.question-text');
+                questionElements.forEach((element, index) => {
+                    if (index < 3) { // Only include first 3 questions as preview
+                        questions.push(element.textContent.trim());
+                    }
+                });
+                
+                // If no questions found, use default examples
+                if (questions.length === 0) {
+                    questions.push("What's my favorite way to spend a weekend?", "How do I handle stressful situations?", "What motivates me the most?");
+                }
+                
+                console.log('📋 Question preview for email:', questions);
+                
+                // Send using proper question set share template
+                await window.emailService.sendQuestionSetShare(
+                    email,
+                    email.split('@')[0], // Use email username as recipient name
+                    creatorName || 'Your friend',
+                    shareUrl,
+                    questions
+                );
+                
+                console.log('✅ Question set share email sent successfully!');
+                console.log('📧 EMAIL DELIVERY DETAILS:');
+                console.log('📧 Sent TO:', email);
+                console.log('📧 Sent FROM: no-reply@personatests.com');
+                console.log('📧 Template: Question Set Share Template');
+                console.log('📧 Creator:', creatorName);
+                console.log('📧 Share URL:', shareUrl);
+                console.log('⚠️  IMPORTANT: Check spam/junk folder if email not received!');
+                console.log('⚠️  Email delivery can take 1-5 minutes');
+                console.log('📤=== QUESTION SET SHARE EMAIL END ===');
+                
+                return true;
+                
+            } catch (error) {
+                console.error('❌ Failed to send question set share email:', error);
+                console.error('💥 Error details:', {
+                    message: error.message,
+                    name: error.name,
+                    stack: error.stack
+                });
+                
+                console.log('📤=== QUESTION SET SHARE EMAIL END ===');
+                return false;
+            }
+        }
+        
+        // Enhanced sharing with email option
+        function shareWithEmail() {
+            console.log('📧=== EMAIL FRIEND DEBUG START ===');
+            console.log('📧 shareWithEmail called at:', new Date().toISOString());
+            console.log('🔍 Global questionSetId value:', questionSetId);
+            console.log('🔍 localStorage questionSetId:', localStorage.getItem('lastQuestionSetId'));
+            console.log('🔍 Window.questionSetId:', window.questionSetId);
+            
+            // Try to get questionSetId from multiple sources
+            let currentQuestionSetId = questionSetId || localStorage.getItem('lastQuestionSetId') || window.questionSetId;
+            
+            // Also try to get it from the share URL in the DOM
+            if (!currentQuestionSetId) {
+                console.log('🔍 Trying to extract from DOM...');
+                const shareUrlElement = document.getElementById('shareUrl');
+                if (shareUrlElement && shareUrlElement.textContent) {
+                    const shareUrl = shareUrlElement.textContent;
+                    console.log('🔗 Share URL in DOM:', shareUrl);
+                    const match = shareUrl.match(/[?&]id=([^&]+)/);
+                    if (match) {
+                        currentQuestionSetId = match[1];
+                        console.log('✅ Extracted ID from DOM:', currentQuestionSetId);
+                    }
+                }
+            }
+            
+            if (!currentQuestionSetId) {
+                console.error('❌ No question set ID found from any source');
+                console.log('📊 Debug info:', {
+                    globalQuestionSetId: questionSetId,
+                    localStorage: localStorage.getItem('lastQuestionSetId'),
+                    windowQuestionSetId: window.questionSetId,
+                    shareUrlElement: document.getElementById('shareUrl')?.textContent
+                });
+                alert('Error: No question set found. Please create your question set first!');
+                return;
+            }
+            
+            console.log('✅ Using question set ID:', currentQuestionSetId);
+            
+            const email = prompt('Enter your friend\'s email address:');
+            if (!email || !email.trim()) {
+                console.log('🚫 User cancelled or entered empty email');
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                console.log('❌ Invalid email format:', email);
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            console.log('📧 Valid email entered:', email);
+            
+            const shareUrl = `${window.location.origin}/answer.html?id=${currentQuestionSetId}`;
+            const creatorName = document.getElementById('creatorName')?.value?.trim() || 'Your friend';
+            
+            console.log('🔗 Final share URL:', shareUrl);
+            console.log('👤 Creator name:', creatorName);
+            
+            // Show loading state
+            const emailBtn = event.target;
+            const originalText = emailBtn.innerHTML;
+            emailBtn.innerHTML = '📧 Sending...';
+            emailBtn.disabled = true;
+            
+            console.log('📤 Attempting to send email...');
+            
+            sendSharingInvitation(email, shareUrl, creatorName).then(success => {
+                console.log('📧 Email send result:', success);
+                if (success) {
+                    console.log('✅ Email sent successfully');
+                    emailBtn.innerHTML = '✅ Sent!';
+                    emailBtn.style.background = '#10b981';
+                    
+                    // Show success message with delivery info
+                    const successMsg = document.createElement('div');
+                    successMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10000; font-weight: bold; max-width: 350px; font-size: 14px; line-height: 1.4;';
+                    successMsg.innerHTML = `
+                        📧 <strong>Email sent to ${email}!</strong><br><br>
+                        <div style="font-size: 12px; opacity: 0.9;">
+                        ⏰ Delivery may take 1-5 minutes<br>
+                        📁 Check spam/junk folder if not received<br>
+                        🔍 Look for subject: "${creatorName || 'Your friend'} wants your feedback!"
+                        </div>
+                    `;
+                    document.body.appendChild(successMsg);
+                    
+                    // Also show a confirmation alert with more details
+                    setTimeout(() => {
+                        alert(`✅ Email sent successfully!\n\nSent to: ${email}\nSubject: "${creatorName || 'Your friend'} wants your feedback!"\n\n📍 Important:\n• Check spam/junk folder\n• Delivery takes 1-5 minutes\n• Email comes from PersonaTests\n\nIf not received after 10 minutes, use the "Copy Link" button to share manually.`);
+                    }, 1000);
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(successMsg)) {
+                            document.body.removeChild(successMsg);
+                        }
+                        emailBtn.innerHTML = originalText;
+                        emailBtn.style.background = '';
+                        emailBtn.disabled = false;
+                    }, 8000);
+                } else {
+                    console.log('❌ Email send failed');
+                    emailBtn.innerHTML = '❌ Failed';
+                    emailBtn.style.background = '#ef4444';
+                    setTimeout(() => {
+                        emailBtn.innerHTML = originalText;
+                        emailBtn.style.background = '';
+                        emailBtn.disabled = false;
+                    }, 3000);
+                    
+                    // Show helpful error message with better alternatives
+                    const options = [
+                        `📧 Open your email client to send manually`,
+                        `📋 Copy link to share through any app`,
+                        `❌ Cancel`
+                    ];
+                    
+                    const choice = confirm(`EmailJS template not configured properly for delivery.\n\nWould you like to open your email client to send this to ${email} manually?\n\n(Click OK for email client, Cancel to copy link instead)`);
+                    
+                    if (choice) {
+                        // Open email client with pre-filled message
+                        const subject = encodeURIComponent(`${creatorName || 'Your friend'} wants your feedback!`);
+                        const body = encodeURIComponent(`Hi there!
+
+${creatorName || 'Your friend'} has created some fun questions and wants to know what you think about them.
+
+Click this link to answer their questions:
+${shareUrl}
+
+It only takes a few minutes and your responses are completely anonymous!
+
+Thanks!`);
+                        
+                        const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+                        window.open(mailtoLink, '_blank');
+                        
+                        // Show success message
+                        setTimeout(() => {
+                            alert(`✅ Email client opened!\n\nYour default email app should now be open with a pre-filled message to ${email}.\n\nJust review and click Send!`);
+                        }, 500);
+                        
+                    } else {
+                        // Copy link option
+                        navigator.clipboard.writeText(shareUrl).then(() => {
+                            alert(`✅ Link copied to clipboard!\n\nYou can now paste this link into:\n• Your email to ${email}\n• Text message\n• Social media\n• Any messaging app\n\nLink: ${shareUrl}`);
+                        }).catch(() => {
+                            alert(`Here is the link to share:\n\n${shareUrl}\n\nSend this to: ${email}`);
+                        });
+                    }
+                }
+            }).catch(error => {
+                console.error('💥 Email send error:', error);
+                emailBtn.innerHTML = '❌ Error';
+                emailBtn.style.background = '#ef4444';
+                setTimeout(() => {
+                    emailBtn.innerHTML = originalText;
+                    emailBtn.style.background = '';
+                    emailBtn.disabled = false;
+                }, 3000);
+                
+                // Show helpful error message with console info
+                alert('Error sending email. Check the browser console (F12) for details, or copy the link manually using the "Copy Link" button.');
+            });
+            
+            console.log('📧=== EMAIL FRIEND DEBUG END ===');
+        }
+        
+        // Quick share function that bypasses EmailJS entirely
+        function quickShare() {
+            console.log('🚀 Quick Share activated');
+            
+            // Get question set ID from multiple sources
+            let currentQuestionSetId = questionSetId || localStorage.getItem('lastQuestionSetId') || window.questionSetId;
+            
+            if (!currentQuestionSetId) {
+                // Try to extract from share URL in DOM
+                const shareUrlElement = document.getElementById('shareUrl');
+                if (shareUrlElement && shareUrlElement.textContent) {
+                    const shareUrl = shareUrlElement.textContent;
+                    const match = shareUrl.match(/[?&]id=([^&]+)/);
+                    if (match) {
+                        currentQuestionSetId = match[1];
+                    }
+                }
+            }
+            
+            if (!currentQuestionSetId) {
+                alert('Please create your question set first!');
+                return;
+            }
+            
+            const shareUrl = `${window.location.origin}/answer.html?id=${currentQuestionSetId}`;
+            const creatorName = document.getElementById('creatorName')?.value?.trim() || 'Your friend';
+            
+            // Show sharing options
+            const options = `Choose how to share your questions:
+
+🔗 Copy Link - Copy to clipboard and paste anywhere
+📧 Email - Open your email client with pre-filled message  
+💬 Text Message - Open messaging app with link
+📱 More Options - Show all sharing methods`;
+
+            const userChoice = prompt(`${options}\n\nType your choice:\n1 = Copy Link\n2 = Email\n3 = Text Message\n4 = More Options\n\nOr enter a friend's email directly:`);
+            
+            if (!userChoice) return;
+            
+            // Check if user entered an email address
+            if (userChoice.includes('@')) {
+                openEmailClient(userChoice, shareUrl, creatorName);
+            } else {
+                switch(userChoice.trim()) {
+                    case '1':
+                        copyToClipboard(shareUrl);
+                        break;
+                    case '2':
+                        const email = prompt('Enter your friend\'s email address:');
+                        if (email && email.includes('@')) {
+                            openEmailClient(email, shareUrl, creatorName);
+                        }
+                        break;
+                    case '3':
+                        openTextMessage(shareUrl, creatorName);
+                        break;
+                    case '4':
+                        showAllSharingOptions(shareUrl, creatorName);
+                        break;
+                    default:
+                        copyToClipboard(shareUrl);
+                }
+            }
+        }
+        
+        function openEmailClient(email, shareUrl, creatorName) {
+            const subject = encodeURIComponent(`${creatorName} wants your feedback!`);
+            const body = encodeURIComponent(`Hi!
+
+${creatorName} created some fun questions and wants your thoughts!
+
+Answer here: ${shareUrl}
+
+Takes just a few minutes and it's anonymous!
+
+Thanks!`);
+            
+            const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+            window.open(mailtoLink, '_blank');
+            
+            setTimeout(() => {
+                alert(`✅ Email opened!\n\nSending to: ${email}\nJust review and click Send in your email app!`);
+            }, 500);
+        }
+        
+        function openTextMessage(shareUrl, creatorName) {
+            const message = encodeURIComponent(`Hey! ${creatorName} wants your feedback on some fun questions: ${shareUrl}`);
+            const smsLink = `sms:?body=${message}`;
+            window.open(smsLink, '_blank');
+        }
+        
+        function copyToClipboard(shareUrl) {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                alert(`✅ Link copied!\n\n${shareUrl}\n\nPaste this anywhere to share!`);
+            }).catch(() => {
+                alert(`Copy this link:\n\n${shareUrl}`);
+            });
+        }
+        
+        function showAllSharingOptions(shareUrl, creatorName) {
+            const message = encodeURIComponent(`${creatorName} wants your feedback! ${shareUrl}`);
+            
+            alert(`📱 All Sharing Options:\n\n📧 Gmail: Copy link and paste in Gmail\n💬 WhatsApp: Click WhatsApp button below\n📱 Text: Use your messaging app\n📋 Copy: Use the Copy Link button\n🐦 Twitter: Click Twitter button below\n\nLink: ${shareUrl}`);
+        }
+        
+        // Enhanced email sharing with EmailJS
+        async function sendQuestionSetEmail(recipientEmail, recipientName, senderName, questionSetUrl, questions) {
+            try {
+                if (!window.emailService) {
+                    throw new Error('Email service not initialized');
+                }
+                
+                await window.emailService.sendQuestionSetShare(
+                    recipientEmail,
+                    recipientName || recipientEmail.split('@')[0],
+                    senderName,
+                    questionSetUrl,
+                    questions
+                );
+                
+                alert(`✅ Question set sent to ${recipientEmail}!\n\nThey'll receive an email with your custom questions and a link to answer them.`);
+                return true;
+                
+            } catch (error) {
+                console.error('Failed to send question set email:', error);
+                alert(`❌ Failed to send email to ${recipientEmail}\n\nError: ${error.message}\n\nTry using the manual email option instead.`);
+                return false;
+            }
+        }
+        
+        // Bulk email sending for multiple recipients
+        async function sendBulkQuestionSetEmails(emails, senderName, questionSetUrl, questions) {
+            try {
+                if (!window.emailService) {
+                    throw new Error('Email service not initialized');
+                }
+                
+                const results = await window.emailService.sendBulkEmails(
+                    emails,
+                    'question_share',
+                    {
+                        senderName: senderName,
+                        questionSetUrl: questionSetUrl,
+                        questions: questions
+                    }
+                );
+                
+                const successful = results.filter(r => r.status === 'success').length;
+                const failed = results.filter(r => r.status === 'failed').length;
+                
+                if (failed > 0) {
+                    alert(`📊 Bulk Email Results:\n\n✅ Sent: ${successful}\n❌ Failed: ${failed}\n\nFailed emails:\n${results.filter(r => r.status === 'failed').map(r => r.email).join(', ')}`);
+                } else {
+                    alert(`🎉 All emails sent successfully!\n\n✅ Sent to ${successful} recipients\n\nThey'll receive your question set and can respond anonymously.`);
+                }
+                
+                return results;
+                
+            } catch (error) {
+                console.error('Failed to send bulk emails:', error);
+                alert(`❌ Bulk email sending failed\n\nError: ${error.message}`);
+                return [];
+            }
+        }
+    </script>
+
+    <!-- EmailJS Configuration -->
+    <script src="email-config.js"></script>
+    <script src="firebase-social.js"></script>
+</body>
+</html>

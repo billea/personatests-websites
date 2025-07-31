@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Test - PersonaTests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #4f46e5;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4f46e5;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #374151;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .result {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        .success {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+        }
+        .error {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+        }
+        .status {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            color: #1e40af;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 EmailJS Configuration Test</h1>
+        
+        <div class="status" id="initStatus">
+            🔄 Initializing email service...
+        </div>
+
+        <!-- Test Contact Form -->
+        <div class="test-section">
+            <h3>1. Test Contact Form</h3>
+            <form id="contactTestForm">
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" id="contactName" value="Test User" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Email:</label>
+                    <input type="email" id="contactEmail" value="test@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject:</label>
+                    <select id="contactSubject">
+                        <option value="General Support">General Support</option>
+                        <option value="Business Partnership Inquiry">Business Inquiry</option>
+                        <option value="Privacy or Data Request">Privacy Request</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea id="contactMessage" rows="3">This is a test message from the EmailJS configuration test page.</textarea>
+                </div>
+                <button type="submit">Send Test Contact Form</button>
+            </form>
+            <div class="result" id="contactResult"></div>
+        </div>
+
+        <!-- Test Question Set Email -->
+        <div class="test-section">
+            <h3>2. Test Question Set Share</h3>
+            <form id="questionTestForm">
+                <div class="form-group">
+                    <label>Recipient Email:</label>
+                    <input type="email" id="questionEmail" value="friend@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" id="questionSender" value="Test Creator" required>
+                </div>
+                <div class="form-group">
+                    <label>Question Set URL:</label>
+                    <input type="url" id="questionUrl" value="https://personatests.com/answer.html?id=test123" required>
+                </div>
+                <button type="submit">Send Test Question Set</button>
+            </form>
+            <div class="result" id="questionResult"></div>
+        </div>
+
+        <!-- Test 360° Assessment Invite -->
+        <div class="test-section">
+            <h3>3. Test 360° Assessment Invitation</h3>
+            <form id="assessmentTestForm">
+                <div class="form-group">
+                    <label>Recipient Email:</label>
+                    <input type="email" id="assessmentEmail" value="colleague@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" id="assessmentSender" value="Test Professional" required>
+                </div>
+                <div class="form-group">
+                    <label>Assessment URL:</label>
+                    <input type="url" id="assessmentUrl" value="https://personatests.com/360-feedback.html?id=test456" required>
+                </div>
+                <div class="form-group">
+                    <label>Personal Message:</label>
+                    <textarea id="assessmentMessage" rows="3">I would appreciate your honest feedback to help with my professional development.</textarea>
+                </div>
+                <button type="submit">Send Test 360° Invitation</button>
+            </form>
+            <div class="result" id="assessmentResult"></div>
+        </div>
+
+        <!-- Test Basic Test Results -->
+        <div class="test-section">
+            <h3>4. Test Basic Test Results Email</h3>
+            <form id="resultsTestForm">
+                <div class="form-group">
+                    <label>Recipient Email:</label>
+                    <input type="email" id="resultsEmail" value="user@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Test Type:</label>
+                    <select id="resultsTestType">
+                        <option value="mbti">MBTI Personality Test</option>
+                        <option value="bigfive">Big Five Personality Test</option>
+                        <option value="disc">DISC Assessment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Test Result:</label>
+                    <input type="text" id="resultsScore" value="ENFP - The Campaigner" required>
+                </div>
+                <button type="submit">Send Test Results Email</button>
+            </form>
+            <div class="result" id="resultsResult"></div>
+        </div>
+
+        <!-- Test Welcome Email -->
+        <div class="test-section">
+            <h3>5. Test Welcome Email</h3>
+            <form id="welcomeTestForm">
+                <div class="form-group">
+                    <label>New User Email:</label>
+                    <input type="email" id="welcomeEmail" value="newuser@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>User Name:</label>
+                    <input type="text" id="welcomeName" value="New User" required>
+                </div>
+                <button type="submit">Send Welcome Email</button>
+            </form>
+            <div class="result" id="welcomeResult"></div>
+        </div>
+
+        <!-- Configuration Status -->
+        <div class="test-section">
+            <h3>📊 Configuration Status</h3>
+            <div id="configStatus">
+                <p><strong>Service Status:</strong> <span id="serviceStatus">Checking...</span></p>
+                <p><strong>Service ID:</strong> <span id="serviceId">Loading...</span></p>
+                <p><strong>Public Key:</strong> <span id="publicKey">Loading...</span></p>
+                <p><strong>Templates:</strong> <span id="templates">Loading...</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include EmailJS Configuration -->
+    <script src="email-config.js"></script>
+    
+    <script>
+        // Wait for email service to initialize
+        let emailServiceReady = false;
+        
+        function checkEmailService() {
+            if (window.emailService && window.emailService.isInitialized) {
+                emailServiceReady = true;
+                document.getElementById('initStatus').innerHTML = '✅ Email service initialized successfully!';
+                document.getElementById('initStatus').style.background = '#d1fae5';
+                document.getElementById('initStatus').style.color = '#065f46';
+                
+                // Update configuration status
+                updateConfigStatus();
+            } else {
+                setTimeout(checkEmailService, 500);
+            }
+        }
+        
+        function updateConfigStatus() {
+            if (window.emailService && window.EMAILJS_CONFIG) {
+                document.getElementById('serviceStatus').textContent = emailServiceReady ? '✅ Ready' : '❌ Not Ready';
+                document.getElementById('serviceId').textContent = EMAILJS_CONFIG.serviceId;
+                document.getElementById('publicKey').textContent = EMAILJS_CONFIG.publicKey.substring(0, 8) + '...';
+                document.getElementById('templates').textContent = Object.keys(EMAILJS_CONFIG.templates).length + ' templates configured';
+            }
+        }
+        
+        // Start checking for email service
+        document.addEventListener('DOMContentLoaded', function() {
+            checkEmailService();
+        });
+        
+        // Test form handlers
+        document.getElementById('contactTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const result = document.getElementById('contactResult');
+            const button = e.target.querySelector('button');
+            
+            if (!emailServiceReady) {
+                showResult(result, 'error', '❌ Email service not ready. Please wait for initialization.');
+                return;
+            }
+            
+            button.disabled = true;
+            button.textContent = 'Sending...';
+            
+            try {
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const subject = document.getElementById('contactSubject').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                await window.emailService.sendContactForm(name, email, subject, message);
+                showResult(result, 'success', '✅ Contact form test email sent successfully!');
+                
+            } catch (error) {
+                showResult(result, 'error', `❌ Contact form test failed: ${error.message}`);
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Send Test Contact Form';
+        });
+        
+        document.getElementById('questionTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const result = document.getElementById('questionResult');
+            const button = e.target.querySelector('button');
+            
+            if (!emailServiceReady) {
+                showResult(result, 'error', '❌ Email service not ready. Please wait for initialization.');
+                return;
+            }
+            
+            button.disabled = true;
+            button.textContent = 'Sending...';
+            
+            try {
+                const email = document.getElementById('questionEmail').value;
+                const sender = document.getElementById('questionSender').value;
+                const url = document.getElementById('questionUrl').value;
+                const questions = ['What is my favorite color?', 'How do I handle stress?', 'What motivates me most?'];
+                
+                await window.emailService.sendQuestionSetShare(email, 'Test Friend', sender, url, questions);
+                showResult(result, 'success', '✅ Question set share test email sent successfully!');
+                
+            } catch (error) {
+                showResult(result, 'error', `❌ Question set test failed: ${error.message}`);
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Send Test Question Set';
+        });
+        
+        document.getElementById('assessmentTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const result = document.getElementById('assessmentResult');
+            const button = e.target.querySelector('button');
+            
+            if (!emailServiceReady) {
+                showResult(result, 'error', '❌ Email service not ready. Please wait for initialization.');
+                return;
+            }
+            
+            button.disabled = true;
+            button.textContent = 'Sending...';
+            
+            try {
+                const email = document.getElementById('assessmentEmail').value;
+                const sender = document.getElementById('assessmentSender').value;
+                const url = document.getElementById('assessmentUrl').value;
+                const message = document.getElementById('assessmentMessage').value;
+                
+                await window.emailService.send360Invitation(email, 'Test Colleague', sender, url, message);
+                showResult(result, 'success', '✅ 360° assessment invitation test email sent successfully!');
+                
+            } catch (error) {
+                showResult(result, 'error', `❌ 360° assessment test failed: ${error.message}`);
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Send Test 360° Invitation';
+        });
+        
+        document.getElementById('resultsTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const result = document.getElementById('resultsResult');
+            const button = e.target.querySelector('button');
+            
+            if (!emailServiceReady) {
+                showResult(result, 'error', '❌ Email service not ready. Please wait for initialization.');
+                return;
+            }
+            
+            button.disabled = true;
+            button.textContent = 'Sending...';
+            
+            try {
+                const email = document.getElementById('resultsEmail').value;
+                const testType = document.getElementById('resultsTestType').value;
+                const score = document.getElementById('resultsScore').value;
+                
+                const testTitles = {
+                    mbti: "MBTI Personality Test",
+                    bigfive: "Big Five Personality Test", 
+                    disc: "DISC Assessment"
+                };
+                
+                await window.emailService.sendTestResults(
+                    email,
+                    'Test User',
+                    testTitles[testType],
+                    {
+                        summary: `Your ${testTitles[testType]} results are ready!`,
+                        score: score,
+                        description: 'This is a test email for result delivery. Your actual results would include detailed analysis and insights.'
+                    },
+                    'https://personatests.com/results-dashboard.html'
+                );
+                showResult(result, 'success', '✅ Test results email sent successfully!');
+                
+            } catch (error) {
+                showResult(result, 'error', `❌ Test results email failed: ${error.message}`);
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Send Test Results Email';
+        });
+        
+        document.getElementById('welcomeTestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const result = document.getElementById('welcomeResult');
+            const button = e.target.querySelector('button');
+            
+            if (!emailServiceReady) {
+                showResult(result, 'error', '❌ Email service not ready. Please wait for initialization.');
+                return;
+            }
+            
+            button.disabled = true;
+            button.textContent = 'Sending...';
+            
+            try {
+                const email = document.getElementById('welcomeEmail').value;
+                const name = document.getElementById('welcomeName').value;
+                
+                await window.emailService.sendWelcomeEmail(email, name);
+                showResult(result, 'success', '✅ Welcome email sent successfully!');
+                
+            } catch (error) {
+                showResult(result, 'error', `❌ Welcome email failed: ${error.message}`);
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Send Welcome Email';
+        });
+        
+        function showResult(element, type, message) {
+            element.className = `result ${type}`;
+            element.textContent = message;
+            element.style.display = 'block';
+            
+            // Auto-hide after 10 seconds
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 10000);
+        }
+    </script>
+</body>
+</html>

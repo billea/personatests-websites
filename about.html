@@ -6,6 +6,99 @@
     <title>About PersonaTests - Scientifically-Backed Personality Assessment Platform</title>
     <meta name="description" content="Learn about PersonaTests, the leading personality testing platform offering scientifically-validated assessments including MBTI, Big Five, and emotional intelligence tests.">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense Verification Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4191191359538611"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        @media (max-width: 768px) {
+            /* FORCE hide desktop language flags */
+            .desktop-language-flags {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -9999px !important;
+            }
+            
+            /* Compact mobile header */
+            .header {
+                height: auto !important;
+                min-height: auto !important;
+            }
+            
+            .nav {
+                padding: 0.5rem 0 !important;
+            }
+            
+            .nav-container {
+                min-height: 50px !important;
+                height: 50px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem !important;
+                line-height: 1 !important;
+            }
+            
+            /* Adjust body padding */
+            body {
+                padding-top: 60px !important;
+                padding-bottom: 80px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
+            main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 140px) !important;
+            }
+            
+            .container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            main h1 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            main h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            main h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            main p, main li {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* About Content Container */
+            main > .container > div {
+                background: rgba(255, 255, 255, 0.95) !important;
+                border-radius: 20px !important;
+                padding: 2rem 1.5rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -14,16 +107,42 @@
                 <div class="logo">
                     <h1>✨ PersonaTests</h1>
                 </div>
-                <ul class="nav-menu">
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tests">Tests</a></li>
                     <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                     <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
                 </ul>
             </div>
         </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
     </header>
 
     <main style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); min-height: 100vh;">

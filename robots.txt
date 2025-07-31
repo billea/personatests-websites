@@ -13,3 +13,6 @@ Disallow: /_netlify/
 Allow: /index.html
 Allow: /privacy.html
 Allow: /terms.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /faq.html

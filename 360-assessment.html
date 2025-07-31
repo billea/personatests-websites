@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Perception About Me - PersonaTests</title>
+    <meta name="description" content="Discover how others perceive you from multiple angles. Get honest insights from people who know you in different contexts to understand your impact and areas for growth.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense Verification Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4191191359538611"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        /* How Do People See Me Styles */
+        .assessment-main {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+        }
+        
+        .assessment-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Hero Section */
+        .assessment-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .assessment-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .assessment-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .professional-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Assessment Setup */
+        .assessment-setup {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .setup-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .tab-button {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .tab-button.active {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Personal Info Tab */
+        .personal-info {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1e40af;
+        }
+        
+        /* Feedback Areas */
+        .feedback-areas {
+            margin-bottom: 2rem;
+        }
+        
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .area-card {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .area-card:hover {
+            border-color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15);
+        }
+        
+        .area-card.selected {
+            border-color: #1e40af;
+            background: #eff6ff;
+        }
+        
+        .area-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .area-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .area-desc {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        /* Reviewer Types */
+        .reviewer-types {
+            margin-bottom: 2rem;
+        }
+        
+        .reviewer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .reviewer-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reviewer-card:hover {
+            border-color: #1e40af;
+            transform: translateY(-2px);
+        }
+        
+        .reviewer-card.selected {
+            border-color: #1e40af;
+            background: #eff6ff;
+        }
+        
+        .reviewer-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reviewer-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reviewer-count {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Share Section */
+        .share-section {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .share-url {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: white;
+            font-family: monospace;
+            user-select: all;
+            word-break: break-all;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .share-btn.primary {
+            background: white;
+            color: #1e40af;
+        }
+        
+        .share-btn.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .step.active {
+            background: #1e40af;
+            color: white;
+        }
+        
+        .step.completed {
+            background: #10b981;
+            color: white;
+        }
+        
+        .step.pending {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* NUCLEAR OPTION: Force hide ALL desktop language elements */
+            .desktop-language-flags,
+            .desktop-language-flags *,
+            div[style*="display: flex"],
+            div[style*="gap: 12px"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -99999px !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+            
+            /* Consistent 56px mobile header */
+            .header {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+            }
+            
+            .nav {
+                height: 56px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .nav-container {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem !important;
+                line-height: 1.2 !important;
+                font-weight: 800 !important;
+                color: white !important;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+            }
+            
+            /* Show hamburger menu on mobile */
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            /* Hide desktop menu on mobile */
+            .nav-menu {
+                display: none !important;
+            }
+            
+            .nav-menu.active {
+                display: flex !important;
+            }
+            
+            /* Optimized body padding */
+            body {
+                padding-top: 56px !important;
+                padding-bottom: 60px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
+            .assessment-main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 140px) !important;
+            }
+            
+            .assessment-container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            .assessment-hero h1 {
+                font-size: 2rem !important;
+            }
+            
+            .assessment-hero p {
+                font-size: 1rem !important;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .areas-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .reviewer-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .setup-tabs {
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+            }
+            
+            .tab-button {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .share-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .share-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                justify-content: center !important;
+            }
+            
+            .progress-steps {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
+                </div>
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tests">Tests</a></li>
+                    <li><a href="ask-friends.html">See Who Knows Me Best</a></li>
+                    <li><a href="360-assessment.html" class="active" style="background: linear-gradient(135deg, #1e40af, #3b82f6) !important; color: white !important; font-weight: bold !important;">🎯 360 Perception About Me</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="assessment-main">
+        <div class="assessment-container">
+            
+            <!-- Hero Section -->
+            <div class="assessment-hero">
+                <div class="professional-badge">🔍 MULTI-PERSPECTIVE REVIEW</div>
+                <h1 data-translate="tests.360assessment.heroTitle">360 Perception About Me 🎯</h1>
+                <p data-translate="tests.360assessment.heroSubtitle">Discover how others perceive you from multiple angles. Get honest insights from people who know you in different contexts - friends, colleagues, family - to understand your impact and areas for growth.</p>
+                
+                <!-- Progress Steps -->
+                <div class="progress-steps">
+                    <div class="step active" id="step1">
+                        <span>1️⃣</span>
+                        <span>Setup</span>
+                    </div>
+                    <div class="step pending" id="step2">
+                        <span>2️⃣</span>
+                        <span>Share</span>
+                    </div>
+                    <div class="step pending" id="step3">
+                        <span>3️⃣</span>
+                        <span>Results</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assessment Setup -->
+            <div class="assessment-setup">
+                <div class="setup-tabs">
+                    <button class="tab-button active" onclick="switchTab('personal')">👤 Personal Info</button>
+                    <button class="tab-button" onclick="switchTab('areas')">📊 Feedback Areas</button>
+                    <button class="tab-button" onclick="switchTab('reviewers')">👥 Reviewers</button>
+                    <button class="tab-button" onclick="switchTab('preview')">👀 Preview</button>
+                </div>
+                
+                <!-- Personal Info Tab -->
+                <div id="personal-tab" class="tab-content active">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;">Let's start with the basics about you! 😊</h3>
+                    <div class="personal-info">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-input" id="fullName" placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-input" id="emailAddress" placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Job Title</label>
+                                <input type="text" class="form-input" id="jobTitle" placeholder="Your current role">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Organization</label>
+                                <input type="text" class="form-input" id="organization" placeholder="Company or organization">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Why do you want feedback? (Optional)</label>
+                            <textarea class="form-input" id="assessmentPurpose" rows="3" placeholder="Just curious about myself, want to improve at work, working on personal growth, etc."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feedback Areas Tab -->
+                <div id="areas-tab" class="tab-content">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;">What do you want feedback about? Pick your favorites! ✨</h3>
+                    <div class="feedback-areas">
+                        <div class="areas-grid">
+                            <div class="area-card" onclick="selectArea('leadership')" data-area="leadership">
+                                <div class="area-icon">👑</div>
+                                <div class="area-title">How I Lead & Take Charge</div>
+                                <div class="area-desc">Do I inspire people? Am I good at making decisions? Do I motivate others?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('communication')" data-area="communication">
+                                <div class="area-icon">💬</div>
+                                <div class="area-title">How I Talk & Listen</div>
+                                <div class="area-desc">Am I a good listener? Do I explain things clearly? How's my texting game?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('teamwork')" data-area="teamwork">
+                                <div class="area-icon">🤝</div>
+                                <div class="area-title">How I Work With Others</div>
+                                <div class="area-desc">Am I easy to work with? Do I help teammates? How do I handle drama?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('emotional-intelligence')" data-area="emotional-intelligence">
+                                <div class="area-icon">🧠</div>
+                                <div class="area-title">My Emotional Side</div>
+                                <div class="area-desc">Do I read people well? Am I aware of my feelings? How empathetic am I?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('problem-solving')" data-area="problem-solving">
+                                <div class="area-icon">🧩</div>
+                                <div class="area-title">How I Handle Problems</div>
+                                <div class="area-desc">Am I creative with solutions? Do I think things through? Can I figure stuff out?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('adaptability')" data-area="adaptability">
+                                <div class="area-icon">🌊</div>
+                                <div class="area-title">How I Handle Change</div>
+                                <div class="area-desc">Do I roll with the punches? Am I flexible? How do I deal when things get crazy?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('interpersonal')" data-area="interpersonal">
+                                <div class="area-icon">🌟</div>
+                                <div class="area-title">How I Connect With People</div>
+                                <div class="area-desc">Do people trust me? Am I good at making friends? Do I build solid relationships?</div>
+                            </div>
+                            <div class="area-card" onclick="selectArea('work-style')" data-area="work-style">
+                                <div class="area-icon">⚡</div>
+                                <div class="area-title">How I Get Things Done</div>
+                                <div class="area-desc">Am I organized? Do I meet deadlines? Can people count on me to deliver?</div>
+                            </div>
+                        </div>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-top: 1rem;">💡 Pick 4-6 areas that you're most curious about. Don't worry, you can always do this again later!</p>
+                    </div>
+                </div>
+                
+                <!-- Reviewers Tab -->
+                <div id="reviewers-tab" class="tab-content">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;">Who knows you well enough to give honest feedback? 🤔</h3>
+                    <div class="reviewer-types">
+                        <div class="reviewer-grid">
+                            <div class="reviewer-card" onclick="selectReviewer('manager')" data-reviewer="manager">
+                                <div class="reviewer-icon">👔</div>
+                                <div class="reviewer-title">Manager/Supervisor</div>
+                                <div class="reviewer-count">1-2 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('peers')" data-reviewer="peers">
+                                <div class="reviewer-icon">👥</div>
+                                <div class="reviewer-title">Colleagues/Peers</div>
+                                <div class="reviewer-count">3-5 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('direct-reports')" data-reviewer="direct-reports">
+                                <div class="reviewer-icon">👤</div>
+                                <div class="reviewer-title">Direct Reports</div>
+                                <div class="reviewer-count">2-4 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('clients')" data-reviewer="clients">
+                                <div class="reviewer-icon">🤝</div>
+                                <div class="reviewer-title">Clients/Customers</div>
+                                <div class="reviewer-count">1-3 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('friends')" data-reviewer="friends">
+                                <div class="reviewer-icon">👯</div>
+                                <div class="reviewer-title">Friends</div>
+                                <div class="reviewer-count">2-4 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('family')" data-reviewer="family">
+                                <div class="reviewer-icon">👨‍👩‍👧‍👦</div>
+                                <div class="reviewer-title">Family</div>
+                                <div class="reviewer-count">1-3 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('teacher')" data-reviewer="teacher">
+                                <div class="reviewer-icon">👩‍🏫</div>
+                                <div class="reviewer-title">Teacher</div>
+                                <div class="reviewer-count">1-2 people</div>
+                            </div>
+                            <div class="reviewer-card" onclick="selectReviewer('student')" data-reviewer="student">
+                                <div class="reviewer-icon">👨‍🎓</div>
+                                <div class="reviewer-title">Student</div>
+                                <div class="reviewer-count">2-5 people</div>
+                            </div>
+                        </div>
+                        <div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 1rem; margin-top: 2rem;">
+                            <p style="color: #92400e; margin: 0; font-size: 0.9rem;"><strong>💡 Tip:</strong> Pick people who see you in different situations! The more perspectives, the better. Aim for 8-15 people total.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preview Tab -->
+                <div id="preview-tab" class="tab-content">
+                    <h3 style="color: #1e293b; margin-bottom: 1.5rem;">Looking good! Let's make sure everything's right 👀</h3>
+                    
+                    <div style="background: #f8fafc; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                            <div>
+                                <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Assessment Subject</h4>
+                                <p style="color: #64748b; margin: 0;" id="previewName">Not set</p>
+                                <p style="color: #64748b; margin: 0; font-size: 0.9rem;" id="previewRole">Not set</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Feedback Areas</h4>
+                                <p style="color: #64748b; margin: 0;" id="previewAreas">None selected</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Reviewer Types</h4>
+                                <p style="color: #64748b; margin: 0;" id="previewReviewers">None selected</p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button onclick="createAssessment()" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);" data-translate="tests.360assessment.startButton">
+                                Start My Assessment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Share Section (Initially Hidden) -->
+            <div id="shareSection" class="share-section" style="display: none;">
+                <h2 style="margin-bottom: 1rem;">🎉 Your Assessment is Ready!</h2>
+                <p style="margin-bottom: 1.5rem;">Share this link with your friends, family, and colleagues. They'll give you honest (but anonymous) feedback!</p>
+                
+                <div class="share-url" id="shareUrl">
+                    https://personatests.com/360-feedback/abc123
+                </div>
+                
+                <div class="share-buttons">
+                    <button class="share-btn primary" onclick="copyLink()">
+                        📋 Copy Link
+                    </button>
+                    <button class="share-btn secondary" onclick="sendEmails()">
+                        📧 Send via Email
+                    </button>
+                    <a href="360-results.html" class="share-btn secondary">
+                        📊 View Results Dashboard
+                    </a>
+                </div>
+                
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 12px;">
+                    <h4 style="margin-bottom: 1rem;">📈 What Happens Next?</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem; opacity: 0.9; text-align: left;">
+                        <li>Share the link with 8-15 people who know you well</li>
+                        <li>They give you feedback (takes about 5-10 minutes)</li>
+                        <li>You get awesome insights about yourself!</li>
+                        <li>We'll email you when people respond</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer style="background: #1e293b; color: white; padding: 2rem 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <!-- EmailJS for feedback requests -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script src="script.js"></script>
+    <script src="firebase-social.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init('bqGKo-dBalpy6MeZE');
+        
+        // How Do People See Me JavaScript
+        let selectedAreas = [];
+        let selectedReviewers = [];
+        let assessmentData = {};
+        
+        function switchTab(tabName) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+            document.getElementById(tabName + '-tab').style.display = 'block';
+            
+            if (tabName === 'preview') {
+                updatePreview();
+            }
+        }
+        
+        function selectArea(area) {
+            const card = document.querySelector(`[data-area="${area}"]`);
+            
+            if (selectedAreas.includes(area)) {
+                // Deselect
+                selectedAreas = selectedAreas.filter(a => a !== area);
+                card.classList.remove('selected');
+            } else {
+                // Select (max 8 areas)
+                if (selectedAreas.length < 8) {
+                    selectedAreas.push(area);
+                    card.classList.add('selected');
+                } else {
+                    alert('Please select a maximum of 8 feedback areas for optimal results.');
+                }
+            }
+            
+            updatePreview();
+        }
+        
+        function selectReviewer(reviewer) {
+            const card = document.querySelector(`[data-reviewer="${reviewer}"]`);
+            
+            if (selectedReviewers.includes(reviewer)) {
+                // Deselect
+                selectedReviewers = selectedReviewers.filter(r => r !== reviewer);
+                card.classList.remove('selected');
+            } else {
+                // Select
+                selectedReviewers.push(reviewer);
+                card.classList.add('selected');
+            }
+            
+            updatePreview();
+        }
+        
+        function updatePreview() {
+            // Personal info
+            const fullName = document.getElementById('fullName').value || 'Not set';
+            const jobTitle = document.getElementById('jobTitle').value;
+            const organization = document.getElementById('organization').value;
+            
+            document.getElementById('previewName').textContent = fullName;
+            
+            let roleText = 'Not set';
+            if (jobTitle && organization) {
+                roleText = `${jobTitle} at ${organization}`;
+            } else if (jobTitle) {
+                roleText = jobTitle;
+            } else if (organization) {
+                roleText = organization;
+            }
+            document.getElementById('previewRole').textContent = roleText;
+            
+            // Areas
+            const areasText = selectedAreas.length > 0 ? 
+                `${selectedAreas.length} areas selected` : 'None selected';
+            document.getElementById('previewAreas').textContent = areasText;
+            
+            // Reviewers
+            const reviewersText = selectedReviewers.length > 0 ? 
+                `${selectedReviewers.length} types selected` : 'None selected';
+            document.getElementById('previewReviewers').textContent = reviewersText;
+        }
+        
+        // Show notification message
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                font-weight: bold;
+                z-index: 10000;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+        
+        // Send feedback request emails to selected reviewers
+        async function sendFeedbackRequestEmails(assessmentId, shareUrl, assessmentData) {
+            try {
+                if (!selectedReviewers || selectedReviewers.length === 0) {
+                    console.log('No reviewers selected for email invitations');
+                    return;
+                }
+                
+                let successCount = 0;
+                const emailPromises = selectedReviewers.map(async (reviewer) => {
+                    if (!reviewer.email || !reviewer.email.includes('@')) {
+                        console.log(`Skipping invalid email: ${reviewer.email}`);
+                        return false;
+                    }
+                    
+                    try {
+                        await emailjs.send('service_dc4y1ov', 'template_360_feedback_request', {
+                            to_email: reviewer.email,
+                            reviewer_name: reviewer.name || 'Colleague',
+                            subject_name: assessmentData.fullName || 'Your colleague',
+                            relationship: reviewer.relationship || 'colleague',
+                            feedback_url: shareUrl,
+                            assessment_areas: assessmentData.selectedAreas.join(', '),
+                            site_name: 'PersonaTests'
+                        });
+                        
+                        console.log(`Feedback request sent to ${reviewer.email}`);
+                        return true;
+                    } catch (error) {
+                        console.error(`Failed to send feedback request to ${reviewer.email}:`, error);
+                        return false;
+                    }
+                });
+                
+                const results = await Promise.all(emailPromises);
+                successCount = results.filter(success => success).length;
+                
+                if (successCount > 0) {
+                    console.log(`Successfully sent ${successCount} feedback request emails`);
+                    showNotification(`📧 Sent ${successCount} feedback requests!`);
+                } else {
+                    console.log('No feedback request emails were sent');
+                }
+                
+            } catch (error) {
+                console.error('Error sending feedback request emails:', error);
+                // Don't block the assessment creation if emails fail
+            }
+        }
+        
+        async function createAssessment() {
+            // Validation
+            const fullName = document.getElementById('fullName').value.trim();
+            const emailAddress = document.getElementById('emailAddress').value.trim();
+
+            if (!fullName || !emailAddress) {
+                alert('Please fill in your name and email address.');
+                switchTab('personal');
+                return;
+            }
+
+            if (selectedAreas.length < 3) {
+                alert('Please select at least 3 feedback areas.');
+                switchTab('areas');
+                return;
+            }
+
+            if (selectedReviewers.length < 2) {
+                alert('Please select at least 2 reviewer types.');
+                switchTab('reviewers');
+                return;
+            }
+
+            // Disable button
+            const createButton = document.querySelector('#preview-tab button');
+            createButton.disabled = true;
+            createButton.innerHTML = 'Creating Assessment...';
+
+            // Create assessment data
+            assessmentData = {
+                subject: {
+                    name: fullName,
+                    email: emailAddress,
+                    jobTitle: document.getElementById('jobTitle').value,
+                    organization: document.getElementById('organization').value,
+                    purpose: document.getElementById('assessmentPurpose').value
+                },
+                feedbackAreas: selectedAreas,
+                reviewerTypes: selectedReviewers,
+            };
+
+            try {
+                const assessmentId = await socialFirebase.createAssessment(assessmentData);
+                localStorage.setItem('last360AssessmentId', assessmentId);
+
+                // Update share URL
+                const shareUrl = `${window.location.origin}/360-feedback.html?id=${assessmentId}`;
+                document.getElementById('shareUrl').textContent = shareUrl;
+
+                // Update progress steps
+                document.getElementById('step1').className = 'step completed';
+                document.getElementById('step2').className = 'step active';
+                
+                // Send feedback request emails to selected reviewers
+                await sendFeedbackRequestEmails(assessmentId, shareUrl, assessmentData);
+
+                // Show share section
+                document.getElementById('shareSection').style.display = 'block';
+                document.getElementById('shareSection').scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Error creating assessment:', error);
+                alert('There was an error creating your assessment. Please try again.');
+                // Re-enable button
+                createButton.disabled = false;
+                createButton.innerHTML = 'Let\'s See What People Think! 🚀';
+            }
+        }
+        
+        function copyLink() {
+            const shareUrl = document.getElementById('shareUrl').textContent;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✅ Copied!';
+                button.style.background = '#10b981';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'white';
+                }, 2000);
+            });
+        }
+        
+        function sendEmails() {
+            const shareUrl = document.getElementById('shareUrl').textContent;
+            const subject = `360° Feedback Request from ${assessmentData.subject.name}`;
+            const body = `Hi there!
+
+I'm working on my professional development and would really value your honest feedback about my strengths and areas for growth.
+
+Would you mind taking 5-10 minutes to complete this anonymous 360° assessment? Your insights will help me become a better colleague and person.
+
+Click here to provide feedback: ${shareUrl}
+
+Thank you so much for your time and honest input!
+
+Best regards,
+${assessmentData.subject.name}`;
+            
+            // Open email client
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+        
+        // Enhanced email sending with EmailJS
+        async function send360InvitationEmail(recipientEmail, recipientName, senderName, assessmentUrl, message) {
+            try {
+                if (!window.emailService) {
+                    throw new Error('Email service not initialized');
+                }
+                
+                await window.emailService.send360Invitation(
+                    recipientEmail,
+                    recipientName || recipientEmail.split('@')[0],
+                    senderName,
+                    assessmentUrl,
+                    message
+                );
+                
+                alert(`✅ 360° invitation sent to ${recipientEmail}!\n\nThey'll receive an email invitation to provide feedback about ${senderName}.`);
+                return true;
+                
+            } catch (error) {
+                console.error('Failed to send 360° invitation:', error);
+                alert(`❌ Failed to send invitation to ${recipientEmail}\n\nError: ${error.message}\n\nTry using the manual email option instead.`);
+                return false;
+            }
+        }
+        
+        // Bulk 360° invitations
+        async function sendBulk360Invitations(emails, senderName, assessmentUrl, message) {
+            try {
+                if (!window.emailService) {
+                    throw new Error('Email service not initialized');
+                }
+                
+                const results = await window.emailService.sendBulkEmails(
+                    emails,
+                    '360_invite',
+                    {
+                        senderName: senderName,
+                        assessmentUrl: assessmentUrl,
+                        message: message
+                    }
+                );
+                
+                const successful = results.filter(r => r.status === 'success').length;
+                const failed = results.filter(r => r.status === 'failed').length;
+                
+                if (failed > 0) {
+                    alert(`📊 360° Invitation Results:\n\n✅ Sent: ${successful}\n❌ Failed: ${failed}\n\nFailed emails:\n${results.filter(r => r.status === 'failed').map(r => r.email).join(', ')}`);
+                } else {
+                    alert(`🎉 All invitations sent!\n\n✅ Sent to ${successful} recipients\n\nThey'll receive professional 360° feedback invitations from ${senderName}.`);
+                }
+                
+                return results;
+                
+            } catch (error) {
+                console.error('Failed to send bulk 360° invitations:', error);
+                alert(`❌ Bulk invitation sending failed\n\nError: ${error.message}`);
+                return [];
+            }
+        }
+        
+        // Send feedback notification to assessment creator
+        async function sendFeedbackNotification(creatorEmail, feedbackerName, assessmentName) {
+            try {
+                if (!window.emailService && creatorEmail) {
+                    await window.emailService.sendFeedbackNotification(
+                        creatorEmail,
+                        feedbackerName || 'Someone',
+                        '360° feedback',
+                        assessmentName
+                    );
+                }
+            } catch (error) {
+                console.warn('Failed to send feedback notification:', error);
+                // Don't show error to user, this is background notification
+            }
+        }
+        
+        // Auto-save form data
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    updatePreview();
+                });
+            });
+        });
+        
+        // Update progress on input
+        document.addEventListener('input', function() {
+            updatePreview();
+        });
+    </script>
+
+    <!-- EmailJS Configuration -->
+    <script src="email-config.js"></script>
+    <script src="firebase-social.js"></script>
+</body>
+</html>

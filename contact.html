@@ -389,16 +389,13 @@
         </div>
     </footer>
 
+    <!-- EmailJS Configuration -->
+    <script src="email-config.js"></script>
     <script src="script.js"></script>
-    <!-- EmailJS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <script>
-        // Initialize EmailJS
-        emailjs.init('bqGKo-dBalpy6MeZE'); // Your actual public key
-        
-        // Enhanced contact form handler with EmailJS
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Enhanced contact form handler with new EmailJS configuration
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const formMessage = document.getElementById('formMessage');
@@ -407,96 +404,81 @@
             // Show loading state
             submitButton.innerHTML = 'Sending... ⏳';
             submitButton.disabled = true;
+            formMessage.style.display = 'none';
             
-            // Get form data
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
-            const subject = document.getElementById('contactSubject').value;
-            const message = document.getElementById('contactMessage').value;
-            
-            // Prepare template parameters
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message,
-                timestamp: new Date().toLocaleString(),
-                website: 'PersonaTests.com'
-            };
-            
-            // Send both admin notification AND auto-reply to user
-            Promise.all([
-                // 1. Send notification to admin (you)
-                emailjs.send('service_dc4y1ov', 'template_serra05', {
-                    from_name: name,
-                    from_email: email,
-                    subject: subject,
-                    message: message,
-                    timestamp: new Date().toLocaleString(),
-                    website: 'PersonaTests.com'
-                }),
-                // 2. Send auto-reply confirmation to user
-                emailjs.send('service_dc4y1ov', 'template_tohci7f', {
-                    to_name: name,
-                    to_email: email,
-                    test_name: 'Contact Form Inquiry',
-                    subject: subject,
-                    message: message,
-                    timestamp: new Date().toLocaleString(),
-                    website: 'PersonaTests.com'
-                })
-            ])
-                .then(function(response) {
-                    // Success - show success message
-                    console.log('✅ EmailJS Success:', response);
-                    formMessage.style.display = 'block';
-                    formMessage.style.color = '#059669';
-                    formMessage.innerHTML = `
-                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                            <h4 style="color: #059669; margin: 0 0 0.5rem 0;">✅ Message Sent Successfully!</h4>
-                            <p style="margin: 0; font-size: 0.9rem; color: #065f46;">
-                                Thank you, <strong>${name}</strong>! Your message about "<em>${subject}</em>" has been sent successfully. 
-                                We'll respond to <strong>${email}</strong> within 24-48 hours.
-                            </p>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
-                                <strong>What happens next:</strong> We'll review your message and send a personalized response to your email address.
-                            </p>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
-                                <strong>Debug Info:</strong> Email sent with response status: ${response.status}
+            try {
+                // Get form data
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const subject = document.getElementById('contactSubject').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                // Determine contact type for routing
+                let contactType = 'general';
+                if (subject.includes('Privacy') || subject.includes('Data')) contactType = 'privacy';
+                else if (subject.includes('Business') || subject.includes('Partnership')) contactType = 'business';
+                else if (subject.includes('Premium') || subject.includes('Report')) contactType = 'business';
+                
+                // Wait for EmailService to be ready
+                if (!window.emailService) {
+                    throw new Error('Email service not initialized');
+                }
+                
+                // Send contact form using our new EmailService
+                await window.emailService.sendContactForm(name, email, subject, message, contactType);
+                
+                // Success - show success message
+                formMessage.style.display = 'block';
+                formMessage.innerHTML = `
+                    <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <h4 style="color: #059669; margin: 0 0 0.5rem 0;">✅ Message Sent Successfully!</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: #065f46;">
+                            Thank you, <strong>${name}</strong>! Your message about "<em>${subject}</em>" has been sent successfully. 
+                            We'll respond to <strong>${email}</strong> within 24-48 hours.
+                        </p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
+                            <strong>What happens next:</strong> We'll review your message and send a personalized response to your email address.
+                        </p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #047857;">
+                            <strong>Routed to:</strong> ${contactType === 'privacy' ? 'Privacy Team' : contactType === 'business' ? 'Business Team' : 'Support Team'}
+                        </p>
+                    </div>
+                `;
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Reset button state
+                submitButton.innerHTML = 'Send Another Message 📤';
+                submitButton.disabled = false;
+                
+            } catch (error) {
+                // Error - show error message with debug info
+                console.error('❌ Contact form error:', error);
+                formMessage.style.display = 'block';
+                formMessage.innerHTML = `
+                    <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #fca5a5; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <h4 style="color: #dc2626; margin: 0 0 0.5rem 0;">❌ Message Failed to Send</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: #991b1b;">
+                            Sorry, there was an error sending your message. Please try again or contact us directly at support@personatests.com
+                        </p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #991b1b;">
+                            <strong>Error:</strong> ${error.message || 'Unknown error'}
+                        </p>
+                        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.7); border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.8rem; color: #374151;">
+                                <strong>Alternative contact methods:</strong><br>
+                                • Email: support@personatests.com<br>
+                                • Business: business@personatests.com<br>
+                                • Privacy: privacy@personatests.com
                             </p>
                         </div>
-                    `;
-                    
-                    // Reset form
-                    document.getElementById('contactForm').reset();
-                    
-                    // Reset button state
-                    submitButton.innerHTML = 'Send Another Message 📤';
-                    submitButton.disabled = false;
-                })
-                .catch(function(error) {
-                    // Error - show error message with debug info
-                    console.error('❌ EmailJS Error:', error);
-                    formMessage.style.display = 'block';
-                    formMessage.style.color = '#dc2626';
-                    formMessage.innerHTML = `
-                        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #fca5a5; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                            <h4 style="color: #dc2626; margin: 0 0 0.5rem 0;">❌ Message Failed to Send</h4>
-                            <p style="margin: 0; font-size: 0.9rem; color: #991b1b;">
-                                Sorry, there was an error sending your message. Please try again or contact us directly at personatests.business@gmail.com
-                            </p>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #991b1b;">
-                                <strong>Debug Info:</strong> ${error.text || error.message || 'Unknown error'}
-                            </p>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #991b1b;">
-                                <strong>Error Status:</strong> ${error.status || 'N/A'}
-                            </p>
-                        </div>
-                    `;
-                    
-                    // Reset button state
-                    submitButton.innerHTML = 'Try Again 📤';
-                    submitButton.disabled = false;
+                    </div>
+                `;
+                
+                // Reset button state
+                submitButton.innerHTML = 'Try Again 📤';
+                submitButton.disabled = false;
                 });
         });
     </script>

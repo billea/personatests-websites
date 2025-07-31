@@ -1,0 +1,25 @@
+{
+  "name": "testing-website",
+  "version": "1.0.0",
+  "main": "firebase-social.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=\"Mobile Chrome\"",
+    "serve": "http-server . -p 3000 -c-1",
+    "report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "http-server": "^14.1.1"
+  }
+}

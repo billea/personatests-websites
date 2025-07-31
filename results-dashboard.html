@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friends' Responses - PersonaTests</title>
+    <meta name="description" content="See what your friends really think about you! View all responses to your personalized questions.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense Verification Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4191191359538611"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        /* Results Dashboard Styles */
+        .dashboard-main {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+        }
+        
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Dashboard Header */
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-title {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .dashboard-subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4f46e5;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Question Cards */
+        .questions-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e293b;
+            font-weight: bold;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-btn.active {
+            border-color: #4f46e5;
+            background: #4f46e5;
+            color: white;
+        }
+        
+        .question-response-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1e293b;
+            flex: 1;
+            margin-right: 1rem;
+        }
+        
+        .question-category {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .responses-list {
+            margin-top: 1.5rem;
+        }
+        
+        .response-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .response-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .response-author {
+            font-weight: bold;
+            color: #4f46e5;
+        }
+        
+        .response-time {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        
+        .response-text {
+            color: #1e293b;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+        
+        .no-responses {
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+            padding: 2rem;
+        }
+        
+        /* Viral Actions */
+        .viral-actions {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .viral-actions h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .viral-actions p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .viral-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .viral-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .viral-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .viral-btn.primary {
+            background: white;
+            color: #10b981;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #64748b;
+        }
+        
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-state h3 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .empty-state p {
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* NUCLEAR OPTION: Force hide ALL desktop language elements */
+            .desktop-language-flags,
+            .desktop-language-flags *,
+            div[style*="display: flex"],
+            div[style*="gap: 12px"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -99999px !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+            
+            /* Consistent 56px mobile header */
+            .header {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+            }
+            
+            .nav {
+                height: 56px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .nav-container {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem !important;
+                line-height: 1.2 !important;
+                font-weight: 800 !important;
+                color: white !important;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+            }
+            
+            /* Show hamburger menu on mobile */
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            /* Hide desktop menu on mobile */
+            .nav-menu {
+                display: none !important;
+            }
+            
+            .nav-menu.active {
+                display: flex !important;
+            }
+            
+            /* Optimized body padding */
+            body {
+                padding-top: 56px !important;
+                padding-bottom: 60px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
+            .dashboard-main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 140px) !important;
+            }
+            
+            .dashboard-container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            .dashboard-title {
+                font-size: 2rem !important;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .section-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .filter-buttons {
+                width: 100% !important;
+                justify-content: flex-start !important;
+            }
+            
+            .viral-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .viral-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
+                </div>
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tests">Tests</a></li>
+                    <li><a href="ask-friends.html">See Who Knows Me Best</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">📊 My Friends' Responses</h1>
+                <p class="dashboard-subtitle">See what your friends really think about you!</p>
+                
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalResponses">0</span>
+                        <span class="stat-label">Total Responses</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalQuestions">0</span>
+                        <span class="stat-label">Questions Asked</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="responseRate">0%</span>
+                        <span class="stat-label">Response Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="daysActive">0</span>
+                        <span class="stat-label">Days Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Responses Section -->
+            <div class="questions-section" id="questionsSection">
+                <div class="section-header">
+                    <h2 class="section-title">Question Responses</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterResponses('all')">All</button>
+                        <button class="filter-btn" onclick="filterResponses('music')">Music</button>
+                        <button class="filter-btn" onclick="filterResponses('personality')">Personality</button>
+                        <button class="filter-btn" onclick="filterResponses('style')">Style</button>
+                        <button class="filter-btn" onclick="filterResponses('custom')">Custom</button>
+                    </div>
+                </div>
+                
+                <!-- Questions will be populated by JavaScript -->
+                <div id="questionsList">
+                    <!-- Loading state -->
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔄</div>
+                        <h3>Loading your responses...</h3>
+                        <p>Please wait while we gather all your friends' responses.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Viral Actions -->
+            <div class="viral-actions">
+                <h3>🚀 Keep the Momentum Going!</h3>
+                <p>Share your question set with more friends or create new questions to get even more insights!</p>
+                <div class="viral-buttons">
+                    <a href="ask-friends.html" class="viral-btn primary">
+                        ✨ Create New Questions
+                    </a>
+                    <button class="viral-btn" onclick="shareQuestionSet()">
+                        📤 Share Again
+                    </button>
+                    <a href="index.html" class="viral-btn">
+                        🧠 Take Personality Tests
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer style="background: #1e293b; color: white; padding: 2rem 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+    <script src="firebase-social.js"></script>
+    <script>
+        // Results Dashboard JavaScript
+        let questionSetId = null;
+        let questionSet = null;
+        let responses = [];
+        let currentFilter = 'all';
+        
+        async function loadDashboard() {
+            const urlParams = new URLSearchParams(window.location.search);
+            questionSetId = urlParams.get('id') || localStorage.getItem('lastQuestionSetId');
+
+            if (!questionSetId) {
+                showEmptyState('No question set found. Create one to get started!');
+                return;
+            }
+
+            try {
+                // Load question set from Firebase
+                questionSet = await socialFirebase.getQuestionSet(questionSetId);
+                
+                // Load initial responses
+                responses = await socialFirebase.getQuestionSetResponses(questionSetId);
+
+                // Update dashboard
+                updateStats();
+                displayQuestions();
+                
+                // Set up real-time listener for new responses
+                setupRealTimeListener();
+
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                showEmptyState('Could not load the requested question set. It may have been deleted or the link is incorrect.');
+            }
+        }
+        
+        function updateStats() {
+            const totalResponses = responses.length;
+            const totalQuestions = getAllQuestions().length;
+            const responseRate = totalQuestions > 0 ? Math.round((totalResponses / totalQuestions) * 100) : 0;
+            
+            // Handle Firebase Timestamp properly
+            let daysActive = 1;
+            if (questionSet.createdAt) {
+                const createdDate = questionSet.createdAt.toDate ? questionSet.createdAt.toDate() : new Date(questionSet.createdAt);
+                daysActive = Math.ceil((Date.now() - createdDate.getTime()) / (1000 * 60 * 60 * 24));
+            }
+            
+            document.getElementById('totalResponses').textContent = totalResponses;
+            document.getElementById('totalQuestions').textContent = totalQuestions;
+            document.getElementById('responseRate').textContent = responseRate + '%';
+            document.getElementById('daysActive').textContent = daysActive;
+        }
+        
+        function getAllQuestions() {
+            const questions = [];
+            
+            // Add category questions
+            questionSet.categories.forEach(category => {
+                const categoryQuestions = getQuestionsByCategory(category);
+                categoryQuestions.forEach(question => {
+                    questions.push({
+                        text: question,
+                        category: category,
+                        type: 'category'
+                    });
+                });
+            });
+            
+            // Add custom questions
+            questionSet.customQuestions.forEach(question => {
+                questions.push({
+                    text: question,
+                    category: 'custom',
+                    type: 'custom'
+                });
+            });
+            
+            return questions;
+        }
+        
+        function getQuestionsByCategory(category) {
+            const questionDatabase = {
+                music: [
+                    "What song describes my personality?",
+                    "What genre of music fits me best?", 
+                    "What artist would I collaborate with?",
+                    "What would be my walk-on song?"
+                ],
+                food: [
+                    "What food am I most like?",
+                    "What would I order at a restaurant?",
+                    "What's my comfort food?",
+                    "What cuisine matches my personality?"
+                ],
+                personality: [
+                    "What's my biggest strength?",
+                    "What superpower would I have?",
+                    "What's my spirit animal?",
+                    "What movie character am I like?"
+                ],
+                style: [
+                    "How would you describe my style?",
+                    "What color represents me?",
+                    "What fashion era suits me?",
+                    "What would be my signature accessory?"
+                ],
+                social: [
+                    "What role do I play in our friend group?",
+                    "How do I make others feel?",
+                    "What's my social superpower?",
+                    "What kind of friend am I?"
+                ],
+                hobbies: [
+                    "What hobby should I try next?",
+                    "What would I be passionate about?",
+                    "What skill would I master quickly?",
+                    "What creative outlet suits me?"
+                ]
+            };
+            
+            return questionDatabase[category] || [];
+        }
+        
+        function displayQuestions() {
+            const questionsList = document.getElementById('questionsList');
+            const allQuestions = getAllQuestions();
+            
+            if (allQuestions.length === 0) {
+                showEmptyState();
+                return;
+            }
+            
+            let questionsHtml = '';
+            
+            allQuestions.forEach(question => {
+                if (currentFilter !== 'all' && question.category !== currentFilter) {
+                    return;
+                }
+                
+                const questionResponses = responses.filter(response => 
+                    response.answers.some(answer => answer.question === question.text)
+                );
+                
+                questionsHtml += `
+                    <div class="question-response-card" data-category="${question.category}">
+                        <div class="question-header">
+                            <div class="question-text">${question.text}</div>
+                            <div class="question-category">${question.category}</div>
+                        </div>
+                        
+                        <div class="responses-list">
+                            ${questionResponses.length > 0 ? 
+                                questionResponses.map(response => {
+                                    const answer = response.answers.find(a => a.question === question.text);
+                                    return `
+                                        <div class="response-item">
+                                            <div class="response-header">
+                                                <span class="response-author">Friend #${responses.indexOf(response) + 1}</span>
+                                                <span class="response-time">${formatDate(response.submittedAt)}</span>
+                                            </div>
+                                            <div class="response-text">${answer.answer || 'No response provided'}</div>
+                                        </div>
+                                    `;
+                                }).join('') :
+                                '<div class="no-responses">No responses yet. Share your link to get answers!</div>'
+                            }
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (questionsHtml === '') {
+                questionsHtml = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <h3>No questions in this category</h3>
+                        <p>Try selecting a different category or create more questions!</p>
+                    </div>
+                `;
+            }
+            
+            questionsList.innerHTML = questionsHtml;
+        }
+        
+        function filterResponses(category) {
+            currentFilter = category;
+            
+            // Update filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Redisplay questions
+            displayQuestions();
+        }
+        
+        function formatDate(timestamp) {
+            // Handle Firebase Timestamp properly
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            const now = new Date();
+            const diffInHours = Math.floor((now - date) / (1000 * 60 * 60));
+            
+            if (diffInHours < 1) {
+                return 'Just now';
+            } else if (diffInHours < 24) {
+                return `${diffInHours}h ago`;
+            } else {
+                const diffInDays = Math.floor(diffInHours / 24);
+                return `${diffInDays}d ago`;
+            }
+        }
+        
+        function showEmptyState(message) {
+            document.getElementById('questionsSection').innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🤝</div>
+                    <h3>No Question Sets Found</h3>
+                    <p>${message}</p>
+                    <a href="ask-friends.html" style="background: #4f46e5; color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem;">
+                        ✨ Create Your First Question Set
+                    </a>
+                </div>
+            `;
+        }
+        
+        function shareQuestionSet() {
+            if (!questionSetId) return;
+            
+            const shareUrl = `${window.location.origin}/answer.html?id=${questionSetId}`;
+            const shareText = "Check out these questions about me and let me know what you think! 🤔✨";
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'What do you think about me?',
+                    text: shareText,
+                    url: shareUrl
+                });
+            } else {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    alert('Link copied to clipboard! Share it with your friends.');
+                });
+            }
+        }
+        
+        // Real-time listener for new responses
+        function setupRealTimeListener() {
+            if (!questionSetId) return;
+            
+            // Set up Firestore real-time listener
+            const unsubscribe = firebase.firestore()
+                .collection('responses')
+                .where('questionSetId', '==', questionSetId)
+                .orderBy('submittedAt', 'desc')
+                .onSnapshot((snapshot) => {
+                    const newResponses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    
+                    // Check if we have new responses
+                    if (responses.length > 0 && newResponses.length > responses.length) {
+                        showNotification('New response received! 🎉');
+                    }
+                    
+                    responses = newResponses;
+                    updateStats();
+                    displayQuestions();
+                }, (error) => {
+                    console.error('Error listening for responses:', error);
+                });
+            
+            // Store unsubscribe function for cleanup
+            window.responseListener = unsubscribe;
+        }
+        
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboard();
+        });
+        
+        // Cleanup listener when page unloads
+        window.addEventListener('beforeunload', function() {
+            if (window.responseListener) {
+                window.responseListener();
+            }
+        });
+        
+        function showNotification(message) {
+            // Simple notification (could be enhanced with a proper notification system)
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                font-weight: bold;
+                z-index: 10000;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

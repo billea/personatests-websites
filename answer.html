@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer About Your Friend - PersonaTests</title>
+    <meta name="description" content="Answer personalized questions about your friend and discover what you really think about them!">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense Verification Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4191191359538611"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        /* Answer Page Styles */
+        .answer-main {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+        }
+        
+        .answer-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Friend Info */
+        .friend-info {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .friend-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .friend-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .friend-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        /* Question Form */
+        .question-form {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-progress {
+            background: #f1f5f9;
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .question-counter {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+        
+        .question-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .question-category {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+        
+        .answer-input {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .answer-suggestions {
+            margin-top: 1rem;
+        }
+        
+        .suggestion-text {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .suggestion-chip {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.25rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .suggestion-chip:hover {
+            background: #c7d2fe;
+            transform: translateY(-1px);
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        
+        .nav-btn.secondary {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+        
+        /* Results Section */
+        .results-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .results-hero {
+            margin-bottom: 2rem;
+        }
+        
+        .results-hero h2 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .results-hero p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .viral-actions {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .viral-actions h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .viral-actions p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .viral-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .viral-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .viral-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* NUCLEAR OPTION: Force hide ALL desktop language elements */
+            .desktop-language-flags,
+            .desktop-language-flags *,
+            div[style*="display: flex"],
+            div[style*="gap: 12px"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -99999px !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+            
+            /* Consistent 56px mobile header */
+            .header {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+            }
+            
+            .nav {
+                height: 56px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .nav-container {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem !important;
+                line-height: 1.2 !important;
+                font-weight: 800 !important;
+                color: white !important;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+            }
+            
+            /* Show hamburger menu on mobile */
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            /* Hide desktop menu on mobile */
+            .nav-menu {
+                display: none !important;
+            }
+            
+            .nav-menu.active {
+                display: flex !important;
+            }
+            
+            /* Optimized body padding */
+            body {
+                padding-top: 56px !important;
+                padding-bottom: 60px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
+            .answer-main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 140px) !important;
+            }
+            
+            .answer-container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            .question-text {
+                font-size: 1.1rem !important;
+            }
+            
+            .nav-buttons {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            .nav-btn {
+                width: 100% !important;
+                padding: 1rem !important;
+            }
+            
+            .viral-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .viral-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
+                </div>
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tests">Tests</a></li>
+                    <li><a href="ask-friends.html">See Who Knows Me Best</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="answer-main">
+        <div class="answer-container">
+            
+            <!-- Friend Info Section -->
+            <div class="friend-info">
+                <div class="friend-avatar">👤</div>
+                <div class="friend-name" id="friendName">Your Friend</div>
+                <div class="friend-subtitle">wants to know what you think about them!</div>
+            </div>
+
+            <!-- Question Form -->
+            <div class="question-form" id="questionForm">
+                <!-- Progress Bar -->
+                <div class="question-progress">
+                    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+                </div>
+                
+                <!-- Question Counter -->
+                <div class="question-counter">
+                    <span id="currentQuestion">1</span> of <span id="totalQuestions">5</span>
+                </div>
+                
+                <!-- Question Card -->
+                <div class="question-card">
+                    <div class="question-category" id="questionCategory">personality</div>
+                    <div class="question-text" id="questionText">
+                        What's my biggest strength?
+                    </div>
+                    <textarea class="answer-input" id="answerInput" placeholder="Share your honest thoughts... be creative and fun! 😊"></textarea>
+                    
+                    <div class="answer-suggestions" id="answerSuggestions">
+                        <div class="suggestion-text">💡 Need inspiration? Try these ideas:</div>
+                        <!-- Suggestions will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <button class="nav-btn secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                        ← Previous
+                    </button>
+                    <button class="nav-btn primary" id="nextBtn" onclick="nextQuestion()">
+                        Next Question →
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results Section (Initially Hidden) -->
+            <div class="results-section" id="resultsSection">
+                <div class="results-hero">
+                    <h2>🎉 Thank You!</h2>
+                    <p>Your answers have been saved! Your friend will receive all your thoughtful responses.</p>
+                </div>
+                
+                <div class="viral-actions">
+                    <h3>🔥 Create Your Own Question Set!</h3>
+                    <p>Now it's your turn! Create personalized questions for your friends and see what they think about you.</p>
+                    <div class="viral-buttons">
+                        <a href="ask-friends.html" class="viral-btn">
+                            ✨ See Who Knows Me Best
+                        </a>
+                        <a href="index.html" class="viral-btn">
+                            🧠 Take Personality Tests
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer style="background: #1e293b; color: white; padding: 2rem 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <!-- EmailJS for notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script src="script.js"></script>
+    <script src="firebase-social.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init('bqGKo-dBalpy6MeZE');
+        
+        // Answer Page JavaScript
+        let questionSet = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let allQuestions = [];
+        
+        // Question suggestions for different categories
+        const suggestionDatabase = {
+            music: [
+                "A song that makes me think of adventure",
+                "Something upbeat and energetic", 
+                "A classic that never gets old",
+                "Whatever's trending right now",
+                "Something that matches their vibe"
+            ],
+            food: [
+                "Something comforting and warm",
+                "An exotic cuisine they'd love to try",
+                "Their go-to comfort food",
+                "Something healthy and fresh",
+                "A dessert that matches their sweetness"
+            ],
+            personality: [
+                "Their infectious positivity",
+                "How they always listen to others",
+                "Their incredible sense of humor",
+                "Their loyalty and trustworthiness",
+                "How they inspire others to be better"
+            ],
+            style: [
+                "Effortlessly cool and confident",
+                "Classic and timeless",
+                "Bold and creative",
+                "Comfortable and practical",
+                "Trendy and fashion-forward"
+            ],
+            social: [
+                "The one who brings everyone together",
+                "The voice of reason in any situation",
+                "The entertainer who keeps things fun",
+                "The supportive friend everyone needs",
+                "The leader who takes charge"
+            ],
+            hobbies: [
+                "Something creative and artistic",
+                "An outdoor adventure activity",
+                "A skill that challenges their mind",
+                "Something social and collaborative",
+                "A relaxing hobby for unwinding"
+            ],
+            custom: [
+                "Something thoughtful and meaningful",
+                "Be honest and specific",
+                "Share a fun memory or example",
+                "Think about what makes them unique",
+                "Consider their best qualities"
+            ]
+        };
+        
+        async function loadQuestionSet() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const questionSetId = urlParams.get('id');
+            
+            if (!questionSetId) {
+                // No question set ID, redirect to create page
+                window.location.href = 'ask-friends.html';
+                return;
+            }
+            
+            // Show loading state
+            document.querySelector('.answer-container').innerHTML = `
+                <div style="text-align: center; padding: 4rem 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⏳</div>
+                    <h2 style="color: white; margin-bottom: 1rem;">Loading questions...</h2>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Just a moment while we get everything ready!</p>
+                </div>
+            `;
+            
+            try {
+                // Load question set from Firebase
+                questionSet = await socialFirebase.getQuestionSet(questionSetId);
+                
+                // Restore the original page content
+                document.querySelector('.answer-container').innerHTML = `
+                    <!-- Friend Info -->
+                    <div class="friend-info">
+                        <div class="friend-avatar">👤</div>
+                        <h1 id="friendName">${questionSet.creatorName || 'Your Friend'}</h1>
+                        <p>wants to know what you really think about them! Answer honestly - your responses are anonymous! 😊</p>
+                    </div>
+
+                    <!-- Question Container -->
+                    <div class="question-container" id="questionContainer">
+                        <!-- Questions will be loaded here -->
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="answer-navigation">
+                        <button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>← Previous</button>
+                        <div class="progress-info">
+                            <span id="questionProgress">1 of 10</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                        <button class="nav-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                    </div>
+
+                    <!-- Submit Section -->
+                    <div class="submit-section" id="submitSection" style="display: none;">
+                        <div class="completion-message">
+                            <h3>🎉 You're all done!</h3>
+                            <p>Thanks for taking the time to answer these questions. Your friend will see the results soon!</p>
+                            <button class="submit-btn" onclick="submitAnswers()">Submit My Answers</button>
+                        </div>
+                    </div>
+
+                    <!-- Viral Call-to-Action -->
+                    <div class="viral-cta">
+                        <div class="viral-message">
+                            <h4>🚀 Want to try this yourself?</h4>
+                            <p>Create your own question set and discover what your friends think about you!</p>
+                            <a href="ask-friends.html" class="viral-btn">Create My Questions</a>
+                        </div>
+                    </div>
+                `;
+                
+                generateQuestions();
+                displayCurrentQuestion();
+                
+            } catch (error) {
+                console.error('Error loading question set:', error);
+                
+                // Show error message
+                document.querySelector('.answer-container').innerHTML = `
+                    <div style="text-align: center; padding: 4rem 2rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">😕</div>
+                        <h2 style="color: white; margin-bottom: 1rem;">Question Set Not Found</h2>
+                        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                            This question set might have expired, been deleted, or the link might be broken.
+                        </p>
+                        <a href="ask-friends.html" style="background: white; color: #4f46e5; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                            Create Your Own Questions
+                        </a>
+                    </div>
+                `;
+            }
+        }
+        
+        function generateQuestions() {
+            allQuestions = [];
+            
+            // Add questions from selected categories
+            questionSet.categories.forEach(category => {
+                const categoryQuestions = getQuestionsByCategory(category);
+                categoryQuestions.forEach(question => {
+                    allQuestions.push({
+                        text: question,
+                        category: category,
+                        type: 'category'
+                    });
+                });
+            });
+            
+            // Add custom questions
+            questionSet.customQuestions.forEach(question => {
+                allQuestions.push({
+                    text: question,
+                    category: 'custom',
+                    type: 'custom'
+                });
+            });
+            
+            // Shuffle questions for variety
+            allQuestions = shuffleArray(allQuestions);
+            
+            // Limit to 8 questions max for good UX
+            if (allQuestions.length > 8) {
+                allQuestions = allQuestions.slice(0, 8);
+            }
+            
+            // Update total questions display
+            document.getElementById('totalQuestions').textContent = allQuestions.length;
+            
+            // Initialize answers array
+            userAnswers = new Array(allQuestions.length).fill('');
+        }
+        
+        function getQuestionsByCategory(category) {
+            const questionDatabase = {
+                music: [
+                    "What song describes my personality?",
+                    "What genre of music fits me best?", 
+                    "What artist would I collaborate with?",
+                    "What would be my walk-on song?"
+                ],
+                food: [
+                    "What food am I most like?",
+                    "What would I order at a restaurant?",
+                    "What's my comfort food?",
+                    "What cuisine matches my personality?"
+                ],
+                personality: [
+                    "What's my biggest strength?",
+                    "What superpower would I have?",
+                    "What's my spirit animal?",
+                    "What movie character am I like?"
+                ],
+                style: [
+                    "How would you describe my style?",
+                    "What color represents me?",
+                    "What fashion era suits me?",
+                    "What would be my signature accessory?"
+                ],
+                social: [
+                    "What role do I play in our friend group?",
+                    "How do I make others feel?",
+                    "What's my social superpower?",
+                    "What kind of friend am I?"
+                ],
+                hobbies: [
+                    "What hobby should I try next?",
+                    "What would I be passionate about?",
+                    "What skill would I master quickly?",
+                    "What creative outlet suits me?"
+                ]
+            };
+            
+            return questionDatabase[category] || [];
+        }
+        
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+        
+        function displayCurrentQuestion() {
+            if (currentQuestionIndex >= allQuestions.length) {
+                showResults();
+                return;
+            }
+            
+            const question = allQuestions[currentQuestionIndex];
+            
+            // Update question display
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('questionCategory').textContent = question.category;
+            document.getElementById('questionText').textContent = question.text;
+            document.getElementById('answerInput').value = userAnswers[currentQuestionIndex];
+            
+            // Update progress bar
+            const progress = ((currentQuestionIndex + 1) / allQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').textContent = 
+                currentQuestionIndex === allQuestions.length - 1 ? 'Submit Answers ✨' : 'Next Question →';
+            
+            // Update suggestions
+            updateAnswerSuggestions(question.category);
+        }
+        
+        function updateAnswerSuggestions(category) {
+            const suggestionsContainer = document.getElementById('answerSuggestions');
+            const suggestions = suggestionDatabase[category] || suggestionDatabase.custom;
+            
+            let suggestionsHtml = '<div class="suggestion-text">💡 Need inspiration? Try these ideas:</div>';
+            suggestions.forEach(suggestion => {
+                suggestionsHtml += `<span class="suggestion-chip" onclick="useSuggestion('${suggestion}')">${suggestion}</span>`;
+            });
+            
+            suggestionsContainer.innerHTML = suggestionsHtml;
+        }
+        
+        function useSuggestion(suggestion) {
+            const answerInput = document.getElementById('answerInput');
+            if (answerInput.value.trim() === '') {
+                answerInput.value = suggestion;
+            } else {
+                answerInput.value += ' - ' + suggestion;
+            }
+            answerInput.focus();
+        }
+        
+        function saveCurrentAnswer() {
+            const answer = document.getElementById('answerInput').value.trim();
+            userAnswers[currentQuestionIndex] = answer;
+        }
+        
+        function nextQuestion() {
+            saveCurrentAnswer();
+            
+            if (currentQuestionIndex === allQuestions.length - 1) {
+                // Submit answers
+                submitAnswers();
+            } else {
+                currentQuestionIndex++;
+                displayCurrentQuestion();
+            }
+        }
+        
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                saveCurrentAnswer();
+                currentQuestionIndex--;
+                displayCurrentQuestion();
+            }
+        }
+        
+        async function submitAnswers() {
+            saveCurrentAnswer();
+            
+            // Validate that at least half the questions are answered
+            const answeredCount = userAnswers.filter(answer => answer.trim() !== '').length;
+            if (answeredCount < Math.ceil(allQuestions.length / 2)) {
+                alert('Please answer at least half of the questions before submitting!');
+                return;
+            }
+            
+            // Show loading state
+            const nextBtn = document.getElementById('nextBtn');
+            const originalText = nextBtn.innerHTML;
+            nextBtn.innerHTML = '⏳ Submitting...';
+            nextBtn.disabled = true;
+            
+            try {
+                // Create response data
+                const responseData = {
+                    answers: userAnswers.map((answer, index) => ({
+                        question: allQuestions[index].text,
+                        category: allQuestions[index].category,
+                        answer: answer
+                    })),
+                    responderInfo: {
+                        userAgent: navigator.userAgent,
+                        language: navigator.language,
+                        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                    }
+                };
+                
+                // Save to Firebase
+                await socialFirebase.saveQuestionSetResponse(questionSet.id, responseData);
+                
+                // Send notification email to creator
+                await sendResponseNotification();
+                
+                // Show results
+                showResults();
+                
+                // Track viral metrics
+                trackViralMetrics();
+                
+            } catch (error) {
+                console.error('Error submitting answers:', error);
+                alert('There was an error submitting your answers. Please try again.');
+                
+                // Restore button state
+                nextBtn.innerHTML = originalText;
+                nextBtn.disabled = false;
+            }
+        }
+        
+        // Send email notification to creator
+        async function sendResponseNotification() {
+            try {
+                if (!questionSet.creatorEmail || !questionSet.creatorEmail.includes('@')) {
+                    console.log('No valid creator email found, skipping notification');
+                    return;
+                }
+                
+                const answeredQuestions = userAnswers.filter(answer => answer.trim() !== '').length;
+                const resultsUrl = `${window.location.origin}/results-dashboard.html?id=${questionSet.id}`;
+                
+                await emailjs.send('service_dc4y1ov', 'template_ask_friends_response', {
+                    to_email: questionSet.creatorEmail,
+                    creator_name: questionSet.creatorName || 'Friend',
+                    total_questions: allQuestions.length,
+                    answered_questions: answeredQuestions,
+                    results_url: resultsUrl,
+                    site_name: 'PersonaTests'
+                });
+                
+                console.log('Response notification sent successfully');
+            } catch (error) {
+                console.error('Failed to send response notification:', error);
+                // Don't block the submission if email fails
+            }
+        }
+        
+        function showResults() {
+            document.getElementById('questionForm').style.display = 'none';
+            
+            // Calculate matching score
+            const score = calculateMatchingScore();
+            displayScoredResults(score);
+            
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function calculateMatchingScore() {
+            let totalQuestions = 0;
+            let correctMatches = 0;
+            let partialMatches = 0;
+            const detailedResults = [];
+            
+            allQuestions.forEach((question, index) => {
+                const userAnswer = userAnswers[index]?.trim().toLowerCase();
+                const correctAnswer = question.userAnswer?.trim().toLowerCase();
+                
+                if (userAnswer && correctAnswer) {
+                    totalQuestions++;
+                    
+                    // Exact match
+                    if (userAnswer === correctAnswer) {
+                        correctMatches++;
+                        detailedResults.push({
+                            question: question.text,
+                            userAnswer: userAnswers[index],
+                            correctAnswer: question.userAnswer,
+                            status: 'correct',
+                            points: 2
+                        });
+                    }
+                    // Partial match (contains similar words)
+                    else if (userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer) || 
+                             getSimilarityScore(userAnswer, correctAnswer) > 0.6) {
+                        partialMatches++;
+                        detailedResults.push({
+                            question: question.text,
+                            userAnswer: userAnswers[index],
+                            correctAnswer: question.userAnswer,
+                            status: 'partial',
+                            points: 1
+                        });
+                    }
+                    // No match
+                    else {
+                        detailedResults.push({
+                            question: question.text,
+                            userAnswer: userAnswers[index],
+                            correctAnswer: question.userAnswer,
+                            status: 'incorrect',
+                            points: 0
+                        });
+                    }
+                } else if (userAnswer) {
+                    // Question answered but no correct answer to compare
+                    detailedResults.push({
+                        question: question.text,
+                        userAnswer: userAnswers[index],
+                        correctAnswer: 'No answer provided',
+                        status: 'no-comparison',
+                        points: 0
+                    });
+                }
+            });
+            
+            const totalPoints = correctMatches * 2 + partialMatches * 1;
+            const maxPoints = totalQuestions * 2;
+            const percentage = totalQuestions > 0 ? Math.round((totalPoints / maxPoints) * 100) : 0;
+            
+            return {
+                totalQuestions,
+                correctMatches,
+                partialMatches,
+                totalPoints,
+                maxPoints,
+                percentage,
+                detailedResults
+            };
+        }
+        
+        function getSimilarityScore(str1, str2) {
+            // Simple similarity calculation
+            const words1 = str1.split(' ').filter(w => w.length > 2);
+            const words2 = str2.split(' ').filter(w => w.length > 2);
+            let matches = 0;
+            
+            words1.forEach(word1 => {
+                if (words2.some(word2 => word2.includes(word1) || word1.includes(word2))) {
+                    matches++;
+                }
+            });
+            
+            return words1.length > 0 ? matches / words1.length : 0;
+        }
+        
+        function displayScoredResults(score) {
+            const resultsSection = document.getElementById('resultsSection');
+            
+            // Get performance level and message
+            const performance = getPerformanceLevel(score.percentage);
+            
+            resultsSection.innerHTML = `
+                <div class="results-container">
+                    <!-- Score Header -->
+                    <div class="score-header" style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 2rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);">
+                        <div class="score-circle" style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, ${performance.color}, ${performance.colorSecondary}); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 8px 25px ${performance.color}30;">
+                            <div style="color: white; text-align: center;">
+                                <div style="font-size: 2rem; font-weight: bold;">${score.percentage}%</div>
+                                <div style="font-size: 0.9rem; opacity: 0.9;">${score.totalPoints}/${score.maxPoints}</div>
+                            </div>
+                        </div>
+                        <h2 style="color: #1e293b; margin-bottom: 0.5rem;">${performance.title}</h2>
+                        <p style="color: #64748b; font-size: 1.1rem; margin-bottom: 1rem;">${performance.message}</p>
+                        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;">${score.correctMatches}</div>
+                                <div style="font-size: 0.9rem; color: #64748b;">Perfect Matches</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #f59e0b;">${score.partialMatches}</div>
+                                <div style="font-size: 0.9rem; color: #64748b;">Close Matches</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #6366f1;">${score.totalQuestions}</div>
+                                <div style="font-size: 0.9rem; color: #64748b;">Total Questions</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Results -->
+                    <div class="detailed-results" style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #1e293b; margin-bottom: 1.5rem; text-align: center;">📊 Question-by-Question Results</h3>
+                        <div class="results-list">
+                            ${score.detailedResults.map((result, index) => `
+                                <div class="result-item" style="padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border-left: 4px solid ${getStatusColor(result.status)}; background: ${getStatusBackground(result.status)};">
+                                    <div style="display: flex; justify-content: between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: bold; color: #1e293b; margin-bottom: 0.5rem;">Q${index + 1}: ${result.question}</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <span style="background: ${getStatusColor(result.status)}; color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem; font-weight: bold;">
+                                                ${getStatusIcon(result.status)} ${result.points} pts
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+                                        <div>
+                                            <div style="color: #6366f1; font-weight: bold; margin-bottom: 0.25rem;">Your Answer:</div>
+                                            <div style="color: #1e293b; background: rgba(99, 102, 241, 0.1); padding: 0.5rem; border-radius: 6px;">"${result.userAnswer}"</div>
+                                        </div>
+                                        <div>
+                                            <div style="color: #10b981; font-weight: bold; margin-bottom: 0.25rem;">Their Actual Answer:</div>
+                                            <div style="color: #1e293b; background: rgba(16, 185, 129, 0.1); padding: 0.5rem; border-radius: 6px;">"${result.correctAnswer}"</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Share Results -->
+                    <div class="share-results" style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 2rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);">
+                        <h3 style="color: #1e293b; margin-bottom: 1rem;">🎉 Share Your Score!</h3>
+                        <p style="color: #64748b; margin-bottom: 1.5rem;">Let ${questionSet.creatorName || 'your friend'} know how well you know them!</p>
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <button onclick="shareScore()" style="background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: bold; cursor: pointer;">
+                                📱 Share Score
+                            </button>
+                            <a href="ask-friends.html" style="background: #10b981; color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold;">
+                                ✨ Create My Own Quiz
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function getPerformanceLevel(percentage) {
+            if (percentage >= 90) {
+                return {
+                    title: "🏆 Best Friend Level!",
+                    message: "You know them incredibly well! You're practically reading their mind.",
+                    color: "#10b981",
+                    colorSecondary: "#059669"
+                };
+            } else if (percentage >= 75) {
+                return {
+                    title: "🌟 Close Friend Level!",
+                    message: "You have great insight into who they are. Impressive knowledge!",
+                    color: "#3b82f6",
+                    colorSecondary: "#2563eb"
+                };
+            } else if (percentage >= 60) {
+                return {
+                    title: "👥 Good Friend Level",
+                    message: "Not bad! You know them pretty well, but there's room to learn more.",
+                    color: "#f59e0b",
+                    colorSecondary: "#d97706"
+                };
+            } else if (percentage >= 40) {
+                return {
+                    title: "🤝 Getting to Know You",
+                    message: "You're on your way! Spend more time together to learn their quirks.",
+                    color: "#ef4444",
+                    colorSecondary: "#dc2626"
+                };
+            } else {
+                return {
+                    title: "🔍 Mystery Friend",
+                    message: "There's so much more to discover about them! Time for deeper conversations.",
+                    color: "#6b7280",
+                    colorSecondary: "#4b5563"
+                };
+            }
+        }
+        
+        function getStatusColor(status) {
+            switch(status) {
+                case 'correct': return '#10b981';
+                case 'partial': return '#f59e0b';
+                case 'incorrect': return '#ef4444';
+                default: return '#6b7280';
+            }
+        }
+        
+        function getStatusBackground(status) {
+            switch(status) {
+                case 'correct': return 'rgba(16, 185, 129, 0.05)';
+                case 'partial': return 'rgba(245, 158, 11, 0.05)';
+                case 'incorrect': return 'rgba(239, 68, 68, 0.05)';
+                default: return 'rgba(107, 114, 128, 0.05)';
+            }
+        }
+        
+        function getStatusIcon(status) {
+            switch(status) {
+                case 'correct': return '✅';
+                case 'partial': return '⚡';
+                case 'incorrect': return '❌';
+                default: return '❓';
+            }
+        }
+        
+        function shareScore() {
+            const score = calculateMatchingScore();
+            const performance = getPerformanceLevel(score.percentage);
+            const friendName = questionSet.creatorName || 'my friend';
+            
+            const shareText = `I just took ${friendName}'s "See Who Knows Me Best" quiz and scored ${score.percentage}%! ${performance.title} 🎉\n\nI got ${score.correctMatches} perfect matches and ${score.partialMatches} close matches out of ${score.totalQuestions} questions.\n\nThink you know ${friendName} better? Try it yourself!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `I scored ${score.percentage}% on ${friendName}'s quiz!`,
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareText + '\n\n' + window.location.href);
+                alert('Score copied to clipboard! Share it with your friends.');
+            } else {
+                alert(`Share your score:\n\n${shareText}\n\n${window.location.href}`);
+            }
+        }
+        
+        function trackViralMetrics() {
+            // Track completion rate, popular questions, etc.
+            // In production, this would send analytics data
+            console.log('Viral metrics tracked:', {
+                completionRate: userAnswers.filter(a => a.trim() !== '').length / allQuestions.length,
+                totalQuestions: allQuestions.length,
+                categories: [...new Set(allQuestions.map(q => q.category))]
+            });
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuestionSet();
+        });
+        
+        // Save answer when user types (auto-save)
+        document.addEventListener('DOMContentLoaded', function() {
+            const answerInput = document.getElementById('answerInput');
+            if (answerInput) {
+                answerInput.addEventListener('input', function() {
+                    // Debounced auto-save
+                    clearTimeout(window.autoSaveTimeout);
+                    window.autoSaveTimeout = setTimeout(saveCurrentAnswer, 1000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

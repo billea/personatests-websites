@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° Results Dashboard - PersonaTests</title>
+    <meta name="description" content="View your comprehensive 360-degree feedback results with professional insights and development recommendations.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google AdSense Verification Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4191191359538611"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        /* 360 Results Dashboard Styles */
+        .results-main {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+        }
+        
+        .results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        .results-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .results-title {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .results-subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Overview Stats */
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e40af;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Results Content */
+        .results-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        /* Summary Section */
+        .summary-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e293b;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .strengths-weaknesses {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .strength-item, .weakness-item {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .strength-item {
+            border-left: 4px solid #10b981;
+        }
+        
+        .weakness-item {
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .item-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-score {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Area Details */
+        .area-details {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .area-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #1e40af;
+        }
+        
+        .area-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .area-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .area-score {
+            background: #1e40af;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .question-results {
+            margin-bottom: 1rem;
+        }
+        
+        .question-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .question-text {
+            flex: 1;
+            color: #1e293b;
+            font-size: 0.9rem;
+        }
+        
+        .question-score {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .open-feedback {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .feedback-item {
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+            color: #1e293b;
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .feedback-source {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        /* Charts */
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .chart-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .radar-chart {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border-radius: 8px;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        /* Development Recommendations */
+        .recommendations-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .recommendation-item {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .recommendation-title {
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .recommendation-description {
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        
+        /* Action Plans */
+        .action-plans {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .action-item {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .action-priority {
+            background: #22c55e;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-description {
+            color: #374151;
+            font-size: 0.9rem;
+        }
+        
+        /* Export Actions */
+        .export-actions {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .export-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .export-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .export-btn.primary {
+            background: white;
+            color: #1e40af;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* NUCLEAR OPTION: Force hide ALL desktop language elements */
+            .desktop-language-flags,
+            .desktop-language-flags *,
+            div[style*="display: flex"],
+            div[style*="gap: 12px"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+                left: -99999px !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+            
+            /* Consistent 56px mobile header */
+            .header {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+            }
+            
+            .nav {
+                height: 56px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .nav-container {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 0 1rem !important;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem !important;
+                line-height: 1.2 !important;
+                font-weight: 800 !important;
+                color: white !important;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+            }
+            
+            /* Show hamburger menu on mobile */
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            /* Hide desktop menu on mobile */
+            .nav-menu {
+                display: none !important;
+            }
+            
+            .nav-menu.active {
+                display: flex !important;
+            }
+            
+            /* Optimized body padding */
+            body {
+                padding-top: 56px !important;
+                padding-bottom: 60px !important;
+            }
+            
+            /* Mobile language selector at bottom */
+            .mobile-language-selector {
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 10000 !important;
+                padding: 1rem !important;
+                backdrop-filter: blur(20px) !important;
+                background: rgba(102, 126, 234, 0.95) !important;
+            }
+            
+            .results-main {
+                padding: 2rem 0 !important;
+                min-height: calc(100vh - 140px) !important;
+            }
+            
+            .results-container {
+                padding: 1rem !important;
+                max-width: 100% !important;
+            }
+            
+            .results-title {
+                font-size: 2rem !important;
+            }
+            
+            .overview-stats {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .strengths-weaknesses {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .area-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+            }
+            
+            .question-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+            }
+            
+            .export-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .export-btn {
+                width: 100% !important;
+                max-width: 300px !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: white; text-decoration: none;">✨ PersonaTests</a></h1>
+                </div>
+                
+                <!-- Mobile Menu Toggle Button (Hidden on Desktop) -->
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-menu" id="mobileMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tests">Tests</a></li>
+                    <li><a href="ask-friends.html">See Who Knows Me Best</a></li>
+                    <li><a href="360-assessment.html">360° Assessment</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Mobile Language Selector (Hidden on Desktop, Outside Nav Container) -->
+        <div class="mobile-language-selector" style="display: none; width: 100%; background: rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1rem;">
+            <div style="text-align: center;">
+                <label style="display: block; color: white; font-size: 14px; margin-bottom: 0.5rem; font-weight: 500;">🌍 Choose Language</label>
+                <select onchange="changeLanguage(this.value)" style="background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 8px; color: #1e293b; padding: 12px 16px; font-size: 16px; font-weight: 500; cursor: pointer; outline: none; width: 100%; max-width: 300px;">
+                    <option value="en" style="background: white; color: #1e293b;">🇺🇸 English</option>
+                    <option value="es" style="background: white; color: #1e293b;">🇪🇸 Español</option>
+                    <option value="fr" style="background: white; color: #1e293b;">🇫🇷 Français</option>
+                    <option value="de" style="background: white; color: #1e293b;">🇩🇪 Deutsch</option>
+                    <option value="it" style="background: white; color: #1e293b;">🇮🇹 Italiano</option>
+                    <option value="pt" style="background: white; color: #1e293b;">🇵🇹 Português</option>
+                    <option value="ja" style="background: white; color: #1e293b;">🇯🇵 日本語</option>
+                    <option value="ko" style="background: white; color: #1e293b;">🇰🇷 한국어</option>
+                    <option value="zh" style="background: white; color: #1e293b;">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="results-main">
+        <div class="results-container">
+            
+            <!-- Header -->
+            <div class="results-header">
+                <h1 class="results-title">📊 What People Think About You!</h1>
+                <p class="results-subtitle" id="subjectInfo">Here's what your friends, family, and colleagues really think</p>
+                
+                <!-- Overview Stats -->
+                <div class="overview-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalResponses">0</span>
+                        <span class="stat-label">Total Responses</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="overallScore">0.0</span>
+                        <span class="stat-label">Overall Score</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="areasAssessed">0</span>
+                        <span class="stat-label">Areas Assessed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="responseRate">0%</span>
+                        <span class="stat-label">Response Rate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="summary-section">
+                <h2 class="section-title">📈 The Good and The Growth Areas</h2>
+                
+                <div class="strengths-weaknesses">
+                    <div>
+                        <h3 style="color: #10b981; margin-bottom: 1rem;">🌟 You're Really Good At</h3>
+                        <div id="strengthsList">
+                            <!-- Strengths will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="color: #f59e0b; margin-bottom: 1rem;">🚀 Room to Grow</h3>
+                        <div id="weaknessesList">
+                            <!-- Development areas will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Your Personality Overview</div>
+                    <div class="radar-chart">
+                        📊 Cool visual chart coming soon - for now, check the details below!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Results -->
+            <div class="area-details">
+                <h2 class="section-title">📋 The Details: What People Actually Said</h2>
+                <div id="areaDetailsList">
+                    <!-- Area details will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Development Recommendations -->
+            <div class="recommendations-section">
+                <h2 class="section-title">💡 Some Ideas to Level Up</h2>
+                <div id="recommendationsList">
+                    <!-- Recommendations will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Action Plans -->
+            <div class="action-plans">
+                <h2 class="section-title">🎯 Your Next Steps</h2>
+                <div id="actionPlansList">
+                    <!-- Action plans will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Export Actions -->
+            <div class="export-actions">
+                <h2 style="margin-bottom: 1rem;">📤 Share Your Awesome Results!</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.9;">Download your results or share them with friends, family, or your boss!</p>
+                <div class="export-buttons">
+                    <button class="export-btn primary" onclick="exportToPDF()">
+                        📄 Download PDF Report
+                    </button>
+                    <button class="export-btn" onclick="shareResults()">
+                        📤 Share Results
+                    </button>
+                    <a href="360-assessment.html" class="export-btn">
+                        🔄 Get More Feedback
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer style="background: #1e293b; color: white; padding: 2rem 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <p>&copy; 2025 PersonaTests. All rights reserved. | <a href="privacy.html" style="color: #94a3b8;">Privacy Policy</a> | <a href="terms.html" style="color: #94a3b8;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+    <script src="firebase-social.js"></script>
+    <script>
+        // 360 Results JavaScript
+        let assessmentData = null;
+        let feedbackData = [];
+        let analysisResults = {};
+        
+        // Area templates for scoring and analysis
+        const areaTemplates = {
+            'leadership': { title: 'Leadership', icon: '👑', description: 'Vision, decision-making, inspiring others, strategic thinking' },
+            'communication': { title: 'Communication', icon: '💬', description: 'Listening skills, clarity, presentation, written communication' },
+            'teamwork': { title: 'Teamwork', icon: '🤝', description: 'Collaboration, support, conflict resolution, team dynamics' },
+            'emotional-intelligence': { title: 'Emotional Intelligence', icon: '🧠', description: 'Self-awareness, empathy, emotional regulation, social skills' },
+            'problem-solving': { title: 'Problem Solving', icon: '🧩', description: 'Analytical thinking, creativity, innovation, decision quality' },
+            'adaptability': { title: 'Adaptability', icon: '🌊', description: 'Flexibility, change management, learning agility, resilience' },
+            'interpersonal': { title: 'Interpersonal Skills', icon: '🌟', description: 'Relationship building, trust, networking, influence' },
+            'work-style': { title: 'Work Style', icon: '⚡', description: 'Organization, time management, reliability, attention to detail' }
+        };
+        
+        async function loadResults() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const assessmentId = urlParams.get('id') || localStorage.getItem('last360AssessmentId');
+
+            if (!assessmentId) {
+                showEmptyState();
+                return;
+            }
+
+            try {
+                assessmentData = await socialFirebase.getAssessment(assessmentId);
+                feedbackData = await socialFirebase.getAssessmentFeedback(assessmentId);
+
+                if (feedbackData.length === 0) {
+                    showNoFeedback();
+                    return;
+                }
+
+                analyzeResults();
+                displayResults();
+
+            } catch (error) {
+                console.error('Error loading results:', error);
+                showEmptyState();
+            }
+        }
+        
+        function analyzeResults() {
+            analysisResults = {
+                overallScore: 0,
+                areaScores: {},
+                strengths: [],
+                weaknesses: [],
+                recommendations: [],
+                actionPlans: []
+            };
+            
+            // Calculate area scores
+            assessmentData.feedbackAreas.forEach(areaKey => {
+                const areaFeedback = feedbackData.map(feedback => feedback.responses[areaKey]).filter(Boolean);
+                if (areaFeedback.length === 0) return;
+                
+                let totalScore = 0;
+                let totalRatings = 0;
+                const questionScores = {};
+                
+                areaFeedback.forEach(response => {
+                    Object.values(response.ratings).forEach(rating => {
+                        totalScore += rating;
+                        totalRatings++;
+                    });
+                    
+                    // Group by questions for detailed analysis
+                    Object.keys(response.ratings).forEach(questionId => {
+                        if (!questionScores[questionId]) {
+                            questionScores[questionId] = [];
+                        }
+                        questionScores[questionId].push(response.ratings[questionId]);
+                    });
+                });
+                
+                const areaScore = totalRatings > 0 ? (totalScore / totalRatings) : 0;
+                
+                analysisResults.areaScores[areaKey] = {
+                    score: areaScore,
+                    questionScores: questionScores,
+                    feedback: areaFeedback.map(f => f.openFeedback).filter(Boolean),
+                    responseCount: areaFeedback.length
+                };
+            });
+            
+            // Calculate overall score
+            const areaScoreValues = Object.values(analysisResults.areaScores).map(a => a.score);
+            analysisResults.overallScore = areaScoreValues.length > 0 ? 
+                areaScoreValues.reduce((sum, score) => sum + score, 0) / areaScoreValues.length : 0;
+            
+            // Identify strengths and weaknesses
+            const sortedAreas = Object.entries(analysisResults.areaScores)
+                .sort(([,a], [,b]) => b.score - a.score);
+            
+            // Top 3 areas are strengths
+            analysisResults.strengths = sortedAreas.slice(0, 3).map(([areaKey, data]) => ({
+                area: areaKey,
+                score: data.score,
+                title: areaTemplates[areaKey].title
+            }));
+            
+            // Bottom 3 areas are development opportunities
+            analysisResults.weaknesses = sortedAreas.slice(-3).reverse().map(([areaKey, data]) => ({
+                area: areaKey,
+                score: data.score,
+                title: areaTemplates[areaKey].title
+            }));
+            
+            // Generate recommendations
+            generateRecommendations();
+            generateActionPlans();
+        }
+        
+        function generateRecommendations() {
+            const recommendations = {
+                'leadership': {
+                    low: 'Focus on developing your leadership communication skills. Practice articulating your vision clearly and consider leadership training programs.',
+                    medium: 'Build on your existing leadership foundation by seeking mentorship and taking on more strategic projects.',
+                    high: 'Leverage your strong leadership skills by mentoring others and taking on larger leadership challenges.'
+                },
+                'communication': {
+                    low: 'Improve communication skills through active listening practice and public speaking opportunities like Toastmasters.',
+                    medium: 'Enhance your communication effectiveness by seeking feedback and practicing different communication styles.',
+                    high: 'Use your excellent communication skills to facilitate important meetings and mentor others in effective communication.'
+                },
+                'teamwork': {
+                    low: 'Focus on building stronger relationships with team members and practice collaborative problem-solving.',
+                    medium: 'Continue developing your collaborative skills by taking on cross-functional projects and team leadership roles.',
+                    high: 'Share your collaborative expertise by facilitating team building and teaching collaboration best practices.'
+                },
+                'emotional-intelligence': {
+                    low: 'Develop emotional intelligence through self-reflection exercises and consider emotional intelligence training.',
+                    medium: 'Build on your emotional awareness by practicing empathy and managing stress in challenging situations.',
+                    high: 'Leverage your emotional intelligence to support others and handle complex interpersonal situations.'
+                }
+            };
+            
+            analysisResults.recommendations = [];
+            
+            // Add recommendations for bottom 3 areas
+            analysisResults.weaknesses.forEach(weakness => {
+                const areaKey = weakness.area;
+                const score = weakness.score;
+                const level = score < 2.5 ? 'low' : score < 3.5 ? 'medium' : 'high';
+                
+                if (recommendations[areaKey]) {
+                    analysisResults.recommendations.push({
+                        area: areaKey,
+                        title: `Improve ${areaTemplates[areaKey].title}`,
+                        description: recommendations[areaKey][level]
+                    });
+                }
+            });
+        }
+        
+        function generateActionPlans() {
+            analysisResults.actionPlans = [
+                {
+                    priority: 'High',
+                    title: 'Address Primary Development Area',
+                    description: `Focus on improving ${analysisResults.weaknesses[0]?.title || 'your lowest-scoring area'} through targeted learning and practice.`
+                },
+                {
+                    priority: 'Medium',
+                    title: 'Leverage Top Strengths',
+                    description: `Use your strength in ${analysisResults.strengths[0]?.title || 'your highest-scoring area'} to take on new challenges and mentor others.`
+                },
+                {
+                    priority: 'Medium',
+                    title: 'Seek Regular Feedback',
+                    description: 'Schedule quarterly feedback sessions with colleagues to track progress and identify new growth opportunities.'
+                },
+                {
+                    priority: 'Low',
+                    title: 'Create Development Plan',
+                    description: 'Work with your manager to create a formal development plan based on these 360° results.'
+                }
+            ];
+        }
+        
+        function displayResults() {
+            // Update header info
+            document.getElementById('subjectInfo').textContent = 
+                `Comprehensive feedback analysis for ${assessmentData.subject.name}`;
+            
+            // Update overview stats
+            document.getElementById('totalResponses').textContent = feedbackData.length;
+            document.getElementById('overallScore').textContent = analysisResults.overallScore.toFixed(1);
+            document.getElementById('areasAssessed').textContent = assessmentData.feedbackAreas.length;
+            document.getElementById('responseRate').textContent = '100%'; // Assume all completed for now
+            
+            // Display strengths
+            displayStrengths();
+            
+            // Display weaknesses
+            displayWeaknesses();
+            
+            // Display area details
+            displayAreaDetails();
+            
+            // Display recommendations
+            displayRecommendations();
+            
+            // Display action plans
+            displayActionPlans();
+        }
+        
+        function displayStrengths() {
+            const strengthsList = document.getElementById('strengthsList');
+            let strengthsHtml = '';
+            
+            analysisResults.strengths.forEach(strength => {
+                strengthsHtml += `
+                    <div class="strength-item">
+                        <div class="item-title">${areaTemplates[strength.area].icon} ${strength.title}</div>
+                        <div class="item-score">Average Score: ${strength.score.toFixed(1)}/5.0</div>
+                    </div>
+                `;
+            });
+            
+            strengthsList.innerHTML = strengthsHtml;
+        }
+        
+        function displayWeaknesses() {
+            const weaknessesList = document.getElementById('weaknessesList');
+            let weaknessesHtml = '';
+            
+            analysisResults.weaknesses.forEach(weakness => {
+                weaknessesHtml += `
+                    <div class="weakness-item">
+                        <div class="item-title">${areaTemplates[weakness.area].icon} ${weakness.title}</div>
+                        <div class="item-score">Average Score: ${weakness.score.toFixed(1)}/5.0</div>
+                    </div>
+                `;
+            });
+            
+            weaknessesList.innerHTML = weaknessesHtml;
+        }
+        
+        function displayAreaDetails() {
+            const areaDetailsList = document.getElementById('areaDetailsList');
+            let detailsHtml = '';
+            
+            assessmentData.feedbackAreas.forEach(areaKey => {
+                const areaData = analysisResults.areaScores[areaKey];
+                const template = areaTemplates[areaKey];
+                
+                if (!areaData) return;
+                
+                detailsHtml += `
+                    <div class="area-card">
+                        <div class="area-header">
+                            <div class="area-title">
+                                ${template.icon} ${template.title}
+                            </div>
+                            <div class="area-score">${areaData.score.toFixed(1)}</div>
+                        </div>
+                        
+                        <div class="question-results">
+                            ${Object.entries(areaData.questionScores).map(([questionId, scores]) => {
+                                const avgScore = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+                                const questionText = getQuestionText(questionId);
+                                return `
+                                    <div class="question-item">
+                                        <div class="question-text">${questionText}</div>
+                                        <div class="question-score">${avgScore.toFixed(1)}</div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        
+                        ${areaData.feedback.length > 0 ? `
+                            <div class="open-feedback">
+                                <strong>Additional Comments:</strong>
+                                ${areaData.feedback.map((feedback, index) => `
+                                    <div class="feedback-item">
+                                        "${feedback}"
+                                        <div class="feedback-source">— Reviewer ${index + 1}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            areaDetailsList.innerHTML = detailsHtml;
+        }
+        
+        function displayRecommendations() {
+            const recommendationsList = document.getElementById('recommendationsList');
+            let recommendationsHtml = '';
+            
+            analysisResults.recommendations.forEach(rec => {
+                recommendationsHtml += `
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">${rec.title}</div>
+                        <div class="recommendation-description">${rec.description}</div>
+                    </div>
+                `;
+            });
+            
+            recommendationsList.innerHTML = recommendationsHtml;
+        }
+        
+        function displayActionPlans() {
+            const actionPlansList = document.getElementById('actionPlansList');
+            let actionsHtml = '';
+            
+            analysisResults.actionPlans.forEach(action => {
+                actionsHtml += `
+                    <div class="action-item">
+                        <div class="action-priority">${action.priority} Priority</div>
+                        <div class="action-title">${action.title}</div>
+                        <div class="action-description">${action.description}</div>
+                    </div>
+                `;
+            });
+            
+            actionPlansList.innerHTML = actionsHtml;
+        }
+        
+        function getQuestionText(questionId) {
+            // Extract question text from ID (simplified)
+            const questionMap = {
+                'leadership_q0': 'Vision and direction communication',
+                'leadership_q1': 'Decision making under pressure',
+                'leadership_q2': 'Inspiring and motivating others',
+                'leadership_q3': 'Strategic thinking and planning',
+                'communication_q0': 'Clarity of communication',
+                'communication_q1': 'Listening skills',
+                'communication_q2': 'Presentation effectiveness',
+                'communication_q3': 'Written communication quality',
+                // Add more mappings as needed
+            };
+            
+            return questionMap[questionId] || 'Assessment question';
+        }
+        
+        function exportToPDF() {
+            // In production, this would generate a PDF
+            alert('PDF export would be available in the premium version. Contact us for enterprise features!');
+        }
+        
+        function shareResults() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '360° Assessment Results',
+                    text: 'Check out my professional development insights from PersonaTests',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Results link copied to clipboard!');
+                });
+            }
+        }
+        
+        function showEmptyState() {
+            document.querySelector('.results-container').innerHTML = `
+                <div style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 3rem; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                    <h2 style="color: #1e293b; margin-bottom: 1rem;">No Assessment Found</h2>
+                    <p style="color: #64748b; margin-bottom: 2rem;">We couldn't find your 360° assessment. Please create one first.</p>
+                    <a href="360-assessment.html" style="background: #1e40af; color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold;">
+                        🎯 Create 360° Assessment
+                    </a>
+                </div>
+            `;
+        }
+        
+        function showNoFeedback() {
+            document.querySelector('.results-container').innerHTML = `
+                <div style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 3rem; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⏳</div>
+                    <h2 style="color: #1e293b; margin-bottom: 1rem;">Waiting for Feedback</h2>
+                    <p style="color: #64748b; margin-bottom: 2rem;">Your assessment has been created but no feedback has been received yet. Share your assessment link to start collecting responses!</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="window.history.back()" style="background: #1e40af; color: white; padding: 1rem 2rem; border-radius: 25px; border: none; font-weight: bold; cursor: pointer;">
+                            📤 Share Assessment
+                        </button>
+                        <a href="360-assessment.html" style="background: #64748b; color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold;">
+                            🎯 Create New Assessment
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResults();
+        });
+    </script>
+</body>
+</html>
