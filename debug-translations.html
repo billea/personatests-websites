@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Debug Test</title>
+</head>
+<body>
+    <h1>Translation Debug Test</h1>
+    
+    <div>
+        <h2>Test Cards:</h2>
+        <div>
+            <h3 data-translate="tests.anxiety.title">Anxiety Self-Check</h3>
+            <p>Should show: Korean="ストレス管理スタイル", English="Anxiety Self-Check"</p>
+        </div>
+        
+        <div>
+            <h3 data-translate="tests.depression.title">Mood Self-Reflection</h3>
+            <p>Should show: Korean="感情調整スタイル", English="Mood Self-Reflection"</p>
+        </div>
+        
+        <div>
+            <h3 data-translate="tests.strengths.title">Character Strengths</h3>
+            <p>Should show: Korean="キャラクター強み（VIA）", English="Character Strengths"</p>
+        </div>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('ko')">Korean</button>
+    </div>
+    
+    <div id="debug-info"></div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Debug function to check translations
+        function debugTranslations() {
+            const debugDiv = document.getElementById('debug-info');
+            const currentLang = currentLanguage || 'en';
+            
+            console.log('Current language:', currentLang);
+            console.log('Translations object:', translations);
+            
+            if (translations && translations[currentLang]) {
+                const langData = translations[currentLang];
+                console.log('Language data:', langData);
+                
+                if (langData.tests) {
+                    console.log('tests.anxiety:', langData.tests.anxiety);
+                    console.log('tests.depression:', langData.tests.depression);
+                    console.log('tests.strengths:', langData.tests.strengths);
+                }
+            }
+            
+            debugDiv.innerHTML = `
+                <h3>Debug Info:</h3>
+                <p>Current Language: ${currentLang}</p>
+                <p>Translations Available: ${Object.keys(translations || {}).join(', ')}</p>
+                <p>Anxiety Title: ${translations?.[currentLang]?.tests?.anxiety?.title || 'NOT FOUND'}</p>
+                <p>Depression Title: ${translations?.[currentLang]?.tests?.depression?.title || 'NOT FOUND'}</p>
+                <p>Strengths Title: ${translations?.[currentLang]?.tests?.strengths?.title || 'NOT FOUND'}</p>
+            `;
+        }
+        
+        // Override changeLanguage to add debugging
+        const originalChangeLanguage = window.changeLanguage;
+        window.changeLanguage = function(lang) {
+            console.log('Changing language to:', lang);
+            if (originalChangeLanguage) {
+                originalChangeLanguage(lang);
+            } else {
+                // Simple fallback if function doesn't exist
+                currentLanguage = lang;
+                updateTranslations();
+            }
+            setTimeout(debugTranslations, 100);
+        };
+        
+        // Simple translation update function
+        function updateTranslations() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const text = getTranslation(key);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+        }
+        
+        // Get translation by dot-notation key
+        function getTranslation(key) {
+            const keys = key.split('.');
+            let value = translations[currentLanguage];
+            
+            for (const k of keys) {
+                if (value && typeof value === 'object') {
+                    value = value[k];
+                } else {
+                    return null;
+                }
+            }
+            
+            return value;
+        }
+        
+        // Run debug on load
+        setTimeout(debugTranslations, 500);
+    </script>
+</body>
+</html>

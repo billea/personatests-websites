@@ -209,14 +209,7 @@ const translations = {
             discDesc: "Discover your communication style! Are you Dominant, Influential, Steady, or Conscientious? Perfect for understanding work and relationship dynamics! 💼",
             conflict: "Conflict Style Assessment", 
             conflictDesc: "How do you handle disagreements? Discover whether you're a collaborator, competitor, accommodator, avoider, or compromiser! 🤝",
-            strengths: "Character Strengths (VIA)",
-            strengthsDesc: "Uncover your core character strengths! From creativity to leadership to kindness - discover what makes you uniquely awesome! ✨",
-            adhd: "Focus & Energy Style",
-            adhdDesc: "Discover your unique attention and energy patterns! This is for fun self-reflection only - not a medical assessment. ⚡",
-            anxiety: "Stress Management Style", 
-            anxietyDesc: "Discover how you handle stress and pressure! This is for fun self-awareness only - not medical advice. 💚",
-            depression: "Emotional Regulation Style",
-            depressionDesc: "Understand how you process emotions! This is for self-reflection and entertainment only - not a mental health assessment. 🌻",
+            // Removed duplicate test title entries - these should only be in the nested test objects above
             trendingTitle: "Trending Now 🔥",
             trendingSubtitle: "The hottest personality tests everyone's talking about! Perfect for sharing with friends and social media 📱",
             love: "Love Language Test",
@@ -8456,4 +8449,93 @@ window.onclick = function(event) {
     }
 }
 
-// Placeholder function removed - using the proper startTest function defined earlier in the file
+// Language switching functionality
+function changeLanguage(lang) {
+    console.log('Switching language to:', lang);
+    currentLanguage = lang;
+    
+    // Store language preference
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Update all elements with data-translate attributes
+    updateAllTranslations();
+    
+    // Update page title if it has a translation
+    updateDocumentTitle();
+    
+    // Update any dynamic content that might need translation
+    updateDynamicContent();
+}
+
+function updateAllTranslations() {
+    const elements = document.querySelectorAll('[data-translate]');
+    
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const translatedText = getNestedTranslation(key);
+        
+        if (translatedText) {
+            element.textContent = translatedText;
+        } else {
+            console.warn(`Translation not found for key: ${key} in language: ${currentLanguage}`);
+        }
+    });
+}
+
+function getNestedTranslation(key) {
+    const keys = key.split('.');
+    let current = translations[currentLanguage];
+    
+    for (const k of keys) {
+        if (current && typeof current === 'object' && current.hasOwnProperty(k)) {
+            current = current[k];
+        } else {
+            // Fallback to English if translation not found
+            current = translations.en;
+            for (const fallbackKey of keys) {
+                if (current && typeof current === 'object' && current.hasOwnProperty(fallbackKey)) {
+                    current = current[fallbackKey];
+                } else {
+                    return null;
+                }
+            }
+            break;
+        }
+    }
+    
+    return typeof current === 'string' ? current : null;
+}
+
+function updateDocumentTitle() {
+    const titleKey = document.documentElement.getAttribute('data-translate-title');
+    if (titleKey) {
+        const translatedTitle = getNestedTranslation(titleKey);
+        if (translatedTitle) {
+            document.title = translatedTitle;
+        }
+    }
+}
+
+function updateDynamicContent() {
+    // Update any dynamic content that might need translation
+    // This can be extended as needed
+}
+
+// Initialize language on page load
+function initializeLanguage() {
+    // Get saved language or default to English
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    changeLanguage(savedLanguage);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLanguage();
+});
+
+// Also initialize if DOM is already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLanguage);
+} else {
+    initializeLanguage();
+}
