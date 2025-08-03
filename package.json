@@ -12,7 +12,14 @@
     "test:safari": "playwright test --project=webkit",
     "test:mobile": "playwright test --project=\"Mobile Chrome\"",
     "serve": "http-server . -p 3000 -c-1",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "test:regression": "playwright test tests/regression-suite.spec.js --timeout=30000",
+    "test:korean": "playwright test tests/test_korean_descriptions_simple.spec.js --timeout=25000",
+    "test:french": "playwright test tests/test_french_translations.spec.js --timeout=25000",
+    "test:buttons": "playwright test tests/test_all_button_translations.spec.js --timeout=20000",
+    "test:qa": "npm run test:regression && npm run test:korean && npm run test:french",
+    "test:smoke": "playwright test tests/regression-suite.spec.js --timeout=20000 --project=chromium",
+    "test:language-switching": "playwright test tests/test_language_switching.spec.js --timeout=30000 --project=chromium"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-08-02T15:14:53.846Z",
+  "testResult": "PASS",
+  "initialHero": {
+    "badge": "Most Accurate Personality Tests",
+    "title": "\n                        Discover Your\n                        True Self\n                        ✨\n                    ",
+    "subtitle": "\n                        Uncover your personality, strengths, and potential with our scientifically-backed tests available in 9 languages worldwide.\n                    "
+  },
+  "koreanHero": {
+    "badge": "가장 정확한 성격 테스트",
+    "title": "나의 성격을 알아보세요 ✨",
+    "subtitle": "과학적으로 검증된 성격 테스트로 진짜 나를 찾아보세요. MBTI부터 빅파이브까지, 나만의 특별함을 발견해보세요! 🔥",
+    "badgeHasKorean": true,
+    "titleHasKorean": true,
+    "subtitleHasKorean": true
+  },
+  "navCheck": {
+    "tests": "테스트",
+    "couples": "커플",
+    "about": "소개",
+    "testsKorean": true,
+    "couplesKorean": true,
+    "aboutKorean": true
+  },
+  "issues": [],
+  "expectedTranslations": {
+    "badge": "가장 정확한 성격 테스트",
+    "title": "나의 성격을 알아보세요 ✨",
+    "subtitle_contains": [
+      "과학적으로 검증된",
+      "MBTI",
+      "빅파이브"
+    ]
+  },
+  "screenshots": [
+    "hero_1_initial.png",
+    "hero_2_korean.png"
+  ]
+}

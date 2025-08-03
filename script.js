@@ -73,14 +73,22 @@ const translations = {
             logout: "Logout"
         },
         hero: {
+            badge: "Most Accurate Personality Tests",
             title: "Discover Your Personality ✨",
             subtitle: "Take scientifically-backed personality tests that actually get you. From MBTI to Big Five, uncover what makes you uniquely you! 🔥",
             cta: "Check My Vibe",
+            startJourney: "Start Your Journey",
             stats: {
                 tests: "Personality Tests",
                 languages: "Languages",
                 access: "Always Free",
                 private: "Private"
+            },
+            features: {
+                scientific: "Science-Based",
+                instant: "Instant Results",
+                personalized: "100% Personalized",
+                private: "Completely Private"
             }
         },
         stats: {
@@ -107,6 +115,7 @@ const translations = {
             sectionSubtitle: "Get the full view: who you are inside AND how others see you! 💫",
             disclaimer: "🎯 Important: For Entertainment & Self-Reflection Only",
             disclaimerText: "These assessments are designed for fun and self-reflection, not professional diagnosis. If you need mental health support, please consult a licensed healthcare provider.",
+            takeTest: "Take Test",
             mbti: {
                 title: "16 Personalities (MBTI)",
                 description: "The ultimate personality test that actually gets you. Are you INTJ mastermind energy or ENFP golden retriever vibes? Time to find out! 💅"
@@ -408,11 +417,18 @@ const translations = {
             title: "Descubre Tu Personalidad ✨",
             subtitle: "Realiza pruebas de personalidad con respaldo científico que realmente te entienden. ¡Desde MBTI hasta Big Five, descubre qué te hace único! 🔥",
             cta: "Descubre Mi Personalidad",
+            startJourney: "Comienza Tu Viaje",
             stats: {
                 tests: "Tests de Personalidad",
                 languages: "Idiomas",
                 access: "Siempre Gratis",
                 private: "Privado"
+            },
+            features: {
+                scientific: "Basado en Ciencia",
+                instant: "Resultados Instantáneos",
+                personalized: "100% Personalizado",
+                private: "Completamente Privado"
             }
         },
         stats: {
@@ -439,6 +455,7 @@ const translations = {
             sectionSubtitle: "Cuál test te interesa más? Todos tienen base científica y son súper divertidos! 💫",
             disclaimer: "🎯 Importante: Solo para Entretenimiento y Autorreflexión",
             disclaimerText: "Estos tests son para diversión y autoconocimiento, no para diagnóstico profesional. Si necesitas ayuda psicológica, consulta a un profesional de la salud.",
+            takeTest: "Hacer Prueba",
             askfriends: {
                 title: "Ve Quién Me Conoce Mejor",
                 description: "Crea preguntas sobre ti mismo, proporciona TUS respuestas, ¡luego ve quién te conoce mejor! Los amigos intentarán coincidir con tus respuestas y serán puntuados sobre qué tan bien te conocen.",
@@ -765,11 +782,18 @@ const translations = {
             title: "Découvrez Votre Personnalité ✨",
             subtitle: "Faites des tests de personnalité avec base scientifique qui vous comprennent vraiment. Du MBTI au Big Five, découvrez ce qui vous rend unique ! 🔥",
             cta: "Découvrir Mon Style",
+            startJourney: "Commencez Votre Voyage",
             stats: {
                 tests: "Tests de Personnalité",
                 languages: "Langues",
                 access: "Toujours Gratuit",
                 private: "Privé"
+            },
+            features: {
+                scientific: "Basé sur la Science",
+                instant: "Résultats Instantanés",
+                personalized: "100% Personnalisé",
+                private: "Complètement Privé"
             }
         },
         stats: {
@@ -796,6 +820,7 @@ const translations = {
             sectionSubtitle: "Quel test vous intéresse ? Tous ont une base scientifique et sont super amusants ! 💫",
             disclaimer: "🎯 Important : Pour le Divertissement et l'Autoréflexion Uniquement",
             disclaimerText: "Ces tests sont faits pour s'amuser et mieux se connaître, pas pour un diagnostic professionnel. Si vous avez besoin d'aide psychologique, consultez un professionnel de santé qualifié.",
+            takeTest: "Faire le Test",
             askfriends: {
                 title: "Voir Qui Me Connaît Le Mieux",
                 description: "Créez des questions sur vous-même, fournissez VOS réponses, puis voyez qui vous connaît le mieux ! Les amis essaieront de correspondre à vos réponses et seront notés sur la façon dont ils vous connaissent.",
@@ -934,7 +959,26 @@ const translations = {
                 minutes10: "⏱️ 10 min",
                 minutes15: "⏱️ 15 min",
                 setup5: "⏱️ Configuration 5 min",
-                setup10: "⏱️ Configuration 10 min"
+                setup10: "⏱️ Configuration 10 min",
+                // Missing French meta badges matching Korean ones
+                scienceBased: "🔬 Base Scientifique",
+                accurate: "🎯 Très Précis",
+                researchGrade: "🎯 Niveau Recherche",
+                mostAccurate: "🏆 Le Plus Précis",
+                relationship: "💝 Relation",
+                couplesFriendly: "❤️ Convivial Couples",
+                funGame: "🎮 Jeu Amusant",
+                brainTraining: "🧠 Entraînement Cérébral",
+                careerFocused: "🎯 Axé Carrière",
+                careerFocus: "💼 Focus Carrière",
+                selfReflection: "🔍 Autoréflexion",
+                notMedical: "⚠️ Non Médical",
+                wellness: "🧘 Bien-être",
+                moodTracking: "🌈 Suivi Humeur",
+                strengthsBased: "🌟 Basé Forces",
+                personalGrowth: "🎯 Croissance Personnelle",
+                instant: "⚡ Instantané",
+                insights: "💡 Insights"
             },
             strengths: "Forces de Caractère (VIA)",
             strengthsDesc: "Découvrez vos principales forces de caractère ! De la créativité au leadership en passant par la gentillesse - découvrez ce qui vous rend uniquement génial ! ✨",
@@ -1085,11 +1129,18 @@ const translations = {
             title: "Entdecke Deine Persönlichkeit ✨",
             subtitle: "Mach wissenschaftlich fundierte Persönlichkeitstests, die dich wirklich verstehen. Von MBTI bis Big Five - finde heraus, was dich besonders macht! 🔥",
             cta: "Jetzt Testen",
+            startJourney: "Beginne Deine Reise",
             stats: {
                 tests: "Persönlichkeitstests",
                 languages: "Sprachen",
                 access: "Immer Kostenlos",
                 private: "Privat"
+            },
+            features: {
+                scientific: "Wissenschaftlich Fundiert",
+                instant: "Sofortige Ergebnisse",
+                personalized: "100% Personalisiert",
+                private: "Vollständig Privat"
             }
         },
         stats: {
@@ -1116,6 +1167,7 @@ const translations = {
             sectionSubtitle: "Welcher Test gefällt dir? Alle sind wissenschaftlich und richtig spannend! 💫",
             disclaimer: "🎯 Wichtig: Nur zur Unterhaltung und Selbstreflexion",
             disclaimerText: "Diese Tests sind für Spaß und Selbsterkenntnis, nicht für professionelle Diagnosen. Wenn du psychologische Hilfe benötigst, konsultiere einen qualifizierten Gesundheitsexperten.",
+            takeTest: "Test Machen",
             askfriends: {
                 title: "Sieh Wer Mich Am Besten Kennt",
                 description: "Erstelle Fragen über dich selbst, gib DEINE Antworten an, dann sieh wer dich am besten kennt! Freunde werden versuchen deine Antworten zu treffen und bekommen Punkte dafür wie gut sie dich kennen.",
@@ -1375,11 +1427,18 @@ const translations = {
             title: "Scopri La Tua Personalità ✨",
             subtitle: "Fai test di personalità scientifici che ti capiscono davvero. Da MBTI a Big Five, scopri cosa ti rende speciale! 🔥",
             cta: "Inizia Il Test",
+            startJourney: "Inizia Il Tuo Viaggio",
             stats: {
                 tests: "Test di Personalità",
                 languages: "Lingue",
                 access: "Sempre Gratis",
                 private: "Privato"
+            },
+            features: {
+                scientific: "Basato sulla Scienza",
+                instant: "Risultati Istantanei",
+                personalized: "100% Personalizzato",
+                private: "Completamente Privato"
             }
         },
         stats: {
@@ -1406,6 +1465,7 @@ const translations = {
             sectionSubtitle: "Quale test ti piace di più? Tutti sono scientifici e divertenti! 💫",
             disclaimer: "🎯 Importante: Solo per Intrattenimento e Autoriflessione",
             disclaimerText: "Questi test sono per divertimento e autoconoscenza, non per diagnosi professionali. Se hai bisogno di aiuto psicologico, consulta un professionista sanitario qualificato.",
+            takeTest: "Fai il Test",
             askfriends: {
                 title: "Vedi Chi Mi Conosce Meglio",
                 description: "Crea domande su te stesso, fornisci LE TUE risposte, poi vedi chi ti conosce meglio! Gli amici proveranno a indovinare le tue risposte e saranno valutati su quanto bene ti conoscono.",
@@ -1665,11 +1725,18 @@ const translations = {
             title: "Descubra Sua Personalidade ✨",
             subtitle: "Faça testes de personalidade científicos que realmente te entendem. Do MBTI ao Big Five, descubra o que te torna especial! 🔥",
             cta: "Fazer Meu Teste",
+            startJourney: "Comece Sua Jornada",
             stats: {
                 tests: "Testes de Personalidade",
                 languages: "Idiomas",
                 access: "Sempre Grátis",
                 private: "Privado"
+            },
+            features: {
+                scientific: "Baseado em Ciência",
+                instant: "Resultados Instantâneos",
+                personalized: "100% Personalizado",
+                private: "Completamente Privado"
             }
         },
         stats: {
@@ -1696,6 +1763,7 @@ const translations = {
             sectionSubtitle: "Qual teste você quer fazer? Todos são científicos e super divertidos! 💫",
             disclaimer: "🎯 Importante: Apenas para Entretenimento e Autorreflexão",
             disclaimerText: "Estes testes são para diversão e autoconhecimento, não para diagnóstico profissional. Se você precisa de ajuda psicológica, consulte um profissional de saúde qualificado.",
+            takeTest: "Fazer Teste",
             askfriends: {
                 title: "Veja Quem Me Conhece Melhor",
                 description: "Crie perguntas sobre você mesmo, forneça SUAS respostas, depois veja quem te conhece melhor! Os amigos tentarão acertar suas respostas e serão avaliados sobre o quão bem te conhecem.",
@@ -1985,11 +2053,18 @@ const translations = {
             title: "あなたの性格を見つけよう ✨",
             subtitle: "科学的な性格テストで本当の自分を知ろう。MBTIからビッグファイブまで、あなたの個性を発見！🔥",
             cta: "テストを始める",
+            startJourney: "旅を始める",
             stats: {
                 tests: "性格テスト",
                 languages: "言語",
                 access: "常に無料",
                 private: "プライベート"
+            },
+            features: {
+                scientific: "科学に基づく",
+                instant: "即座の結果",
+                personalized: "100% パーソナライズ",
+                private: "完全にプライベート"
             }
         },
         stats: {
@@ -2016,6 +2091,7 @@ const translations = {
             sectionSubtitle: "どのテストがお気に入り？すべて科学的で楽しいよ！💫",
             disclaimer: "🎯 重要：娯楽と自己反省のみを目的としています",
             disclaimerText: "これらの評価は楽しみと自己反省のために設計されており、専門的な診断ではありません。メンタルヘルスのサポートが必要な場合は、認可された医療提供者にご相談ください。",
+            takeTest: "テストを開始",
             askfriends: {
                 title: "誰が私を一番知っているか見てみよう",
                 description: "自分についての質問を作って、あなたの答えを提供し、誰があなたを一番知っているかを見てみよう！友達があなたの答えに合わせようとして、あなたをどれくらい知っているかで点数をつけられます。",
@@ -2302,13 +2378,21 @@ const translations = {
             logout: "로그아웃"
         },
         hero: {
+            badge: "가장 정확한 성격 테스트",
             title: "나의 성격을 알아보세요 ✨",
             subtitle: "과학적으로 검증된 성격 테스트로 진짜 나를 찾아보세요. MBTI부터 빅파이브까지, 나만의 특별함을 발견해보세요! 🔥",
             cta: "내 성격 알아보기",
+            startJourney: "여정을 시작하세요",
             stats: {
                 tests: "성격 테스트",
                 languages: "언어",
                 access: "항상 무료",
+                private: "완전 비공개"
+            },
+            features: {
+                scientific: "과학적 근거",
+                instant: "즉시 결과",
+                personalized: "100% 개인화",
                 private: "완전 비공개"
             }
         },
@@ -2336,6 +2420,7 @@ const translations = {
             sectionSubtitle: "어떤 테스트가 가장 궁금하신가요? 모든 테스트는 과학적으로 검증되었고 재미있게 설계되었어요! 💫",
             disclaimer: "🎯 중요: 재미와 자기계발 목적으로만",
             disclaimerText: "이 테스트들은 재미와 자기계발을 위한 것으로, 전문적인 진단 도구가 아닙니다. 전문적인 도움이 필요하시면 자격을 갖춘 전문가에게 상담받으세요.",
+            takeTest: "테스트 하기",
             askfriends: {
                 title: "누가 나를 가장 잘 아는지 보기",
                 description: "나에 대한 질문을 만들고 내 답을 제공한 후, 누가 나를 가장 잘 아는지 보세요! 친구들이 내 답에 맞추려고 노력하고 나를 얼마나 잘 아는지에 따라 점수를 받습니다.",
@@ -2507,14 +2592,11 @@ const translations = {
                 socialApp: "📱 소셜",
                 socialPeople: "👥 소셜"
             },
-            // Test badges
+            // Test badges and general terms  
             trending: "🔥 트렌딩",
             popular: "✨ 인기", 
             featured: "🔥 인기",
             new: "🔥 새로운",
-            connect: "💝 연결",
-            growth: "🌱 성장",
-            // Test actions
             takeTest: "테스트 하기",
             createQuestions: "질문 만들기",
             startAssessment: "내 사람들에게 물어보기",
@@ -2594,6 +2676,40 @@ const translations = {
             startAssessment: "평가 시작하기",
             startButton: "내 평가 시작하기"
         },
+        tests: {
+            meta: {
+                scienceBased: "🔬 과학적 근거",
+                accurate: "🎯 매우 정확",
+                researchGrade: "🎯 연구 수준",
+                mostAccurate: "🏆 가장 정확",
+                relationship: "💝 관계",
+                couplesFriendly: "❤️ 커플 친화적",
+                funGame: "🎮 재미있는 게임",
+                brainTraining: "🧠 두뇌 훈련",
+                careerFocused: "🎯 진로 중심",
+                careerFocus: "💼 진로 중심",
+                leadership: "💼 리더십",
+                selfReflection: "🔍 자기성찰",
+                notMedical: "⚠️ 의료용 아님",
+                wellness: "🧘 웰니스",
+                moodTracking: "🌈 기분 추적",
+                strengthsBased: "🌟 강점 기반",
+                personalGrowth: "🎯 개인 성장",
+                personalized: "🎯 개인화",
+                relationships: "💕 관계",
+                connection: "🤝 연결",
+                socialApp: "📱 소셜",
+                socialPeople: "👥 소셜",
+                viral: "🔥 바이럴",
+                detailed: "📊 상세",
+                couples: "💕 커플",
+                instant: "⚡ 즉시",
+                fun: "😄 재미",
+                insights: "💡 통찰",
+                guidance: "📝 가이드",
+                improvement: "📈 개선"
+            }
+        },
         meta: {
             badges: {
                 scientific: "과학적",
@@ -2639,11 +2755,18 @@ const translations = {
             title: "发现你的个性 ✨",
             subtitle: "做科学的个性测试，真正了解自己。从MBTI到大五人格，找到你的独特之处！🔥",
             cta: "开始测试",
+            startJourney: "开始你的旅程",
             stats: {
                 tests: "性格测试",
                 languages: "语言",
                 access: "永远免费",
                 private: "私人"
+            },
+            features: {
+                scientific: "基于科学",
+                instant: "即时结果",
+                personalized: "100% 个性化",
+                private: "完全私密"
             }
         },
         stats: {
@@ -2670,6 +2793,7 @@ const translations = {
             sectionSubtitle: "哪个测试你最感兴趣？所有都是科学的且超好玩！💫",
             disclaimer: "🎯 重要：仅供娱乐和自我反思",
             disclaimerText: "这些评估是为了娱乐和自我反思而设计的，不是专业诊断。如果您需要心理健康支持，请咨询执照医疗提供者。",
+            takeTest: "开始测试",
             askfriends: {
                 title: "看看谁最了解我",
                 description: "创建关于你自己的问题，提供你的答案，然后看看谁最了解你！朋友们会尝试匹配你的答案，并根据他们对你的了解程度进行评分。",
@@ -2991,9 +3115,33 @@ function changeLanguage(langCode) {
         requestAnimationFrame(() => {
             console.log('🔄 Applying language changes...');
             const lang = translations[langCode];
-            updateTranslatedElements(lang);
+            
+            // Force complete translation update
+            forceUpdateAllTranslations(lang);
             updateLanguageVisualIndicators(langCode);
             updateSpecificSections(lang);
+            
+            // Apply manual translations for each language to ensure meta badges are correctly translated
+            console.log(`🔄 Applying manual translations for language: ${langCode}`);
+            if (langCode === 'ko') {
+                console.log('🇰🇷 Applying Korean translation fix...');
+                applyKoreanTranslationFix(lang);
+            } else if (langCode === 'fr') {
+                applyManualFrenchTranslations();
+            } else if (langCode === 'es') {
+                applyManualSpanishTranslations();
+            } else if (langCode === 'it') {
+                applyManualItalianTranslations();
+            } else if (langCode === 'pt') {
+                applyManualPortugueseTranslations();
+            } else if (langCode === 'de') {
+                applyManualGermanTranslations();
+            } else if (langCode === 'ja') {
+                applyManualJapaneseTranslations();
+            } else if (langCode === 'zh') {
+                applyManualChineseTranslations();
+            }
+            
             console.log('✅ Language change completed for:', langCode);
         });
         
@@ -3011,8 +3159,30 @@ function updateTranslatedElements(lang) {
         if (!key) return;
         
         const value = getNestedTranslation(lang, key);
-        if (value && element.textContent !== value) {
+        if (value !== undefined && value !== null && element.textContent !== value) {
             element.textContent = value;
+        } else if (!value) {
+            console.warn(`Missing translation for key: ${key} in language: ${currentLanguage}`);
+        }
+    });
+}
+
+// Force complete translation update - more aggressive approach
+function forceUpdateAllTranslations(lang) {
+    console.log('🔄 Force updating all translations...');
+    const elements = document.querySelectorAll('[data-translate]');
+    
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (!key) return;
+        
+        const value = getNestedTranslation(lang, key);
+        if (value !== undefined && value !== null) {
+            // Force update regardless of current content
+            element.textContent = value;
+            console.log(`✅ Updated ${key}: ${value}`);
+        } else {
+            console.warn(`❌ Missing translation for key: ${key} in language: ${currentLanguage}`);
         }
     });
 }
@@ -3085,9 +3255,957 @@ function updateSpecificSections(lang = translations[currentLanguage]) {
     try {
         updateHeroSection(lang);
         updateStatsSection(lang);
+        updateHeroFeatures(lang);
     } catch (e) {
         console.warn('⚠️ Error updating additional sections:', e);
     }
+}
+
+// COMPREHENSIVE KOREAN TRANSLATION FIX - Multiple fallback strategies
+function applyKoreanTranslationFix(lang) {
+    console.log('🔧 Starting comprehensive Korean translation fix...');
+    
+    try {
+        // Strategy 1: Clear any cached language state first
+        console.log('📝 Strategy 1: Clear language state and force fresh translation...');
+        
+        // Force set current language to Korean
+        currentLanguage = 'ko';
+        localStorage.setItem('selectedLanguage', 'ko');
+        
+        setTimeout(() => {
+            // Strategy 2: Apply comprehensive Korean translations
+            console.log('📝 Strategy 2: Apply comprehensive Korean translations...');
+            if (translations.ko) {
+                forceUpdateAllTranslations(translations.ko);
+                updateSpecificSections(translations.ko);
+                updateHeroSection(translations.ko);
+                updateStatsSection(translations.ko);
+                updateHeroFeatures(translations.ko);
+            }
+            
+            // Strategy 3: Manual Korean mapping for any missed elements
+            console.log('📝 Strategy 3: Manual Korean mapping...');
+            applyManualKoreanTestCardTitles();
+            
+            // Strategy 4: Force update visual indicators
+            console.log('📝 Strategy 4: Update language visual indicators...');
+            updateLanguageVisualIndicators('ko');
+            
+            // Strategy 5: Enhanced verification and debugging
+            console.log('📝 Strategy 5: Verify translations...');
+            verifyKoreanTranslations();
+        }, 100);
+        
+    } catch (error) {
+        console.error('❌ Korean translation fix error:', error);
+    }
+}
+
+// Helper function to get current language
+function getCurrentLanguage() {
+    return window.currentLanguage || localStorage.getItem('selectedLanguage') || 'en';
+}
+
+// Manual French translations function
+function applyManualFrenchTranslations() {
+    console.log('🇫🇷 Applying manual French translations...');
+    
+    const frenchTranslations = {
+        // Hero section
+        'hero.badge': 'Tests de Personnalité les Plus Précis',
+        'hero.title': 'Découvrez Votre Personnalité ✨',
+        'hero.subtitle': 'Faites des tests de personnalité avec base scientifique qui vous comprennent vraiment. Du MBTI au Big Five, découvrez ce qui vous rend unique ! 🔥',
+        'hero.startJourney': 'Commencez Votre Voyage',
+        
+        // Navigation
+        'nav.tests': 'Tests',
+        'nav.couples': 'Couples',
+        'nav.about': 'À Propos',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Contact',
+        'nav.results': 'Mes Résultats',
+        'nav.login': 'Connexion ✨',
+        'nav.logout': 'Déconnexion',
+        
+        // Categories
+        'categories.knowYourselfSubtitle': 'Découvrez votre personnalité intérieure, vos forces et traits uniques grâce à des évaluations scientifiquement validées',
+        'categories.howOthersSubtitle': 'Obtenez des commentaires honnêtes et découvrez comment amis, famille et collègues vous perçoivent vraiment',
+        
+        // Test button translations
+        'tests.takeTest': 'Faire le Test',
+        
+        // Test titles
+        'tests.mbti.title': '16 Types de Personnalité',
+        'tests.bigfive.title': 'Test des Cinq Grands',
+        'tests.lovelanguage.title': 'Test du Langage d\'Amour',
+        'tests.iq.title': 'Défi Mental',
+        'tests.ei.title': 'Intelligence Émotionnelle',
+        'tests.adhd.title': 'Auto-évaluation TDAH',
+        'tests.anxiety.title': 'Auto-vérification de l\'Anxiété',
+        'tests.depression.title': 'Autoréflexion de l\'Humeur',
+        'tests.strengths.title': 'Forces de Caractère',
+        'tests.careerpath.title': 'Découvreur de Parcours Professionnel',
+        'tests.relationshipstyle.title': 'Style de Relation',
+        'tests.askfriends.title': 'Voir Qui Me Connaît Le Mieux',
+        'tests.360assessment.title': '360 Perception Sur Moi',
+        
+        // Test descriptions
+        'tests.mbti.description': 'Découvrez votre type de personnalité unique avec l\'évaluation classique Myers-Briggs ! Êtes-vous un penseur introverti ou un extraverti émotionnel ?',
+        'tests.bigfive.description': 'L\'étalon-or de la psychologie de la personnalité ! Explorez votre ouverture, conscience, extraversion, amabilité et névrosisme.',
+        'tests.lovelanguage.description': 'Mots d\'affirmation, temps de qualité ou contact physique ? Découvrez comment vous donnez et recevez l\'amour le mieux !',
+        'tests.iq.description': 'Testez vos compétences de résolution de problèmes ! Puzzles logiques amusants pour défier votre esprit.',
+        'tests.ei.description': 'À quel point lisez-vous bien les émotions et naviguez dans les situations sociales ? Testez vos super-pouvoirs émotionnels !',
+        'tests.adhd.description': 'Explorez vos modèles d\'attention et niveaux d\'énergie. Génial pour comprendre votre style de productivité !',
+        'tests.anxiety.description': 'Comment gérez-vous la pression ? Apprenez vos modèles de stress et découvrez des stratégies d\'adaptation saines.',
+        'tests.depression.description': 'Comprenez vos modèles émotionnels et votre résilience. Parfait pour la croissance personnelle et la connaissance de soi !',
+        'tests.strengths.description': 'Découvrez vos principales forces de caractère ! De la créativité à la gentillesse, trouvez ce qui vous fait briller.',
+        'tests.careerpath.description': 'Découvrez la carrière qui correspond à votre personnalité ! Êtes-vous un leader, créateur, aidant, analyste ou entrepreneur ?',
+        'tests.relationshipstyle.description': 'Comment aimez-vous et vous connectez-vous avec les autres ? Découvrez votre style de relation unique et ce qui vous fait vibrer en amour !',
+        'tests.askfriends.description': 'Créez des questions sur vous-même, fournissez VOS réponses, puis voyez qui vous connaît le mieux ! Les amis essaieront de correspondre à vos réponses.',
+        'tests.360assessment.description': 'Commentaires sérieux et multi-perspectifs pour la croissance et la compréhension. Obtenez des insights honnêtes d\'amis, de famille et de collègues.',
+        
+        // Meta badges - French (COMPLETE SET INCLUDING DURATIONS)
+        'tests.meta.duration': '⏱️ 8 min',
+        'tests.meta.duration5': '⏱️ 5 min',
+        'tests.meta.duration6': '⏱️ 6 min',
+        'tests.meta.duration7': '⏱️ 7 min',
+        'tests.meta.duration8': '⏱️ 8 min',
+        'tests.meta.duration10': '⏱️ 10 min',
+        'tests.meta.duration12': '⏱️ 12 min',
+        'tests.meta.duration15': '⏱️ 15 min',
+        'tests.meta.setup5': '⏱️ 5 min configuration',
+        'tests.meta.setup10': '⏱️ 10 min configuration',
+        'tests.meta.scienceBased': '🔬 Base Scientifique',
+        'tests.meta.accurate': '🎯 Très Précis',
+        'tests.meta.researchGrade': '🎯 Niveau Recherche',
+        'tests.meta.mostAccurate': '🏆 Le Plus Précis',
+        'tests.meta.relationship': '💝 Relation',
+        'tests.meta.couplesFriendly': '❤️ Convivial Couples',
+        'tests.meta.funGame': '🎮 Jeu Amusant',
+        'tests.meta.brainTraining': '🧠 Entraînement Cérébral',
+        'tests.meta.careerFocused': '🎯 Axé Carrière',
+        'tests.meta.careerFocus': '💼 Focus Carrière',
+        'tests.meta.leadership': '💼 Leadership',
+        'tests.meta.selfReflection': '🔍 Autoréflexion',
+        'tests.meta.notMedical': '⚠️ Non Médical',
+        'tests.meta.wellness': '🧘 Bien-être',
+        'tests.meta.moodTracking': '🌈 Suivi Humeur',
+        'tests.meta.strengthsBased': '🌟 Basé Forces',
+        'tests.meta.personalGrowth': '🎯 Croissance Personnelle',
+        'tests.meta.personalized': '🎯 Personnalisé',
+        'tests.meta.relationships': '💕 Relations',
+        'tests.meta.connection': '🤝 Connexion',
+        'tests.meta.socialApp': '📱 Social',
+        'tests.meta.socialPeople': '👥 Social',
+        'tests.meta.viral': '🔥 Viral',
+        'tests.meta.detailed': '📊 Détaillé',
+        'tests.meta.couples': '💕 Couples',
+        'tests.meta.instant': '⚡ Instantané',
+        'tests.meta.insights': '💡 Insights',
+        'tests.meta.new': '🔥 NOUVEAU',
+        'tests.meta.popular': '✨ Populaire',
+        'tests.meta.trending': '🔥 Tendance',
+        
+        // Couples section
+        'couples.title': 'Compatibilité de Couple ❤️',
+        'couples.subtitle': 'Passez les tests individuellement, puis connectez-vous avec votre partenaire pour découvrir votre dynamique relationnelle et insights de compatibilité ! 💕',
+        'couples.shareResults': 'Partagez Vos Résultats',
+        'couples.shareDesc': 'Après avoir passé un test, obtenez un ID unique pour vous connecter avec votre partenaire et comparer vos vibes !',
+        'couples.shareButton': 'Se Connecter avec le Partenaire',
+        'couples.compatibility': 'Analyse de Compatibilité',
+        'couples.compatibilityDesc': 'Obtenez des insights détaillés sur votre dynamique relationnelle, styles de communication et zones d\'harmonie ou de croissance !',
+        'couples.compatibilityButton': 'Voir Notre Compatibilité',
+        'couples.growth': 'Croissance Relationnelle',
+        'couples.growthDesc': 'Découvrez des conseils et stratégies pour renforcer votre lien basé sur vos types de personnalité et résultats !',
+        'couples.growthButton': 'Grandir Ensemble',
+        
+        // Why Choose section
+        'whyChoose.title': 'Pourquoi Choisir PersonaTests ? ✨',
+        'whyChoose.scientific': 'Réellement Scientifique',
+        'whyChoose.scientificDesc': 'Nos tests sont basés sur de vraies recherches en psychologie, pas juste des questions aléatoires. C\'est du sérieux ! 🧠',
+        'whyChoose.researchBased': '📚 Basé sur la Recherche',
+        'whyChoose.validatedMethods': '🎯 Méthodes Validées',
+        'whyChoose.psychologyDriven': '🧠 Basé sur la Psychologie',
+        'whyChoose.instant': 'Résultats Instantanés',
+        'whyChoose.instantDesc': 'Obtenez votre analyse de personnalité immédiatement. Pas d\'attente, pas de délais, juste une satisfaction immédiate ! ⚡',
+        'whyChoose.immediate': '⚡ Immédiat',
+        'whyChoose.fastProcessing': '🚀 Traitement Rapide',
+        'whyChoose.realTimeAnalysis': '📊 Analyse en Temps Réel',
+        'whyChoose.safe': 'Vos Secrets Sont En Sécurité',
+        'whyChoose.safeDesc': 'Nous gardons vos réponses privées. Pas de vente de données, pas d\'emails bizarres. Juste vous et vos résultats ! 🔒',
+        'whyChoose.privacyFirst': '🔒 Confidentialité d\'Abord',
+        'whyChoose.dataProtection': '🛡️ Protection des Données',
+        'whyChoose.noSpam': '✨ Pas de Spam',
+        'whyChoose.everywhere': 'Fonctionne Partout',
+        'whyChoose.everywhereDesc': 'Passez les tests sur votre téléphone, ordinateur portable, tablette - littéralement où vous voulez découvrir votre personnalité ! 📱',
+        'whyChoose.mobileFriendly': '📱 Compatible Mobile',
+        'whyChoose.crossPlatform': '💻 Multi-Plateforme',
+        'whyChoose.anyDevice': '🌐 Tout Appareil',
+        
+        // Couples section badges
+        'tests.connect': '💝 CONNECTER',
+        'tests.growth': '🌱 CROISSANCE',
+        'tests.meta.fun': '😄 Amusant',
+        'tests.meta.guidance': '📝 Guidance',
+        'tests.meta.improvement': '📈 Amélioration',
+        
+        // Badge translations (root level)
+        'tests.trending': '🔥 Tendance',
+        'tests.popular': '✨ Populaire',
+        'tests.new': '🔥 NOUVEAU'
+    };
+    
+    // Apply French translations to elements
+    Object.keys(frenchTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && frenchTranslations[key]) {
+                element.textContent = frenchTranslations[key];
+                console.log(`✅ French: ${key} → "${frenchTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇫🇷 French manual translations applied successfully');
+}
+
+// Manual Italian translations function
+function applyManualItalianTranslations() {
+    console.log('🇮🇹 Applying manual Italian translations...');
+    
+    const italianTranslations = {
+        'tests.takeTest': 'Fai il Test',
+        'hero.badge': 'Test di Personalità Più Accurati',
+        'nav.tests': 'Test',
+        'nav.couples': 'Coppie',
+        'nav.about': 'Chi Siamo',
+        
+        // Meta badges - Italian
+        'tests.meta.duration': '⏱️ 8 min',
+        'tests.meta.duration5': '⏱️ 5 min',
+        'tests.meta.duration6': '⏱️ 6 min',
+        'tests.meta.duration7': '⏱️ 7 min',
+        'tests.meta.duration8': '⏱️ 8 min',
+        'tests.meta.duration10': '⏱️ 10 min',
+        'tests.meta.duration12': '⏱️ 12 min',
+        'tests.meta.duration15': '⏱️ 15 min',
+        'tests.meta.setup5': '⏱️ 5 min configurazione',
+        'tests.meta.setup10': '⏱️ 10 min configurazione',
+        'tests.meta.accurate': '🎯 Molto Preciso',
+        'tests.meta.scienceBased': '🔬 Base Scientifica',
+        'tests.meta.researchGrade': '🎯 Livello di Ricerca',
+        'tests.meta.mostAccurate': '🏆 Più Preciso',
+        'tests.meta.relationship': '💝 Relazione',
+        'tests.meta.couplesFriendly': '❤️ Amichevole per Coppie',
+        'tests.meta.funGame': '🎮 Gioco Divertente',
+        'tests.meta.brainTraining': '🧠 Allenamento Cerebrale',
+        'tests.meta.careerFocused': '🎯 Focalizzato sulla Carriera',
+        'tests.meta.careerFocus': '💼 Focus Carriera',
+        'tests.meta.leadership': '💼 Leadership',
+        'tests.meta.selfReflection': '🔍 Autoriflessione',
+        'tests.meta.notMedical': '⚠️ Non Medico',
+        'tests.meta.wellness': '🧘 Benessere',
+        'tests.meta.moodTracking': '🌈 Tracciamento Umore',
+        'tests.meta.strengthsBased': '🌟 Basato su Punti di Forza',
+        'tests.meta.personalGrowth': '🎯 Crescita Personale',
+        'tests.meta.personalized': '🎯 Personalizzato',
+        'tests.meta.relationships': '💕 Relazioni',
+        'tests.meta.connection': '🤝 Connessione',
+        'tests.meta.socialApp': '📱 Social',
+        'tests.meta.socialPeople': '👥 Social',
+        'tests.meta.viral': '🔥 Virale',
+        'tests.meta.detailed': '📊 Dettagliato',
+        'tests.meta.couples': '💕 Coppie',
+        'tests.meta.instant': '⚡ Istantaneo',
+        'tests.meta.insights': '💡 Intuizioni',
+        'tests.meta.new': '🔥 NUOVO',
+        'tests.meta.popular': '✨ Popolare',
+        'tests.meta.trending': '🔥 Tendenza',
+        
+        // Couples section badges
+        'tests.connect': '💝 CONNETTI',
+        'tests.growth': '🌱 CRESCITA',
+        'tests.meta.fun': '😄 Divertente',
+        'tests.meta.guidance': '📝 Guida',
+        'tests.meta.improvement': '📈 Miglioramento',
+        
+        // Badge translations (root level)
+        'tests.trending': '🔥 Tendenza',
+        'tests.popular': '✨ Popolare',
+        'tests.new': '🔥 NUOVO'
+    };
+    
+    Object.keys(italianTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && italianTranslations[key]) {
+                element.textContent = italianTranslations[key];
+                console.log(`✅ Italian: ${key} → "${italianTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇮🇹 Italian manual translations applied successfully');
+}
+
+// Manual Portuguese translations function
+function applyManualPortugueseTranslations() {
+    console.log('🇵🇹 Applying manual Portuguese translations...');
+    
+    const portugueseTranslations = {
+        'tests.takeTest': 'Fazer Teste',
+        'hero.badge': 'Testes de Personalidade Mais Precisos',
+        'nav.tests': 'Testes',
+        'nav.couples': 'Casais',
+        'nav.about': 'Sobre',
+        
+        // Meta badges - Portuguese
+        'tests.meta.duration': '⏱️ 8 min',
+        'tests.meta.duration5': '⏱️ 5 min',
+        'tests.meta.duration6': '⏱️ 6 min', 
+        'tests.meta.duration7': '⏱️ 7 min',
+        'tests.meta.duration8': '⏱️ 8 min',
+        'tests.meta.duration10': '⏱️ 10 min',
+        'tests.meta.duration12': '⏱️ 12 min',
+        'tests.meta.duration15': '⏱️ 15 min',
+        'tests.meta.setup5': '⏱️ 5 min configuração',
+        'tests.meta.setup10': '⏱️ 10 min configuração',
+        'tests.meta.accurate': '🎯 Muito Preciso',
+        'tests.meta.scienceBased': '🔬 Base Científica',
+        'tests.meta.researchGrade': '🎯 Nível de Pesquisa',
+        'tests.meta.mostAccurate': '🏆 Mais Preciso',
+        'tests.meta.relationship': '💝 Relacionamento',
+        'tests.meta.couplesFriendly': '❤️ Amigável para Casais',
+        'tests.meta.funGame': '🎮 Jogo Divertido',
+        'tests.meta.brainTraining': '🧠 Treinamento Cerebral',
+        'tests.meta.careerFocused': '🎯 Foco na Carreira',
+        'tests.meta.careerFocus': '💼 Foco Profissional',
+        'tests.meta.selfReflection': '🔍 Autorreflexão',
+        'tests.meta.notMedical': '⚠️ Não Médico',
+        'tests.meta.wellness': '🧘 Bem-estar',
+        'tests.meta.moodTracking': '🌈 Rastreamento de Humor',
+        'tests.meta.strengthsBased': '🌟 Baseado em Forças',
+        'tests.meta.personalGrowth': '🎯 Crescimento Pessoal',
+        'tests.meta.instant': '⚡ Instantâneo',
+        'tests.meta.insights': '💡 Insights',
+        'tests.meta.leadership': '💼 Liderança',
+        'tests.meta.personalized': '🎯 Personalizado',
+        'tests.meta.relationships': '💕 Relacionamentos',
+        'tests.meta.connection': '🤝 Conexão',
+        'tests.meta.socialApp': '📱 Social',
+        'tests.meta.socialPeople': '👥 Social',
+        'tests.meta.viral': '🔥 Viral',
+        'tests.meta.detailed': '📊 Detalhado',
+        'tests.meta.couples': '💕 Casais',
+        'tests.meta.new': '🔥 NOVO',
+        'tests.meta.popular': '✨ Popular',
+        'tests.meta.trending': '🔥 Tendência',
+        
+        // Button translations for "How Others See Me" section
+        'tests.createQuestions': 'Criar Perguntas',
+        'tests.startAssessment': 'Perguntar às Minhas Pessoas',
+        
+        // Badge translations (root level)
+        'tests.trending': '🔥 Tendência',
+        'tests.popular': '✨ Popular',
+        'tests.new': '🔥 NOVO',
+        
+        // Couples section badges
+        'tests.connect': '💝 CONECTAR',
+        'tests.growth': '🌱 CRESCIMENTO',
+        'tests.meta.fun': '😄 Divertido',
+        'tests.meta.guidance': '📝 Orientação',
+        'tests.meta.improvement': '📈 Melhoria'
+    };
+    
+    Object.keys(portugueseTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && portugueseTranslations[key]) {
+                element.textContent = portugueseTranslations[key];
+                console.log(`✅ Portuguese: ${key} → "${portugueseTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇵🇹 Portuguese manual translations applied successfully');
+}
+
+// Manual Japanese translations function
+function applyManualJapaneseTranslations() {
+    console.log('🇯🇵 Applying manual Japanese translations...');
+    
+    const japaneseTranslations = {
+        'tests.takeTest': 'テストを開始',
+        'hero.badge': '最も正確な性格テスト',
+        'nav.tests': 'テスト',
+        'nav.couples': 'カップル',
+        'nav.about': '概要',
+        'nav.knowYourself': '🧠 自分を知る',
+        'nav.howOthersSeeMe': '👥 他人から見た私',
+        
+        // Meta badges - Japanese
+        'tests.meta.duration': '⏱️ 8分',
+        'tests.meta.duration5': '⏱️ 5分',
+        'tests.meta.duration6': '⏱️ 6分',
+        'tests.meta.duration7': '⏱️ 7分',
+        'tests.meta.duration8': '⏱️ 8分',
+        'tests.meta.duration10': '⏱️ 10分',
+        'tests.meta.duration12': '⏱️ 12分',
+        'tests.meta.duration15': '⏱️ 15分',
+        'tests.meta.setup5': '⏱️ 5分セットアップ',
+        'tests.meta.setup10': '⏱️ 10分セットアップ',
+        'tests.meta.accurate': '🎯 非常に正確',
+        'tests.meta.scienceBased': '🔬 科学的根拠',
+        'tests.meta.researchGrade': '🎯 研究レベル',
+        'tests.meta.mostAccurate': '🏆 最も正確',
+        'tests.meta.relationship': '💝 関係',
+        'tests.meta.couplesFriendly': '❤️ カップル向け',
+        'tests.meta.funGame': '🎮 楽しいゲーム',
+        'tests.meta.brainTraining': '🧠 脳トレーニング',
+        'tests.meta.careerFocused': '🎯 キャリア重視',
+        'tests.meta.careerFocus': '💼 キャリアフォーカス',
+        'tests.meta.leadership': '💼 リーダーシップ',
+        'tests.meta.selfReflection': '🔍 自己反省',
+        'tests.meta.notMedical': '⚠️ 医療用ではない',
+        'tests.meta.wellness': '🧘 ウェルネス',
+        'tests.meta.moodTracking': '🌈 気分追跡',
+        'tests.meta.strengthsBased': '🌟 強み基盤',
+        'tests.meta.personalGrowth': '🎯 個人成長',
+        'tests.meta.personalized': '🎯 パーソナライズ',
+        'tests.meta.relationships': '💕 関係',
+        'tests.meta.connection': '🤝 つながり',
+        'tests.meta.socialApp': '📱 ソーシャル',
+        'tests.meta.socialPeople': '👥 ソーシャル',
+        'tests.meta.viral': '🔥 バイラル',
+        'tests.meta.detailed': '📊 詳細',
+        'tests.meta.couples': '💕 カップル',
+        'tests.meta.instant': '⚡ 即時',
+        'tests.meta.insights': '💡 洞察',
+        'tests.meta.new': '🔥 新規',
+        'tests.meta.popular': '✨ 人気',
+        'tests.meta.trending': '🔥 トレンド',
+        
+        // Button translations for "How Others See Me" section
+        'tests.createQuestions': '質問を作成',
+        'tests.startAssessment': '私の人たちに聞く',
+        
+        // Badge translations (root level)
+        'tests.trending': '🔥 トレンド',
+        'tests.popular': '✨ 人気',
+        'tests.new': '🔥 新',
+        
+        // Couples section badges
+        'tests.connect': '💝 接続',
+        'tests.growth': '🌱 成長',
+        'tests.meta.fun': '😄 楽しい',
+        'tests.meta.guidance': '📝 ガイダンス',
+        'tests.meta.improvement': '📈 改善'
+    };
+    
+    Object.keys(japaneseTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && japaneseTranslations[key]) {
+                element.textContent = japaneseTranslations[key];
+                console.log(`✅ Japanese: ${key} → "${japaneseTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇯🇵 Japanese manual translations applied successfully');
+}
+
+// Manual Chinese translations function
+function applyManualChineseTranslations() {
+    console.log('🇨🇳 Applying manual Chinese translations...');
+    
+    const chineseTranslations = {
+        'tests.takeTest': '开始测试',
+        'hero.badge': '最准确的性格测试',
+        'nav.tests': '测试',
+        'nav.couples': '情侣',
+        'nav.about': '关于',
+        'nav.knowYourself': '🧠 了解自己',
+        'nav.howOthersSeeMe': '👥 他人眼中的我',
+        
+        // Meta badges - Chinese (using 分 for minutes - more standard)
+        'tests.meta.duration': '⏱️ 8分',
+        'tests.meta.duration5': '⏱️ 5分',
+        'tests.meta.duration6': '⏱️ 6分',
+        'tests.meta.duration7': '⏱️ 7分',
+        'tests.meta.duration8': '⏱️ 8分',
+        'tests.meta.duration10': '⏱️ 10分',
+        'tests.meta.duration12': '⏱️ 12分',
+        'tests.meta.duration15': '⏱️ 15分',
+        'tests.meta.setup5': '⏱️ 5分设置',
+        'tests.meta.setup10': '⏱️ 10分设置',
+        'tests.meta.accurate': '🎯 非常准确',
+        'tests.meta.scienceBased': '🔬 科学依据',
+        'tests.meta.researchGrade': '🎯 研究级别',
+        'tests.meta.mostAccurate': '🏆 最准确',
+        'tests.meta.relationship': '💝 关系',
+        'tests.meta.couplesFriendly': '❤️ 情侣友好',
+        'tests.meta.funGame': '🎮 有趣游戏',
+        'tests.meta.brainTraining': '🧠 大脑训练',
+        'tests.meta.careerFocused': '🎯 职业导向',
+        'tests.meta.careerFocus': '💼 职业重点',
+        'tests.meta.leadership': '💼 领导力',
+        'tests.meta.selfReflection': '🔍 自我反思',
+        'tests.meta.notMedical': '⚠️ 非医疗',
+        'tests.meta.wellness': '🧘 健康',
+        'tests.meta.moodTracking': '🌈 情绪追踪',
+        'tests.meta.strengthsBased': '🌟 基于优势',
+        'tests.meta.personalGrowth': '🎯 个人成长',
+        'tests.meta.personalized': '🎯 个性化',
+        'tests.meta.relationships': '💕 关系',
+        'tests.meta.connection': '🤝 连接',
+        'tests.meta.socialApp': '📱 社交',
+        'tests.meta.socialPeople': '👥 社交',
+        'tests.meta.viral': '🔥 病毒式',
+        'tests.meta.detailed': '📊 详细',
+        'tests.meta.couples': '💕 情侣',
+        'tests.meta.instant': '⚡ 即时',
+        'tests.meta.insights': '💡 洞察',
+        'tests.meta.new': '🔥 新',
+        'tests.meta.popular': '✨ 受欢迎',
+        'tests.meta.trending': '🔥 趋势',
+        
+        // Button translations for "How Others See Me" section
+        'tests.createQuestions': '创建问题',
+        'tests.startAssessment': '询问我的人',
+        
+        // Badge translations (root level) 
+        'tests.trending': '🔥 趋势',
+        'tests.popular': '✨ 受欢迎',
+        'tests.new': '🔥 新',
+        
+        // Couples section badges
+        'tests.connect': '💝 连接',
+        'tests.growth': '🌱 成长',
+        'tests.meta.fun': '😄 有趣',
+        'tests.meta.guidance': '📝 指导',
+        'tests.meta.improvement': '📈 改进'
+    };
+    
+    Object.keys(chineseTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && chineseTranslations[key]) {
+                element.textContent = chineseTranslations[key];
+                console.log(`✅ Chinese: ${key} → "${chineseTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇨🇳 Chinese manual translations applied successfully');
+}
+
+// Manual German translations function
+function applyManualGermanTranslations() {
+    console.log('🇩🇪 Applying manual German translations...');
+    
+    const germanTranslations = {
+        'tests.takeTest': 'Test Machen',
+        'hero.badge': 'Genaueste Persönlichkeitstests',
+        'nav.tests': 'Tests',
+        'nav.couples': 'Paare',
+        'nav.about': 'Über Uns',
+        
+        // Meta badges - German
+        'tests.meta.duration': '⏱️ 8 Min',
+        'tests.meta.duration5': '⏱️ 5 Min',
+        'tests.meta.duration6': '⏱️ 6 Min',
+        'tests.meta.duration7': '⏱️ 7 Min',
+        'tests.meta.duration8': '⏱️ 8 Min',
+        'tests.meta.duration10': '⏱️ 10 Min',
+        'tests.meta.duration12': '⏱️ 12 Min',
+        'tests.meta.duration15': '⏱️ 15 Min',
+        'tests.meta.setup5': '⏱️ 5 Min Einrichtung',
+        'tests.meta.setup10': '⏱️ 10 Min Einrichtung',
+        'tests.meta.accurate': '🎯 Sehr Genau',
+        'tests.meta.scienceBased': '🔬 Wissenschaftlich Fundiert',
+        'tests.meta.researchGrade': '🎯 Forschungsqualität',
+        'tests.meta.mostAccurate': '🏆 Am Genauesten',
+        'tests.meta.relationship': '💝 Beziehung',
+        'tests.meta.couplesFriendly': '❤️ Paarfreundlich',
+        'tests.meta.funGame': '🎮 Spaßiges Spiel',
+        'tests.meta.brainTraining': '🧠 Gehirntraining',
+        'tests.meta.careerFocused': '🎯 Karrierefokussiert',
+        'tests.meta.careerFocus': '💼 Karrierefokus',
+        'tests.meta.leadership': '💼 Führung',
+        'tests.meta.selfReflection': '🔍 Selbstreflexion',
+        'tests.meta.notMedical': '⚠️ Nicht Medizinisch',
+        'tests.meta.wellness': '🧘 Wohlbefinden',
+        'tests.meta.moodTracking': '🌈 Stimmungsverfolgung',
+        'tests.meta.strengthsBased': '🌟 Stärkenbasiert',
+        'tests.meta.personalGrowth': '🎯 Persönliches Wachstum',
+        'tests.meta.personalized': '🎯 Personalisiert',
+        'tests.meta.relationships': '💕 Beziehungen',
+        'tests.meta.connection': '🤝 Verbindung',
+        'tests.meta.socialApp': '📱 Sozial',
+        'tests.meta.socialPeople': '👥 Sozial',
+        'tests.meta.viral': '🔥 Viral',
+        'tests.meta.detailed': '📊 Detailliert',
+        'tests.meta.couples': '💕 Paare',
+        'tests.meta.instant': '⚡ Sofortig',
+        'tests.meta.insights': '💡 Einsichten',
+        'tests.meta.new': '🔥 NEU',
+        'tests.meta.popular': '✨ Beliebt',
+        'tests.meta.trending': '🔥 Trending',
+        
+        // Badge translations (root level)
+        'tests.trending': '🔥 Trending',
+        'tests.popular': '✨ Beliebt',
+        'tests.new': '🔥 NEU',
+        
+        // Couples section badges
+        'tests.connect': '💝 VERBINDEN',
+        'tests.growth': '🌱 WACHSTUM',
+        'tests.meta.fun': '😄 Spaß',
+        'tests.meta.guidance': '📝 Führung',
+        'tests.meta.improvement': '📈 Verbesserung'
+    };
+    
+    Object.keys(germanTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && germanTranslations[key]) {
+                element.textContent = germanTranslations[key];
+                console.log(`✅ German: ${key} → "${germanTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇩🇪 German manual translations applied successfully');
+}
+
+// Manual Spanish translations function
+function applyManualSpanishTranslations() {
+    console.log('🇪🇸 Applying manual Spanish translations...');
+    
+    const spanishTranslations = {
+        'tests.takeTest': 'Hacer Prueba',
+        'hero.badge': 'Tests de Personalidad Más Precisos',
+        'nav.tests': 'Tests',
+        'nav.couples': 'Parejas',
+        'nav.about': 'Acerca De',
+        
+        // Meta badges - Spanish
+        'tests.meta.duration': '⏱️ 8 min',
+        'tests.meta.duration5': '⏱️ 5 min',
+        'tests.meta.duration6': '⏱️ 6 min',
+        'tests.meta.duration7': '⏱️ 7 min', 
+        'tests.meta.duration8': '⏱️ 8 min',
+        'tests.meta.duration10': '⏱️ 10 min',
+        'tests.meta.duration12': '⏱️ 12 min',
+        'tests.meta.duration15': '⏱️ 15 min',
+        'tests.meta.setup5': '⏱️ 5 min configuración',
+        'tests.meta.setup10': '⏱️ 10 min configuración',
+        'tests.meta.accurate': '🎯 Muy Preciso',
+        'tests.meta.scienceBased': '🔬 Base Científica',
+        'tests.meta.researchGrade': '🎯 Grado de Investigación',
+        'tests.meta.mostAccurate': '🏆 Más Preciso',
+        'tests.meta.relationship': '💝 Relaciones',
+        'tests.meta.couplesFriendly': '❤️ Amigable para Parejas',
+        'tests.meta.funGame': '🎮 Juego Divertido',
+        'tests.meta.brainTraining': '🧠 Entrenamiento Mental',
+        'tests.meta.careerFocused': '🎯 Enfoque Profesional',
+        'tests.meta.careerFocus': '💼 Enfoque de Carrera',
+        'tests.meta.leadership': '💼 Liderazgo',
+        'tests.meta.selfReflection': '🔍 Autorreflexión',
+        'tests.meta.notMedical': '⚠️ No Médico',
+        'tests.meta.wellness': '🧘 Bienestar',
+        'tests.meta.moodTracking': '🌈 Seguimiento del Estado de Ánimo',
+        'tests.meta.strengthsBased': '🌟 Basado en Fortalezas',
+        'tests.meta.personalGrowth': '🎯 Crecimiento Personal',
+        'tests.meta.personalized': '🎯 Personalizado',
+        'tests.meta.relationships': '💕 Relaciones',
+        'tests.meta.connection': '🤝 Conexión',
+        'tests.meta.socialApp': '📱 Social',
+        'tests.meta.socialPeople': '👥 Social',
+        'tests.meta.viral': '🔥 Viral',
+        'tests.meta.detailed': '📊 Detallado',
+        'tests.meta.couples': '💕 Parejas',
+        'tests.meta.instant': '⚡ Instantáneo',
+        'tests.meta.insights': '💡 Perspectivas',
+        'tests.meta.new': '🔥 NUEVO',
+        'tests.meta.popular': '✨ Popular', 
+        'tests.meta.trending': '🔥 Tendencia',
+        
+        // Badge translations (root level)
+        'tests.trending': '🔥 Tendencia',
+        'tests.popular': '✨ Popular',
+        'tests.new': '🔥 NUEVO',
+        
+        // Couples section badges
+        'tests.connect': '💝 CONECTAR',
+        'tests.growth': '🌱 CRECIMIENTO',
+        'tests.meta.fun': '😄 Divertido',
+        'tests.meta.guidance': '📝 Orientación',
+        'tests.meta.improvement': '📈 Mejora'
+    };
+    
+    Object.keys(spanishTranslations).forEach(key => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && spanishTranslations[key]) {
+                element.textContent = spanishTranslations[key];
+                console.log(`✅ Spanish: ${key} → "${spanishTranslations[key]}"`);
+            }
+        });
+    });
+    
+    console.log('🇪🇸 Spanish manual translations applied successfully');
+}
+
+// Manual test card translations for all languages as fallback
+function applyManualKoreanTestCardTitles() {
+    console.log('🎯 Applying manual language translations...');
+    
+    // Detect current language
+    const currentLang = getCurrentLanguage();
+    console.log(`📍 Current language detected: ${currentLang}`);
+    
+    if (currentLang === 'fr') {
+        applyManualFrenchTranslations();
+        return;
+    } else if (currentLang === 'it') {
+        applyManualItalianTranslations();
+        return;
+    } else if (currentLang === 'pt') {
+        applyManualPortugueseTranslations();
+        return;
+    } else if (currentLang === 'ja') {
+        applyManualJapaneseTranslations();
+        return;
+    } else if (currentLang === 'zh') {
+        applyManualChineseTranslations();
+        return;
+    } else if (currentLang === 'de') {
+        applyManualGermanTranslations();
+        return;
+    } else if (currentLang === 'es') {
+        applyManualSpanishTranslations();
+        return;
+    }
+    
+    console.log('🎯 Applying manual Korean test card titles...');
+    
+    const koreanTestTitles = {
+        // Hero section
+        'hero.badge': '가장 정확한 성격 테스트',
+        'hero.title': '나의 성격을 알아보세요 ✨',
+        'hero.subtitle': '과학적으로 검증된 성격 테스트로 진짜 나를 찾아보세요. MBTI부터 빅파이브까지, 나만의 특별함을 발견해보세요! 🔥',
+        'hero.startJourney': '여정을 시작하세요',
+        
+        // Navigation
+        'nav.tests': '테스트',
+        'nav.couples': '커플',
+        'nav.about': '소개',
+        'nav.blog': '블로그',
+        'nav.contact': '연락처',
+        'nav.results': '내 결과',
+        'nav.login': '로그인 ✨',
+        'nav.logout': '로그아웃',
+        
+        // Categories
+        'categories.all': '전체',
+        'categories.knowYourselfTitle': '🧠 나를 알아가기',
+        'categories.howOthersSeeTitle': '👥 다른 사람들이 보는 나',
+        
+        // Test section
+        'tests.sectionTitle': '나의 성격을 알아보세요 ✨',
+        'tests.takeTest': '테스트 하기',
+        
+        // Test cards - Titles
+        'tests.mbti.title': '16가지 성격 유형',
+        'tests.bigfive.title': '빅파이브 성격 검사',
+        'tests.lovelanguage.title': '사랑의 언어 테스트',
+        'tests.iq.title': '두뇌 테스트',
+        'tests.eq.title': '감성지능',
+        'tests.ei.title': '감성지능',
+        'tests.adhd.title': '집중력과 에너지 스타일',
+        'tests.anxiety.title': '스트레스 관리 스타일',
+        'tests.depression.title': '감정 조절 스타일',
+        'tests.via.title': '캐릭터 강점 (VIA)',
+        'tests.characterstrengths.title': '캐릭터 강점 (VIA)',
+        'tests.strengths.title': '캐릭터 강점 (VIA)',
+        'tests.careerpath.title': '진로 탐색기',
+        'tests.relationshipstyle.title': '연애 스타일',
+        'tests.askfriends.title': '누가 나를 가장 잘 아는지 보기',
+        'tests.360assessment.title': '360도 나에 대한 인식',
+        
+        // Test cards - Descriptions (THE MISSING TRANSLATIONS!)
+        'tests.mbti.description': '나를 정말로 알 수 있는 최고의 성격 테스트! INTJ 전략가 타입인가요, ENFP 활동가 타입인가요? 지금 바로 확인해보세요! 💅',
+        'tests.bigfive.description': '심리학자들이 인정하는 과학적 성격 테스트예요. 5가지 핵심 성격 특성으로 나를 분석해보세요! 🧠',
+        'tests.lovelanguage.description': '격려의 말, 함께하는 시간, 신체적 접촉? 어떻게 사랑을 주고받는 것이 가장 좋은지 발견하세요!',
+        'tests.iq.description': '재미있는 논리 퍼즐과 두뇌 게임이에요! 단순히 재미를 위한 것으로, 실제 IQ 테스트는 전문가가 진행해야 해요. 도전해볼까요? 🤓',
+        'tests.eq.description': '내 감정과 다른 사람의 감정을 얼마나 잘 이해할까요? 자기인식, 공감능력, 사회적 기술을 확인해보세요! 💝',
+        'tests.ei.description': '내 감정과 다른 사람의 감정을 얼마나 잘 이해할까요? 자기인식, 공감능력, 사회적 기술을 확인해보세요! 💝',
+        'tests.adhd.description': '당신만의 독특한 주의력과 에너지 패턴을 발견하세요! 이것은 재미있는 자기성찰을 위한 것입니다 - 의학적 평가가 아닙니다. ⚡',
+        'tests.anxiety.description': '스트레스와 압박을 어떻게 다루는지 발견하세요! 이것은 재미와 자기 인식을 위한 것입니다 - 의학적 조언이 아닙니다. 💚',
+        'tests.depression.description': '감정을 어떻게 처리하는지 이해하세요! 이것은 자기성찰과 오락을 위한 것입니다 - 정신건강 평가가 아닙니다. 🌻',
+        'tests.strengths.description': '핵심 캐릭터 강점을 발견하세요! 창의성부터 리더십, 친절함까지 - 당신을 독특하게 멋지게 만드는 것을 발견하세요! ✨',
+        'tests.careerpath.description': '내 성격에 맞는 직업을 발견하세요! 리더, 창작자, 도우미, 분석가, 기업가 중 어느 것인가요?',
+        'tests.relationshipstyle.description': '어떻게 사랑하고 다른 사람들과 연결되나요? 나만의 독특한 연애 스타일과 사랑에서의 매력을 발견하세요!',
+        'tests.askfriends.description': '자신에 대한 질문을 만들고, 당신의 답변을 제공한 다음, 누가 당신을 가장 잘 아는지 확인해보세요! 친구들이 당신의 답을 맞춰보려고 할 거예요!',
+        'tests.360assessment.description': '성장과 이해를 위한 진지한 다각도 피드백입니다. 친구들로부터 정직한 통찰을 얻어보세요!',
+        
+        // French test descriptions for manual mapping
+        'tests.mbti.description-fr': 'Découvrez votre type de personnalité unique avec l\'évaluation classique Myers-Briggs ! Êtes-vous un penseur introverti ou un extraverti émotionnel ?',
+        'tests.bigfive.description-fr': 'L\'étalon-or de la psychologie de la personnalité ! Explorez votre ouverture, conscience, extraversion, amabilité et névrosisme.',
+        'tests.lovelanguage.description-fr': 'Mots d\'affirmation, temps de qualité ou contact physique ? Découvrez comment vous donnez et recevez l\'amour le mieux !',
+        'tests.iq.description-fr': 'Testez vos compétences de résolution de problèmes ! Puzzles logiques amusants pour défier votre esprit.',
+        'tests.ei.description-fr': 'À quel point lisez-vous bien les émotions et naviguez dans les situations sociales ? Testez vos super-pouvoirs émotionnels !',
+        'tests.adhd.description-fr': 'Explorez vos modèles d\'attention et niveaux d\'énergie. Génial pour comprendre votre style de productivité !',
+        'tests.anxiety.description-fr': 'Comment gérez-vous la pression ? Apprenez vos modèles de stress et découvrez des stratégies d\'adaptation saines.',
+        'tests.depression.description-fr': 'Comprenez vos modèles émotionnels et votre résilience. Parfait pour la croissance personnelle et la connaissance de soi !',
+        'tests.strengths.description-fr': 'Découvrez vos principales forces de caractère ! De la créativité à la gentillesse, trouvez ce qui vous fait briller.',
+        'tests.careerpath.description-fr': 'Découvrez la carrière qui correspond à votre personnalité ! Êtes-vous un leader, créateur, aidant, analyste ou entrepreneur ?',
+        'tests.relationshipstyle.description-fr': 'Comment aimez-vous et vous connectez-vous avec les autres ? Découvrez votre style de relation unique et ce qui vous fait vibrer en amour !',
+        'tests.askfriends.description-fr': 'Créez des questions sur vous-même, fournissez VOS réponses, puis voyez qui vous connaît le mieux ! Les amis essaieront de correspondre à vos réponses.',
+        'tests.360assessment.description-fr': 'Commentaires sérieux et multi-perspectifs pour la croissance et la compréhension. Obtenez des insights honnêtes d\'amis, de famille et de collègues.',
+        
+        // French meta badges for manual mapping
+        'tests.meta.scienceBased-fr': '🔬 Base Scientifique',
+        'tests.meta.accurate-fr': '🎯 Très Précis',
+        'tests.meta.researchGrade-fr': '🎯 Niveau Recherche',
+        'tests.meta.mostAccurate-fr': '🏆 Le Plus Précis',
+        'tests.meta.relationship-fr': '💝 Relation',
+        'tests.meta.couplesFriendly-fr': '❤️ Convivial Couples',
+        'tests.meta.funGame-fr': '🎮 Jeu Amusant',
+        'tests.meta.brainTraining-fr': '🧠 Entraînement Cérébral',
+        'tests.meta.careerFocused-fr': '🎯 Axé Carrière',
+        'tests.meta.careerFocus-fr': '💼 Focus Carrière',
+        'tests.meta.selfReflection-fr': '🔍 Autoréflexion',
+        'tests.meta.notMedical-fr': '⚠️ Non Médical',
+        'tests.meta.wellness-fr': '🧘 Bien-être',
+        'tests.meta.moodTracking-fr': '🌈 Suivi Humeur',
+        'tests.meta.strengthsBased-fr': '🌟 Basé Forces',
+        'tests.meta.personalGrowth-fr': '🎯 Croissance Personnelle',
+        'tests.meta.instant-fr': '⚡ Instantané',
+        'tests.meta.insights-fr': '💡 Insights',
+        
+        // Test badges
+        'tests.trending': '🔥 트렌딩',
+        'tests.popular': '✨ 인기',
+        'tests.new': '🔥 새로운',
+        
+        // Couples section
+        'couples.title': '커플 궁합 ❤️',
+        'couples.subtitle': '각자 테스트를 해보고, 연인과 함께 우리의 궁합과 관계 스타일을 알아보세요! 💕',
+        'couples.shareResults': '결과 공유하기',
+        'couples.compatibility': '궁합 분석',
+        'couples.growth': '관계 성장',
+        
+        // Why Choose section
+        'whyChoose.title': '왜 PersonaTests를 선택해야 할까요? ✨',
+        'whyChoose.scientific': '진짜 과학적',
+        'whyChoose.instant': '즉시 결과',
+        'whyChoose.safe': '당신의 비밀은 안전합니다',
+        'whyChoose.everywhere': '어디서나 작동',
+        
+        // Hero stats
+        'hero.stats.tests': '성격 테스트',
+        'hero.stats.languages': '언어',
+        'hero.stats.access': '항상 무료',
+        'hero.stats.private': '완전 비공개',
+        
+        // Hero features
+        'hero.features.scientific': '과학적 근거',
+        'hero.features.instant': '즉시 결과',
+        'hero.features.personalized': '100% 개인화',
+        'hero.features.private': '완전 비공개',
+        
+        // Test meta/badges (these show under test descriptions)
+        'tests.meta.duration': '⏱️ 8분',
+        'tests.meta.duration5': '⏱️ 5분',
+        'tests.meta.duration6': '⏱️ 6분',
+        'tests.meta.duration7': '⏱️ 7분',
+        'tests.meta.duration8': '⏱️ 8분',
+        'tests.meta.duration10': '⏱️ 10분',
+        'tests.meta.duration12': '⏱️ 12분',
+        'tests.meta.duration15': '⏱️ 15분',
+        'tests.meta.accurate': '🎯 매우 정확',
+        'tests.meta.scienceBased': '🔬 과학적 근거',
+        'tests.meta.researchGrade': '🎯 연구 수준',
+        'tests.meta.mostAccurate': '🏆 가장 정확',
+        'tests.meta.relationship': '💝 관계',
+        'tests.meta.couplesFriendly': '❤️ 커플 친화적',
+        'tests.meta.funGame': '🎮 재미있는 게임',
+        'tests.meta.brainTraining': '🧠 두뇌 훈련',
+        'tests.meta.careerFocused': '🎯 진로 중심',
+        'tests.meta.leadership': '💼 리더십',
+        'tests.meta.selfReflection': '🔍 자기성찰',
+        'tests.meta.notMedical': '⚠️ 의료용 아님',
+        'tests.meta.wellness': '🧘 웰니스',
+        'tests.meta.moodTracking': '🌈 기분 추적',
+        'tests.meta.strengthsBased': '🌟 강점 기반',
+        'tests.meta.personalGrowth': '🎯 개인 성장',
+        'tests.meta.careerFocus': '💼 진로 중심',
+        'tests.meta.personalized': '🎯 개인화',
+        'tests.meta.relationships': '💕 관계',
+        'tests.meta.connection': '🤝 연결',
+        
+        // Button translations for "How Others See Me" section
+        'tests.createQuestions': '질문 만들기',
+        'tests.startAssessment': '내 사람들에게 물어보기',
+        
+        // Setup duration translations for "How Others See Me" section  
+        'tests.meta.setup5': '⏱️ 5분 설정',
+        'tests.meta.setup10': '⏱️ 10분 설정',
+        
+        // Couples section badges
+        'tests.connect': '💝 연결',
+        'tests.growth': '🌱 성장',
+        'tests.meta.fun': '😄 재미',
+        'tests.meta.guidance': '📝 가이드',
+        'tests.meta.improvement': '📈 개선'
+    };
+    
+    // Apply Korean titles to test cards
+    Object.entries(koreanTestTitles).forEach(([key, koreanTitle]) => {
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(element => {
+            if (element && element.textContent !== koreanTitle) {
+                element.textContent = koreanTitle;
+                console.log(`✅ Updated ${key}: ${koreanTitle}`);
+            }
+        });
+    });
+    
+    console.log('🎉 Manual Korean test card titles applied successfully!');
+}
+
+// Verify Korean translations are working
+function verifyKoreanTranslations() {
+    console.log('🔍 Verifying Korean translations...');
+    
+    const testCards = document.querySelectorAll('.test-card h3[data-translate*="tests."]');
+    let koreanCount = 0;
+    let totalCount = testCards.length;
+    
+    testCards.forEach((card, index) => {
+        const text = card.textContent;
+        const hasKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
+        
+        if (hasKorean) {
+            koreanCount++;
+            console.log(`✅ Card ${index + 1}: "${text}" - Korean detected`);
+        } else {
+            console.log(`❌ Card ${index + 1}: "${text}" - Still in English`);
+        }
+    });
+    
+    if (koreanCount > 0) {
+        console.log(`🎉 SUCCESS: Korean translations are now visible! (${koreanCount}/${totalCount} cards)`);
+    } else {
+        console.log(`❌ FAILURE: No Korean translations detected in test cards (${koreanCount}/${totalCount})`);
+    }
+    
+    return { koreanCount, totalCount };
 }
 
 function updateHeroSection(lang = translations[currentLanguage]) {
@@ -3115,6 +4233,23 @@ function updateStatsSection(lang = translations[currentLanguage]) {
     heroStatsKeys.forEach((key, index) => {
         if (statLabels[index] && lang.hero.stats[key]) {
             statLabels[index].textContent = lang.hero.stats[key];
+        }
+    });
+}
+
+function updateHeroFeatures(lang = translations[currentLanguage]) {
+    if (!lang?.hero?.features) return;
+    
+    const featureElements = {
+        scientific: document.querySelector('[data-translate="hero.features.scientific"]'),
+        instant: document.querySelector('[data-translate="hero.features.instant"]'),
+        personalized: document.querySelector('[data-translate="hero.features.personalized"]'),
+        private: document.querySelector('[data-translate="hero.features.private"]')
+    };
+    
+    Object.entries(featureElements).forEach(([key, element]) => {
+        if (element && lang.hero.features[key]) {
+            element.textContent = lang.hero.features[key];
         }
     });
 }
@@ -7303,8 +8438,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStripe();
     // Initialize EmailJS
     initializeEmailJS();
-    // Initialize language - DISABLED to prevent conflicts
-    // initializeLanguage();
+    // Initialize language
+    initializeLanguage();
     // Format card number input
     document.addEventListener('input', function(e) {
         if (e.target.id === 'cardNumber') {
@@ -8449,93 +9584,4 @@ window.onclick = function(event) {
     }
 }
 
-// Language switching functionality
-function changeLanguage(lang) {
-    console.log('Switching language to:', lang);
-    currentLanguage = lang;
-    
-    // Store language preference
-    localStorage.setItem('selectedLanguage', lang);
-    
-    // Update all elements with data-translate attributes
-    updateAllTranslations();
-    
-    // Update page title if it has a translation
-    updateDocumentTitle();
-    
-    // Update any dynamic content that might need translation
-    updateDynamicContent();
-}
-
-function updateAllTranslations() {
-    const elements = document.querySelectorAll('[data-translate]');
-    
-    elements.forEach(element => {
-        const key = element.getAttribute('data-translate');
-        const translatedText = getNestedTranslation(key);
-        
-        if (translatedText) {
-            element.textContent = translatedText;
-        } else {
-            console.warn(`Translation not found for key: ${key} in language: ${currentLanguage}`);
-        }
-    });
-}
-
-function getNestedTranslation(key) {
-    const keys = key.split('.');
-    let current = translations[currentLanguage];
-    
-    for (const k of keys) {
-        if (current && typeof current === 'object' && current.hasOwnProperty(k)) {
-            current = current[k];
-        } else {
-            // Fallback to English if translation not found
-            current = translations.en;
-            for (const fallbackKey of keys) {
-                if (current && typeof current === 'object' && current.hasOwnProperty(fallbackKey)) {
-                    current = current[fallbackKey];
-                } else {
-                    return null;
-                }
-            }
-            break;
-        }
-    }
-    
-    return typeof current === 'string' ? current : null;
-}
-
-function updateDocumentTitle() {
-    const titleKey = document.documentElement.getAttribute('data-translate-title');
-    if (titleKey) {
-        const translatedTitle = getNestedTranslation(titleKey);
-        if (translatedTitle) {
-            document.title = translatedTitle;
-        }
-    }
-}
-
-function updateDynamicContent() {
-    // Update any dynamic content that might need translation
-    // This can be extended as needed
-}
-
-// Initialize language on page load
-function initializeLanguage() {
-    // Get saved language or default to English
-    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-    changeLanguage(savedLanguage);
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeLanguage();
-});
-
-// Also initialize if DOM is already loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeLanguage);
-} else {
-    initializeLanguage();
-}
+// Duplicate language functions removed to prevent conflicts with main language system

@@ -1,0 +1,459 @@
+{
+  "timestamp": "2025-08-02T15:13:40.987Z",
+  "testResult": "PASS",
+  "initialState": {
+    "currentLanguage": "not set",
+    "hasTranslations": false,
+    "hasKoreanTranslations": false,
+    "translationFunctionExists": true,
+    "testCardTitles": [
+      {
+        "index": 0,
+        "text": "16 Personalities (MBTI)",
+        "dataTranslate": "tests.mbti.title",
+        "hasKorean": false
+      },
+      {
+        "index": 1,
+        "text": "Big Five Personality",
+        "dataTranslate": "tests.bigfive.title",
+        "hasKorean": false
+      },
+      {
+        "index": 2,
+        "text": "Love Language Test",
+        "dataTranslate": "tests.lovelanguage.title",
+        "hasKorean": false
+      },
+      {
+        "index": 3,
+        "text": "Brain Teaser Challenge",
+        "dataTranslate": "tests.iq.title",
+        "hasKorean": false
+      },
+      {
+        "index": 4,
+        "text": "Emotional Intelligence",
+        "dataTranslate": "tests.ei.title",
+        "hasKorean": false
+      },
+      {
+        "index": 5,
+        "text": "ADHD Self-Assessment",
+        "dataTranslate": "tests.adhd.title",
+        "hasKorean": false
+      },
+      {
+        "index": 6,
+        "text": "Anxiety Self-Check",
+        "dataTranslate": "tests.anxiety.title",
+        "hasKorean": false
+      },
+      {
+        "index": 7,
+        "text": "Mood Self-Reflection",
+        "dataTranslate": "tests.depression.title",
+        "hasKorean": false
+      },
+      {
+        "index": 8,
+        "text": "Character Strengths",
+        "dataTranslate": "tests.strengths.title",
+        "hasKorean": false
+      },
+      {
+        "index": 9,
+        "text": "Career Path Finder",
+        "dataTranslate": "tests.careerpath.title",
+        "hasKorean": false
+      },
+      {
+        "index": 10,
+        "text": "Relationship Style",
+        "dataTranslate": "tests.relationshipstyle.title",
+        "hasKorean": false
+      },
+      {
+        "index": 11,
+        "text": "See Who Knows Me Best",
+        "dataTranslate": "tests.askfriends.title",
+        "hasKorean": false
+      },
+      {
+        "index": 12,
+        "text": "360 Perception About Me",
+        "dataTranslate": "tests.360assessment.title",
+        "hasKorean": false
+      },
+      {
+        "index": 13,
+        "text": "Share Your Results",
+        "dataTranslate": "couples.shareResults",
+        "hasKorean": false
+      },
+      {
+        "index": 14,
+        "text": "Compatibility Analysis",
+        "dataTranslate": "couples.compatibility",
+        "hasKorean": false
+      },
+      {
+        "index": 15,
+        "text": "Relationship Growth",
+        "dataTranslate": "couples.growth",
+        "hasKorean": false
+      },
+      {
+        "index": 16,
+        "text": "Actually Scientific",
+        "dataTranslate": "whyChoose.scientific",
+        "hasKorean": false
+      },
+      {
+        "index": 17,
+        "text": "Instant Results",
+        "dataTranslate": "whyChoose.instant",
+        "hasKorean": false
+      },
+      {
+        "index": 18,
+        "text": "Your Secrets Are Safe",
+        "dataTranslate": "whyChoose.safe",
+        "hasKorean": false
+      },
+      {
+        "index": 19,
+        "text": "Works Everywhere",
+        "dataTranslate": "whyChoose.everywhere",
+        "hasKorean": false
+      },
+      {
+        "index": 20,
+        "text": "Understanding Your MBTI Type",
+        "dataTranslate": null,
+        "hasKorean": false
+      },
+      {
+        "index": 21,
+        "text": "The Science of Emotional Intelligence",
+        "dataTranslate": null,
+        "hasKorean": false
+      },
+      {
+        "index": 22,
+        "text": "Building Better Relationships",
+        "dataTranslate": null,
+        "hasKorean": false
+      },
+      {
+        "index": 23,
+        "text": "Career Alignment & Growth",
+        "dataTranslate": null,
+        "hasKorean": false
+      },
+      {
+        "index": 24,
+        "text": "Personal Development Journey",
+        "dataTranslate": null,
+        "hasKorean": false
+      },
+      {
+        "index": 25,
+        "text": "Mental Health & Personality",
+        "dataTranslate": null,
+        "hasKorean": false
+      }
+    ]
+  },
+  "afterKoreanState": {
+    "currentLanguage": "not set",
+    "testCardAnalysis": [
+      {
+        "index": 0,
+        "text": "16가지 성격 유형",
+        "dataTranslate": "tests.mbti.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 1,
+        "text": "빅파이브 성격 검사",
+        "dataTranslate": "tests.bigfive.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 2,
+        "text": "사랑의 언어 테스트",
+        "dataTranslate": "tests.lovelanguage.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 3,
+        "text": "두뇌 테스트",
+        "dataTranslate": "tests.iq.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 4,
+        "text": "감성지능",
+        "dataTranslate": "tests.ei.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 5,
+        "text": "집중력과 에너지 스타일",
+        "dataTranslate": "tests.adhd.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 6,
+        "text": "스트레스 관리 스타일",
+        "dataTranslate": "tests.anxiety.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 7,
+        "text": "감정 조절 스타일",
+        "dataTranslate": "tests.depression.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 8,
+        "text": "캐릭터 강점 (VIA)",
+        "dataTranslate": "tests.strengths.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 9,
+        "text": "진로 탐색기",
+        "dataTranslate": "tests.careerpath.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 10,
+        "text": "연애 스타일",
+        "dataTranslate": "tests.relationshipstyle.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 11,
+        "text": "누가 나를 가장 잘 아는지 보기",
+        "dataTranslate": "tests.askfriends.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 12,
+        "text": "360도 나에 대한 인식",
+        "dataTranslate": "tests.360assessment.title",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 13,
+        "text": "결과 공유하기",
+        "dataTranslate": "couples.shareResults",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 14,
+        "text": "궁합 분석",
+        "dataTranslate": "couples.compatibility",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 15,
+        "text": "관계 성장",
+        "dataTranslate": "couples.growth",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 16,
+        "text": "진짜 과학적",
+        "dataTranslate": "whyChoose.scientific",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 17,
+        "text": "즉시 결과",
+        "dataTranslate": "whyChoose.instant",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 18,
+        "text": "당신의 비밀은 안전합니다",
+        "dataTranslate": "whyChoose.safe",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 19,
+        "text": "어디서나 작동",
+        "dataTranslate": "whyChoose.everywhere",
+        "hasKorean": true,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "KOREAN"
+      },
+      {
+        "index": 20,
+        "text": "Understanding Your MBTI Type",
+        "dataTranslate": null,
+        "hasKorean": false,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "ENGLISH"
+      },
+      {
+        "index": 21,
+        "text": "The Science of Emotional Intelligence",
+        "dataTranslate": null,
+        "hasKorean": false,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "ENGLISH"
+      },
+      {
+        "index": 22,
+        "text": "Building Better Relationships",
+        "dataTranslate": null,
+        "hasKorean": false,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "ENGLISH"
+      },
+      {
+        "index": 23,
+        "text": "Career Alignment & Growth",
+        "dataTranslate": null,
+        "hasKorean": false,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "ENGLISH"
+      },
+      {
+        "index": 24,
+        "text": "Personal Development Journey",
+        "dataTranslate": null,
+        "hasKorean": false,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "ENGLISH"
+      },
+      {
+        "index": 25,
+        "text": "Mental Health & Personality",
+        "dataTranslate": null,
+        "hasKorean": false,
+        "expectedKorean": "N/A",
+        "isTranslated": false,
+        "status": "ENGLISH"
+      }
+    ]
+  },
+  "manualFixResult": {
+    "success": false,
+    "error": "Cannot read properties of undefined (reading 'ko')"
+  },
+  "finalState": {
+    "totalCards": 26,
+    "koreanCards": 20,
+    "englishCards": 6,
+    "success": true,
+    "finalTitles": [
+      "16가지 성격 유형",
+      "빅파이브 성격 검사",
+      "사랑의 언어 테스트",
+      "두뇌 테스트",
+      "감성지능",
+      "집중력과 에너지 스타일",
+      "스트레스 관리 스타일",
+      "감정 조절 스타일",
+      "캐릭터 강점 (VIA)",
+      "진로 탐색기",
+      "연애 스타일",
+      "누가 나를 가장 잘 아는지 보기",
+      "360도 나에 대한 인식",
+      "결과 공유하기",
+      "궁합 분석",
+      "관계 성장",
+      "진짜 과학적",
+      "즉시 결과",
+      "당신의 비밀은 안전합니다",
+      "어디서나 작동",
+      "Understanding Your MBTI Type",
+      "The Science of Emotional Intelligence",
+      "Building Better Relationships",
+      "Career Alignment & Growth",
+      "Personal Development Journey",
+      "Mental Health & Personality"
+    ]
+  },
+  "issues": [
+    "Card 21 (null): \"Understanding Your MBTI Type\" should be \"N/A\"",
+    "Card 22 (null): \"The Science of Emotional Intelligence\" should be \"N/A\"",
+    "Card 23 (null): \"Building Better Relationships\" should be \"N/A\"",
+    "Card 24 (null): \"Career Alignment & Growth\" should be \"N/A\"",
+    "Card 25 (null): \"Personal Development Journey\" should be \"N/A\"",
+    "Card 26 (null): \"Mental Health & Personality\" should be \"N/A\""
+  ],
+  "recommendations": [],
+  "screenshots": [
+    "debug_1_initial.png",
+    "debug_2_korean_attempt.png",
+    "debug_3_after_fix.png"
+  ]
+}

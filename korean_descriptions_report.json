@@ -1,0 +1,127 @@
+{
+  "timestamp": "2025-08-02T15:29:22.531Z",
+  "success": true,
+  "descriptionResults": [
+    {
+      "index": 1,
+      "dataTranslate": "tests.mbti.description",
+      "text": "나를 정말로 알 수 있는 최고의 성격 테스트! INTJ 전략가 타입인가요, ENFP 활동가 타입인가요? 지금 바로 확인해보세요! 💅",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 2,
+      "dataTranslate": "tests.bigfive.description",
+      "text": "심리학자들이 인정하는 과학적 성격 테스트예요. 5가지 핵심 성격 특성으로 나를 분석해보세요! 🧠",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 3,
+      "dataTranslate": "tests.lovelanguage.description",
+      "text": "격려의 말, 함께하는 시간, 신체적 접촉? 어떻게 사랑을 주고받는 것이 가장 좋은지 발견하세요!",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 4,
+      "dataTranslate": "tests.iq.description",
+      "text": "재미있는 논리 퍼즐과 두뇌 게임이에요! 단순히 재미를 위한 것으로, 실제 IQ 테스트는 전문가가 진행해야 해요. 도전해볼까요? 🤓",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 5,
+      "dataTranslate": "tests.ei.description",
+      "text": "내 감정과 다른 사람의 감정을 얼마나 잘 이해할까요? 자기인식, 공감능력, 사회적 기술을 확인해보세요! 💝",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 6,
+      "dataTranslate": "tests.adhd.description",
+      "text": "당신만의 독특한 주의력과 에너지 패턴을 발견하세요! 이것은 재미있는 자기성찰을 위한 것입니다 - 의학적 평가가 아닙니다. ⚡",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 7,
+      "dataTranslate": "tests.anxiety.description",
+      "text": "스트레스와 압박을 어떻게 다루는지 발견하세요! 이것은 재미와 자기 인식을 위한 것입니다 - 의학적 조언이 아닙니다. 💚",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 8,
+      "dataTranslate": "tests.depression.description",
+      "text": "감정을 어떻게 처리하는지 이해하세요! 이것은 자기성찰과 오락을 위한 것입니다 - 정신건강 평가가 아닙니다. 🌻",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 9,
+      "dataTranslate": "tests.strengths.description",
+      "text": "핵심 캐릭터 강점을 발견하세요! 창의성부터 리더십, 친절함까지 - 당신을 독특하게 멋지게 만드는 것을 발견하세요! ✨",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 10,
+      "dataTranslate": "tests.careerpath.description",
+      "text": "내 성격에 맞는 직업을 발견하세요! 리더, 창작자, 도우미, 분석가, 기업가 중 어느 것인가요?",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 11,
+      "dataTranslate": "tests.relationshipstyle.description",
+      "text": "어떻게 사랑하고 다른 사람들과 연결되나요? 나만의 독특한 연애 스타일과 사랑에서의 매력을 발견하세요!",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    },
+    {
+      "index": 12,
+      "dataTranslate": "tests.askfriends.description",
+      "text": "Create questions about yourself, provide YOUR answers, then see who knows you best! Friends will try",
+      "hasKorean": false,
+      "status": "❌ ENGLISH"
+    },
+    {
+      "index": 13,
+      "dataTranslate": "tests.360assessment.description",
+      "text": "Serious, multi-perspective feedback for growth and understanding. Get honest insights from friends, ",
+      "hasKorean": false,
+      "status": "❌ ENGLISH"
+    },
+    {
+      "index": 14,
+      "dataTranslate": "footer.description",
+      "text": "당신을 이해하는 과학적으로 백업된 테스트로 성격을 발견하세요.",
+      "hasKorean": true,
+      "status": "✅ KOREAN"
+    }
+  ],
+  "mainTestResults": [
+    {
+      "index": 1,
+      "title": "16가지 성격 유형",
+      "description": "나를 정말로 알 수 있는 최고의 성격 테스트! INTJ 전략가 타입인가요, ENFP 활동가 타입인가요? 지금 바로 확인해보세요! 💅",
+      "titleKorean": true,
+      "descKorean": true,
+      "bothKorean": true
+    },
+    {
+      "index": 2,
+      "title": "빅파이브 성격 검사",
+      "description": "심리학자들이 인정하는 과학적 성격 테스트예요. 5가지 핵심 성격 특성으로 나를 분석해보세요! 🧠",
+      "titleKorean": true,
+      "descKorean": true,
+      "bothKorean": true
+    }
+  ],
+  "summary": {
+    "koreanDescriptions": 12,
+    "englishDescriptions": 2,
+    "completeKoreanCards": 2
+  }
+}

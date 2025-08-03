@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-08-02T15:59:19.725Z",
+  "success": true,
+  "descriptionResults": [
+    {
+      "index": 1,
+      "dataTranslate": "tests.mbti.description",
+      "text": "Découvrez votre type de personnalité unique avec l'évaluation classique Myers-Briggs ! Êtes-vous un ",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 2,
+      "dataTranslate": "tests.bigfive.description",
+      "text": "L'étalon-or de la psychologie de la personnalité ! Explorez votre ouverture, conscience, extraversio",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 3,
+      "dataTranslate": "tests.lovelanguage.description",
+      "text": "Mots d'affirmation, temps de qualité ou contact physique ? Découvrez comment vous donnez et recevez ",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 4,
+      "dataTranslate": "tests.iq.description",
+      "text": "Testez vos compétences de résolution de problèmes ! Puzzles logiques amusants pour défier votre espr",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 5,
+      "dataTranslate": "tests.ei.description",
+      "text": "À quel point lisez-vous bien les émotions et naviguez dans les situations sociales ? Testez vos supe",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 6,
+      "dataTranslate": "tests.adhd.description",
+      "text": "A quick self-reflection tool to explore attention and focus patterns. For entertainment only - not a",
+      "hasFrench": false,
+      "status": "❌ NOT_FRENCH"
+    },
+    {
+      "index": 7,
+      "dataTranslate": "tests.anxiety.description",
+      "text": "Explore your stress and worry patterns with this self-reflection tool. Remember: this is for awarene",
+      "hasFrench": false,
+      "status": "❌ NOT_FRENCH"
+    },
+    {
+      "index": 8,
+      "dataTranslate": "tests.depression.description",
+      "text": "A gentle self-check tool to reflect on your mood patterns. For personal insight only - not a substit",
+      "hasFrench": false,
+      "status": "❌ NOT_FRENCH"
+    },
+    {
+      "index": 9,
+      "dataTranslate": "tests.strengths.description",
+      "text": "Discover your top character strengths and learn how to use them for personal growth and success in v",
+      "hasFrench": false,
+      "status": "❌ NOT_FRENCH"
+    },
+    {
+      "index": 10,
+      "dataTranslate": "tests.careerpath.description",
+      "text": "Découvrez la carrière qui correspond à votre personnalité ! Êtes-vous un leader, créateur, aidant, a",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 11,
+      "dataTranslate": "tests.relationshipstyle.description",
+      "text": "Comment aimez-vous et vous connectez-vous avec les autres ? Découvrez votre style de relation unique",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 12,
+      "dataTranslate": "tests.askfriends.description",
+      "text": "Créez des questions sur vous-même, fournissez VOS réponses, puis voyez qui vous connaît le mieux ! L",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 13,
+      "dataTranslate": "tests.360assessment.description",
+      "text": "Commentaires sérieux et multi-perspectifs pour la croissance et la compréhension. Obtenez des insigh",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 14,
+      "dataTranslate": "footer.description",
+      "text": "Découvrez votre personnalité avec des tests scientifiquement validés qui vous comprennent.",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    }
+  ],
+  "metaBadgeResults": [
+    {
+      "index": 1,
+      "text": "⏱️ 8 min",
+      "dataTranslate": "tests.meta.duration",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 2,
+      "text": "🎯 Très Précis",
+      "dataTranslate": "tests.meta.accurate",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 3,
+      "text": "🔬 Base Scientifique",
+      "dataTranslate": "tests.meta.scienceBased",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 4,
+      "text": "⏱️ 10 min",
+      "dataTranslate": "tests.meta.duration10",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 5,
+      "text": "🎯 Niveau Recherche",
+      "dataTranslate": "tests.meta.researchGrade",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 6,
+      "text": "🏆 Le Plus Précis",
+      "dataTranslate": "tests.meta.mostAccurate",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 7,
+      "text": "⏱️ 5 min",
+      "dataTranslate": "tests.meta.duration5",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    },
+    {
+      "index": 8,
+      "text": "💝 Relation",
+      "dataTranslate": "tests.meta.relationship",
+      "hasFrench": false,
+      "status": "❌ NOT_FRENCH"
+    },
+    {
+      "index": 9,
+      "text": "❤️ Convivial Couples",
+      "dataTranslate": "tests.meta.couplesFriendly",
+      "hasFrench": false,
+      "status": "❌ NOT_FRENCH"
+    },
+    {
+      "index": 10,
+      "text": "⏱️ 15 min",
+      "dataTranslate": "tests.meta.duration15",
+      "hasFrench": true,
+      "status": "✅ FRENCH"
+    }
+  ],
+  "mainTestResults": [
+    {
+      "index": 1,
+      "title": "16 Types de Personnalité",
+      "description": "Découvrez votre type de personnalité unique avec l'évaluation classique Myers-Briggs ! Êtes-vous un ",
+      "titleFrench": true,
+      "descFrench": true,
+      "bothFrench": true
+    },
+    {
+      "index": 2,
+      "title": "Test des Cinq Grands",
+      "description": "L'étalon-or de la psychologie de la personnalité ! Explorez votre ouverture, conscience, extraversio",
+      "titleFrench": true,
+      "descFrench": true,
+      "bothFrench": true
+    }
+  ],
+  "summary": {
+    "frenchDescriptions": 10,
+    "nonFrenchDescriptions": 4,
+    "frenchBadges": 8,
+    "nonFrenchBadges": 2,
+    "completeFrenchCards": 2
+  }
+}

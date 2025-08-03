@@ -1,0 +1,90 @@
+{
+  "timestamp": "2025-08-02T14:52:12.778Z",
+  "testSummary": {
+    "totalLanguages": 5,
+    "passed": 3,
+    "failed": 2,
+    "success": false
+  },
+  "languageResults": [
+    {
+      "language": "English",
+      "code": "en",
+      "success": true,
+      "translatedCount": 24,
+      "requiredCount": 20,
+      "expectedFound": true,
+      "firstCardText": "16 Personalities (MBTI)",
+      "sampleTexts": [
+        "16 Personalities (MBTI)",
+        "Big Five Personality",
+        "Love Language Test"
+      ]
+    },
+    {
+      "language": "Spanish",
+      "code": "es",
+      "success": false,
+      "translatedCount": 12,
+      "requiredCount": 15,
+      "expectedFound": false,
+      "firstCardText": "16 Tipos de Personalidad",
+      "sampleTexts": [
+        "16 Tipos de Personalidad",
+        "Test de los Cinco Grandes",
+        "Test del Lenguaje del Amor"
+      ]
+    },
+    {
+      "language": "French",
+      "code": "fr",
+      "success": false,
+      "translatedCount": 11,
+      "requiredCount": 15,
+      "expectedFound": false,
+      "firstCardText": "16 Types de Personnalité",
+      "sampleTexts": [
+        "16 Types de Personnalité",
+        "Test des Cinq Grands",
+        "Test du Langage d'Amour"
+      ]
+    },
+    {
+      "language": "Korean",
+      "code": "ko",
+      "success": true,
+      "translatedCount": 20,
+      "requiredCount": 18,
+      "expectedFound": true,
+      "firstCardText": "16가지 성격 유형",
+      "sampleTexts": [
+        "16가지 성격 유형",
+        "빅파이브 성격 검사",
+        "사랑의 언어 테스트"
+      ]
+    },
+    {
+      "language": "English (return)",
+      "code": "en",
+      "success": true,
+      "translatedCount": 24,
+      "requiredCount": 20,
+      "expectedFound": true,
+      "firstCardText": "16 Personalities (MBTI)",
+      "sampleTexts": [
+        "16 Personalities (MBTI)",
+        "Big Five Personality",
+        "Love Language Test"
+      ]
+    }
+  ],
+  "conclusion": {
+    "koreanFixed": true,
+    "allLanguagesWorking": false,
+    "recommendedActions": [
+      "Review failed language translations",
+      "Check translation mappings completeness",
+      "Verify language switching mechanism"
+    ]
+  }
+}

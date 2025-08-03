@@ -1567,7 +1567,7 @@
                     
                     <div class="hero-cta">
                         <a href="#tests" class="cta-primary">
-                            <span>Start Your Journey</span>
+                            <span data-translate="hero.startJourney">Start Your Journey</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -2661,6 +2661,71 @@
                     }
                 });
                 updateBreadcrumb('know-yourself');
+                
+                // CRITICAL FIX: Reapply translations for newly visible content
+                setTimeout(() => {
+                    console.log('🔍 DEBUG: Know Yourself section shown, triggering translation refresh');
+                    
+                    // Get current language from localStorage as fallback
+                    const langFromStorage = localStorage.getItem('preferredLanguage') || 'en';
+                    console.log('🔍 Language from storage:', langFromStorage);
+                    
+                    // Multiple strategies to ensure translations are applied
+                    let translationAttempted = false;
+                    
+                    // Strategy 1: Direct changeLanguage call (most reliable)
+                    if (typeof changeLanguage === 'function') {
+                        console.log('✅ Using changeLanguage function to refresh translations');
+                        changeLanguage(langFromStorage);
+                        translationAttempted = true;
+                    }
+                    
+                    // Strategy 2: Manual translation for specific Korean test cards
+                    if (langFromStorage === 'ko') {
+                        console.log('🔍 Korean detected, applying manual translations to test cards');
+                        
+                        const testTranslations = {
+                            'tests.mbti.title': '16가지 성격 유형',
+                            'tests.bigfive.title': '빅파이브 성격 검사',
+                            'tests.lovelanguage.title': '사랑의 언어 테스트',
+                            'tests.iq.title': '두뇌 테스트',
+                            'tests.ei.title': '감성지능',
+                            'tests.adhd.title': '집중력과 에너지 스타일',
+                            'tests.anxiety.title': '스트레스 관리 스타일',
+                            'tests.depression.title': '감정 조절 스타일',
+                            'tests.strengths.title': '캐릭터 강점 (VIA)',
+                            'tests.careerpath.title': '진로 탐색기',
+                            'tests.relationshipstyle.title': '연애 스타일'
+                        };
+                        
+                        Object.entries(testTranslations).forEach(([key, koreanText]) => {
+                            const element = document.querySelector(`[data-translate="${key}"]`);
+                            if (element) {
+                                element.textContent = koreanText;
+                                console.log(`✅ Manually updated ${key}`);
+                            }
+                        });
+                        
+                        translationAttempted = true;
+                    }
+                    
+                    if (translationAttempted) {
+                        console.log('✅ Translation refresh completed for Know Yourself section');
+                        
+                        // Verify after a brief delay
+                        setTimeout(() => {
+                            const mbtiTitle = document.querySelector('[data-translate="tests.mbti.title"]');
+                            if (mbtiTitle) {
+                                console.log('🔍 Final MBTI title check:', mbtiTitle.textContent);
+                                if (mbtiTitle.textContent.includes('16가지')) {
+                                    console.log('🎉 SUCCESS: Korean translations are now visible!');
+                                }
+                            }
+                        }, 100);
+                    } else {
+                        console.warn('❌ No translation method was successful');
+                    }
+                }, 200);
             } else if (categoryId === 'others-see-me') {
                 // Show only How Others See Me section
                 if (knowYourselfSection) knowYourselfSection.style.display = 'none';
@@ -2673,6 +2738,14 @@
                     }
                 });
                 updateBreadcrumb('others-see-me');
+                
+                // CRITICAL FIX: Reapply translations for newly visible content
+                setTimeout(() => {
+                    if (typeof forceUpdateAllTranslations === 'function' && typeof translations !== 'undefined' && currentLanguage) {
+                        forceUpdateAllTranslations(translations[currentLanguage]);
+                        console.log('🔄 Reapplied translations for How Others See Me section in language:', currentLanguage);
+                    }
+                }, 100);
             } else if (categoryId === 'all') {
                 // Show all sections
                 if (knowYourselfSection) knowYourselfSection.style.display = 'block';
@@ -2685,6 +2758,14 @@
                     }
                 });
                 updateBreadcrumb(null);
+                
+                // CRITICAL FIX: Reapply translations for newly visible content
+                setTimeout(() => {
+                    if (typeof forceUpdateAllTranslations === 'function' && typeof translations !== 'undefined' && currentLanguage) {
+                        forceUpdateAllTranslations(translations[currentLanguage]);
+                        console.log('🔄 Reapplied translations for All sections in language:', currentLanguage);
+                    }
+                }, 100);
             } else {
                 // Default to showing all sections
                 if (knowYourselfSection) knowYourselfSection.style.display = 'block';

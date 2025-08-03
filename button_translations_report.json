@@ -1,0 +1,120 @@
+{
+  "timestamp": "2025-08-02T16:46:54.164Z",
+  "testSummary": {
+    "totalLanguages": 9,
+    "passed": 0,
+    "failed": 9,
+    "success": false
+  },
+  "languageResults": [
+    {
+      "language": "English",
+      "code": "en",
+      "expected": "Take Test",
+      "success": false,
+      "error": "page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'en\\')\"]')\u001b[22m\n\u001b[2m    - locator resolved to <div title=\"English\" class=\"flag-wrapper\" onclick=\"changeLanguage('en')\" onmouseout=\"↵                            this.style.transform='scale(1) translateY(0px)'; ↵                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';↵                        \" onmouseover=\"↵                            this.style.transform='scale(1.2) translateY(-2px)'; ↵                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4…>…</div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "Spanish",
+      "code": "es",
+      "expected": "Hacer Prueba",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'es\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "French",
+      "code": "fr",
+      "expected": "Faire le Test",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'fr\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "German",
+      "code": "de",
+      "expected": "Test Machen",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'de\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "Italian",
+      "code": "it",
+      "expected": "Fai il Test",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'it\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "Portuguese",
+      "code": "pt",
+      "expected": "Fazer Teste",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'pt\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "Japanese",
+      "code": "ja",
+      "expected": "テストを開始",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'ja\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "Chinese",
+      "code": "zh",
+      "expected": "开始测试",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'zh\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    },
+    {
+      "language": "Korean",
+      "code": "ko",
+      "expected": "테스트 하기",
+      "success": false,
+      "error": "page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'ko\\')\"]')\u001b[22m\n",
+      "correctButtons": 0,
+      "totalButtons": 0,
+      "buttonResults": []
+    }
+  ],
+  "issues": [
+    "English: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'en\\')\"]')\u001b[22m\n\u001b[2m    - locator resolved to <div title=\"English\" class=\"flag-wrapper\" onclick=\"changeLanguage('en')\" onmouseout=\"↵                            this.style.transform='scale(1) translateY(0px)'; ↵                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1)';↵                        \" onmouseover=\"↵                            this.style.transform='scale(1.2) translateY(-2px)'; ↵                            this.querySelector('.flag-svg').style.filter='drop-shadow(0 4…>…</div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n",
+    "Spanish: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'es\\')\"]')\u001b[22m\n",
+    "French: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'fr\\')\"]')\u001b[22m\n",
+    "German: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'de\\')\"]')\u001b[22m\n",
+    "Italian: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'it\\')\"]')\u001b[22m\n",
+    "Portuguese: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'pt\\')\"]')\u001b[22m\n",
+    "Japanese: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'ja\\')\"]')\u001b[22m\n",
+    "Chinese: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'zh\\')\"]')\u001b[22m\n",
+    "Korean: page.click: Target crashed \nCall log:\n\u001b[2m  - waiting for locator('[onclick*=\"changeLanguage(\\'ko\\')\"]')\u001b[22m\n"
+  ],
+  "conclusion": {
+    "allButtonsWorking": false,
+    "recommendedActions": [
+      "Review failed button translations",
+      "Check manual mapping functions",
+      "Verify translation key consistency"
+    ]
+  }
+}
