@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Korean Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .test-item { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .korean-text { color: #0066cc; font-weight: bold; }
+        .debug { background: #f0f8ff; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Korean Translation Test</h1>
+    <div id="status">Loading...</div>
+    <div id="content"></div>
+
+    <script>
+        async function testKoreanTranslations() {
+            try {
+                console.log('Fetching Korean translations...');
+                const response = await fetch('/translations/ko.json');
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('Korean data loaded:', data);
+                
+                document.getElementById('status').innerHTML = '✅ Korean translations loaded successfully!';
+                
+                const contentDiv = document.getElementById('content');
+                contentDiv.innerHTML = `
+                    <div class="test-item">
+                        <h2>Page Title</h2>
+                        <div class="korean-text">${data.tests?.page_title || 'NOT FOUND'}</div>
+                    </div>
+                    
+                    <div class="test-item">
+                        <h2>Know Yourself Category</h2>
+                        <div class="korean-text">${data.tests?.categories?.know_yourself || 'NOT FOUND'}</div>
+                        <p>${data.tests?.categories?.know_yourself_desc || 'Description not found'}</p>
+                    </div>
+                    
+                    <div class="test-item">
+                        <h2>How Others See Me Category</h2>
+                        <div class="korean-text">${data.tests?.categories?.how_others_see_me || 'NOT FOUND'}</div>
+                        <p>${data.tests?.categories?.how_others_see_me_desc || 'Description not found'}</p>
+                    </div>
+                    
+                    <div class="test-item">
+                        <h2>MBTI Test</h2>
+                        <div class="korean-text">${data.tests?.mbti?.title || 'NOT FOUND'}</div>
+                        <p>${data.tests?.mbti?.description || 'Description not found'}</p>
+                    </div>
+                    
+                    <div class="debug">
+                        <h3>Debug Info</h3>
+                        <p><strong>Full data structure:</strong></p>
+                        <pre style="font-size: 12px; overflow: auto;">${JSON.stringify(data, null, 2).substring(0, 1000)}...</pre>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('status').innerHTML = `❌ Error: ${error.message}`;
+                document.getElementById('content').innerHTML = `
+                    <div class="debug">
+                        <h3>Error Details</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p><strong>Check the console for more details</strong></p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Run the test
+        testKoreanTranslations();
+    </script>
+</body>
+</html>

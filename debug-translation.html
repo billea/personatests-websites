@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Debug Test</title>
+</head>
+<body>
+    <h1>Translation System Test</h1>
+    
+    <div>
+        <p>Current Language: <span id="current-lang">Loading...</span></p>
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('ko')">Korean</button>
+    </div>
+    
+    <div>
+        <h2>Test Translations:</h2>
+        <p data-translate="tests.page_title">tests.page_title</p>
+        <p data-translate="tests.categories.know_yourself">tests.categories.know_yourself</p>
+        <p data-translate="tests.mbti.title">tests.mbti.title</p>
+    </div>
+
+    <div>
+        <h2>Manual Translation Test:</h2>
+        <p id="manual-test">Click buttons to test</p>
+    </div>
+
+    <div>
+        <h2>Debug Info:</h2>
+        <pre id="debug-info">Loading...</pre>
+    </div>
+
+    <script>
+        // Import the translation engine
+        class TranslationEngine {
+            constructor() {
+                this.translations = {};
+                this.currentLanguage = 'en';
+            }
+
+            async init(defaultLang = 'en') {
+                console.log('Initializing translation engine...');
+                // 1. Always load English as the ultimate fallback.
+                await this.loadLanguage('en');
+
+                // 2. Determine the user's preferred language.
+                const userLang = localStorage.getItem('selectedLanguage') || navigator.language.split('-')[0] || defaultLang;
+                console.log('User language:', userLang);
+                
+                // 3. Load the preferred language if it's not English.
+                if (userLang !== 'en') {
+                    await this.loadLanguage(userLang);
+                }
+                this.currentLanguage = userLang;
+
+                // 4. Apply translations to the entire document.
+                this.applyAll();
+
+                // 5. Watch for future changes to the DOM and apply translations automatically.
+                this.observeDOMChanges();
+                
+                this.updateDebugInfo();
+            }
+
+            async loadLanguage(lang) {
+                console.log('Loading language:', lang);
+                if (this.translations[lang]) {
+                    console.log('Language already loaded:', lang);
+                    return; // Already loaded
+                }
+                try {
+                    const url = `/translations/${lang}.json?v=${new Date().getTime()}`;
+                    console.log('Fetching:', url);
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error(`Failed to load ${lang}.json: ${response.status}`);
+                    const data = await response.json();
+                    this.translations[lang] = data;
+                    console.log('Successfully loaded', lang, 'with keys:', Object.keys(data));
+                } catch (error) {
+                    console.error('Translation loading error:', error);
+                    // If a language fails to load, we'll fall back to English, which is already loaded.
+                }
+            }
+
+            async setLanguage(lang) {
+                console.log('Setting language to:', lang);
+                await this.loadLanguage(lang);
+                this.currentLanguage = lang;
+                localStorage.setItem('selectedLanguage', lang);
+                this.applyAll();
+                this.updateDebugInfo();
+            }
+
+            // The core translation function.
+            t(key) {
+                // Get the value from the current language's dictionary.
+                let value = key.split('.').reduce((obj, k) => obj?.[k], this.translations[this.currentLanguage]);
+                
+                // If not found, fall back to English.
+                if (value === undefined) {
+                    value = key.split('.').reduce((obj, k) => obj?.[k], this.translations['en']);
+                }
+
+                // If still not found, return the key itself as a fallback.
+                return value || key;
+            }
+
+            // Apply translations to all `[data-translate]` elements in a given container.
+            applyAll(container = document.body) {
+                container.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    const translated = this.t(key);
+                    element.textContent = translated;
+                    console.log('Translated', key, 'to', translated);
+                });
+                
+                document.getElementById('current-lang').textContent = this.currentLanguage;
+                document.getElementById('manual-test').textContent = this.t('tests.page_title');
+            }
+
+            updateDebugInfo() {
+                const info = {
+                    currentLanguage: this.currentLanguage,
+                    availableLanguages: Object.keys(this.translations),
+                    currentTranslations: Object.keys(this.translations[this.currentLanguage] || {}).length
+                };
+                document.getElementById('debug-info').textContent = JSON.stringify(info, null, 2);
+            }
+
+            // This is the magic for handling dynamically added content.
+            observeDOMChanges() {
+                const observer = new MutationObserver(mutations => {
+                    mutations.forEach(mutation => {
+                        mutation.addedNodes.forEach(node => {
+                            // When a new element is added, check if it or its children need translation.
+                            if (node.nodeType === 1) { // ELEMENT_NODE
+                                this.applyAll(node);
+                            }
+                        });
+                    });
+                });
+                observer.observe(document.body, { childList: true, subtree: true });
+            }
+        }
+
+        // Initialize the engine
+        const engine = new TranslationEngine();
+        
+        async function setLanguage(lang) {
+            await engine.setLanguage(lang);
+        }
+        
+        // Start the engine
+        engine.init();
+    </script>
+</body>
+</html>

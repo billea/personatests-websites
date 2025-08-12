@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "Home",
+    "tests": "Tests",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Most Accurate Personality Tests",
+    "title": "Discover Your",
+    "title_accent": "True Self",
+    "subtitle": "Discover your personality with scientifically-backed tests! MBTI, Big Five, and trending tests. Check your vibe today! 🔥",
+    "startJourney": "Start Your Journey",
+    "stats": {
+      "tests": "Personality Tests",
+      "languages": "Languages", 
+      "access": "Always Free",
+      "private": "Private"
+    },
+    "features": {
+      "scientific": "Science-Based",
+      "instant": "Instant Results",
+      "personalized": "100% Personalized",
+      "private": "Completely Private"
+    }
+  },
+  "test": {
+    "completed_title": "Test Completed!",
+    "completed_message": "Your results have been saved successfully.",
+    "view_results": "View My Results",
+    "take_another": "Take Another Test",
+    "invite_feedback_title": "Invite Others for Feedback",
+    "invite_feedback_description": "Get a complete picture by inviting friends and colleagues to provide feedback about you."
+  },
+  "tests": {
+    "page_title": "Personality Tests",
+    "mbti": {
+      "title": "16 Personalities (MBTI)",
+      "description": "Discover your Myers-Briggs personality type with this 20-question assessment",
+      "questions": {
+        "q1": "When recharging your energy, do you prefer:",
+        "q2": "When processing information, do you prefer:",
+        "q3": "When making decisions, do you prefer:",
+        "q4": "When organizing your life, do you prefer:",
+        "q5": "In social situations, do you prefer:",
+        "q6": "When learning, do you prefer:",
+        "q7": "When solving problems, do you prefer:",
+        "q8": "When planning, do you prefer:",
+        "q9": "When communicating, do you prefer:",
+        "q10": "When working, do you prefer:",
+        "q11": "When giving feedback, do you prefer:",
+        "q12": "When finishing tasks, do you prefer:",
+        "q13": "At parties, do you prefer:",
+        "q14": "When reading, do you prefer:",
+        "q15": "When disagreeing, do you prefer:",
+        "q16": "When traveling, do you prefer:",
+        "q17": "When presenting, do you prefer:",
+        "q18": "When thinking, do you prefer:",
+        "q19": "When evaluating, do you prefer:",
+        "q20": "When working on projects, do you prefer:"
+      },
+      "options": {
+        "q1_a": "Being around people and socializing",
+        "q1_b": "Having alone time and reflection",
+        "q2_a": "Concrete facts and details",
+        "q2_b": "Patterns and possibilities",
+        "q3_a": "Logic and objective analysis",
+        "q3_b": "Values and personal impact",
+        "q4_a": "Structure and planning ahead",
+        "q4_b": "Flexibility and keeping options open",
+        "q5_a": "Meeting new people and being outgoing",
+        "q5_b": "Deeper conversations with fewer people",
+        "q6_a": "Step-by-step instructions and details",
+        "q6_b": "Overview and big picture concepts",
+        "q7_a": "Analyzing facts and data",
+        "q7_b": "Considering feelings and values",
+        "q8_a": "Making detailed plans in advance",
+        "q8_b": "Leaving room for spontaneity",
+        "q9_a": "Expressing thoughts out loud",
+        "q9_b": "Thinking things through first",
+        "q10_a": "Collaborating and brainstorming",
+        "q10_b": "Working independently",
+        "q11_a": "Being direct and honest",
+        "q11_b": "Being tactful and diplomatic",
+        "q12_a": "Completing tasks quickly",
+        "q12_b": "Taking time to perfect work",
+        "q13_a": "Mingling and meeting everyone",
+        "q13_b": "Talking with people you know well",
+        "q14_a": "Practical how-to information",
+        "q14_b": "Theoretical ideas and concepts",
+        "q15_a": "Sticking to logical principles",
+        "q15_b": "Considering everyone's feelings",
+        "q16_a": "Having everything planned out",
+        "q16_b": "Deciding as you go",
+        "q17_a": "Being the center of attention",
+        "q17_b": "Staying in the background",
+        "q18_a": "What is real and concrete",
+        "q18_b": "What could be possible",
+        "q19_a": "Objective criteria and standards",
+        "q19_b": "Personal values and circumstances",
+        "q20_a": "Clear deadlines and structure",
+        "q20_b": "Open-ended timelines"
+      }
+    },
+    "bigfive": {
+      "title": "Big Five Personality",
+      "description": "Discover your personality across five key dimensions",
+      "questions": {
+        "q1": "I am outgoing and sociable",
+        "q2": "I am always prepared and organized",
+        "q3": "I am open to new experiences",
+        "q4": "I am compassionate and understanding",
+        "q5": "I remain calm under pressure"
+      },
+      "scale": {
+        "strongly_disagree": "Strongly Disagree",
+        "strongly_agree": "Strongly Agree"
+      }
+    },
+    "enneagram": {
+      "title": "Enneagram Type",
+      "description": "Discover your core motivation and personality type",
+      "questions": {
+        "q1": "Which approach do you prefer when facing challenges?",
+        "q2": "How do you typically respond to stress?",
+        "q3": "What motivates you most in relationships?"
+      },
+      "options": {
+        "q1_a": "Take control and lead the solution",
+        "q1_b": "Help others and support the team",
+        "q1_c": "Focus on achieving the best results",
+        "q2_a": "Express yourself creatively",
+        "q2_b": "Analyze and understand the situation",
+        "q2_c": "Seek security and support",
+        "q3_a": "Have fun and explore possibilities",
+        "q3_b": "Assert strength and independence",
+        "q3_c": "Maintain harmony and peace"
+      }
+    },
+    "feedback360": {
+      "title": "360° Feedback Assessment",
+      "description": "Get comprehensive feedback from colleagues and friends",
+      "questions": {
+        "q1": "How often do you take initiative in group settings?",
+        "q2": "How clearly do you communicate your ideas?",
+        "q3": "How well do you collaborate with others?"
+      },
+      "scale": {
+        "never": "Never",
+        "always": "Always"
+      }
+    },
+    "couple": {
+      "title": "Couple Compatibility",
+      "description": "Analyze your relationship dynamics and compatibility",
+      "questions": {
+        "q1": "What is your primary love language?",
+        "q2": "How important is communication in your relationship?",
+        "q3": "What do you value most in a relationship?"
+      },
+      "options": {
+        "q1_a": "Quality Time",
+        "q1_b": "Physical Touch",
+        "q1_c": "Words of Affirmation",
+        "q1_d": "Acts of Service",
+        "q1_e": "Receiving Gifts",
+        "q3_a": "Adventure and Excitement",
+        "q3_b": "Stability and Security",
+        "q3_c": "Personal Growth",
+        "q3_d": "Peace and Harmony"
+      },
+      "scale": {
+        "not_important": "Not Important",
+        "very_important": "Very Important"
+      }
+    }
+  }
+}

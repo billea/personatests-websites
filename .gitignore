@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Next.js
+.next/
+out/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing files
+qa-screenshots*/
+*.test.js
+*.spec.js
+qa-report.json
+final-qa-results.json
+simple-qa-*.js
+phase1-qa-test.js
+final-qa-report.js
+
+# Backup files
+*-backup.*
+*-broken.*
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Firebase
+.firebase/
+
+# Cache
+.cache/
+.parcel-cache/

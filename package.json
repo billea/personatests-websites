@@ -1,0 +1,40 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:clean": "node cache-cleanup.js && npm run dev",
+    "dev:stable": "cmd /c dev-ultra-stable.bat",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "node cache-cleanup.js",
+    "firebase:emulator": "firebase emulators:start",
+    "firebase:deploy": "npm run build && firebase deploy",
+    "firebase:functions": "firebase deploy --only functions",
+    "test": "npm run lint && npm run build"
+  },
+  "dependencies": {
+    "firebase": "^12.1.0",
+    "next": "15.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.54.2",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "eslint": "^9.33.0",
+    "eslint-config-next": "15.4.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,1480 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "tests": "Tests",
+    "about": "Acerca De",
+    "contact": "Contacto",
+    "faq": "FAQ",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "knowYourself": "🧠 Conócete a Ti Mismo",
+    "howOthersSeeMe": "👥 Cómo Me Ven Otros",
+    "couples": "Parejas",
+    "blog": "Blog",
+    "results": "Mis Resultados",
+    "login": "Iniciar Sesión ✨",
+    "logout": "Cerrar Sesión"
+  },
+  "hero": {
+    "badge": "Tests de Personalidad Más Precisos",
+    "title": "Descubre Tu ✨",
+    "title_accent": "Verdadero Ser",
+    "subtitle": "Encuentra tu verdadero ser con nuestras pruebas de personalidad validadas científicamente. ¡Desde MBTI hasta los Cinco Grandes, descubre qué te hace único! 🔥",
+    "cta": "Descubre Mi Personalidad",
+    "startJourney": "Comienza Tu Viaje",
+    "stats": {
+      "tests": "Tests de Personalidad",
+      "languages": "Idiomas",
+      "access": "Siempre Gratis",
+      "private": "Privado"
+    },
+    "features": {
+      "scientific": "Basado en Ciencia",
+      "instant": "Resultados Instantáneos",
+      "personalized": "100% Personalizado",
+      "private": "Completamente Privado"
+    }
+  },
+  "stats": {
+    "categories": "Categorías de Pruebas",
+    "reliability": "Confiabilidad Científica",
+    "available": "Siempre Disponible"
+  },
+  "ui": {
+    "pageTitle": "PersonaTests - Pruebas de Personalidad Gratis | MBTI, Big Five y Más",
+    "siteTitle": "✨ PersonaTests",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "finishTest": "Terminar Prueba",
+    "home": "🏠 Inicio",
+    "close": "×",
+    "back": "Atrás",
+    "submit": "Enviar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "question": "Pregunta",
+    "of": "de",
+    "progress": "Progreso",
+    "resumeTest": "¿Reanudar Prueba?",
+    "resumeTestDescription": "Tienes una prueba {testName} sin terminar.",
+    "resumeTestProgress": "Progreso: Pregunta {current} de {total}",
+    "resumeTestQuestion": "¿Te gustaría continuar donde lo dejaste o empezar de nuevo?",
+    "resumeTestButton": "Reanudar Prueba",
+    "startOver": "Empezar de Nuevo",
+    "cancel": "Cancelar",
+    "startTest": "Comenzar Prueba",
+    "takeTest": "Hacer Prueba",
+    "retakeTest": "Repetir Prueba",
+    "viewResults": "Ver Resultados",
+    "shareResults": "Compartir Resultados",
+    "loading": "Cargando...",
+    "saving": "Guardando...",
+    "completed": "Completado",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "tryAgain": "Intentar de Nuevo",
+    "duration": "Duración",
+    "accuracy": "Precisión",
+    "category": "Categoría",
+    "difficulty": "Dificultad",
+    "yourResult": "Tu Resultado",
+    "resultSummary": "Resumen del Resultado",
+    "shareOnSocial": "Compartir en Redes Sociales",
+    "copyLink": "Copiar Enlace",
+    "downloadResult": "Descargar Resultado"
+  },
+  "results": {
+    "mbtiTraits": {
+      "extraversionIntroversion": "Extroversión/Introversión",
+      "sensingIntuition": "Sensación/Intuición",
+      "thinkingFeeling": "Pensamiento/Sentimiento",
+      "judgingPerceiving": "Juicio/Percepción",
+      "extraversion": "Extroversión",
+      "introversion": "Introversión",
+      "sensing": "Sensación",
+      "intuition": "Intuición",
+      "thinking": "Pensamiento",
+      "feeling": "Sentimiento",
+      "judging": "Juicio",
+      "perceiving": "Percepción"
+    },
+    "sections": {
+      "yourStrengths": "Tus Fortalezas",
+      "potentialChallenges": "Desafíos Potenciales",
+      "careerSuggestions": "Sugerencias de Carrera",
+      "personalityBreakdown": "Tu Desglose de Personalidad",
+      "compatibleTypes": "Tipos Compatibles",
+      "growthAreas": "Áreas de Crecimiento"
+    },
+    "sharing": {
+      "mbtiShareText": "¡Soy energía {type} ({title}) y es honestamente perfecto para mí! ¿Cuál es tu vibra? 🔥",
+      "bigFiveShareText": "¡Acabo de obtener mis resultados de personalidad Big Five y son muy precisos! {summary}",
+      "defaultShareText": "¡Acabo de descubrir mi tipo de personalidad y es muy preciso! ¡Descubre el tuyo también!"
+    },
+    "bigFiveTraits": {
+      "openness": "Apertura a la Experiencia",
+      "conscientiousness": "Responsabilidad",
+      "extraversion": "Extroversión",
+      "agreeableness": "Amabilidad",
+      "neuroticism": "Neuroticismo",
+      "high": "Alto",
+      "low": "Bajo",
+      "average": "Promedio"
+    },
+    "labels": {
+      "yourResult": "Tu Resultado",
+      "score": "Puntuación",
+      "traits": "Rasgos",
+      "summary": "Resumen",
+      "recommendations": "Recomendaciones",
+      "shareYourResults": "Comparte Tus Resultados"
+    },
+    "iqResults": {
+      "categories": {
+        "exceptionallyGifted": "¡Excepcionalmente Dotado! 🧠✨",
+        "highlyGifted": "¡Altamente Dotado! 🚀",
+        "aboveAverage": "¡Inteligencia por Encima del Promedio! 📈",
+        "average": "¡Inteligencia Promedio! 👍",
+        "belowAverage": "Inteligencia por Debajo del Promedio",
+        "lowAverage": "Inteligencia Promedio Bajo"
+      },
+      "descriptions": {
+        "exceptionallyGifted": "Tus habilidades cognitivas son verdaderamente excepcionales y raras.",
+        "highlyGifted": "Tienes habilidades intelectuales superiores que te colocan en el rango de superdotado.",
+        "aboveAverage": "Tus habilidades cognitivas son más fuertes que la mayoría de las personas.",
+        "average": "Tus habilidades cognitivas están exactamente en el rango típico.",
+        "belowAverage": "Tus habilidades cognitivas están en el rango inferior pero aún dentro de la variación normal.",
+        "lowAverage": "Esto sugiere áreas donde apoyo adicional o práctica podría ser beneficioso."
+      },
+      "percentiles": {
+        "exceptional": "percentil 99.9",
+        "highly": "percentil 98",
+        "above": "percentil 84",
+        "average": "percentil 50",
+        "below": "percentil 16",
+        "low": "percentil 2"
+      },
+      "population": {
+        "exceptional": "Solo el 0.1% de las personas obtienen esta puntuación",
+        "highly": "Aproximadamente el 2% de las personas están en este rango",
+        "above": "Aproximadamente el 16% de las personas están en este rango",
+        "average": "Aproximadamente el 68% de las personas están en este rango",
+        "below": "Aproximadamente el 16% de las personas están en este rango",
+        "low": "Aproximadamente el 2% de las personas están en este rango"
+      },
+      "shareText": "¡Acabo de hacer un test de CI y obtuve {score}! Eso me pone en el {percentile}. ¿Cuál es tu superpoder cognitivo? 🧠"
+    },
+    "bigFiveQuestions": [
+      {
+        "text": "Me veo como alguien que es hablador.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [1, 2, 3, 4, 5],
+        "dimension": "extraversion"
+      },
+      {
+        "text": "Me veo como alguien que tiende a encontrar fallas en otros.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [5, 4, 3, 2, 1],
+        "dimension": "agreeableness"
+      },
+      {
+        "text": "Me veo como alguien que hace un trabajo meticuloso.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [1, 2, 3, 4, 5],
+        "dimension": "conscientiousness"
+      },
+      {
+        "text": "Me veo como alguien que se deprime, se pone triste.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [1, 2, 3, 4, 5],
+        "dimension": "neuroticism"
+      },
+      {
+        "text": "Me veo como alguien que es original, tiene ideas nuevas.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [1, 2, 3, 4, 5],
+        "dimension": "openness"
+      },
+      {
+        "text": "Me veo como alguien que es reservado.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [5, 4, 3, 2, 1],
+        "dimension": "extraversion"
+      },
+      {
+        "text": "Me veo como alguien que es servicial y desinteresado con otros.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [1, 2, 3, 4, 5],
+        "dimension": "agreeableness"
+      },
+      {
+        "text": "Me veo como alguien que puede ser algo descuidado.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [5, 4, 3, 2, 1],
+        "dimension": "conscientiousness"
+      },
+      {
+        "text": "Me veo como alguien que es relajado, maneja bien el estrés.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [5, 4, 3, 2, 1],
+        "dimension": "neuroticism"
+      },
+      {
+        "text": "Me veo como alguien que tiene pocos intereses artísticos.",
+        "options": ["Muy falso", "Algo falso", "Ni verdadero ni falso", "Algo verdadero", "Muy verdadero"],
+        "scoring": [5, 4, 3, 2, 1],
+        "dimension": "openness"
+      }
+    ],
+    "mbtiQuestions": [
+      {
+        "text": "Estás en un evento de networking durante 2 horas. ¿Cómo te sientes después?",
+        "options": ["Energizado y emocionado - conocí mucha gente nueva", "Mentalmente agotado pero satisfecho - listo para ir a casa"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "Al planificar un proyecto:",
+        "options": ["Creo cronogramas detallados y listas de verificación", "Solo establezco el panorama general y ajusto sobre la marcha"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "Al tomar decisiones difíciles, valoras más:",
+        "options": ["Análisis lógico y hechos objetivos", "Cómo afectará a las personas y los valores involucrados"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "Prefieres aprender nuevas ideas a través de:",
+        "options": ["Ejemplos del mundo real y aplicaciones prácticas", "Conceptos teóricos y posibilidades abstractas"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      },
+      {
+        "text": "En el trabajo, obtienes energía de:",
+        "options": ["Colaborar con colegas y tener reuniones", "Trabajar solo y concentrarte en profundidad"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "Al planificar vacaciones:",
+        "options": ["Reservo todo por adelantado con un itinerario detallado", "Mantengo las cosas abiertas y decido espontáneamente"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "Cuando hay conflicto en el equipo, te enfocas en:",
+        "options": ["Analizar objetivamente el problema para encontrar soluciones", "Considerar los sentimientos de todos para restaurar la armonía"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "Al procesar información, confías más en:",
+        "options": ["Hechos concretos de experiencias directas y observación", "Tu intuición para ver patrones y conexiones"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      },
+      {
+        "text": "En reuniones sociales, tiendes a:",
+        "options": ["Dirigir conversaciones y hablar con muchas personas", "Tener conversaciones profundas con unos pocos amigos cercanos"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "Prefieres un entorno de trabajo que tenga:",
+        "options": ["Fechas límite claras y procedimientos establecidos", "Horarios flexibles y libertad creativa"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "Cuando recibes críticas, tu primer pensamiento es:",
+        "options": ["¿Esta retroalimentación está basada en hechos?", "¿Cómo se siente esta persona acerca de mí?"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "Tu enfoque para resolver problemas es:",
+        "options": ["Usar métodos probados y experiencias pasadas", "Explorar nuevas perspectivas e ideas creativas"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      },
+      {
+        "text": "Después del trabajo, te recargas:",
+        "options": ["Cenando con colegas y compartiendo tu día", "Teniendo tiempo tranquilo a solas para reflexionar"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "Al comenzar un nuevo proyecto:",
+        "options": ["Planifico cada detalle y procedo paso a paso", "Establezco la dirección general y me adapto según sea necesario"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "En la toma de decisiones, priorizas:",
+        "options": ["Eficiencia y resultados lógicos", "Satisfacción de las personas y armonía"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "Al aprender, te interesas más en:",
+        "options": ["Hechos concretos y habilidades prácticas", "Teorías y comprensión conceptual"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      }
+    ],
+    "eqQuestions": [
+      {
+        "text": "¿Qué tan bien puedes identificar tus emociones cuando estás estresado?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien controlas tus emociones cuando estás enojado?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien entiendes los sentimientos de otros cuando están tristes?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien navegas situaciones de conflicto para encontrar resoluciones?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan consciente eres del impacto de tus emociones en tu comportamiento?",
+        "options": ["Nada consciente", "Un poco consciente", "Moderadamente consciente", "Bastante consciente", "Muy consciente"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien mantienes la calma en situaciones frustrantes?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien compartes la alegría cuando un amigo está feliz?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien construyes relaciones con nuevas personas?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan precisa es tu evaluación de tus propias fortalezas y debilidades?",
+        "options": ["Nada precisa", "Un poco precisa", "Moderadamente precisa", "Bastante precisa", "Muy precisa"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien resistes actuar impulsivamente?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien lees las señales no verbales de otros (expresiones faciales, lenguaje corporal)?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan efectivamente colaboras en configuraciones de equipo?",
+        "options": ["Nada efectivamente", "No muy efectivamente", "Moderadamente efectivo", "Bastante efectivo", "Muy efectivo"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien identificas qué desencadena tus emociones?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien mantienes la compostura bajo presión?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan bien te pones en los zapatos de otra persona?",
+        "options": ["Nada bien", "No muy bien", "Moderadamente bien", "Bastante bien", "Muy bien"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "¿Qué tan hábil eres navegando conversaciones difíciles?",
+        "options": ["Nada hábil", "No muy hábil", "Moderadamente hábil", "Bastante hábil", "Muy hábil"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      }
+    ],
+    "iqQuestions": [
+      {
+        "text": "¿Qué palabra no pertenece: Manzana, Naranja, Plátano, Zanahoria, Uva?",
+        "options": [
+          "Manzana",
+          "Naranja",
+          "Zanahoria",
+          "Uva"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Qué sigue en este patrón: ○ △ ○ △ △ ○ △ △ △ ?",
+        "options": [
+          "○",
+          "△",
+          "○ △",
+          "△ △"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Si 5 máquinas tardan 5 minutos en hacer 5 objetos, ¿cuánto tardarían 100 máquinas en hacer 100 objetos?",
+        "options": [
+          "5 minutos",
+          "20 minutos",
+          "100 minutos",
+          "500 minutos"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "¿Qué número falta: 3, 7, 15, 31, ?",
+        "options": [
+          "47",
+          "63",
+          "71",
+          "127"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Libro es a Lectura como Tenedor es a:",
+        "options": [
+          "Comer",
+          "Cocina",
+          "Cuchara",
+          "Comida"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "¿Qué figura completa la analogía? Círculo es a Esfera como Cuadrado es a:",
+        "options": [
+          "Rectángulo",
+          "Triángulo",
+          "Cubo",
+          "Pirámide"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Cuál es el siguiente número: 1, 4, 9, 16, 25, ?",
+        "options": [
+          "30",
+          "35",
+          "36",
+          "49"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Si algunos Flibs son Globs y ningún Glob es Blob, entonces:",
+        "options": [
+          "Algunos Flibs son Blobs",
+          "Ningún Flib es Blob",
+          "Todos los Flibs son Blobs",
+          "Algunos Flibs no son Blobs"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "¿Qué sigue: Z, Y, X, W, V, ?",
+        "options": [
+          "U",
+          "T",
+          "S",
+          "R"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Si reorganizas las letras 'FICAPICO', obtienes el nombre de un:",
+        "options": [
+          "País",
+          "Animal",
+          "Océano",
+          "Planeta"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Qué número debe reemplazar el signo de interrogación: 4, 9, 16, 25, 36, ?",
+        "options": [
+          "42",
+          "49",
+          "56",
+          "64"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Agua es a Hielo como Leche es a:",
+        "options": [
+          "Queso",
+          "Vaca",
+          "Blanco",
+          "Líquido"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Completa la secuencia: 2, 6, 12, 20, 30, ?",
+        "options": [
+          "40",
+          "42",
+          "45",
+          "48"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "¿Qué palabra se puede formar con estas letras: GADRUACOIN?",
+        "options": [
+          "GRADUACION",
+          "RADIACION",
+          "TRADICION",
+          "GENERACION"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Si A = 1, B = 2, C = 3... ¿cuánto vale 'CAB'?",
+        "options": [
+          "6",
+          "8",
+          "9",
+          "12"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "¿Qué sigue: 1, 1, 2, 3, 5, 8, ?",
+        "options": [
+          "11",
+          "13",
+          "15",
+          "21"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Montaña es a Valle como Pico es a:",
+        "options": [
+          "Colina",
+          "Fondo",
+          "Depresión",
+          "Alto"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Qué número no encaja: 4, 6, 8, 9, 10, 12?",
+        "options": [
+          "4",
+          "6",
+          "9",
+          "10"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Si me multiplicas por cualquier otro número, la respuesta siempre será la misma. ¿Qué número soy?",
+        "options": [
+          "0",
+          "1",
+          "10",
+          "100"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "¿Qué letra sigue: A, E, I, O, ?",
+        "options": [
+          "U",
+          "Y",
+          "B",
+          "F"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Reloj es a Tiempo como Termómetro es a:",
+        "options": [
+          "Calor",
+          "Frío",
+          "Temperatura",
+          "Clima"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Completa: 7, 14, 28, 56, ?",
+        "options": [
+          "84",
+          "98",
+          "112",
+          "168"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Qué forma es diferente?",
+        "options": [
+          "Triángulo con 3 lados",
+          "Cuadrado con 4 lados",
+          "Pentágono con 5 lados",
+          "Hexágono con 7 lados"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "¿Cuál es el número que falta: 8, 27, 64, ?",
+        "options": [
+          "100",
+          "125",
+          "144",
+          "169"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Perro es a Cachorro como Gato es a:",
+        "options": [
+          "Gatito",
+          "Felino",
+          "Miau",
+          "Mascota"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "¿Cuál no pertenece: Rosa, Tulipán, Zanahoria, Margarita?",
+        "options": [
+          "Rosa",
+          "Tulipán",
+          "Zanahoria",
+          "Margarita"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Qué sigue: 100, 95, 85, 70, 50, ?",
+        "options": [
+          "25",
+          "30",
+          "35",
+          "40"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Si todos los cuadrados son rectángulos pero no todos los rectángulos son cuadrados, entonces una forma que definitivamente es rectángulo pero puede no ser cuadrado es:",
+        "options": [
+          "Siempre un cuadrado",
+          "Nunca un cuadrado",
+          "A veces un cuadrado",
+          "No se puede determinar"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "¿Qué sigue en el patrón: 3, 6, 11, 18, 27, ?",
+        "options": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "¿Qué número completa el patrón: 1, 8, 27, 64, ?",
+        "options": [
+          "100",
+          "125",
+          "144",
+          "216"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "Si hoy es miércoles, ¿qué día será dentro de 100 días?",
+        "options": [
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves"
+        ],
+        "correct": 3
+      }
+    ]
+  },
+  "categories": {
+    "all": "Todos",
+    "knowYourself": "🧠 Conócete a Ti Mismo",
+    "howOthersSeeMe": "👥 Cómo Me Ven Otros",
+    "knowYourselfTitle": "🧠 Conócete a Ti Mismo",
+    "knowYourselfSubtitle": "Descubre tu personalidad interior, fortalezas y rasgos únicos a través de evaluaciones con respaldo científico",
+    "howOthersSeeTitle": "👥 Cómo Me Ven Otros",
+    "howOthersSubtitle": "Obtén comentarios honestos y descubre cómo te perciben realmente amigos, familia y colegas"
+  },
+  "tests": {
+    "sectionTitle": "Descubre Tu Personalidad ✨",
+    "sectionSubtitle": "Get the full view: who you are inside AND how others see you! 💫",
+    "disclaimer": "🎯 Important: For Entertainment & Self-Reflection Only",
+    "disclaimerText": "These assessments are designed for fun and self-reflection, not professional diagnosis. If you need mental health support, please consult a licensed healthcare provider.",
+    "takeTest": "Hacer Prueba",
+    "mbti": {
+      "title": "16 Tipos de Personalidad (MBTI)",
+      "description": "¡Descubre tu tipo de personalidad único con la evaluación clásica de Myers-Briggs! ¿Eres un pensador introvertido o un extrovertido emocional?"
+    },
+    "bigfive": {
+      "title": "Test de los Cinco Grandes",
+      "description": "¡El estándar dorado de la psicología de la personalidad! Explora tu apertura, conciencia, extraversión, amabilidad y neuroticismo."
+    },
+    "eq": {
+      "title": "Emotional Intelligence (EQ)",
+      "description": "How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝"
+    },
+    "ei": {
+      "title": "Inteligencia Emocional",
+      "description": "¿Qué tan bien lees las emociones y navegas situaciones sociales? ¡Prueba tus superpoderes emocionales!"
+    },
+    "iq": {
+      "title": "Desafío Mental",
+      "description": "¡Pon a prueba tus habilidades de resolución de problemas! Rompecabezas lógicos divertidos para desafiar tu mente."
+    },
+    "lovelanguage": {
+      "title": "Test de Lenguajes del Amor",
+      "description": "¿Palabras de afirmación, tiempo de calidad o contacto físico? ¡Descubre cómo das y recibes amor mejor!"
+    },
+    "adhd": {
+      "title": "Autoevaluación ADHD",
+      "description": "Explora tus patrones de atención y niveles de energía. ¡Genial para entender tu estilo de productividad!"
+    },
+    "anxiety": {
+      "title": "Autochequeo de Ansiedad",
+      "description": "¿Cómo manejas la presión? Aprende tus patrones de estrés y descubre estrategias de afrontamiento saludables."
+    },
+    "depression": {
+      "title": "Autorreflexión del Estado de Ánimo",
+      "description": "Comprende tus patrones emocionales y resistencia. ¡Perfecto para el crecimiento personal y el autoconocimiento!"
+    },
+    "strengths": {
+      "title": "Fortalezas de Carácter",
+      "description": "¡Descubre tus principales fortalezas de carácter! Desde creatividad hasta amabilidad, encuentra lo que te hace brillar."
+    },
+    "careerpath": {
+      "title": "Encuentra Tu Trayectoria Profesional",
+      "description": "¡Descubre carreras que coincidan con tu personalidad! ¿Eres líder, creativo, ayudador, analista o emprendedor? 🚀"
+    },
+    "relationshipstyle": {
+      "title": "Estilo de Relación",
+      "description": "¡Aprende cómo amas y te conectas con otros! Descubre tu estilo único de relación y qué te motiva en el amor! ✨"
+    },
+    "360assessment": {
+      "title": "360° Percepción Sobre Mí",
+      "description": "Descubre cómo otros te perciben desde múltiples ángulos. Obtén perspectivas honestas de personas que te conocen en diferentes contextos - amigos, colegas, familia - para entender tu impacto y áreas de crecimiento."
+    },
+    "new": "🔥 Nuevo",
+    "trending": "🔥 Tendencia",
+    "popular": "✨ Popular",
+    "createQuestions": "Crear Preguntas",
+    "startAssessment": "Preguntar a Mi Gente",
+    "meta": {
+      "duration": "⏱️ 8 min",
+      "duration5": "⏱️ 5 min",
+      "duration6": "⏱️ 6 min",
+      "duration7": "⏱️ 7 min",
+      "duration8": "⏱️ 8 min",
+      "duration10": "⏱️ 10 min",
+      "duration12": "⏱️ 12 min",
+      "duration15": "⏱️ 15 min",
+      "setup5": "⏱️ 5 min configuración",
+      "setup10": "⏱️ 10 min configuración",
+      "accurate": "🎯 Muy Preciso",
+      "scienceBased": "🔬 Basado en Ciencia",
+      "researchGrade": "🎯 Grado de Investigación",
+      "mostAccurate": "🏆 Más Preciso",
+      "relationship": "💝 Relación",
+      "couplesFriendly": "❤️ Para Parejas",
+      "funGame": "🎮 Juego Divertido",
+      "brainTraining": "🧠 Entrenamiento Mental",
+      "careerFocused": "🎯 Enfoque Profesional",
+      "leadership": "💼 Liderazgo",
+      "teamwork": "🤝 Trabajo en Equipo",
+      "selfReflection": "🔍 Autorreflexión",
+      "notMedical": "⚠️ No Médico",
+      "wellness": "🧘 Bienestar",
+      "moodTracking": "🌈 Seguimiento del Estado de Ánimo",
+      "strengthsBased": "🌟 Basado en Fortalezas",
+      "personalGrowth": "🎯 Crecimiento Personal",
+      "careerFocus": "💼 Enfoque Profesional",
+      "personalized": "🎯 Personalizado",
+      "relationships": "💕 Relaciones",
+      "connection": "🤝 Conexión",
+      "detailed": "📊 Detallado",
+      "viral": "🔥 Viral",
+      "couples": "💕 Parejas",
+      "instant": "⚡ Instantáneo",
+      "fun": "😄 Divertido",
+      "socialPeople": "👥 Retroalimentación Social"
+    },
+    "disc": {
+      "title": "Test de Personalidad DISC",
+      "description": "¡Descubre tu estilo de comunicación! ¿Eres Dominante, Influyente, Estable o Consciente? ¡Perfecto para entender la dinámica laboral y de relaciones! 💼"
+    },
+    "discDesc": "¡Descubre tu estilo de comunicación! ¿Eres Dominante, Influyente, Estable o Consciente? ¡Perfecto para entender la dinámica laboral y de relaciones! 💼",
+    "adhdDesc": "¡Descubre tus patrones únicos de atención y energía! Esto es para diversión y autorreflexión - no una evaluación médica. ⚡",
+    "anxietyDesc": "¡Descubre cómo manejas el estrés y la presión! Esto es para diversión y autoconciencia - no consejo médico. 💚",
+    "depressionDesc": "¡Comprende cómo procesas las emociones! Esto es para autorreflexión y entretenimiento - no una evaluación de salud mental. 🌻",
+    "strengthsDesc": "¡Descubre tus fortalezas principales de carácter! Desde creatividad hasta liderazgo y bondad - ¡descubre qué te hace únicamente increíble! ✨",
+    "conflict": "Estilo de Conflicto",
+    "conflictDesc": "¿Cómo manejas los desacuerdos? ¡Descubre si eres un colaborador, competidor, complaciente, evitador o conciliador! 🤝",
+    "trendingTitle": "Tendencias Ahora 🔥",
+    "trendingSubtitle": "¡Los tests de personalidad más populares de los que todos hablan! Perfecto para compartir con amigos y redes sociales 📱",
+    "love": "Test de Lenguajes del Amor",
+    "loveDesc": "Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖",
+    "pet": {
+      "title": "¿Qué Mascota Coincide con Tu Personalidad?",
+      "description": "¿Un perro leal, un gato independiente, un hámster juguetón, o algo más? ¡Encuentra tu compañero perfecto basado en tu personalidad! 🐱"
+    },
+    "petDesc": "¿Un perro leal, un gato independiente, un hámster juguetón, o algo más? ¡Encuentra tu compañero perfecto basado en tu personalidad! 🐱",
+    "career": "Test de Trayectoria Profesional",
+    "careerDesc": "Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀",
+    "relationship": "Estilo de Relación",
+    "relationshipDesc": "How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨",
+    "buttons": {
+      "discoverType": "Discover My Type ✨",
+      "takeTest": "Take The Test",
+      "takeBrainChallenge": "Take Brain Challenge",
+      "checkEQ": "Check My EQ",
+      "findStyle": "Find My Style",
+      "checkStyle": "Check My Style",
+      "findStrengths": "Find My Strengths",
+      "findLoveLanguage": "Find My Love Language",
+      "findPetMatch": "Find My Pet Match",
+      "findCareer": "Find My Career"
+    },
+    "askfriends": {
+      "title": "¿Quién Me Conoce Mejor?",
+      "description": "¡Crea preguntas sobre ti mismo, proporciona TUS respuestas, luego ve quién te conoce mejor! Los amigos intentarán coincidir con tus respuestas y serán puntuados según qué tan bien te conozcan.",
+      "heroTitle": "¿Quién Me Conoce Mejor? 🧩",
+      "heroSubtitle": "¡Crea preguntas sobre ti mismo, proporciona TUS respuestas, luego ve quién te conoce mejor! Los amigos intentarán coincidir con tus respuestas y serán puntuados según qué tan bien te conozcan.",
+      "viralBadge": "💭 JUEGO DE CURIOSIDAD",
+      "categoriesTitle": "What do you want to know about yourself?",
+      "categoriesSubtitle": "Choose question categories or create your own personalized questions!",
+      "customTab": "🎨 Preguntas Personalizadas",
+      "categoryTab": "📋 Categorías",
+      "customInstructions": "Create your own personalized questions that you're curious about!",
+      "categoryInstructions": "Pick categories and we'll suggest questions, or customize them yourself!",
+      "addCustomQuestion": "Add Question",
+      "customPlaceholder": "What's something you're curious to know about yourself?",
+      "createButton": "Create My Question Set 🚀",
+      "trackResultsTitle": "📊 Track Your Results",
+      "trackResultsDesc": "Your friends' responses will be collected here. We'll email you when someone answers!",
+      "namePlaceholder": "Your name (optional)",
+      "emailPlaceholder": "Your email for notifications",
+      "questionSetReady": "🎉 Your Question Set is Ready!",
+      "shareInstructions": "Share this link with your friends and see what they think about you!",
+      "copyLink": "📋 Copy Link",
+      "emailFriend": "📧 Email Friend",
+      "quickShare": "🚀 Quick Share",
+      "whatsappShare": "💬 WhatsApp",
+      "twitterShare": "🐦 Twitter",
+      "facebookShare": "📘 Facebook",
+      "categories": {
+        "musicTitle": "Music & Entertainment",
+        "musicDesc": "Songs, movies, shows you love",
+        "foodTitle": "Food & Lifestyle",
+        "foodDesc": "Favorite foods, restaurants, habits",
+        "personalityTitle": "Personality Traits",
+        "personalityDesc": "How others see your personality",
+        "styleTitle": "Style & Fashion",
+        "styleDesc": "Your fashion sense and style",
+        "socialTitle": "Social & Relationships",
+        "socialDesc": "How you interact with others",
+        "hobbiesTitle": "Hobbies & Interests",
+        "hobbiesDesc": "Your passions and activities"
+      },
+      "previewTab": "👀 Preview",
+      "previewTitle": "Your Question Set",
+      "previewPlaceholder": "Select categories or add custom questions to see them here!"
+    },
+    "featured": "🔥 POPULAR",
+    "connect": "💝 CONNECT"
+  },
+  "couples": {
+    "title": "Compatibilidad de Parejas ❤️",
+    "subtitle": "¡Tomen las pruebas individualmente, luego conéctense con su pareja para descubrir la dinámica de su relación y conocimientos de compatibilidad! 💕",
+    "shareResults": "Compartir Tus Resultados",
+    "shareDesc": "¡Después de tomar cualquier prueba, obtén un ID único para conectarte con tu pareja y comparar sus vibras!",
+    "shareButton": "Conectar con Pareja",
+    "compatibility": "Análisis de Compatibilidad",
+    "compatibilityDesc": "¡Obtén información detallada sobre la dinámica de tu relación, estilos de comunicación y áreas de armonía o crecimiento!",
+    "compatibilityButton": "Ver Nuestra Compatibilidad",
+    "growth": "Crecimiento de Relación",
+    "growthDesc": "¡Descubre consejos y estrategias para fortalecer tu vínculo basado en ambos tipos de personalidad y resultados!",
+    "growthButton": "Crecer Juntos"
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir PersonaTests? ✨",
+    "scientific": "Realmente Científico",
+    "scientificDesc": "Nuestros tests se basan en investigación psicológica real, no solo preguntas aleatorias. ¡Hablamos en serio! 🧠",
+    "instant": "Resultados Instantáneos",
+    "instantDesc": "Obtén tu análisis de personalidad inmediatamente. ¡Sin esperas, sin demoras, solo gratificación instantánea pura! ⚡",
+    "safe": "Tus Secretos Están Seguros",
+    "safeDesc": "Mantenemos tus respuestas privadas. Sin vender tus datos, sin correos raros. ¡Solo tú y tus resultados! 🔒",
+    "everywhere": "Funciona En Todas Partes",
+    "everywhereDesc": "¡Toma pruebas en tu teléfono, laptop, tablet - literalmente donde quieras descubrir tu personalidad! 📱",
+    "researchBased": "📚 Basado en Investigación",
+    "validatedMethods": "🎯 Métodos Validados",
+    "psychologyDriven": "🧠 Basado en Psicología",
+    "immediate": "⚡ Inmediato",
+    "fastProcessing": "🚀 Procesamiento Rápido",
+    "userFriendly": "👆 Fácil de Usar",
+    "comprehensive": "📋 Integral",
+    "actionable": "💡 Práctico",
+    "growthFocused": "🌱 Enfocado en Crecimiento",
+    "evidenceBased": "🔬 Basado en Evidencia",
+    "practical": "🎯 Práctico",
+    "insightful": "🔍 Perspicaz",
+    "realTimeAnalysis": "📊 Análisis en Tiempo Real",
+    "privacyFirst": "🔒 Privacidad Primero",
+    "dataProtection": "🛡️ Protección de Datos",
+    "noSpam": "✨ Sin Spam",
+    "mobileFriendly": "📱 Amigable para Móviles",
+    "crossPlatform": "💻 Multiplataforma",
+    "anyDevice": "🌐 Cualquier Dispositivo"
+  },
+  "whyMatters": {
+    "title": "Por Qué Importan las Pruebas de Personalidad",
+    "selfAwareness": "Autoconocimiento",
+    "selfAwarenessDesc": "Comprende tus tendencias naturales, fortalezas y áreas de crecimiento para tomar mejores decisiones en la vida.",
+    "careerDevelopment": "Desarrollo Profesional",
+    "careerDevelopmentDesc": "Descubre caminos profesionales que se alineen con tu personalidad para mayor satisfacción laboral y éxito.",
+    "betterRelationships": "Mejores Relaciones",
+    "betterRelationshipsDesc": "Mejora la comunicación y comprensión en relaciones personales y profesionales."
+  },
+  "blog": {
+    "title": "Conocimientos y Consejos de Psicología 📚",
+    "subtitle": "Aprende sobre psicología de la personalidad, autoayuda y perspectivas de relaciones",
+    "coming_soon": "¡Próximamente más artículos y conocimientos de psicología! ✨"
+  },
+  "about": {
+    "hero": {
+      "title": "Sobre PersonaTests ✨",
+      "subtitle": "Descubre la historia detrás de la plataforma de tests de personalidad más atractiva del mundo"
+    },
+    "mission": {
+      "title": "Nuestra Misión 🎯",
+      "paragraph1": "En PersonaTests, creemos que entender tu personalidad es la clave para desbloquear tu potencial. Nuestra misión es hacer que las evaluaciones de personalidad respaldadas científicamente sean accesibles, atractivas y genuinamente útiles para personas de todo el mundo.",
+      "paragraph2": "Hemos tomado el complejo mundo de la investigación psicológica y lo hemos transformado en experiencias divertidas e interactivas que brindan información real sobre quién eres, cómo piensas y qué te hace único."
+    },
+    "different": {
+      "title": "Lo que Nos Hace Diferentes 🌟",
+      "scientific": {
+        "title": "🔬 Fundamento Científico",
+        "description": "Nuestros tests están construidos sobre décadas de investigación psicológica, incluyendo marcos validados como el modelo de los Cinco Grandes, principios del Indicador de Tipos Myers-Briggs y teorías de inteligencia emocional."
+      },
+      "modern": {
+        "title": "⚡ Experiencia Moderna",
+        "description": "Hemos reimaginado las pruebas de personalidad para la era digital con interfaces atractivas, resultados instantáneos y capacidades de compartir en redes sociales que hacen que el autodescubrimiento sea divertido."
+      },
+      "privacy": {
+        "title": "🔒 Privacidad Primero",
+        "description": "Tus datos de personalidad te pertenecen. Nunca vendemos tu información, y nuestros tests pueden realizarse anónimamente con resultados compartidos solo a tu discreción."
+      },
+      "global": {
+        "title": "🌍 Accesibilidad Global",
+        "description": "Disponible en más de 9 idiomas con adaptaciones culturales, nuestros tests funcionan en todos los dispositivos y están diseñados para ser inclusivos y accesibles para todos."
+      }
+    },
+    "tests": {
+      "title": "Nuestra Colección de Tests 📚",
+      "description": "Ofrecemos una suite completa de evaluaciones de personalidad, cada una diseñada para revelar diferentes aspectos de tu perfil psicológico:",
+      "types": {
+        "title": "16 Tipos de Personalidad",
+        "description": "Basado en los tipos psicológicos de Carl Jung y el marco Myers-Briggs"
+      },
+      "bigfive": {
+        "title": "Personalidad Big Five",
+        "description": "El estándar de oro en psicología de la personalidad con décadas de validación de investigación"
+      },
+      "emotional": {
+        "title": "Inteligencia Emocional",
+        "description": "Mide tu capacidad para entender y gestionar emociones efectivamente"
+      },
+      "specialized": {
+        "title": "Evaluaciones Especializadas",
+        "description": "DISC, estilos de conflicto, evaluación de fortalezas y compatibilidad de relaciones"
+      }
+    },
+    "quality": {
+      "title": "Calidad y Precisión 🎯",
+      "commitment": "Nuestro Compromiso con el Rigor Científico",
+      "frameworks": "Marcos Validados: Todos nuestros tests están basados en investigación psicológica revisada por pares y modelos de personalidad establecidos",
+      "improvement": "Mejora Continua: Actualizamos regularmente nuestras evaluaciones basándose en los últimos hallazgos en psicología de la personalidad",
+      "reliability": "Confiabilidad Estadística: Nuestros tests se someten a análisis estadístico riguroso para asegurar resultados consistentes y significativos",
+      "cultural": "Adaptación Cultural: Las preguntas e interpretaciones se adaptan para diferentes contextos culturales e idiomas",
+      "ethical": "Estándares Éticos: Seguimos las directrices APA para tests psicológicos y mantenemos estándares éticos estrictos"
+    },
+    "values": {
+      "title": "Nuestros Valores 💎",
+      "scientific": {
+        "title": "Integridad Científica",
+        "description": "Enfoques basados en evidencia respaldados por investigación"
+      },
+      "experience": {
+        "title": "Experiencia del Usuario",
+        "description": "Hacer la psicología accesible y atractiva"
+      },
+      "privacy": {
+        "title": "Protección de Privacidad",
+        "description": "La seguridad de tus datos es nuestra máxima prioridad"
+      },
+      "inclusion": {
+        "title": "Inclusión Global",
+        "description": "Accesible a través de culturas e idiomas"
+      }
+    },
+    "community": {
+      "title": "Únete a Nuestra Comunidad 🤝",
+      "question": "¿Listo para Descubrir Tu Personalidad?",
+      "description": "Únete a millones de personas que ya han descubierto sus insights únicos de personalidad con PersonaTests."
+    },
+    "footer": {
+      "copyright": "© 2025 PersonaTests. Todos los derechos reservados. Hecho con ✨ para descubrir tu verdadera personalidad."
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact Us - PersonaTests",
+    "hero": {
+      "title": "Contact Us 💬",
+      "subtitle": "We'd love to hear from you! Get support, share feedback, or ask questions."
+    },
+    "form": {
+      "title": "📝 Send Us a Message",
+      "name": "Name *",
+      "email": "Email *",
+      "subject": "Subject *",
+      "message": "Message *",
+      "selectTopic": "Select a topic...",
+      "messagePlaceholder": "Please describe your question or issue in detail...",
+      "sendButton": "Send Message 📤"
+    },
+    "responseTime": "💚 We typically respond within 24-48 hours. For urgent issues, please check our FAQ page first!",
+    "quickSupport": {
+      "title": "Quick Support",
+      "description": "Check our FAQ page for immediate answers to common questions",
+      "link": "Visit FAQ Page →"
+    },
+    "company": {
+      "title": "PersonaTests",
+      "subtitle": "Digital Personality Assessment Platform",
+      "purpose": "Created for entertainment and self-discovery",
+      "operating": "Operating since 2025"
+    },
+    "responseTimes": {
+      "title": "📅 Response Times",
+      "general": "General Support",
+      "generalTime": "24-48 hours",
+      "privacy": "Privacy Requests",
+      "privacyTime": "48-72 hours",
+      "business": "Business Inquiries",
+      "businessTime": "3-5 business days"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions 🤔",
+      "delete": {
+        "question": "How do I delete my account and data?",
+        "answer": "Email privacy@personatests.com with your account email address. We'll delete all your data within 30 days as required by GDPR and CCPA."
+      },
+      "accurate": {
+        "question": "Are your personality tests accurate?",
+        "answer": "Our tests are based on established psychological frameworks but are for entertainment and self-reflection only. They're not professional psychological assessments."
+      },
+      "employment": {
+        "question": "Can I use test results for employment decisions?",
+        "answer": "No. Our tests are for entertainment only and should never be used for medical, employment, or legal decisions. Only licensed professionals can provide such assessments."
+      },
+      "premium": {
+        "question": "How do premium reports work?",
+        "answer": "Premium reports ($2.99) provide detailed insights and are delivered via email within 24 hours. All payments are securely processed through Stripe."
+      }
+    },
+    "backToTests": "Back to Tests"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy - PersonaTests",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated:",
+    "infoCollected": {
+      "title": "Information We Collect",
+      "description": "When you use PersonaTests, we collect:",
+      "responses": "Your responses to personality tests",
+      "results": "Test results and personality type information",
+      "email": "Email address if you create an account",
+      "usage": "Usage data to improve our services"
+    },
+    "howWeUse": {
+      "title": "How We Use Your Information",
+      "description": "We use your information to:",
+      "personalized": "Provide personalized test results",
+      "saveHistory": "Save your test history (if you create an account)",
+      "improve": "Improve our personality tests and user experience",
+      "sendUpdates": "Send you test results and updates (with your consent)"
+    },
+    "thirdParty": {
+      "title": "Third-Party Services & Advertising",
+      "googleAdSense": {
+        "title": "Google AdSense",
+        "description": "We use Google AdSense to display advertisements on our website. Google and its partners use cookies and other technologies to:",
+        "serveAds": "Serve ads based on your visits to this site and other sites on the Internet",
+        "measure": "Measure ad effectiveness and provide reporting",
+        "interestBased": "Provide interest-based advertising across the web",
+        "preventFraud": "Prevent fraudulent activity and improve ad quality",
+        "yourChoicesTitle": "Your Choices:",
+        "optOutGoogle": "You can opt out of personalized advertising by visiting <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" style=\"color: #4f46e5;\">Google's Ad Settings</a>",
+        "optOutDAA": "You can also opt out via the <a href=\"https://optout.aboutads.info/\" target=\"_blank\" style=\"color: #4f46e5;\">Digital Advertising Alliance</a>",
+        "optOutEU": "European users can visit <a href=\"https://www.youronlinechoices.eu/\" target=\"_blank\" style=\"color: #4f46e5;\">Your Online Choices</a>",
+        "moreInfo": "For more information about Google's privacy practices, please visit <a href=\"https://policies.google.com/privacy\" target=\"_blank\" style=\"color: #4f46e5;\">Google's Privacy Policy</a>."
+      },
+      "otherServices": {
+        "title": "Other Third-Party Services",
+        "description": "We also use the following third-party services:",
+        "analytics": "Google Analytics: Para análisis de sitios web e información sobre el comportamiento del usuario",
+        "stripe": "Stripe: Para procesamiento seguro de pagos de informes premium",
+        "firebase": "Firebase: Para autenticación de usuarios y almacenamiento seguro de datos",
+        "emailjs": "EmailJS: Para entregar informes premium por correo electrónico"
+      }
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "description": "We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, no internet transmission is completely secure."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "description": "You have the right to:",
+      "access": "Access your personal data",
+      "correct": "Correct inaccurate data",
+      "delete": "Delete your account and data",
+      "object": "Object to data processing"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Si tienes preguntas sobre esta Política de Privacidad, contáctanos en: privacy@personatests.com"
+    },
+    "backToTests": "Back to Tests"
+  },
+  "terms": {
+    "pageTitle": "Terms of Service - PersonaTests",
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated:",
+    "acceptance": {
+      "title": "Acceptance of Terms",
+      "description": "By using PersonaTests, you agree to these Terms of Service. If you don't agree, please don't use our service."
+    },
+    "description": {
+      "title": "Description of Service",
+      "description": "PersonaTests provides personality tests and assessments for entertainment and self-discovery purposes. Our tests are not professional psychological evaluations."
+    },
+    "responsibilities": {
+      "title": "User Responsibilities",
+      "intro": "You agree to:",
+      "accurate": "Provide accurate information when taking tests",
+      "lawful": "Use our service for lawful purposes only",
+      "respect": "Respect the intellectual property rights of PersonaTests",
+      "noReverse": "Not attempt to reverse engineer or copy our tests"
+    },
+    "disclaimer": {
+      "title": "Important Medical & Legal Disclaimer",
+      "warning": "⚠️ Entertainment Only - Not Medical or Professional Services",
+      "intro": "ALL TESTS ARE FOR ENTERTAINMENT AND SELF-REFLECTION PURPOSES ONLY. Our assessments are NOT:",
+      "notMedical": "Medical diagnoses or screenings",
+      "notProfessional": "Professional psychological evaluations",
+      "notSubstitute": "Substitute for licensed mental health care",
+      "notEmployment": "Appropriate for employment or legal decisions",
+      "notValidated": "Clinically validated diagnostic instruments",
+      "mentalHealth": "Mental Health Disclaimer: Tests related to mental health topics (anxiety, depression, ADHD-like symptoms) are purely for fun and cannot diagnose any condition. Only licensed healthcare professionals can provide mental health diagnoses.",
+      "iq": "IQ Disclaimer: Our \"Brain Teaser Challenge\" is not a real IQ test. Authentic IQ testing requires professional administration by qualified psychologists using standardized instruments.",
+      "help": "If you need professional help, please contact: Licensed therapists or your healthcare provider.",
+      "acknowledgment": "By using this website, you acknowledge that you understand these tests are for entertainment only and will not use results for medical, professional, or legal purposes."
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "description": "All content on PersonaTests, including tests, questions, and results, is owned by PersonaTests and protected by copyright laws."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "description": "PersonaTests is provided \"as is\" without warranties. We are not liable for any damages resulting from your use of our service."
+    },
+    "changes": {
+      "title": "Changes to Terms",
+      "description": "We may update these terms at any time. Continued use of our service constitutes acceptance of updated terms."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Questions about these terms? Contact us at: support@personatests.com"
+    },
+    "backToTests": "Back to Tests"
+  },
+  "360assessment": {
+    "badge": "🔍 MULTI-PERSPECTIVE REVIEW",
+    "heroTitle": "360 Perception About Me 🎯",
+    "heroSubtitle": "Discover how others perceive you from multiple angles. Get honest insights from people who know you in different contexts - friends, colleagues, family - to understand your impact and areas for growth.",
+    "steps": {
+      "setup": "Setup",
+      "share": "Share",
+      "results": "Results"
+    },
+    "tabs": {
+      "personal": "👤 Personal Info",
+      "areas": "📊 Feedback Areas",
+      "reviewers": "👥 Reviewers",
+      "preview": "👀 Preview"
+    },
+    "personalInfo": {
+      "title": "Let's start with the basics about you! 😊",
+      "fullName": "Full Name *",
+      "namePlaceholder": "Your full name",
+      "email": "Email Address *",
+      "emailPlaceholder": "your@email.com",
+      "jobTitle": "Job Title",
+      "jobPlaceholder": "Your current role",
+      "company": "Organization",
+      "companyPlaceholder": "Company or organization",
+      "whyFeedback": "Why do you want feedback? (Optional)",
+      "purposePlaceholder": "Just curious about myself, want to improve at work, working on personal growth, etc."
+    },
+    "feedbackAreas": {
+      "whatFeedbackTitle": "What do you want feedback about? Pick your favorites! ✨",
+      "areas": {
+        "leadership": {
+          "title": "How I Lead & Take Charge",
+          "desc": "Do I inspire people? Am I good at making decisions? Do I motivate others?"
+        },
+        "communication": {
+          "title": "How I Talk & Listen",
+          "desc": "Am I a good listener? Do I explain things clearly? How's my texting game?"
+        },
+        "teamwork": {
+          "title": "How I Work With Others",
+          "desc": "Am I easy to work with? Do I help teammates? How do I handle drama?"
+        },
+        "emotional-intelligence": {
+          "title": "My Emotional Side",
+          "desc": "Do I read people well? Am I aware of my feelings? How empathetic am I?"
+        },
+        "problem-solving": {
+          "title": "How I Handle Problems",
+          "desc": "Am I creative with solutions? Do I think things through? Can I figure stuff out?"
+        },
+        "adaptability": {
+          "title": "How I Handle Change",
+          "desc": "Do I roll with the punches? Am I flexible? How do I deal when things get crazy?"
+        },
+        "interpersonal": {
+          "title": "How I Connect With People",
+          "desc": "Do people trust me? Am I good at making friends? Do I build solid relationships?"
+        },
+        "work-style": {
+          "title": "How I Get Things Done",
+          "desc": "Am I organized? Do I meet deadlines? Can people count on me to deliver?"
+        }
+      }
+    },
+    "reviewers": {
+      "whoKnowsYou": "Who knows you well enough to give honest feedback? 😊",
+      "relationshipLabels": {
+        "Manager/Supervisor": "Manager/Supervisor",
+        "Colleagues/Peers": "Colleagues/Peers",
+        "Direct Reports": "Direct Reports",
+        "Clients/Customers": "Clients/Customers",
+        "Friends": "Friends",
+        "Family": "Family",
+        "Teacher": "Teacher",
+        "Student": "Student"
+      },
+      "peopleCount": {
+        "1-2 people": "1-2 people",
+        "3-5 people": "3-5 people",
+        "2-4 people": "2-4 people",
+        "1-3 people": "1-3 people",
+        "2-5 people": "2-5 people"
+      }
+    },
+    "preview": {
+      "lookingGood": "Looking good! Let's make sure everything's right 🔍",
+      "assessmentSubject": "Assessment Subject",
+      "feedbackAreas": "Feedback Areas",
+      "reviewerTypes": "Reviewer Types",
+      "notSet": "Not set",
+      "noneSelected": "None selected"
+    },
+    "startButton": "Start My Assessment"
+  },
+  "footer": {
+    "description": "Descubre tu personalidad con pruebas científicamente respaldadas que te entienden.",
+    "popularTests": "Pruebas Populares",
+    "sixteenTypes": "16 Tipos de Personalidad",
+    "bigFive": "Test de los Cinco Grandes",
+    "brainTeaser": "Desafío Mental",
+    "moreInfo": "Más Información",
+    "aboutUs": "Sobre Nosotros",
+    "blog": "Blog",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
+  },
+  "tests": {
+    "takeTest": "Hacer Prueba",
+    "new": "🔥 Nuevo",
+    "trending": "🔥 Tendencia", 
+    "popular": "✨ Popular",
+    "mbti.title": "16 Tipos de Personalidad",
+    "bigfive.title": "Test de los Cinco Grandes",
+    "lovelanguage.title": "Test de Lenguajes del Amor",
+    "iq.title": "Desafío Mental",
+    "eq.title": "Inteligencia Emocional",
+    "ei.title": "Inteligencia Emocional",
+    "adhd.title": "Estilo de Atención y Energía",
+    "anxiety.title": "Estilo de Manejo del Estrés",
+    "depression.title": "Estilo de Regulación Emocional",
+    "via.title": "Fortalezas de Carácter (VIA)",
+    "characterstrengths.title": "Fortalezas de Carácter (VIA)",
+    "strengths.title": "Fortalezas de Carácter (VIA)",
+    "careerpath.title": "Explorador de Carrera",
+    "relationshipstyle.title": "Estilo de Relación",
+    "askfriends.title": "Ver Quién Me Conoce Mejor",
+    "360assessment.title": "Percepción 360 Sobre Mí",
+    "mbti.description": "¡Descubre tu tipo de personalidad único con la evaluación clásica de Myers-Briggs! ¿Eres un pensador introvertido o un extrovertido emocional?",
+    "bigfive.description": "¡El estándar dorado de la psicología de la personalidad! Explora tu apertura, conciencia, extraversión, amabilidad y neuroticismo.",
+    "lovelanguage.description": "¿Palabras de afirmación, tiempo de calidad o contacto físico? ¡Descubre cómo das y recibes amor mejor!",
+    "iq.description": "¡Pon a prueba tus habilidades de resolución de problemas! Rompecabezas lógicos divertidos para desafiar tu mente.",
+    "eq.description": "¿Qué tan bien lees las emociones y navegas situaciones sociales? ¡Prueba tus superpoderes emocionales!",
+    "ei.description": "¿Qué tan bien lees las emociones y navegas situaciones sociales? ¡Prueba tus superpoderes emocionales!",
+    "adhd.description": "Explora tus patrones de atención y niveles de energía. ¡Genial para entender tu estilo de productividad!",
+    "anxiety.description": "¿Cómo manejas la presión? Aprende tus patrones de estrés y descubre estrategias de afrontamiento saludables.",
+    "depression.description": "Comprende tus patrones emocionales y resistencia. ¡Perfecto para el crecimiento personal y el autoconocimiento!",
+    "strengths.description": "¡Descubre tus principales fortalezas de carácter! Desde creatividad hasta amabilidad, encuentra lo que te hace brillar.",
+    "careerpath.description": "¡Descubre la carrera que coincide con tu personalidad! ¿Eres un líder, creador, ayudante, analista o emprendedor?",
+    "relationshipstyle.description": "¿Cómo amas y te conectas con otros? ¡Descubre tu estilo de relación único y qué te emociona en el amor!",
+    "askfriends.description": "¡Crea preguntas sobre ti mismo, proporciona TUS respuestas, luego ve quién te conoce mejor! Los amigos intentarán coincidir con tus respuestas.",
+    "360assessment.description": "Retroalimentación seria de múltiples perspectivas para crecimiento y comprensión. Obtén insights honestos de amigos, familia y colegas.",
+    "askfriends.viralBadge": "💭 JUEGO DE CURIOSIDAD",
+    "askfriends.heroTitle": "Ve Quién Me Conoce Mejor 🧩",
+    "askfriends.heroSubtitle": "¡Crea preguntas sobre ti mismo, proporciona TUS respuestas, luego ve quién te conoce mejor! Los amigos intentarán coincidir con tus respuestas y serán puntuados según qué tan bien te conozcan.",
+    "askfriends.categoryTab": "📋 Categorías",
+    "askfriends.customTab": "🎨 Preguntas Personalizadas",
+    "askfriends.previewTab": "👀 Vista Previa",
+    "askfriends.categoriesTitle": "¿Qué quieres saber sobre ti mismo?",
+    "askfriends.customInstructions": "¡Crea tus propias preguntas personalizadas sobre las que tienes curiosidad!",
+    "askfriends.addCustomQuestion": "+ Agregar Pregunta Personalizada",
+    "askfriends.previewTitle": "Tu Conjunto de Preguntas",
+    "askfriends.previewPlaceholder": "¡Selecciona categorías o agrega preguntas personalizadas para verlas aquí!",
+    "askfriends.createButton": "✨ Crear Mi Conjunto de Preguntas",
+    "askfriends.questionSetReady": "🎉 ¡Tu Conjunto de Preguntas está Listo!",
+    "askfriends.shareInstructions": "¡Comparte este enlace con tus amigos y ve qué piensan sobre ti!",
+    "askfriends.copyLink": "📋 Copiar Enlace",
+    "askfriends.emailFriend": "📧 Enviar por Email",
+    "askfriends.quickShare": "⚡ Compartir Rápido",
+    "askfriends.whatsappShare": "📱 WhatsApp",
+    "askfriends.twitterShare": "🐦 Twitter",
+    "askfriends.facebookShare": "📘 Facebook",
+    "askfriends.trackResultsTitle": "📊 Seguir Tus Resultados",
+    "askfriends.trackResultsDesc": "Las respuestas de tus amigos se recopilarán aquí. ¡Te enviaremos un email cuando alguien responda!",
+    "askfriends.categories.musicTitle": "Música y Entretenimiento",
+    "askfriends.categories.musicDesc": "Canciones, películas, programas que amas",
+    "askfriends.categories.foodTitle": "Comida y Estilo de Vida",
+    "askfriends.categories.foodDesc": "Comidas favoritas, restaurantes, hábitos",
+    "askfriends.categories.personalityTitle": "Rasgos de Personalidad",
+    "askfriends.categories.personalityDesc": "Cómo otros ven tu personalidad",
+    "askfriends.categories.styleTitle": "Estilo y Moda",
+    "askfriends.categories.styleDesc": "Tu sentido de la moda y estilo",
+    "askfriends.categories.socialTitle": "Social y Relaciones",
+    "askfriends.categories.socialDesc": "Cómo interactúas con otros",
+    "askfriends.categories.hobbiesTitle": "Pasatiempos e Intereses",
+    "askfriends.categories.hobbiesDesc": "Tus pasiones y actividades",
+    "360assessment.heroTitle": "Percepción 360 Sobre Mí 🎯",
+    "360assessment.heroSubtitle": "Descubre cómo otros te perciben desde múltiples ángulos. Obtén insights honestos de personas que te conocen en diferentes contextos - amigos, colegas, familia - para entender tu impacto y áreas de crecimiento.",
+    "360assessment.startButton": "🎯 Crear Mi Evaluación 360",
+    "meta.duration": "⏱️ 8 min",
+    "meta.duration5": "⏱️ 5 min",
+    "meta.duration6": "⏱️ 6 min",
+    "meta.duration7": "⏱️ 7 min",
+    "meta.duration8": "⏱️ 8 min",
+    "meta.duration10": "⏱️ 10 min",
+    "meta.duration12": "⏱️ 12 min",
+    "meta.duration15": "⏱️ 15 min",
+    "meta.setup5": "⏱️ 5 min configuración",
+    "meta.setup10": "⏱️ 10 min configuración",
+    "meta.accurate": "🎯 Muy Preciso",
+    "meta.scienceBased": "🔬 Base Científica",
+    "meta.researchGrade": "🎯 Grado de Investigación",
+    "meta.mostAccurate": "🏆 Más Preciso",
+    "meta.relationship": "💝 Relaciones",
+    "meta.couplesFriendly": "❤️ Amigable para Parejas",
+    "meta.funGame": "🎮 Juego Divertido",
+    "meta.brainTraining": "🧠 Entrenamiento Mental",
+    "meta.careerFocused": "🎯 Enfoque Profesional",
+    "meta.careerFocus": "💼 Enfoque de Carrera",
+    "meta.leadership": "💼 Liderazgo",
+    "meta.teamwork": "🤝 Trabajo en Equipo",
+    "meta.selfReflection": "🔍 Autorreflexión",
+    "meta.notMedical": "⚠️ No Médico",
+    "meta.wellness": "🧘 Bienestar",
+    "meta.moodTracking": "🌈 Seguimiento del Estado de Ánimo",
+    "meta.strengthsBased": "🌟 Basado en Fortalezas",
+    "meta.personalGrowth": "🎯 Crecimiento Personal",
+    "meta.personalized": "🎯 Personalizado",
+    "meta.relationships": "💕 Relaciones",
+    "meta.connection": "🤝 Conexión",
+    "meta.socialApp": "📱 Social",
+    "meta.socialPeople": "👥 Social",
+    "meta.viral": "🔥 Viral",
+    "meta.detailed": "📊 Detallado",
+    "meta.couples": "💕 Parejas",
+    "meta.instant": "⚡ Instantáneo",
+    "meta.insights": "💡 Perspectivas",
+    "meta.new": "🔥 NUEVO",
+    "meta.popular": "✨ Popular",
+    "meta.trending": "🔥 Tendencia",
+    "connect": "💝 CONECTAR",
+    "growth": "🌱 CRECIMIENTO",
+    "meta.fun": "😄 Divertido",
+    "meta.guidance": "📝 Orientación",
+    "meta.improvement": "📈 Mejora"
+  }
+}
