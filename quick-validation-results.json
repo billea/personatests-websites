@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-08-13T07:28:35.527Z",
+  "score": 100,
+  "passedTests": 5,
+  "totalTests": 5,
+  "results": [
+    {
+      "test": "Homepage Access",
+      "passed": true,
+      "details": {
+        "statusCode": 200,
+        "title": "PersonaTests - Free Personality Tests"
+      }
+    },
+    {
+      "test": "Test Cards Display",
+      "passed": true,
+      "details": {
+        "count": 10
+      }
+    },
+    {
+      "test": "MBTI Test Interface",
+      "passed": true,
+      "details": {
+        "questionExists": true,
+        "buttonsCount": 2
+      }
+    },
+    {
+      "test": "Other Tests Access",
+      "passed": true,
+      "details": {
+        "workingTests": 3,
+        "totalTests": 3
+      }
+    },
+    {
+      "test": "Korean Language Support",
+      "passed": true,
+      "details": {
+        "hasKoreanText": true
+      }
+    }
+  ]
+}
