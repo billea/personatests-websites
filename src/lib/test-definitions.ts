@@ -533,7 +533,7 @@ const feedback360Questions: TestQuestion[] = [
   // Leadership & Initiative (4 questions)
   {
     id: 'leadership_1',
-    text_key: 'Is [NAME] good at getting people excited about stuff they want to do?',
+    text_key: 'Is [NAME] good at getting people excited about their ideas?',
     type: 'scale',
     scale: {
       min: 1,
@@ -671,7 +671,7 @@ const feedback360Questions: TestQuestion[] = [
   // Emotional Intelligence & Empathy (4 questions)
   {
     id: 'emotional_1',
-    text_key: 'Does [NAME] know how their mood affects other people?',
+    text_key: 'Is [NAME] aware of how their mood affects others?',
     type: 'scale',
     scale: {
       min: 1,
@@ -682,7 +682,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'emotional_2',
-    text_key: 'Does [NAME] actually care about how you\'re feeling?',
+    text_key: 'Does [NAME] show genuine care for others\' feelings?',
     type: 'scale',
     scale: {
       min: 1,
@@ -820,7 +820,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'interpersonal_2',
-    text_key: 'Do you trust [NAME]? Are they there when you need them?',
+    text_key: 'Can you count on [NAME] when you need support?',
     type: 'scale',
     scale: {
       min: 1,
@@ -855,7 +855,7 @@ const feedback360Questions: TestQuestion[] = [
   // Organization & Reliability (4 questions)
   {
     id: 'work_style_1',
-    text_key: 'Does [NAME] have their stuff together?',
+    text_key: 'Is [NAME] well-organized and put-together?',
     type: 'scale',
     scale: {
       min: 1,

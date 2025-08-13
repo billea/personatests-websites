@@ -75,6 +75,30 @@ export default function TestPage() {
         return null;
     };
     
+    // Format name based on cultural context
+    const getFormattedName = (inputName: string) => {
+        if (!inputName.trim()) return '';
+        
+        const name = inputName.trim();
+        
+        switch (currentLanguage) {
+            case 'ko':
+                // Korean: Add 님 honorific if not already present
+                return name.endsWith('님') ? name : `${name}님`;
+            case 'ja':
+                // Japanese: Add さん honorific if not already present
+                return name.endsWith('さん') || name.endsWith('様') || name.endsWith('君') || name.endsWith('ちゃん') ? 
+                       name : `${name}さん`;
+            case 'zh':
+                // Chinese: Use name as-is (cultural context varies)
+                return name;
+            default:
+                // Western: Use first name only if full name provided
+                const nameParts = name.split(' ');
+                return nameParts[0];
+        }
+    };
+
     // Clear saved test progress
     const clearTestProgress = () => {
         try {
@@ -299,28 +323,79 @@ export default function TestPage() {
                     
                     <div className="mb-6">
                         <label className="block text-lg font-medium mb-3 text-white">
-                            What's your first name?
+                            {currentLanguage === 'ko' ? '이름을 입력해 주세요' : 
+                             currentLanguage === 'ja' ? 'お名前を入力してください' :
+                             'What should we call you?'}
                         </label>
+                        
+                        {/* Cultural examples */}
+                        <div className="mb-3 p-3 bg-white/10 rounded-lg text-sm text-white/70">
+                            <p className="font-medium mb-1">
+                                {currentLanguage === 'ko' ? '예시:' : 
+                                 currentLanguage === 'ja' ? '例:' : 'Examples:'}
+                            </p>
+                            <div className="text-xs space-y-1">
+                                {currentLanguage === 'ko' ? (
+                                    <>
+                                        <div>• 김철수 → 김철수님</div>
+                                        <div>• 이영희 → 이영희님</div>
+                                        <div>• 박민수 → 박민수님</div>
+                                    </>
+                                ) : currentLanguage === 'ja' ? (
+                                    <>
+                                        <div>• 田中 → 田中さん</div>
+                                        <div>• 佐藤 → 佐藤さん</div>
+                                        <div>• 山田 → 山田さん</div>
+                                    </>
+                                ) : currentLanguage === 'zh' ? (
+                                    <>
+                                        <div>• 王小明 → 王小明</div>
+                                        <div>• 李小红 → 李小红</div>
+                                        <div>• 张小华 → 张小华</div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div>• Sarah → Sarah</div>
+                                        <div>• Mike Johnson → Mike</div>
+                                        <div>• Alex → Alex</div>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+
                         <input
                             type="text"
                             value={nameInputValue}
                             onChange={(e) => setNameInputValue(e.target.value)}
-                            placeholder="Enter your name (e.g., Sarah, Mike, Alex)"
+                            placeholder={
+                                currentLanguage === 'ko' ? '김철수 (이름 입력)' :
+                                currentLanguage === 'ja' ? '田中 (名前を入力)' :
+                                currentLanguage === 'zh' ? '王小明 (输入姓名)' :
+                                'Enter your name'
+                            }
                             className="w-full p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 text-lg text-center"
                             autoFocus
                         />
+                        
                         <p className="text-sm text-white/60 mt-2">
-                            Questions will be personalized: "Is {nameInputValue || 'your name'} good at..."
+                            {currentLanguage === 'ko' ? 
+                                `질문 예시: "${getFormattedName(nameInputValue) || '김철수님'}은(는) 사람들을 설득하는 것을 잘하나요?"` :
+                             currentLanguage === 'ja' ? 
+                                `質問例: "${getFormattedName(nameInputValue) || '田中さん'}は人を説得するのが上手ですか？"` :
+                                `Questions will be like: "Is ${getFormattedName(nameInputValue) || 'your name'} good at..."`
+                            }
                         </p>
                     </div>
                     
                     <button
                         onClick={() => {
                             if (nameInputValue.trim()) {
-                                setUserName(nameInputValue.trim());
+                                setUserName(getFormattedName(nameInputValue));
                                 setShowNameInput(false);
                             } else {
-                                alert('Please enter your name to continue');
+                                alert(currentLanguage === 'ko' ? '이름을 입력해 주세요' : 
+                                     currentLanguage === 'ja' ? '名前を入力してください' : 
+                                     'Please enter your name to continue');
                             }
                         }}
                         disabled={!nameInputValue.trim()}
