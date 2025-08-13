@@ -25,12 +25,99 @@ export default function TestPage() {
     const [testResultId, setTestResultId] = useState<string | null>(null);
     const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
     const [completedTestResult, setCompletedTestResult] = useState<any>(null);
+    const [hasInProgressTest, setHasInProgressTest] = useState(false);
+    const [showResumePrompt, setShowResumePrompt] = useState(false);
 
-    // Load test definition
+    // Generate unique progress key for this test session
+    const getProgressKey = () => `test_progress_${testId}_${user?.uid || 'anonymous'}`;
+    
+    // Save test progress to localStorage
+    const saveTestProgress = (questionIndex: number, currentAnswers: { [questionId: string]: any }) => {
+        const progressData = {
+            testId,
+            questionIndex,
+            answers: currentAnswers,
+            timestamp: new Date().toISOString(),
+            totalQuestions: testDefinition?.questions.length || 0
+        };
+        
+        try {
+            localStorage.setItem(getProgressKey(), JSON.stringify(progressData));
+            console.log(`Progress saved: Question ${questionIndex + 1}/${testDefinition?.questions.length || 0}`);
+        } catch (error) {
+            console.error('Error saving test progress:', error);
+        }
+    };
+    
+    // Load saved test progress from localStorage
+    const loadTestProgress = () => {
+        try {
+            const savedProgress = localStorage.getItem(getProgressKey());
+            if (savedProgress) {
+                const progressData = JSON.parse(savedProgress);
+                
+                // Validate the saved data
+                if (progressData.testId === testId && progressData.answers) {
+                    return {
+                        questionIndex: progressData.questionIndex || 0,
+                        answers: progressData.answers || {},
+                        timestamp: progressData.timestamp,
+                        totalQuestions: progressData.totalQuestions
+                    };
+                }
+            }
+        } catch (error) {
+            console.error('Error loading test progress:', error);
+        }
+        return null;
+    };
+    
+    // Clear saved test progress
+    const clearTestProgress = () => {
+        try {
+            localStorage.removeItem(getProgressKey());
+            console.log('Test progress cleared');
+        } catch (error) {
+            console.error('Error clearing test progress:', error);
+        }
+    };
+    
+    // Resume from saved progress
+    const resumeFromProgress = () => {
+        const savedProgress = loadTestProgress();
+        if (savedProgress) {
+            setCurrentQuestionIndex(savedProgress.questionIndex);
+            setAnswers(savedProgress.answers);
+            setHasInProgressTest(false);
+            setShowResumePrompt(false);
+            console.log(`Resumed from question ${savedProgress.questionIndex + 1}`);
+        }
+    };
+    
+    // Start fresh test
+    const startFreshTest = () => {
+        clearTestProgress();
+        setCurrentQuestionIndex(0);
+        setAnswers({});
+        setHasInProgressTest(false);
+        setShowResumePrompt(false);
+        console.log('Started fresh test');
+    };
+
+    // Load test definition and check for saved progress
     useEffect(() => {
         const definition = getTestById(testId);
         if (definition) {
             setTestDefinition(definition);
+            
+            // Check for saved progress
+            const savedProgress = loadTestProgress();
+            if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
+                setHasInProgressTest(true);
+                setShowResumePrompt(true);
+                console.log(`Found saved progress: ${Object.keys(savedProgress.answers).length} answers, question ${savedProgress.questionIndex + 1}`);
+            }
+            
             setLoading(false);
         } else {
             console.error(`Test ${testId} not found`);
@@ -49,9 +136,14 @@ export default function TestPage() {
         setAnswers(newAnswers);
 
         if (currentQuestionIndex < testDefinition.questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            const nextQuestionIndex = currentQuestionIndex + 1;
+            setCurrentQuestionIndex(nextQuestionIndex);
+            
+            // Save progress after each answer
+            saveTestProgress(nextQuestionIndex, newAnswers);
         } else {
-            // End of the test
+            // End of the test - clear progress as test is complete
+            clearTestProgress();
             processTestCompletion(newAnswers);
         }
     };
@@ -172,6 +264,69 @@ export default function TestPage() {
                     >
                         Back to Tests
                     </button>
+                </div>
+            </div>
+        );
+    }
+
+    // Show resume prompt if saved progress exists
+    if (showResumePrompt && hasInProgressTest) {
+        const savedProgress = loadTestProgress();
+        const progressPercentage = savedProgress ? Math.round((Object.keys(savedProgress.answers).length / (savedProgress.totalQuestions || 1)) * 100) : 0;
+        
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
+                <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
+                    <div className="mb-6">
+                        <h1 className="text-3xl font-bold mb-4 text-white">
+                            🔄 Resume Your Test?
+                        </h1>
+                        <p className="text-lg text-white/90 mb-2">
+                            You have a test in progress for <strong>{t(testDefinition.title_key) || testDefinition.title_key}</strong>
+                        </p>
+                        <p className="text-white/80 mb-6">
+                            You've completed {Object.keys(savedProgress?.answers || {}).length} out of {testDefinition.questions.length} questions
+                        </p>
+                        
+                        {/* Progress Bar */}
+                        <div className="w-full bg-white/20 rounded-full h-4 mb-6">
+                            <div
+                                className="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full transition-all duration-1000 ease-out"
+                                style={{ width: `${progressPercentage}%` }}
+                            ></div>
+                        </div>
+                        
+                        <p className="text-sm text-white/70 mb-8">
+                            {savedProgress?.timestamp && 
+                                `Last updated: ${new Date(savedProgress.timestamp).toLocaleString()}`
+                            }
+                        </p>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button
+                            onClick={resumeFromProgress}
+                            className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-lg"
+                        >
+                            🚀 Resume Test ({progressPercentage}% complete)
+                        </button>
+                        
+                        <button
+                            onClick={startFreshTest}
+                            className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-300"
+                        >
+                            🔄 Start Fresh
+                        </button>
+                    </div>
+                    
+                    <div className="mt-6">
+                        <button
+                            onClick={() => router.push(`/${currentLanguage}/tests`)}
+                            className="text-white/60 hover:text-white/80 text-sm underline"
+                        >
+                            Back to Tests
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -425,6 +580,44 @@ export default function TestPage() {
                             </div>
                         </div>
                     )}
+                    
+                    {/* Test Controls */}
+                    <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div className="flex gap-3">
+                            {/* Previous Button */}
+                            {currentQuestionIndex > 0 && (
+                                <button
+                                    onClick={() => {
+                                        const prevIndex = currentQuestionIndex - 1;
+                                        setCurrentQuestionIndex(prevIndex);
+                                        saveTestProgress(prevIndex, answers);
+                                    }}
+                                    className="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
+                                >
+                                    ← Previous
+                                </button>
+                            )}
+                            
+                            {/* Pause & Save Progress Button */}
+                            <button
+                                onClick={() => {
+                                    saveTestProgress(currentQuestionIndex, answers);
+                                    router.push(`/${currentLanguage}/tests`);
+                                }}
+                                className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+                            >
+                                💾 Save & Exit
+                            </button>
+                        </div>
+                        
+                        <div className="text-white/70 text-sm text-center">
+                            <p className="mb-1">Progress automatically saved</p>
+                            <div className="flex items-center gap-2 justify-center">
+                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                <span>Your answers are being saved</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
