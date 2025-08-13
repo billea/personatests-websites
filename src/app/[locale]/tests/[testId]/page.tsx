@@ -293,7 +293,7 @@ export default function TestPage() {
                         🌟 360° Feedback Assessment - DEBUG VERSION
                     </h1>
                     <p className="text-sm text-white/60 mb-4">
-                        TestID: {testId} | UserName: {userName || 'empty'} | Loading: {loading.toString()}
+                        TestID: {testId} | UserName: {userName || 'empty'} | Loading: {loading.toString()} | Build: {new Date().toISOString()}
                     </p>
                     <p className="text-lg text-white/90 mb-6">
                         This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.
