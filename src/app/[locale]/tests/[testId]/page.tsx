@@ -366,27 +366,27 @@ export default function TestPage() {
                             <div className="text-xs space-y-1">
                                 {currentLanguage === 'ko' ? (
                                     <>
-                                        <div>• 성: 김, 이름: 철수 → 김철수님</div>
-                                        <div>• 성: 이, 이름: 영희 → 이영희님</div>
-                                        <div>• 성: 박, 이름: 민수 → 박민수님</div>
+                                        <div>• 성: 김, 이름: 철수</div>
+                                        <div>• 성: 이, 이름: 영희</div>
+                                        <div>• 성: 박, 이름: 민수</div>
                                     </>
                                 ) : currentLanguage === 'ja' ? (
                                     <>
-                                        <div>• 姓: 田中, 名: 太郎 → 田中さん</div>
-                                        <div>• 姓: 佐藤, 名: 花子 → 佐藤さん</div>
-                                        <div>• 姓: 山田, 名: 次郎 → 山田さん</div>
+                                        <div>• 姓: 田中, 名: 太郎</div>
+                                        <div>• 姓: 佐藤, 名: 花子</div>
+                                        <div>• 姓: 山田, 名: 次郎</div>
                                     </>
                                 ) : currentLanguage === 'zh' ? (
                                     <>
-                                        <div>• 姓: 王, 名: 小明 → 王小明</div>
-                                        <div>• 姓: 李, 名: 小红 → 李小红</div>
-                                        <div>• 姓: 张, 名: 小华 → 张小华</div>
+                                        <div>• 姓: 王, 名: 小明</div>
+                                        <div>• 姓: 李, 名: 小红</div>
+                                        <div>• 姓: 张, 名: 小华</div>
                                     </>
                                 ) : (
                                     <>
-                                        <div>• First: Sarah, Last: Johnson → Sarah</div>
-                                        <div>• First: Mike, Last: Smith → Mike</div>
-                                        <div>• First: Alex, Last: Brown → Alex</div>
+                                        <div>• First: Sarah, Last: Johnson</div>
+                                        <div>• First: Mike, Last: Smith</div>
+                                        <div>• First: Alex, Last: Brown</div>
                                     </>
                                 )}
                             </div>
