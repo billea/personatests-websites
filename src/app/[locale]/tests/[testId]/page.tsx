@@ -732,7 +732,31 @@ export default function TestPage() {
     const getDisplayedQuestionText = () => {
         if (testId === 'feedback-360' && userName) {
             // Get the translation first, then replace [NAME]
-            const translatedText = t(currentQuestion.text_key) || currentQuestion.text_key;
+            let translatedText = t(currentQuestion.text_key);
+            
+            // Fallback Korean translations if translation system fails
+            if (!translatedText || translatedText === currentQuestion.text_key) {
+                const fallbackTranslations: { [key: string]: string } = {
+                    'tests.feedback360.questions.leadership_1': '[NAME]은(는) 사람들을 자신의 아이디어에 대해 흥미롭게 만드는 것을 잘하나요?',
+                    'tests.feedback360.questions.leadership_2': '상황이 복잡해질 때, [NAME]은(는) 현명한 선택을 하나요?',
+                    'tests.feedback360.questions.leadership_3': '[NAME]은(는) 사람들에게 동기를 부여하고 열정을 불러일으키나요?',
+                    'tests.feedback360.questions.leadership_4': '[NAME]은(는) 미리 계획을 세우는 사람인가요?',
+                    'tests.feedback360.questions.communication_1': '[NAME]은(는) 당신이 실제로 이해할 수 있게 설명을 잘하나요?',
+                    'tests.feedback360.questions.communication_2': '[NAME]은(는) 당신이 이야기할 때 진짜로 들어주나요?',
+                    'tests.feedback360.questions.communication_3': '[NAME]은(는) 사람들 앞에서 말하는 것을 어떻게 하나요?',
+                    'tests.feedback360.questions.communication_4': '그들의 문자와 메시지는 이해하기 쉬운가요?'
+                };
+                
+                translatedText = fallbackTranslations[currentQuestion.text_key] || currentQuestion.text_key;
+            }
+            
+            console.log('Debug translation:', {
+                key: currentQuestion.text_key,
+                translatedText,
+                currentLanguage,
+                userName
+            });
+            
             return translatedText.replace(/\[NAME\]/g, userName);
         }
         // For other tests, use normal translation
