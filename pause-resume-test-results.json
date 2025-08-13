@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-08-13T08:13:47.165Z",
+  "tests": [
+    {
+      "name": "Progress Saving Setup",
+      "passed": false,
+      "details": {
+        "questionsAnswered": 5,
+        "saveButtonVisible": false
+      }
+    },
+    {
+      "name": "Save & Exit Functionality",
+      "passed": false,
+      "details": {
+        "reason": "Save button not found"
+      }
+    },
+    {
+      "name": "Resume Prompt Display",
+      "passed": false,
+      "details": {
+        "reason": "Resume prompt not visible"
+      }
+    },
+    {
+      "name": "Resume Functionality",
+      "passed": false,
+      "details": {
+        "reason": "No resume prompt to test"
+      }
+    },
+    {
+      "name": "Previous Button Functionality",
+      "passed": false,
+      "details": {
+        "reason": "Could not resume test"
+      }
+    },
+    {
+      "name": "Auto-save Indicators",
+      "passed": false,
+      "details": {
+        "reason": "Could not access test interface"
+      }
+    },
+    {
+      "name": "Start Fresh Functionality",
+      "passed": false,
+      "details": {
+        "reason": "Start Fresh button not found"
+      }
+    }
+  ],
+  "overallScore": 0
+}
