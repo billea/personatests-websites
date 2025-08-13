@@ -25,6 +25,7 @@ export default function TestPage() {
     const [testResultId, setTestResultId] = useState<string | null>(null);
     const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
     const [userName, setUserName] = useState<string>('');
+    const [nameInputValue, setNameInputValue] = useState<string>('');
     const [completedTestResult, setCompletedTestResult] = useState<any>(null);
     const [hasInProgressTest, setHasInProgressTest] = useState(false);
     const [showResumePrompt, setShowResumePrompt] = useState(false);
@@ -290,11 +291,8 @@ export default function TestPage() {
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
                     <h1 className="text-3xl font-bold mb-4 text-white">
-                        🌟 360° Feedback Assessment - DEBUG VERSION
+                        🌟 360° Feedback Assessment
                     </h1>
-                    <p className="text-sm text-white/60 mb-4">
-                        TestID: {testId} | UserName: {userName || 'empty'} | Loading: {loading.toString()} | Build: {new Date().toISOString()}
-                    </p>
                     <p className="text-lg text-white/90 mb-6">
                         This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.
                     </p>
@@ -305,26 +303,27 @@ export default function TestPage() {
                         </label>
                         <input
                             type="text"
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
+                            value={nameInputValue}
+                            onChange={(e) => setNameInputValue(e.target.value)}
                             placeholder="Enter your name (e.g., Sarah, Mike, Alex)"
                             className="w-full p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 text-lg text-center"
                             autoFocus
                         />
                         <p className="text-sm text-white/60 mt-2">
-                            Questions will be personalized: "Is {userName || 'your name'} good at..."
+                            Questions will be personalized: "Is {nameInputValue || 'your name'} good at..."
                         </p>
                     </div>
                     
                     <button
                         onClick={() => {
-                            if (userName.trim()) {
+                            if (nameInputValue.trim()) {
+                                setUserName(nameInputValue.trim());
                                 setShowNameInput(false);
                             } else {
                                 alert('Please enter your name to continue');
                             }
                         }}
-                        disabled={!userName.trim()}
+                        disabled={!nameInputValue.trim()}
                         className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Start Assessment ✨
