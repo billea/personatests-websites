@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-08-13T08:02:15.602Z",
+  "overallScore": 60,
+  "systems": {
+    "testCompletion": {
+      "working": true,
+      "personalityType": "ESTJ",
+      "dataStored": 1
+    },
+    "emailSignup": {
+      "working": true,
+      "uiPresent": true,
+      "emailsStored": 1,
+      "latestEmail": {
+        "email": "test@example.com",
+        "testType": "mbti-classic",
+        "personalityType": "ESTJ",
+        "signedUpAt": "2025-08-13T08:02:37.552Z"
+      }
+    },
+    "resultsPage": {
+      "working": true,
+      "hasContent": true,
+      "showsTestData": true
+    },
+    "firebase": {
+      "configured": true,
+      "noErrors": true,
+      "ready": true
+    },
+    "authentication": {
+      "authProviderPresent": true,
+      "configured": true
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "timestamp": "2025-08-13T07:59:23.399Z",
+  "tests": [
+    {
+      "name": "Firebase Configuration",
+      "passed": true,
+      "details": {
+        "errors": [],
+        "configPresent": true
+      },
+      "timestamp": "2025-08-13T07:59:32.963Z"
+    },
+    {
+      "name": "Local Storage Persistence",
+      "passed": false,
+      "details": {
+        "reason": "Could not complete test to generate local storage data"
+      },
+      "timestamp": "2025-08-13T07:59:39.335Z"
+    },
+    {
+      "name": "Email Signup System",
+      "passed": false,
+      "details": {
+        "reason": "Email signup component not visible"
+      },
+      "timestamp": "2025-08-13T07:59:39.338Z"
+    },
+    {
+      "name": "Firebase Authentication Setup",
+      "passed": true,
+      "details": {
+        "firebasePresent": false,
+        "authProviderPresent": true,
+        "noAuthErrors": true
+      },
+      "timestamp": "2025-08-13T07:59:41.955Z"
+    },
+    {
+      "name": "Results Page Data Loading",
+      "passed": false,
+      "details": {
+        "hasContent": false,
+        "showsNoResults": false,
+        "showsTestResults": false,
+        "hasLoadingState": false
+      },
+      "timestamp": "2025-08-13T07:59:46.535Z"
+    },
+    {
+      "name": "360 Feedback System",
+      "passed": true,
+      "details": {
+        "interfacePresent": true,
+        "hasInteractiveElements": true,
+        "note": "Basic interface check - full email workflow requires backend deployment"
+      },
+      "timestamp": "2025-08-13T07:59:49.332Z"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6
+  }
+}
