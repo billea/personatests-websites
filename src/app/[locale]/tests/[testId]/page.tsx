@@ -380,9 +380,10 @@ export default function TestPage() {
                                 </div>
                             )}
                         </div>
-
-                        {/* Detailed Insights */}
-                        {completedTestResult.traits && (
+                    )}
+                    
+                    {/* Detailed Insights */}
+                    {completedTestResult && completedTestResult.traits && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
                                 <h3 className="text-xl font-bold mb-4 text-white">✨ Your Key Traits</h3>
                                 <div className="flex flex-wrap gap-3">
@@ -395,7 +396,7 @@ export default function TestPage() {
                             </div>
                         )}
 
-                        {completedTestResult.strengths && (
+                        {completedTestResult && completedTestResult.strengths && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
                                 <h3 className="text-xl font-bold mb-4 text-white">💪 Your Strengths</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -409,7 +410,7 @@ export default function TestPage() {
                             </div>
                         )}
 
-                        {completedTestResult.recommendations && (
+                        {completedTestResult && completedTestResult.recommendations && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
                                 <h3 className="text-xl font-bold mb-4 text-white">🎯 Growth Opportunities</h3>
                                 <div className="space-y-3">
@@ -424,7 +425,7 @@ export default function TestPage() {
                         )}
 
                         {/* Personality Description */}
-                        {completedTestResult.description_key && (
+                        {completedTestResult && completedTestResult.description_key && (
                             <div className="mb-8 p-6 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-sm border border-white/30 rounded-lg">
                                 <h3 className="text-xl font-bold mb-4 text-white">🧠 About Your Type</h3>
                                 <p className="text-white/90 text-lg leading-relaxed">
@@ -432,7 +433,6 @@ export default function TestPage() {
                                 </p>
                             </div>
                         )}
-                    )}
 
                     {/* Optional Email Signup */}
                     <EmailSignup 
