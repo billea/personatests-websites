@@ -363,31 +363,15 @@ export default function TestPage() {
                                 {currentLanguage === 'ko' ? '예시:' : 
                                  currentLanguage === 'ja' ? '例:' : 'Examples:'}
                             </p>
-                            <div className="text-xs space-y-1">
+                            <div className="text-xs">
                                 {currentLanguage === 'ko' ? (
-                                    <>
-                                        <div>• 성: 김, 이름: 철수</div>
-                                        <div>• 성: 이, 이름: 영희</div>
-                                        <div>• 성: 박, 이름: 민수</div>
-                                    </>
+                                    <div>• 성: 김, 이름: 철수</div>
                                 ) : currentLanguage === 'ja' ? (
-                                    <>
-                                        <div>• 姓: 田中, 名: 太郎</div>
-                                        <div>• 姓: 佐藤, 名: 花子</div>
-                                        <div>• 姓: 山田, 名: 次郎</div>
-                                    </>
+                                    <div>• 姓: 田中, 名: 太郎</div>
                                 ) : currentLanguage === 'zh' ? (
-                                    <>
-                                        <div>• 姓: 王, 名: 小明</div>
-                                        <div>• 姓: 李, 名: 小红</div>
-                                        <div>• 姓: 张, 名: 小华</div>
-                                    </>
+                                    <div>• 姓: 王, 名: 小明</div>
                                 ) : (
-                                    <>
-                                        <div>• First: Sarah, Last: Johnson</div>
-                                        <div>• First: Mike, Last: Smith</div>
-                                        <div>• First: Alex, Last: Brown</div>
-                                    </>
+                                    <div>• First: Sarah, Last: Johnson</div>
                                 )}
                             </div>
                         </div>
