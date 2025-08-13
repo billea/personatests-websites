@@ -817,7 +817,7 @@ export default function TestPage() {
                 <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                     <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
                         {testId === 'feedback-360' && userName ? 
-                            `${userName}은(는) 사람들을 자신의 아이디어에 대해 흥미롭게 만드는 것을 잘하나요? [FORCED KOREAN TEST]` :
+                            `${userName}은(는) 사람들을 자신의 아이디어에 대해 흥미롭게 만드는 것을 잘하나요?` :
                             getDisplayedQuestionText()
                         }
                     </h2>
