@@ -525,7 +525,7 @@ const feedback360Questions: TestQuestion[] = [
   // Leadership & Initiative (4 questions)
   {
     id: 'leadership_1',
-    text_key: 'Do they get people hyped up about their ideas?',
+    text_key: 'Are they good at getting people excited about stuff they want to do?',
     type: 'scale',
     scale: {
       min: 1,
