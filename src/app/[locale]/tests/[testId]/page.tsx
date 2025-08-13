@@ -26,6 +26,8 @@ export default function TestPage() {
     const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
     const [userName, setUserName] = useState<string>('');
     const [nameInputValue, setNameInputValue] = useState<string>('');
+    const [firstName, setFirstName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
     const [completedTestResult, setCompletedTestResult] = useState<any>(null);
     const [hasInProgressTest, setHasInProgressTest] = useState(false);
     const [showResumePrompt, setShowResumePrompt] = useState(false);
@@ -96,6 +98,26 @@ export default function TestPage() {
                 // Western: Use first name only if full name provided
                 const nameParts = name.split(' ');
                 return nameParts[0];
+        }
+    };
+
+    // Format name from separate first/last name parts
+    const getFormattedNameFromParts = (lastNamePart: string, firstNamePart: string) => {
+        if (!lastNamePart.trim() && !firstNamePart.trim()) return '';
+        
+        const cleanLast = lastNamePart.trim();
+        const cleanFirst = firstNamePart.trim();
+        
+        switch (currentLanguage) {
+            case 'ko':
+            case 'ja':
+            case 'zh':
+                // Asian names: Last name + First name
+                const fullName = cleanLast + cleanFirst;
+                return getFormattedName(fullName);
+            default:
+                // Western names: Use first name only
+                return cleanFirst || cleanLast;
         }
     };
 
@@ -318,7 +340,14 @@ export default function TestPage() {
                         🌟 360° Feedback Assessment
                     </h1>
                     <p className="text-lg text-white/90 mb-6">
-                        This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.
+                        {currentLanguage === 'ko' ? 
+                            '이 평가는 다른 사람들이 당신을 어떻게 보는지 이해하는 데 도움이 됩니다. 가족, 친구, 동료들이 당신에 대해 개인적으로 질문에 답변합니다.' :
+                         currentLanguage === 'ja' ? 
+                            'この評価は、他の人があなたをどう見ているかを理解するのに役立ちます。家族、友人、同僚があなたについて個人的に質問に答えます。' :
+                         currentLanguage === 'zh' ? 
+                            '这项评估帮助您了解别人如何看待您。家人、朋友和同事将对您个人回答问题。' :
+                            'This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.'
+                        }
                     </p>
                     
                     <div className="mb-6">
@@ -329,68 +358,99 @@ export default function TestPage() {
                         </label>
                         
                         {/* Cultural examples */}
-                        <div className="mb-3 p-3 bg-white/10 rounded-lg text-sm text-white/70">
-                            <p className="font-medium mb-1">
+                        <div className="mb-4 p-3 bg-white/10 rounded-lg text-sm text-white/70">
+                            <p className="font-medium mb-2">
                                 {currentLanguage === 'ko' ? '예시:' : 
                                  currentLanguage === 'ja' ? '例:' : 'Examples:'}
                             </p>
                             <div className="text-xs space-y-1">
                                 {currentLanguage === 'ko' ? (
                                     <>
-                                        <div>• 김철수 → 김철수님</div>
-                                        <div>• 이영희 → 이영희님</div>
-                                        <div>• 박민수 → 박민수님</div>
+                                        <div>• 성: 김, 이름: 철수 → 김철수님</div>
+                                        <div>• 성: 이, 이름: 영희 → 이영희님</div>
+                                        <div>• 성: 박, 이름: 민수 → 박민수님</div>
                                     </>
                                 ) : currentLanguage === 'ja' ? (
                                     <>
-                                        <div>• 田中 → 田中さん</div>
-                                        <div>• 佐藤 → 佐藤さん</div>
-                                        <div>• 山田 → 山田さん</div>
+                                        <div>• 姓: 田中, 名: 太郎 → 田中さん</div>
+                                        <div>• 姓: 佐藤, 名: 花子 → 佐藤さん</div>
+                                        <div>• 姓: 山田, 名: 次郎 → 山田さん</div>
                                     </>
                                 ) : currentLanguage === 'zh' ? (
                                     <>
-                                        <div>• 王小明 → 王小明</div>
-                                        <div>• 李小红 → 李小红</div>
-                                        <div>• 张小华 → 张小华</div>
+                                        <div>• 姓: 王, 名: 小明 → 王小明</div>
+                                        <div>• 姓: 李, 名: 小红 → 李小红</div>
+                                        <div>• 姓: 张, 名: 小华 → 张小华</div>
                                     </>
                                 ) : (
                                     <>
-                                        <div>• Sarah → Sarah</div>
-                                        <div>• Mike Johnson → Mike</div>
-                                        <div>• Alex → Alex</div>
+                                        <div>• First: Sarah, Last: Johnson → Sarah</div>
+                                        <div>• First: Mike, Last: Smith → Mike</div>
+                                        <div>• First: Alex, Last: Brown → Alex</div>
                                     </>
                                 )}
                             </div>
                         </div>
 
-                        <input
-                            type="text"
-                            value={nameInputValue}
-                            onChange={(e) => setNameInputValue(e.target.value)}
-                            placeholder={
-                                currentLanguage === 'ko' ? '김철수 (이름 입력)' :
-                                currentLanguage === 'ja' ? '田中 (名前を入力)' :
-                                currentLanguage === 'zh' ? '王小明 (输入姓名)' :
-                                'Enter your name'
-                            }
-                            className="w-full p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 text-lg text-center"
-                            autoFocus
-                        />
+                        {/* Name Input Fields */}
+                        <div className="space-y-3 mb-4">
+                            <div className="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label className="block text-sm font-medium mb-1 text-white/80">
+                                        {currentLanguage === 'ko' ? '성 (姓)' : 
+                                         currentLanguage === 'ja' ? '姓' :
+                                         currentLanguage === 'zh' ? '姓' : 'Last Name'}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
+                                        placeholder={
+                                            currentLanguage === 'ko' ? '김' :
+                                            currentLanguage === 'ja' ? '田中' :
+                                            currentLanguage === 'zh' ? '王' :
+                                            'Johnson'
+                                        }
+                                        className="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                                        autoFocus
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium mb-1 text-white/80">
+                                        {currentLanguage === 'ko' ? '이름 (名)' : 
+                                         currentLanguage === 'ja' ? '名' :
+                                         currentLanguage === 'zh' ? '名' : 'First Name'}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
+                                        placeholder={
+                                            currentLanguage === 'ko' ? '철수' :
+                                            currentLanguage === 'ja' ? '太郎' :
+                                            currentLanguage === 'zh' ? '小明' :
+                                            'Sarah'
+                                        }
+                                        className="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                                    />
+                                </div>
+                            </div>
+                        </div>
                         
                         <p className="text-sm text-white/60 mt-2">
                             {currentLanguage === 'ko' ? 
-                                `질문 예시: "${getFormattedName(nameInputValue) || '김철수님'}은(는) 사람들을 설득하는 것을 잘하나요?"` :
+                                `질문 예시: "${getFormattedNameFromParts(lastName, firstName) || '김철수님'}은(는) 사람들의 마음을 사로잡는 것을 잘하나요?"` :
                              currentLanguage === 'ja' ? 
-                                `質問例: "${getFormattedName(nameInputValue) || '田中さん'}は人を説得するのが上手ですか？"` :
-                                `Questions will be like: "Is ${getFormattedName(nameInputValue) || 'your name'} good at..."`
+                                `質問例: "${getFormattedNameFromParts(lastName, firstName) || '田中さん'}は人を説得するのが上手ですか？"` :
+                                `Questions will be like: "Is ${getFormattedNameFromParts(lastName, firstName) || 'your name'} good at getting people excited about their ideas?"`
                             }
                         </p>
                     </div>
                     
                     <button
                         onClick={() => {
-                            if (nameInputValue.trim()) {
-                                setUserName(getFormattedName(nameInputValue));
+                            if (lastName.trim() || firstName.trim()) {
+                                setUserName(getFormattedNameFromParts(lastName, firstName));
                                 setShowNameInput(false);
                             } else {
                                 alert(currentLanguage === 'ko' ? '이름을 입력해 주세요' : 
@@ -398,7 +458,7 @@ export default function TestPage() {
                                      'Please enter your name to continue');
                             }
                         }}
-                        disabled={!nameInputValue.trim()}
+                        disabled={!lastName.trim() && !firstName.trim()}
                         className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Start Assessment ✨
@@ -688,6 +748,15 @@ export default function TestPage() {
     const displayQuestion = testId === 'feedback-360' && userName ? 
         { ...currentQuestion, text_key: currentQuestion.text_key.replace(/\[NAME\]/g, userName) } : 
         currentQuestion;
+        
+    // Debug: log the name formatting
+    console.log('Debug name info:', { 
+        currentLanguage, 
+        userName, 
+        testId,
+        originalName: nameInputValue,
+        formattedName: userName 
+    });
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
