@@ -24,6 +24,7 @@ export default function TestPage() {
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
     const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
+    const [userName, setUserName] = useState<string>('');
     const [completedTestResult, setCompletedTestResult] = useState<any>(null);
     const [hasInProgressTest, setHasInProgressTest] = useState(false);
     const [showResumePrompt, setShowResumePrompt] = useState(false);
@@ -208,6 +209,11 @@ export default function TestPage() {
             email.trim() && email.includes('@')
         );
 
+        if (!userName.trim()) {
+            alert('Please enter your name so friends know who they\'re giving feedback about');
+            return;
+        }
+
         if (validEmails.length === 0) {
             alert('Please enter at least one valid email address');
             return;
@@ -215,7 +221,7 @@ export default function TestPage() {
 
         try {
             setSaving(true);
-            await sendFeedbackInvitations(testId, testResultId, validEmails);
+            await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim());
             alert(`Feedback invitations sent to ${validEmails.length} people!`);
             router.push(`/${currentLanguage}/results`);
         } catch (error) {
@@ -448,6 +454,26 @@ export default function TestPage() {
                             <p className="text-sm mb-4 text-gray-600 dark:text-gray-400" data-translate="test.invite_feedback_description">
                                 {t('test.invite_feedback_description') || 'Get a complete picture by inviting friends and colleagues to provide feedback about you.'}
                             </p>
+                            
+                            {/* Name Input */}
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2 text-white">
+                                    What name should your friends use when giving feedback?
+                                </label>
+                                <input
+                                    type="text"
+                                    value={userName}
+                                    onChange={(e) => setUserName(e.target.value)}
+                                    placeholder="Enter your first name (e.g., Sarah, Mike)"
+                                    className="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                                />
+                                <p className="text-xs text-white/60 mt-1">
+                                    {userName ? 
+                                        `Questions will be like: "Is ${userName} good at getting people excited about stuff they want to do?"` :
+                                        'Questions will be like: "Is [your name] good at getting people excited about stuff they want to do?"'
+                                    }
+                                </p>
+                            </div>
                             
                             <div className="space-y-3 mb-4">
                                 {feedbackEmails.map((email, index) => (

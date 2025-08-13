@@ -161,19 +161,22 @@ export const getTestResult = async (resultId: string): Promise<TestResult | null
  * @param testId - The ID of the test
  * @param testResultId - The ID of the saved test result
  * @param participantEmails - Array of email addresses to invite
+ * @param userName - The user's name to personalize questions
  * @returns Success status and invitation details
  */
 export const sendFeedbackInvitations = async (
   testId: string,
   testResultId: string,
-  participantEmails: string[]
+  participantEmails: string[],
+  userName: string
 ) => {
   try {
     const sendInvitations = httpsCallable(functions, 'sendFeedbackInvitations');
     const result = await sendInvitations({
       testId,
       testResultId,
-      participantEmails
+      participantEmails,
+      userName
     });
     
     return result.data;
