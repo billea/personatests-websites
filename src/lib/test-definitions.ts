@@ -525,7 +525,7 @@ const feedback360Questions: TestQuestion[] = [
   // Leadership & Initiative (4 questions)
   {
     id: 'leadership_1',
-    text_key: 'When they have an idea or plan, are they good at getting others excited about it?',
+    text_key: 'Do they get people hyped up about their ideas?',
     type: 'scale',
     scale: {
       min: 1,
@@ -536,7 +536,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'leadership_2', 
-    text_key: 'When things get tough or stressful, do they make good decisions?',
+    text_key: 'When stuff gets crazy, do they make smart choices?',
     type: 'scale',
     scale: {
       min: 1,
@@ -547,7 +547,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'leadership_3',
-    text_key: 'Do they inspire or motivate the people around them?',
+    text_key: 'Do they motivate people and get them pumped up?',
     type: 'scale',
     scale: {
       min: 1,
@@ -558,7 +558,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'leadership_4',
-    text_key: 'Are they someone who thinks ahead and plans for the future?',
+    text_key: 'Are they a planner who thinks ahead?',
     type: 'scale',
     scale: {
       min: 1,
@@ -571,7 +571,7 @@ const feedback360Questions: TestQuestion[] = [
   // Communication & Social Skills (4 questions)
   {
     id: 'communication_1',
-    text_key: 'When they explain something, is it easy to understand what they mean?',
+    text_key: 'Are they good at explaining stuff so you actually get it?',
     type: 'scale',
     scale: {
       min: 1,
@@ -582,7 +582,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'communication_2',
-    text_key: 'Are they a good listener who actually pays attention when you talk?',
+    text_key: 'Do they actually listen when you\'re talking to them?',
     type: 'scale',
     scale: {
       min: 1,
@@ -593,7 +593,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'communication_3',
-    text_key: 'How are they when speaking in front of groups or in meetings?',
+    text_key: 'How are they at speaking in front of people?',
     type: 'scale',
     scale: {
       min: 1,
@@ -604,7 +604,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'communication_4',
-    text_key: 'Are their texts, emails, or messages clear and easy to understand?',
+    text_key: 'Are their texts and messages easy to understand?',
     type: 'scale',
     scale: {
       min: 1,
@@ -617,7 +617,7 @@ const feedback360Questions: TestQuestion[] = [
   // Teamwork & Collaboration (4 questions)
   {
     id: 'teamwork_1',
-    text_key: 'Are they easy and fun to work with on projects or group activities?',
+    text_key: 'Are they fun to work with on group projects?',
     type: 'scale',
     scale: {
       min: 1,
@@ -628,7 +628,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'teamwork_2',
-    text_key: 'Do they help others succeed and celebrate when teammates do well?',
+    text_key: 'Do they help others and cheer people on?',
     type: 'scale',
     scale: {
       min: 1,
@@ -639,7 +639,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'teamwork_3',
-    text_key: 'When there\'s drama or conflict in the group, how do they handle it?',
+    text_key: 'When there\'s group drama, how do they deal with it?',
     type: 'scale',
     scale: {
       min: 1,
@@ -650,7 +650,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'teamwork_4',
-    text_key: 'Overall, do they make group dynamics better or create good vibes?',
+    text_key: 'Do they bring good vibes to the group?',
     type: 'scale',
     scale: {
       min: 1,
@@ -663,7 +663,7 @@ const feedback360Questions: TestQuestion[] = [
   // Emotional Intelligence & Empathy (4 questions)
   {
     id: 'emotional_1',
-    text_key: 'Are they aware of their own emotions and how they affect others?',
+    text_key: 'Do they know how their mood affects other people?',
     type: 'scale',
     scale: {
       min: 1,
@@ -674,7 +674,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'emotional_2',
-    text_key: 'Do they seem to really care about how you and others are feeling?',
+    text_key: 'Do they actually care about how you\'re feeling?',
     type: 'scale',
     scale: {
       min: 1,
@@ -685,7 +685,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'emotional_3',
-    text_key: 'When things get stressful or intense, how well do they keep it together?',
+    text_key: 'When things get stressful, do they stay cool?',
     type: 'scale',
     scale: {
       min: 1,
@@ -696,7 +696,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'emotional_4',
-    text_key: 'Are they good at reading the room and picking up on social cues?',
+    text_key: 'Are they good at reading the vibe in a room?',
     type: 'scale',
     scale: {
       min: 1,
@@ -709,7 +709,7 @@ const feedback360Questions: TestQuestion[] = [
   // Problem Solving & Creativity (4 questions)  
   {
     id: 'problem_1',
-    text_key: 'When facing complicated problems, are they good at figuring them out?',
+    text_key: 'Are they good at figuring out complicated stuff?',
     type: 'scale',
     scale: {
       min: 1,
@@ -720,7 +720,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'problem_2',
-    text_key: 'Do they come up with creative or unique solutions to challenges?',
+    text_key: 'Do they come up with creative solutions?',
     type: 'scale',
     scale: {
       min: 1,
@@ -731,7 +731,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'problem_3',
-    text_key: 'When facing something new or challenging, are they innovative?',
+    text_key: 'Are they innovative when trying new things?',
     type: 'scale',
     scale: {
       min: 1,
@@ -742,7 +742,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'problem_4',
-    text_key: 'When important decisions need to be made, do they choose wisely?',
+    text_key: 'Do they make good decisions when it matters?',
     type: 'scale',
     scale: {
       min: 1,
@@ -755,7 +755,7 @@ const feedback360Questions: TestQuestion[] = [
   // Adaptability & Flexibility (4 questions)
   {
     id: 'adaptability_1',
-    text_key: 'When plans suddenly change, how well do they roll with it?',
+    text_key: 'When plans change last minute, do they roll with it?',
     type: 'scale',
     scale: {
       min: 1,
@@ -766,7 +766,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'adaptability_2',
-    text_key: 'Are they flexible when things don\'t go according to plan?',
+    text_key: 'Are they chill when things don\'t go as planned?',
     type: 'scale',
     scale: {
       min: 1,
@@ -777,7 +777,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'adaptability_3',
-    text_key: 'How quickly do they learn new things or pick up new skills?',
+    text_key: 'How fast do they pick up new things?',
     type: 'scale',
     scale: {
       min: 1,
@@ -788,7 +788,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'adaptability_4',
-    text_key: 'When things don\'t work out, do they bounce back pretty well?',
+    text_key: 'When stuff doesn\'t work out, do they bounce back?',
     type: 'scale',
     scale: {
       min: 1,
@@ -801,7 +801,7 @@ const feedback360Questions: TestQuestion[] = [
   // Social & Relationship Skills (4 questions)
   {
     id: 'interpersonal_1',
-    text_key: 'Are they good at building real, meaningful friendships and relationships?',
+    text_key: 'Are they good at making real friendships?',
     type: 'scale',
     scale: {
       min: 1,
@@ -812,7 +812,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'interpersonal_2',
-    text_key: 'Do you trust them? Are they reliable when you need them?',
+    text_key: 'Do you trust them? Are they there when you need them?',
     type: 'scale',
     scale: {
       min: 1,
@@ -823,7 +823,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'interpersonal_3',
-    text_key: 'Are they good at meeting new people and making connections?',
+    text_key: 'Are they good at meeting new people?',
     type: 'scale',
     scale: {
       min: 1,
@@ -834,7 +834,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'interpersonal_4',
-    text_key: 'Do they have a positive influence on the people around them?',
+    text_key: 'Do they make people around them feel good?',
     type: 'scale',
     scale: {
       min: 1,
@@ -847,7 +847,7 @@ const feedback360Questions: TestQuestion[] = [
   // Organization & Reliability (4 questions)
   {
     id: 'work_style_1',
-    text_key: 'Are they organized? Do they have their life/stuff together?',
+    text_key: 'Do they have their stuff together?',
     type: 'scale',
     scale: {
       min: 1,
@@ -858,7 +858,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'work_style_2',
-    text_key: 'Do they manage their time well and actually meet deadlines?',
+    text_key: 'Are they usually on time for stuff?',
     type: 'scale',
     scale: {
       min: 1,
@@ -869,7 +869,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'work_style_3',
-    text_key: 'Can you count on them to actually follow through on what they say?',
+    text_key: 'Can you count on them to do what they say they\'ll do?',
     type: 'scale',
     scale: {
       min: 1,
@@ -880,7 +880,7 @@ const feedback360Questions: TestQuestion[] = [
   },
   {
     id: 'work_style_4',
-    text_key: 'Do they pay attention to details and get things right?',
+    text_key: 'Do they pay attention to details?',
     type: 'scale',
     scale: {
       min: 1,
