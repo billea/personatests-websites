@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 
@@ -28,6 +28,7 @@ export default function TestPage() {
     const [completedTestResult, setCompletedTestResult] = useState<any>(null);
     const [hasInProgressTest, setHasInProgressTest] = useState(false);
     const [showResumePrompt, setShowResumePrompt] = useState(false);
+    const [showNameInput, setShowNameInput] = useState(false);
 
     // Generate unique progress key for this test session
     const getProgressKey = () => `test_progress_${testId}_${user?.uid || 'anonymous'}`;
@@ -117,6 +118,11 @@ export default function TestPage() {
                 setHasInProgressTest(true);
                 setShowResumePrompt(true);
                 console.log(`Found saved progress: ${Object.keys(savedProgress.answers).length} answers, question ${savedProgress.questionIndex + 1}`);
+            }
+            
+            // For 360-degree test, show name input first
+            if (testId === 'feedback-360' && !userName && !hasInProgressTest) {
+                setShowNameInput(true);
             }
             
             setLoading(false);
@@ -270,6 +276,62 @@ export default function TestPage() {
                     >
                         Back to Tests
                     </button>
+                </div>
+            </div>
+        );
+    }
+
+    // Show name input for 360-degree test
+    if (showNameInput) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
+                <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
+                    <h1 className="text-3xl font-bold mb-4 text-white">
+                        🌟 360° Feedback Assessment
+                    </h1>
+                    <p className="text-lg text-white/90 mb-6">
+                        This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.
+                    </p>
+                    
+                    <div className="mb-6">
+                        <label className="block text-lg font-medium mb-3 text-white">
+                            What's your first name?
+                        </label>
+                        <input
+                            type="text"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                            placeholder="Enter your name (e.g., Sarah, Mike, Alex)"
+                            className="w-full p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 text-lg text-center"
+                            autoFocus
+                        />
+                        <p className="text-sm text-white/60 mt-2">
+                            Questions will be personalized: "Is {userName || 'your name'} good at..."
+                        </p>
+                    </div>
+                    
+                    <button
+                        onClick={() => {
+                            if (userName.trim()) {
+                                setShowNameInput(false);
+                            } else {
+                                alert('Please enter your name to continue');
+                            }
+                        }}
+                        disabled={!userName.trim()}
+                        className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Start Assessment ✨
+                    </button>
+                    
+                    <div className="mt-6">
+                        <button
+                            onClick={() => router.push(`/${currentLanguage}/tests`)}
+                            className="text-white/60 hover:text-white/80 text-sm underline"
+                        >
+                            Back to Tests
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -541,6 +603,11 @@ export default function TestPage() {
     }
 
     const currentQuestion = testDefinition.questions[currentQuestionIndex];
+    
+    // For 360-degree test, personalize the question with user's name
+    const displayQuestion = testId === 'feedback-360' && userName ? 
+        { ...currentQuestion, text_key: currentQuestion.text_key.replace(/\[NAME\]/g, userName) } : 
+        currentQuestion;
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
@@ -561,11 +628,11 @@ export default function TestPage() {
                 </div>
 
                 <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-                    <h2 className="mb-6 text-xl font-semibold tracking-tight text-white" data-translate={currentQuestion.text_key}>
-                        {t(currentQuestion.text_key) || currentQuestion.text_key}
+                    <h2 className="mb-6 text-xl font-semibold tracking-tight text-white" data-translate={displayQuestion.text_key}>
+                        {t(displayQuestion.text_key) || displayQuestion.text_key}
                     </h2>
 
-                    {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
+                    {displayQuestion.type === 'multiple_choice' && displayQuestion.options && (
                         <div className="flex flex-col gap-3">
                             {currentQuestion.options.map((option, index) => (
                                 <button
@@ -580,19 +647,19 @@ export default function TestPage() {
                         </div>
                     )}
 
-                    {currentQuestion.type === 'scale' && currentQuestion.scale && (
+                    {displayQuestion.type === 'scale' && displayQuestion.scale && (
                         <div className="space-y-4">
                             <div className="flex justify-between text-sm text-white/80">
-                                <span data-translate={currentQuestion.scale.minLabel_key}>
-                                    {t(currentQuestion.scale.minLabel_key) || currentQuestion.scale.minLabel_key}
+                                <span data-translate={displayQuestion.scale.minLabel_key}>
+                                    {t(displayQuestion.scale.minLabel_key) || displayQuestion.scale.minLabel_key}
                                 </span>
-                                <span data-translate={currentQuestion.scale.maxLabel_key}>
-                                    {t(currentQuestion.scale.maxLabel_key) || currentQuestion.scale.maxLabel_key}
+                                <span data-translate={displayQuestion.scale.maxLabel_key}>
+                                    {t(displayQuestion.scale.maxLabel_key) || displayQuestion.scale.maxLabel_key}
                                 </span>
                             </div>
                             <div className="flex justify-between gap-2">
-                                {Array.from({ length: currentQuestion.scale.max - currentQuestion.scale.min + 1 }, (_, i) => {
-                                    const value = currentQuestion.scale!.min + i;
+                                {Array.from({ length: displayQuestion.scale.max - displayQuestion.scale.min + 1 }, (_, i) => {
+                                    const value = displayQuestion.scale!.min + i;
                                     return (
                                         <button
                                             key={value}
