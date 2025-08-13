@@ -122,7 +122,10 @@ export default function TestPage() {
             
             // For 360-degree test, show name input first
             if (testId === 'feedback-360' && !userName && !hasInProgressTest) {
+                console.log('Setting showNameInput to true for 360-degree test');
                 setShowNameInput(true);
+            } else {
+                console.log('Name input conditions:', { testId, userName, hasInProgressTest });
             }
             
             setLoading(false);
@@ -281,8 +284,8 @@ export default function TestPage() {
         );
     }
 
-    // Show name input for 360-degree test
-    if (showNameInput) {
+    // Show name input for 360-degree test (either explicit flag or missing name for 360-degree test)
+    if (showNameInput || (testId === 'feedback-360' && !userName && !loading)) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
