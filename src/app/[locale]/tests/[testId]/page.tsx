@@ -196,16 +196,87 @@ export default function TestPage() {
                             )}
                             
                             {completedTestResult.scores && (
-                                <div className="grid grid-cols-2 gap-4 text-white">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
                                     {Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
-                                        <div key={dimension} className="bg-white/20 p-3 rounded">
-                                            <div className="font-semibold">{dimension}</div>
-                                            <div className="text-xl">{String(percentage)}%</div>
+                                        <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <div className="font-semibold text-lg">{dimension}</div>
+                                                <div className="text-xl font-bold text-yellow-300">{String(percentage)}%</div>
+                                            </div>
+                                            {/* Progress Bar */}
+                                            <div className="w-full bg-white/10 rounded-full h-3 mb-2">
+                                                <div 
+                                                    className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 h-3 rounded-full transition-all duration-1000 ease-out"
+                                                    style={{ 
+                                                        width: `${Math.min(Number(percentage) || 0, 100)}%`,
+                                                        animation: 'progressFill 1.5s ease-out'
+                                                    }}
+                                                ></div>
+                                            </div>
+                                            {/* Visual Indicator */}
+                                            <div className="text-sm text-white/80">
+                                                {Number(percentage) >= 75 ? '🔥 Strong preference' : 
+                                                 Number(percentage) >= 60 ? '✨ Clear tendency' : 
+                                                 Number(percentage) >= 40 ? '⚖️ Moderate lean' : 
+                                                 '🤔 Balanced'}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
                             )}
                         </div>
+
+                        {/* Detailed Insights */}
+                        {completedTestResult.traits && (
+                            <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
+                                <h3 className="text-xl font-bold mb-4 text-white">✨ Your Key Traits</h3>
+                                <div className="flex flex-wrap gap-3">
+                                    {completedTestResult.traits.map((trait: string, index: number) => (
+                                        <span key={index} className="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full text-sm font-medium">
+                                            {trait}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {completedTestResult.strengths && (
+                            <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
+                                <h3 className="text-xl font-bold mb-4 text-white">💪 Your Strengths</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    {completedTestResult.strengths.map((strength: string, index: number) => (
+                                        <div key={index} className="flex items-center text-white/90">
+                                            <span className="text-green-400 mr-2">✓</span>
+                                            {strength}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {completedTestResult.recommendations && (
+                            <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
+                                <h3 className="text-xl font-bold mb-4 text-white">🎯 Growth Opportunities</h3>
+                                <div className="space-y-3">
+                                    {completedTestResult.recommendations.map((rec: string, index: number) => (
+                                        <div key={index} className="flex items-start text-white/90">
+                                            <span className="text-blue-400 mr-2 mt-1">💡</span>
+                                            <span>{rec}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Personality Description */}
+                        {completedTestResult.description_key && (
+                            <div className="mb-8 p-6 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-sm border border-white/30 rounded-lg">
+                                <h3 className="text-xl font-bold mb-4 text-white">🧠 About Your Type</h3>
+                                <p className="text-white/90 text-lg leading-relaxed">
+                                    {completedTestResult.description_key}
+                                </p>
+                            </div>
+                        )}
                     )}
 
                     {/* Optional Email Signup */}

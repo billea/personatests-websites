@@ -258,11 +258,120 @@ const mbtiScoring: ScoringFunction = (answers) => {
     (percentages.T >= percentages.F ? 'T' : 'F') +
     (percentages.J >= percentages.P ? 'J' : 'P');
 
+  // Enhanced personality type descriptions
+  const typeDescriptions: { [key: string]: { traits: string[], description: string, strengths: string[], recommendations: string[] } } = {
+    'INTJ': {
+      traits: ['Strategic', 'Independent', 'Visionary', 'Determined'],
+      description: 'The Architect - You are a natural-born strategist with a unique combination of creativity and rationality.',
+      strengths: ['Strategic thinking', 'Independence', 'Long-term planning', 'Innovation'],
+      recommendations: ['Practice patience with others', 'Share your vision clearly', 'Consider emotional impacts', 'Take breaks to recharge']
+    },
+    'INTP': {
+      traits: ['Analytical', 'Creative', 'Theoretical', 'Independent'],
+      description: 'The Thinker - You love exploring ideas and finding logical solutions to complex problems.',
+      strengths: ['Abstract thinking', 'Problem-solving', 'Adaptability', 'Objectivity'],
+      recommendations: ['Focus on completing projects', 'Practice social skills', 'Set realistic deadlines', 'Share your insights']
+    },
+    'ENTJ': {
+      traits: ['Leadership', 'Strategic', 'Efficient', 'Confident'],
+      description: 'The Commander - You are a natural leader who inspires others to achieve ambitious goals.',
+      strengths: ['Strategic planning', 'Leadership', 'Efficiency', 'Goal achievement'],
+      recommendations: ['Listen to others\' input', 'Show appreciation', 'Consider work-life balance', 'Be patient with slower processes']
+    },
+    'ENTP': {
+      traits: ['Innovative', 'Enthusiastic', 'Strategic', 'Flexible'],
+      description: 'The Debater - You thrive on exploring new ideas and inspiring others with your enthusiasm.',
+      strengths: ['Innovation', 'Adaptability', 'Communication', 'Strategic thinking'],
+      recommendations: ['Follow through on commitments', 'Focus on priorities', 'Consider details', 'Build routine habits']
+    },
+    'INFJ': {
+      traits: ['Insightful', 'Empathetic', 'Idealistic', 'Organized'],
+      description: 'The Advocate - You have a unique ability to understand others and inspire positive change.',
+      strengths: ['Empathy', 'Vision', 'Organization', 'Creativity'],
+      recommendations: ['Set boundaries', 'Take care of yourself', 'Be realistic about timelines', 'Celebrate small wins']
+    },
+    'INFP': {
+      traits: ['Authentic', 'Empathetic', 'Creative', 'Flexible'],
+      description: 'The Mediator - You are driven by your values and have a natural talent for understanding people.',
+      strengths: ['Authenticity', 'Creativity', 'Empathy', 'Adaptability'],
+      recommendations: ['Practice assertiveness', 'Set clear goals', 'Build confidence', 'Share your ideas more']
+    },
+    'ENFJ': {
+      traits: ['Inspirational', 'Empathetic', 'Organized', 'Charismatic'],
+      description: 'The Protagonist - You naturally inspire and guide others toward their potential.',
+      strengths: ['Leadership', 'Communication', 'Empathy', 'Organization'],
+      recommendations: ['Take time for yourself', 'Set personal boundaries', 'Focus on your own needs', 'Accept imperfection']
+    },
+    'ENFP': {
+      traits: ['Enthusiastic', 'Creative', 'Empathetic', 'Flexible'],
+      description: 'The Campaigner - You bring energy and creativity to everything you do, inspiring others along the way.',
+      strengths: ['Enthusiasm', 'Creativity', 'Communication', 'Adaptability'],
+      recommendations: ['Finish what you start', 'Focus on priorities', 'Build consistent habits', 'Pay attention to details']
+    },
+    'ISTJ': {
+      traits: ['Reliable', 'Practical', 'Organized', 'Loyal'],
+      description: 'The Logistician - You are the backbone of any organization, bringing stability and reliability.',
+      strengths: ['Reliability', 'Organization', 'Attention to detail', 'Loyalty'],
+      recommendations: ['Embrace new approaches', 'Express appreciation', 'Take calculated risks', 'Share your expertise']
+    },
+    'ISFJ': {
+      traits: ['Caring', 'Reliable', 'Practical', 'Supportive'],
+      description: 'The Protector - You have a natural desire to help others and create harmony in your environment.',
+      strengths: ['Empathy', 'Reliability', 'Attention to detail', 'Supportiveness'],
+      recommendations: ['Advocate for yourself', 'Set boundaries', 'Take credit for achievements', 'Express your needs']
+    },
+    'ESTJ': {
+      traits: ['Organized', 'Practical', 'Leader', 'Responsible'],
+      description: 'The Executive - You excel at organizing people and processes to achieve concrete results.',
+      strengths: ['Leadership', 'Organization', 'Efficiency', 'Responsibility'],
+      recommendations: ['Listen to different perspectives', 'Show flexibility', 'Appreciate others\' contributions', 'Consider emotional aspects']
+    },
+    'ESFJ': {
+      traits: ['Caring', 'Organized', 'Cooperative', 'Supportive'],
+      description: 'The Consul - You bring people together and create supportive, harmonious environments.',
+      strengths: ['Cooperation', 'Organization', 'Empathy', 'Supportiveness'],
+      recommendations: ['Express your own needs', 'Accept constructive criticism', 'Take time for self-care', 'Embrace change gradually']
+    },
+    'ISTP': {
+      traits: ['Practical', 'Adaptable', 'Analytical', 'Independent'],
+      description: 'The Virtuoso - You are a master of tools and techniques, solving problems with quiet efficiency.',
+      strengths: ['Problem-solving', 'Adaptability', 'Practical skills', 'Independence'],
+      recommendations: ['Communicate your thoughts', 'Plan for the future', 'Consider others\' feelings', 'Share your knowledge']
+    },
+    'ISFP': {
+      traits: ['Artistic', 'Gentle', 'Flexible', 'Authentic'],
+      description: 'The Adventurer - You approach life with quiet creativity and a strong sense of personal values.',
+      strengths: ['Creativity', 'Adaptability', 'Authenticity', 'Empathy'],
+      recommendations: ['Speak up for your ideas', 'Set long-term goals', 'Build confidence', 'Take on leadership roles']
+    },
+    'ESTP': {
+      traits: ['Energetic', 'Practical', 'Spontaneous', 'Friendly'],
+      description: 'The Entrepreneur - You live in the moment and excel at adapting to new situations.',
+      strengths: ['Adaptability', 'Practicality', 'Social skills', 'Problem-solving'],
+      recommendations: ['Think before acting', 'Plan for the future', 'Develop patience', 'Consider long-term consequences']
+    },
+    'ESFP': {
+      traits: ['Enthusiastic', 'Friendly', 'Spontaneous', 'Creative'],
+      description: 'The Entertainer - You bring joy and spontaneity to any situation, making life more enjoyable for everyone.',
+      strengths: ['Enthusiasm', 'Social skills', 'Creativity', 'Adaptability'],
+      recommendations: ['Focus on long-term planning', 'Handle criticism constructively', 'Develop organizational skills', 'Think before speaking']
+    }
+  };
+
+  const typeInfo = typeDescriptions[type] || {
+    traits: ['Unique', 'Individual', 'Complex'],
+    description: `You are an ${type} personality type with your own unique strengths and perspectives.`,
+    strengths: ['Problem-solving', 'Adaptability', 'Communication'],
+    recommendations: ['Continue learning', 'Practice self-awareness', 'Build on your strengths']
+  };
+
   return {
     scores: percentages,
     type: type,
-    description_key: `You are an ${type} personality type!`,
-    traits: ['Unique', 'Complex', 'Individual'],
+    description_key: typeInfo.description,
+    traits: typeInfo.traits,
+    strengths: typeInfo.strengths,
+    recommendations: typeInfo.recommendations,
     dimensions: {
       'E/I': { preference: percentages.E >= percentages.I ? 'E' : 'I', strength: Math.max(percentages.E, percentages.I) },
       'S/N': { preference: percentages.S >= percentages.N ? 'S' : 'N', strength: Math.max(percentages.S, percentages.N) },

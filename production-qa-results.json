@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-08-13T07:15:27.314Z",
+  "site_url": "https://korean-mbti-platform.netlify.app",
+  "overallScore": 83,
+  "passedTests": 5,
+  "totalTests": 6,
+  "results": [
+    {
+      "name": "Homepage Loading & Content",
+      "passed": true
+    },
+    {
+      "name": "Navigation to Tests Page",
+      "passed": false
+    },
+    {
+      "name": "MBTI Test Access & Functionality",
+      "passed": true
+    },
+    {
+      "name": "Other Personality Tests",
+      "passed": true
+    },
+    {
+      "name": "Korean Language Support",
+      "passed": true
+    },
+    {
+      "name": "Performance & Error Analysis",
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "loadTime": 1385
+}

@@ -134,16 +134,16 @@ export default function ResultsPage() {
         const resultFeedback = result.id ? (feedback[result.id] || []) : [];
 
         return (
-            <div key={result.id} className="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div key={result.id} className="p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                 <div className="flex justify-between items-start mb-4">
                     <div>
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-xl font-semibold text-white">
                             {getTestName(result.testId)}
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-400">
+                        <p className="text-white/80">
                             Completed on {formatDate(result.createdAt)}
                         </p>
-                        <div className="flex gap-4 text-sm text-gray-500 mt-1">
+                        <div className="flex gap-4 text-sm text-white/70 mt-1">
                             <span>Questions: {Object.keys(hasAnswers || {}).length}</span>
                             {resultFeedback.length > 0 && (
                                 <span className="text-green-600">
@@ -297,20 +297,20 @@ export default function ResultsPage() {
     }
 
     return (
-        <main className="flex min-h-screen flex-col items-center p-8">
+        <main className="flex min-h-screen flex-col items-center p-8 bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600">
             <div className="w-full max-w-6xl">
                 <div className="mb-8 flex justify-between items-center">
-                    <h1 className="text-4xl font-bold" data-translate="results.page_title">
+                    <h1 className="text-4xl font-bold text-white" data-translate="results.page_title">
                         {t('results.page_title') || 'My Test Results'}
                     </h1>
                     <div className="flex gap-2">
                         <Link href={`/${currentLanguage}/tests`}>
-                            <button className="p-2 bg-green-500 text-white rounded hover:bg-green-600">
+                            <button className="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded hover:bg-white/30 hover:scale-105 transition-all duration-300">
                                 {t('results.take_test') || 'Take Another Test'}
                             </button>
                         </Link>
                         <Link href={`/${currentLanguage}`}>
-                            <button className="p-2 bg-gray-500 text-white rounded hover:bg-gray-600">
+                            <button className="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded hover:bg-white/30 hover:scale-105 transition-all duration-300">
                                 {t('results.back_home') || 'Back to Home'}
                             </button>
                         </Link>

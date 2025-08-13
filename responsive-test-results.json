@@ -1,0 +1,106 @@
+{
+  "timestamp": "2025-08-13T07:19:38.407Z",
+  "averageScore": 84,
+  "results": [
+    {
+      "device": "iPhone 13",
+      "viewport": "390x844",
+      "tests": {
+        "homepage": {
+          "heroVisible": true,
+          "ctaButtonVisible": false,
+          "statsVisible": true,
+          "passed": false
+        },
+        "testsPage": {
+          "testCards": 5,
+          "categoriesVisible": 3,
+          "navigationVisible": true,
+          "passed": true
+        },
+        "mbtiTest": {
+          "questionVisible": true,
+          "answersVisible": 2,
+          "progressVisible": false,
+          "passed": true
+        }
+      },
+      "score": 67
+    },
+    {
+      "device": "Samsung Galaxy S21",
+      "viewport": "360x800",
+      "tests": {
+        "homepage": {
+          "heroVisible": true,
+          "ctaButtonVisible": false,
+          "statsVisible": true,
+          "passed": false
+        },
+        "testsPage": {
+          "testCards": 5,
+          "categoriesVisible": 3,
+          "navigationVisible": true,
+          "passed": true
+        },
+        "mbtiTest": {
+          "questionVisible": true,
+          "answersVisible": 2,
+          "progressVisible": false,
+          "passed": true
+        }
+      },
+      "score": 67
+    },
+    {
+      "device": "iPad Air",
+      "viewport": "820x1180",
+      "tests": {
+        "homepage": {
+          "heroVisible": true,
+          "ctaButtonVisible": true,
+          "statsVisible": true,
+          "passed": true
+        },
+        "testsPage": {
+          "testCards": 5,
+          "categoriesVisible": 3,
+          "navigationVisible": true,
+          "passed": true
+        },
+        "mbtiTest": {
+          "questionVisible": true,
+          "answersVisible": 2,
+          "progressVisible": false,
+          "passed": true
+        }
+      },
+      "score": 100
+    },
+    {
+      "device": "Desktop",
+      "viewport": "1280x720",
+      "tests": {
+        "homepage": {
+          "heroVisible": true,
+          "ctaButtonVisible": true,
+          "statsVisible": true,
+          "passed": true
+        },
+        "testsPage": {
+          "testCards": 5,
+          "categoriesVisible": 3,
+          "navigationVisible": true,
+          "passed": true
+        },
+        "mbtiTest": {
+          "questionVisible": true,
+          "answersVisible": 2,
+          "progressVisible": false,
+          "passed": true
+        }
+      },
+      "score": 100
+    }
+  ]
+}
