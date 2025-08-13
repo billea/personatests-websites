@@ -728,10 +728,16 @@ export default function TestPage() {
 
     const currentQuestion = testDefinition.questions[currentQuestionIndex];
     
-    // For 360-degree test, personalize the question with user's name
-    const displayQuestion = testId === 'feedback-360' && userName ? 
-        { ...currentQuestion, text_key: currentQuestion.text_key.replace(/\[NAME\]/g, userName) } : 
-        currentQuestion;
+    // For 360-degree test, get the translated text and personalize with user's name
+    const getDisplayedQuestionText = () => {
+        if (testId === 'feedback-360' && userName) {
+            // Get the translation first, then replace [NAME]
+            const translatedText = t(currentQuestion.text_key) || currentQuestion.text_key;
+            return translatedText.replace(/\[NAME\]/g, userName);
+        }
+        // For other tests, use normal translation
+        return t(currentQuestion.text_key) || currentQuestion.text_key;
+    };
         
     // Debug: log the name formatting
     console.log('Debug name info:', { 
@@ -761,13 +767,13 @@ export default function TestPage() {
                 </div>
 
                 <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-                    <h2 className="mb-6 text-xl font-semibold tracking-tight text-white" data-translate={displayQuestion.text_key}>
-                        {t(displayQuestion.text_key) || displayQuestion.text_key}
+                    <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
+                        {getDisplayedQuestionText()}
                     </h2>
 
-                    {displayQuestion.type === 'multiple_choice' && displayQuestion.options && (
+                    {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
                         <div className="flex flex-col gap-3">
-                            {displayQuestion.options.map((option, index) => (
+                            {currentQuestion.options.map((option, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleAnswer(option.value)}
@@ -780,19 +786,19 @@ export default function TestPage() {
                         </div>
                     )}
 
-                    {displayQuestion.type === 'scale' && displayQuestion.scale && (
+                    {currentQuestion.type === 'scale' && currentQuestion.scale && (
                         <div className="space-y-4">
                             <div className="flex justify-between text-sm text-white/80">
-                                <span data-translate={displayQuestion.scale.minLabel_key}>
-                                    {t(displayQuestion.scale.minLabel_key) || displayQuestion.scale.minLabel_key}
+                                <span data-translate={currentQuestion.scale.minLabel_key}>
+                                    {t(currentQuestion.scale.minLabel_key) || currentQuestion.scale.minLabel_key}
                                 </span>
-                                <span data-translate={displayQuestion.scale.maxLabel_key}>
-                                    {t(displayQuestion.scale.maxLabel_key) || displayQuestion.scale.maxLabel_key}
+                                <span data-translate={currentQuestion.scale.maxLabel_key}>
+                                    {t(currentQuestion.scale.maxLabel_key) || currentQuestion.scale.maxLabel_key}
                                 </span>
                             </div>
                             <div className="flex justify-between gap-2">
-                                {Array.from({ length: displayQuestion.scale.max - displayQuestion.scale.min + 1 }, (_, i) => {
-                                    const value = displayQuestion.scale!.min + i;
+                                {Array.from({ length: currentQuestion.scale.max - currentQuestion.scale.min + 1 }, (_, i) => {
+                                    const value = currentQuestion.scale!.min + i;
                                     return (
                                         <button
                                             key={value}
