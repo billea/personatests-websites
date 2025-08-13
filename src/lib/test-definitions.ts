@@ -528,7 +528,7 @@ const enneagramScoring: ScoringFunction = (answers) => {
   };
 };
 
-// 360 Feedback Test Questions - Casual & Friendly for Friends/Family/Colleagues
+// 360 Feedback Test Questions - Personalized & Casual for Friends/Family/Colleagues
 const feedback360Questions: TestQuestion[] = [
   // Leadership & Initiative (4 questions)
   {
