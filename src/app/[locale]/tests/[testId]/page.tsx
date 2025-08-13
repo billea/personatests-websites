@@ -284,14 +284,17 @@ export default function TestPage() {
         );
     }
 
-    // Show name input for 360-degree test (either explicit flag or missing name for 360-degree test)
-    if (showNameInput || (testId === 'feedback-360' && !userName && !loading)) {
+    // FORCE name input for 360-degree test - DEBUG VERSION
+    if (testId === 'feedback-360' && !userName) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
                     <h1 className="text-3xl font-bold mb-4 text-white">
-                        🌟 360° Feedback Assessment
+                        🌟 360° Feedback Assessment - DEBUG VERSION
                     </h1>
+                    <p className="text-sm text-white/60 mb-4">
+                        TestID: {testId} | UserName: {userName || 'empty'} | Loading: {loading.toString()}
+                    </p>
                     <p className="text-lg text-white/90 mb-6">
                         This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.
                     </p>
