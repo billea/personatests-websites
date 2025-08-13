@@ -640,7 +640,7 @@ export default function TestPage() {
 
                     {displayQuestion.type === 'multiple_choice' && displayQuestion.options && (
                         <div className="flex flex-col gap-3">
-                            {currentQuestion.options.map((option, index) => (
+                            {displayQuestion.options.map((option, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleAnswer(option.value)}
