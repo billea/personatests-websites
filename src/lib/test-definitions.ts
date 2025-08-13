@@ -520,61 +520,431 @@ const enneagramScoring: ScoringFunction = (answers) => {
   };
 };
 
-// 360 Feedback Test Questions
+// 360 Feedback Test Questions - Comprehensive Assessment
 const feedback360Questions: TestQuestion[] = [
+  // Leadership Questions (4 questions)
   {
-    id: 'feedback_1',
-    text_key: 'tests.feedback360.questions.q1',
+    id: 'leadership_1',
+    text_key: 'Are they good at sharing their vision and getting people excited about it?',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'tests.feedback360.scale.never',
-      maxLabel_key: 'tests.feedback360.scale.always'
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
     }
   },
   {
-    id: 'feedback_2',
-    text_key: 'tests.feedback360.questions.q2',
+    id: 'leadership_2', 
+    text_key: 'Do they make smart choices when things get tough?',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'tests.feedback360.scale.never',
-      maxLabel_key: 'tests.feedback360.scale.always'
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
     }
   },
   {
-    id: 'feedback_3',
-    text_key: 'tests.feedback360.questions.q3',
+    id: 'leadership_3',
+    text_key: 'Does this person inspire and motivate people around them?',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'tests.feedback360.scale.never',
-      maxLabel_key: 'tests.feedback360.scale.always'
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'leadership_4',
+    text_key: 'Are they a strategic thinker who plans ahead well?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Communication Questions (4 questions)
+  {
+    id: 'communication_1',
+    text_key: 'Do they explain things in a way that\'s easy to understand?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'communication_2',
+    text_key: 'Are they a good listener who really pays attention?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'communication_3',
+    text_key: 'How are they in meetings and when presenting to groups?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'communication_4',
+    text_key: 'Are their texts/emails clear and easy to follow?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Teamwork Questions (4 questions)
+  {
+    id: 'teamwork_1',
+    text_key: 'Are they easy to work with and collaborate with?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'teamwork_2',
+    text_key: 'Do they support the team and help everyone succeed?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'teamwork_3',
+    text_key: 'How do they handle drama or conflicts in the group?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'teamwork_4',
+    text_key: 'How positive is this person\'s impact on team dynamics?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Emotional Intelligence Questions (4 questions)
+  {
+    id: 'emotional_1',
+    text_key: 'Are they aware of their own emotions and how they affect others?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'emotional_2',
+    text_key: 'Do they really understand and care about how others feel?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'emotional_3',
+    text_key: 'How do they handle it when things get stressful or intense?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'emotional_4',
+    text_key: 'Are they good at reading the room and social vibes?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Problem Solving Questions (4 questions)  
+  {
+    id: 'problem_1',
+    text_key: 'Are they good at breaking down complicated problems?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'problem_2',
+    text_key: 'Do they come up with creative and unique solutions?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'problem_3',
+    text_key: 'Are they innovative when facing new challenges?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'problem_4',
+    text_key: 'Do they make smart decisions when it matters?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Adaptability Questions (4 questions)
+  {
+    id: 'adaptability_1',
+    text_key: 'How do they handle it when things change suddenly?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'adaptability_2',
+    text_key: 'Are they flexible when plans get switched up?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'adaptability_3',
+    text_key: 'How quickly do they pick up new things?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'adaptability_4',
+    text_key: 'Do they bounce back well when things don\'t go as planned?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Interpersonal Skills Questions (4 questions)
+  {
+    id: 'interpersonal_1',
+    text_key: 'Are they good at building real, lasting relationships?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'interpersonal_2',
+    text_key: 'Do you trust them and find them reliable?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'interpersonal_3',
+    text_key: 'Are they good at connecting and networking with people?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'interpersonal_4',
+    text_key: 'Do they have a positive influence on others around them?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+
+  // Work Style Questions (4 questions)
+  {
+    id: 'work_style_1',
+    text_key: 'Are they organized and have their stuff together?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'work_style_2',
+    text_key: 'Do they manage their time well and hit deadlines?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'work_style_3',
+    text_key: 'Can you count on them to follow through?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
+    }
+  },
+  {
+    id: 'work_style_4',
+    text_key: 'Do they pay attention to the details and get things right?',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'Needs Work',
+      maxLabel_key: 'Amazing!'
     }
   }
 ];
 
 const feedback360Scoring: ScoringFunction = (answers) => {
   const areas = {
-    leadership: 0,
-    communication: 0,
-    teamwork: 0
+    Leadership: 0,
+    Communication: 0,
+    Teamwork: 0,
+    'Emotional Intelligence': 0,
+    'Problem Solving': 0,
+    Adaptability: 0,
+    'Interpersonal Skills': 0,
+    'Work Style': 0
   };
 
-  Object.values(answers).forEach((score, index) => {
-    const areaNames = Object.keys(areas);
-    const area = areaNames[index % areaNames.length];
-    areas[area as keyof typeof areas] += (score as number);
+  // Map question IDs to their respective areas and calculate average scores
+  Object.entries(answers).forEach(([questionId, score]) => {
+    const numericScore = score as number;
+    
+    if (questionId.startsWith('leadership_')) {
+      areas.Leadership += numericScore;
+    } else if (questionId.startsWith('communication_')) {
+      areas.Communication += numericScore;
+    } else if (questionId.startsWith('teamwork_')) {
+      areas.Teamwork += numericScore;
+    } else if (questionId.startsWith('emotional_')) {
+      areas['Emotional Intelligence'] += numericScore;
+    } else if (questionId.startsWith('problem_')) {
+      areas['Problem Solving'] += numericScore;
+    } else if (questionId.startsWith('adaptability_')) {
+      areas.Adaptability += numericScore;
+    } else if (questionId.startsWith('interpersonal_')) {
+      areas['Interpersonal Skills'] += numericScore;
+    } else if (questionId.startsWith('work_style_')) {
+      areas['Work Style'] += numericScore;
+    }
   });
 
+  // Calculate average scores (4 questions per area, convert to percentages)
+  const percentageScores: { [key: string]: number } = {};
+  Object.entries(areas).forEach(([area, totalScore]) => {
+    const averageScore = totalScore / 4; // 4 questions per area
+    percentageScores[area] = Math.round((averageScore / 5) * 100); // Convert to percentage (5-point scale)
+  });
+
+  // Identify strengths and development areas
+  const sortedAreas = Object.entries(percentageScores).sort(([,a], [,b]) => b - a);
+  const strengths = sortedAreas.slice(0, 3).map(([area]) => area);
+  const developmentAreas = sortedAreas.slice(-2).map(([area]) => area);
+
   return {
-    scores: areas,
+    scores: percentageScores,
     type: '360 Feedback Profile',
-    description_key: 'Your 360-degree feedback results',
-    traits: Object.keys(areas)
+    description_key: 'A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.',
+    traits: strengths,
+    strengths: strengths.map(area => `Strong in ${area}`),
+    recommendations: developmentAreas.map(area => `Focus on developing ${area} skills`)
   };
 };
 
@@ -674,8 +1044,8 @@ export const testDefinitions: TestDefinition[] = [
   {
     id: 'feedback-360',
     category: 'how-others-see-me',
-    title_key: 'tests.feedback360.title',
-    description_key: 'tests.feedback360.description',
+    title_key: '360° Perception Assessment',
+    description_key: 'Get comprehensive feedback on your leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from people who know you well. This professional 32-question assessment provides insights from multiple perspectives.',
     questions: feedback360Questions,
     scoring: feedback360Scoring,
     requiresFeedback: true

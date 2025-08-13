@@ -1,56 +1,68 @@
 {
-  "timestamp": "2025-08-13T08:13:47.165Z",
+  "timestamp": "2025-08-13T12:07:54.488Z",
   "tests": [
     {
       "name": "Progress Saving Setup",
-      "passed": false,
+      "passed": true,
       "details": {
         "questionsAnswered": 5,
-        "saveButtonVisible": false
+        "saveButtonVisible": true
       }
     },
     {
       "name": "Save & Exit Functionality",
-      "passed": false,
+      "passed": true,
       "details": {
-        "reason": "Save button not found"
+        "redirectedUrl": "https://korean-mbti-platform.netlify.app/en/tests",
+        "expectedRedirection": true
       }
     },
     {
       "name": "Resume Prompt Display",
-      "passed": false,
+      "passed": true,
       "details": {
-        "reason": "Resume prompt not visible"
+        "resumePromptVisible": true,
+        "resumeButtonVisible": true,
+        "showsProgressDetails": true
       }
     },
     {
       "name": "Resume Functionality",
       "passed": false,
       "details": {
-        "reason": "No resume prompt to test"
+        "backInTest": true,
+        "currentQuestion": 0,
+        "expectedQuestion": 6,
+        "resumedCorrectly": false
       }
     },
     {
       "name": "Previous Button Functionality",
       "passed": false,
       "details": {
-        "reason": "Could not resume test"
+        "previousButtonVisible": true,
+        "previousQuestion": 0,
+        "newQuestion": 0,
+        "navigationWorking": false
       }
     },
     {
       "name": "Auto-save Indicators",
-      "passed": false,
+      "passed": true,
       "details": {
-        "reason": "Could not access test interface"
+        "autoSaveMessage": true,
+        "pulseIndicator": true
       }
     },
     {
       "name": "Start Fresh Functionality",
       "passed": false,
       "details": {
-        "reason": "Start Fresh button not found"
+        "startFreshVisible": true,
+        "questionNumber": 0,
+        "startedFromBeginning": false
       }
     }
   ],
-  "overallScore": 0
+  "overallScore": 57
 }
