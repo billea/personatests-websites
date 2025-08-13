@@ -744,7 +744,31 @@ export default function TestPage() {
                     'tests.feedback360.questions.communication_1': '[NAME]은(는) 당신이 실제로 이해할 수 있게 설명을 잘하나요?',
                     'tests.feedback360.questions.communication_2': '[NAME]은(는) 당신이 이야기할 때 진짜로 들어주나요?',
                     'tests.feedback360.questions.communication_3': '[NAME]은(는) 사람들 앞에서 말하는 것을 어떻게 하나요?',
-                    'tests.feedback360.questions.communication_4': '그들의 문자와 메시지는 이해하기 쉬운가요?'
+                    'tests.feedback360.questions.communication_4': '그들의 문자와 메시지는 이해하기 쉬운가요?',
+                    'tests.feedback360.questions.teamwork_1': '[NAME]은(는) 그룹 프로젝트에서 함께 일하기 재미있는 사람인가요?',
+                    'tests.feedback360.questions.teamwork_2': '[NAME]은(는) 다른 사람들을 돕고 응원하나요?',
+                    'tests.feedback360.questions.teamwork_3': '그룹에서 갈등이 있을 때, [NAME]은(는) 어떻게 대처하나요?',
+                    'tests.feedback360.questions.teamwork_4': '[NAME]은(는) 그룹에 좋은 분위기를 가져다주나요?',
+                    'tests.feedback360.questions.emotional_1': '[NAME]은(는) 자신의 기분이 다른 사람들에게 어떤 영향을 미치는지 알고 있나요?',
+                    'tests.feedback360.questions.emotional_2': '[NAME]은(는) 다른 사람들의 감정에 진심으로 관심을 보이나요?',
+                    'tests.feedback360.questions.emotional_3': '스트레스 받는 상황에서 [NAME]은(는) 차분함을 유지하나요?',
+                    'tests.feedback360.questions.emotional_4': '[NAME]은(는) 방 안의 분위기를 잘 파악하나요?',
+                    'tests.feedback360.questions.problem_1': '[NAME]은(는) 복잡한 문제를 해결하는 것을 잘하나요?',
+                    'tests.feedback360.questions.problem_2': '[NAME]은(는) 창의적인 해결책을 생각해내나요?',
+                    'tests.feedback360.questions.problem_3': '[NAME]은(는) 새로운 것을 시도할 때 혁신적인가요?',
+                    'tests.feedback360.questions.problem_4': '[NAME]은(는) 중요한 순간에 좋은 결정을 내리나요?',
+                    'tests.feedback360.questions.adaptability_1': '계획이 마지막 순간에 바뀔 때, [NAME]은(는) 잘 적응하나요?',
+                    'tests.feedback360.questions.adaptability_2': '일이 계획대로 되지 않을 때 [NAME]은(는) 차분한가요?',
+                    'tests.feedback360.questions.adaptability_3': '[NAME]은(는) 새로운 것을 얼마나 빨리 배우나요?',
+                    'tests.feedback360.questions.adaptability_4': '일이 잘 안 될 때, [NAME]은(는) 빨리 회복하나요?',
+                    'tests.feedback360.questions.interpersonal_1': '[NAME]은(는) 진정한 우정을 만드는 것을 잘하나요?',
+                    'tests.feedback360.questions.interpersonal_2': '도움이 필요할 때 [NAME]에게 의지할 수 있나요?',
+                    'tests.feedback360.questions.interpersonal_3': '[NAME]은(는) 새로운 사람들을 만나는 것을 잘하나요?',
+                    'tests.feedback360.questions.interpersonal_4': '[NAME]은(는) 주변 사람들을 기분 좋게 만드나요?',
+                    'tests.feedback360.questions.work_style_1': '[NAME]은(는) 잘 정리되어 있고 체계적인가요?',
+                    'tests.feedback360.questions.work_style_2': '[NAME]은(는) 보통 시간을 잘 지키나요?',
+                    'tests.feedback360.questions.work_style_3': '[NAME]이(가) 하겠다고 말한 일을 믿고 맡길 수 있나요?',
+                    'tests.feedback360.questions.work_style_4': '[NAME]은(는) 세부사항에 주의를 기울이나요?'
                 };
                 
                 translatedText = fallbackTranslations[currentQuestion.text_key] || currentQuestion.text_key;
