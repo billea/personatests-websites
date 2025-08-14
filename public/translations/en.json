@@ -174,5 +174,16 @@
         "very_important": "Very Important"
       }
     }
+  },
+  "ui": {
+    "feedback360Title": "360° Feedback Assessment",
+    "feedback360Description": "This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.",
+    "enterYourName": "What should we call you?",
+    "examples": "Examples:",
+    "lastNameKo": "Last Name",
+    "firstNameKo": "First Name",
+    "questionExample": "Question example:",
+    "startAssessment": "Start Assessment ✨",
+    "backToTests": "Back to Tests"
   }
 }

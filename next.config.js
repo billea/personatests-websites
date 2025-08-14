@@ -6,8 +6,12 @@ const nextConfig = {
     // Remove windowsFilePath as it's causing issues
   },
   
-  // Production optimizations
-  output: 'standalone',
+  // Production optimizations for Netlify
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  },
   
   // File system optimizations for Windows
   generateBuildId: async () => {

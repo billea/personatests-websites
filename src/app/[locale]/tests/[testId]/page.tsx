@@ -309,7 +309,16 @@ export default function TestPage() {
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white mx-auto"></div>
-                    <p className="mt-4 text-lg text-white">Loading test...</p>
+                    <p className="mt-4 text-lg text-white">
+                        {currentLanguage === 'ko' ? 
+                            '테스트 로딩 중...' :
+                         currentLanguage === 'ja' ? 
+                            'テスト読み込み中...' :
+                         currentLanguage === 'zh' ? 
+                            '正在加载测试...' :
+                            'Loading test...'
+                        }
+                    </p>
                 </div>
             </div>
         );
@@ -319,12 +328,28 @@ export default function TestPage() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-                    <h1 className="text-2xl font-bold mb-4 text-white">Test Not Found</h1>
+                    <h1 className="text-2xl font-bold mb-4 text-white">
+                        {currentLanguage === 'ko' ? 
+                            '테스트를 찾을 수 없습니다' :
+                         currentLanguage === 'ja' ? 
+                            'テストが見つかりません' :
+                         currentLanguage === 'zh' ? 
+                            '未找到测试' :
+                            'Test Not Found'
+                        }
+                    </h1>
                     <button
                         onClick={() => router.push(`/${currentLanguage}/tests`)}
                         className="p-4 bg-white text-purple-600 font-bold rounded-lg hover:bg-purple-50 transition-all"
                     >
-                        Back to Tests
+                        {currentLanguage === 'ko' ? 
+                            '테스트로 돌아가기' :
+                         currentLanguage === 'ja' ? 
+                            'テストに戻る' :
+                         currentLanguage === 'zh' ? 
+                            '回到测试' :
+                            'Back to Tests'
+                        }
                     </button>
                 </div>
             </div>
@@ -337,31 +362,21 @@ export default function TestPage() {
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
                     <h1 className="text-3xl font-bold mb-4 text-white">
-                        🌟 360° Feedback Assessment
+                        🌟 {t('ui.feedback360Title') || '360° Feedback Assessment'}
                     </h1>
                     <p className="text-lg text-white/90 mb-6">
-                        {currentLanguage === 'ko' ? 
-                            '이 평가는 다른 사람들이 당신을 어떻게 보는지 이해하는 데 도움이 됩니다. 가족, 친구, 동료들이 당신에 대해 개인적으로 질문에 답변합니다.' :
-                         currentLanguage === 'ja' ? 
-                            'この評価は、他の人があなたをどう見ているかを理解するのに役立ちます。家族、友人、同僚があなたについて個人的に質問に答えます。' :
-                         currentLanguage === 'zh' ? 
-                            '这项评估帮助您了解别人如何看待您。家人、朋友和同事将对您个人回答问题。' :
-                            'This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.'
-                        }
+                        {t('ui.feedback360Description') || 'This assessment helps you understand how others see you. Friends, family, and colleagues will answer questions about you personally.'}
                     </p>
                     
                     <div className="mb-6">
                         <label className="block text-lg font-medium mb-3 text-white">
-                            {currentLanguage === 'ko' ? '이름을 입력해 주세요' : 
-                             currentLanguage === 'ja' ? 'お名前を入力してください' :
-                             'What should we call you?'}
+                            {t('ui.enterYourName') || 'What should we call you?'}
                         </label>
                         
                         {/* Cultural examples */}
                         <div className="mb-4 p-3 bg-white/10 rounded-lg text-sm text-white/70">
                             <p className="font-medium mb-2">
-                                {currentLanguage === 'ko' ? '예시:' : 
-                                 currentLanguage === 'ja' ? '例:' : 'Examples:'}
+                                {t('ui.examples') || 'Examples:'}
                             </p>
                             <div className="text-xs">
                                 {currentLanguage === 'ko' ? (
@@ -381,9 +396,7 @@ export default function TestPage() {
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
                                     <label className="block text-sm font-medium mb-1 text-white/80">
-                                        {currentLanguage === 'ko' ? '성 (姓)' : 
-                                         currentLanguage === 'ja' ? '姓' :
-                                         currentLanguage === 'zh' ? '姓' : 'Last Name'}
+                                        {t('ui.lastNameKo') || 'Last Name'}
                                     </label>
                                     <input
                                         type="text"
@@ -401,9 +414,7 @@ export default function TestPage() {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium mb-1 text-white/80">
-                                        {currentLanguage === 'ko' ? '이름 (名)' : 
-                                         currentLanguage === 'ja' ? '名' :
-                                         currentLanguage === 'zh' ? '名' : 'First Name'}
+                                        {t('ui.firstNameKo') || 'First Name'}
                                     </label>
                                     <input
                                         type="text"
@@ -422,12 +433,7 @@ export default function TestPage() {
                         </div>
                         
                         <p className="text-sm text-white/60 mt-2">
-                            {currentLanguage === 'ko' ? 
-                                `질문 예시: "${getFormattedNameFromParts(lastName, firstName) || '김철수님'}은(는) 사람들의 마음을 사로잡는 것을 잘하나요?"` :
-                             currentLanguage === 'ja' ? 
-                                `質問例: "${getFormattedNameFromParts(lastName, firstName) || '田中さん'}は人を説得するのが上手ですか？"` :
-                                `Questions will be like: "Is ${getFormattedNameFromParts(lastName, firstName) || 'your name'} good at getting people excited about their ideas?"`
-                            }
+                            {t('ui.questionExample') || 'Question example:'} "{getFormattedNameFromParts(lastName, firstName) || (currentLanguage === 'ko' ? '김철수님' : 'your name')}은(는) 사람들의 마음을 사로잡는 것을 잘하나요?"
                         </p>
                     </div>
                     
@@ -445,7 +451,7 @@ export default function TestPage() {
                         disabled={!lastName.trim() && !firstName.trim()}
                         className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Start Assessment ✨
+                        {t('ui.startAssessment') || 'Start Assessment ✨'}
                     </button>
                     
                     <div className="mt-6">
@@ -453,7 +459,7 @@ export default function TestPage() {
                             onClick={() => router.push(`/${currentLanguage}/tests`)}
                             className="text-white/60 hover:text-white/80 text-sm underline"
                         >
-                            Back to Tests
+                            {t('ui.backToTests') || 'Back to Tests'}
                         </button>
                     </div>
                 </div>
@@ -516,7 +522,14 @@ export default function TestPage() {
                             onClick={() => router.push(`/${currentLanguage}/tests`)}
                             className="text-white/60 hover:text-white/80 text-sm underline"
                         >
-                            Back to Tests
+                            {currentLanguage === 'ko' ? 
+                                '테스트로 돌아가기' :
+                             currentLanguage === 'ja' ? 
+                                'テストに戻る' :
+                             currentLanguage === 'zh' ? 
+                                '回到测试' :
+                                'Back to Tests'
+                            }
                         </button>
                     </div>
                 </div>

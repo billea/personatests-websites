@@ -87,7 +87,16 @@
     "resultSummary": "결과 요약",
     "shareOnSocial": "소셜 미디어에 공유",
     "copyLink": "링크 복사",
-    "downloadResult": "결과 다운로드"
+    "downloadResult": "결과 다운로드",
+    "feedback360Title": "360도 피드백 평가",
+    "feedback360Description": "이 평가는 다른 사람들이 당신을 어떻게 보는지 이해하는 데 도움이 됩니다. 가족, 친구, 동료들이 당신에 대해 개인적으로 질문에 답변합니다.",
+    "enterYourName": "이름을 입력해 주세요",
+    "examples": "예시:",
+    "lastNameKo": "성 (姓)",
+    "firstNameKo": "이름 (名)",
+    "questionExample": "질문 예시:",
+    "startAssessment": "평가 시작하기 ✨",
+    "backToTests": "테스트로 돌아가기"
   },
   "results": {
     "mbtiTraits": {
