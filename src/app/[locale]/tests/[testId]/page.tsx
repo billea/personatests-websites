@@ -555,7 +555,9 @@ export default function TestPage() {
                                     {Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
                                         <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm">
                                             <div className="flex justify-between items-center mb-2">
-                                                <div className="font-semibold text-lg">{dimension}</div>
+                                                <div className="font-semibold text-lg">
+                                                    {t(`results.dimensions.${dimension}`) || dimension}
+                                                </div>
                                                 <div className="text-xl font-bold text-yellow-300">{String(percentage)}%</div>
                                             </div>
                                             {/* Progress Bar */}
@@ -591,7 +593,7 @@ export default function TestPage() {
                                 <div className="flex flex-wrap gap-3">
                                     {completedTestResult.traits.map((trait: string, index: number) => (
                                         <span key={index} className="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full text-sm font-medium">
-                                            {trait}
+                                            {t(`results.dimensions.${trait}`) || trait}
                                         </span>
                                     ))}
                                 </div>
@@ -607,7 +609,7 @@ export default function TestPage() {
                                     {completedTestResult.strengths.map((strength: string, index: number) => (
                                         <div key={index} className="flex items-center text-white/90">
                                             <span className="text-green-400 mr-2">✓</span>
-                                            {strength}
+                                            {t('results.strengthPrefix') || 'Strong in'} {t(`results.dimensions.${strength}`) || strength}
                                         </div>
                                     ))}
                                 </div>
@@ -623,7 +625,7 @@ export default function TestPage() {
                                     {completedTestResult.recommendations.map((rec: string, index: number) => (
                                         <div key={index} className="flex items-start text-white/90">
                                             <span className="text-blue-400 mr-2 mt-1">💡</span>
-                                            <span>{rec}</span>
+                                            <span>{t('results.developmentPrefix') || 'Focus on developing'} {t(`results.dimensions.${rec}`) || rec}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -637,7 +639,7 @@ export default function TestPage() {
                                     🧠 {t('results.aboutType') || 'About Your Type'}
                                 </h3>
                                 <p className="text-white/90 text-lg leading-relaxed">
-                                    {completedTestResult.description_key}
+                                    {t('results.feedback360Description') || completedTestResult.description_key}
                                 </p>
                             </div>
                         )}

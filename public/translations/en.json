@@ -295,6 +295,19 @@
       "clearTendency": "Clear tendency",
       "moderateLean": "Moderate lean",
       "balanced": "Balanced"
-    }
+    },
+    "dimensions": {
+      "Leadership & Initiative": "Leadership & Initiative",
+      "Communication & Social Skills": "Communication & Social Skills",
+      "Teamwork & Collaboration": "Teamwork & Collaboration",
+      "Emotional Intelligence & Empathy": "Emotional Intelligence & Empathy",
+      "Problem Solving & Creativity": "Problem Solving & Creativity",
+      "Adaptability & Flexibility": "Adaptability & Flexibility",
+      "Social & Relationship Skills": "Social & Relationship Skills",
+      "Organization & Reliability": "Organization & Reliability"
+    },
+    "strengthPrefix": "Strong in",
+    "developmentPrefix": "Focus on developing",
+    "feedback360Description": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives."
   }
 }
