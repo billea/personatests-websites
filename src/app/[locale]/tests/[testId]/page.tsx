@@ -880,7 +880,7 @@ export default function TestPage() {
                                     }}
                                     className="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
                                 >
-                                    ← Previous
+                                    ← {t('ui.previous') || 'Previous'}
                                 </button>
                             )}
                             
@@ -892,15 +892,15 @@ export default function TestPage() {
                                 }}
                                 className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
                             >
-                                💾 Save & Exit
+                                💾 {t('ui.saveExit') || 'Save & Exit'}
                             </button>
                         </div>
                         
                         <div className="text-white/70 text-sm text-center">
-                            <p className="mb-1">Progress automatically saved</p>
+                            <p className="mb-1">{t('ui.progressSaved') || 'Progress automatically saved'}</p>
                             <div className="flex items-center gap-2 justify-center">
                                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                <span>Your answers are being saved</span>
+                                <span>{t('ui.answersSaved') || 'Your answers are being saved'}</span>
                             </div>
                         </div>
                     </div>

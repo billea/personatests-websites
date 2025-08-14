@@ -538,8 +538,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
   {
@@ -549,8 +549,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
   {
@@ -560,8 +560,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
   {
@@ -571,8 +571,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
 
@@ -584,8 +584,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
   {
@@ -595,8 +595,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
   {
@@ -606,8 +606,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Pretty awkward',
-      maxLabel_key: 'Super confident!'
+      minLabel_key: 'scale.prettyAwkward',
+      maxLabel_key: 'scale.superConfident'
     }
   },
   {
@@ -617,8 +617,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Confusing',
-      maxLabel_key: 'Crystal clear!'
+      minLabel_key: 'scale.confusing',
+      maxLabel_key: 'scale.crystalClear'
     }
   },
 
@@ -630,8 +630,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Totally!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.totally'
     }
   },
   {
@@ -641,8 +641,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Always!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.always'
     }
   },
   {
@@ -652,8 +652,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Makes it worse',
-      maxLabel_key: 'Helps solve it!'
+      minLabel_key: 'scale.makesWorse',
+      maxLabel_key: 'scale.helpsSolve'
     }
   },
   {
@@ -663,8 +663,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Definitely!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.definitely'
     }
   },
 
@@ -676,8 +676,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Very aware!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.veryAware'
     }
   },
   {
@@ -687,8 +687,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not much',
-      maxLabel_key: 'Super caring!'
+      minLabel_key: 'scale.notMuch',
+      maxLabel_key: 'scale.superCaring'
     }
   },
   {
@@ -698,8 +698,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Gets overwhelmed',
-      maxLabel_key: 'Stays calm!'
+      minLabel_key: 'scale.getsOverwhelmed',
+      maxLabel_key: 'scale.staysCalm'
     }
   },
   {
@@ -709,8 +709,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Totally clueless',
-      maxLabel_key: 'Super intuitive!'
+      minLabel_key: 'scale.totallyClueless',
+      maxLabel_key: 'scale.superIntuitive'
     }
   },
 
@@ -722,8 +722,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Gets stuck easily',
-      maxLabel_key: 'Problem solver!'
+      minLabel_key: 'scale.getsStuckEasily',
+      maxLabel_key: 'scale.problemSolver'
     }
   },
   {
@@ -733,8 +733,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Pretty basic',
-      maxLabel_key: 'Super creative!'
+      minLabel_key: 'scale.prettyBasic',
+      maxLabel_key: 'scale.superCreative'
     }
   },
   {
@@ -744,8 +744,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Sticks to basics',
-      maxLabel_key: 'Always innovating!'
+      minLabel_key: 'scale.sticksToBasics',
+      maxLabel_key: 'scale.alwaysInnovating'
     }
   },
   {
@@ -755,8 +755,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Questionable choices',
-      maxLabel_key: 'Great judgment!'
+      minLabel_key: 'scale.questionableChoices',
+      maxLabel_key: 'scale.greatJudgment'
     }
   },
 
@@ -768,8 +768,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Gets upset/stressed',
-      maxLabel_key: 'Totally flexible!'
+      minLabel_key: 'scale.getsUpsetStressed',
+      maxLabel_key: 'scale.totallyFlexible'
     }
   },
   {
@@ -779,8 +779,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Pretty rigid',
-      maxLabel_key: 'Super adaptable!'
+      minLabel_key: 'scale.prettyRigid',
+      maxLabel_key: 'scale.superAdaptable'
     }
   },
   {
@@ -790,8 +790,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Takes forever',
-      maxLabel_key: 'Super quick!'
+      minLabel_key: 'scale.takesForever',
+      maxLabel_key: 'scale.superQuick'
     }
   },
   {
@@ -801,8 +801,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Stays down',
-      maxLabel_key: 'Bounces back fast!'
+      minLabel_key: 'scale.staysDown',
+      maxLabel_key: 'scale.bouncesBackFast'
     }
   },
 
@@ -814,8 +814,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Struggles with this',
-      maxLabel_key: 'Natural at it!'
+      minLabel_key: 'scale.strugglesWithThis',
+      maxLabel_key: 'scale.naturalAtIt'
     }
   },
   {
@@ -825,8 +825,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Completely!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.completely'
     }
   },
   {
@@ -836,8 +836,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Pretty shy/awkward',
-      maxLabel_key: 'Social butterfly!'
+      minLabel_key: 'scale.prettyShyAwkward',
+      maxLabel_key: 'scale.socialButterfly'
     }
   },
   {
@@ -847,8 +847,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not really',
-      maxLabel_key: 'Definitely!'
+      minLabel_key: 'scale.notReally',
+      maxLabel_key: 'scale.definitely'
     }
   },
 
@@ -860,8 +860,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Total mess',
-      maxLabel_key: 'Super organized!'
+      minLabel_key: 'scale.totalMess',
+      maxLabel_key: 'scale.superOrganized'
     }
   },
   {
@@ -871,8 +871,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Always late',
-      maxLabel_key: 'Always on time!'
+      minLabel_key: 'scale.alwaysLate',
+      maxLabel_key: 'scale.alwaysOnTime'
     }
   },
   {
@@ -882,8 +882,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Not reliable',
-      maxLabel_key: 'Super reliable!'
+      minLabel_key: 'scale.notReliable',
+      maxLabel_key: 'scale.superReliable'
     }
   },
   {
@@ -893,8 +893,8 @@ const feedback360Questions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'Pretty careless',
-      maxLabel_key: 'Detail-oriented!'
+      minLabel_key: 'scale.prettyCareless',
+      maxLabel_key: 'scale.detailOriented'
     }
   }
 ];
