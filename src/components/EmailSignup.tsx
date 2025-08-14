@@ -49,19 +49,19 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
       <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/30 rounded-lg">
         <div className="text-center">
           <h3 className="text-xl font-bold text-white mb-3">
-            Want More Insights About Your {personalityType || 'Personality'}?
+            {t('emailSignup.title') || `Want More Insights About Your ${personalityType || 'Personality'}?`}
           </h3>
           <p className="text-white/90 mb-4">
-            Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.
+            {t('emailSignup.description') || 'Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.'}
           </p>
           <button
             onClick={() => setShowSignup(true)}
             className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
           >
-            ✨ Get Free Personality Insights
+            ✨ {t('emailSignup.buttonText') || 'Get Free Personality Insights'}
           </button>
           <p className="text-white/70 text-sm mt-2">
-            100% free • Unsubscribe anytime • No spam
+            {t('emailSignup.freeText') || '100% free'} • {t('emailSignup.unsubscribeText') || 'Unsubscribe anytime'} • {t('emailSignup.noSpamText') || 'No spam'}
           </p>
         </div>
       </div>

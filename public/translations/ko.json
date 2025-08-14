@@ -2227,6 +2227,23 @@
     },
     "strengthPrefix": "뛰어난",
     "developmentPrefix": "발전시켜야 할",
-    "feedback360Description": "리더십, 소통, 팀워크, 감정 지능, 문제 해결, 적응성, 대인관계 기술, 업무 스타일을 다각도로 평가하는 포괄적인 360도 평가입니다."
+    "feedback360Description": "리더십, 소통, 팀워크, 감정 지능, 문제 해결, 적응성, 대인관계 기술, 업무 스타일을 다각도로 평가하는 포괄적인 360도 평가입니다.",
+    "feedback360Profile": "360도 피드백 프로필"
+  },
+  "emailSignup": {
+    "title": "당신의 360도 피드백 프로필에 대한 더 많은 통찰력을 원하시나요?",
+    "description": "개인화된 팁, 자세한 분석, 독점적인 성격 통찰력을 이메일로 받아보세요.",
+    "buttonText": "무료 성격 통찰력 받기",
+    "freeText": "100% 무료",
+    "unsubscribeText": "언제든지 구독 취소",
+    "noSpamText": "스팸 없음"
+  },
+  "feedbackInvite": {
+    "nameQuestion": "친구들이 피드백을 줄 때 어떤 이름을 사용해야 하나요?",
+    "exampleText": "질문 예시:",
+    "emailPlaceholder": "이메일 주소 입력",
+    "addAnother": "다른 이메일 추가",
+    "sendInvitations": "초대장 보내기",
+    "sending": "보내는 중..."
   }
 }

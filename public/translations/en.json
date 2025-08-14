@@ -308,6 +308,23 @@
     },
     "strengthPrefix": "Strong in",
     "developmentPrefix": "Focus on developing",
-    "feedback360Description": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives."
+    "feedback360Description": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.",
+    "feedback360Profile": "360 Feedback Profile"
+  },
+  "emailSignup": {
+    "title": "Want More Insights About Your 360 Feedback Profile?",
+    "description": "Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.",
+    "buttonText": "Get Free Personality Insights",
+    "freeText": "100% free",
+    "unsubscribeText": "Unsubscribe anytime",
+    "noSpamText": "No spam"
+  },
+  "feedbackInvite": {
+    "nameQuestion": "What name should your friends use when giving feedback?",
+    "exampleText": "Questions will be like:",
+    "emailPlaceholder": "Enter email address",
+    "addAnother": "Add Another Email",
+    "sendInvitations": "Send Invitations",
+    "sending": "Sending..."
   }
 }

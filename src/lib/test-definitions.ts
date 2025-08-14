@@ -948,7 +948,7 @@ const feedback360Scoring: ScoringFunction = (answers) => {
 
   return {
     scores: percentageScores,
-    type: '360 Feedback Profile',
+    type: 'results.feedback360Profile',
     description_key: 'A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.',
     traits: strengths,
     strengths: strengths.map(area => `${area}`),

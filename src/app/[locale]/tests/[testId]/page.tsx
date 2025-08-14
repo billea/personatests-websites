@@ -546,7 +546,7 @@ export default function TestPage() {
                             </h2>
                             {completedTestResult.type && (
                                 <div className="text-3xl font-bold text-yellow-300 mb-4">
-                                    {completedTestResult.type}
+                                    {t(completedTestResult.type) || completedTestResult.type}
                                 </div>
                             )}
                             
@@ -662,7 +662,7 @@ export default function TestPage() {
                             {/* Name Input */}
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-2 text-white">
-                                    What name should your friends use when giving feedback?
+                                    {t('feedbackInvite.nameQuestion') || 'What name should your friends use when giving feedback?'}
                                 </label>
                                 <input
                                     type="text"
@@ -673,8 +673,8 @@ export default function TestPage() {
                                 />
                                 <p className="text-xs text-white/60 mt-1">
                                     {userName ? 
-                                        `Questions will be like: "Is ${userName} good at getting people excited about stuff they want to do?"` :
-                                        'Questions will be like: "Is [your name] good at getting people excited about stuff they want to do?"'
+                                        `${t('feedbackInvite.exampleText') || 'Questions will be like:'} "Is ${userName} good at getting people excited about stuff they want to do?"` :
+                                        `${t('feedbackInvite.exampleText') || 'Questions will be like:'} "Is [your name] good at getting people excited about stuff they want to do?"`
                                     }
                                 </p>
                             </div>
@@ -686,7 +686,7 @@ export default function TestPage() {
                                             type="email"
                                             value={email}
                                             onChange={(e) => updateEmail(index, e.target.value)}
-                                            placeholder="Enter email address"
+                                            placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
                                             className="flex-1 p-2 border rounded dark:bg-gray-800 dark:border-gray-600"
                                         />
                                         {feedbackEmails.length > 1 && (
@@ -706,14 +706,14 @@ export default function TestPage() {
                                     onClick={addEmailField}
                                     className="px-4 py-2 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
                                 >
-                                    Add Another Email
+                                    {t('feedbackInvite.addAnother') || 'Add Another Email'}
                                 </button>
                                 <button
                                     onClick={handleSendFeedbackInvitations}
                                     disabled={saving}
                                     className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
                                 >
-                                    {saving ? 'Sending...' : 'Send Invitations'}
+                                    {saving ? (t('feedbackInvite.sending') || 'Sending...') : (t('feedbackInvite.sendInvitations') || 'Send Invitations')}
                                 </button>
                             </div>
                         </div>
