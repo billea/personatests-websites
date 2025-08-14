@@ -477,13 +477,13 @@ export default function TestPage() {
                 <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
                     <div className="mb-6">
                         <h1 className="text-3xl font-bold mb-4 text-white">
-                            🔄 Resume Your Test?
+                            🔄 {t('ui.resumeTestTitle') || 'Resume Your Test?'}
                         </h1>
                         <p className="text-lg text-white/90 mb-2">
-                            You have a test in progress for <strong>{t(testDefinition.title_key) || testDefinition.title_key}</strong>
+                            {t('ui.testInProgress') || 'You have a test in progress for'} <strong>{t(testDefinition.title_key) || testDefinition.title_key}</strong>
                         </p>
                         <p className="text-white/80 mb-6">
-                            You've completed {Object.keys(savedProgress?.answers || {}).length} out of {testDefinition.questions.length} questions
+                            {t('ui.completedQuestions') || 'You\'ve completed'} {Object.keys(savedProgress?.answers || {}).length} {t('ui.outOf') || 'out of'} {testDefinition.questions.length} {t('ui.questions') || 'questions'}
                         </p>
                         
                         {/* Progress Bar */}
@@ -496,7 +496,7 @@ export default function TestPage() {
                         
                         <p className="text-sm text-white/70 mb-8">
                             {savedProgress?.timestamp && 
-                                `Last updated: ${new Date(savedProgress.timestamp).toLocaleString()}`
+                                `${t('ui.lastUpdated') || 'Last updated:'} ${new Date(savedProgress.timestamp).toLocaleString()}`
                             }
                         </p>
                     </div>
@@ -506,14 +506,14 @@ export default function TestPage() {
                             onClick={resumeFromProgress}
                             className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-lg"
                         >
-                            🚀 Resume Test ({progressPercentage}% complete)
+                            🚀 {t('ui.resumeTest') || 'Resume Test'} ({progressPercentage}{t('ui.percentComplete') || '% complete'})
                         </button>
                         
                         <button
                             onClick={startFreshTest}
                             className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-300"
                         >
-                            🔄 Start Fresh
+                            🔄 {t('ui.startFresh') || 'Start Fresh'}
                         </button>
                     </div>
                     
@@ -522,14 +522,7 @@ export default function TestPage() {
                             onClick={() => router.push(`/${currentLanguage}/tests`)}
                             className="text-white/60 hover:text-white/80 text-sm underline"
                         >
-                            {currentLanguage === 'ko' ? 
-                                '테스트로 돌아가기' :
-                             currentLanguage === 'ja' ? 
-                                'テストに戻る' :
-                             currentLanguage === 'zh' ? 
-                                '回到测试' :
-                                'Back to Tests'
-                            }
+                            {t('ui.backToTests') || 'Back to Tests'}
                         </button>
                     </div>
                 </div>
