@@ -651,11 +651,11 @@ export default function TestPage() {
                     />
 
                     {testDefinition.requiresFeedback && (
-                        <div className="mb-8 p-6 bg-blue-50 rounded-lg dark:bg-blue-900/20">
-                            <h2 className="text-xl font-bold mb-4" data-translate="test.invite_feedback_title">
+                        <div className="mb-8 p-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg">
+                            <h2 className="text-xl font-bold mb-4 text-white" data-translate="test.invite_feedback_title">
                                 {t('test.invite_feedback_title') || 'Invite Others for Feedback'}
                             </h2>
-                            <p className="text-sm mb-4 text-gray-600 dark:text-gray-400" data-translate="test.invite_feedback_description">
+                            <p className="text-sm mb-4 text-white/80" data-translate="test.invite_feedback_description">
                                 {t('test.invite_feedback_description') || 'Get a complete picture by inviting friends and colleagues to provide feedback about you.'}
                             </p>
                             
@@ -687,7 +687,7 @@ export default function TestPage() {
                                             value={email}
                                             onChange={(e) => updateEmail(index, e.target.value)}
                                             placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
-                                            className="flex-1 p-2 border rounded dark:bg-gray-800 dark:border-gray-600"
+                                            className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                         />
                                         {feedbackEmails.length > 1 && (
                                             <button
@@ -704,14 +704,14 @@ export default function TestPage() {
                             <div className="flex gap-2 justify-center mb-4">
                                 <button
                                     onClick={addEmailField}
-                                    className="px-4 py-2 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                                    className="px-4 py-2 text-sm bg-white/20 text-white rounded hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300"
                                 >
                                     {t('feedbackInvite.addAnother') || 'Add Another Email'}
                                 </button>
                                 <button
                                     onClick={handleSendFeedbackInvitations}
                                     disabled={saving}
-                                    className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+                                    className="px-4 py-2 text-sm bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 backdrop-blur-sm border border-white/20 transition-all duration-300"
                                 >
                                     {saving ? (t('feedbackInvite.sending') || 'Sending...') : (t('feedbackInvite.sendInvitations') || 'Send Invitations')}
                                 </button>
