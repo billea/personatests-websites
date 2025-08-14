@@ -16,8 +16,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // Use timestamp to avoid caching issues - force cache bust for Korean question fix
-    return `build-korean-fix-${Date.now()}`
+    // Use timestamp to avoid caching issues - force cache bust for scale labels fix
+    return `build-scale-labels-fix-${Date.now()}`
   },
   
   // Reduce build cache issues
