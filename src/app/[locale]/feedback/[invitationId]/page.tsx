@@ -8,6 +8,7 @@ import { submitFeedback } from "@/lib/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
 
+
 interface InvitationData {
     id: string;
     inviterName: string;

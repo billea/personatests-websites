@@ -7,7 +7,8 @@ const nextConfig = {
   },
   
   // Production optimizations for Netlify
-  output: 'export',
+  // Using standalone mode for dynamic routes
+  output: 'standalone',
   trailingSlash: true,
   images: {
     unoptimized: true
