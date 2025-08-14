@@ -673,8 +673,8 @@ export default function TestPage() {
                                 />
                                 <p className="text-xs text-white/60 mt-1">
                                     {userName ? 
-                                        `${t('feedbackInvite.exampleText') || 'Questions will be like:'} "Is ${userName} good at getting people excited about stuff they want to do?"` :
-                                        `${t('feedbackInvite.exampleText') || 'Questions will be like:'} "Is [your name] good at getting people excited about stuff they want to do?"`
+                                        `${t('feedbackInvite.exampleText') || 'Questions will be like:'} "${userName}${t('feedbackInvite.exampleQuestion') || t('feedbackInvite.exampleQuestionFallback') || ' good at getting people excited about stuff they want to do?'}"` :
+                                        `${t('feedbackInvite.exampleText') || 'Questions will be like:'} "[${t('ui.yourName') || 'your name'}]${t('feedbackInvite.exampleQuestion') || t('feedbackInvite.exampleQuestionFallback') || ' good at getting people excited about stuff they want to do?'}"`
                                     }
                                 </p>
                             </div>

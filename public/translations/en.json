@@ -197,7 +197,8 @@
     "previous": "Previous",
     "saveExit": "Save & Exit",
     "progressSaved": "Progress automatically saved",
-    "answersSaved": "Your answers are being saved"
+    "answersSaved": "Your answers are being saved",
+    "yourName": "your name"
   },
   "scale": {
     "notReally": "Not really",
@@ -322,6 +323,8 @@
   "feedbackInvite": {
     "nameQuestion": "What name should your friends use when giving feedback?",
     "exampleText": "Questions will be like:",
+    "exampleQuestion": " good at getting people excited about stuff they want to do?",
+    "exampleQuestionFallback": " good at working well with others?",
     "emailPlaceholder": "Enter email address",
     "addAnother": "Add Another Email",
     "sendInvitations": "Send Invitations",

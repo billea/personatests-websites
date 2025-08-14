@@ -109,7 +109,8 @@
     "previous": "이전",
     "saveExit": "저장 후 종료",
     "progressSaved": "진행상황이 자동 저장됩니다",
-    "answersSaved": "답변이 저장되고 있습니다"
+    "answersSaved": "답변이 저장되고 있습니다",
+    "yourName": "당신의 이름"
   },
   "scale": {
     "notReally": "별로 아니요",
@@ -2241,6 +2242,8 @@
   "feedbackInvite": {
     "nameQuestion": "친구들이 피드백을 줄 때 어떤 이름을 사용해야 하나요?",
     "exampleText": "질문 예시:",
+    "exampleQuestion": "님은 사람들을 자신의 아이디어에 대해 흥미롭게 만드는 것을 잘하나요?",
+    "exampleQuestionFallback": "님은 다른 사람들과 잘 협력하나요?",
     "emailPlaceholder": "이메일 주소 입력",
     "addAnother": "다른 이메일 추가",
     "sendInvitations": "초대장 보내기",
