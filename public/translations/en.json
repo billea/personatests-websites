@@ -184,6 +184,15 @@
     "firstNameKo": "First Name",
     "questionExample": "Question example:",
     "startAssessment": "Start Assessment ✨",
-    "backToTests": "Back to Tests"
+    "backToTests": "Back to Tests",
+    "resumeTestTitle": "Resume Your Test?",
+    "testInProgress": "You have a test in progress for",
+    "completedQuestions": "You've completed",
+    "outOf": "out of",
+    "questions": "questions",
+    "lastUpdated": "Last updated:",
+    "resumeTest": "Resume Test",
+    "percentComplete": "% complete",
+    "startFresh": "Start Fresh"
   }
 }
