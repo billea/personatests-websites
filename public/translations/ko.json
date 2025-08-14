@@ -2194,5 +2194,26 @@
     "blog": "블로그",
     "privacyPolicy": "개인정보 보호정책",
     "termsOfService": "서비스 약관"
+  },
+  "test": {
+    "completed_title": "테스트 완료!",
+    "completed_message": "결과가 성공적으로 저장되었습니다.",
+    "view_results": "내 결과 보기",
+    "take_another": "다른 테스트 하기",
+    "invite_feedback_title": "다른 사람들에게 피드백 요청하기",
+    "invite_feedback_description": "친구와 동료들에게 당신에 대한 피드백을 요청하여 완전한 그림을 얻어보세요."
+  },
+  "results": {
+    "personalityType": "당신의 성격 유형",
+    "keyTraits": "주요 특성",
+    "strengths": "당신의 강점",
+    "growthOpportunities": "성장 기회",
+    "aboutType": "당신의 유형에 대해",
+    "indicators": {
+      "strongPreference": "강한 선호",
+      "clearTendency": "뚜렷한 경향",
+      "moderateLean": "적당한 기울기",
+      "balanced": "균형적"
+    }
   }
 }

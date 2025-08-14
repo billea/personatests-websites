@@ -275,5 +275,26 @@
     "superReliable": "Super reliable!",
     "prettyCareless": "Pretty careless",
     "detailOriented": "Detail-oriented!"
+  },
+  "test": {
+    "completed_title": "Test Completed!",
+    "completed_message": "Your results have been saved successfully.",
+    "view_results": "View My Results",
+    "take_another": "Take Another Test",
+    "invite_feedback_title": "Invite Others for Feedback",
+    "invite_feedback_description": "Get a complete picture by inviting friends and colleagues to provide feedback about you."
+  },
+  "results": {
+    "personalityType": "Your Personality Type",
+    "keyTraits": "Your Key Traits",
+    "strengths": "Your Strengths",
+    "growthOpportunities": "Growth Opportunities",
+    "aboutType": "About Your Type",
+    "indicators": {
+      "strongPreference": "Strong preference",
+      "clearTendency": "Clear tendency",
+      "moderateLean": "Moderate lean",
+      "balanced": "Balanced"
+    }
   }
 }

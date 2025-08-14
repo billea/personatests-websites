@@ -541,7 +541,9 @@ export default function TestPage() {
                     {/* Show Results Immediately */}
                     {completedTestResult && (
                         <div className="mb-8 p-6 bg-white/30 backdrop-blur-sm border border-white/40 rounded-lg">
-                            <h2 className="text-2xl font-bold mb-4 text-white">Your Personality Type</h2>
+                            <h2 className="text-2xl font-bold mb-4 text-white" data-translate="results.personalityType">
+                                {t('results.personalityType') || 'Your Personality Type'}
+                            </h2>
                             {completedTestResult.type && (
                                 <div className="text-3xl font-bold text-yellow-300 mb-4">
                                     {completedTestResult.type}
@@ -568,10 +570,10 @@ export default function TestPage() {
                                             </div>
                                             {/* Visual Indicator */}
                                             <div className="text-sm text-white/80">
-                                                {Number(percentage) >= 75 ? '🔥 Strong preference' : 
-                                                 Number(percentage) >= 60 ? '✨ Clear tendency' : 
-                                                 Number(percentage) >= 40 ? '⚖️ Moderate lean' : 
-                                                 '🤔 Balanced'}
+                                                {Number(percentage) >= 75 ? `🔥 ${t('results.indicators.strongPreference') || 'Strong preference'}` : 
+                                                 Number(percentage) >= 60 ? `✨ ${t('results.indicators.clearTendency') || 'Clear tendency'}` : 
+                                                 Number(percentage) >= 40 ? `⚖️ ${t('results.indicators.moderateLean') || 'Moderate lean'}` : 
+                                                 `🤔 ${t('results.indicators.balanced') || 'Balanced'}`}
                                             </div>
                                         </div>
                                     ))}
@@ -583,7 +585,9 @@ export default function TestPage() {
                     {/* Detailed Insights */}
                     {completedTestResult && completedTestResult.traits && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white">✨ Your Key Traits</h3>
+                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.keyTraits">
+                                    ✨ {t('results.keyTraits') || 'Your Key Traits'}
+                                </h3>
                                 <div className="flex flex-wrap gap-3">
                                     {completedTestResult.traits.map((trait: string, index: number) => (
                                         <span key={index} className="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full text-sm font-medium">
@@ -596,7 +600,9 @@ export default function TestPage() {
 
                         {completedTestResult && completedTestResult.strengths && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white">💪 Your Strengths</h3>
+                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.strengths">
+                                    💪 {t('results.strengths') || 'Your Strengths'}
+                                </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {completedTestResult.strengths.map((strength: string, index: number) => (
                                         <div key={index} className="flex items-center text-white/90">
@@ -610,7 +616,9 @@ export default function TestPage() {
 
                         {completedTestResult && completedTestResult.recommendations && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white">🎯 Growth Opportunities</h3>
+                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.growthOpportunities">
+                                    🎯 {t('results.growthOpportunities') || 'Growth Opportunities'}
+                                </h3>
                                 <div className="space-y-3">
                                     {completedTestResult.recommendations.map((rec: string, index: number) => (
                                         <div key={index} className="flex items-start text-white/90">
@@ -625,7 +633,9 @@ export default function TestPage() {
                         {/* Personality Description */}
                         {completedTestResult && completedTestResult.description_key && (
                             <div className="mb-8 p-6 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white">🧠 About Your Type</h3>
+                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.aboutType">
+                                    🧠 {t('results.aboutType') || 'About Your Type'}
+                                </h3>
                                 <p className="text-white/90 text-lg leading-relaxed">
                                     {completedTestResult.description_key}
                                 </p>
