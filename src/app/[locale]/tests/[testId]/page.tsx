@@ -158,6 +158,8 @@ export default function TestPage() {
     // Load test definition and check for saved progress
     useEffect(() => {
         // For feedback-360 test, handle category selection first
+        let definition: TestDefinition | null = null;
+        
         if (testId === 'feedback-360') {
             if (!selectedCategory) {
                 setShowCategorySelection(true);
@@ -166,17 +168,17 @@ export default function TestPage() {
             }
             
             // Generate test definition based on selected category
-            const definition = getFeedback360TestDefinition(selectedCategory);
+            definition = getFeedback360TestDefinition(selectedCategory);
             setTestDefinition(definition);
         } else {
-            const definition = getTestById(testId);
+            definition = getTestById(testId);
             if (definition) {
                 setTestDefinition(definition);
             }
         }
         
         // Check for saved progress only after test definition is set
-        if (testDefinition) {
+        if (definition) {
             const savedProgress = loadTestProgress();
             if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
                 setHasInProgressTest(true);
