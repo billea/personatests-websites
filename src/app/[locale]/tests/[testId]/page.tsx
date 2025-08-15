@@ -15,6 +15,9 @@ export default function TestPage() {
     const params = useParams();
     const router = useRouter();
     const testId = params.testId as string;
+    
+    console.log('TestPage mounted with params:', params);
+    console.log('testId extracted:', testId);
 
     const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -160,8 +163,13 @@ export default function TestPage() {
         // For feedback-360 test, handle category selection first
         let definition: TestDefinition | null = null;
         
+        console.log('useEffect running with testId:', testId);
+        
         if (testId === 'feedback-360') {
+            console.log('Detected feedback-360 test');
+            console.log('selectedCategory:', selectedCategory);
             if (!selectedCategory) {
+                console.log('No category selected - showing category selection');
                 setShowCategorySelection(true);
                 setLoading(false);
                 return;

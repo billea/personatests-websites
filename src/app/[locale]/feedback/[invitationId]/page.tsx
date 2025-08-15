@@ -4,9 +4,6 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { getTestById, TestDefinition } from "@/lib/test-definitions";
-import { submitFeedback } from "@/lib/firestore";
-import { doc, getDoc } from "firebase/firestore";
-import { firestore } from "@/lib/firebase";
 
 
 interface InvitationData {
@@ -43,27 +40,44 @@ export default function FeedbackPage() {
 
     const loadInvitation = async () => {
         try {
-            const invitationDoc = await getDoc(doc(firestore, "invitations", invitationId));
+            // For static deployment, check localStorage for invitations
+            const storedInvitations = JSON.parse(localStorage.getItem('feedback_invitations') || '[]');
+            const foundInvitation = storedInvitations.find((inv: any) => inv.id === invitationId);
             
-            if (!invitationDoc.exists()) {
+            if (!foundInvitation) {
                 setError('Invitation not found');
                 setLoading(false);
                 return;
             }
 
-            const invitationData = { id: invitationDoc.id, ...invitationDoc.data() } as InvitationData;
-            
-            if (invitationData.invitationToken !== token) {
+            if (foundInvitation.invitationToken !== token) {
                 setError('Invalid invitation link');
                 setLoading(false);
                 return;
             }
 
-            if (invitationData.status === 'completed') {
+            // Check if feedback already submitted for this invitation
+            const submittedFeedback = JSON.parse(localStorage.getItem('submitted_feedback') || '[]');
+            const alreadySubmitted = submittedFeedback.some((fb: any) => fb.invitationId === invitationId);
+            
+            if (alreadySubmitted) {
                 setError('This feedback has already been submitted');
                 setLoading(false);
                 return;
             }
+
+            // Extract the user name from URL params if available
+            const userName = searchParams.get('name') || foundInvitation.userName || 'Someone';
+            
+            const invitationData: InvitationData = {
+                id: foundInvitation.id,
+                inviterName: userName,
+                testId: foundInvitation.testId,
+                testResultId: foundInvitation.testResultId,
+                participantEmail: foundInvitation.email,
+                status: foundInvitation.status,
+                invitationToken: foundInvitation.invitationToken
+            };
 
             setInvitation(invitationData);
 
@@ -108,17 +122,34 @@ export default function FeedbackPage() {
             // Process answers through the test's scoring function
             const result = testDefinition.scoring(finalAnswers);
 
-            await submitFeedback(
-                invitationId,
-                {
-                    answers: finalAnswers,
-                    result: result,
-                    submittedAt: new Date().toISOString(),
-                    aboutPerson: invitation.inviterName
-                },
-                token
-            );
+            // For static deployment, store feedback in localStorage
+            const feedbackData = {
+                invitationId: invitationId,
+                testId: invitation.testId,
+                testResultId: invitation.testResultId,
+                answers: finalAnswers,
+                result: result,
+                submittedAt: new Date().toISOString(),
+                aboutPerson: invitation.inviterName,
+                token: token
+            };
 
+            // Store the submitted feedback
+            const existingFeedback = JSON.parse(localStorage.getItem('submitted_feedback') || '[]');
+            existingFeedback.push(feedbackData);
+            localStorage.setItem('submitted_feedback', JSON.stringify(existingFeedback));
+
+            // Also store aggregated feedback for the test result
+            const aggregatedKey = `aggregated_feedback_${invitation.testResultId}`;
+            const existingAggregated = JSON.parse(localStorage.getItem(aggregatedKey) || '[]');
+            existingAggregated.push({
+                result: result,
+                submittedAt: feedbackData.submittedAt,
+                feedbackId: invitationId
+            });
+            localStorage.setItem(aggregatedKey, JSON.stringify(existingAggregated));
+
+            console.log('Feedback submitted successfully:', feedbackData);
             setSubmitted(true);
         } catch (error) {
             console.error('Error submitting feedback:', error);
