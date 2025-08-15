@@ -139,14 +139,91 @@
     },
     "feedback360": {
       "title": "360° Feedback Assessment",
-      "description": "Get comprehensive feedback from colleagues and friends",
-      "questions": {
-        "q1": "How often do you take initiative in group settings?",
-        "q2": "How clearly do you communicate your ideas?",
-        "q3": "How well do you collaborate with others?"
+      "description": "Get comprehensive feedback from friends, family, colleagues, and classmates through category-specific questionnaires.",
+      "categories": {
+        "work": "Work Colleagues",
+        "friends": "Friends",
+        "family": "Family",
+        "academic": "Academic Partners",
+        "general": "General Relationships"
+      },
+      "universal": {
+        "q1": "Does this person manage emotions well and stay calm under stress or pressure?",
+        "q2": "How well does this person adapt to new situations or unexpected changes?",
+        "q3": "Does this person work consistently toward goals and manage themselves well?",
+        "q4": "Does this person enjoy socializing and gain energy from social situations?",
+        "q5": "How open and curious is this person about new ideas or experiences?",
+        "q6": "Does this person understand and empathize with others' emotions and perspectives?",
+        "q7": "Does this person express thoughts and feelings clearly and effectively?",
+        "q8": "Does this person try to resolve conflicts constructively?",
+        "q9": "How trustworthy is this person, and do they keep their promises?",
+        "q10": "Does this person try to help others and show consideration?"
+      },
+      "work": {
+        "q11": "Does this person take initiative or leadership roles in work projects or team activities?",
+        "q12": "Does this person approach work decisions logically and systematically?",
+        "q13": "Does this person collaborate with colleagues to achieve team goals?",
+        "q14": "Does this person accept work-related feedback and try to improve?",
+        "q15": "Does this person suggest innovative ideas or solutions in the workplace?",
+        "q16": "Does this person manage work stress and deadline pressure well?",
+        "q17": "Does this person try to provide help or support to colleagues?",
+        "q18": "Does this person communicate their opinions effectively in work meetings or presentations?",
+        "q19": "Does this person fulfill work-related commitments and responsibilities reliably?",
+        "q20": "Does this person show interest and effort in professional growth and learning?"
+      },
+      "friends": {
+        "q11": "Does this person lead group atmosphere or suggest activities in friend gatherings?",
+        "q12": "Does this person listen to friends' problems and offer advice?",
+        "q13": "Does this person keep promises with friends and can be trusted?",
+        "q14": "Does this person create fun and enjoyable atmosphere when with friends?",
+        "q15": "Does this person genuinely celebrate friends' success or good news?",
+        "q16": "Does this person try to provide practical help when friends are in difficulty?",
+        "q17": "Does this person make the first effort to reconcile when conflicts arise with friends?",
+        "q18": "Does this person respect friends' various opinions or choices?",
+        "q19": "Does this person like to have deep conversations with friends?",
+        "q20": "Does this person maintain and cherish long-term friendships?"
+      },
+      "family": {
+        "q11": "Does this person actively participate when making important family decisions?",
+        "q12": "Does this person understand and consider family members' emotions and needs well?",
+        "q13": "Does this person participate in planning and preparing family events or gatherings?",
+        "q14": "Does this person contribute constructively to resolving family conflicts or problems?",
+        "q15": "Does this person maintain regular communication and contact with family members?",
+        "q16": "Does this person respect and try to continue family traditions or values?",
+        "q17": "Does this person prioritize helping family members when they are in difficulty?",
+        "q18": "Does this person contribute to creating a positive and warm atmosphere within the family?",
+        "q19": "Does this person support family members' personal growth and goals?",
+        "q20": "Does this person act with responsibility and dedication toward the family?"
+      },
+      "academic": {
+        "q11": "Does this person take leadership roles in academic group projects or study groups?",
+        "q12": "Does this person set learning goals and study systematically?",
+        "q13": "Does this person try to share knowledge or information with fellow students?",
+        "q14": "Does this person actively utilize feedback from professors or teachers?",
+        "q15": "Does this person try new methods or approaches related to academics?",
+        "q16": "Does this person manage academic stress such as exams or presentations well?",
+        "q17": "Does this person try to help fellow students who are having academic difficulties?",
+        "q18": "Does this person actively ask questions and participate in classes or seminars?",
+        "q19": "Does this person complete assignments or exam preparation diligently and thoroughly?",
+        "q20": "Does this person show deep interest and passion for their major field?"
+      },
+      "general": {
+        "q11": "Does this person act confidently in general social situations?",
+        "q12": "Does this person find practical and effective solutions in problem situations?",
+        "q13": "Does this person demonstrate teamwork when working or doing activities with others?",
+        "q14": "Does this person acknowledge their mistakes or shortcomings and try to improve?",
+        "q15": "Does this person present creative and original ideas or perspectives?",
+        "q16": "Does this person respond calmly to unexpected situations or crises?",
+        "q17": "Does this person willingly take time to help others when they need assistance?",
+        "q18": "Does this person communicate with respect for the other party when expressing opinions?",
+        "q19": "Does this person act with responsibility toward their promises or words?",
+        "q20": "Does this person maintain an overall positive and hopeful attitude?"
       },
       "scale": {
-        "never": "Never",
+        "never": "Not at all",
+        "rarely": "Rarely",
+        "sometimes": "Sometimes",
+        "often": "Often",
         "always": "Always"
       }
     },

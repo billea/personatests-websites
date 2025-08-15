@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 
@@ -32,6 +32,8 @@ export default function TestPage() {
     const [hasInProgressTest, setHasInProgressTest] = useState(false);
     const [showResumePrompt, setShowResumePrompt] = useState(false);
     const [showNameInput, setShowNameInput] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const [showCategorySelection, setShowCategorySelection] = useState(false);
 
     // Generate unique progress key for this test session
     const getProgressKey = () => `test_progress_${testId}_${user?.uid || 'anonymous'}`;
@@ -155,11 +157,26 @@ export default function TestPage() {
 
     // Load test definition and check for saved progress
     useEffect(() => {
-        const definition = getTestById(testId);
-        if (definition) {
-            setTestDefinition(definition);
+        // For feedback-360 test, handle category selection first
+        if (testId === 'feedback-360') {
+            if (!selectedCategory) {
+                setShowCategorySelection(true);
+                setLoading(false);
+                return;
+            }
             
-            // Check for saved progress
+            // Generate test definition based on selected category
+            const definition = getFeedback360TestDefinition(selectedCategory);
+            setTestDefinition(definition);
+        } else {
+            const definition = getTestById(testId);
+            if (definition) {
+                setTestDefinition(definition);
+            }
+        }
+        
+        // Check for saved progress only after test definition is set
+        if (testDefinition) {
             const savedProgress = loadTestProgress();
             if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
                 setHasInProgressTest(true);
@@ -167,7 +184,7 @@ export default function TestPage() {
                 console.log(`Found saved progress: ${Object.keys(savedProgress.answers).length} answers, question ${savedProgress.questionIndex + 1}`);
             }
             
-            // For 360-degree test, show name input first
+            // For 360-degree test, show name input after category selection
             if (testId === 'feedback-360' && !userName && !hasInProgressTest) {
                 console.log('Setting showNameInput to true for 360-degree test');
                 setShowNameInput(true);
@@ -180,7 +197,7 @@ export default function TestPage() {
             console.error(`Test ${testId} not found`);
             router.push(`/${currentLanguage}/tests`);
         }
-    }, [testId, currentLanguage, router]);
+    }, [testId, selectedCategory, currentLanguage, router]);
 
     const handleAnswer = (answer: any) => {
         const currentQuestion = testDefinition?.questions[currentQuestionIndex];
@@ -259,30 +276,87 @@ export default function TestPage() {
     };
 
     const handleSendFeedbackInvitations = async () => {
-        if (!testResultId || !testDefinition) return;
+        console.log('Debug invitation start:', { 
+            testResultId, 
+            testDefinition: !!testDefinition, 
+            userName: userName.trim(),
+            feedbackEmails,
+            testId 
+        });
+        
+        if (!testResultId) {
+            alert(currentLanguage === 'ko' ? '먼저 테스트를 완료해주세요.' : 'Please complete the test first.');
+            return;
+        }
+        
+        if (!testDefinition) {
+            alert(currentLanguage === 'ko' ? '테스트 정의를 찾을 수 없습니다.' : 'Test definition not found.');
+            return;
+        }
 
         const validEmails = feedbackEmails.filter(email => 
             email.trim() && email.includes('@')
         );
 
         if (!userName.trim()) {
-            alert('Please enter your name so friends know who they\'re giving feedback about');
+            alert(currentLanguage === 'ko' ? 
+                '친구들이 누구에 대한 피드백을 주는지 알 수 있도록 이름을 입력해주세요.' : 
+                'Please enter your name so friends know who they\'re giving feedback about'
+            );
             return;
         }
 
         if (validEmails.length === 0) {
-            alert('Please enter at least one valid email address');
+            alert(currentLanguage === 'ko' ? 
+                '유효한 이메일 주소를 최소 하나 이상 입력해주세요.' : 
+                'Please enter at least one valid email address'
+            );
             return;
         }
 
         try {
             setSaving(true);
-            await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim());
-            alert(`Feedback invitations sent to ${validEmails.length} people!`);
-            router.push(`/${currentLanguage}/results`);
+            const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim());
+            
+            if (result.success && result.invitations) {
+                // Show the feedback links to the user
+                const linksText = result.invitations.map((inv: any) => 
+                    `${inv.email}: ${inv.link}`
+                ).join('\n\n');
+                
+                const message = currentLanguage === 'ko' ? 
+                    `피드백 링크가 생성되었습니다!\n\n다음 링크들을 각 참가자에게 공유해주세요:\n\n${linksText}` :
+                    `Feedback links generated successfully!\n\nPlease share these links with your reviewers:\n\n${linksText}`;
+                
+                // Create a more user-friendly display
+                const confirmed = confirm(`${message}\n\n링크를 클립보드에 복사하시겠습니까? (Would you like to copy the links to clipboard?)`);
+                
+                if (confirmed) {
+                    try {
+                        await navigator.clipboard.writeText(linksText);
+                        alert(currentLanguage === 'ko' ? '링크가 클립보드에 복사되었습니다!' : 'Links copied to clipboard!');
+                    } catch (clipboardError) {
+                        console.error('Failed to copy to clipboard:', clipboardError);
+                        // Fallback: show links in a prompt for manual copying
+                        prompt(currentLanguage === 'ko' ? '다음 링크들을 복사하세요:' : 'Copy these links:', linksText);
+                    }
+                }
+                
+                router.push(`/${currentLanguage}/results`);
+            } else {
+                throw new Error('Failed to generate invitation links');
+            }
         } catch (error) {
-            console.error('Error sending invitations:', error);
-            alert('Error sending invitations. Please try again.');
+            console.error('Error generating invitations:', error);
+            
+            // Provide more specific error message
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            console.error('Detailed error:', errorMessage);
+            
+            alert(currentLanguage === 'ko' ? 
+                `초대장 생성 중 오류가 발생했습니다: ${errorMessage}\n\n다시 시도해주세요.` : 
+                `Error generating invitations: ${errorMessage}\n\nPlease try again.`
+            );
         } finally {
             setSaving(false);
         }
@@ -319,6 +393,47 @@ export default function TestPage() {
                             'Loading test...'
                         }
                     </p>
+                </div>
+            </div>
+        );
+    }
+
+    // Show category selection for feedback-360 test
+    if (showCategorySelection && testId === 'feedback-360') {
+        const categories = [
+            { key: 'work', label: t('tests.feedback360.categories.work') },
+            { key: 'friends', label: t('tests.feedback360.categories.friends') },
+            { key: 'family', label: t('tests.feedback360.categories.family') },
+            { key: 'academic', label: t('tests.feedback360.categories.academic') },
+            { key: 'general', label: t('tests.feedback360.categories.general') }
+        ];
+
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-4">
+                <div className="max-w-md w-full bg-white/95 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg p-8">
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                        {t('tests.feedback360.title')}
+                    </h1>
+                    <p className="text-gray-600 mb-6 text-center">
+                        {currentLanguage === 'ko' ? 
+                            '먼저 피드백을 받을 관계 카테고리를 선택해주세요:' :
+                            'First, please select a relationship category for feedback:'
+                        }
+                    </p>
+                    <div className="space-y-3">
+                        {categories.map((category) => (
+                            <button
+                                key={category.key}
+                                onClick={() => {
+                                    setSelectedCategory(category.key);
+                                    setShowCategorySelection(false);
+                                }}
+                                className="w-full p-4 text-left bg-gray-50 hover:bg-indigo-50 border border-gray-200 rounded-lg transition-all duration-200 hover:border-indigo-300"
+                            >
+                                <div className="font-medium text-gray-800">{category.label}</div>
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         );
@@ -752,44 +867,9 @@ export default function TestPage() {
             // Get the translation first, then replace [NAME]
             let translatedText = t(currentQuestion.text_key);
             
-            // Fallback Korean translations if translation system fails
+            // If translation not found, use the text_key as fallback
             if (!translatedText || translatedText === currentQuestion.text_key) {
-                const fallbackTranslations: { [key: string]: string } = {
-                    'tests.feedback360.questions.leadership_1': '[NAME]은(는) 사람들을 자신의 아이디어에 대해 흥미롭게 만드는 것을 잘하나요?',
-                    'tests.feedback360.questions.leadership_2': '상황이 복잡해질 때, [NAME]은(는) 현명한 선택을 하나요?',
-                    'tests.feedback360.questions.leadership_3': '[NAME]은(는) 사람들에게 동기를 부여하고 열정을 불러일으키나요?',
-                    'tests.feedback360.questions.leadership_4': '[NAME]은(는) 미리 계획을 세우는 사람인가요?',
-                    'tests.feedback360.questions.communication_1': '[NAME]은(는) 당신이 실제로 이해할 수 있게 설명을 잘하나요?',
-                    'tests.feedback360.questions.communication_2': '[NAME]은(는) 당신이 이야기할 때 진짜로 들어주나요?',
-                    'tests.feedback360.questions.communication_3': '[NAME]은(는) 사람들 앞에서 말하는 것을 어떻게 하나요?',
-                    'tests.feedback360.questions.communication_4': '그들의 문자와 메시지는 이해하기 쉬운가요?',
-                    'tests.feedback360.questions.teamwork_1': '[NAME]은(는) 그룹 프로젝트에서 함께 일하기 재미있는 사람인가요?',
-                    'tests.feedback360.questions.teamwork_2': '[NAME]은(는) 다른 사람들을 돕고 응원하나요?',
-                    'tests.feedback360.questions.teamwork_3': '그룹에서 갈등이 있을 때, [NAME]은(는) 어떻게 대처하나요?',
-                    'tests.feedback360.questions.teamwork_4': '[NAME]은(는) 그룹에 좋은 분위기를 가져다주나요?',
-                    'tests.feedback360.questions.emotional_1': '[NAME]은(는) 자신의 기분이 다른 사람들에게 어떤 영향을 미치는지 알고 있나요?',
-                    'tests.feedback360.questions.emotional_2': '[NAME]은(는) 다른 사람들의 감정에 진심으로 관심을 보이나요?',
-                    'tests.feedback360.questions.emotional_3': '스트레스 받는 상황에서 [NAME]은(는) 차분함을 유지하나요?',
-                    'tests.feedback360.questions.emotional_4': '[NAME]은(는) 방 안의 분위기를 잘 파악하나요?',
-                    'tests.feedback360.questions.problem_1': '[NAME]은(는) 복잡한 문제를 해결하는 것을 잘하나요?',
-                    'tests.feedback360.questions.problem_2': '[NAME]은(는) 창의적인 해결책을 생각해내나요?',
-                    'tests.feedback360.questions.problem_3': '[NAME]은(는) 새로운 것을 시도할 때 혁신적인가요?',
-                    'tests.feedback360.questions.problem_4': '[NAME]은(는) 중요한 순간에 좋은 결정을 내리나요?',
-                    'tests.feedback360.questions.adaptability_1': '계획이 마지막 순간에 바뀔 때, [NAME]은(는) 잘 적응하나요?',
-                    'tests.feedback360.questions.adaptability_2': '일이 계획대로 되지 않을 때 [NAME]은(는) 차분한가요?',
-                    'tests.feedback360.questions.adaptability_3': '[NAME]은(는) 새로운 것을 얼마나 빨리 배우나요?',
-                    'tests.feedback360.questions.adaptability_4': '일이 잘 안 될 때, [NAME]은(는) 빨리 회복하나요?',
-                    'tests.feedback360.questions.interpersonal_1': '[NAME]은(는) 진정한 우정을 만드는 것을 잘하나요?',
-                    'tests.feedback360.questions.interpersonal_2': '도움이 필요할 때 [NAME]에게 의지할 수 있나요?',
-                    'tests.feedback360.questions.interpersonal_3': '[NAME]은(는) 새로운 사람들을 만나는 것을 잘하나요?',
-                    'tests.feedback360.questions.interpersonal_4': '[NAME]은(는) 주변 사람들을 기분 좋게 만드나요?',
-                    'tests.feedback360.questions.work_style_1': '[NAME]은(는) 잘 정리되어 있고 체계적인가요?',
-                    'tests.feedback360.questions.work_style_2': '[NAME]은(는) 보통 시간을 잘 지키나요?',
-                    'tests.feedback360.questions.work_style_3': '[NAME]이(가) 하겠다고 말한 일을 믿고 맡길 수 있나요?',
-                    'tests.feedback360.questions.work_style_4': '[NAME]은(는) 세부사항에 주의를 기울이나요?'
-                };
-                
-                translatedText = fallbackTranslations[currentQuestion.text_key] || currentQuestion.text_key;
+                translatedText = currentQuestion.text_key;
             }
             
             console.log('Debug translation:', {

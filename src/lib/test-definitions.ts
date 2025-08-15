@@ -529,171 +529,12 @@ const enneagramScoring: ScoringFunction = (answers) => {
 };
 
 // 360 Feedback Test Questions - Personalized & Casual for Friends/Family/Colleagues
-const feedback360Questions: TestQuestion[] = [
-  // Leadership & Initiative (4 questions)
+// Universal questions for all 360 feedback categories (Questions 1-10)
+const universalQuestions: TestQuestion[] = [
+  // Big Five Core Dimensions (Q1-5)
   {
-    id: 'leadership_1',
-    text_key: 'tests.feedback360.questions.leadership_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-  {
-    id: 'leadership_2', 
-    text_key: 'tests.feedback360.questions.leadership_2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-  {
-    id: 'leadership_3',
-    text_key: 'tests.feedback360.questions.leadership_3',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-  {
-    id: 'leadership_4',
-    text_key: 'tests.feedback360.questions.leadership_4',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-
-  // Communication & Social Skills (4 questions)
-  {
-    id: 'communication_1',
-    text_key: 'tests.feedback360.questions.communication_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-  {
-    id: 'communication_2',
-    text_key: 'tests.feedback360.questions.communication_2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-  {
-    id: 'communication_3',
-    text_key: 'tests.feedback360.questions.communication_3',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.prettyAwkward',
-      maxLabel_key: 'scale.superConfident'
-    }
-  },
-  {
-    id: 'communication_4',
-    text_key: 'tests.feedback360.questions.communication_4',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.confusing',
-      maxLabel_key: 'scale.crystalClear'
-    }
-  },
-
-  // Teamwork & Collaboration (4 questions)
-  {
-    id: 'teamwork_1',
-    text_key: 'tests.feedback360.questions.teamwork_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.totally'
-    }
-  },
-  {
-    id: 'teamwork_2',
-    text_key: 'tests.feedback360.questions.teamwork_2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.always'
-    }
-  },
-  {
-    id: 'teamwork_3',
-    text_key: 'tests.feedback360.questions.teamwork_3',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.makesWorse',
-      maxLabel_key: 'scale.helpsSolve'
-    }
-  },
-  {
-    id: 'teamwork_4',
-    text_key: 'tests.feedback360.questions.teamwork_4',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.definitely'
-    }
-  },
-
-  // Emotional Intelligence & Empathy (4 questions)
-  {
-    id: 'emotional_1',
-    text_key: 'tests.feedback360.questions.emotional_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.veryAware'
-    }
-  },
-  {
-    id: 'emotional_2',
-    text_key: 'tests.feedback360.questions.emotional_2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notMuch',
-      maxLabel_key: 'scale.superCaring'
-    }
-  },
-  {
-    id: 'emotional_3',
-    text_key: 'tests.feedback360.questions.emotional_3',
+    id: 'universal_1',
+    text_key: 'tests.feedback360.universal.q1',
     type: 'scale',
     scale: {
       min: 1,
@@ -703,248 +544,803 @@ const feedback360Questions: TestQuestion[] = [
     }
   },
   {
-    id: 'emotional_4',
-    text_key: 'tests.feedback360.questions.emotional_4',
+    id: 'universal_2',
+    text_key: 'tests.feedback360.universal.q2',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.totallyClueless',
-      maxLabel_key: 'scale.superIntuitive'
-    }
-  },
-
-  // Problem Solving & Creativity (4 questions)  
-  {
-    id: 'problem_1',
-    text_key: 'tests.feedback360.questions.problem_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.getsStuckEasily',
-      maxLabel_key: 'scale.problemSolver'
+      minLabel_key: 'scale.quietReserved',
+      maxLabel_key: 'scale.outgoingEnergetic'
     }
   },
   {
-    id: 'problem_2',
-    text_key: 'tests.feedback360.questions.problem_2',
+    id: 'universal_3',
+    text_key: 'tests.feedback360.universal.q3',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.prettyBasic',
-      maxLabel_key: 'scale.superCreative'
+      minLabel_key: 'scale.selfFocused',
+      maxLabel_key: 'scale.considersOthers'
     }
   },
   {
-    id: 'problem_3',
-    text_key: 'tests.feedback360.questions.problem_3',
+    id: 'universal_4',
+    text_key: 'tests.feedback360.universal.q4',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.sticksToBasics',
-      maxLabel_key: 'scale.alwaysInnovating'
+      minLabel_key: 'scale.unreliable',
+      maxLabel_key: 'scale.dependable'
     }
   },
   {
-    id: 'problem_4',
-    text_key: 'tests.feedback360.questions.problem_4',
+    id: 'universal_5',
+    text_key: 'tests.feedback360.universal.q5',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.questionableChoices',
-      maxLabel_key: 'scale.greatJudgment'
+      minLabel_key: 'scale.closedToChange',
+      maxLabel_key: 'scale.embracesNewIdeas'
     }
   },
-
-  // Adaptability & Flexibility (4 questions)
+  // Core Interpersonal Competencies (Q6-10)
   {
-    id: 'adaptability_1',
-    text_key: 'tests.feedback360.questions.adaptability_1',
+    id: 'universal_6',
+    text_key: 'tests.feedback360.universal.q6',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.getsUpsetStressed',
-      maxLabel_key: 'scale.totallyFlexible'
-    }
-  },
-  {
-    id: 'adaptability_2',
-    text_key: 'tests.feedback360.questions.adaptability_2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.prettyRigid',
-      maxLabel_key: 'scale.superAdaptable'
+      minLabel_key: 'scale.poorCommunicator',
+      maxLabel_key: 'scale.excellentCommunicator'
     }
   },
   {
-    id: 'adaptability_3',
-    text_key: 'tests.feedback360.questions.adaptability_3',
+    id: 'universal_7',
+    text_key: 'tests.feedback360.universal.q7',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.takesForever',
-      maxLabel_key: 'scale.superQuick'
+      minLabel_key: 'scale.limitedSelfAwareness',
+      maxLabel_key: 'scale.highlySelfAware'
     }
   },
   {
-    id: 'adaptability_4',
-    text_key: 'tests.feedback360.questions.adaptability_4',
+    id: 'universal_8',
+    text_key: 'tests.feedback360.universal.q8',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.staysDown',
-      maxLabel_key: 'scale.bouncesBackFast'
-    }
-  },
-
-  // Social & Relationship Skills (4 questions)
-  {
-    id: 'interpersonal_1',
-    text_key: 'tests.feedback360.questions.interpersonal_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.strugglesWithThis',
-      maxLabel_key: 'scale.naturalAtIt'
+      minLabel_key: 'scale.missesSocialCues',
+      maxLabel_key: 'scale.attunedToOthers'
     }
   },
   {
-    id: 'interpersonal_2',
-    text_key: 'tests.feedback360.questions.interpersonal_2',
+    id: 'universal_9',
+    text_key: 'tests.feedback360.universal.q9',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.completely'
+      minLabel_key: 'scale.avoidsConflict',
+      maxLabel_key: 'scale.resolvesConstructively'
     }
   },
   {
-    id: 'interpersonal_3',
-    text_key: 'tests.feedback360.questions.interpersonal_3',
+    id: 'universal_10',
+    text_key: 'tests.feedback360.universal.q10',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.prettyShyAwkward',
-      maxLabel_key: 'scale.socialButterfly'
-    }
-  },
-  {
-    id: 'interpersonal_4',
-    text_key: 'tests.feedback360.questions.interpersonal_4',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReally',
-      maxLabel_key: 'scale.definitely'
-    }
-  },
-
-  // Organization & Reliability (4 questions)
-  {
-    id: 'work_style_1',
-    text_key: 'tests.feedback360.questions.work_style_1',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.totalMess',
-      maxLabel_key: 'scale.superOrganized'
-    }
-  },
-  {
-    id: 'work_style_2',
-    text_key: 'tests.feedback360.questions.work_style_2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.alwaysLate',
-      maxLabel_key: 'scale.alwaysOnTime'
-    }
-  },
-  {
-    id: 'work_style_3',
-    text_key: 'tests.feedback360.questions.work_style_3',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.notReliable',
-      maxLabel_key: 'scale.superReliable'
-    }
-  },
-  {
-    id: 'work_style_4',
-    text_key: 'tests.feedback360.questions.work_style_4',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'scale.prettyCareless',
-      maxLabel_key: 'scale.detailOriented'
+      minLabel_key: 'scale.defensiveResistant',
+      maxLabel_key: 'scale.welcomesGrowth'
     }
   }
 ];
 
-const feedback360Scoring: ScoringFunction = (answers) => {
-  const areas = {
-    'Leadership & Initiative': 0,
-    'Communication & Social Skills': 0,
-    'Teamwork & Collaboration': 0,
-    'Emotional Intelligence & Empathy': 0,
-    'Problem Solving & Creativity': 0,
-    'Adaptability & Flexibility': 0,
-    'Social & Relationship Skills': 0,
-    'Organization & Reliability': 0
+// Category-specific questions (Questions 11-20 for each category)
+const workSpecificQuestions: TestQuestion[] = [
+  {
+    id: 'work_11',
+    text_key: 'tests.feedback360.work.q11',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.waitsDirection',
+      maxLabel_key: 'scale.proactiveLeader'
+    }
+  },
+  {
+    id: 'work_12',
+    text_key: 'tests.feedback360.work.q12',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.blamesOthers',
+      maxLabel_key: 'scale.takesResponsibility'
+    }
+  },
+  {
+    id: 'work_13',
+    text_key: 'tests.feedback360.work.q13',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.tacticalOnly',
+      maxLabel_key: 'scale.strategicVision'
+    }
+  },
+  {
+    id: 'work_14',
+    text_key: 'tests.feedback360.work.q14',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.worksIsolation',
+      maxLabel_key: 'scale.excellentTeamPlayer'
+    }
+  },
+  {
+    id: 'work_15',
+    text_key: 'tests.feedback360.work.q15',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.performanceDrops',
+      maxLabel_key: 'scale.thrivesUnderPressure'
+    }
+  },
+  {
+    id: 'work_16',
+    text_key: 'tests.feedback360.work.q16',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.conventionalThinking',
+      maxLabel_key: 'scale.highlyInnovative'
+    }
+  },
+  {
+    id: 'work_17',
+    text_key: 'tests.feedback360.work.q17',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.avoidsLearning',
+      maxLabel_key: 'scale.continuousLearner'
+    }
+  },
+  {
+    id: 'work_18',
+    text_key: 'tests.feedback360.work.q18',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.inconsistentQuality',
+      maxLabel_key: 'scale.highStandards'
+    }
+  },
+  {
+    id: 'work_19',
+    text_key: 'tests.feedback360.work.q19',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.littleInfluence',
+      maxLabel_key: 'scale.highlyPersuasive'
+    }
+  },
+  {
+    id: 'work_20',
+    text_key: 'tests.feedback360.work.q20',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.questionableEthics',
+      maxLabel_key: 'scale.strongEthicalCompass'
+    }
+  }
+];
+
+// Additional category-specific questions
+const friendsSpecificQuestions: TestQuestion[] = [
+  {
+    id: 'friends_11',
+    text_key: 'tests.feedback360.friends.q11',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.notSupportive',
+      maxLabel_key: 'scale.incrediblySupportive'
+    }
+  },
+  {
+    id: 'friends_12',
+    text_key: 'tests.feedback360.friends.q12',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.cannotTrust',
+      maxLabel_key: 'scale.completelyTrustworthy'
+    }
+  },
+  {
+    id: 'friends_13',
+    text_key: 'tests.feedback360.friends.q13',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.dampensMood',
+      maxLabel_key: 'scale.bringsJoy'
+    }
+  },
+  {
+    id: 'friends_14',
+    text_key: 'tests.feedback360.friends.q14',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.poorListener',
+      maxLabel_key: 'scale.deeplyEmpathetic'
+    }
+  },
+  {
+    id: 'friends_15',
+    text_key: 'tests.feedback360.friends.q15',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.exclusive',
+      maxLabel_key: 'scale.highlyInclusive'
+    }
+  },
+  {
+    id: 'friends_16',
+    text_key: 'tests.feedback360.friends.q16',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.frequentlyCancels',
+      maxLabel_key: 'scale.alwaysReliable'
+    }
+  },
+  {
+    id: 'friends_17',
+    text_key: 'tests.feedback360.friends.q17',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.putsOnAct',
+      maxLabel_key: 'scale.completelyAuthentic'
+    }
+  },
+  {
+    id: 'friends_18',
+    text_key: 'tests.feedback360.friends.q18',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.overstepsBoundaries',
+      maxLabel_key: 'scale.perfectlyRespectful'
+    }
+  },
+  {
+    id: 'friends_19',
+    text_key: 'tests.feedback360.friends.q19',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.makesConflictsWorse',
+      maxLabel_key: 'scale.resolvesGracefully'
+    }
+  },
+  {
+    id: 'friends_20',
+    text_key: 'tests.feedback360.friends.q20',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.fairWeatherFriend',
+      maxLabel_key: 'scale.deeplyLoyal'
+    }
+  }
+];
+
+const familySpecificQuestions: TestQuestion[] = [
+  {
+    id: 'family_11',
+    text_key: 'tests.feedback360.family.q11',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.emotionallyDistant',
+      maxLabel_key: 'scale.deeplySupportive'
+    }
+  },
+  {
+    id: 'family_12',
+    text_key: 'tests.feedback360.family.q12',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.poorFamilyCommunicator',
+      maxLabel_key: 'scale.excellentFamilyCommunicator'
+    }
+  },
+  {
+    id: 'family_13',
+    text_key: 'tests.feedback360.family.q13',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.createsMoreConflict',
+      maxLabel_key: 'scale.helpsResolvePeacefully'
+    }
+  },
+  {
+    id: 'family_14',
+    text_key: 'tests.feedback360.family.q14',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.avoidsResponsibility',
+      maxLabel_key: 'scale.takesFullResponsibility'
+    }
+  },
+  {
+    id: 'family_15',
+    text_key: 'tests.feedback360.family.q15',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.emotionallyReactive',
+      maxLabel_key: 'scale.emotionallyBalanced'
+    }
+  },
+  {
+    id: 'family_16',
+    text_key: 'tests.feedback360.family.q16',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.selfCentered',
+      maxLabel_key: 'scale.familyFocused'
+    }
+  },
+  {
+    id: 'family_17',
+    text_key: 'tests.feedback360.family.q17',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.selfFocused',
+      maxLabel_key: 'scale.deeplyCaring'
+    }
+  },
+  {
+    id: 'family_18',
+    text_key: 'tests.feedback360.family.q18',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.boundaryIssues',
+      maxLabel_key: 'scale.healthyBoundaries'
+    }
+  },
+  {
+    id: 'family_19',
+    text_key: 'tests.feedback360.family.q19',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.disregardsTraditions',
+      maxLabel_key: 'scale.upholdsFamilyValues'
+    }
+  },
+  {
+    id: 'family_20',
+    text_key: 'tests.feedback360.family.q20',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.becomesUnavailable',
+      maxLabel_key: 'scale.stepsUpStrongly'
+    }
+  }
+];
+
+const academicSpecificQuestions: TestQuestion[] = [
+  {
+    id: 'academic_11',
+    text_key: 'tests.feedback360.academic.q11',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.hindersGroupWork',
+      maxLabel_key: 'scale.enhancesTeamLearning'
+    }
+  },
+  {
+    id: 'academic_12',
+    text_key: 'tests.feedback360.academic.q12',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.givesUpEasily',
+      maxLabel_key: 'scale.perseveresChallenges'
+    }
+  },
+  {
+    id: 'academic_13',
+    text_key: 'tests.feedback360.academic.q13',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.keepsKnowledgePrivate',
+      maxLabel_key: 'scale.freelySharesHelps'
+    }
+  },
+  {
+    id: 'academic_14',
+    text_key: 'tests.feedback360.academic.q14',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.acceptsWithoutQuestion',
+      maxLabel_key: 'scale.strongCriticalThinker'
+    }
+  },
+  {
+    id: 'academic_15',
+    text_key: 'tests.feedback360.academic.q15',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.lowMotivation',
+      maxLabel_key: 'scale.highlyMotivatedLearn'
+    }
+  },
+  {
+    id: 'academic_16',
+    text_key: 'tests.feedback360.academic.q16',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.questionableIntegrity',
+      maxLabel_key: 'scale.strongAcademicIntegrity'
+    }
+  },
+  {
+    id: 'academic_17',
+    text_key: 'tests.feedback360.academic.q17',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.poorFeedbackSkills',
+      maxLabel_key: 'scale.excellentFeedbackSkills'
+    }
+  },
+  {
+    id: 'academic_18',
+    text_key: 'tests.feedback360.academic.q18',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.limitedCuriosity',
+      maxLabel_key: 'scale.intellectuallyCurious'
+    }
+  },
+  {
+    id: 'academic_19',
+    text_key: 'tests.feedback360.academic.q19',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.ineffectivePartner',
+      maxLabel_key: 'scale.excellentStudyPartner'
+    }
+  },
+  {
+    id: 'academic_20',
+    text_key: 'tests.feedback360.academic.q20',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.repeatsMistakes',
+      maxLabel_key: 'scale.learnsQuicklyErrors'
+    }
+  }
+];
+
+const generalSpecificQuestions: TestQuestion[] = [
+  {
+    id: 'general_11',
+    text_key: 'tests.feedback360.general.q11',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.actionsContradictValues',
+      maxLabel_key: 'scale.valueActionAlignment'
+    }
+  },
+  {
+    id: 'general_12',
+    text_key: 'tests.feedback360.general.q12',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.strugglesRecover',
+      maxLabel_key: 'scale.highlyResilient'
+    }
+  },
+  {
+    id: 'general_13',
+    text_key: 'tests.feedback360.general.q13',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.poorSelfControl',
+      maxLabel_key: 'scale.excellentSelfDiscipline'
+    }
+  },
+  {
+    id: 'general_14',
+    text_key: 'tests.feedback360.general.q14',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.pessimistic',
+      maxLabel_key: 'scale.highlyOptimistic'
+    }
+  },
+  {
+    id: 'general_15',
+    text_key: 'tests.feedback360.general.q15',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.arrogant',
+      maxLabel_key: 'scale.genuinelyHumble'
+    }
+  },
+  {
+    id: 'general_16',
+    text_key: 'tests.feedback360.general.q16',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.lacksCompassion',
+      maxLabel_key: 'scale.deeplyCompassionate'
+    }
+  },
+  {
+    id: 'general_17',
+    text_key: 'tests.feedback360.general.q17',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.avoidsDifficultStands',
+      maxLabel_key: 'scale.courageouslyPrincipled'
+    }
+  },
+  {
+    id: 'general_18',
+    text_key: 'tests.feedback360.general.q18',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.takesForGranted',
+      maxLabel_key: 'scale.deeplyGrateful'
+    }
+  },
+  {
+    id: 'general_19',
+    text_key: 'tests.feedback360.general.q19',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.poorLifeBalance',
+      maxLabel_key: 'scale.excellentWorkLifeBalance'
+    }
+  },
+  {
+    id: 'general_20',
+    text_key: 'tests.feedback360.general.q20',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'scale.stagnant',
+      maxLabel_key: 'scale.constantlyGrowing'
+    }
+  }
+];
+
+// Function to get questions based on category
+const getFeedback360Questions = (category: string): TestQuestion[] => {
+  const categoryQuestions = {
+    'work': workSpecificQuestions,
+    'friends': friendsSpecificQuestions,
+    'family': familySpecificQuestions,
+    'academic': academicSpecificQuestions,
+    'general': generalSpecificQuestions
   };
 
-  // Map question IDs to their respective areas and calculate average scores
+  const specificQuestions = categoryQuestions[category as keyof typeof categoryQuestions] || generalSpecificQuestions;
+  
+  return [...universalQuestions, ...specificQuestions];
+};
+
+// Dynamic function to get feedback360 test definition for any category
+export const getFeedback360TestDefinition = (category: string): TestDefinition => {
+  const questions = getFeedback360Questions(category);
+  
+  return {
+    id: `feedback-360-${category}`,
+    category: 'how-others-see-me',
+    title_key: 'tests.feedback360.title',
+    description_key: 'tests.feedback360.description',
+    questions: questions,
+    scoring: feedback360Scoring,
+    requiresFeedback: true
+  };
+};
+
+// Default questions for backward compatibility (uses general category)
+const feedback360Questions: TestQuestion[] = getFeedback360Questions('general');
+
+const feedback360Scoring: ScoringFunction = (answers) => {
+  // Big Five Core Dimensions (Questions 1-5)
+  const bigFiveScores = {
+    'Emotional Stability': 0, // Q1
+    'Extraversion': 0, // Q2  
+    'Agreeableness': 0, // Q3
+    'Conscientiousness': 0, // Q4
+    'Openness': 0 // Q5
+  };
+
+  // Core Interpersonal Competencies (Questions 6-10)
+  const interpersonalScores = {
+    'Communication': 0, // Q6
+    'Self-Awareness': 0, // Q7
+    'Social Awareness': 0, // Q8
+    'Conflict Resolution': 0, // Q9
+    'Growth Mindset': 0 // Q10
+  };
+
+  // Category-specific competencies (Questions 11-20) - varies by category
+  const categoryScores = {
+    'Category Strength 1': 0,
+    'Category Strength 2': 0, 
+    'Category Strength 3': 0,
+    'Category Strength 4': 0,
+    'Category Strength 5': 0
+  };
+
+  // Map universal questions (1-10) to Big Five and interpersonal scores
   Object.entries(answers).forEach(([questionId, score]) => {
     const numericScore = score as number;
     
-    if (questionId.startsWith('leadership_')) {
-      areas['Leadership & Initiative'] += numericScore;
-    } else if (questionId.startsWith('communication_')) {
-      areas['Communication & Social Skills'] += numericScore;
-    } else if (questionId.startsWith('teamwork_')) {
-      areas['Teamwork & Collaboration'] += numericScore;
-    } else if (questionId.startsWith('emotional_')) {
-      areas['Emotional Intelligence & Empathy'] += numericScore;
-    } else if (questionId.startsWith('problem_')) {
-      areas['Problem Solving & Creativity'] += numericScore;
-    } else if (questionId.startsWith('adaptability_')) {
-      areas['Adaptability & Flexibility'] += numericScore;
-    } else if (questionId.startsWith('interpersonal_')) {
-      areas['Social & Relationship Skills'] += numericScore;
-    } else if (questionId.startsWith('work_style_')) {
-      areas['Organization & Reliability'] += numericScore;
+    // Universal questions mapping
+    if (questionId === 'universal_1') {
+      bigFiveScores['Emotional Stability'] = numericScore;
+    } else if (questionId === 'universal_2') {
+      bigFiveScores['Extraversion'] = numericScore;
+    } else if (questionId === 'universal_3') {
+      bigFiveScores['Agreeableness'] = numericScore;
+    } else if (questionId === 'universal_4') {
+      bigFiveScores['Conscientiousness'] = numericScore;
+    } else if (questionId === 'universal_5') {
+      bigFiveScores['Openness'] = numericScore;
+    } else if (questionId === 'universal_6') {
+      interpersonalScores['Communication'] = numericScore;
+    } else if (questionId === 'universal_7') {
+      interpersonalScores['Self-Awareness'] = numericScore;
+    } else if (questionId === 'universal_8') {
+      interpersonalScores['Social Awareness'] = numericScore;
+    } else if (questionId === 'universal_9') {
+      interpersonalScores['Conflict Resolution'] = numericScore;
+    } else if (questionId === 'universal_10') {
+      interpersonalScores['Growth Mindset'] = numericScore;
+    }
+    
+    // Category-specific questions (11-20) - aggregate for overall category performance
+    if (questionId.includes('_11') || questionId.includes('_12') || questionId.includes('_13') || questionId.includes('_14') || questionId.includes('_15') || 
+        questionId.includes('_16') || questionId.includes('_17') || questionId.includes('_18') || questionId.includes('_19') || questionId.includes('_20')) {
+      
+      if (questionId.includes('_11') || questionId.includes('_12')) {
+        categoryScores['Category Strength 1'] += numericScore;
+      } else if (questionId.includes('_13') || questionId.includes('_14')) {
+        categoryScores['Category Strength 2'] += numericScore;
+      } else if (questionId.includes('_15') || questionId.includes('_16')) {
+        categoryScores['Category Strength 3'] += numericScore;
+      } else if (questionId.includes('_17') || questionId.includes('_18')) {
+        categoryScores['Category Strength 4'] += numericScore;
+      } else if (questionId.includes('_19') || questionId.includes('_20')) {
+        categoryScores['Category Strength 5'] += numericScore;
+      }
     }
   });
 
-  // Calculate average scores (4 questions per area, convert to percentages)
+  // Calculate percentage scores
   const percentageScores: { [key: string]: number } = {};
-  Object.entries(areas).forEach(([area, totalScore]) => {
-    const averageScore = totalScore / 4; // 4 questions per area
-    percentageScores[area] = Math.round((averageScore / 5) * 100); // Convert to percentage (5-point scale)
+  
+  // Big Five percentages (single question each)
+  Object.entries(bigFiveScores).forEach(([trait, score]) => {
+    percentageScores[trait] = Math.round((score / 5) * 100);
+  });
+  
+  // Interpersonal percentages (single question each)
+  Object.entries(interpersonalScores).forEach(([skill, score]) => {
+    percentageScores[skill] = Math.round((score / 5) * 100);
+  });
+  
+  // Category percentages (2 questions each)
+  Object.entries(categoryScores).forEach(([area, totalScore]) => {
+    const averageScore = totalScore / 2; // 2 questions per category area
+    percentageScores[area] = Math.round((averageScore / 5) * 100);
   });
 
   // Identify strengths and development areas
   const sortedAreas = Object.entries(percentageScores).sort(([,a], [,b]) => b - a);
-  const strengths = sortedAreas.slice(0, 3).map(([area]) => area);
-  const developmentAreas = sortedAreas.slice(-2).map(([area]) => area);
+  const strengths = sortedAreas.slice(0, 5).map(([area]) => area);
+  const developmentAreas = sortedAreas.slice(-3).map(([area]) => area);
 
   return {
     scores: percentageScores,
