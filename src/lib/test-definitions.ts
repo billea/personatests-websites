@@ -572,8 +572,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.unreliable',
-      maxLabel_key: 'scale.dependable'
+      minLabel_key: 'scale.quietReserved',
+      maxLabel_key: 'scale.outgoingEnergetic'
     }
   },
   {
