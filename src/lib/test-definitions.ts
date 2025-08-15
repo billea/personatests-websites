@@ -665,8 +665,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.blamesOthers',
-      maxLabel_key: 'scale.takesResponsibility'
+      minLabel_key: 'scale.poorDecisions',
+      maxLabel_key: 'scale.greatDecisions'
     }
   },
   {
