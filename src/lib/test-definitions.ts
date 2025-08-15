@@ -676,8 +676,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.tacticalOnly',
-      maxLabel_key: 'scale.strategicVision'
+      minLabel_key: 'scale.worksIsolation',
+      maxLabel_key: 'scale.excellentTeamPlayer'
     }
   },
   {
@@ -687,8 +687,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.worksIsolation',
-      maxLabel_key: 'scale.excellentTeamPlayer'
+      minLabel_key: 'scale.defensiveResistant',
+      maxLabel_key: 'scale.welcomesGrowth'
     }
   },
   {
@@ -698,8 +698,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.performanceDrops',
-      maxLabel_key: 'scale.thrivesUnderPressure'
+      minLabel_key: 'scale.conventionalThinking',
+      maxLabel_key: 'scale.highlyInnovative'
     }
   },
   {
@@ -709,8 +709,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.conventionalThinking',
-      maxLabel_key: 'scale.highlyInnovative'
+      minLabel_key: 'scale.performanceDrops',
+      maxLabel_key: 'scale.thrivesUnderPressure'
     }
   },
   {
@@ -720,8 +720,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.avoidsLearning',
-      maxLabel_key: 'scale.continuousLearner'
+      minLabel_key: 'scale.notSupportive',
+      maxLabel_key: 'scale.incrediblySupportive'
     }
   },
   {
@@ -731,8 +731,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.inconsistentQuality',
-      maxLabel_key: 'scale.highStandards'
+      minLabel_key: 'scale.poorCommunicator',
+      maxLabel_key: 'scale.excellentCommunicator'
     }
   },
   {
@@ -742,8 +742,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.littleInfluence',
-      maxLabel_key: 'scale.highlyPersuasive'
+      minLabel_key: 'scale.unreliable',
+      maxLabel_key: 'scale.dependable'
     }
   },
   {
@@ -753,8 +753,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.questionableEthics',
-      maxLabel_key: 'scale.strongEthicalCompass'
+      minLabel_key: 'scale.avoidsLearning',
+      maxLabel_key: 'scale.continuousLearner'
     }
   }
 ];
