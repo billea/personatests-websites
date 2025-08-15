@@ -165,10 +165,11 @@ export default function TestPage() {
         
         console.log('useEffect running with testId:', testId);
         console.log('Current testDefinition:', testDefinition?.id);
+        console.log('selectedCategory:', selectedCategory);
+        console.log('showCategorySelection:', showCategorySelection);
         
         if (testId === 'feedback-360') {
             console.log('Detected feedback-360 test');
-            console.log('selectedCategory:', selectedCategory);
             if (!selectedCategory) {
                 console.log('No category selected - showing category selection');
                 setShowCategorySelection(true);
@@ -176,19 +177,34 @@ export default function TestPage() {
                 return;
             }
             
+            // Hide category selection once a category is selected
+            if (showCategorySelection) {
+                console.log('Category selected, hiding category selection UI');
+                setShowCategorySelection(false);
+            }
+            
             // Generate test definition based on selected category
             console.log('Generating feedback360 definition for category:', selectedCategory);
-            definition = getFeedback360TestDefinition(selectedCategory);
-            console.log('Generated definition:', definition ? 'SUCCESS' : 'FAILED');
+            try {
+                definition = getFeedback360TestDefinition(selectedCategory);
+                console.log('Generated definition:', definition ? 'SUCCESS' : 'FAILED');
+                console.log('Definition ID:', definition?.id);
+                console.log('Questions count:', definition?.questions?.length);
+            } catch (error) {
+                console.error('Error generating feedback360 definition:', error);
+                definition = null;
+            }
             
-            // Only set testDefinition if it's different from current one
-            const expectedId = `feedback-360-${selectedCategory}`;
-            if (testDefinition?.id !== expectedId) {
-                console.log('Setting new testDefinition:', expectedId);
-                setTestDefinition(definition);
-            } else {
-                console.log('TestDefinition already set, skipping update');
-                definition = testDefinition; // Use existing definition
+            // Set the test definition
+            if (definition) {
+                const expectedId = `feedback-360-${selectedCategory}`;
+                if (testDefinition?.id !== expectedId) {
+                    console.log('Setting new testDefinition:', expectedId);
+                    setTestDefinition(definition);
+                } else {
+                    console.log('TestDefinition already set, using existing');
+                    definition = testDefinition;
+                }
             }
         } else {
             definition = getTestById(testId);
@@ -197,7 +213,7 @@ export default function TestPage() {
                 setTestDefinition(definition);
             } else if (definition) {
                 console.log('TestDefinition already set, using existing');
-                definition = testDefinition; // Use existing definition
+                definition = testDefinition;
             }
         }
         
@@ -218,6 +234,10 @@ export default function TestPage() {
                 console.log('Name input conditions:', { testId, userName, hasInProgressTest });
             }
             
+            setLoading(false);
+        } else if (testId === 'feedback-360' && !selectedCategory) {
+            // Don't redirect if we're still in category selection phase
+            console.log('Feedback-360 test without category - staying on category selection');
             setLoading(false);
         } else {
             console.error(`Test ${testId} not found - redirecting to tests page`);
