@@ -207,7 +207,7 @@ export default function TestPage() {
                 }
             }
         } else {
-            definition = getTestById(testId);
+            definition = getTestById(testId) || null;
             if (definition && testDefinition?.id !== definition.id) {
                 console.log('Setting testDefinition for:', definition.id);
                 setTestDefinition(definition);
