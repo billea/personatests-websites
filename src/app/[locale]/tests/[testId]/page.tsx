@@ -164,6 +164,7 @@ export default function TestPage() {
         let definition: TestDefinition | null = null;
         
         console.log('useEffect running with testId:', testId);
+        console.log('Current testDefinition:', testDefinition?.id);
         
         if (testId === 'feedback-360') {
             console.log('Detected feedback-360 test');
@@ -179,11 +180,24 @@ export default function TestPage() {
             console.log('Generating feedback360 definition for category:', selectedCategory);
             definition = getFeedback360TestDefinition(selectedCategory);
             console.log('Generated definition:', definition ? 'SUCCESS' : 'FAILED');
-            setTestDefinition(definition);
+            
+            // Only set testDefinition if it's different from current one
+            const expectedId = `feedback-360-${selectedCategory}`;
+            if (testDefinition?.id !== expectedId) {
+                console.log('Setting new testDefinition:', expectedId);
+                setTestDefinition(definition);
+            } else {
+                console.log('TestDefinition already set, skipping update');
+                definition = testDefinition; // Use existing definition
+            }
         } else {
             definition = getTestById(testId);
-            if (definition) {
+            if (definition && testDefinition?.id !== definition.id) {
+                console.log('Setting testDefinition for:', definition.id);
                 setTestDefinition(definition);
+            } else if (definition) {
+                console.log('TestDefinition already set, using existing');
+                definition = testDefinition; // Use existing definition
             }
         }
         
@@ -210,7 +224,7 @@ export default function TestPage() {
             console.error('Debug info:', { testId, selectedCategory, definition });
             router.push(`/${currentLanguage}/tests`);
         }
-    }, [testId, selectedCategory, currentLanguage, router]);
+    }, [testId, selectedCategory, currentLanguage]);
 
     const handleAnswer = (answer: any) => {
         const currentQuestion = testDefinition?.questions[currentQuestionIndex];
