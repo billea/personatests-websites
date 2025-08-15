@@ -9,7 +9,7 @@ const nextConfig = {
   // Production optimizations for Netlify
   // Using standalone mode for dynamic routes
   output: 'standalone',
-  trailingSlash: true,
+  // Remove trailingSlash to fix dynamic route matching
   images: {
     unoptimized: true
   },
