@@ -1,4 +1,4 @@
-// Test definitions and question structures
+// Test definitions and question structures - Force rebuild for Korean (는) fix
 export interface TestQuestion {
   id: string;
   text_key: string;
