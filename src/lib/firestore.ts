@@ -156,8 +156,19 @@ export const getTestResult = async (resultId: string): Promise<TestResult | null
   }
 };
 
+// Type for feedback invitation response
+interface FeedbackInvitationResponse {
+  success: boolean;
+  invitationsSent: number;
+  invitations: Array<{
+    email: string;
+    link: string;
+  }>;
+  message: string;
+}
+
 /**
- * Sends feedback invitations via Firebase Function
+ * Sends feedback invitations via client-side solution for static deployment
  * @param testId - The ID of the test
  * @param testResultId - The ID of the saved test result
  * @param participantEmails - Array of email addresses to invite
@@ -169,22 +180,59 @@ export const sendFeedbackInvitations = async (
   testResultId: string,
   participantEmails: string[],
   userName: string
-) => {
+): Promise<FeedbackInvitationResponse> => {
   try {
-    const sendInvitations = httpsCallable(functions, 'sendFeedbackInvitations');
-    const result = await sendInvitations({
+    // For static deployment, we'll use a client-side approach
+    // Generate unique invitation tokens for each participant
+    const invitations = participantEmails.map(email => ({
+      id: `invite_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
+      email,
       testId,
       testResultId,
-      participantEmails,
-      userName
+      userName,
+      invitationToken: generateInvitationToken(),
+      createdAt: new Date().toISOString(),
+      status: 'pending'
+    }));
+
+    // Store invitations in localStorage for static deployment
+    const existingInvitations = JSON.parse(localStorage.getItem('feedback_invitations') || '[]');
+    const updatedInvitations = [...existingInvitations, ...invitations];
+    localStorage.setItem('feedback_invitations', JSON.stringify(updatedInvitations));
+
+    // Create shareable feedback links for each participant
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
+    const feedbackLinks = invitations.map(invitation => ({
+      email: invitation.email,
+      link: `${baseUrl}/feedback/${invitation.id}?token=${invitation.invitationToken}&name=${encodeURIComponent(userName)}`
+    }));
+
+    // For development purposes, log the invitation links
+    console.log('Feedback invitation links generated:');
+    feedbackLinks.forEach(link => {
+      console.log(`${link.email}: ${link.link}`);
     });
+
+    // In a real implementation, you would integrate with an email service here
+    // For now, we'll show the links to the user for manual sharing
     
-    return result.data;
+    return {
+      success: true,
+      invitationsSent: invitations.length,
+      invitations: feedbackLinks,
+      message: 'Feedback links generated successfully. You can share these links with your reviewers.'
+    };
   } catch (error) {
-    console.error("Error sending feedback invitations:", error);
+    console.error("Error generating feedback invitations:", error);
     throw error;
   }
 };
+
+// Helper function to generate invitation tokens
+function generateInvitationToken(): string {
+  return Math.random().toString(36).substring(2, 15) + 
+         Math.random().toString(36).substring(2, 15);
+}
 
 /**
  * Gets pending invitations for a user (as inviter)
