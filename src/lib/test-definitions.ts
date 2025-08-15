@@ -595,8 +595,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorCommunicator',
-      maxLabel_key: 'scale.excellentCommunicator'
+      minLabel_key: 'scale.poorListener',
+      maxLabel_key: 'scale.deeplyEmpathetic'
     }
   },
   {
@@ -606,8 +606,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.limitedSelfAwareness',
-      maxLabel_key: 'scale.highlySelfAware'
+      minLabel_key: 'scale.poorCommunicator',
+      maxLabel_key: 'scale.excellentCommunicator'
     }
   },
   {
@@ -617,8 +617,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.missesSocialCues',
-      maxLabel_key: 'scale.attunedToOthers'
+      minLabel_key: 'scale.avoidsConflict',
+      maxLabel_key: 'scale.resolvesConstructively'
     }
   },
   {
@@ -628,8 +628,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.avoidsConflict',
-      maxLabel_key: 'scale.resolvesConstructively'
+      minLabel_key: 'scale.unreliable',
+      maxLabel_key: 'scale.dependable'
     }
   },
   {
@@ -639,8 +639,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.defensiveResistant',
-      maxLabel_key: 'scale.welcomesGrowth'
+      minLabel_key: 'scale.notSupportive',
+      maxLabel_key: 'scale.incrediblySupportive'
     }
   }
 ];
