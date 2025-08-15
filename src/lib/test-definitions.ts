@@ -994,8 +994,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.hindersGroupWork',
-      maxLabel_key: 'scale.enhancesTeamLearning'
+      minLabel_key: 'scale.waitsDirection',
+      maxLabel_key: 'scale.proactiveLeader'
     }
   },
   {
@@ -1005,8 +1005,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.givesUpEasily',
-      maxLabel_key: 'scale.perseveresChallenges'
+      minLabel_key: 'scale.poorSelfDiscipline',
+      maxLabel_key: 'scale.excellentSelfDiscipline'
     }
   },
   {
@@ -1027,8 +1027,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.acceptsWithoutQuestion',
-      maxLabel_key: 'scale.strongCriticalThinker'
+      minLabel_key: 'scale.defensiveResistant',
+      maxLabel_key: 'scale.welcomesGrowth'
     }
   },
   {
@@ -1038,8 +1038,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.lowMotivation',
-      maxLabel_key: 'scale.highlyMotivatedLearn'
+      minLabel_key: 'scale.conventionalThinking',
+      maxLabel_key: 'scale.highlyInnovative'
     }
   },
   {
@@ -1049,8 +1049,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.questionableIntegrity',
-      maxLabel_key: 'scale.strongAcademicIntegrity'
+      minLabel_key: 'scale.performanceDrops',
+      maxLabel_key: 'scale.thrivesUnderPressure'
     }
   },
   {
@@ -1060,8 +1060,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorFeedbackSkills',
-      maxLabel_key: 'scale.excellentFeedbackSkills'
+      minLabel_key: 'scale.notSupportive',
+      maxLabel_key: 'scale.incrediblySupportive'
     }
   },
   {
@@ -1082,8 +1082,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.ineffectivePartner',
-      maxLabel_key: 'scale.excellentStudyPartner'
+      minLabel_key: 'scale.poorSelfDiscipline',
+      maxLabel_key: 'scale.excellentSelfDiscipline'
     }
   },
   {
@@ -1093,8 +1093,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.repeatsMistakes',
-      maxLabel_key: 'scale.learnsQuicklyErrors'
+      minLabel_key: 'scale.lowMotivation',
+      maxLabel_key: 'scale.highlyMotivatedLearn'
     }
   }
 ];
