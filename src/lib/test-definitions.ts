@@ -768,8 +768,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.notSupportive',
-      maxLabel_key: 'scale.incrediblySupportive'
+      minLabel_key: 'scale.waitsDirection',
+      maxLabel_key: 'scale.proactiveLeader'
     }
   },
   {
@@ -779,8 +779,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.cannotTrust',
-      maxLabel_key: 'scale.completelyTrustworthy'
+      minLabel_key: 'scale.poorListener',
+      maxLabel_key: 'scale.deeplyEmpathetic'
     }
   },
   {
@@ -790,8 +790,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.dampensMood',
-      maxLabel_key: 'scale.bringsJoy'
+      minLabel_key: 'scale.cannotTrust',
+      maxLabel_key: 'scale.completelyTrustworthy'
     }
   },
   {
@@ -801,8 +801,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorListener',
-      maxLabel_key: 'scale.deeplyEmpathetic'
+      minLabel_key: 'scale.dampensMood',
+      maxLabel_key: 'scale.bringsJoy'
     }
   },
   {
@@ -823,8 +823,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.frequentlyCancels',
-      maxLabel_key: 'scale.alwaysReliable'
+      minLabel_key: 'scale.notSupportive',
+      maxLabel_key: 'scale.incrediblySupportive'
     }
   },
   {
@@ -834,8 +834,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.putsOnAct',
-      maxLabel_key: 'scale.completelyAuthentic'
+      minLabel_key: 'scale.makesConflictsWorse',
+      maxLabel_key: 'scale.resolvesGracefully'
     }
   },
   {
@@ -856,8 +856,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.makesConflictsWorse',
-      maxLabel_key: 'scale.resolvesGracefully'
+      minLabel_key: 'scale.poorListener',
+      maxLabel_key: 'scale.deeplyEmpathetic'
     }
   },
   {
