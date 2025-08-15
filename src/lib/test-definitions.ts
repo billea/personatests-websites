@@ -881,8 +881,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.emotionallyDistant',
-      maxLabel_key: 'scale.deeplySupportive'
+      minLabel_key: 'scale.waitsDirection',
+      maxLabel_key: 'scale.proactiveLeader'
     }
   },
   {
@@ -892,8 +892,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorFamilyCommunicator',
-      maxLabel_key: 'scale.excellentFamilyCommunicator'
+      minLabel_key: 'scale.poorListener',
+      maxLabel_key: 'scale.deeplyEmpathetic'
     }
   },
   {
@@ -903,8 +903,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.createsMoreConflict',
-      maxLabel_key: 'scale.helpsResolvePeacefully'
+      minLabel_key: 'scale.worksIsolation',
+      maxLabel_key: 'scale.excellentTeamPlayer'
     }
   },
   {
@@ -914,8 +914,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.avoidsResponsibility',
-      maxLabel_key: 'scale.takesFullResponsibility'
+      minLabel_key: 'scale.createsMoreConflict',
+      maxLabel_key: 'scale.helpsResolvePeacefully'
     }
   },
   {
@@ -925,8 +925,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.emotionallyReactive',
-      maxLabel_key: 'scale.emotionallyBalanced'
+      minLabel_key: 'scale.poorFamilyCommunicator',
+      maxLabel_key: 'scale.excellentFamilyCommunicator'
     }
   },
   {
@@ -936,8 +936,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.selfCentered',
-      maxLabel_key: 'scale.familyFocused'
+      minLabel_key: 'scale.disregardsTraditions',
+      maxLabel_key: 'scale.upholdsFamilyValues'
     }
   },
   {
@@ -947,8 +947,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.selfFocused',
-      maxLabel_key: 'scale.deeplyCaring'
+      minLabel_key: 'scale.becomesUnavailable',
+      maxLabel_key: 'scale.stepsUpStrongly'
     }
   },
   {
@@ -958,8 +958,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.boundaryIssues',
-      maxLabel_key: 'scale.healthyBoundaries'
+      minLabel_key: 'scale.emotionallyDistant',
+      maxLabel_key: 'scale.deeplySupportive'
     }
   },
   {
@@ -969,8 +969,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.disregardsTraditions',
-      maxLabel_key: 'scale.upholdsFamilyValues'
+      minLabel_key: 'scale.selfFocused',
+      maxLabel_key: 'scale.deeplyCaring'
     }
   },
   {
@@ -980,8 +980,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.becomesUnavailable',
-      maxLabel_key: 'scale.stepsUpStrongly'
+      minLabel_key: 'scale.avoidsResponsibility',
+      maxLabel_key: 'scale.takesFullResponsibility'
     }
   }
 ];
