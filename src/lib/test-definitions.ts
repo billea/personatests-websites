@@ -550,8 +550,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.quietReserved',
-      maxLabel_key: 'scale.outgoingEnergetic'
+      minLabel_key: 'scale.strugglesWithChange',
+      maxLabel_key: 'scale.adaptsWellToChange'
     }
   },
   {
@@ -561,8 +561,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.selfFocused',
-      maxLabel_key: 'scale.considersOthers'
+      minLabel_key: 'scale.poorSelfDiscipline',
+      maxLabel_key: 'scale.excellentSelfDiscipline'
     }
   },
   {
