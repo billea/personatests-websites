@@ -168,7 +168,9 @@ export default function TestPage() {
             }
             
             // Generate test definition based on selected category
+            console.log('Generating feedback360 definition for category:', selectedCategory);
             definition = getFeedback360TestDefinition(selectedCategory);
+            console.log('Generated definition:', definition ? 'SUCCESS' : 'FAILED');
             setTestDefinition(definition);
         } else {
             definition = getTestById(testId);
@@ -196,7 +198,8 @@ export default function TestPage() {
             
             setLoading(false);
         } else {
-            console.error(`Test ${testId} not found`);
+            console.error(`Test ${testId} not found - redirecting to tests page`);
+            console.error('Debug info:', { testId, selectedCategory, definition });
             router.push(`/${currentLanguage}/tests`);
         }
     }, [testId, selectedCategory, currentLanguage, router]);
