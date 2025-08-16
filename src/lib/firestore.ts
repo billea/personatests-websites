@@ -204,7 +204,7 @@ export const sendFeedbackInvitations = async (
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
     const feedbackLinks = invitations.map(invitation => ({
       email: invitation.email,
-      link: `${baseUrl}/feedback/${invitation.id}?token=${invitation.invitationToken}&name=${encodeURIComponent(userName)}`
+      link: `${baseUrl}/feedback/${invitation.id}?token=${invitation.invitationToken}&name=${encodeURIComponent(userName)}&testId=${testId}&testResultId=${testResultId}&email=${encodeURIComponent(invitation.email)}`
     }));
 
     // For development purposes, log the invitation links

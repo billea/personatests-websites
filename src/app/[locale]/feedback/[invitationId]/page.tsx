@@ -40,18 +40,14 @@ export default function FeedbackPage() {
 
     const loadInvitation = async () => {
         try {
-            // For static deployment, check localStorage for invitations
-            const storedInvitations = JSON.parse(localStorage.getItem('feedback_invitations') || '[]');
-            const foundInvitation = storedInvitations.find((inv: any) => inv.id === invitationId);
+            // Get invitation data from URL parameters
+            const userName = searchParams.get('name');
+            const testId = searchParams.get('testId');
+            const testResultId = searchParams.get('testResultId');
+            const participantEmail = searchParams.get('email');
             
-            if (!foundInvitation) {
-                setError('Invitation not found');
-                setLoading(false);
-                return;
-            }
-
-            if (foundInvitation.invitationToken !== token) {
-                setError('Invalid invitation link');
+            if (!userName || !testId || !testResultId || !participantEmail || !token) {
+                setError('Invalid invitation link - missing required parameters');
                 setLoading(false);
                 return;
             }
@@ -65,18 +61,15 @@ export default function FeedbackPage() {
                 setLoading(false);
                 return;
             }
-
-            // Extract the user name from URL params if available
-            const userName = searchParams.get('name') || foundInvitation.userName || 'Someone';
             
             const invitationData: InvitationData = {
-                id: foundInvitation.id,
+                id: invitationId,
                 inviterName: userName,
-                testId: foundInvitation.testId,
-                testResultId: foundInvitation.testResultId,
-                participantEmail: foundInvitation.email,
-                status: foundInvitation.status,
-                invitationToken: foundInvitation.invitationToken
+                testId: testId,
+                testResultId: testResultId,
+                participantEmail: participantEmail,
+                status: 'pending',
+                invitationToken: token
             };
 
             setInvitation(invitationData);
