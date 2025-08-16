@@ -377,34 +377,14 @@ export default function TestPage() {
                     
                     // Send emails to all participants
                     const emailPromises = result.invitations.map(async (invitation: any) => {
+                        // Debug: Log the email being sent
+                        console.log('Sending email to:', invitation.email);
+                        
                         const emailParams = {
                             to_email: invitation.email,
-                            to_name: invitation.email.split('@')[0], // Use email prefix as name
+                            to_name: invitation.email.split('@')[0],
                             from_name: userName.trim(),
-                            invitation_link: invitation.link,
-                            language: currentLanguage,
-                            // Korean template parameters
-                            subject_ko: `${userName.trim()}님의 360도 피드백 참여 요청`,
-                            title_ko: '360도 피드백 참여 요청',
-                            greeting_ko: '안녕하세요!',
-                            message_ko: `${userName.trim()}님이 360도 피드백 평가에 귀하의 참여를 요청했습니다.`,
-                            description_ko: '360도 피드백은 다양한 관점에서 개인의 성격과 행동 특성을 평가하는 도구로, 귀하의 솔직하고 건설적인 피드백이 성장에 큰 도움이 됩니다.',
-                            button_text_ko: '피드백 참여하기',
-                            time_ko: '• 평가는 약 5-10분 정도 소요됩니다',
-                            anonymous_ko: '• 귀하의 응답은 완전히 익명으로 처리됩니다',
-                            feedback_ko: '• 솔직하고 건설적인 피드백을 부탁드립니다',
-                            footer_ko: '이 이메일은 Korean MBTI Platform에서 발송되었습니다.',
-                            // English template parameters  
-                            subject_en: `360° Feedback Request from ${userName.trim()}`,
-                            title_en: '360° Feedback Request',
-                            greeting_en: 'Hello!',
-                            message_en: `${userName.trim()} has requested your participation in a 360° feedback assessment.`,
-                            description_en: '360° feedback is a tool that evaluates personal characteristics and behaviors from multiple perspectives. Your honest and constructive feedback will greatly help with personal growth.',
-                            button_text_en: 'Participate in Feedback',
-                            time_en: '• The assessment takes approximately 5-10 minutes',
-                            anonymous_en: '• Your responses are completely anonymous',
-                            feedback_en: '• Please provide honest and constructive feedback',
-                            footer_en: 'This email was sent from Korean MBTI Platform.'
+                            invitation_link: invitation.link
                         };
 
                         return emailjs.send(
