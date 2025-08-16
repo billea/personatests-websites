@@ -363,33 +363,64 @@ export default function TestPage() {
 
         try {
             setSaving(true);
+            
+            // First generate invitation links
             const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim());
             
             if (result.success && result.invitations) {
-                // Show the feedback links to the user
-                const linksText = result.invitations.map((inv: any) => 
-                    `${inv.email}: ${inv.link}`
-                ).join('\n\n');
-                
-                const message = currentLanguage === 'ko' ? 
-                    `피드백 링크가 생성되었습니다!\n\n다음 링크들을 각 참가자에게 공유해주세요:\n\n${linksText}` :
-                    `Feedback links generated successfully!\n\nPlease share these links with your reviewers:\n\n${linksText}`;
-                
-                // Create a more user-friendly display
-                const confirmed = confirm(`${message}\n\n링크를 클립보드에 복사하시겠습니까? (Would you like to copy the links to clipboard?)`);
-                
-                if (confirmed) {
-                    try {
-                        await navigator.clipboard.writeText(linksText);
-                        alert(currentLanguage === 'ko' ? '링크가 클립보드에 복사되었습니다!' : 'Links copied to clipboard!');
-                    } catch (clipboardError) {
-                        console.error('Failed to copy to clipboard:', clipboardError);
-                        // Fallback: show links in a prompt for manual copying
-                        prompt(currentLanguage === 'ko' ? '다음 링크들을 복사하세요:' : 'Copy these links:', linksText);
+                // Try to send emails automatically
+                try {
+                    const emailResponse = await fetch('/.netlify/functions/send-invitations', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            invitations: result.invitations,
+                            userName: userName.trim(),
+                            language: currentLanguage
+                        })
+                    });
+
+                    const emailResult = await emailResponse.json();
+
+                    if (emailResult.success) {
+                        // Success! Emails were sent
+                        alert(currentLanguage === 'ko' ? 
+                            `이메일 초대장이 성공적으로 발송되었습니다!\n\n${validEmails.length}개의 이메일이 발송되었습니다. 참가자들이 이메일을 확인하여 피드백을 제공할 수 있습니다.` :
+                            `Email invitations sent successfully!\n\n${validEmails.length} emails have been sent. Participants can check their email to provide feedback.`
+                        );
+                        
+                        router.push(`/${currentLanguage}/results`);
+                    } else {
+                        throw new Error('Email service failed');
                     }
+                } catch (emailError) {
+                    console.error('Email sending failed, falling back to manual sharing:', emailError);
+                    
+                    // Fallback to manual sharing if email service fails
+                    const linksText = result.invitations.map((inv: any) => 
+                        `${inv.email}: ${inv.link}`
+                    ).join('\n\n');
+                    
+                    const message = currentLanguage === 'ko' ? 
+                        `자동 이메일 발송에 실패했습니다.\n\n다음 링크들을 각 참가자에게 수동으로 공유해주세요:\n\n${linksText}` :
+                        `Automatic email sending failed.\n\nPlease manually share these links with your reviewers:\n\n${linksText}`;
+                    
+                    const confirmed = confirm(`${message}\n\n링크를 클립보드에 복사하시겠습니까? (Would you like to copy the links to clipboard?)`);
+                    
+                    if (confirmed) {
+                        try {
+                            await navigator.clipboard.writeText(linksText);
+                            alert(currentLanguage === 'ko' ? '링크가 클립보드에 복사되었습니다!' : 'Links copied to clipboard!');
+                        } catch (clipboardError) {
+                            console.error('Failed to copy to clipboard:', clipboardError);
+                            prompt(currentLanguage === 'ko' ? '다음 링크들을 복사하세요:' : 'Copy these links:', linksText);
+                        }
+                    }
+                    
+                    router.push(`/${currentLanguage}/results`);
                 }
-                
-                router.push(`/${currentLanguage}/results`);
             } else {
                 throw new Error('Failed to generate invitation links');
             }
