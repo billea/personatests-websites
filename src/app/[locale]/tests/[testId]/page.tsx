@@ -370,10 +370,19 @@ export default function TestPage() {
             if (result.success && result.invitations) {
                 // Try to send emails automatically using EmailJS
                 try {
+                    console.log('Starting EmailJS integration...');
                     const emailjs = (await import('@emailjs/browser')).default;
+                    
+                    // Debug: Check environment variables
+                    console.log('EmailJS Config:', {
+                        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.substring(0, 10) + '...',
+                        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+                        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+                    });
                     
                     // Initialize EmailJS with your public key
                     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
+                    console.log('EmailJS initialized successfully');
                     
                     // Send emails to all participants
                     const emailPromises = result.invitations.map(async (invitation: any) => {
@@ -390,14 +399,23 @@ export default function TestPage() {
                         // Debug: Log all parameters being sent
                         console.log('EmailJS parameters:', emailParams);
 
-                        return emailjs.send(
-                            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-                            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-                            emailParams
-                        );
+                        try {
+                            const result = await emailjs.send(
+                                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+                                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+                                emailParams
+                            );
+                            console.log('Email sent successfully to:', invitation.email, result);
+                            return result;
+                        } catch (emailError) {
+                            console.error('Failed to send email to:', invitation.email, emailError);
+                            throw emailError;
+                        }
                     });
 
+                    console.log('Sending all emails...');
                     await Promise.all(emailPromises);
+                    console.log('All emails sent successfully!');
 
                     // Success! Emails were sent
                     alert(currentLanguage === 'ko' ? 
