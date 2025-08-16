@@ -154,28 +154,12 @@ export default function FeedbackPage() {
         }
     };
 
-    // Debug: Always show this first
-    return (
-        <main className="flex min-h-screen items-center justify-center p-8">
-            <div className="text-center max-w-2xl">
-                <h1 className="text-2xl font-bold mb-4">Feedback Page Debug</h1>
-                <div className="text-left bg-gray-100 p-4 rounded">
-                    <p><strong>Invitation ID:</strong> {invitationId}</p>
-                    <p><strong>Token:</strong> {token}</p>
-                    <p><strong>Search Params:</strong> {searchParams.toString()}</p>
-                    <p><strong>Loading:</strong> {loading.toString()}</p>
-                    <p><strong>Error:</strong> {error || 'none'}</p>
-                </div>
-            </div>
-        </main>
-    );
-
     if (loading) {
         return (
             <main className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500 mx-auto"></div>
-                    <p className="mt-4 text-lg">Loading feedback form...</p>
+                    <p className="mt-4 text-lg">{t('tests.feedback360.ui.loading')}</p>
                 </div>
             </main>
         );
@@ -243,13 +227,13 @@ export default function FeedbackPage() {
             <div className="w-full max-w-3xl">
                 <div className="mb-8 text-center">
                     <h1 className="text-3xl font-bold mb-4 text-gray-900">
-                        Feedback Request
+                        {t('tests.feedback360.ui.title')}
                     </h1>
                     <p className="text-lg text-gray-600 mb-2">
-                        <strong>{invitation.inviterName}</strong> has asked for your feedback
+                        {t('tests.feedback360.ui.request_message', { name: invitation.inviterName })}
                     </p>
                     <p className="text-gray-500 mb-6">
-                        Please answer the following questions about them honestly. Your responses will remain anonymous.
+                        {t('tests.feedback360.ui.instructions')}
                     </p>
                     
                     {/* Progress Bar */}
@@ -260,7 +244,7 @@ export default function FeedbackPage() {
                         ></div>
                     </div>
                     <p className="text-sm text-gray-500 mt-2">
-                        Question {currentQuestionIndex + 1} of {testDefinition.questions.length}
+                        {t('tests.feedback360.ui.question_progress', { current: currentQuestionIndex + 1, total: testDefinition.questions.length })}
                     </p>
                 </div>
 
@@ -270,7 +254,7 @@ export default function FeedbackPage() {
                     </h2>
                     
                     <p className="text-sm text-gray-500 mb-6">
-                        Think about <strong>{invitation.inviterName}</strong> when answering this question.
+                        {t('tests.feedback360.ui.think_about', { name: invitation.inviterName })}
                     </p>
 
                     {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
@@ -318,8 +302,7 @@ export default function FeedbackPage() {
 
                 <div className="mt-6 text-center text-sm text-gray-500">
                     <p>
-                        This feedback is completely anonymous. {invitation.inviterName} will see 
-                        aggregated results but not individual responses or who provided them.
+                        {t('tests.feedback360.ui.anonymous_notice', { name: invitation.inviterName })}
                     </p>
                 </div>
             </div>

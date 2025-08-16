@@ -219,6 +219,19 @@
         "q19": "Does this person act with responsibility toward their promises or words?",
         "q20": "Does this person maintain an overall positive and hopeful attitude?"
       },
+      "ui": {
+        "title": "Feedback Request",
+        "request_message": "{name} has asked for your feedback",
+        "instructions": "Please answer the following questions about them honestly. Your responses will remain anonymous.",
+        "question_progress": "Question {current} of {total}",
+        "think_about": "Think about {name} when answering this question.",
+        "anonymous_notice": "This feedback is completely anonymous. {name} will see aggregated results but not individual responses or who provided them.",
+        "submit_button": "Submit Feedback",
+        "loading": "Loading feedback form...",
+        "thank_you": "Thank You!",
+        "submitted_message": "Your feedback about {name} has been submitted successfully.",
+        "submitted_description": "{name} will be notified that you've provided feedback. Your responses will remain anonymous and help them gain valuable insights about their personality and behavior."
+      },
       "scale": {
         "never": "Not at all",
         "rarely": "Rarely",

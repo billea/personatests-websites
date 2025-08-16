@@ -365,7 +365,7 @@ export default function TestPage() {
             setSaving(true);
             
             // First generate invitation links
-            const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim());
+            const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim(), currentLanguage);
             
             if (result.success && result.invitations) {
                 // Try to send emails automatically using EmailJS
