@@ -386,6 +386,9 @@ export default function TestPage() {
                             from_name: userName.trim(),
                             invitation_link: invitation.link
                         };
+                        
+                        // Debug: Log all parameters being sent
+                        console.log('EmailJS parameters:', emailParams);
 
                         return emailjs.send(
                             process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
