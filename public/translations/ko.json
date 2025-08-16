@@ -2479,11 +2479,11 @@
       "Social Awareness": "사회적 인식",
       "Conflict Resolution": "갈등 해결",
       "Growth Mindset": "성장 마인드셋",
-      "Category Strength 1": "영역별 강점 1",
-      "Category Strength 2": "영역별 강점 2",
-      "Category Strength 3": "영역별 강점 3",
-      "Category Strength 4": "영역별 강점 4",
-      "Category Strength 5": "영역별 강점 5"
+      "Leadership & Initiative": "리더십과 주도성",
+      "Collaboration & Support": "협업과 지원",
+      "Innovation & Adaptability": "혁신과 적응성",
+      "Communication & Helping": "소통과 도움",
+      "Reliability & Growth": "신뢰성과 성장"
     },
     "strengthPrefix": "뛰어난",
     "developmentPrefix": "발전시켜야 할",

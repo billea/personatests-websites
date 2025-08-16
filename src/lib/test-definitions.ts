@@ -1264,13 +1264,13 @@ const feedback360Scoring: ScoringFunction = (answers) => {
     'Growth Mindset': 0 // Q10
   };
 
-  // Category-specific competencies (Questions 11-20) - varies by category
+  // Category-specific competencies (Questions 11-20) - meaningful labels by category
   const categoryScores = {
-    'Category Strength 1': 0,
-    'Category Strength 2': 0, 
-    'Category Strength 3': 0,
-    'Category Strength 4': 0,
-    'Category Strength 5': 0
+    'Leadership & Initiative': 0,        // Q11, Q12 - Leadership roles and decision-making  
+    'Collaboration & Support': 0,       // Q13, Q14 - Working with others and feedback
+    'Innovation & Adaptability': 0,     // Q15, Q16 - New approaches and stress management
+    'Communication & Helping': 0,       // Q17, Q18 - Communication and helping others
+    'Reliability & Growth': 0           // Q19, Q20 - Completing tasks and personal development
   };
 
   // Map universal questions (1-10) to Big Five and interpersonal scores
@@ -1305,15 +1305,15 @@ const feedback360Scoring: ScoringFunction = (answers) => {
         questionId.includes('_16') || questionId.includes('_17') || questionId.includes('_18') || questionId.includes('_19') || questionId.includes('_20')) {
       
       if (questionId.includes('_11') || questionId.includes('_12')) {
-        categoryScores['Category Strength 1'] += numericScore;
+        categoryScores['Leadership & Initiative'] += numericScore;
       } else if (questionId.includes('_13') || questionId.includes('_14')) {
-        categoryScores['Category Strength 2'] += numericScore;
+        categoryScores['Collaboration & Support'] += numericScore;
       } else if (questionId.includes('_15') || questionId.includes('_16')) {
-        categoryScores['Category Strength 3'] += numericScore;
+        categoryScores['Innovation & Adaptability'] += numericScore;
       } else if (questionId.includes('_17') || questionId.includes('_18')) {
-        categoryScores['Category Strength 4'] += numericScore;
+        categoryScores['Communication & Helping'] += numericScore;
       } else if (questionId.includes('_19') || questionId.includes('_20')) {
-        categoryScores['Category Strength 5'] += numericScore;
+        categoryScores['Reliability & Growth'] += numericScore;
       }
     }
   });
