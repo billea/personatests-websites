@@ -17,13 +17,15 @@ interface InvitationData {
 }
 
 export default function FeedbackPage() {
-    const { t, currentLanguage } = useTranslation();
+    const { t } = useTranslation();
     const params = useParams();
     const searchParams = useSearchParams();
-    const router = useRouter();
     
     const invitationId = params.invitationId as string;
     const token = searchParams.get('token') || '';
+    
+    // Debug: Log that page is loading
+    console.log('FeedbackPage loading with:', { invitationId, token, params, searchParams: searchParams.toString() });
 
     const [invitation, setInvitation] = useState<InvitationData | null>(null);
     const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
@@ -151,6 +153,22 @@ export default function FeedbackPage() {
             setSubmitting(false);
         }
     };
+
+    // Debug: Always show this first
+    return (
+        <main className="flex min-h-screen items-center justify-center p-8">
+            <div className="text-center max-w-2xl">
+                <h1 className="text-2xl font-bold mb-4">Feedback Page Debug</h1>
+                <div className="text-left bg-gray-100 p-4 rounded">
+                    <p><strong>Invitation ID:</strong> {invitationId}</p>
+                    <p><strong>Token:</strong> {token}</p>
+                    <p><strong>Search Params:</strong> {searchParams.toString()}</p>
+                    <p><strong>Loading:</strong> {loading.toString()}</p>
+                    <p><strong>Error:</strong> {error || 'none'}</p>
+                </div>
+            </div>
+        </main>
+    );
 
     if (loading) {
         return (
