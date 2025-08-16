@@ -233,6 +233,11 @@
         "submitted_description": "{name} will be notified that you've provided feedback. Your responses will remain anonymous and help them gain valuable insights about their personality and behavior."
       },
       "scale": {
+        "1": "Not at all",
+        "2": "Rarely", 
+        "3": "Sometimes",
+        "4": "Often",
+        "5": "Always",
         "never": "Not at all",
         "rarely": "Rarely",
         "sometimes": "Sometimes",
