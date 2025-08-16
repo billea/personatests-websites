@@ -539,8 +539,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.getsOverwhelmed',
-      maxLabel_key: 'scale.staysCalm'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -550,8 +550,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.strugglesWithChange',
-      maxLabel_key: 'scale.adaptsWellToChange'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -561,8 +561,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorSelfDiscipline',
-      maxLabel_key: 'scale.excellentSelfDiscipline'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -572,8 +572,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.quietReserved',
-      maxLabel_key: 'scale.outgoingEnergetic'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -583,8 +583,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.closedToChange',
-      maxLabel_key: 'scale.embracesNewIdeas'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   // Core Interpersonal Competencies (Q6-10)
@@ -595,8 +595,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorListener',
-      maxLabel_key: 'scale.deeplyEmpathetic'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -606,8 +606,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorCommunicator',
-      maxLabel_key: 'scale.excellentCommunicator'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -617,8 +617,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.avoidsConflict',
-      maxLabel_key: 'scale.resolvesConstructively'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -628,8 +628,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.unreliable',
-      maxLabel_key: 'scale.dependable'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -639,8 +639,8 @@ const universalQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.notSupportive',
-      maxLabel_key: 'scale.incrediblySupportive'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   }
 ];
@@ -654,8 +654,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.waitsDirection',
-      maxLabel_key: 'scale.proactiveLeader'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -665,8 +665,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorDecisions',
-      maxLabel_key: 'scale.greatDecisions'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -676,8 +676,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.worksIsolation',
-      maxLabel_key: 'scale.excellentTeamPlayer'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -687,8 +687,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.defensiveResistant',
-      maxLabel_key: 'scale.welcomesGrowth'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -698,8 +698,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.conventionalThinking',
-      maxLabel_key: 'scale.highlyInnovative'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -709,8 +709,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.performanceDrops',
-      maxLabel_key: 'scale.thrivesUnderPressure'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -720,8 +720,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.notSupportive',
-      maxLabel_key: 'scale.incrediblySupportive'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -731,8 +731,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorCommunicator',
-      maxLabel_key: 'scale.excellentCommunicator'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -742,8 +742,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.unreliable',
-      maxLabel_key: 'scale.dependable'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -753,8 +753,8 @@ const workSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.avoidsLearning',
-      maxLabel_key: 'scale.continuousLearner'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   }
 ];
@@ -768,8 +768,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.waitsDirection',
-      maxLabel_key: 'scale.proactiveLeader'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -779,8 +779,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorListener',
-      maxLabel_key: 'scale.deeplyEmpathetic'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -790,8 +790,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.cannotTrust',
-      maxLabel_key: 'scale.completelyTrustworthy'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -801,8 +801,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.dampensMood',
-      maxLabel_key: 'scale.bringsJoy'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -812,8 +812,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.exclusive',
-      maxLabel_key: 'scale.highlyInclusive'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -823,8 +823,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.notSupportive',
-      maxLabel_key: 'scale.incrediblySupportive'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -834,8 +834,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.makesConflictsWorse',
-      maxLabel_key: 'scale.resolvesGracefully'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -845,8 +845,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.overstepsBoundaries',
-      maxLabel_key: 'scale.perfectlyRespectful'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -856,8 +856,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorListener',
-      maxLabel_key: 'scale.deeplyEmpathetic'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -867,8 +867,8 @@ const friendsSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.fairWeatherFriend',
-      maxLabel_key: 'scale.deeplyLoyal'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   }
 ];
@@ -881,8 +881,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.waitsDirection',
-      maxLabel_key: 'scale.proactiveLeader'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -892,8 +892,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorListener',
-      maxLabel_key: 'scale.deeplyEmpathetic'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -903,8 +903,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.worksIsolation',
-      maxLabel_key: 'scale.excellentTeamPlayer'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -914,8 +914,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.createsMoreConflict',
-      maxLabel_key: 'scale.helpsResolvePeacefully'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -925,8 +925,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorFamilyCommunicator',
-      maxLabel_key: 'scale.excellentFamilyCommunicator'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -936,8 +936,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.disregardsTraditions',
-      maxLabel_key: 'scale.upholdsFamilyValues'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -947,8 +947,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.becomesUnavailable',
-      maxLabel_key: 'scale.stepsUpStrongly'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -958,8 +958,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.emotionallyDistant',
-      maxLabel_key: 'scale.deeplySupportive'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -980,8 +980,8 @@ const familySpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.avoidsResponsibility',
-      maxLabel_key: 'scale.takesFullResponsibility'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   }
 ];
@@ -994,8 +994,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.waitsDirection',
-      maxLabel_key: 'scale.proactiveLeader'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1005,8 +1005,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorSelfDiscipline',
-      maxLabel_key: 'scale.excellentSelfDiscipline'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1016,8 +1016,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.keepsKnowledgePrivate',
-      maxLabel_key: 'scale.freelySharesHelps'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1027,8 +1027,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.defensiveResistant',
-      maxLabel_key: 'scale.welcomesGrowth'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1038,8 +1038,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.conventionalThinking',
-      maxLabel_key: 'scale.highlyInnovative'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1049,8 +1049,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.performanceDrops',
-      maxLabel_key: 'scale.thrivesUnderPressure'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1060,8 +1060,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.notSupportive',
-      maxLabel_key: 'scale.incrediblySupportive'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1071,8 +1071,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.limitedCuriosity',
-      maxLabel_key: 'scale.intellectuallyCurious'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1082,8 +1082,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.poorSelfDiscipline',
-      maxLabel_key: 'scale.excellentSelfDiscipline'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   },
   {
@@ -1093,8 +1093,8 @@ const academicSpecificQuestions: TestQuestion[] = [
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'scale.lowMotivation',
-      maxLabel_key: 'scale.highlyMotivatedLearn'
+      minLabel_key: 'tests.feedback360.scale.never',
+      maxLabel_key: 'tests.feedback360.scale.always'
     }
   }
 ];
