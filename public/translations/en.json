@@ -485,6 +485,10 @@
     "invite_feedback_description": "Get a complete picture by inviting friends and colleagues to provide feedback about you."
   },
   "results": {
+    "page_title": "Test Results",
+    "take_test": "Take Test",
+    "back_home": "Back to Home",
+    "total_completed": "Total Completed",
     "personalityType": "Your Personality Type",
     "keyTraits": "Your Key Traits",
     "strengths": "Your Strengths",

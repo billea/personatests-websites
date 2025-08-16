@@ -312,6 +312,10 @@
     "detailOriented": "세심해요!"
   },
   "results": {
+    "page_title": "테스트 결과",
+    "take_test": "테스트 하기",
+    "back_home": "홈으로 돌아가기",
+    "total_completed": "총 완료",
     "mbtiTraits": {
       "extraversionIntroversion": "외향성/내향성",
       "sensingIntuition": "감각/직관",
