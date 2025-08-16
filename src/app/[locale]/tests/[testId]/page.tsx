@@ -717,7 +717,7 @@ export default function TestPage() {
                                     {Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
                                         <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm">
                                             <div className="flex justify-between items-center mb-2">
-                                                <div className="font-semibold text-lg">
+                                                <div className="font-semibold text-lg text-gray-900 dark:text-white">
                                                     {t(`results.dimensions.${dimension}`) || dimension}
                                                 </div>
                                                 <div className="text-xl font-bold text-yellow-300">{String(percentage)}%</div>
@@ -733,7 +733,7 @@ export default function TestPage() {
                                                 ></div>
                                             </div>
                                             {/* Visual Indicator */}
-                                            <div className="text-sm text-white/80">
+                                            <div className="text-sm text-gray-800 dark:text-white/90 font-medium">
                                                 {Number(percentage) >= 75 ? `🔥 ${t('results.indicators.strongPreference') || 'Strong preference'}` : 
                                                  Number(percentage) >= 60 ? `✨ ${t('results.indicators.clearTendency') || 'Clear tendency'}` : 
                                                  Number(percentage) >= 40 ? `⚖️ ${t('results.indicators.moderateLean') || 'Moderate lean'}` : 
