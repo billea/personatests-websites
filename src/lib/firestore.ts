@@ -203,6 +203,10 @@ export const sendFeedbackInvitations = async (
 
     // Create shareable feedback links for each participant
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
+    
+    // Debug: Log the language being used
+    console.log('Creating feedback links with language:', language);
+    
     const feedbackLinks = invitations.map(invitation => ({
       email: invitation.email,
       link: `${baseUrl}/${language}/feedback/${invitation.id}?token=${invitation.invitationToken}&name=${encodeURIComponent(userName)}&testId=${testId}&testResultId=${testResultId}&email=${encodeURIComponent(invitation.email)}`
