@@ -247,7 +247,7 @@ export default function FeedbackPage() {
                         {t('tests.feedback360.ui.title')}
                     </h1>
                     <p className="text-lg text-gray-600 mb-2">
-                        {t('tests.feedback360.ui.request_message', { name: invitation.inviterName })}
+                        {t('tests.feedback360.ui.request_message').replace('{name}', invitation.inviterName)}
                     </p>
                     <p className="text-gray-500 mb-6">
                         {t('tests.feedback360.ui.instructions')}
@@ -261,7 +261,7 @@ export default function FeedbackPage() {
                         ></div>
                     </div>
                     <p className="text-sm text-gray-500 mt-2">
-                        {t('tests.feedback360.ui.question_progress', { current: currentQuestionIndex + 1, total: testDefinition.questions.length })}
+                        {t('tests.feedback360.ui.question_progress').replace('{current}', (currentQuestionIndex + 1).toString()).replace('{total}', testDefinition.questions.length.toString())}
                     </p>
                 </div>
 
@@ -271,7 +271,7 @@ export default function FeedbackPage() {
                     </h2>
                     
                     <p className="text-sm text-gray-500 mb-6">
-                        {t('tests.feedback360.ui.think_about', { name: invitation.inviterName })}
+                        {t('tests.feedback360.ui.think_about').replace('{name}', invitation.inviterName)}
                     </p>
 
                     {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
@@ -319,7 +319,7 @@ export default function FeedbackPage() {
 
                 <div className="mt-6 text-center text-sm text-gray-500">
                     <p>
-                        {t('tests.feedback360.ui.anonymous_notice', { name: invitation.inviterName })}
+                        {t('tests.feedback360.ui.anonymous_notice').replace('{name}', invitation.inviterName)}
                     </p>
                 </div>
             </div>
