@@ -48,8 +48,25 @@ export default function FeedbackPage() {
             const testResultId = searchParams.get('testResultId');
             const participantEmail = searchParams.get('email');
             
+            // Debug: Log all parameters
+            console.log('Debug parameters:', {
+                userName,
+                testId,
+                testResultId,
+                participantEmail,
+                token,
+                allParams: searchParams.toString()
+            });
+            
             if (!userName || !testId || !testResultId || !participantEmail || !token) {
-                setError('Invalid invitation link - missing required parameters');
+                const missingParams = [];
+                if (!userName) missingParams.push('name');
+                if (!testId) missingParams.push('testId');
+                if (!testResultId) missingParams.push('testResultId');
+                if (!participantEmail) missingParams.push('email');
+                if (!token) missingParams.push('token');
+                
+                setError(`Invalid invitation link - missing required parameters: ${missingParams.join(', ')}`);
                 setLoading(false);
                 return;
             }
