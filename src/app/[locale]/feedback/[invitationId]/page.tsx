@@ -17,12 +17,31 @@ interface InvitationData {
 }
 
 export default function FeedbackPage() {
-    const { t } = useTranslation();
+    const { t, currentLanguage } = useTranslation();
     const params = useParams();
     const searchParams = useSearchParams();
     
     const invitationId = params.invitationId as string;
+    const locale = params.locale as string;
     const token = searchParams.get('token') || '';
+    
+    // Debug: Log locale and translation test
+    console.log('Feedback page locale:', locale);
+    console.log('Translation test:', t('tests.feedback360.ui.title'));
+    console.log('Current language from translation provider:', currentLanguage);
+    
+    // Korean language detection - use both locale param and currentLanguage
+    const isKorean = locale === 'ko' || currentLanguage === 'ko';
+    
+    // Korean translations with fallbacks
+    const getLocalizedText = (key: string, fallback: string, koreanText: string) => {
+        const translated = t(key);
+        console.log(`getLocalizedText: key="${key}", translated="${translated}", isKorean=${isKorean}`);
+        if (translated && translated !== key && translated.trim() !== '') {
+            return translated;
+        }
+        return isKorean ? koreanText : fallback;
+    };
     
     // Debug: Log that page is loading
     console.log('FeedbackPage loading with:', { invitationId, token, params, searchParams: searchParams.toString() });
@@ -243,18 +262,32 @@ export default function FeedbackPage() {
 
     const currentQuestion = testDefinition.questions[currentQuestionIndex];
 
+    // Debug: Log critical values
+    console.log('Render debug:', { 
+        locale, 
+        currentLanguage, 
+        isKorean, 
+        titleText: getLocalizedText('tests.feedback360.ui.title', 'Feedback Request', '피드백 요청')
+    });
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-center p-8">
             <div className="w-full max-w-3xl">
                 <div className="mb-8 text-center">
                     <h1 className="text-3xl font-bold mb-4 text-gray-900">
-                        {t('tests.feedback360.ui.title')}
+                        {getLocalizedText('tests.feedback360.ui.title', 'Feedback Request', '피드백 요청')}
                     </h1>
                     <p className="text-lg text-gray-600 mb-2">
-                        {t('tests.feedback360.ui.request_message').replace('{name}', invitation.inviterName)}
+                        {isKorean 
+                            ? `${invitation.inviterName}님이 피드백을 요청했습니다`
+                            : `${invitation.inviterName} has asked for your feedback`
+                        }
                     </p>
                     <p className="text-gray-500 mb-6">
-                        {t('tests.feedback360.ui.instructions')}
+                        {getLocalizedText('tests.feedback360.ui.instructions', 
+                            'Please answer the following questions about them honestly. Your responses will remain anonymous.',
+                            '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.'
+                        )}
                     </p>
                     
                     {/* Progress Bar */}
@@ -265,7 +298,10 @@ export default function FeedbackPage() {
                         ></div>
                     </div>
                     <p className="text-sm text-gray-500 mt-2">
-                        {t('tests.feedback360.ui.question_progress').replace('{current}', (currentQuestionIndex + 1).toString()).replace('{total}', testDefinition.questions.length.toString())}
+                        {isKorean 
+                            ? `질문 ${currentQuestionIndex + 1}/${testDefinition.questions.length}`
+                            : `Question ${currentQuestionIndex + 1} of ${testDefinition.questions.length}`
+                        }
                     </p>
                 </div>
 
@@ -275,7 +311,10 @@ export default function FeedbackPage() {
                     </h2>
                     
                     <p className="text-sm text-gray-500 mb-6">
-                        {t('tests.feedback360.ui.think_about').replace('{name}', invitation.inviterName)}
+                        {isKorean 
+                            ? `이 질문에 답할 때 ${invitation.inviterName}님을 생각해 주세요.`
+                            : `Think about ${invitation.inviterName} when answering this question.`
+                        }
                     </p>
 
                     {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
@@ -297,10 +336,10 @@ export default function FeedbackPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between text-sm text-gray-500">
                                 <span data-translate={currentQuestion.scale.minLabel_key}>
-                                    {t(currentQuestion.scale.minLabel_key) || currentQuestion.scale.minLabel_key}
+                                    {isKorean ? '전혀 그렇지 않다' : 'Not at all'}
                                 </span>
                                 <span data-translate={currentQuestion.scale.maxLabel_key}>
-                                    {t(currentQuestion.scale.maxLabel_key) || currentQuestion.scale.maxLabel_key}
+                                    {isKorean ? '매우 그렇다' : 'Always'}
                                 </span>
                             </div>
                             <div className="flex justify-between gap-2">
@@ -332,7 +371,7 @@ export default function FeedbackPage() {
                                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                         }`}
                     >
-                        ← {t('ui.previous') || 'Previous'}
+                        ← {isKorean ? '이전' : 'Previous'}
                     </button>
                     
                     <span className="text-sm text-gray-500">
@@ -344,7 +383,10 @@ export default function FeedbackPage() {
 
                 <div className="mt-4 text-center text-sm text-gray-500">
                     <p>
-                        {t('tests.feedback360.ui.anonymous_notice').replace('{name}', invitation.inviterName)}
+                        {isKorean 
+                            ? `이 피드백은 완전히 익명입니다. ${invitation.inviterName}님은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.`
+                            : `This feedback is completely anonymous. ${invitation.inviterName} will see aggregated results but not individual responses or who provided them.`
+                        }
                     </p>
                 </div>
             </div>
