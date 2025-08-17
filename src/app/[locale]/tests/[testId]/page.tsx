@@ -641,6 +641,21 @@ export default function TestPage() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-4">
                 <div className="max-w-md w-full bg-white/95 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg p-8">
+                    {/* User Greeting Section */}
+                    {user && (
+                        <div className="mb-6 text-center p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <div className="text-green-600 text-sm font-medium mb-1">
+                                {currentLanguage === 'ko' ? '로그인됨' : 'Logged in as'}
+                            </div>
+                            <div className="text-gray-800 font-semibold">
+                                {user.displayName || user.email || 'User'}
+                            </div>
+                            <div className="text-green-600 text-xs mt-1">
+                                ✓ {currentLanguage === 'ko' ? '인증 완료' : 'Authenticated'}
+                            </div>
+                        </div>
+                    )}
+                    
                     <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
                         {t('tests.feedback360.title')}
                     </h1>
@@ -706,6 +721,21 @@ export default function TestPage() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
+                    {/* User Greeting Section */}
+                    {user && (
+                        <div className="mb-6 p-4 bg-white/10 border border-white/30 rounded-lg backdrop-blur-sm">
+                            <div className="text-green-300 text-sm font-medium mb-1">
+                                {currentLanguage === 'ko' ? '안녕하세요!' : 'Hello!'}
+                            </div>
+                            <div className="text-white font-semibold text-lg">
+                                {user.displayName || user.email || 'User'}
+                            </div>
+                            <div className="text-green-300 text-xs mt-1">
+                                ✓ {currentLanguage === 'ko' ? '로그인 완료' : 'Successfully logged in'}
+                            </div>
+                        </div>
+                    )}
+                    
                     <h1 className="text-3xl font-bold mb-4 text-white">
                         🌟 {t('ui.feedback360Title') || '360° Feedback Assessment'}
                     </h1>
