@@ -53,11 +53,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             localStorage.removeItem('auth_return_url');
             localStorage.removeItem('auth_return_context');
             
-            // Redirect back to the 360 feedback test
-            console.log('Redirecting user back to 360 feedback test:', returnUrl);
+            // Instead of directly redirecting, show greeting first
+            console.log('User logged in, preparing greeting before 360 feedback test');
+            
+            // Extract locale from returnUrl to show greeting in correct language
+            const localeMatch = returnUrl.match(/\/([a-z]{2})\//);
+            const locale = localeMatch ? localeMatch[1] : 'en';
+            
+            // Redirect to greeting page with return URL
             setTimeout(() => {
-              router.push(returnUrl);
-            }, 100); // Small delay to ensure auth state is fully updated
+              router.push(`/${locale}/welcome?returnUrl=${encodeURIComponent(returnUrl)}&context=${returnContext}&userName=${encodeURIComponent(currentUser.displayName || currentUser.email || 'User')}`);
+            }, 100);
           }
         }
       }

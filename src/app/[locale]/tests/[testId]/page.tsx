@@ -557,7 +557,8 @@ export default function TestPage() {
                                 localStorage.setItem('auth_return_url', returnUrl);
                                 localStorage.setItem('auth_return_context', 'feedback-360-test');
                                 console.log('Saving return URL for after login:', returnUrl);
-                                router.push(`/${currentLanguage}`);
+                                // Redirect to dedicated auth page instead of home page
+                                router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(returnUrl)}&context=feedback-360-test`);
                             }}
                             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                         >
