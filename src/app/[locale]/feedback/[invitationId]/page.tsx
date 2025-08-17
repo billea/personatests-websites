@@ -61,21 +61,38 @@ export default function FeedbackPage() {
 
     const loadInvitation = async () => {
         try {
+            // Enhanced URL debugging
+            console.log('=== FEEDBACK PAGE URL DEBUG ===');
+            console.log('Full URL:', typeof window !== 'undefined' ? window.location.href : 'SSR');
+            console.log('Search params string:', typeof window !== 'undefined' ? window.location.search : 'SSR');
+            console.log('Invitation ID from params:', invitationId);
+            console.log('Token from URL params:', token);
+            
             // Get invitation data from URL parameters
             const userName = searchParams.get('name');
             const testId = searchParams.get('testId');
             const testResultId = searchParams.get('testResultId');
             const participantEmail = searchParams.get('email');
             
-            // Debug: Log all parameters
+            // Debug: Log all parameters with enhanced details
             console.log('Debug parameters:', {
                 userName,
                 testId,
                 testResultId,
                 participantEmail,
                 token,
-                allParams: searchParams.toString()
+                allParams: searchParams.toString(),
+                parameterCount: searchParams.toString().split('&').length
             });
+            
+            // Log each parameter individually for clarity
+            console.log('Individual parameters:');
+            console.log('  ✓ name:', userName ? `"${userName}"` : '❌ MISSING');
+            console.log('  ✓ testId:', testId ? `"${testId}"` : '❌ MISSING');
+            console.log('  ✓ testResultId:', testResultId ? `"${testResultId}"` : '❌ MISSING');
+            console.log('  ✓ email:', participantEmail ? `"${participantEmail}"` : '❌ MISSING');
+            console.log('  ✓ token:', token ? `"${token}"` : '❌ MISSING');
+            console.log('=== END URL DEBUG ===');
             
             if (!userName || !testId || !testResultId || !participantEmail || !token) {
                 const missingParams = [];

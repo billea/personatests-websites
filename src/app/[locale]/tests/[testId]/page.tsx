@@ -421,8 +421,13 @@ export default function TestPage() {
                             invitation_link: invitation.link
                         };
                         
-                        // Debug: Log all parameters being sent
+                        // Enhanced EmailJS debug logging
+                        console.log('=== EMAILJS DEBUG ===');
                         console.log('EmailJS parameters:', emailParams);
+                        console.log('Full invitation link being sent:', invitation.link);
+                        console.log('Link length:', invitation.link.length);
+                        console.log('Link contains all params?', invitation.link.includes('token=') && invitation.link.includes('name=') && invitation.link.includes('testId=') && invitation.link.includes('testResultId=') && invitation.link.includes('email='));
+                        console.log('=== END EMAILJS DEBUG ===');
 
                         try {
                             const result = await emailjs.send(
