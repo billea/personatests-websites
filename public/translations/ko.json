@@ -2487,6 +2487,12 @@
     "strengths": "당신의 강점",
     "growthOpportunities": "성장 기회",
     "aboutType": "당신의 유형에 대해",
+    "no_results_title": "아직 완료된 테스트가 없습니다",
+    "no_results_message": "성격 테스트를 완료하여 개인화된 결과와 통찰력을 확인해보세요!",
+    "take_first_test": "첫 번째 테스트 하기",
+    "page_title": "내 테스트 결과",
+    "take_test": "테스트 하기",
+    "back_home": "홈으로 돌아가기",
     "indicators": {
       "strongPreference": "강한 선호",
       "clearTendency": "뚜렷한 경향",
