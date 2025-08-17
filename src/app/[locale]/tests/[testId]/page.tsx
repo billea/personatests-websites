@@ -603,11 +603,11 @@ export default function TestPage() {
     // Show category selection for feedback-360 test
     if (showCategorySelection && testId === 'feedback-360') {
         const categories = [
-            { key: 'work', label: t('tests.feedback360.categories.work') },
-            { key: 'friends', label: t('tests.feedback360.categories.friends') },
-            { key: 'family', label: t('tests.feedback360.categories.family') },
-            { key: 'academic', label: t('tests.feedback360.categories.academic') },
-            { key: 'general', label: t('tests.feedback360.categories.general') }
+            { key: 'work', label: t('tests.feedback360.categories.work') || '직장 동료' },
+            { key: 'friends', label: t('tests.feedback360.categories.friends') || '친구' },
+            { key: 'family', label: t('tests.feedback360.categories.family') || '가족' },
+            { key: 'academic', label: t('tests.feedback360.categories.academic') || '학업 파트너' },
+            { key: 'general', label: t('tests.feedback360.categories.general') || '일반적 관계' }
         ];
 
         return (
