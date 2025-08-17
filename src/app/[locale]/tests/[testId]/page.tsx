@@ -160,18 +160,31 @@ export default function TestPage() {
 
     // Load test definition and check for saved progress
     useEffect(() => {
+        // Enhanced debugging for authentication
+        console.log('=== AUTH DEBUG START ===');
+        console.log('testId:', testId);
+        console.log('authLoading:', authLoading);
+        console.log('user:', user ? 'AUTHENTICATED' : 'NOT_AUTHENTICATED');
+        console.log('currentLanguage:', currentLanguage);
+        console.log('=== AUTH DEBUG END ===');
+        
         // For feedback-360 test, require authentication first
         // Wait for auth loading to complete before checking authentication
         if (testId === 'feedback-360' && !authLoading && !user) {
-            console.log('360 feedback requires authentication - redirecting to login');
+            console.log('🔐 360 feedback requires authentication - redirecting to login');
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
             return;
         }
         
         // Skip loading test definition while auth is still loading for feedback-360
         if (testId === 'feedback-360' && authLoading) {
-            console.log('Waiting for authentication to complete...');
+            console.log('⏳ Waiting for authentication to complete...');
             return;
+        }
+        
+        // If we reach here for feedback-360, user must be authenticated
+        if (testId === 'feedback-360' && user) {
+            console.log('✅ User authenticated, proceeding with feedback-360 test');
         }
         
         // For feedback-360 test, handle category selection first
