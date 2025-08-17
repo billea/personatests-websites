@@ -11,7 +11,7 @@ import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
     const { t, currentLanguage } = useTranslation();
-    const { user } = useAuth();
+    const { user, loading: authLoading } = useAuth();
     const params = useParams();
     const router = useRouter();
     const testId = params.testId as string;
@@ -161,9 +161,16 @@ export default function TestPage() {
     // Load test definition and check for saved progress
     useEffect(() => {
         // For feedback-360 test, require authentication first
-        if (testId === 'feedback-360' && !user) {
+        // Wait for auth loading to complete before checking authentication
+        if (testId === 'feedback-360' && !authLoading && !user) {
             console.log('360 feedback requires authentication - redirecting to login');
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
+            return;
+        }
+        
+        // Skip loading test definition while auth is still loading for feedback-360
+        if (testId === 'feedback-360' && authLoading) {
+            console.log('Waiting for authentication to complete...');
             return;
         }
         
@@ -251,7 +258,7 @@ export default function TestPage() {
             console.error('Debug info:', { testId, selectedCategory, definition });
             router.push(`/${currentLanguage}/tests`);
         }
-    }, [testId, selectedCategory, currentLanguage]);
+    }, [testId, selectedCategory, currentLanguage, authLoading, user]);
 
     const handleAnswer = (answer: any) => {
         const currentQuestion = testDefinition?.questions[currentQuestionIndex];
@@ -516,7 +523,7 @@ export default function TestPage() {
         }
     };
 
-    if (loading) {
+    if (loading || (testId === 'feedback-360' && authLoading)) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
