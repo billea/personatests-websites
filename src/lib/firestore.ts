@@ -39,12 +39,36 @@ export interface TestInvitation {
   createdAt: Timestamp;
   completedAt?: Timestamp;
   invitationToken?: string;
+  feedbackCategory: 'work' | 'friends' | 'family' | 'academic' | 'general'; // NEW: Group tracking
 }
 
 export interface FeedbackSubmission {
   invitationId: string;
+  testResultId: string;
+  testOwnerId: string; // User ID who owns the test result
   feedbackPayload: any;
   submittedAt: Timestamp;
+  reviewerEmail?: string;
+  feedbackCategory: 'work' | 'friends' | 'family' | 'academic' | 'general'; // NEW: Group tracking
+}
+
+export interface FeedbackProgress {
+  userId: string;
+  testResultId: string;
+  testId: string;
+  totalInvitationsSent: number;
+  feedbackReceived: number;
+  pendingInvitations: string[]; // Array of invitation IDs
+  completedInvitations: string[]; // Array of invitation IDs
+  lastUpdated: Timestamp;
+  // NEW: Group breakdown tracking
+  categoryBreakdown: {
+    work: { sent: number; received: number; pending: string[]; completed: string[]; };
+    friends: { sent: number; received: number; pending: string[]; completed: string[]; };
+    family: { sent: number; received: number; pending: string[]; completed: string[]; };
+    academic: { sent: number; received: number; pending: string[]; completed: string[]; };
+    general: { sent: number; received: number; pending: string[]; completed: string[]; };
+  };
 }
 
 /**
@@ -168,31 +192,37 @@ interface FeedbackInvitationResponse {
 }
 
 /**
- * Sends feedback invitations via client-side solution for static deployment
+ * Sends feedback invitations for authenticated users with proper Firestore tracking
+ * @param userId - The authenticated user's ID
  * @param testId - The ID of the test
  * @param testResultId - The ID of the saved test result
  * @param participantEmails - Array of email addresses to invite
  * @param userName - The user's name to personalize questions
+ * @param feedbackCategory - The relationship category (work, friends, family, etc.)
+ * @param language - Language for the feedback form
  * @returns Success status and invitation details
  */
 export const sendFeedbackInvitations = async (
+  userId: string,
   testId: string,
   testResultId: string,
   participantEmails: string[],
   userName: string,
+  feedbackCategory: 'work' | 'friends' | 'family' | 'academic' | 'general',
   language: string = 'en'
 ): Promise<FeedbackInvitationResponse> => {
   try {
     // Debug: Log all parameters received
     console.log('sendFeedbackInvitations called with:', {
+      userId,
       testId,
       testResultId,
       participantEmails,
       userName,
+      feedbackCategory,
       language
     });
     
-    // For static deployment, we'll use a client-side approach
     // Generate unique invitation tokens for each participant
     const invitations = participantEmails.map(email => ({
       id: `invite_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
@@ -205,10 +235,31 @@ export const sendFeedbackInvitations = async (
       status: 'pending'
     }));
 
-    // Store invitations in localStorage for static deployment
-    const existingInvitations = JSON.parse(localStorage.getItem('feedback_invitations') || '[]');
-    const updatedInvitations = [...existingInvitations, ...invitations];
-    localStorage.setItem('feedback_invitations', JSON.stringify(updatedInvitations));
+    // Store invitations in Firestore for authenticated users
+    const invitationPromises = invitations.map(async (invitation) => {
+      const invitationData: Omit<TestInvitation, 'id' | 'createdAt'> = {
+        inviterUid: userId,
+        inviterName: userName,
+        testId,
+        testResultId,
+        participantEmail: invitation.email,
+        status: 'pending',
+        invitationToken: invitation.invitationToken,
+        feedbackCategory: feedbackCategory // NEW: Include category tracking
+      };
+      
+      const docRef = await addDoc(collection(firestore, 'testInvitations'), {
+        ...invitationData,
+        createdAt: serverTimestamp()
+      });
+      
+      return { ...invitation, firestoreId: docRef.id };
+    });
+    
+    const savedInvitations = await Promise.all(invitationPromises);
+    
+    // Create or update feedback progress tracking
+    await updateFeedbackProgress(userId, testResultId, testId, participantEmails.length, savedInvitations.map(inv => inv.id), feedbackCategory);
 
     // Create shareable feedback links for each participant
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
@@ -246,6 +297,257 @@ export const sendFeedbackInvitations = async (
 function generateInvitationToken(): string {
   return Math.random().toString(36).substring(2, 15) + 
          Math.random().toString(36).substring(2, 15);
+}
+
+/**
+ * Updates feedback progress tracking for a user
+ * @param userId - The user's ID
+ * @param testResultId - The test result ID
+ * @param testId - The test ID
+ * @param newInvitationsCount - Number of new invitations sent
+ * @param newInvitationIds - Array of new invitation IDs
+ * @param category - The feedback category (work, friends, family, etc.)
+ */
+async function updateFeedbackProgress(
+  userId: string,
+  testResultId: string,
+  testId: string,
+  newInvitationsCount: number,
+  newInvitationIds: string[],
+  category: 'work' | 'friends' | 'family' | 'academic' | 'general'
+): Promise<void> {
+  try {
+    const progressRef = doc(firestore, 'feedbackProgress', `${userId}_${testResultId}`);
+    const progressDoc = await getDoc(progressRef);
+    
+    if (progressDoc.exists()) {
+      // Update existing progress
+      const currentData = progressDoc.data() as FeedbackProgress;
+      const updatedCategoryBreakdown = { ...currentData.categoryBreakdown };
+      
+      // Initialize category if it doesn't exist
+      if (!updatedCategoryBreakdown[category]) {
+        updatedCategoryBreakdown[category] = {
+          sent: 0,
+          received: 0,
+          pending: [],
+          completed: []
+        };
+      }
+      
+      // Update category-specific tracking
+      updatedCategoryBreakdown[category].sent += newInvitationsCount;
+      updatedCategoryBreakdown[category].pending.push(...newInvitationIds);
+      
+      await setDoc(progressRef, {
+        ...currentData,
+        totalInvitationsSent: currentData.totalInvitationsSent + newInvitationsCount,
+        pendingInvitations: [...currentData.pendingInvitations, ...newInvitationIds],
+        categoryBreakdown: updatedCategoryBreakdown,
+        lastUpdated: serverTimestamp()
+      }, { merge: true });
+    } else {
+      // Create new progress tracking with category breakdown
+      const categoryBreakdown: FeedbackProgress['categoryBreakdown'] = {
+        work: { sent: 0, received: 0, pending: [], completed: [] },
+        friends: { sent: 0, received: 0, pending: [], completed: [] },
+        family: { sent: 0, received: 0, pending: [], completed: [] },
+        academic: { sent: 0, received: 0, pending: [], completed: [] },
+        general: { sent: 0, received: 0, pending: [], completed: [] }
+      };
+      
+      // Set the specific category data
+      categoryBreakdown[category] = {
+        sent: newInvitationsCount,
+        received: 0,
+        pending: newInvitationIds,
+        completed: []
+      };
+      
+      const progressData: Omit<FeedbackProgress, 'lastUpdated'> = {
+        userId,
+        testResultId,
+        testId,
+        totalInvitationsSent: newInvitationsCount,
+        feedbackReceived: 0,
+        pendingInvitations: newInvitationIds,
+        completedInvitations: [],
+        categoryBreakdown
+      };
+      
+      await setDoc(progressRef, {
+        ...progressData,
+        lastUpdated: serverTimestamp()
+      });
+    }
+    
+    console.log('Feedback progress updated successfully');
+  } catch (error) {
+    console.error('Error updating feedback progress:', error);
+    throw error;
+  }
+}
+
+/**
+ * Saves feedback submission and updates progress tracking
+ * @param invitationId - The invitation ID
+ * @param testResultId - The test result ID  
+ * @param testOwnerId - The user ID who owns the test
+ * @param feedbackData - The feedback submission data
+ * @param reviewerEmail - Email of the person providing feedback
+ * @param feedbackCategory - The feedback category (work, friends, family, etc.)
+ */
+export const saveFeedbackSubmission = async (
+  invitationId: string,
+  testResultId: string,
+  testOwnerId: string,
+  feedbackData: any,
+  reviewerEmail: string,
+  feedbackCategory: 'work' | 'friends' | 'family' | 'academic' | 'general'
+): Promise<void> => {
+  try {
+    // Save the feedback submission
+    const feedbackSubmission: Omit<FeedbackSubmission, 'submittedAt'> = {
+      invitationId,
+      testResultId,
+      testOwnerId,
+      feedbackPayload: feedbackData,
+      reviewerEmail,
+      feedbackCategory
+    };
+    
+    await addDoc(collection(firestore, 'feedbackSubmissions'), {
+      ...feedbackSubmission,
+      submittedAt: serverTimestamp()
+    });
+    
+    // Update invitation status
+    const invitationsQuery = query(
+      collection(firestore, 'testInvitations'),
+      where('invitationToken', '==', invitationId) // Assuming invitation ID is the token
+    );
+    
+    const invitationDocs = await getDocs(invitationsQuery);
+    if (!invitationDocs.empty) {
+      const invitationDoc = invitationDocs.docs[0];
+      await setDoc(invitationDoc.ref, {
+        status: 'completed',
+        completedAt: serverTimestamp()
+      }, { merge: true });
+    }
+    
+    // Update feedback progress
+    const progressRef = doc(firestore, 'feedbackProgress', `${testOwnerId}_${testResultId}`);
+    const progressDoc = await getDoc(progressRef);
+    
+    if (progressDoc.exists()) {
+      const currentData = progressDoc.data() as FeedbackProgress;
+      const updatedPendingInvitations = currentData.pendingInvitations.filter(id => id !== invitationId);
+      const updatedCompletedInvitations = [...currentData.completedInvitations, invitationId];
+      
+      await setDoc(progressRef, {
+        feedbackReceived: currentData.feedbackReceived + 1,
+        pendingInvitations: updatedPendingInvitations,
+        completedInvitations: updatedCompletedInvitations,
+        lastUpdated: serverTimestamp()
+      }, { merge: true });
+    }
+    
+    console.log('Feedback submission saved and progress updated');
+  } catch (error) {
+    console.error('Error saving feedback submission:', error);
+    throw error;
+  }
+}
+
+/**
+ * Gets feedback progress for a user's test result
+ * @param userId - The user's ID
+ * @param testResultId - The test result ID
+ * @returns Feedback progress data
+ */
+export const getFeedbackProgress = async (
+  userId: string,
+  testResultId: string
+): Promise<FeedbackProgress | null> => {
+  try {
+    const progressRef = doc(firestore, 'feedbackProgress', `${userId}_${testResultId}`);
+    const progressDoc = await getDoc(progressRef);
+    
+    if (progressDoc.exists()) {
+      return progressDoc.data() as FeedbackProgress;
+    }
+    
+    return null;
+  } catch (error) {
+    console.error('Error getting feedback progress:', error);
+    throw error;
+  }
+}
+
+/**
+ * Gets all feedback submissions for a user's test result
+ * @param userId - The user's ID
+ * @param testResultId - The test result ID
+ * @returns Array of feedback submissions
+ */
+export const getUserFeedbackSubmissions = async (
+  userId: string,
+  testResultId: string
+): Promise<FeedbackSubmission[]> => {
+  try {
+    const feedbackQuery = query(
+      collection(firestore, 'feedbackSubmissions'),
+      where('testOwnerId', '==', userId),
+      where('testResultId', '==', testResultId),
+      orderBy('submittedAt', 'desc')
+    );
+    
+    const feedbackDocs = await getDocs(feedbackQuery);
+    return feedbackDocs.docs.map(doc => ({
+      ...doc.data(),
+      id: doc.id
+    } as FeedbackSubmission & { id: string }));
+  } catch (error) {
+    console.error('Error getting user feedback submissions:', error);
+    throw error;
+  }
+}
+
+/**
+ * Gets feedback submissions grouped by category for a user's test result
+ * @param userId - The user's ID
+ * @param testResultId - The test result ID
+ * @returns Object with feedback submissions grouped by category
+ */
+export const getUserFeedbackByCategory = async (
+  userId: string,
+  testResultId: string
+): Promise<{
+  [key in 'work' | 'friends' | 'family' | 'academic' | 'general']: FeedbackSubmission[]
+}> => {
+  try {
+    const allFeedback = await getUserFeedbackSubmissions(userId, testResultId);
+    
+    const feedbackByCategory = {
+      work: [] as FeedbackSubmission[],
+      friends: [] as FeedbackSubmission[],
+      family: [] as FeedbackSubmission[],
+      academic: [] as FeedbackSubmission[],
+      general: [] as FeedbackSubmission[]
+    };
+    
+    allFeedback.forEach(feedback => {
+      if (feedback.feedbackCategory) {
+        feedbackByCategory[feedback.feedbackCategory].push(feedback);
+      }
+    });
+    
+    return feedbackByCategory;
+  } catch (error) {
+    console.error('Error getting user feedback by category:', error);
+    throw error;
+  }
 }
 
 /**

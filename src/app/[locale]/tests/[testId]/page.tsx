@@ -160,6 +160,13 @@ export default function TestPage() {
 
     // Load test definition and check for saved progress
     useEffect(() => {
+        // For feedback-360 test, require authentication first
+        if (testId === 'feedback-360' && !user) {
+            console.log('360 feedback requires authentication - redirecting to login');
+            setLoading(false);
+            return;
+        }
+        
         // For feedback-360 test, handle category selection first
         let definition: TestDefinition | null = null;
         
@@ -367,8 +374,23 @@ export default function TestPage() {
             setSaving(true);
             
             // First generate invitation links
+            if (!user) {
+                alert(currentLanguage === 'ko' ? '로그인이 필요합니다.' : 'Authentication required.');
+                return;
+            }
+            
             console.log('About to call sendFeedbackInvitations with language:', currentLanguage);
-            const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim(), currentLanguage || 'en');
+            console.log('Selected category for feedback:', selectedCategory);
+            
+            const result = await sendFeedbackInvitations(
+                user.uid,
+                testId, 
+                testResultId, 
+                validEmails, 
+                userName.trim(), 
+                selectedCategory as 'work' | 'friends' | 'family' | 'academic' | 'general',
+                currentLanguage || 'en'
+            );
             
             if (result.success && result.invitations) {
                 // Try to send emails automatically using EmailJS
@@ -504,6 +526,54 @@ export default function TestPage() {
                             'Loading test...'
                         }
                     </p>
+                </div>
+            </div>
+        );
+    }
+
+    // Show login requirement for 360 feedback test
+    if (testId === 'feedback-360' && !user) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-4">
+                <div className="max-w-md w-full bg-white/95 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg p-8 text-center">
+                    <div className="text-6xl mb-6">🔐</div>
+                    <h1 className="text-2xl font-bold mb-4 text-gray-800">
+                        {currentLanguage === 'ko' ? 
+                            '로그인이 필요합니다' : 
+                            'Authentication Required'
+                        }
+                    </h1>
+                    <p className="text-gray-600 mb-6">
+                        {currentLanguage === 'ko' ? 
+                            '360도 피드백 테스트는 로그인이 필요합니다. 피드백 결과를 저장하고 나중에 확인할 수 있도록 계정이 필요합니다.' :
+                            '360° Feedback tests require you to be logged in. Your account is needed to save feedback results and track progress from reviewers.'
+                        }
+                    </p>
+                    <div className="space-y-3">
+                        <button
+                            onClick={() => router.push(`/${currentLanguage}`)}
+                            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                        >
+                            {currentLanguage === 'ko' ? '로그인하기' : 'Sign In'}
+                        </button>
+                        <button
+                            onClick={() => router.push(`/${currentLanguage}/tests`)}
+                            className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-colors"
+                        >
+                            {currentLanguage === 'ko' ? '다른 테스트 보기' : 'View Other Tests'}
+                        </button>
+                    </div>
+                    <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                        <h3 className="font-semibold text-blue-800 mb-2">
+                            {currentLanguage === 'ko' ? '로그인하면:' : 'With your account:'}
+                        </h3>
+                        <ul className="text-sm text-blue-700 space-y-1">
+                            <li>✓ {currentLanguage === 'ko' ? '피드백 결과가 안전하게 저장됩니다' : 'Feedback results are securely saved'}</li>
+                            <li>✓ {currentLanguage === 'ko' ? '새로운 피드백 알림을 받습니다' : 'Get notified when new feedback arrives'}</li>
+                            <li>✓ {currentLanguage === 'ko' ? '진행 상황을 추적할 수 있습니다' : 'Track feedback progress and statistics'}</li>
+                            <li>✓ {currentLanguage === 'ko' ? '종합적인 결과 대시보드를 이용합니다' : 'Access comprehensive results dashboard'}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         );
