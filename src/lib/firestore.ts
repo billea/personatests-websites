@@ -183,6 +183,15 @@ export const sendFeedbackInvitations = async (
   language: string = 'en'
 ): Promise<FeedbackInvitationResponse> => {
   try {
+    // Debug: Log all parameters received
+    console.log('sendFeedbackInvitations called with:', {
+      testId,
+      testResultId,
+      participantEmails,
+      userName,
+      language
+    });
+    
     // For static deployment, we'll use a client-side approach
     // Generate unique invitation tokens for each participant
     const invitations = participantEmails.map(email => ({

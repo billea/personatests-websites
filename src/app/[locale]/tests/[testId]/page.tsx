@@ -328,7 +328,9 @@ export default function TestPage() {
             testDefinition: !!testDefinition, 
             userName: userName.trim(),
             feedbackEmails,
-            testId 
+            testId,
+            currentLanguage: currentLanguage,
+            params: params
         });
         
         if (!testResultId) {
@@ -365,7 +367,8 @@ export default function TestPage() {
             setSaving(true);
             
             // First generate invitation links
-            const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim(), currentLanguage);
+            console.log('About to call sendFeedbackInvitations with language:', currentLanguage);
+            const result = await sendFeedbackInvitations(testId, testResultId, validEmails, userName.trim(), currentLanguage || 'en');
             
             if (result.success && result.invitations) {
                 // Try to send emails automatically using EmailJS
