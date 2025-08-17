@@ -670,3 +670,81 @@ export const getFeedbackForResult = async (testResultId: string) => {
     throw error;
   }
 };
+
+/**
+ * Sends notification email to test owner when feedback is received
+ * @param ownerEmail - Email of the person who owns the test
+ * @param ownerName - Name of the person who owns the test
+ * @param reviewerEmail - Email of the person who provided feedback (for anonymity, we might not include this)
+ * @param testId - The test ID
+ * @param language - Language for the notification
+ * @returns Success status
+ */
+export const sendFeedbackNotification = async (
+  ownerEmail: string,
+  ownerName: string,
+  reviewerEmail: string,
+  testId: string,
+  language: string = 'ko'
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    console.log('Sending feedback notification to:', ownerEmail);
+    
+    // Dynamic import of EmailJS for client-side usage
+    if (typeof window === 'undefined') {
+      console.log('Server-side detected, skipping EmailJS notification');
+      return { success: false, message: 'EmailJS only available on client-side' };
+    }
+    
+    const emailjs = (await import('@emailjs/browser')).default;
+    
+    // Initialize EmailJS
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
+    
+    // Prepare email parameters for notification
+    const emailParams = {
+      to_email: ownerEmail,
+      to_name: ownerName,
+      from_name: 'Korean MBTI Platform',
+      subject: language === 'ko' ? 
+        `새로운 360° 피드백이 도착했습니다!` : 
+        `New 360° Feedback Received!`,
+      message: language === 'ko' ? 
+        `안녕하세요 ${ownerName}님,\n\n360° 피드백 평가에 새로운 응답이 제출되었습니다.\n\n결과를 확인하려면 플랫폼에 로그인하세요:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\n감사합니다!\nKorean MBTI Platform` :
+        `Hello ${ownerName},\n\nA new response has been submitted for your 360° Feedback Assessment.\n\nLog in to your platform to view the results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`,
+      reviewer_anonymous: language === 'ko' ? 
+        '새로운 익명 피드백' : 
+        'New anonymous feedback'
+    };
+    
+    console.log('=== FEEDBACK NOTIFICATION DEBUG ===');
+    console.log('Notification email parameters:', {
+      to_email: emailParams.to_email,
+      to_name: emailParams.to_name,
+      subject: emailParams.subject,
+      language: language
+    });
+    console.log('=== END NOTIFICATION DEBUG ===');
+    
+    // Send notification email
+    const result = await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '', // We might need a separate template for notifications
+      emailParams
+    );
+    
+    console.log('✅ Feedback notification sent successfully:', result);
+    
+    return { 
+      success: true, 
+      message: 'Notification sent successfully' 
+    };
+    
+  } catch (error) {
+    console.error('❌ Failed to send feedback notification:', error);
+    return { 
+      success: false, 
+      message: `Failed to send notification: ${error instanceof Error ? error.message : 'Unknown error'}` 
+    };
+  }
+};

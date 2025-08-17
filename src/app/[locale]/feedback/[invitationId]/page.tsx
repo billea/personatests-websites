@@ -4,6 +4,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { getTestById, TestDefinition } from "@/lib/test-definitions";
+import { sendFeedbackNotification } from "@/lib/firestore";
 
 
 interface InvitationData {
@@ -204,6 +205,36 @@ export default function FeedbackPage() {
             localStorage.setItem(aggregatedKey, JSON.stringify(existingAggregated));
 
             console.log('Feedback submitted successfully:', feedbackData);
+            
+            // Send notification email to test owner
+            try {
+                console.log('Attempting to send feedback notification...');
+                
+                // For now, we'll use your email for testing the notification system
+                // In a real implementation, we'd fetch this from the invitation data or user profile
+                const ownerEmail = 'durha2000@gmail.com'; // TODO: Get actual owner email from user profile
+                const ownerName = invitation.inviterName;
+                const reviewerEmail = invitation.participantEmail || 'anonymous@reviewer.com';
+                const locale = currentLanguage || 'ko';
+                
+                const notificationResult = await sendFeedbackNotification(
+                    ownerEmail,
+                    ownerName,
+                    reviewerEmail,
+                    invitation.testId,
+                    locale
+                );
+                
+                if (notificationResult.success) {
+                    console.log('✅ Notification email sent successfully');
+                } else {
+                    console.log('⚠️ Notification email failed:', notificationResult.message);
+                }
+            } catch (notificationError) {
+                console.error('❌ Error sending notification:', notificationError);
+                // Don't fail the feedback submission if notification fails
+            }
+            
             setSubmitted(true);
         } catch (error) {
             console.error('Error submitting feedback:', error);
