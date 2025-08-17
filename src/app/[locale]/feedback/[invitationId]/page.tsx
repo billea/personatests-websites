@@ -218,7 +218,7 @@ export default function FeedbackPage() {
             <main className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500 mx-auto"></div>
-                    <p className="mt-4 text-lg">{t('tests.feedback360.ui.loading')}</p>
+                    <p className="mt-4 text-lg">{t('tests.feedback360.ui.loading') || '로딩 중...'}</p>
                 </div>
             </main>
         );
@@ -245,13 +245,13 @@ export default function FeedbackPage() {
                 <div className="text-center max-w-2xl">
                     <div className="text-green-500 text-6xl mb-4">✅</div>
                     <h1 className="text-4xl font-bold mb-4 text-gray-900">
-                        {t('tests.feedback360.ui.thank_you')}
+                        {t('tests.feedback360.ui.thank_you') || '감사합니다!'}
                     </h1>
                     <p className="text-lg text-gray-600 mb-6">
-                        {t('tests.feedback360.ui.submitted_message').replace('{name}', invitation?.inviterName || '')}
+                        {(t('tests.feedback360.ui.submitted_message') || '{name}님을 위한 피드백이 성공적으로 제출되었습니다.').replace('{name}', invitation?.inviterName || '')}
                     </p>
                     <p className="text-gray-500">
-                        {t('tests.feedback360.ui.submitted_description').replace('{name}', invitation?.inviterName || '')}
+                        {(t('tests.feedback360.ui.submitted_description') || '{name}님은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.').replace('{name}', invitation?.inviterName || '')}
                     </p>
                 </div>
             </main>
@@ -263,7 +263,7 @@ export default function FeedbackPage() {
             <main className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
-                    <p className="mt-4 text-lg">{t('tests.feedback360.ui.submitting') || 'Submitting your feedback...'}</p>
+                    <p className="mt-4 text-lg">{t('tests.feedback360.ui.submitting') || '피드백을 제출하는 중...'}</p>
                 </div>
             </main>
         );
@@ -292,7 +292,7 @@ export default function FeedbackPage() {
             <div className="w-full max-w-3xl">
                 <div className="mb-8 text-center">
                     <h1 className="text-3xl font-bold mb-4 text-gray-900">
-                        {getLocalizedText('tests.feedback360.ui.title', 'Feedback Request', '피드백 요청')}
+                        {t('tests.feedback360.ui.title') || '피드백 요청'}
                     </h1>
                     <p className="text-lg text-gray-600 mb-2">
                         {isKorean 
@@ -301,10 +301,7 @@ export default function FeedbackPage() {
                         }
                     </p>
                     <p className="text-gray-500 mb-6">
-                        {getLocalizedText('tests.feedback360.ui.instructions', 
-                            'Please answer the following questions about them honestly. Your responses will remain anonymous.',
-                            '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.'
-                        )}
+                        {t('tests.feedback360.ui.instructions') || '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.'}
                     </p>
                     
                     {/* Progress Bar */}
@@ -352,11 +349,11 @@ export default function FeedbackPage() {
                     {currentQuestion.type === 'scale' && currentQuestion.scale && (
                         <div className="space-y-4">
                             <div className="flex justify-between text-sm text-gray-500">
-                                <span data-translate={currentQuestion.scale.minLabel_key}>
-                                    {isKorean ? '전혀 그렇지 않다' : 'Not at all'}
+                                <span>
+                                    {t('tests.feedback360.ui.scale_labels.not_at_all') || '전혀 그렇지 않다'}
                                 </span>
-                                <span data-translate={currentQuestion.scale.maxLabel_key}>
-                                    {isKorean ? '매우 그렇다' : 'Always'}
+                                <span>
+                                    {t('tests.feedback360.ui.scale_labels.always') || '매우 그렇다'}
                                 </span>
                             </div>
                             <div className="flex justify-between gap-2">
