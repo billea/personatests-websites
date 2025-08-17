@@ -551,7 +551,14 @@ export default function TestPage() {
                     </p>
                     <div className="space-y-3">
                         <button
-                            onClick={() => router.push(`/${currentLanguage}`)}
+                            onClick={() => {
+                                // Save current page info to localStorage for redirect after login
+                                const returnUrl = `/${currentLanguage}/tests/${testId}`;
+                                localStorage.setItem('auth_return_url', returnUrl);
+                                localStorage.setItem('auth_return_context', 'feedback-360-test');
+                                console.log('Saving return URL for after login:', returnUrl);
+                                router.push(`/${currentLanguage}`);
+                            }}
                             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                         >
                             {currentLanguage === 'ko' ? '로그인하기' : 'Sign In'}
@@ -573,6 +580,14 @@ export default function TestPage() {
                             <li>✓ {currentLanguage === 'ko' ? '진행 상황을 추적할 수 있습니다' : 'Track feedback progress and statistics'}</li>
                             <li>✓ {currentLanguage === 'ko' ? '종합적인 결과 대시보드를 이용합니다' : 'Access comprehensive results dashboard'}</li>
                         </ul>
+                        <div className="mt-3 pt-3 border-t border-blue-200">
+                            <p className="text-xs text-blue-600">
+                                {currentLanguage === 'ko' ? 
+                                    '💡 로그인 후 자동으로 이 테스트로 돌아옵니다' : 
+                                    '💡 You\'ll be automatically redirected back to this test after login'
+                                }
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
