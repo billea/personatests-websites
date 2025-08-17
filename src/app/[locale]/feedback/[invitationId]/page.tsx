@@ -248,10 +248,10 @@ export default function FeedbackPage() {
                         {t('tests.feedback360.ui.thank_you') || '감사합니다!'}
                     </h1>
                     <p className="text-lg text-gray-600 mb-6">
-                        {(t('tests.feedback360.ui.submitted_message') || '{name}님을 위한 피드백이 성공적으로 제출되었습니다.').replace('{name}', invitation?.inviterName || '')}
+                        {(t('tests.feedback360.ui.submitted_message') || '{name}을 위한 피드백이 성공적으로 제출되었습니다.').replace('{name}', invitation?.inviterName || '')}
                     </p>
                     <p className="text-gray-500">
-                        {(t('tests.feedback360.ui.submitted_description') || '{name}님은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.').replace('{name}', invitation?.inviterName || '')}
+                        {(t('tests.feedback360.ui.submitted_description') || '{name}은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.').replace('{name}', invitation?.inviterName || '')}
                     </p>
                 </div>
             </main>
@@ -296,7 +296,7 @@ export default function FeedbackPage() {
                     </h1>
                     <p className="text-lg text-gray-600 mb-2">
                         {isKorean 
-                            ? `${invitation.inviterName}님이 피드백을 요청했습니다`
+                            ? `${invitation.inviterName}이 피드백을 요청했습니다`
                             : `${invitation.inviterName} has asked for your feedback`
                         }
                     </p>
@@ -326,7 +326,7 @@ export default function FeedbackPage() {
                     
                     <p className="text-sm text-gray-500 mb-6">
                         {isKorean 
-                            ? `이 질문에 답할 때 ${invitation.inviterName}님을 생각해 주세요.`
+                            ? `이 질문에 답할 때 ${invitation.inviterName}을 생각해 주세요.`
                             : `Think about ${invitation.inviterName} when answering this question.`
                         }
                     </p>
@@ -398,7 +398,7 @@ export default function FeedbackPage() {
                 <div className="mt-4 text-center text-sm text-gray-500">
                     <p>
                         {isKorean 
-                            ? `이 피드백은 완전히 익명입니다. ${invitation.inviterName}님은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.`
+                            ? `이 피드백은 완전히 익명입니다. ${invitation.inviterName}은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.`
                             : `This feedback is completely anonymous. ${invitation.inviterName} will see aggregated results but not individual responses or who provided them.`
                         }
                     </p>
