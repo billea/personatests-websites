@@ -228,6 +228,7 @@
         "anonymous_notice": "This feedback is completely anonymous. {name} will see aggregated results but not individual responses or who provided them.",
         "submit_button": "Submit Feedback",
         "loading": "Loading feedback form...",
+        "submitting": "Submitting your feedback...",
         "thank_you": "Thank You!",
         "submitted_message": "Your feedback about {name} has been submitted successfully.",
         "submitted_description": "{name} will be notified that you've provided feedback. Your responses will remain anonymous and help them gain valuable insights about their personality and behavior."

@@ -126,6 +126,12 @@ export default function FeedbackPage() {
         }
     };
 
+    const handlePreviousQuestion = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+        }
+    };
+
     const handleSubmitFeedback = async (finalAnswers: { [questionId: string]: any }) => {
         if (!invitation || !testDefinition) return;
 
@@ -203,15 +209,13 @@ export default function FeedbackPage() {
                 <div className="text-center max-w-2xl">
                     <div className="text-green-500 text-6xl mb-4">✅</div>
                     <h1 className="text-4xl font-bold mb-4 text-gray-900">
-                        Thank You!
+                        {t('tests.feedback360.ui.thank_you')}
                     </h1>
                     <p className="text-lg text-gray-600 mb-6">
-                        Your feedback about <strong>{invitation?.inviterName}</strong> has been submitted successfully.
+                        {t('tests.feedback360.ui.submitted_message').replace('{name}', invitation?.inviterName || '')}
                     </p>
                     <p className="text-gray-500">
-                        {invitation?.inviterName} will be notified that you've provided feedback. 
-                        Your responses will remain anonymous and help them gain valuable insights 
-                        about their personality and behavior.
+                        {t('tests.feedback360.ui.submitted_description').replace('{name}', invitation?.inviterName || '')}
                     </p>
                 </div>
             </main>
@@ -223,7 +227,7 @@ export default function FeedbackPage() {
             <main className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
-                    <p className="mt-4 text-lg">Submitting your feedback...</p>
+                    <p className="mt-4 text-lg">{t('tests.feedback360.ui.submitting') || 'Submitting your feedback...'}</p>
                 </div>
             </main>
         );
@@ -317,7 +321,28 @@ export default function FeedbackPage() {
                     )}
                 </div>
 
-                <div className="mt-6 text-center text-sm text-gray-500">
+                {/* Navigation buttons */}
+                <div className="mt-6 flex justify-between items-center">
+                    <button
+                        onClick={handlePreviousQuestion}
+                        disabled={currentQuestionIndex === 0}
+                        className={`px-4 py-2 text-sm rounded-lg transition-colors ${
+                            currentQuestionIndex === 0
+                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                    >
+                        ← {t('ui.previous') || 'Previous'}
+                    </button>
+                    
+                    <span className="text-sm text-gray-500">
+                        {currentQuestionIndex + 1} / {testDefinition.questions.length}
+                    </span>
+                    
+                    <div className="w-20"></div> {/* Spacer to center the progress */}
+                </div>
+
+                <div className="mt-4 text-center text-sm text-gray-500">
                     <p>
                         {t('tests.feedback360.ui.anonymous_notice').replace('{name}', invitation.inviterName)}
                     </p>
