@@ -602,12 +602,37 @@ export default function TestPage() {
 
     // Show category selection for feedback-360 test
     if (showCategorySelection && testId === 'feedback-360') {
+        // Debug translation loading
+        console.log('=== CATEGORY TRANSLATION DEBUG ===');
+        console.log('Current language:', currentLanguage);
+        console.log('Translation test - work:', t('tests.feedback360.categories.work'));
+        console.log('Translation test - friends:', t('tests.feedback360.categories.friends'));
+        console.log('=== END TRANSLATION DEBUG ===');
+        
+        // Check if Korean language
+        const isKorean = currentLanguage === 'ko';
+        
         const categories = [
-            { key: 'work', label: t('tests.feedback360.categories.work') || '직장 동료' },
-            { key: 'friends', label: t('tests.feedback360.categories.friends') || '친구' },
-            { key: 'family', label: t('tests.feedback360.categories.family') || '가족' },
-            { key: 'academic', label: t('tests.feedback360.categories.academic') || '학업 파트너' },
-            { key: 'general', label: t('tests.feedback360.categories.general') || '일반적 관계' }
+            { 
+                key: 'work', 
+                label: isKorean ? '직장 동료' : 'Work Colleagues'
+            },
+            { 
+                key: 'friends', 
+                label: isKorean ? '친구' : 'Friends'
+            },
+            { 
+                key: 'family', 
+                label: isKorean ? '가족' : 'Family'
+            },
+            { 
+                key: 'academic', 
+                label: isKorean ? '학업 파트너' : 'Academic Partners'
+            },
+            { 
+                key: 'general', 
+                label: isKorean ? '일반적 관계' : 'General Relationships'
+            }
         ];
 
         return (
