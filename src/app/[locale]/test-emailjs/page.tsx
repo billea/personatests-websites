@@ -61,7 +61,70 @@ export default function EmailJSTestPage() {
             );
             
             console.log('EmailJS test result:', invitationResult);
-            setResult(invitationResult);
+            
+            // Now actually test EmailJS sending
+            if (invitationResult.success && invitationResult.invitations) {
+                console.log('=== TESTING ACTUAL EMAILJS SENDING ===');
+                
+                try {
+                    const emailjs = (await import('@emailjs/browser')).default;
+                    
+                    // Debug: Check environment variables
+                    console.log('EmailJS Config Check:', {
+                        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ? 'SET' : 'MISSING',
+                        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ? 'SET' : 'MISSING',
+                        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ? 'SET' : 'MISSING'
+                    });
+                    
+                    // Initialize EmailJS
+                    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'MISSING_KEY');
+                    
+                    // Send test emails
+                    const emailPromises = invitationResult.invitations.map(async (invitation: any) => {
+                        console.log('Sending test email to:', invitation.email);
+                        
+                        const emailParams = {
+                            to_email: invitation.email,
+                            to_name: invitation.email.split('@')[0],
+                            from_name: userName.trim(),
+                            invitation_link: invitation.link
+                        };
+                        
+                        console.log('=== EMAILJS DEBUG ===');
+                        console.log('EmailJS parameters:', emailParams);
+                        console.log('Full invitation link being sent:', invitation.link);
+                        console.log('=== END EMAILJS DEBUG ===');
+                        
+                        try {
+                            const emailResult = await emailjs.send(
+                                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'MISSING_SERVICE_ID',
+                                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'MISSING_TEMPLATE_ID',
+                                emailParams
+                            );
+                            console.log('✅ Email sent successfully to:', invitation.email, emailResult);
+                            return { success: true, email: invitation.email, result: emailResult };
+                        } catch (emailError) {
+                            console.error('❌ Failed to send email to:', invitation.email, emailError);
+                            return { success: false, email: invitation.email, error: emailError };
+                        }
+                    });
+                    
+                    const emailResults = await Promise.all(emailPromises);
+                    console.log('All email results:', emailResults);
+                    
+                    // Update result with email sending info
+                    setResult({
+                        ...invitationResult,
+                        emailResults: emailResults
+                    });
+                    
+                } catch (emailjsError) {
+                    console.error('EmailJS initialization error:', emailjsError);
+                    setError(`EmailJS Error: ${emailjsError instanceof Error ? emailjsError.message : 'Unknown EmailJS error'}`);
+                }
+            } else {
+                setResult(invitationResult);
+            }
             
         } catch (err) {
             console.error('EmailJS test error:', err);
