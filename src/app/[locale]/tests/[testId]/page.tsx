@@ -16,6 +16,13 @@ export default function TestPage() {
     const router = useRouter();
     const testId = params.testId as string;
     
+    // Force client-side rendering for feedback-360 to ensure auth check runs
+    const [isClient, setIsClient] = useState(false);
+    
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+    
     console.log('TestPage mounted with params:', params);
     console.log('testId extracted:', testId);
 
@@ -160,12 +167,19 @@ export default function TestPage() {
 
     // Load test definition and check for saved progress
     useEffect(() => {
+        // Only run authentication check on client-side
+        if (!isClient) {
+            console.log('⏳ Waiting for client-side rendering...');
+            return;
+        }
+        
         // Enhanced debugging for authentication
         console.log('=== AUTH DEBUG START ===');
         console.log('testId:', testId);
         console.log('authLoading:', authLoading);
         console.log('user:', user ? 'AUTHENTICATED' : 'NOT_AUTHENTICATED');
         console.log('currentLanguage:', currentLanguage);
+        console.log('isClient:', isClient);
         console.log('=== AUTH DEBUG END ===');
         
         // For feedback-360 test, require authentication first
@@ -271,7 +285,7 @@ export default function TestPage() {
             console.error('Debug info:', { testId, selectedCategory, definition });
             router.push(`/${currentLanguage}/tests`);
         }
-    }, [testId, selectedCategory, currentLanguage, authLoading, user]);
+    }, [testId, selectedCategory, currentLanguage, authLoading, user, isClient]);
 
     const handleAnswer = (answer: any) => {
         const currentQuestion = testDefinition?.questions[currentQuestionIndex];
@@ -536,7 +550,8 @@ export default function TestPage() {
         }
     };
 
-    if (loading || (testId === 'feedback-360' && authLoading)) {
+    // Show loading for feedback-360 until client-side rendering is complete and auth is checked
+    if (loading || (testId === 'feedback-360' && (!isClient || authLoading))) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
