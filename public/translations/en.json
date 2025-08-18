@@ -569,6 +569,18 @@
         "3": "Sometimes", 
         "4": "Often",
         "5": "Always"
+      },
+      "general": {
+        "q11": "How well does this person maintain a positive attitude in daily life?",
+        "q12": "How well does this person keep promises and commitments to others?",
+        "q13": "How helpful is this person in difficult situations?",
+        "q14": "How well does this person get along with different types of people?",
+        "q15": "How honestly does this person admit their mistakes or wrongdoings?",
+        "q16": "How proactive is this person in building relationships with new people?",
+        "q17": "How much does this person respect others' opinions?",
+        "q18": "How appropriately does this person behave in social situations?",
+        "q19": "How positive an influence does this person have on those around them?",
+        "q20": "How mature is this person overall?"
       }
     }
   },
