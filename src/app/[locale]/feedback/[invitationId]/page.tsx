@@ -69,11 +69,41 @@ export default function FeedbackPage() {
             console.log('Invitation ID from params:', invitationId);
             console.log('Token from URL params:', token);
             
-            // Get invitation data from URL parameters
-            const userName = searchParams.get('name');
-            const testId = searchParams.get('testId');
-            const testResultId = searchParams.get('testResultId');
-            const participantEmail = searchParams.get('email');
+            // Debug the raw searchParams object
+            console.log('SearchParams object:', searchParams);
+            console.log('SearchParams toString():', searchParams.toString());
+            console.log('All searchParams entries:');
+            for (const [key, value] of searchParams.entries()) {
+                console.log(`  "${key}" = "${value}"`);
+            }
+            
+            // Get invitation data from URL parameters with fallback
+            let userName = searchParams.get('name');
+            let testId = searchParams.get('testId');
+            let testResultId = searchParams.get('testResultId');
+            let participantEmail = searchParams.get('email');
+            
+            // Fallback: Try parsing from window.location if searchParams is empty
+            if (typeof window !== 'undefined' && (!userName || !testId || !testResultId || !participantEmail)) {
+                console.log('SearchParams missing values, trying window.location fallback...');
+                const urlParams = new URLSearchParams(window.location.search);
+                console.log('Window location search:', window.location.search);
+                console.log('URLSearchParams from window:');
+                for (const [key, value] of urlParams.entries()) {
+                    console.log(`  "${key}" = "${value}"`);
+                }
+                
+                userName = userName || urlParams.get('name');
+                testId = testId || urlParams.get('testId');
+                testResultId = testResultId || urlParams.get('testResultId');
+                participantEmail = participantEmail || urlParams.get('email');
+                
+                console.log('After fallback:');
+                console.log('  userName:', userName);
+                console.log('  testId:', testId);
+                console.log('  testResultId:', testResultId);
+                console.log('  participantEmail:', participantEmail);
+            }
             
             // Debug: Log all parameters with enhanced details
             console.log('Debug parameters:', {
