@@ -394,10 +394,10 @@ export default function FeedbackPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between text-sm text-gray-500">
                                 <span>
-                                    {t('tests.feedback360.ui.scale_labels.not_at_all') || '전혀 그렇지 않다'}
+                                    {t('feedback360.ui.scale_labels.not_at_all') || '전혀 그렇지 않다'}
                                 </span>
                                 <span>
-                                    {t('tests.feedback360.ui.scale_labels.always') || '매우 그렇다'}
+                                    {t('feedback360.ui.scale_labels.always') || '매우 그렇다'}
                                 </span>
                             </div>
                             <div className="flex justify-between gap-2">
