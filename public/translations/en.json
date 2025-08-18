@@ -574,6 +574,13 @@
   },
   "feedback360": {
     "ui": {
+      "title": "Feedback Request",
+      "instructions": "Please answer the following questions about them honestly. Your responses will remain anonymous.",
+      "loading": "Loading...",
+      "thank_you": "Thank you!",
+      "submitted_message": "Your feedback for {name} has been submitted successfully.",
+      "submitted_description": "{name} will receive your insights, and your identity will remain completely anonymous.",
+      "submitting": "Submitting feedback...",
       "scale_labels": {
         "not_at_all": "Not at all",
         "always": "Always"
