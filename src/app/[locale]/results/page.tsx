@@ -66,6 +66,7 @@ export default function ResultsPage() {
     const loadLocalResults = () => {
         try {
             const localResults: TestResult[] = [];
+            const localFeedback: { [resultId: string]: any[] } = {};
             
             // Check localStorage for test results
             for (let i = 0; i < localStorage.length; i++) {
@@ -89,6 +90,21 @@ export default function ResultsPage() {
                         };
                         
                         localResults.push(testResult);
+                        
+                        // Load aggregated feedback for this result
+                        if (testResult.id) {
+                            const aggregatedKey = `aggregated_feedback_${testResult.id}`;
+                            const aggregatedData = localStorage.getItem(aggregatedKey);
+                            if (aggregatedData) {
+                                try {
+                                    const feedbackArray = JSON.parse(aggregatedData);
+                                    localFeedback[testResult.id] = feedbackArray;
+                                    console.log(`Found ${feedbackArray.length} feedback entries for result ${testResult.id}`);
+                                } catch (error) {
+                                    console.error('Error parsing aggregated feedback:', error);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -101,6 +117,7 @@ export default function ResultsPage() {
             });
             
             setResults(localResults);
+            setFeedback(localFeedback);
         } catch (error) {
             console.error("Error loading local results:", error);
         } finally {

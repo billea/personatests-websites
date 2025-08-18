@@ -209,7 +209,8 @@ export const sendFeedbackInvitations = async (
   participantEmails: string[],
   userName: string,
   feedbackCategory: 'work' | 'friends' | 'family' | 'academic' | 'general',
-  language: string = 'en'
+  language: string = 'en',
+  ownerEmail?: string
 ): Promise<FeedbackInvitationResponse> => {
   try {
     // Debug: Log all parameters received
@@ -220,7 +221,8 @@ export const sendFeedbackInvitations = async (
       participantEmails,
       userName,
       feedbackCategory,
-      language
+      language,
+      ownerEmail
     });
     
     // Generate unique invitation tokens for each participant
@@ -230,6 +232,7 @@ export const sendFeedbackInvitations = async (
       testId,
       testResultId,
       userName,
+      ownerEmail: ownerEmail || 'durha2000@gmail.com', // Include owner email for notifications
       invitationToken: generateInvitationToken(),
       createdAt: new Date().toISOString(),
       status: 'pending'
@@ -260,6 +263,16 @@ export const sendFeedbackInvitations = async (
     
     // Create or update feedback progress tracking
     await updateFeedbackProgress(userId, testResultId, testId, participantEmails.length, savedInvitations.map(inv => inv.id), feedbackCategory);
+
+    // Store invitations in localStorage for static deployment
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('feedback_invitations', JSON.stringify(invitations));
+        console.log('Invitations stored in localStorage:', invitations.length);
+      } catch (error) {
+        console.error('Failed to store invitations in localStorage:', error);
+      }
+    }
 
     // Create shareable feedback links for each participant
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
@@ -726,11 +739,19 @@ export const sendFeedbackNotification = async (
     });
     console.log('=== END NOTIFICATION DEBUG ===');
     
-    // Send notification email
+    // Send notification email using same template but different subject/content
+    // For now, we'll use the same template but with notification-specific content
     const result = await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '', // We might need a separate template for notifications
-      emailParams
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+      {
+        to_email: emailParams.to_email,
+        to_name: emailParams.to_name,
+        from_name: emailParams.from_name,
+        invitation_link: `https://korean-mbti-platform.netlify.app/${language}/results`, // Direct link to results page
+        subject: emailParams.subject,
+        message: emailParams.message
+      }
     );
     
     console.log('✅ Feedback notification sent successfully:', result);

@@ -210,9 +210,22 @@ export default function FeedbackPage() {
             try {
                 console.log('Attempting to send feedback notification...');
                 
-                // For now, we'll use your email for testing the notification system
-                // In a real implementation, we'd fetch this from the invitation data or user profile
-                const ownerEmail = 'durha2000@gmail.com'; // TODO: Get actual owner email from user profile
+                // Get owner email from localStorage where invitations are stored
+                let ownerEmail = 'durha2000@gmail.com'; // Fallback for testing
+                try {
+                    const invitationsData = localStorage.getItem('feedback_invitations');
+                    if (invitationsData) {
+                        const invitations = JSON.parse(invitationsData);
+                        const matchingInvitation = invitations.find((inv: any) => inv.id === invitationId);
+                        if (matchingInvitation && matchingInvitation.ownerEmail) {
+                            ownerEmail = matchingInvitation.ownerEmail;
+                            console.log('Found owner email from invitation data:', ownerEmail);
+                        }
+                    }
+                } catch (error) {
+                    console.log('Could not find owner email in localStorage, using fallback');
+                }
+                
                 const ownerName = invitation.inviterName;
                 const reviewerEmail = invitation.participantEmail || 'anonymous@reviewer.com';
                 const locale = currentLanguage || 'ko';

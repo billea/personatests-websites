@@ -423,7 +423,8 @@ export default function TestPage() {
                 validEmails, 
                 userName.trim(), 
                 selectedCategory as 'work' | 'friends' | 'family' | 'academic' | 'general',
-                currentLanguage || 'en'
+                currentLanguage || 'en',
+                user.email || undefined // Pass user's email for notifications
             );
             
             if (result.success && result.invitations) {
