@@ -334,23 +334,32 @@ export default function TestPage() {
             
             let resultId = 'local_' + Date.now();
             
-            // If user is logged in, save to Firestore
+            // Always save to localStorage as fallback (for static deployment)
+            localStorage.setItem(`test_result_${resultId}`, JSON.stringify(localResult));
+            console.log("Test saved to localStorage for fallback access");
+            
+            // If user is logged in, also save to Firestore
             if (user) {
                 try {
-                    resultId = await saveTestResult(
+                    const firestoreResultId = await saveTestResult(
                         user.uid,
                         testId,
                         localResult,
                         false
                     );
-                    console.log("Test saved to Firestore successfully!");
+                    console.log("Test saved to Firestore successfully with ID:", firestoreResultId);
+                    
+                    // Update the resultId to use Firestore ID for consistency
+                    resultId = firestoreResultId;
+                    
+                    // Re-save to localStorage with Firestore ID for consistency
+                    localStorage.setItem(`test_result_${firestoreResultId}`, JSON.stringify(localResult));
+                    console.log("Test also saved to localStorage with Firestore ID for consistency");
                 } catch (error) {
-                    console.error("Error saving to Firestore, keeping local result:", error);
+                    console.error("Error saving to Firestore, using local storage only:", error);
                 }
             } else {
-                // Save to localStorage for anonymous users
-                localStorage.setItem(`test_result_${resultId}`, JSON.stringify(localResult));
-                console.log("Test saved locally successfully!");
+                console.log("Anonymous user - using localStorage only");
             }
 
             setTestResultId(resultId);
