@@ -104,7 +104,7 @@
     },
     "bigfive": {
       "title": "Big Five Personality",
-      "description": "Discover your personality across five key dimensions",
+      "description": "The scientifically validated Big Five model measures your personality across five key dimensions: Openness to new experiences, Conscientiousness in organization and responsibility, Extraversion in social energy, Agreeableness in interpersonal warmth, and Neuroticism in emotional stability. These traits provide deep insights into your behavior patterns, preferences, and natural tendencies.",
       "questions": {
         "q1": "I am outgoing and sociable",
         "q2": "I am always prepared and organized",
@@ -643,7 +643,7 @@
     }
   },
   "emailSignup": {
-    "title": "Want More Insights About Your 360 Feedback Profile?",
+    "title": "Want More Insights About Your Personality?",
     "description": "Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.",
     "buttonText": "Get Free Personality Insights",
     "freeText": "100% free",

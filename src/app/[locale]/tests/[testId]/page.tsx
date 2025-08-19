@@ -1027,7 +1027,7 @@ export default function TestPage() {
                                     🧠 {t('results.aboutType') || 'About Your Type'}
                                 </h3>
                                 <p className="text-white/90 text-lg leading-relaxed">
-                                    {t('results.feedback360Description') || completedTestResult.description_key}
+                                    {t(completedTestResult.description_key) || completedTestResult.description_key}
                                 </p>
                             </div>
                         )}
