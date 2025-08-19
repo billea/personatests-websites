@@ -280,10 +280,28 @@ export const sendFeedbackInvitations = async (
     // Debug: Log the language being used
     console.log('Creating feedback links with language:', language);
     
-    const feedbackLinks = invitations.map(invitation => ({
-      email: invitation.email,
-      link: `${baseUrl}/${language}/feedback/${invitation.id}?token=${invitation.invitationToken}&name=${encodeURIComponent(userName)}&testId=${testId}&testResultId=${testResultId}&email=${encodeURIComponent(invitation.email)}`
-    }));
+    const feedbackLinks = invitations.map(invitation => {
+      // Create URL with proper encoding and validation
+      const params = new URLSearchParams({
+        token: invitation.invitationToken,
+        name: userName, // Let URLSearchParams handle encoding
+        testId: testId,
+        testResultId: testResultId,
+        email: invitation.email // Let URLSearchParams handle encoding
+      });
+      
+      const fullUrl = `${baseUrl}/${language}/feedback/${invitation.id}?${params.toString()}`;
+      
+      // Log for debugging
+      console.log(`Generated URL for ${invitation.email}:`);
+      console.log(`Length: ${fullUrl.length} characters`);
+      console.log(`URL: ${fullUrl}`);
+      
+      return {
+        email: invitation.email,
+        link: fullUrl
+      };
+    });
 
     // For development purposes, log the invitation links
     console.log('Feedback invitation links generated:');
