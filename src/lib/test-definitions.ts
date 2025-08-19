@@ -1418,27 +1418,17 @@ const coupleCompatibilityQuestions: TestQuestion[] = [
 ];
 
 const coupleCompatibilityScoring: ScoringFunction = (answers) => {
-  // Calculate percentages for each dimension
-  const scores: { [key: string]: number } = {};
-
-  // Love Language - convert choice to percentage (each choice gets 100% in its category)
-  if (answers['couple_1']) {
-    scores['love_language'] = 100; // Primary love language gets 100%
-  }
-
-  // Communication Style - convert 1-5 scale to percentage
-  if (answers['couple_2']) {
-    scores['communication_style'] = Math.round(((answers['couple_2'] as number) / 5) * 100);
-  }
-
-  // Relationship Values - convert choice to percentage
-  if (answers['couple_3']) {
-    scores['relationship_values'] = 100; // Primary value gets 100%
-  }
-
-  // Get the actual values for trait display
+  // Get the actual values from answers
   const primaryLoveLanguage = answers['couple_1'] || '';
+  const communicationRating = answers['couple_2'] || 1;
   const primaryValues = answers['couple_3'] || '';
+
+  // Calculate percentages - the display expects numerical percentages
+  const scores: { [key: string]: number } = {
+    love_language: 100, // Primary love language gets 100%
+    communication_style: Math.round((communicationRating / 5) * 100), // Convert 1-5 to percentage
+    relationship_values: 100 // Primary relationship value gets 100%
+  };
 
   return {
     scores: scores,
@@ -1448,10 +1438,10 @@ const coupleCompatibilityScoring: ScoringFunction = (answers) => {
       `results.dimensions.${primaryLoveLanguage}`,
       `results.dimensions.${primaryValues}`
     ],
-    // Store the actual selections for detailed display
-    selections: {
+    // Store raw selections for reference
+    rawAnswers: {
       love_language: primaryLoveLanguage,
-      communication_importance: answers['couple_2'] || 0,
+      communication_importance: communicationRating,
       relationship_values: primaryValues
     }
   };
