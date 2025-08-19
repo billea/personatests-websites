@@ -13,7 +13,11 @@
     "firebase:emulator": "firebase emulators:start",
     "firebase:deploy": "npm run build && firebase deploy",
     "firebase:functions": "firebase deploy --only functions",
-    "test": "npm run lint && npm run build"
+    "test": "npm run lint && npm run build",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:install": "playwright install"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

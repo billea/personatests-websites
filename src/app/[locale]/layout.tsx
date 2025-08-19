@@ -1,5 +1,6 @@
 import { TranslationProvider } from "@/components/providers/translation-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
+import Header from "@/components/Header";
 
 // Generate static params for all supported locales
 export async function generateStaticParams() {
@@ -24,6 +25,7 @@ export default function LocaleLayout({
   return (
     <AuthProvider>
       <TranslationProvider>
+        <Header />
         {children}
       </TranslationProvider>
     </AuthProvider>

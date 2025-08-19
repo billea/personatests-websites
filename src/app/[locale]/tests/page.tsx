@@ -49,23 +49,6 @@ export default function TestsPage() {
     
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600">
-            {/* Navigation */}
-            <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
-                <Link href={`/${currentLanguage}`} className="text-white text-2xl font-bold">
-                    ✨ PersonaTests
-                </Link>
-                
-                <div className="hidden md:flex items-center space-x-8">
-                    <Link href={`/${currentLanguage}`} className="text-white hover:text-purple-200 transition-colors">Home</Link>
-                    <span className="text-white font-semibold">Tests ▼</span>
-                    <Link href="/couples" className="text-white hover:text-purple-200 transition-colors">Couples</Link>
-                    <Link href="/about" className="text-white hover:text-purple-200 transition-colors">About</Link>
-                    <Link href="/blog" className="text-white hover:text-purple-200 transition-colors">Blog</Link>
-                    <Link href="/contact" className="text-white hover:text-purple-200 transition-colors">Contact</Link>
-                    <Link href="/login" className="text-white hover:text-purple-200 transition-colors">Login ✨</Link>
-                </div>
-            </nav>
-
             <main className="container mx-auto px-4 py-8">
                 <div className="w-full max-w-6xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-white">

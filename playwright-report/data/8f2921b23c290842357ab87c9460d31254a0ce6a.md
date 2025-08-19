@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- alert
+- banner:
+  - link "PersonaTests":
+    - /url: /en
+  - link "Tests":
+    - /url: /en/tests
+  - link "Results":
+    - /url: /en/results
+  - link "Sign In":
+    - /url: /en/auth
+- text: 🧠 💫 ✨ 🔮 🌟 💡
+- navigation:
+  - text: ✨ PersonaTests
+  - link "Home":
+    - /url: /
+  - link "Tests ▼":
+    - /url: /en/tests
+  - link "Couples":
+    - /url: /couples
+  - link "About":
+    - /url: /about
+  - link "Blog":
+    - /url: /blog
+  - link "Contact":
+    - /url: /contact
+  - link "Login ✨":
+    - /url: /login
+- button "EN"
+- button "DE"
+- button "FR"
+- button "ES"
+- button "IT"
+- button "PT"
+- button "JP"
+- button "KR"
+- button "CN"
+- text: 🔥 Most Accurate Personality Tests
+- heading "Discover Your True Self ✨" [level=1]
+- paragraph: Discover your personality with scientifically-backed tests! MBTI, Big Five, and trending tests. Check your vibe today! 🔥
+- link "Start Your Journey":
+  - /url: /en/tests
+  - text: Start Your Journey
+  - img
+- text: 15+ Personality Tests 9 Languages Free Always Free 100% Private 🔬 Science-Based ⚡ Instant Results 🎯 100% Personalized 🔒 Completely Private
+```
