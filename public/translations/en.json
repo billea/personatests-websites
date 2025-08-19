@@ -493,7 +493,10 @@
     "alwaysOnTime": "Always on time!",
     "superReliable": "Super reliable!",
     "prettyCareless": "Pretty careless",
-    "detailOriented": "Detail-oriented!"
+    "detailOriented": "Detail-oriented!",
+    "feedback360": {
+      "title": "360° Feedback Assessment"
+    }
   },
   "test": {
     "completed_title": "Test Completed!",
@@ -505,7 +508,7 @@
   },
   "results": {
     "page_title": "Test Results",
-    "take_test": "Take Test",
+    "take_test": "Take Test", 
     "back_home": "Back to Home",
     "total_completed": "Total Completed",
     "no_results_title": "No Test Results Yet",
