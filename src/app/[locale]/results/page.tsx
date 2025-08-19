@@ -89,6 +89,12 @@ export default function ResultsPage() {
                         console.log('Found test result data for key:', key);
                         const parsedResult = JSON.parse(resultData);
                         console.log('Parsed result:', parsedResult);
+                        console.log('Test ID from result:', parsedResult.testId);
+                        
+                        // Special debug for MBTI test
+                        if (parsedResult.testId === 'mbti-classic') {
+                            console.log('🧠 MBTI test found!', parsedResult);
+                        }
                         
                         // Convert to TestResult format
                         const testResult: TestResult = {
