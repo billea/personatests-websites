@@ -7,8 +7,8 @@ const nextConfig = {
   },
   
   // Production optimizations for Netlify
-  // Using export mode for static deployment
-  output: 'export',
+  // Using standalone mode for better compatibility
+  output: 'standalone',
   trailingSlash: true,
   images: {
     unoptimized: true
