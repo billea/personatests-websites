@@ -24,9 +24,12 @@ export default function ResultsPage() {
     const [selectedResultId, setSelectedResultId] = useState<string | null>(null);
 
     useEffect(() => {
+        console.log('Results page useEffect - user:', user ? 'logged in' : 'not logged in', 'loading:', loading);
         if (user && !loading) {
+            console.log('Loading data for authenticated user');
             loadData();
         } else if (!loading) {
+            console.log('Loading local results for anonymous user');
             loadLocalResults();
         }
     }, [user, loading]);
@@ -68,13 +71,19 @@ export default function ResultsPage() {
             const localResults: TestResult[] = [];
             const localFeedback: { [resultId: string]: any[] } = {};
             
+            console.log('Loading local results...');
+            console.log('Total localStorage items:', localStorage.length);
+            
             // Check localStorage for test results
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
-                if (key && key.startsWith('test_result_local_')) {
+                console.log('Checking key:', key);
+                if (key && key.startsWith('test_result_') && !key.includes('progress')) {
                     const resultData = localStorage.getItem(key);
                     if (resultData) {
+                        console.log('Found test result data for key:', key);
                         const parsedResult = JSON.parse(resultData);
+                        console.log('Parsed result:', parsedResult);
                         
                         // Convert to TestResult format
                         const testResult: TestResult = {
@@ -116,6 +125,7 @@ export default function ResultsPage() {
                 return dateB.getTime() - dateA.getTime();
             });
             
+            console.log('Final local results array:', localResults);
             setResults(localResults);
             setFeedback(localFeedback);
         } catch (error) {
