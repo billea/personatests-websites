@@ -202,6 +202,102 @@ interface FeedbackInvitationResponse {
  * @param language - Language for the feedback form
  * @returns Success status and invitation details
  */
+// Couple Compatibility Invitation Function
+export const sendCoupleCompatibilityInvitation = async (
+  userId: string,
+  testResultId: string, 
+  partnerEmail: string,
+  userName: string,
+  language: string = 'en',
+  ownerEmail?: string
+): Promise<FeedbackInvitationResponse> => {
+  try {
+    console.log('sendCoupleCompatibilityInvitation called with:', {
+      userId,
+      testResultId,
+      partnerEmail,
+      userName,
+      language,
+      ownerEmail
+    });
+
+    // Create invitation record in Firestore
+    const invitationToken = generateInvitationToken();
+    const invitationId = `couple_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+    
+    const invitationData: Omit<FeedbackInvitation, 'id'> = {
+      inviterUserId: userId,
+      participantEmail: partnerEmail,
+      testId: 'couple-compatibility',
+      testResultId: testResultId,
+      token: invitationToken,
+      status: 'pending',
+      inviterName: userName,
+      feedbackCategory: 'couple', // Special category for compatibility tests
+      createdAt: serverTimestamp() as Timestamp,
+      language: language
+    };
+
+    const docRef = await addDoc(collection(firestore, "invitations"), invitationData);
+    console.log("Couple compatibility invitation created with ID:", docRef.id);
+
+    // Create invitation URL
+    const baseUrl = 'https://korean-mbti-platform.netlify.app';
+    const invitationUrl = `${baseUrl}/${language}/couple-compatibility/${invitationId}?token=${encodeURIComponent(invitationToken)}&partner=${encodeURIComponent(userName)}&testResultId=${encodeURIComponent(testResultId)}&email=${encodeURIComponent(partnerEmail)}`;
+
+    console.log('Generated couple compatibility invitation URL:', invitationUrl);
+
+    // Send email invitation using EmailJS
+    try {
+      const emailParams = {
+        to_email: partnerEmail,
+        to_name: partnerEmail.split('@')[0],
+        from_name: userName,
+        invitation_link: invitationUrl,
+        test_type: 'Couple Compatibility Test'
+      };
+
+      console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
+      console.log('EmailJS parameters:', emailParams);
+      console.log('Full invitation link being sent:', invitationUrl);
+      console.log('Link length:', invitationUrl.length);
+      console.log('=== END EMAILJS DEBUG ===');
+
+      const emailResponse = await emailjs.send(
+        'service_pu6njog',
+        'template_z8m1djn', 
+        emailParams,
+        'K5Z6vG-tmUCzHN1sI'
+      );
+
+      console.log('Email sent successfully:', emailResponse);
+
+      // Send notification to test owner if email provided
+      if (ownerEmail) {
+        await sendCompatibilityNotification(ownerEmail, userName, language);
+      }
+
+    } catch (emailError) {
+      console.error('Error sending couple compatibility email:', emailError);
+      // Continue even if email fails - user can share the link manually
+    }
+
+    return {
+      success: true,
+      invitationsSent: 1,
+      invitations: [{
+        email: partnerEmail,
+        link: invitationUrl
+      }],
+      message: 'Couple compatibility invitation sent successfully!'
+    };
+
+  } catch (error) {
+    console.error("Error sending couple compatibility invitation:", error);
+    throw error;
+  }
+};
+
 export const sendFeedbackInvitations = async (
   userId: string,
   testId: string,
@@ -321,6 +417,30 @@ export const sendFeedbackInvitations = async (
   } catch (error) {
     console.error("Error generating feedback invitations:", error);
     throw error;
+  }
+};
+
+// Helper function for couple compatibility notifications
+const sendCompatibilityNotification = async (ownerEmail: string, partnerName: string, language: string) => {
+  try {
+    const emailParams = {
+      to_email: ownerEmail,
+      subject: language === 'ko' ? '새로운 커플 호환성 결과!' : 'New Couple Compatibility Results!',
+      message: language === 'ko' 
+        ? `안녕하세요,\n\n${partnerName}님이 커플 호환성 테스트를 완료했습니다.\n\n결과를 확인하려면 플랫폼에 로그인하세요:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\n감사합니다!\nKorean MBTI Platform`
+        : `Hello,\n\n${partnerName} has completed your Couple Compatibility Test.\n\nLog in to your platform to view your compatibility results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`
+    };
+
+    await emailjs.send(
+      'service_pu6njog',
+      'template_basic_notification',
+      emailParams,
+      'K5Z6vG-tmUCzHN1sI'
+    );
+
+    console.log('Couple compatibility notification sent successfully');
+  } catch (error) {
+    console.error('Error sending couple compatibility notification:', error);
   }
 };
 

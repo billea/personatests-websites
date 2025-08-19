@@ -1379,70 +1379,452 @@ const feedback360Scoring: ScoringFunction = (answers) => {
   };
 };
 
-// Couple Compatibility Test Questions
+// 💕 Couple Compatibility Test - Updated Questions (15 Questions)
 const coupleCompatibilityQuestions: TestQuestion[] = [
+  // Lifestyle & Fun (Q1-Q5)
   {
     id: 'couple_1',
-    text_key: 'tests.couple.questions.q1',
+    text_key: 'tests.couple.questions.q1', // Ideal Friday night?
     type: 'multiple_choice',
     options: [
-      { value: 'quality_time', text_key: 'tests.couple.options.q1_a' },
-      { value: 'physical_touch', text_key: 'tests.couple.options.q1_b' },
-      { value: 'words_affirmation', text_key: 'tests.couple.options.q1_c' },
-      { value: 'acts_service', text_key: 'tests.couple.options.q1_d' },
-      { value: 'gifts', text_key: 'tests.couple.options.q1_e' }
+      { value: 'movie_chill', text_key: 'tests.couple.options.q1_a' }, // Movie & chill
+      { value: 'party_out', text_key: 'tests.couple.options.q1_b' }, // Party out
+      { value: 'dinner_date', text_key: 'tests.couple.options.q1_c' }, // Dinner date
+      { value: 'gaming', text_key: 'tests.couple.options.q1_d' } // Gaming
     ]
   },
   {
     id: 'couple_2',
-    text_key: 'tests.couple.questions.q2',
-    type: 'scale',
-    scale: {
-      min: 1,
-      max: 5,
-      minLabel_key: 'tests.couple.scale.not_important',
-      maxLabel_key: 'tests.couple.scale.very_important'
-    }
+    text_key: 'tests.couple.questions.q2', // Dream vacation together?
+    type: 'multiple_choice',
+    options: [
+      { value: 'beach', text_key: 'tests.couple.options.q2_a' }, // Beach
+      { value: 'mountains', text_key: 'tests.couple.options.q2_b' }, // Mountains
+      { value: 'city_tour', text_key: 'tests.couple.options.q2_c' }, // City tour
+      { value: 'staycation', text_key: 'tests.couple.options.q2_d' } // Staycation
+    ]
   },
   {
     id: 'couple_3',
-    text_key: 'tests.couple.questions.q3',
+    text_key: 'tests.couple.questions.q3', // Favorite way to spend a weekend?
     type: 'multiple_choice',
     options: [
-      { value: 'adventure', text_key: 'tests.couple.options.q3_a' },
-      { value: 'stability', text_key: 'tests.couple.options.q3_b' },
-      { value: 'growth', text_key: 'tests.couple.options.q3_c' },
-      { value: 'harmony', text_key: 'tests.couple.options.q3_d' }
+      { value: 'adventure', text_key: 'tests.couple.options.q3_a' }, // Outdoor adventure
+      { value: 'culture', text_key: 'tests.couple.options.q3_b' }, // Museums/culture
+      { value: 'relax_home', text_key: 'tests.couple.options.q3_c' }, // Relax at home
+      { value: 'social', text_key: 'tests.couple.options.q3_d' } // Social events
+    ]
+  },
+  {
+    id: 'couple_4',
+    text_key: 'tests.couple.questions.q4', // Morning or night person?
+    type: 'multiple_choice',
+    options: [
+      { value: 'early_bird', text_key: 'tests.couple.options.q4_a' }, // Early bird
+      { value: 'night_owl', text_key: 'tests.couple.options.q4_b' }, // Night owl
+      { value: 'flexible', text_key: 'tests.couple.options.q4_c' } // Flexible
+    ]
+  },
+  {
+    id: 'couple_5',
+    text_key: 'tests.couple.questions.q5', // How do you like to celebrate special occasions?
+    type: 'multiple_choice',
+    options: [
+      { value: 'big_party', text_key: 'tests.couple.options.q5_a' }, // Big party
+      { value: 'intimate', text_key: 'tests.couple.options.q5_b' }, // Intimate dinner
+      { value: 'adventure_trip', text_key: 'tests.couple.options.q5_c' }, // Adventure trip
+      { value: 'simple_home', text_key: 'tests.couple.options.q5_d' } // Simple at home
+    ]
+  },
+
+  // Values & Relationships (Q6-Q10)
+  {
+    id: 'couple_6',
+    text_key: 'tests.couple.questions.q6', // What matters most in a relationship?
+    type: 'multiple_choice',
+    options: [
+      { value: 'trust', text_key: 'tests.couple.options.q6_a' }, // Trust
+      { value: 'fun', text_key: 'tests.couple.options.q6_b' }, // Fun
+      { value: 'communication', text_key: 'tests.couple.options.q6_c' }, // Communication
+      { value: 'support', text_key: 'tests.couple.options.q6_d' } // Support
+    ]
+  },
+  {
+    id: 'couple_7',
+    text_key: 'tests.couple.questions.q7', // How do you handle conflicts?
+    type: 'multiple_choice',
+    options: [
+      { value: 'talk_immediately', text_key: 'tests.couple.options.q7_a' }, // Talk immediately
+      { value: 'cool_down_first', text_key: 'tests.couple.options.q7_b' }, // Cool down first
+      { value: 'compromise', text_key: 'tests.couple.options.q7_c' }, // Find compromise
+      { value: 'avoid', text_key: 'tests.couple.options.q7_d' } // Avoid conflict
+    ]
+  },
+  {
+    id: 'couple_8',
+    text_key: 'tests.couple.questions.q8', // Your biggest love language?
+    type: 'multiple_choice',
+    options: [
+      { value: 'words', text_key: 'tests.couple.options.q8_a' }, // Words of affirmation
+      { value: 'quality_time', text_key: 'tests.couple.options.q8_b' }, // Quality time
+      { value: 'physical_touch', text_key: 'tests.couple.options.q8_c' }, // Physical touch
+      { value: 'acts_service', text_key: 'tests.couple.options.q8_d' }, // Acts of service
+      { value: 'gifts', text_key: 'tests.couple.options.q8_e' } // Gifts
+    ]
+  },
+  {
+    id: 'couple_9',
+    text_key: 'tests.couple.questions.q9', // How much time together vs apart?
+    type: 'multiple_choice',
+    options: [
+      { value: 'lots_together', text_key: 'tests.couple.options.q9_a' }, // Lots of time together
+      { value: 'balanced', text_key: 'tests.couple.options.q9_b' }, // Balanced time
+      { value: 'independent', text_key: 'tests.couple.options.q9_c' }, // Need independence
+      { value: 'depends_mood', text_key: 'tests.couple.options.q9_d' } // Depends on mood
+    ]
+  },
+  {
+    id: 'couple_10',
+    text_key: 'tests.couple.questions.q10', // What do you value most in a partner?
+    type: 'multiple_choice',
+    options: [
+      { value: 'humor', text_key: 'tests.couple.options.q10_a' }, // Sense of humor
+      { value: 'intelligence', text_key: 'tests.couple.options.q10_b' }, // Intelligence
+      { value: 'kindness', text_key: 'tests.couple.options.q10_c' }, // Kindness
+      { value: 'ambition', text_key: 'tests.couple.options.q10_d' } // Ambition
+    ]
+  },
+
+  // Lifestyle Compatibility (Q11-Q15)
+  {
+    id: 'couple_11',
+    text_key: 'tests.couple.questions.q11', // Money philosophy?
+    type: 'multiple_choice',
+    options: [
+      { value: 'save_future', text_key: 'tests.couple.options.q11_a' }, // Save for future
+      { value: 'spend_experiences', text_key: 'tests.couple.options.q11_b' }, // Spend on experiences
+      { value: 'balanced', text_key: 'tests.couple.options.q11_c' }, // Balanced approach
+      { value: 'live_moment', text_key: 'tests.couple.options.q11_d' } // Live in the moment
+    ]
+  },
+  {
+    id: 'couple_12',
+    text_key: 'tests.couple.questions.q12', // Food preferences?
+    type: 'multiple_choice',
+    options: [
+      { value: 'home_cooking', text_key: 'tests.couple.options.q12_a' }, // Love home cooking
+      { value: 'try_restaurants', text_key: 'tests.couple.options.q12_b' }, // Try new restaurants
+      { value: 'comfort_food', text_key: 'tests.couple.options.q12_c' }, // Comfort food
+      { value: 'healthy_eating', text_key: 'tests.couple.options.q12_d' } // Healthy eating
+    ]
+  },
+  {
+    id: 'couple_13',
+    text_key: 'tests.couple.questions.q13', // Planning style?
+    type: 'multiple_choice',
+    options: [
+      { value: 'detailed_plans', text_key: 'tests.couple.options.q13_a' }, // Detailed plans
+      { value: 'flexible_plans', text_key: 'tests.couple.options.q13_b' }, // Flexible plans
+      { value: 'spontaneous', text_key: 'tests.couple.options.q13_c' }, // Spontaneous
+      { value: 'go_with_flow', text_key: 'tests.couple.options.q13_d' } // Go with flow
+    ]
+  },
+  {
+    id: 'couple_14',
+    text_key: 'tests.couple.questions.q14', // Social preferences?
+    type: 'multiple_choice',
+    options: [
+      { value: 'big_groups', text_key: 'tests.couple.options.q14_a' }, // Love big groups
+      { value: 'small_circle', text_key: 'tests.couple.options.q14_b' }, // Small circle of friends
+      { value: 'just_us_two', text_key: 'tests.couple.options.q14_c' }, // Just us two
+      { value: 'varies', text_key: 'tests.couple.options.q14_d' } // Varies by mood
+    ]
+  },
+  {
+    id: 'couple_15',
+    text_key: 'tests.couple.questions.q15', // Communication style?
+    type: 'multiple_choice',
+    options: [
+      { value: 'direct_honest', text_key: 'tests.couple.options.q15_a' }, // Direct and honest
+      { value: 'gentle_supportive', text_key: 'tests.couple.options.q15_b' }, // Gentle and supportive
+      { value: 'playful_teasing', text_key: 'tests.couple.options.q15_c' }, // Playful teasing
+      { value: 'thoughtful_careful', text_key: 'tests.couple.options.q15_d' } // Thoughtful and careful
     ]
   }
 ];
 
-const coupleCompatibilityScoring: ScoringFunction = (answers) => {
-  // Get the actual values from answers
-  const primaryLoveLanguage = answers['couple_1'] || '';
-  const communicationRating = answers['couple_2'] || 1;
-  const primaryValues = answers['couple_3'] || '';
+const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: { [questionId: string]: any }) => {
+  // If no partner answers yet, store user's answers for later comparison
+  if (!partnerAnswers) {
+    // Single user's answers - store for later comparison with partner
+    const userPreferences = {
+      lifestyle_fun: {
+        friday_night: answers['couple_1'],
+        vacation_type: answers['couple_2'],
+        weekend_style: answers['couple_3'],
+        schedule: answers['couple_4'],
+        celebrations: answers['couple_5']
+      },
+      values_relationships: {
+        relationship_priority: answers['couple_6'],
+        conflict_style: answers['couple_7'],
+        love_language: answers['couple_8'],
+        time_together: answers['couple_9'],
+        partner_values: answers['couple_10']
+      },
+      lifestyle_compatibility: {
+        money_philosophy: answers['couple_11'],
+        food_preferences: answers['couple_12'],
+        planning_style: answers['couple_13'],
+        social_preferences: answers['couple_14'],
+        communication_style: answers['couple_15']
+      }
+    };
 
-  // Calculate percentages - the display expects numerical percentages
-  const scores: { [key: string]: number } = {
-    love_language: 100, // Primary love language gets 100%
-    communication_style: Math.round((communicationRating / 5) * 100), // Convert 1-5 to percentage
-    relationship_values: 100 // Primary relationship value gets 100%
+    return {
+      scores: { compatibility: 0 }, // Will be calculated when partner responds
+      type: 'Waiting for Partner 💕',
+      description_key: 'tests.couple.waiting_description',
+      traits: ['Test completed!', 'Invitation sent to partner'],
+      userPreferences,
+      awaitingPartner: true, // Flag to show invitation interface
+      testStatus: 'awaiting_partner'
+    };
+  }
+
+  // Both answers available - calculate compatibility percentage
+  let exactMatches = 0;
+  let partialMatches = 0;
+  const totalQuestions = 15;
+
+  // Enhanced compatibility matrix for partial matches
+  const compatibilityMatrix: { [key: string]: { [value: string]: string[] } } = {
+    // Lifestyle & Fun - some flexibility in preferences
+    couple_1: { // Friday night
+      movie_chill: ['dinner_date'],
+      party_out: [],
+      dinner_date: ['movie_chill'],
+      gaming: ['movie_chill']
+    },
+    couple_2: { // Vacation dreams
+      beach: ['staycation'],
+      mountains: ['city_tour'],
+      city_tour: ['mountains'],
+      staycation: ['beach']
+    },
+    couple_3: { // Weekend activities
+      adventure: ['social'],
+      culture: ['relax_home'],
+      relax_home: ['culture'],
+      social: ['adventure']
+    },
+    couple_4: { // Schedule compatibility
+      early_bird: ['flexible'],
+      night_owl: ['flexible'],
+      flexible: ['early_bird', 'night_owl']
+    },
+    couple_5: { // Celebrations
+      big_party: ['social'],
+      intimate: ['simple_home'],
+      adventure_trip: [],
+      simple_home: ['intimate']
+    },
+    
+    // Values - more important, fewer partial matches
+    couple_6: { // Relationship priorities
+      trust: ['support'],
+      fun: [],
+      communication: ['support'],
+      support: ['trust', 'communication']
+    },
+    couple_7: { // Conflict handling
+      talk_immediately: ['compromise'],
+      cool_down_first: ['compromise'],
+      compromise: ['talk_immediately', 'cool_down_first'],
+      avoid: []
+    },
+    couple_8: { // Love languages
+      words: [],
+      quality_time: [],
+      physical_touch: [],
+      acts_service: [],
+      gifts: []
+    },
+    couple_9: { // Time together
+      lots_together: ['balanced'],
+      balanced: ['lots_together', 'depends_mood'],
+      independent: [],
+      depends_mood: ['balanced']
+    },
+    couple_10: { // Partner values
+      humor: ['kindness'],
+      intelligence: ['ambition'],
+      kindness: ['humor'],
+      ambition: ['intelligence']
+    },
+    
+    // Lifestyle - moderate flexibility
+    couple_11: { // Money philosophy
+      save_future: ['balanced'],
+      spend_experiences: ['live_moment'],
+      balanced: ['save_future'],
+      live_moment: ['spend_experiences']
+    },
+    couple_12: { // Food preferences
+      home_cooking: ['healthy_eating'],
+      try_restaurants: [],
+      comfort_food: ['home_cooking'],
+      healthy_eating: ['home_cooking']
+    },
+    couple_13: { // Planning style
+      detailed_plans: ['flexible_plans'],
+      flexible_plans: ['detailed_plans', 'go_with_flow'],
+      spontaneous: ['go_with_flow'],
+      go_with_flow: ['flexible_plans', 'spontaneous']
+    },
+    couple_14: { // Social preferences
+      big_groups: [],
+      small_circle: ['varies'],
+      just_us_two: [],
+      varies: ['small_circle']
+    },
+    couple_15: { // Communication style
+      direct_honest: ['thoughtful_careful'],
+      gentle_supportive: ['thoughtful_careful'],
+      playful_teasing: [],
+      thoughtful_careful: ['direct_honest', 'gentle_supportive']
+    }
   };
 
+  // Calculate matches with weighted importance
+  const questionWeights = {
+    // Values questions are more important (weight 1.5)
+    couple_6: 1.5, couple_7: 1.5, couple_8: 1.5, couple_9: 1.2, couple_10: 1.2,
+    // Lifestyle questions (weight 1.0)
+    couple_1: 1.0, couple_2: 1.0, couple_3: 1.0, couple_4: 1.0, couple_5: 1.0,
+    couple_11: 1.0, couple_12: 1.0, couple_13: 1.0, couple_14: 1.0, couple_15: 1.0
+  };
+
+  let weightedExactScore = 0;
+  let weightedPartialScore = 0;
+  let totalWeight = 0;
+
+  // Compare each answer with weights
+  for (let i = 1; i <= totalQuestions; i++) {
+    const questionId = `couple_${i}`;
+    const weight = questionWeights[questionId as keyof typeof questionWeights] || 1.0;
+    const userAnswer = answers[questionId];
+    const partnerAnswer = partnerAnswers[questionId];
+
+    totalWeight += weight;
+
+    if (userAnswer === partnerAnswer) {
+      exactMatches++;
+      weightedExactScore += weight;
+    } else if (compatibilityMatrix[questionId]?.[userAnswer]?.includes(partnerAnswer)) {
+      partialMatches++;
+      weightedPartialScore += weight * 0.5; // Partial matches worth 50% of weight
+    }
+  }
+
+  // Calculate weighted compatibility percentage
+  const compatibilityPercentage = Math.min(Math.round(((weightedExactScore + weightedPartialScore) / totalWeight) * 100), 100);
+
+  // Fun result tiers with personality combo descriptions
+  let compatibilityTier = '';
+  let compatibilityDescription = '';
+  let compatibilityEmoji = '';
+  
+  if (compatibilityPercentage >= 95) {
+    compatibilityTier = 'Soulmates';
+    compatibilityEmoji = '💍';
+    compatibilityDescription = 'You two are a perfect balance of fun, trust, and love. Destined to be together!';
+  } else if (compatibilityPercentage >= 85) {
+    compatibilityTier = 'Power Couple';
+    compatibilityEmoji = '⚡';
+    compatibilityDescription = 'You complement each other beautifully and tackle life as an amazing team.';
+  } else if (compatibilityPercentage >= 75) {
+    compatibilityTier = 'Adventurous Duo';
+    compatibilityEmoji = '🌍';
+    compatibilityDescription = 'Sometimes different, but always exciting. Your differences spark adventure!';
+  } else if (compatibilityPercentage >= 65) {
+    compatibilityTier = 'Sweet Match';
+    compatibilityEmoji = '💕';
+    compatibilityDescription = 'You have wonderful chemistry with some beautiful differences to explore.';
+  } else if (compatibilityPercentage >= 50) {
+    compatibilityTier = 'Work in Progress';
+    compatibilityEmoji = '🔨';
+    compatibilityDescription = 'You balance each other in some ways, but need to align more on key values.';
+  } else if (compatibilityPercentage >= 35) {
+    compatibilityTier = 'Learning Together';
+    compatibilityEmoji = '📚';
+    compatibilityDescription = 'Lots of growth opportunities ahead. Communication will be key!';
+  } else {
+    compatibilityTier = 'Opposites Attract';
+    compatibilityEmoji = '🤔';
+    compatibilityDescription = 'You\'re very different — could be fun chaos or a beautiful challenge!';
+  }
+
+  // Calculate area scores for radar chart
+  const areaScores = {
+    'Fun & Lifestyle': 0,
+    'Values & Trust': 0,
+    'Communication': 0,
+    'Lifestyle Habits': 0,
+    'Romance & Love': 0
+  };
+
+  // Calculate area-specific compatibility
+  const areaQuestions = {
+    'Fun & Lifestyle': ['couple_1', 'couple_2', 'couple_3'],
+    'Values & Trust': ['couple_6', 'couple_7', 'couple_10'],
+    'Communication': ['couple_7', 'couple_9', 'couple_15'],
+    'Lifestyle Habits': ['couple_11', 'couple_12', 'couple_13', 'couple_14'],
+    'Romance & Love': ['couple_5', 'couple_8', 'couple_9']
+  };
+
+  Object.entries(areaQuestions).forEach(([area, questions]) => {
+    let areaMatches = 0;
+    questions.forEach(questionId => {
+      const userAnswer = answers[questionId];
+      const partnerAnswer = partnerAnswers[questionId];
+      if (userAnswer === partnerAnswer) {
+        areaMatches++;
+      } else if (compatibilityMatrix[questionId]?.[userAnswer]?.includes(partnerAnswer)) {
+        areaMatches += 0.5;
+      }
+    });
+    areaScores[area as keyof typeof areaScores] = Math.round((areaMatches / questions.length) * 100);
+  });
+
   return {
-    scores: scores,
-    type: 'Compatibility Profile',
-    description_key: 'tests.couple.description',
+    scores: { 
+      compatibility: compatibilityPercentage,
+      exact_matches: exactMatches,
+      partial_matches: partialMatches,
+      areas: areaScores
+    },
+    type: `${compatibilityPercentage}% Compatible - ${compatibilityTier} ${compatibilityEmoji}`,
+    description_key: compatibilityDescription,
     traits: [
-      `results.dimensions.${primaryLoveLanguage}`,
-      `results.dimensions.${primaryValues}`
+      `${compatibilityPercentage}% Overall Compatibility`,
+      `${exactMatches}/${totalQuestions} Perfect Matches`,
+      `${partialMatches} Partial Matches`
     ],
-    // Store raw selections for reference
-    rawAnswers: {
-      love_language: primaryLoveLanguage,
-      communication_importance: communicationRating,
-      relationship_values: primaryValues
+    compatibilityData: {
+      percentage: compatibilityPercentage,
+      tier: compatibilityTier,
+      emoji: compatibilityEmoji,
+      description: compatibilityDescription,
+      exactMatches: exactMatches,
+      partialMatches: partialMatches,
+      totalQuestions: totalQuestions,
+      areaScores: areaScores,
+      isShareable: true, // Enable SNS sharing features
+      shareTitle: `We're ${compatibilityPercentage}% Compatible! ${compatibilityEmoji}`,
+      shareDescription: `${compatibilityTier}: ${compatibilityDescription}`,
+      shareHashtags: ['#CoupleCompatibility', '#LoveTest', '#RelationshipGoals'],
+      testStatus: 'completed'
     }
   };
 };
@@ -1488,7 +1870,8 @@ export const testDefinitions: TestDefinition[] = [
     description_key: 'tests.couple.description',
     questions: coupleCompatibilityQuestions,
     scoring: coupleCompatibilityScoring,
-    isCompatibilityTest: true
+    isCompatibilityTest: true,
+    requiresFeedback: true // Requires partner participation like 360° feedback
   }
 ];
 

@@ -6,7 +6,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
-import { saveTestResult, sendFeedbackInvitations } from "@/lib/firestore";
+import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
@@ -182,23 +182,23 @@ export default function TestPage() {
         console.log('isClient:', isClient);
         console.log('=== AUTH DEBUG END ===');
         
-        // For feedback-360 test, require authentication first
+        // For feedback-360 and couple-compatibility tests, require authentication first
         // Wait for auth loading to complete before checking authentication
-        if (testId === 'feedback-360' && !authLoading && !user) {
-            console.log('🔐 360 feedback requires authentication - redirecting to login');
+        if ((testId === 'feedback-360' || testId === 'couple-compatibility') && !authLoading && !user) {
+            console.log(`🔐 ${testId} requires authentication - redirecting to login`);
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
             return;
         }
         
-        // Skip loading test definition while auth is still loading for feedback-360
-        if (testId === 'feedback-360' && authLoading) {
+        // Skip loading test definition while auth is still loading for feedback-360 and couple-compatibility
+        if ((testId === 'feedback-360' || testId === 'couple-compatibility') && authLoading) {
             console.log('⏳ Waiting for authentication to complete...');
             return;
         }
         
-        // If we reach here for feedback-360, user must be authenticated
-        if (testId === 'feedback-360' && user) {
-            console.log('✅ User authenticated, proceeding with feedback-360 test');
+        // If we reach here for feedback-360 or couple-compatibility, user must be authenticated
+        if ((testId === 'feedback-360' || testId === 'couple-compatibility') && user) {
+            console.log(`✅ User authenticated, proceeding with ${testId} test`);
         }
         
         // For feedback-360 test, handle category selection first
@@ -367,6 +367,71 @@ export default function TestPage() {
             console.log("Test completed successfully!");
         } catch (error) {
             console.error("Error processing test completion:", error);
+        } finally {
+            setSaving(false);
+        }
+    };
+
+    const handleSendCoupleCompatibilityInvitation = async () => {
+        if (!testResultId) {
+            alert(currentLanguage === 'ko' ? '먼저 테스트를 완료해주세요.' : 'Please complete the test first.');
+            return;
+        }
+
+        if (!userName.trim()) {
+            alert(currentLanguage === 'ko' ? 
+                '파트너가 누구에 대한 호환성 테스트를 하는지 알 수 있도록 이름을 입력해주세요.' : 
+                'Please enter your name so your partner knows who they\'re taking the compatibility test with'
+            );
+            return;
+        }
+
+        // For couple compatibility, we only need one email (the partner's)
+        const partnerEmail = feedbackEmails[0]?.trim();
+        if (!partnerEmail || !partnerEmail.includes('@')) {
+            alert(currentLanguage === 'ko' ? 
+                '파트너의 유효한 이메일 주소를 입력해주세요.' : 
+                'Please enter your partner\'s valid email address'
+            );
+            return;
+        }
+
+        try {
+            setSaving(true);
+
+            if (!user) {
+                alert(currentLanguage === 'ko' ? '로그인이 필요합니다.' : 'Authentication required.');
+                return;
+            }
+
+            console.log('Sending couple compatibility invitation to:', partnerEmail);
+
+            const result = await sendCoupleCompatibilityInvitation(
+                user.uid,
+                testResultId,
+                partnerEmail,
+                userName.trim(),
+                currentLanguage || 'en',
+                user.email || undefined
+            );
+
+            console.log('Couple compatibility invitation result:', result);
+
+            if (result.success) {
+                alert(currentLanguage === 'ko' ?
+                    `파트너에게 호환성 테스트 초대가 전송되었습니다! 파트너가 테스트를 완료하면 결과가 공유됩니다.` :
+                    `Compatibility test invitation sent to your partner! Results will be shared once they complete the test.`
+                );
+            } else {
+                throw new Error('Failed to send invitation');
+            }
+
+        } catch (error) {
+            console.error('Error sending couple compatibility invitation:', error);
+            alert(currentLanguage === 'ko' ?
+                '초대 전송 중 오류가 발생했습니다. 다시 시도해주세요.' :
+                'Error sending invitation. Please try again.'
+            );
         } finally {
             setSaving(false);
         }
@@ -560,8 +625,8 @@ export default function TestPage() {
         }
     };
 
-    // Show loading for feedback-360 until client-side rendering is complete and auth is checked
-    if (loading || (testId === 'feedback-360' && (!isClient || authLoading))) {
+    // Show loading for feedback-360 and couple-compatibility until client-side rendering is complete and auth is checked
+    if (loading || ((testId === 'feedback-360' || testId === 'couple-compatibility') && (!isClient || authLoading))) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
@@ -1040,17 +1105,33 @@ export default function TestPage() {
 
                     {testDefinition.requiresFeedback && (
                         <div className="mb-8 p-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg">
-                            <h2 className="text-xl font-bold mb-4 text-white" data-translate="test.invite_feedback_title">
-                                {t('test.invite_feedback_title') || 'Invite Others for Feedback'}
-                            </h2>
-                            <p className="text-sm mb-4 text-white/80" data-translate="test.invite_feedback_description">
-                                {t('test.invite_feedback_description') || 'Get a complete picture by inviting friends and colleagues to provide feedback about you.'}
-                            </p>
+                            {testId === 'couple-compatibility' ? (
+                                <>
+                                    <h2 className="text-xl font-bold mb-4 text-white">
+                                        💕 {t('test.invite_partner_title') || 'Invite Your Partner'}
+                                    </h2>
+                                    <p className="text-sm mb-4 text-white/80">
+                                        {t('test.invite_partner_description') || 'Send an invitation to your partner to complete their part of the compatibility test. You\'ll both receive the results once they finish.'}
+                                    </p>
+                                </>
+                            ) : (
+                                <>
+                                    <h2 className="text-xl font-bold mb-4 text-white" data-translate="test.invite_feedback_title">
+                                        {t('test.invite_feedback_title') || 'Invite Others for Feedback'}
+                                    </h2>
+                                    <p className="text-sm mb-4 text-white/80" data-translate="test.invite_feedback_description">
+                                        {t('test.invite_feedback_description') || 'Get a complete picture by inviting friends and colleagues to provide feedback about you.'}
+                                    </p>
+                                </>
+                            )}
                             
                             {/* Name Input */}
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-2 text-white">
-                                    {t('feedbackInvite.nameQuestion') || 'What name should your friends use when giving feedback?'}
+                                    {testId === 'couple-compatibility' 
+                                        ? (t('test.your_name_for_partner') || 'Your name (so your partner knows who invited them)')
+                                        : (t('feedbackInvite.nameQuestion') || 'What name should your friends use when giving feedback?')
+                                    }
                                 </label>
                                 <input
                                     type="text"
@@ -1067,43 +1148,73 @@ export default function TestPage() {
                                 </p>
                             </div>
                             
-                            <div className="space-y-3 mb-4">
-                                {feedbackEmails.map((email, index) => (
-                                    <div key={index} className="flex gap-2">
+                            {testId === 'couple-compatibility' ? (
+                                // Single email input for partner
+                                <>
+                                    <div className="mb-4">
+                                        <label className="block text-sm font-medium mb-2 text-white">
+                                            {t('test.partner_email') || 'Your Partner\'s Email Address'}
+                                        </label>
                                         <input
                                             type="email"
-                                            value={email}
-                                            onChange={(e) => updateEmail(index, e.target.value)}
-                                            placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
-                                            className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                            value={feedbackEmails[0] || ''}
+                                            onChange={(e) => updateEmail(0, e.target.value)}
+                                            placeholder={t('test.partner_email_placeholder') || 'Enter your partner\'s email address'}
+                                            className="w-full p-3 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                         />
-                                        {feedbackEmails.length > 1 && (
-                                            <button
-                                                onClick={() => removeEmailField(index)}
-                                                className="p-2 text-red-500 hover:text-red-700"
-                                            >
-                                                ✕
-                                            </button>
-                                        )}
                                     </div>
-                                ))}
-                            </div>
-                            
-                            <div className="flex gap-2 justify-center mb-4">
-                                <button
-                                    onClick={addEmailField}
-                                    className="px-4 py-2 text-sm bg-white/20 text-white rounded hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300"
-                                >
-                                    {t('feedbackInvite.addAnother') || 'Add Another Email'}
-                                </button>
-                                <button
-                                    onClick={handleSendFeedbackInvitations}
-                                    disabled={saving}
-                                    className="px-4 py-2 text-sm bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 backdrop-blur-sm border border-white/20 transition-all duration-300"
-                                >
-                                    {saving ? (t('feedbackInvite.sending') || 'Sending...') : (t('feedbackInvite.sendInvitations') || 'Send Invitations')}
-                                </button>
-                            </div>
+                                    <div className="flex justify-center mb-4">
+                                        <button
+                                            onClick={handleSendCoupleCompatibilityInvitation}
+                                            disabled={saving}
+                                            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:from-pink-600 hover:to-red-600 disabled:opacity-50 transition-all duration-300"
+                                        >
+                                            {saving ? (t('test.sending_invitation') || 'Sending Invitation...') : (t('test.send_partner_invitation') || '💕 Send Partner Invitation')}
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                // Multiple email inputs for feedback
+                                <>
+                                    <div className="space-y-3 mb-4">
+                                        {feedbackEmails.map((email, index) => (
+                                            <div key={index} className="flex gap-2">
+                                                <input
+                                                    type="email"
+                                                    value={email}
+                                                    onChange={(e) => updateEmail(index, e.target.value)}
+                                                    placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
+                                                    className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                />
+                                                {feedbackEmails.length > 1 && (
+                                                    <button
+                                                        onClick={() => removeEmailField(index)}
+                                                        className="p-2 text-red-500 hover:text-red-700"
+                                                    >
+                                                        ✕
+                                                    </button>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    
+                                    <div className="flex gap-2 justify-center mb-4">
+                                        <button
+                                            onClick={addEmailField}
+                                            className="px-4 py-2 text-sm bg-white/20 text-white rounded hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300"
+                                        >
+                                            {t('feedbackInvite.addAnother') || 'Add Another Email'}
+                                        </button>
+                                        <button
+                                            onClick={handleSendFeedbackInvitations}
+                                            disabled={saving}
+                                            className="px-4 py-2 text-sm bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 backdrop-blur-sm border border-white/20 transition-all duration-300"
+                                        >
+                                            {saving ? (t('feedbackInvite.sending') || 'Sending...') : (t('feedbackInvite.sendInvitations') || 'Send Invitations')}
+                                        </button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     )}
 
