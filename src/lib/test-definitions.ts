@@ -1418,32 +1418,42 @@ const coupleCompatibilityQuestions: TestQuestion[] = [
 ];
 
 const coupleCompatibilityScoring: ScoringFunction = (answers) => {
-  const compatibility = {
-    love_language: '',
-    communication_style: 0,
-    relationship_values: ''
-  };
+  // Calculate percentages for each dimension
+  const scores: { [key: string]: number } = {};
 
-  // Extract love language from first question
+  // Love Language - convert choice to percentage (each choice gets 100% in its category)
   if (answers['couple_1']) {
-    compatibility.love_language = answers['couple_1'];
+    scores['love_language'] = 100; // Primary love language gets 100%
   }
 
-  // Communication importance from second question
+  // Communication Style - convert 1-5 scale to percentage
   if (answers['couple_2']) {
-    compatibility.communication_style = answers['couple_2'];
+    scores['communication_style'] = Math.round(((answers['couple_2'] as number) / 5) * 100);
   }
 
-  // Relationship values from third question
+  // Relationship Values - convert choice to percentage
   if (answers['couple_3']) {
-    compatibility.relationship_values = answers['couple_3'];
+    scores['relationship_values'] = 100; // Primary value gets 100%
   }
+
+  // Get the actual values for trait display
+  const primaryLoveLanguage = answers['couple_1'] || '';
+  const primaryValues = answers['couple_3'] || '';
 
   return {
-    scores: compatibility,
+    scores: scores,
     type: 'Compatibility Profile',
-    description_key: 'Your relationship compatibility profile',
-    traits: [compatibility.love_language, compatibility.relationship_values]
+    description_key: 'tests.couple.description',
+    traits: [
+      `results.dimensions.${primaryLoveLanguage}`,
+      `results.dimensions.${primaryValues}`
+    ],
+    // Store the actual selections for detailed display
+    selections: {
+      love_language: primaryLoveLanguage,
+      communication_importance: answers['couple_2'] || 0,
+      relationship_values: primaryValues
+    }
   };
 };
 
