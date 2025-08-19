@@ -549,42 +549,38 @@
     "feedback360Description": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.",
     "feedback360Profile": "360 Feedback Profile"
   },
-  "tests": {
-    "feedback360": {
-      "universal": {
-        "q1": "Does this person manage emotions well and stay calm under stress or pressure?",
-        "q2": "How well does this person adapt to new situations or unexpected changes?",
-        "q3": "Does this person work steadily toward goals and manage themselves well?",
-        "q4": "Does this person enjoy being around others and gain energy from social situations?",
-        "q5": "How open and curious is this person about new ideas or experiences?",
-        "q6": "Does this person understand and empathize with others' emotions and perspectives?",
-        "q7": "Does this person express thoughts and feelings clearly and effectively?",
-        "q8": "Does this person try to solve problems constructively in conflict situations?",
-        "q9": "How much can you trust this person, and do they keep their promises?",
-        "q10": "Does this person try to help others and show consideration?"
-      },
-      "scale": {
-        "1": "Not at all",
-        "2": "Rarely",
-        "3": "Sometimes", 
-        "4": "Often",
-        "5": "Always"
-      },
-      "general": {
-        "q11": "How well does this person maintain a positive attitude in daily life?",
-        "q12": "How well does this person keep promises and commitments to others?",
-        "q13": "How helpful is this person in difficult situations?",
-        "q14": "How well does this person get along with different types of people?",
-        "q15": "How honestly does this person admit their mistakes or wrongdoings?",
-        "q16": "How proactive is this person in building relationships with new people?",
-        "q17": "How much does this person respect others' opinions?",
-        "q18": "How appropriately does this person behave in social situations?",
-        "q19": "How positive an influence does this person have on those around them?",
-        "q20": "How mature is this person overall?"
-      }
-    }
-  },
   "feedback360": {
+    "universal": {
+      "q1": "Does this person manage emotions well and stay calm under stress or pressure?",
+      "q2": "How well does this person adapt to new situations or unexpected changes?",
+      "q3": "Does this person work steadily toward goals and manage themselves well?",
+      "q4": "Does this person enjoy being around others and gain energy from social situations?",
+      "q5": "How open and curious is this person about new ideas or experiences?",
+      "q6": "Does this person understand and empathize with others' emotions and perspectives?",
+      "q7": "Does this person express thoughts and feelings clearly and effectively?",
+      "q8": "Does this person try to solve problems constructively in conflict situations?",
+      "q9": "How much can you trust this person, and do they keep their promises?",
+      "q10": "Does this person try to help others and show consideration?"
+    },
+    "scale": {
+      "1": "Not at all",
+      "2": "Rarely",
+      "3": "Sometimes", 
+      "4": "Often",
+      "5": "Always"
+    },
+    "general": {
+      "q11": "How well does this person maintain a positive attitude in daily life?",
+      "q12": "How well does this person keep promises and commitments to others?",
+      "q13": "How helpful is this person in difficult situations?",
+      "q14": "How well does this person get along with different types of people?",
+      "q15": "How honestly does this person admit their mistakes or wrongdoings?",
+      "q16": "How proactive is this person in building relationships with new people?",
+      "q17": "How much does this person respect others' opinions?",
+      "q18": "How appropriately does this person behave in social situations?",
+      "q19": "How positive an influence does this person have on those around them?",
+      "q20": "How mature is this person overall?"
+    },
     "ui": {
       "title": "Feedback Request",
       "instructions": "Please answer the following questions about them honestly. Your responses will remain anonymous.",
