@@ -38,12 +38,14 @@ export default function ResultsPage() {
         if (!user) return;
         
         try {
+            console.log('Attempting to load Firestore data...');
             // Load all user data in parallel
             const [userResults, pendingInvitations] = await Promise.all([
                 getUserTestResults(user.uid),
                 getPendingInvitations(user.uid)
             ]);
 
+            console.log('Firestore results loaded:', userResults);
             setResults(userResults);
             setInvitations(pendingInvitations);
 
@@ -60,7 +62,10 @@ export default function ResultsPage() {
             setFeedback(feedbackData);
 
         } catch (error) {
-            console.error("Error loading data:", error);
+            console.error("Error loading Firestore data, falling back to localStorage:", error);
+            // Fallback to localStorage if Firestore fails (e.g., missing indexes)
+            loadLocalResults();
+            return;
         } finally {
             setResultsLoading(false);
         }
