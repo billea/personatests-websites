@@ -457,18 +457,45 @@ const bigFiveScoring: ScoringFunction = (answers) => {
     neuroticism: 0
   };
 
-  // Simple scoring logic for demonstration
-  Object.values(answers).forEach((score, index) => {
-    const traitNames = Object.keys(traits);
-    const trait = traitNames[index % traitNames.length];
-    traits[trait as keyof typeof traits] += (score as number);
+  // Map each question to specific trait (improved scoring)
+  const questionTraitMapping = [
+    'extraversion',      // q1: outgoing and sociable
+    'conscientiousness', // q2: always prepared and organized  
+    'openness',         // q3: open to new experiences
+    'agreeableness',    // q4: compassionate and understanding
+    'neuroticism'       // q5: remain calm under pressure (reverse scored)
+  ];
+
+  // Calculate scores based on answers (1-5 scale)
+  Object.entries(answers).forEach(([questionId, score], index) => {
+    const trait = questionTraitMapping[index % questionTraitMapping.length];
+    let adjustedScore = score as number;
+    
+    // Reverse score for neuroticism (calm under pressure = low neuroticism)
+    if (trait === 'neuroticism') {
+      adjustedScore = 6 - adjustedScore; // Reverse 1-5 scale
+    }
+    
+    traits[trait as keyof typeof traits] += adjustedScore;
   });
 
+  // Convert raw scores to percentages (1-5 scale becomes 0-100%)
+  const maxScore = 5; // Maximum possible score per question
+  const questionsPerTrait = Math.ceil(Object.keys(answers).length / 5);
+  const maxPossible = maxScore * questionsPerTrait;
+  
+  const percentageScores = Object.fromEntries(
+    Object.entries(traits).map(([trait, score]) => [
+      trait,
+      Math.round((score / maxPossible) * 100)
+    ])
+  );
+
   return {
-    scores: traits,
+    scores: percentageScores,
     type: 'Big Five Profile',
-    description_key: 'Your Big Five personality profile',
-    traits: Object.keys(traits)
+    description_key: 'tests.bigfive.description',
+    traits: Object.keys(traits).map(trait => `results.dimensions.${trait}`)
   };
 };
 

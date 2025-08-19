@@ -981,7 +981,7 @@ export default function TestPage() {
                                 <div className="flex flex-wrap gap-3">
                                     {completedTestResult.traits.map((trait: string, index: number) => (
                                         <span key={index} className="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full text-sm font-medium">
-                                            {t(`results.dimensions.${trait}`) || trait}
+                                            {t(trait) || trait}
                                         </span>
                                     ))}
                                 </div>
