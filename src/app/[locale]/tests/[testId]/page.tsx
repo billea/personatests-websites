@@ -16,6 +16,10 @@ export default function TestPage() {
     const router = useRouter();
     const testId = params.testId as string;
     
+    // Immediately check if this is a protected test
+    const isProtectedTest = testId === 'couple-compatibility' || testId === 'feedback-360';
+    const [authChecked, setAuthChecked] = useState(false);
+    
     // Force client-side rendering for feedback-360 to ensure auth check runs
     const [isClient, setIsClient] = useState(false);
     
@@ -609,13 +613,33 @@ export default function TestPage() {
         }
     };
 
-    // Immediate redirect check for couple-compatibility without authentication
+    // Enhanced authentication check - multiple attempts to catch auth bypass
     useEffect(() => {
-        if (isClient && !authLoading && (testId === 'couple-compatibility') && !user) {
-            console.log('🔐 Immediate redirect: couple-compatibility requires authentication');
+        if (isProtectedTest && isClient) {
+            console.log('🔐 Enhanced auth check:', { testId, authLoading, hasUser: !!user, isClient });
+            
+            if (!authLoading && !user) {
+                console.log('🚨 REDIRECTING: Protected test without authentication');
+                const returnUrl = encodeURIComponent(`/${currentLanguage}/tests/${testId}`);
+                router.push(`/${currentLanguage}/auth?returnUrl=${returnUrl}`);
+                return;
+            }
+            
+            if (!authLoading) {
+                setAuthChecked(true);
+            }
+        } else if (!isProtectedTest) {
+            setAuthChecked(true);
+        }
+    }, [isProtectedTest, isClient, authLoading, user, router, currentLanguage, testId]);
+
+    // Additional safety check - runs on every render
+    useEffect(() => {
+        if (isProtectedTest && !authLoading && !user && isClient) {
+            console.log('🚨 SAFETY REDIRECT: Unauthorized access attempt');
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
         }
-    }, [isClient, authLoading, testId, user, router, currentLanguage]);
+    });
 
     const addEmailField = () => {
         setFeedbackEmails([...feedbackEmails, '']);
