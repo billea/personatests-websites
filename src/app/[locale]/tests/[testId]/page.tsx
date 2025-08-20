@@ -657,10 +657,35 @@ export default function TestPage() {
         }
     };
 
-    // Show loading for feedback-360 and couple-compatibility until client-side rendering is complete and auth is checked
-    // Also show loading if user is not authenticated for these tests (prevents flash of test content)
-    if (loading || 
-        ((testId === 'feedback-360' || testId === 'couple-compatibility') && (!isClient || authLoading || !user))) {
+    // STRICT AUTHENTICATION CHECK - Block ALL content for protected tests until authenticated
+    // This prevents any test content from showing, even briefly
+    if (isProtectedTest) {
+        // If we're still loading authentication OR user is not authenticated, show loading/redirect
+        if (!isClient || authLoading || !user) {
+            // If auth is done loading and no user, redirect immediately
+            if (!authLoading && !user && isClient) {
+                const returnUrl = encodeURIComponent(`/${currentLanguage}/tests/${testId}`);
+                router.push(`/${currentLanguage}/auth?returnUrl=${returnUrl}`);
+            }
+            
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
+                    <div className="text-center">
+                        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white mx-auto"></div>
+                        <p className="mt-4 text-lg text-white">
+                            {!authLoading && !user ? 
+                                (currentLanguage === 'ko' ? '로그인 페이지로 이동 중...' : 'Redirecting to login...') :
+                                (currentLanguage === 'ko' ? '인증 확인 중...' : 'Checking authentication...')
+                            }
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+    }
+    
+    // Show normal loading for non-protected tests or when loading test definition
+    if (loading) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
@@ -680,37 +705,7 @@ export default function TestPage() {
         );
     }
 
-    // Show authentication requirement for 360 feedback test
-    if (testId === 'feedback-360' && !user) {
-        return (
-            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
-                <div className="w-full max-w-md bg-white/95 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg p-8 text-center">
-                    <div className="text-6xl mb-4">🔐</div>
-                    <h1 className="text-2xl font-bold mb-4 text-gray-900">
-                        {currentLanguage === 'ko' ? '로그인이 필요합니다' : 'Login Required'}
-                    </h1>
-                    <p className="text-gray-600 mb-6">
-                        {currentLanguage === 'ko' 
-                            ? '360° 피드백 테스트를 진행하려면 먼저 로그인해주세요.'
-                            : 'Please log in to continue with the 360° Feedback Assessment.'
-                        }
-                    </p>
-                    <button
-                        onClick={() => router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`)}
-                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
-                    >
-                        {currentLanguage === 'ko' ? '로그인하기' : 'Login'}
-                    </button>
-                    <button
-                        onClick={() => router.push(`/${currentLanguage}/tests`)}
-                        className="w-full mt-3 py-2 text-gray-500 hover:text-gray-700 transition-colors"
-                    >
-                        ← {currentLanguage === 'ko' ? '테스트 목록으로 돌아가기' : 'Back to Tests'}
-                    </button>
-                </div>
-            </div>
-        );
-    }
+    // Authentication is now handled above for all protected tests
 
     // Show category selection for feedback-360 test
     if (showCategorySelection && testId === 'feedback-360') {
