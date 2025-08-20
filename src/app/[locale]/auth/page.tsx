@@ -4,7 +4,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
 export default function AuthPage() {
@@ -17,6 +17,12 @@ export default function AuthPage() {
     const locale = params.locale as string;
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [authError, setAuthError] = useState<string | null>(null);
+    
+    // Email authentication state
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     
     // Get context from URL params
     const returnUrl = searchParams.get('returnUrl');
@@ -61,6 +67,63 @@ export default function AuthPage() {
         } catch (error: any) {
             console.error('Sign in error:', error);
             setAuthError(error.message || 'Sign in failed. Please try again.');
+        } finally {
+            setIsSigningIn(false);
+        }
+    };
+
+    const handleEmailAuth = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSigningIn(true);
+        setAuthError(null);
+        
+        try {
+            let result;
+            
+            if (isSignUp) {
+                // Create new account
+                result = await createUserWithEmailAndPassword(auth, email, password);
+                
+                // Update display name if provided
+                if (name.trim()) {
+                    await updateProfile(result.user, {
+                        displayName: name.trim()
+                    });
+                }
+            } else {
+                // Sign in existing user
+                result = await signInWithEmailAndPassword(auth, email, password);
+            }
+            
+            console.log('Email auth successful:', result.user.email);
+            
+            // Same redirect logic as Google auth
+            if (returnUrl && (context === 'feedback-360-test' || context === 'couple-compatibility-test')) {
+                console.log(`AuthProvider will handle ${context} welcome redirect`);
+            } else if (returnUrl) {
+                console.log('Redirecting to saved return URL:', returnUrl);
+                router.push(returnUrl);
+            } else {
+                router.push(`/${locale}`);
+            }
+        } catch (error: any) {
+            console.error('Email auth error:', error);
+            let errorMessage = 'Authentication failed. Please try again.';
+            
+            // Handle specific Firebase errors
+            if (error.code === 'auth/email-already-in-use') {
+                errorMessage = 'Email already in use. Try signing in instead.';
+            } else if (error.code === 'auth/weak-password') {
+                errorMessage = 'Password should be at least 6 characters.';
+            } else if (error.code === 'auth/invalid-email') {
+                errorMessage = 'Please enter a valid email address.';
+            } else if (error.code === 'auth/user-not-found') {
+                errorMessage = 'No account found with this email. Try signing up.';
+            } else if (error.code === 'auth/wrong-password') {
+                errorMessage = 'Incorrect password. Please try again.';
+            }
+            
+            setAuthError(errorMessage);
         } finally {
             setIsSigningIn(false);
         }
@@ -131,6 +194,90 @@ export default function AuthPage() {
                         </p>
                     </div>
                 )}
+
+                {/* Email Authentication Form */}
+                <form onSubmit={handleEmailAuth} className="space-y-4 mb-6">
+                    {isSignUp && (
+                        <div>
+                            <input
+                                type="text"
+                                placeholder={currentLanguage === 'ko' ? '이름 (선택사항)' : 'Name (optional)'}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                            />
+                        </div>
+                    )}
+                    
+                    <div>
+                        <input
+                            type="email"
+                            placeholder={currentLanguage === 'ko' ? '이메일 주소' : 'Email address'}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                    </div>
+                    
+                    <div>
+                        <input
+                            type="password"
+                            placeholder={currentLanguage === 'ko' ? '비밀번호 (최소 6자)' : 'Password (min 6 characters)'}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            minLength={6}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        />
+                    </div>
+                    
+                    <button
+                        type="submit"
+                        disabled={isSigningIn}
+                        className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-colors ${
+                            isSigningIn ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'
+                        }`}
+                    >
+                        {isSigningIn ? (
+                            <div className="flex items-center justify-center gap-2">
+                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                                <span>
+                                    {currentLanguage === 'ko' ? '처리 중...' : 'Processing...'}
+                                </span>
+                            </div>
+                        ) : (
+                            isSignUp ? 
+                                (currentLanguage === 'ko' ? '계정 만들기' : 'Create Account') :
+                                (currentLanguage === 'ko' ? '로그인' : 'Sign In')
+                        )}
+                    </button>
+                    
+                    <div className="text-center">
+                        <button
+                            type="button"
+                            onClick={() => setIsSignUp(!isSignUp)}
+                            className="text-sm text-indigo-600 hover:text-indigo-700 transition-colors"
+                        >
+                            {isSignUp ? 
+                                (currentLanguage === 'ko' ? '이미 계정이 있으신가요? 로그인' : 'Already have an account? Sign In') :
+                                (currentLanguage === 'ko' ? '계정이 없으신가요? 가입하기' : 'Don\'t have an account? Sign Up')
+                            }
+                        </button>
+                    </div>
+                </form>
+
+                {/* Divider */}
+                <div className="relative my-6">
+                    <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-gray-300" />
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                        <span className="px-2 bg-white text-gray-500">
+                            {currentLanguage === 'ko' ? '또는' : 'or'}
+                        </span>
+                    </div>
+                </div>
 
                 {/* Google Sign In Button */}
                 <div className="space-y-4">
