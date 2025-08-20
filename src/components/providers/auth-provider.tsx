@@ -48,13 +48,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           const returnUrl = localStorage.getItem('auth_return_url');
           const returnContext = localStorage.getItem('auth_return_context');
           
-          if (returnUrl && returnContext === 'feedback-360-test') {
+          if (returnUrl && (returnContext === 'feedback-360-test' || returnContext === 'couple-compatibility-test')) {
             // Clear the stored values
             localStorage.removeItem('auth_return_url');
             localStorage.removeItem('auth_return_context');
             
             // Instead of directly redirecting, show greeting first
-            console.log('User logged in, preparing greeting before 360 feedback test');
+            console.log(`User logged in, preparing greeting before ${returnContext}`);
             
             // Extract locale from returnUrl to show greeting in correct language
             const localeMatch = returnUrl.match(/\/([a-z]{2})\//);

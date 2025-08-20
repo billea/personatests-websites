@@ -24,6 +24,7 @@ export default function WelcomePage() {
     const firstName = displayName.split(' ')[0];
     
     const is360Feedback = context === 'feedback-360-test';
+    const isCoupleCompatibility = context === 'couple-compatibility-test';
     
     // Auto-redirect after countdown
     useEffect(() => {
@@ -110,6 +111,22 @@ export default function WelcomePage() {
                             }
                         </p>
                     </div>
+                ) : isCoupleCompatibility ? (
+                    <div className="mb-8 p-6 bg-pink-50 rounded-lg">
+                        <div className="text-4xl mb-3">💕</div>
+                        <h2 className="text-xl font-semibold text-pink-800 mb-3">
+                            {currentLanguage === 'ko' ? 
+                                '커플 궁합 테스트' : 
+                                'Couple Compatibility Test'
+                            }
+                        </h2>
+                        <p className="text-pink-700 leading-relaxed">
+                            {currentLanguage === 'ko' ? 
+                                '이제 파트너와의 궁합 테스트를 시작할 준비가 되었습니다. 이 테스트를 통해 두 사람의 관계에 대한 깊은 통찰을 얻고, 더 나은 소통과 이해를 위한 가이드를 제공받으세요.' : 
+                                'You\'re now ready to discover your compatibility with your partner. This comprehensive test will provide deep insights into your relationship and guide you toward better communication and understanding.'
+                            }
+                        </p>
+                    </div>
                 ) : (
                     <div className="mb-8 p-6 bg-green-50 rounded-lg">
                         <div className="text-4xl mb-3">✨</div>
@@ -184,6 +201,12 @@ export default function WelcomePage() {
                             <li className="flex items-center gap-2">
                                 <span className="text-green-500">✓</span>
                                 {currentLanguage === 'ko' ? '피드백 알림을 받습니다' : 'Get feedback notifications'}
+                            </li>
+                        )}
+                        {isCoupleCompatibility && (
+                            <li className="flex items-center gap-2">
+                                <span className="text-green-500">✓</span>
+                                {currentLanguage === 'ko' ? '파트너 초대 및 결과 공유' : 'Invite partner and share results'}
                             </li>
                         )}
                     </ul>

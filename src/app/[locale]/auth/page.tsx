@@ -22,6 +22,7 @@ export default function AuthPage() {
     const returnUrl = searchParams.get('returnUrl');
     const context = searchParams.get('context');
     const is360Feedback = context === 'feedback-360-test';
+    const isCoupleCompatibility = context === 'couple-compatibility-test';
     
     // Redirect if already logged in
     useEffect(() => {
@@ -47,9 +48,9 @@ export default function AuthPage() {
             
             // The AuthProvider will handle the redirect automatically
             // to the welcome page for feedback tests, or direct redirect for others
-            if (returnUrl && context === 'feedback-360-test') {
-                // For 360 feedback, the AuthProvider will handle the welcome page redirect
-                console.log('AuthProvider will handle 360 feedback welcome redirect');
+            if (returnUrl && (context === 'feedback-360-test' || context === 'couple-compatibility-test')) {
+                // For 360 feedback and couple compatibility, the AuthProvider will handle the welcome page redirect
+                console.log(`AuthProvider will handle ${context} welcome redirect`);
             } else if (returnUrl) {
                 // For other cases, redirect directly
                 console.log('Redirecting to saved return URL:', returnUrl);
@@ -88,6 +89,22 @@ export default function AuthPage() {
                             {currentLanguage === 'ko' ? 
                                 '360° 피드백 테스트' : 
                                 '360° Feedback Test'
+                            }
+                        </h1>
+                        <p className="text-gray-600">
+                            {currentLanguage === 'ko' ? 
+                                '계속하려면 로그인이 필요합니다' : 
+                                'Please sign in to continue'
+                            }
+                        </p>
+                    </div>
+                ) : isCoupleCompatibility ? (
+                    <div className="text-center mb-8">
+                        <div className="text-6xl mb-4">💕</div>
+                        <h1 className="text-2xl font-bold mb-2 text-gray-800">
+                            {currentLanguage === 'ko' ? 
+                                '커플 궁합 테스트' : 
+                                'Couple Compatibility Test'
                             }
                         </h1>
                         <p className="text-gray-600">
@@ -161,6 +178,21 @@ export default function AuthPage() {
                             <li>✓ {currentLanguage === 'ko' ? '새로운 피드백 알림을 받습니다' : 'Get notified when new feedback arrives'}</li>
                             <li>✓ {currentLanguage === 'ko' ? '진행 상황을 추적할 수 있습니다' : 'Track feedback progress and statistics'}</li>
                             <li>✓ {currentLanguage === 'ko' ? '종합적인 결과 대시보드를 이용합니다' : 'Access comprehensive results dashboard'}</li>
+                        </ul>
+                    </div>
+                )}
+
+                {/* Benefits for Couple Compatibility */}
+                {isCoupleCompatibility && (
+                    <div className="mt-6 p-4 bg-pink-50 rounded-lg">
+                        <h3 className="font-semibold text-pink-800 mb-2">
+                            {currentLanguage === 'ko' ? '계정의 이점:' : 'Benefits of your account:'}
+                        </h3>
+                        <ul className="text-sm text-pink-700 space-y-1">
+                            <li>✓ {currentLanguage === 'ko' ? '호환성 결과가 안전하게 저장됩니다' : 'Compatibility results are securely saved'}</li>
+                            <li>✓ {currentLanguage === 'ko' ? '파트너 초대를 쉽게 보낼 수 있습니다' : 'Easily send partner invitations'}</li>
+                            <li>✓ {currentLanguage === 'ko' ? '결과 공유 및 소셜 미디어 연동' : 'Share results and connect on social media'}</li>
+                            <li>✓ {currentLanguage === 'ko' ? '언제든지 결과를 다시 확인할 수 있습니다' : 'Access your results anytime'}</li>
                         </ul>
                     </div>
                 )}

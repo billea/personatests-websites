@@ -190,7 +190,15 @@ export default function TestPage() {
         // Wait for auth loading to complete before checking authentication
         if ((testId === 'feedback-360' || testId === 'couple-compatibility') && !authLoading && !user) {
             console.log(`🔐 ${testId} requires authentication - redirecting to login`);
-            router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
+            
+            // Store return URL and context in localStorage (same pattern as 360 feedback)
+            const returnUrl = `/${currentLanguage}/tests/${testId}`;
+            const context = testId === 'feedback-360' ? 'feedback-360-test' : 'couple-compatibility-test';
+            
+            localStorage.setItem('auth_return_url', returnUrl);
+            localStorage.setItem('auth_return_context', context);
+            
+            router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(returnUrl)}&context=${context}`);
             return;
         }
         
