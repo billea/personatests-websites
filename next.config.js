@@ -8,6 +8,7 @@ const nextConfig = {
   
   // Production optimizations for Netlify  
   // Using static export for Netlify deployment
+  output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true
