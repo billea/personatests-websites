@@ -1553,6 +1553,89 @@ const coupleCompatibilityQuestions: TestQuestion[] = [
   }
 ];
 
+// Generate individual personality insights for couple compatibility test
+const generatePersonalityInsights = (userPreferences: any) => {
+  const { lifestyle_fun, values_relationships, lifestyle_compatibility } = userPreferences;
+  
+  // Analyze lifestyle preferences
+  let lifestyleScore = 0;
+  let personalityTraits = [];
+  let personalityType = '';
+  
+  // Fun & Lifestyle Analysis
+  if (lifestyle_fun.friday_night === 'party_out' || lifestyle_fun.vacation_type === 'city_tour') {
+    lifestyleScore += 20;
+    personalityTraits.push('Social & Adventurous');
+  }
+  if (lifestyle_fun.friday_night === 'movie_chill' || lifestyle_fun.weekend_style === 'relax_home') {
+    lifestyleScore += 15;
+    personalityTraits.push('Comfort-Loving');
+  }
+  if (lifestyle_fun.weekend_style === 'adventure' || lifestyle_fun.vacation_type === 'mountains') {
+    lifestyleScore += 25;
+    personalityTraits.push('Adventure Seeker');
+  }
+  
+  // Values Analysis
+  if (values_relationships.relationship_priority === 'trust' || values_relationships.conflict_style === 'talk_immediately') {
+    lifestyleScore += 20;
+    personalityTraits.push('Communicator');
+  }
+  if (values_relationships.love_language === 'quality_time' || values_relationships.time_together === 'lots_together') {
+    lifestyleScore += 15;
+    personalityTraits.push('Quality Time Lover');
+  }
+  if (values_relationships.partner_values === 'humor') {
+    personalityTraits.push('Fun-Loving');
+  }
+  
+  // Lifestyle Compatibility Analysis
+  if (lifestyle_compatibility.planning_style === 'detailed_plans') {
+    personalityTraits.push('Planner');
+  }
+  if (lifestyle_compatibility.planning_style === 'spontaneous') {
+    personalityTraits.push('Spontaneous');
+  }
+  if (lifestyle_compatibility.money_philosophy === 'save_future') {
+    personalityTraits.push('Future-Focused');
+  }
+  if (lifestyle_compatibility.money_philosophy === 'spend_experiences') {
+    personalityTraits.push('Experience-Driven');
+  }
+  
+  // Determine personality type based on dominant traits
+  if (personalityTraits.includes('Adventure Seeker') && personalityTraits.includes('Social & Adventurous')) {
+    personalityType = 'The Adventurous Partner 🌟';
+  } else if (personalityTraits.includes('Communicator') && personalityTraits.includes('Quality Time Lover')) {
+    personalityType = 'The Devoted Partner 💕';
+  } else if (personalityTraits.includes('Comfort-Loving') && personalityTraits.includes('Planner')) {
+    personalityType = 'The Steady Partner 🏠';
+  } else if (personalityTraits.includes('Fun-Loving') && personalityTraits.includes('Spontaneous')) {
+    personalityType = 'The Spontaneous Partner 🎉';
+  } else if (personalityTraits.includes('Future-Focused') && personalityTraits.includes('Planner')) {
+    personalityType = 'The Thoughtful Partner 🎯';
+  } else {
+    personalityType = 'The Balanced Partner ⚖️';
+  }
+  
+  // Calculate compatibility readiness score (how ready they are for a relationship)
+  const compatibilityReadiness = Math.min(Math.max(lifestyleScore, 45), 85);
+  
+  return {
+    personalityType,
+    personalityScore: compatibilityReadiness,
+    compatibilityReadiness,
+    traits: personalityTraits.slice(0, 3), // Top 3 traits
+    dimensions: {
+      adventure: personalityTraits.includes('Adventure Seeker') ? 85 : 45,
+      communication: personalityTraits.includes('Communicator') ? 90 : 50,
+      planning: personalityTraits.includes('Planner') ? 80 : 40,
+      social: personalityTraits.includes('Social & Adventurous') ? 85 : 45,
+      stability: personalityTraits.includes('Steady Partner') ? 85 : 50
+    }
+  };
+};
+
 const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: { [questionId: string]: any }) => {
   // If no partner answers yet, store user's answers for later comparison
   if (!partnerAnswers) {
@@ -1581,11 +1664,18 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
       }
     };
 
+    // Generate individual personality insights based on user's answers
+    const personalityInsights = generatePersonalityInsights(userPreferences);
+    
     return {
-      scores: { compatibility: 0 }, // Will be calculated when partner responds
-      type: 'Waiting for Partner 💕',
-      description_key: 'tests.couple.waiting_description',
-      traits: ['Test completed!', 'Invitation sent to partner'],
+      scores: { 
+        compatibility: personalityInsights.compatibilityReadiness,
+        personality: personalityInsights.personalityScore
+      },
+      type: personalityInsights.personalityType,
+      description_key: 'couple.waiting_description',
+      traits: personalityInsights.traits,
+      dimensions: personalityInsights.dimensions,
       userPreferences,
       awaitingPartner: true, // Flag to show invitation interface
       testStatus: 'awaiting_partner'
