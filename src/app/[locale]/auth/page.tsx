@@ -201,13 +201,8 @@ export default function AuthPage() {
                 <div className="mt-6 text-center">
                     <button
                         onClick={() => {
-                            if (returnUrl) {
-                                // Go back to where they came from
-                                const backUrl = returnUrl.replace(`/${locale}/tests/`, `/${locale}/tests`);
-                                router.push(backUrl);
-                            } else {
-                                router.push(`/${locale}/tests`);
-                            }
+                            // Go back to tests listing page
+                            router.push(`/${locale}/tests`);
                         }}
                         className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
                     >
