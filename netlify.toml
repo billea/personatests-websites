@@ -1,7 +1,23 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  command = "npm run build && npm run export"
+  publish = "out"
   
+# Handle Next.js routing with authentication protection
+[[redirects]]
+  from = "/*/tests/couple-compatibility"
+  to = "/*/auth?returnUrl=:splat"
+  status = 302
+  force = false
+  conditions = {Cookie = "!firebase-auth-token"}
+  
+[[redirects]]
+  from = "/*/tests/feedback-360"
+  to = "/*/auth?returnUrl=:splat"  
+  status = 302
+  force = false
+  conditions = {Cookie = "!firebase-auth-token"}
+
+# Fallback for all other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"

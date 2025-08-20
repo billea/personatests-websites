@@ -6,9 +6,9 @@ const nextConfig = {
     // Remove windowsFilePath as it's causing issues
   },
   
-  // Production optimizations for Netlify
-  // Using standalone mode for better compatibility
-  output: 'standalone',
+  // Production optimizations for Netlify  
+  // Using export mode for better authentication handling
+  output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true
