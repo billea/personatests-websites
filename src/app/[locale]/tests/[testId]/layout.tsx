@@ -1,16 +1,21 @@
-import { redirect } from 'next/navigation';
-
-interface TestLayoutProps {
-  children: React.ReactNode;
-  params: { locale: string; testId: string };
+// Required for static export
+export async function generateStaticParams() {
+    // Generate static params for known test IDs
+    return [
+        { testId: 'mbti-classic' },
+        { testId: 'big-five' },
+        { testId: 'enneagram' },
+        { testId: 'feedback-360' },
+        { testId: 'couple-compatibility' }
+    ];
 }
 
-export default function TestLayout({ children, params }: TestLayoutProps) {
-  const { locale, testId } = params;
-  
-  // For protected tests, we'll handle this in the client component since
-  // Firebase Auth is client-side only. The middleware will help with
-  // the initial redirect, but final auth check happens client-side.
-  
-  return <>{children}</>;
+interface TestLayoutProps {
+    children: React.ReactNode;
+    params: Promise<{ locale: string; testId: string }>;
+}
+
+export default async function TestLayout({ children, params }: TestLayoutProps) {
+    const { locale, testId } = await params;
+    return <>{children}</>;
 }

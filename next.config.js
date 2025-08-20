@@ -7,8 +7,7 @@ const nextConfig = {
   },
   
   // Production optimizations for Netlify  
-  // Using static export for Netlify deployment
-  output: 'export',
+  // Remove static export temporarily to fix deployment
   trailingSlash: true,
   images: {
     unoptimized: true

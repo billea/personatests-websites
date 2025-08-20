@@ -225,7 +225,7 @@ export const sendCoupleCompatibilityInvitation = async (
     const invitationToken = generateInvitationToken();
     const invitationId = `couple_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
     
-    const invitationData: Omit<FeedbackInvitation, 'id'> = {
+    const invitationData = {
       inviterUserId: userId,
       participantEmail: partnerEmail,
       testId: 'couple-compatibility',
@@ -249,6 +249,8 @@ export const sendCoupleCompatibilityInvitation = async (
 
     // Send email invitation using EmailJS
     try {
+      const emailjs = (await import('@emailjs/browser')).default;
+      
       const emailParams = {
         to_email: partnerEmail,
         to_name: partnerEmail.split('@')[0],
@@ -431,6 +433,7 @@ const sendCompatibilityNotification = async (ownerEmail: string, partnerName: st
         : `Hello,\n\n${partnerName} has completed your Couple Compatibility Test.\n\nLog in to your platform to view your compatibility results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`
     };
 
+    const emailjs = (await import('@emailjs/browser')).default;
     await emailjs.send(
       'service_pu6njog',
       'template_basic_notification',
