@@ -7,8 +7,7 @@ const nextConfig = {
   },
   
   // Production optimizations for Netlify  
-  // Using export mode for better authentication handling
-  output: 'export',
+  // Using static export for Netlify deployment
   trailingSlash: true,
   images: {
     unoptimized: true

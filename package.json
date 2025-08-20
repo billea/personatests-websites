@@ -7,7 +7,6 @@
     "dev:clean": "node cache-cleanup.js && npm run dev",
     "dev:stable": "cmd /c dev-ultra-stable.bat",
     "build": "next build",
-    "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "clean": "node cache-cleanup.js",
