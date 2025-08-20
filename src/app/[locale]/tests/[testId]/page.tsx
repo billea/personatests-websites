@@ -609,6 +609,14 @@ export default function TestPage() {
         }
     };
 
+    // Immediate redirect check for couple-compatibility without authentication
+    useEffect(() => {
+        if (isClient && !authLoading && (testId === 'couple-compatibility') && !user) {
+            console.log('🔐 Immediate redirect: couple-compatibility requires authentication');
+            router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
+        }
+    }, [isClient, authLoading, testId, user, router, currentLanguage]);
+
     const addEmailField = () => {
         setFeedbackEmails([...feedbackEmails, '']);
     };
@@ -626,7 +634,9 @@ export default function TestPage() {
     };
 
     // Show loading for feedback-360 and couple-compatibility until client-side rendering is complete and auth is checked
-    if (loading || ((testId === 'feedback-360' || testId === 'couple-compatibility') && (!isClient || authLoading))) {
+    // Also show loading if user is not authenticated for these tests (prevents flash of test content)
+    if (loading || 
+        ((testId === 'feedback-360' || testId === 'couple-compatibility') && (!isClient || authLoading || !user))) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
