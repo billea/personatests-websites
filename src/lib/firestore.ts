@@ -253,10 +253,12 @@ export const sendCoupleCompatibilityInvitation = async (
       
       const emailParams = {
         to_email: partnerEmail,
-        to_name: partnerEmail.split('@')[0],
-        from_name: userName,
-        invitation_link: invitationUrl,
-        test_type: 'Couple Compatibility Test'
+        reviewer_name: partnerEmail.split('@')[0],
+        subject_name: userName,
+        relationship: 'partner',
+        feedback_url: invitationUrl,
+        assessment_areas: 'Couple Compatibility Test',
+        site_name: 'Korean MBTI Platform'
       };
 
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
@@ -266,10 +268,10 @@ export const sendCoupleCompatibilityInvitation = async (
       console.log('=== END EMAILJS DEBUG ===');
 
       const emailResponse = await emailjs.send(
-        'service_pu6njog',
-        'template_z8m1djn', 
+        'service_dc4y1ov',
+        'template_360_feedback_request', 
         emailParams,
-        'K5Z6vG-tmUCzHN1sI'
+        'bqGKo-dBalpy6MeZE'
       );
 
       console.log('Email sent successfully:', emailResponse);
@@ -427,18 +429,22 @@ const sendCompatibilityNotification = async (ownerEmail: string, partnerName: st
   try {
     const emailParams = {
       to_email: ownerEmail,
-      subject: language === 'ko' ? '새로운 커플 호환성 결과!' : 'New Couple Compatibility Results!',
-      message: language === 'ko' 
-        ? `안녕하세요,\n\n${partnerName}님이 커플 호환성 테스트를 완료했습니다.\n\n결과를 확인하려면 플랫폼에 로그인하세요:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\n감사합니다!\nKorean MBTI Platform`
-        : `Hello,\n\n${partnerName} has completed your Couple Compatibility Test.\n\nLog in to your platform to view your compatibility results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`
+      reviewer_name: 'Korean MBTI Platform',
+      subject_name: ownerEmail.split('@')[0],
+      relationship: 'notification',
+      feedback_url: `https://korean-mbti-platform.netlify.app/${language}/results`,
+      assessment_areas: language === 'ko' 
+        ? `${partnerName}님이 커플 호환성 테스트를 완료했습니다. 결과를 확인하세요!`
+        : `${partnerName} has completed your Couple Compatibility Test. Check your results!`,
+      site_name: 'Korean MBTI Platform'
     };
 
     const emailjs = (await import('@emailjs/browser')).default;
     await emailjs.send(
-      'service_pu6njog',
-      'template_basic_notification',
+      'service_dc4y1ov',
+      'template_360_feedback_request',
       emailParams,
-      'K5Z6vG-tmUCzHN1sI'
+      'bqGKo-dBalpy6MeZE'
     );
 
     console.log('Couple compatibility notification sent successfully');
