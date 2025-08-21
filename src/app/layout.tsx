@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PersonaTests - Free Personality Tests",
+  title: "🚨 DEPLOYMENT TEST - PersonaTests - Free Personality Tests",
   description: "Discover your personality with scientifically-backed tests",
 };
 
