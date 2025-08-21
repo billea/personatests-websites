@@ -1647,6 +1647,10 @@ const generatePersonalityInsights = (userPreferences: any) => {
 };
 
 const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: { [questionId: string]: any }) => {
+  console.error('🚨🚨🚨 COUPLE COMPATIBILITY SCORING FUNCTION CALLED! 🚨🚨🚨');
+  console.error('Answers received:', answers);
+  console.error('Partner answers:', partnerAnswers);
+  
   // If no partner answers yet, store user's answers for later comparison
   if (!partnerAnswers) {
     // Single user's answers - store for later comparison with partner
@@ -1680,7 +1684,7 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
     console.log('🎯 RECEIVED personalityInsights:', personalityInsights);
     
     const finalResult = {
-      type: personalityInsights.personalityType, // This should show instead of raw translation key
+      type: '🚨 TEST FIX WORKING! ' + personalityInsights.personalityType, // This should show instead of raw translation key
       description: `You are ${personalityInsights.personalityType} with ${personalityInsights.compatibilityReadiness}% compatibility readiness. Your key traits: ${personalityInsights.traits.join(', ')}.`,
       scores: {
         'Compatibility Readiness': personalityInsights.compatibilityReadiness,
