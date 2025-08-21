@@ -253,12 +253,9 @@ export const sendCoupleCompatibilityInvitation = async (
       
       const emailParams = {
         to_email: partnerEmail,
-        reviewer_name: partnerEmail.split('@')[0],
-        subject_name: userName,
-        relationship: 'partner',
-        feedback_url: invitationUrl,
-        assessment_areas: 'Couple Compatibility Test',
-        site_name: 'Korean MBTI Platform'
+        to_name: partnerEmail.split('@')[0], // Simpler parameter
+        from_name: userName, // Simpler parameter
+        invitation_link: invitationUrl // Match template expectation
       };
 
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');

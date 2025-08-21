@@ -2618,7 +2618,9 @@
       "Collaboration & Support": "협업과 지원",
       "Innovation & Adaptability": "혁신과 적응성",
       "Communication & Helping": "소통과 도움",
-      "Reliability & Growth": "신뢰성과 성장"
+      "Reliability & Growth": "신뢰성과 성장",
+      "compatibility": "호환성 준비도",
+      "personality": "성격 점수"
     },
     "strengthPrefix": "뛰어난",
     "developmentPrefix": "발전시켜야 할",
