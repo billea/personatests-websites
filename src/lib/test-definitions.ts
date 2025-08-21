@@ -1687,8 +1687,8 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
       type: '🚨 TEST FIX WORKING! ' + personalityInsights.personalityType, // This should show instead of raw translation key
       description: `You are ${personalityInsights.personalityType} with ${personalityInsights.compatibilityReadiness}% compatibility readiness. Your key traits: ${personalityInsights.traits.join(', ')}.`,
       scores: {
-        'Compatibility Readiness': personalityInsights.compatibilityReadiness,
-        'Personality Score': personalityInsights.personalityScore
+        'compatibility': personalityInsights.compatibilityReadiness,
+        'personality': personalityInsights.personalityScore
       },
       traits: personalityInsights.traits,
       dimensions: {
