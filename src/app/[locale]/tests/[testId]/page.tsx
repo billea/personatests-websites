@@ -1025,7 +1025,7 @@ export default function TestPage() {
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="text-center w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                     <h1 className="text-4xl font-bold mb-4 text-white" data-translate="test.completed_title">
-                        {t('test.completed_title') || 'Test Completed!'}
+                        🚨 DEPLOYMENT TEST WORKING! {t('test.completed_title') || 'Test Completed!'}
                     </h1>
                     
                     {/* Show Results Immediately */}
