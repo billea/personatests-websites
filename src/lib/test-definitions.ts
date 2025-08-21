@@ -1684,7 +1684,7 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
     console.log('🎯 RECEIVED personalityInsights:', personalityInsights);
     
     const finalResult = {
-      type: '🚨 TEST FIX WORKING! ' + personalityInsights.personalityType, // This should show instead of raw translation key
+      type: personalityInsights.personalityType, // Use translation key: couple.personalityTypes.${personalityType}
       description: `You are ${personalityInsights.personalityType} with ${personalityInsights.compatibilityReadiness}% compatibility readiness. Your key traits: ${personalityInsights.traits.join(', ')}.`,
       scores: {
         'compatibility': personalityInsights.compatibilityReadiness,

@@ -1037,7 +1037,9 @@ export default function TestPage() {
                             </h2>
                             {completedTestResult.type && (
                                 <div className="text-3xl font-bold text-yellow-300 mb-4">
-                                    {t(completedTestResult.type) || completedTestResult.type}
+                                    {testId === 'couple-compatibility' 
+                                        ? (t(`couple.personalityTypes.${completedTestResult.type}`) || completedTestResult.type)
+                                        : (t(completedTestResult.type) || completedTestResult.type)}
                                 </div>
                             )}
                             
@@ -1084,7 +1086,9 @@ export default function TestPage() {
                                 <div className="flex flex-wrap gap-3">
                                     {completedTestResult.traits.map((trait: string, index: number) => (
                                         <span key={index} className="px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full text-sm font-medium">
-                                            {t(trait) || trait}
+                                            {testId === 'couple-compatibility' 
+                                                ? (t(`couple.traits.${trait}`) || trait)
+                                                : (t(trait) || trait)}
                                         </span>
                                     ))}
                                 </div>
