@@ -762,5 +762,23 @@
     "addAnother": "Add Another Email",
     "sendInvitations": "Send Invitations",
     "sending": "Sending..."
+  },
+  "couple": {
+    "personalityTypes": {
+      "The Devoted Partner 💕": "The Devoted Partner 💕",
+      "The Adventurous Partner 🌟": "The Adventurous Partner 🌟",
+      "The Balanced Partner ⚖️": "The Balanced Partner ⚖️",
+      "The Social Partner 🎉": "The Social Partner 🎉",
+      "The Thoughtful Partner 🤔": "The Thoughtful Partner 🤔",
+      "The Caring Partner 🤗": "The Caring Partner 🤗"
+    },
+    "traits": {
+      "Comfort-Loving": "Comfort-Loving",
+      "Adventure Seeker": "Adventure Seeker", 
+      "Communicator": "Communicator",
+      "Social & Adventurous": "Social & Adventurous",
+      "Planner": "Planner",
+      "Quality Time Lover": "Quality Time Lover"
+    }
   }
 }

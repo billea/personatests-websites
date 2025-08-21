@@ -258,10 +258,14 @@ export const sendCoupleCompatibilityInvitation = async (
         invitation_link: invitationUrl // Match template expectation
       };
 
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+      
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
-      console.log('Service ID:', 'service_dc4y1ov');
-      console.log('Template ID:', 'template_360_feedback_request');
-      console.log('Public Key:', 'bqGKo-dBalpy6MeZE');
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      console.log('Public Key:', publicKey);
       console.log('EmailJS parameters:', emailParams);
       console.log('Full invitation link being sent:', invitationUrl);
       console.log('Link length:', invitationUrl.length);
@@ -270,10 +274,10 @@ export const sendCoupleCompatibilityInvitation = async (
       console.log('=== END EMAILJS DEBUG ===');
 
       const emailResponse = await emailjs.send(
-        'service_dc4y1ov',
-        'template_360_feedback_request', 
+        serviceId,
+        templateId, 
         emailParams,
-        'bqGKo-dBalpy6MeZE'
+        publicKey
       );
 
       console.log('Email sent successfully:', emailResponse);
@@ -450,10 +454,10 @@ const sendCompatibilityNotification = async (ownerEmail: string, partnerName: st
 
     const emailjs = (await import('@emailjs/browser')).default;
     await emailjs.send(
-      'service_dc4y1ov',
-      'template_360_feedback_request',
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
       emailParams,
-      'bqGKo-dBalpy6MeZE'
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
     );
 
     console.log('Couple compatibility notification sent successfully');
