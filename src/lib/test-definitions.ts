@@ -1692,11 +1692,11 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
       },
       traits: personalityInsights.traits,
       dimensions: {
-        'Adventure': personalityInsights.dimensions.adventure,
-        'Communication': personalityInsights.dimensions.communication,
-        'Planning': personalityInsights.dimensions.planning,
-        'Social': personalityInsights.dimensions.social,
-        'Stability': personalityInsights.dimensions.stability
+        'Adventure': { preference: personalityInsights.dimensions.adventure > 65 ? 'High' : 'Moderate', strength: personalityInsights.dimensions.adventure },
+        'Communication': { preference: personalityInsights.dimensions.communication > 75 ? 'Strong' : 'Developing', strength: personalityInsights.dimensions.communication },
+        'Planning': { preference: personalityInsights.dimensions.planning > 70 ? 'Structured' : 'Flexible', strength: personalityInsights.dimensions.planning },
+        'Social': { preference: personalityInsights.dimensions.social > 70 ? 'Outgoing' : 'Reserved', strength: personalityInsights.dimensions.social },
+        'Stability': { preference: personalityInsights.dimensions.stability > 70 ? 'Consistent' : 'Adaptable', strength: personalityInsights.dimensions.stability }
       },
       userPreferences,
       awaitingPartner: true, // Flag to show invitation interface
