@@ -1555,6 +1555,7 @@ const coupleCompatibilityQuestions: TestQuestion[] = [
 
 // Generate individual personality insights for couple compatibility test
 const generatePersonalityInsights = (userPreferences: any) => {
+  console.log('🎯 COUPLE COMPATIBILITY DEBUG: generatePersonalityInsights called with:', userPreferences);
   const { lifestyle_fun, values_relationships, lifestyle_compatibility } = userPreferences;
   
   // Analyze lifestyle preferences
@@ -1621,7 +1622,13 @@ const generatePersonalityInsights = (userPreferences: any) => {
   // Calculate compatibility readiness score (how ready they are for a relationship)
   const compatibilityReadiness = Math.min(Math.max(lifestyleScore, 45), 85);
   
-  return {
+  console.log('🎯 PERSONALITY ANALYSIS RESULTS:');
+  console.log('   Personality Type:', personalityType);
+  console.log('   Compatibility Readiness:', compatibilityReadiness);
+  console.log('   Lifestyle Score:', lifestyleScore);
+  console.log('   Personality Traits:', personalityTraits);
+  
+  const result = {
     personalityType,
     personalityScore: compatibilityReadiness,
     compatibilityReadiness,
@@ -1631,9 +1638,12 @@ const generatePersonalityInsights = (userPreferences: any) => {
       communication: personalityTraits.includes('Communicator') ? 90 : 50,
       planning: personalityTraits.includes('Planner') ? 80 : 40,
       social: personalityTraits.includes('Social & Adventurous') ? 85 : 45,
-      stability: personalityTraits.includes('Steady Partner') ? 85 : 50
+      stability: personalityTraits.includes('Comfort-Loving') ? 85 : 50 // Fixed bug: was checking wrong trait
     }
   };
+  
+  console.log('🎯 FINAL RESULT OBJECT:', result);
+  return result;
 };
 
 const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: { [questionId: string]: any }) => {
@@ -1665,9 +1675,11 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
     };
 
     // Generate individual personality insights based on user's answers
+    console.log('🎯 CALLING generatePersonalityInsights with userPreferences:', userPreferences);
     const personalityInsights = generatePersonalityInsights(userPreferences);
+    console.log('🎯 RECEIVED personalityInsights:', personalityInsights);
     
-    return {
+    const finalResult = {
       scores: { 
         compatibility: personalityInsights.compatibilityReadiness,
         personality: personalityInsights.personalityScore
@@ -1680,6 +1692,9 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
       awaitingPartner: true, // Flag to show invitation interface
       testStatus: 'awaiting_partner'
     };
+    
+    console.log('🎯 FINAL COUPLE COMPATIBILITY RESULT:', finalResult);
+    return finalResult;
   }
 
   // Both answers available - calculate compatibility percentage
