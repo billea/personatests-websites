@@ -259,9 +259,14 @@ export const sendCoupleCompatibilityInvitation = async (
       };
 
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
+      console.log('Service ID:', 'service_dc4y1ov');
+      console.log('Template ID:', 'template_360_feedback_request');
+      console.log('Public Key:', 'bqGKo-dBalpy6MeZE');
       console.log('EmailJS parameters:', emailParams);
       console.log('Full invitation link being sent:', invitationUrl);
       console.log('Link length:', invitationUrl.length);
+      console.log('Partner email:', partnerEmail);
+      console.log('User name:', userName);
       console.log('=== END EMAILJS DEBUG ===');
 
       const emailResponse = await emailjs.send(
@@ -278,8 +283,15 @@ export const sendCoupleCompatibilityInvitation = async (
         await sendCompatibilityNotification(ownerEmail, userName, language);
       }
 
-    } catch (emailError) {
+    } catch (emailError: any) {
+      console.error('=== EMAIL ERROR DEBUG ===');
       console.error('Error sending couple compatibility email:', emailError);
+      console.error('Error type:', typeof emailError);
+      console.error('Error message:', emailError?.message);
+      console.error('Error text:', emailError?.text);
+      console.error('Error status:', emailError?.status);
+      console.error('Full error object:', JSON.stringify(emailError, null, 2));
+      console.error('=== END EMAIL ERROR DEBUG ===');
       // Continue even if email fails - user can share the link manually
     }
 
