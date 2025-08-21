@@ -253,13 +253,22 @@ export const sendCoupleCompatibilityInvitation = async (
       
       const emailParams = {
         to_email: partnerEmail,
-        to_name: partnerEmail.split('@')[0], // Simpler parameter
-        from_name: userName, // Simpler parameter
-        invitation_link: invitationUrl // Match template expectation
+        to_name: partnerEmail.split('@')[0],
+        from_name: userName,
+        invitation_link: invitationUrl,
+        // Override 360 feedback content with couple compatibility content
+        subject: 'Couple Compatibility Test Invitation from ' + userName,
+        message: `${userName} has invited you to take a Couple Compatibility Test together. Discover how compatible you are as a couple! This fun test analyzes your relationship compatibility across key areas like communication, lifestyle, and values.`,
+        test_name: 'Couple Compatibility Test',
+        action_text: 'Take Compatibility Test',
+        description_text: 'has invited you to take a Couple Compatibility Test together.',
+        time_estimate: '5-10 minutes',
+        additional_info: 'Your answers will be combined with your partner\'s to create a compatibility report for both of you.'
       };
 
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+      // Try couple-specific template first, fall back to 360 feedback template
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
       
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
@@ -282,10 +291,11 @@ export const sendCoupleCompatibilityInvitation = async (
 
       console.log('Email sent successfully:', emailResponse);
 
-      // Send notification to test owner if email provided
-      if (ownerEmail) {
-        await sendCompatibilityNotification(ownerEmail, userName, language);
-      }
+      // NOTE: Owner notification should be sent when partner COMPLETES test, not when invitation is sent
+      // Removing this to prevent duplicate emails during invitation phase
+      // if (ownerEmail) {
+      //   await sendCompatibilityNotification(ownerEmail, userName, language);
+      // }
 
     } catch (emailError: any) {
       console.error('=== EMAIL ERROR DEBUG ===');
