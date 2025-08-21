@@ -1680,14 +1680,20 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
     console.log('🎯 RECEIVED personalityInsights:', personalityInsights);
     
     const finalResult = {
-      scores: { 
-        compatibility: personalityInsights.compatibilityReadiness,
-        personality: personalityInsights.personalityScore
+      type: personalityInsights.personalityType, // This should show instead of raw translation key
+      description: `You are ${personalityInsights.personalityType} with ${personalityInsights.compatibilityReadiness}% compatibility readiness. Your key traits: ${personalityInsights.traits.join(', ')}.`,
+      scores: {
+        'Compatibility Readiness': personalityInsights.compatibilityReadiness,
+        'Personality Score': personalityInsights.personalityScore
       },
-      type: personalityInsights.personalityType,
-      description_key: 'couple.waiting_description',
       traits: personalityInsights.traits,
-      dimensions: personalityInsights.dimensions,
+      dimensions: {
+        'Adventure': personalityInsights.dimensions.adventure,
+        'Communication': personalityInsights.dimensions.communication,
+        'Planning': personalityInsights.dimensions.planning,
+        'Social': personalityInsights.dimensions.social,
+        'Stability': personalityInsights.dimensions.stability
+      },
       userPreferences,
       awaitingPartner: true, // Flag to show invitation interface
       testStatus: 'awaiting_partner'

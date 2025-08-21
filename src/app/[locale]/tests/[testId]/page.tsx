@@ -1030,6 +1030,7 @@ export default function TestPage() {
                     
                     {/* Show Results Immediately */}
                     {completedTestResult && (
+                        <div style={{display: 'none'}}>{console.log('🐛 ACTUAL TEST RESULT:', completedTestResult)}</div>
                         <div className="mb-8 p-6 bg-white/30 backdrop-blur-sm border border-white/40 rounded-lg">
                             <h2 className="text-2xl font-bold mb-4 text-white" data-translate="results.personalityType">
                                 {t('results.personalityType') || 'Your Personality Type'}
