@@ -41,6 +41,7 @@ export default function TestPage() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState<{ [questionId: string]: any }>({});
     const [testCompleted, setTestCompleted] = useState(false);
+    const [coupleCompatibilityResults, setCoupleCompatibilityResults] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
@@ -393,25 +394,28 @@ export default function TestPage() {
                 currentLanguage
             );
             
+            // Store results to display in UI
+            setCoupleCompatibilityResults({
+                ...coupleCompatibility,
+                emailSent: emailResult.success,
+                partnerName: partnerName
+            });
+            
             if (emailResult.success) {
-                alert(currentLanguage === 'ko' ? 
-                    `커플 호환성 결과: ${coupleCompatibility.compatibilityPercentage}%!\n\n양쪽 모두에게 결과 이메일이 전송되었습니다.` :
-                    `Couple Compatibility: ${coupleCompatibility.compatibilityPercentage}%!\n\nResults email sent to both partners.`
-                );
+                console.log('✅ Couple compatibility results sent via email to both partners');
             } else {
-                // Fallback to showing results locally
-                alert(currentLanguage === 'ko' ? 
-                    `커플 호환성 결과: ${coupleCompatibility.compatibilityPercentage}%!\n\n이메일 전송 실패 - 콘솔에서 결과 확인하세요.` :
-                    `Couple Compatibility: ${coupleCompatibility.compatibilityPercentage}%!\n\nEmail failed - check console for results.`
-                );
+                console.log('⚠️ Email failed - showing results in UI only');
             }
             
         } catch (error) {
             console.error('Error sending couple results:', error);
-            alert(currentLanguage === 'ko' ? 
-                `커플 호환성 결과 계산됨! 콘솔에서 결과를 확인하세요.` :
-                `Couple compatibility calculated! Check console for results.`
-            );
+            // Still show results even if email fails
+            setCoupleCompatibilityResults({
+                ...coupleCompatibility,
+                emailSent: false,
+                partnerName: partnerName,
+                error: 'Email system unavailable'
+            });
         }
     };
 
@@ -1191,12 +1195,66 @@ export default function TestPage() {
                     {/* Special message for invitation access */}
                     {isInvitationAccess && partnerName && (
                         <div className="mb-6 p-4 bg-pink-500/30 border border-pink-400/50 rounded-lg">
-                            <p className="text-white text-lg">
+                            <p className="text-white text-lg mb-3">
                                 {currentLanguage === 'ko' ? 
-                                    `${partnerName}님과의 커플 호환성 결과를 이메일로 받아보실 수 있습니다!` :
-                                    `You and ${partnerName} will both receive the compatibility results via email!`
+                                    `${partnerName}님과의 커플 호환성 결과를 확인하세요!` :
+                                    `Check your compatibility results with ${partnerName}!`
                                 }
                             </p>
+                            <div className="text-sm text-white/80">
+                                {currentLanguage === 'ko' ? 
+                                    '결과가 아래에 표시됩니다. 이메일 시스템 복구 중입니다.' :
+                                    'Results are shown below. Email system is being restored.'
+                                }
+                            </div>
+                        </div>
+                    )}
+                    
+                    {/* Couple Compatibility Results Display */}
+                    {coupleCompatibilityResults && isInvitationAccess && (
+                        <div className="mb-8 p-6 bg-gradient-to-br from-pink-500/30 to-purple-500/30 border border-pink-400/50 rounded-lg">
+                            <h2 className="text-2xl font-bold text-white mb-4 text-center">
+                                💕 Couple Compatibility Results
+                            </h2>
+                            
+                            <div className="text-center mb-6">
+                                <div className="text-4xl font-bold text-white mb-2">
+                                    {coupleCompatibilityResults.compatibilityPercentage}%
+                                </div>
+                                <div className="text-xl text-white/90">
+                                    {coupleCompatibilityResults.description}
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div className="bg-white/10 p-4 rounded-lg">
+                                    <div className="font-semibold text-white mb-1">{coupleCompatibilityResults.partnerName}</div>
+                                    <div className="text-white/80">{coupleCompatibilityResults.partner1?.type}</div>
+                                </div>
+                                <div className="bg-white/10 p-4 rounded-lg">
+                                    <div className="font-semibold text-white mb-1">You</div>
+                                    <div className="text-white/80">{coupleCompatibilityResults.partner2?.type}</div>
+                                </div>
+                            </div>
+                            
+                            {coupleCompatibilityResults.areas && (
+                                <div className="mb-4">
+                                    <div className="font-semibold text-white mb-2">Compatibility Areas:</div>
+                                    {Object.entries(coupleCompatibilityResults.areas).map(([area, score]: [string, any]) => (
+                                        <div key={area} className="flex justify-between text-white/90 mb-1">
+                                            <span>{area}:</span>
+                                            <span>{score}%</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            
+                            <div className="text-center text-sm text-white/70">
+                                {coupleCompatibilityResults.emailSent ? 
+                                    '✅ Results also sent via email to both partners' :
+                                    '⚠️ Email system temporarily unavailable - results shown here'
+                                }
+                            </div>
                         </div>
                     )}
                     
@@ -1316,7 +1374,7 @@ export default function TestPage() {
                         personalityType={completedTestResult?.type}
                     />
 
-                    {testDefinition.requiresFeedback && (
+                    {testDefinition.requiresFeedback && !isInvitationAccess && (
                         <div className="mb-8 p-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg">
                             {testId === 'couple-compatibility' ? (
                                 <>
