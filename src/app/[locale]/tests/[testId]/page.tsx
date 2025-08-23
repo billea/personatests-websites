@@ -47,7 +47,9 @@ export default function TestPage() {
     
     console.log('TestPage mounted with params:', params);
     console.log('testId extracted:', testId);
-    console.log('🚨 DEPLOYMENT CHECK: Version 72987c0 deployed successfully!');
+    console.log('🚨 DEPLOYMENT CHECK: Version a23d7c7 deployed successfully!');
+    console.log('🔍 URL CHECK:', window.location.href);
+    console.log('🔍 SEARCH PARAMS:', searchParams.toString());
 
     const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
