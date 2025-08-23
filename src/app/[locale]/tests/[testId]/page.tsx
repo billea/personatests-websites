@@ -47,6 +47,7 @@ export default function TestPage() {
     
     console.log('TestPage mounted with params:', params);
     console.log('testId extracted:', testId);
+    console.log('🚨 DEPLOYMENT CHECK: Version 72987c0 deployed successfully!');
 
     const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
