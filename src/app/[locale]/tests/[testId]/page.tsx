@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation } from "@/lib/firestore";
@@ -14,10 +14,17 @@ export default function TestPage() {
     const { user, loading: authLoading } = useAuth();
     const params = useParams();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const testId = params.testId as string;
     
-    // Immediately check if this is a protected test
-    const isProtectedTest = testId === 'couple-compatibility' || testId === 'feedback-360';
+    // Check if this is an invitation link
+    const invitationId = searchParams.get('invitation');
+    const partnerName = searchParams.get('partner');
+    const originalTestResultId = searchParams.get('testResultId');
+    const isInvitationAccess = Boolean(invitationId && testId === 'couple-compatibility');
+    
+    // Check if this is a protected test (but couple compatibility allows invitation access)
+    const isProtectedTest = (testId === 'couple-compatibility' && !isInvitationAccess) || testId === 'feedback-360';
     const [authChecked, setAuthChecked] = useState(false);
     
     // Force client-side rendering for feedback-360 to ensure auth check runs
@@ -180,13 +187,13 @@ export default function TestPage() {
         // Authentication check for protected tests
         console.log('Authentication check:', { testId, authLoading, hasUser: !!user, isClient });
         
-        // For feedback-360 and couple-compatibility tests, require authentication first
+        // For protected tests, require authentication first (unless it's invitation access)
         // Wait for auth loading to complete before checking authentication
-        if ((testId === 'feedback-360' || testId === 'couple-compatibility') && !authLoading && !user) {
+        if (isProtectedTest && !authLoading && !user) {
             console.log(`🔐 ${testId} requires authentication - redirecting to login`);
             
             // Store return URL and context in localStorage (same pattern as 360 feedback)
-            const returnUrl = `/${currentLanguage}/tests/${testId}`;
+            const returnUrl = `/${currentLanguage}/tests/${testId}${isInvitationAccess ? '?' + searchParams.toString() : ''}`;
             const context = testId === 'feedback-360' ? 'feedback-360-test' : 'couple-compatibility-test';
             
             localStorage.setItem('auth_return_url', returnUrl);
@@ -196,15 +203,20 @@ export default function TestPage() {
             return;
         }
         
-        // Skip loading test definition while auth is still loading for feedback-360 and couple-compatibility
-        if ((testId === 'feedback-360' || testId === 'couple-compatibility') && authLoading) {
+        // Skip loading test definition while auth is still loading for protected tests
+        if (isProtectedTest && authLoading) {
             console.log('⏳ Waiting for authentication to complete...');
             return;
         }
         
-        // If we reach here for feedback-360 or couple-compatibility, user must be authenticated
-        if ((testId === 'feedback-360' || testId === 'couple-compatibility') && user) {
+        // If we reach here for protected tests, user must be authenticated (or it's invitation access)
+        if ((testId === 'feedback-360' || (testId === 'couple-compatibility' && !isInvitationAccess)) && user) {
             console.log(`✅ User authenticated, proceeding with ${testId} test`);
+        }
+        
+        // For invitation access, show welcome message
+        if (isInvitationAccess && partnerName) {
+            console.log(`✅ Partner invitation access: ${partnerName} invited to couple compatibility test`);
         }
         
         // For feedback-360 test, handle category selection first
@@ -1037,8 +1049,23 @@ export default function TestPage() {
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="text-center w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                     <h1 className="text-4xl font-bold mb-4 text-white" data-translate="test.completed_title">
-                        {t('test.completed_title') || 'Test Completed!'}
+                        {isInvitationAccess && partnerName ? 
+                            `💕 Thanks for taking ${partnerName}'s compatibility test!` :
+                            (t('test.completed_title') || 'Test Completed!')
+                        }
                     </h1>
+                    
+                    {/* Special message for invitation access */}
+                    {isInvitationAccess && partnerName && (
+                        <div className="mb-6 p-4 bg-pink-500/30 border border-pink-400/50 rounded-lg">
+                            <p className="text-white text-lg">
+                                {currentLanguage === 'ko' ? 
+                                    `${partnerName}님과의 커플 호환성 결과를 이메일로 받아보실 수 있습니다!` :
+                                    `You and ${partnerName} will both receive the compatibility results via email!`
+                                }
+                            </p>
+                        </div>
+                    )}
                     
                     {/* Show Results Immediately */}
                     {completedTestResult && (
@@ -1335,6 +1362,24 @@ export default function TestPage() {
         <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
             <div className="w-full max-w-3xl">
                 <div className="mb-8 text-center">
+                    {/* Special header for invitation access */}
+                    {isInvitationAccess && partnerName && (
+                        <div className="mb-6 p-4 bg-pink-500/30 border border-pink-400/50 rounded-lg">
+                            <h1 className="text-2xl font-bold text-white mb-2">
+                                💕 {currentLanguage === 'ko' ? 
+                                    `${partnerName}님이 초대했습니다!` :
+                                    `${partnerName} invited you!`
+                                }
+                            </h1>
+                            <p className="text-white/90">
+                                {currentLanguage === 'ko' ? 
+                                    '두 분의 커플 호환성을 테스트해보세요!' :
+                                    'Take this couple compatibility test together!'
+                                }
+                            </p>
+                        </div>
+                    )}
+                    
                     <h1 className="text-3xl font-bold mb-4 text-white" data-translate={testDefinition.title_key}>
                         {t(testDefinition.title_key) || testDefinition.title_key}
                     </h1>

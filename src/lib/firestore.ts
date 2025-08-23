@@ -260,9 +260,9 @@ export const sendCoupleCompatibilityInvitation = async (
       }));
     }
 
-    // Create invitation URL
+    // Create invitation URL - point directly to the couple compatibility test
     const baseUrl = 'https://korean-mbti-platform.netlify.app';
-    const invitationUrl = `${baseUrl}/${language}/couple-compatibility/${invitationId}?token=${encodeURIComponent(invitationToken)}&partner=${encodeURIComponent(userName)}&testResultId=${encodeURIComponent(testResultId)}&email=${encodeURIComponent(partnerEmail)}`;
+    const invitationUrl = `${baseUrl}/${language}/tests/couple-compatibility?invitation=${invitationId}&token=${encodeURIComponent(invitationToken)}&partner=${encodeURIComponent(userName)}&testResultId=${encodeURIComponent(testResultId)}&email=${encodeURIComponent(partnerEmail)}`;
 
     console.log('Generated couple compatibility invitation URL:', invitationUrl);
 
@@ -335,7 +335,7 @@ export const sendCoupleCompatibilityInvitation = async (
     console.error("Error sending couple compatibility invitation:", error);
     
     // Always return a success response with fallback manual sharing
-    const fallbackUrl = `https://korean-mbti-platform.netlify.app/${language}/tests/couple-compatibility`;
+    const fallbackUrl = `https://korean-mbti-platform.netlify.app/${language}/tests/couple-compatibility?partner=${encodeURIComponent(userName)}`;
     
     return {
       success: true,
