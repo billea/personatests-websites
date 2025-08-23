@@ -40,7 +40,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       
       if (currentUser) {
         // If the user is logged in, ensure their profile exists in Firestore
-        await createUserProfileDocument(currentUser);
+        try {
+          await createUserProfileDocument(currentUser);
+        } catch (error) {
+          console.warn('Firebase permissions issue - continuing without profile creation:', error);
+          // Continue loading even if profile creation fails due to permissions
+        }
         
         // Check if user just logged in (transition from null to User)
         if (!previousUser && currentUser) {

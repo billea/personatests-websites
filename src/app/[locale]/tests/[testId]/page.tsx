@@ -177,16 +177,8 @@ export default function TestPage() {
             return;
         }
         
-        // Enhanced debugging for authentication
-        console.log('=== AUTH DEBUG START ===');
-        console.log('testId:', testId);
-        console.log('authLoading:', authLoading);
-        console.log('user:', user ? 'AUTHENTICATED' : 'NOT_AUTHENTICATED');
-        console.log('currentLanguage:', currentLanguage);
-        console.log('isClient:', isClient);
-        console.log('isProtectedTest:', testId === 'feedback-360' || testId === 'couple-compatibility');
-        console.log('should redirect?:', (testId === 'feedback-360' || testId === 'couple-compatibility') && !authLoading && !user);
-        console.log('=== AUTH DEBUG END ===');
+        // Authentication check for protected tests
+        console.log('Authentication check:', { testId, authLoading, hasUser: !!user, isClient });
         
         // For feedback-360 and couple-compatibility tests, require authentication first
         // Wait for auth loading to complete before checking authentication
@@ -262,19 +254,16 @@ export default function TestPage() {
                 }
             }
         } else {
-            console.log('🔍 DEBUG: Looking for test definition for testId:', testId);
             definition = getTestById(testId) || null;
-            console.log('🔍 DEBUG: getTestById returned:', definition ? 'FOUND' : 'NOT_FOUND');
-            console.log('🔍 DEBUG: definition details:', definition?.id, definition?.title_key);
             
             if (definition && testDefinition?.id !== definition.id) {
-                console.log('✅ Setting testDefinition for:', definition.id);
+                console.log('Setting testDefinition for:', definition.id);
                 setTestDefinition(definition);
             } else if (definition) {
-                console.log('♻️ TestDefinition already set, using existing');
+                console.log('TestDefinition already set, using existing');
                 definition = testDefinition;
             } else {
-                console.error('❌ CRITICAL: No test definition found for testId:', testId);
+                console.error('CRITICAL: No test definition found for testId:', testId);
             }
         }
         
@@ -652,9 +641,7 @@ export default function TestPage() {
     // Additional safety check - runs on every render
     useEffect(() => {
         if (isProtectedTest && !authLoading && !user && isClient) {
-            console.log('🚨 SAFETY REDIRECT: Unauthorized access attempt');
-            console.log('🚨 Current URL:', window.location.href);
-            console.log('🚨 Redirect URL:', `/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
+            console.log('SAFETY REDIRECT: Unauthorized access attempt');
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
         }
     });
@@ -1035,7 +1022,7 @@ export default function TestPage() {
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="text-center w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                     <h1 className="text-4xl font-bold mb-4 text-white" data-translate="test.completed_title">
-                        🚨 DEPLOYMENT TEST WORKING! {t('test.completed_title') || 'Test Completed!'}
+                        {t('test.completed_title') || 'Test Completed!'}
                     </h1>
                     
                     {/* Show Results Immediately */}
