@@ -471,6 +471,77 @@ export const sendFeedbackInvitations = async (
   }
 };
 
+// Function to send couple compatibility results to both partners
+export const sendCoupleCompatibilityResults = async (
+  coupleCompatibility: any,
+  partner1Email: string,
+  partner2Email: string,
+  partner1Name: string,
+  partner2Name: string,
+  language: string = 'en'
+) => {
+  try {
+    const emailjs = (await import('@emailjs/browser')).default;
+    
+    const compatibilityPercentage = coupleCompatibility.compatibilityPercentage || 75;
+    const resultTier = getCompatibilityTier(compatibilityPercentage);
+    
+    // Email parameters for both partners
+    const emailParams1 = {
+      to_email: partner1Email,
+      to_name: partner1Name,
+      partner_name: partner2Name,
+      compatibility_percentage: compatibilityPercentage + '%',
+      compatibility_tier: resultTier,
+      partner1_type: coupleCompatibility.partner1?.type || 'Your Personality Type',
+      partner2_type: coupleCompatibility.partner2?.type || 'Partner Personality Type',
+      description: coupleCompatibility.description || 'Great compatibility potential!',
+      subject: `💕 Your Couple Compatibility Results with ${partner2Name}`,
+      test_name: 'Couple Compatibility Test'
+    };
+    
+    const emailParams2 = {
+      to_email: partner2Email,
+      to_name: partner2Name,
+      partner_name: partner1Name,
+      compatibility_percentage: compatibilityPercentage + '%',
+      compatibility_tier: resultTier,
+      partner1_type: coupleCompatibility.partner1?.type || 'Partner Personality Type',
+      partner2_type: coupleCompatibility.partner2?.type || 'Your Personality Type',
+      description: coupleCompatibility.description || 'Great compatibility potential!',
+      subject: `💕 Your Couple Compatibility Results with ${partner1Name}`,
+      test_name: 'Couple Compatibility Test'
+    };
+    
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_RESULTS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+    
+    // Send emails to both partners
+    await Promise.all([
+      emailjs.send(serviceId, templateId, emailParams1, publicKey),
+      emailjs.send(serviceId, templateId, emailParams2, publicKey)
+    ]);
+    
+    console.log('Couple compatibility results sent to both partners successfully');
+    return { success: true };
+    
+  } catch (error) {
+    console.error('Error sending couple compatibility results:', error);
+    return { success: false, error };
+  }
+};
+
+const getCompatibilityTier = (percentage: number): string => {
+  if (percentage >= 95) return 'Soulmates 💍';
+  if (percentage >= 85) return 'Power Couple ⚡';
+  if (percentage >= 75) return 'Adventurous Duo 🌍';
+  if (percentage >= 65) return 'Sweet Match 💕';
+  if (percentage >= 50) return 'Work in Progress 🔨';
+  if (percentage >= 35) return 'Learning Together 📚';
+  return 'Opposites Attract 🤔';
+};
+
 // Helper function for couple compatibility notifications
 const sendCompatibilityNotification = async (ownerEmail: string, partnerName: string, language: string) => {
   try {

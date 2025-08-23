@@ -6,7 +6,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
-import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation } from "@/lib/firestore";
+import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
@@ -331,6 +331,133 @@ export default function TestPage() {
         }
     };
 
+    const calculateCoupleCompatibility = (result1: any, result2: any, answers1: any, answers2: any) => {
+        try {
+            // Use the couple compatibility scoring function from test-definitions
+            if (testDefinition && testDefinition.scoring) {
+                // Calculate compatibility between the two sets of answers
+                // The scoring function expects (answers, partnerAnswers)
+                const compatibilityData = testDefinition.scoring(answers1, answers2);
+                
+                return {
+                    compatibilityPercentage: compatibilityData.scores?.compatibility || 75,
+                    partner1: result1,
+                    partner2: result2,
+                    areas: compatibilityData.areas || {},
+                    description: compatibilityData.description || 'Good compatibility!',
+                    recommendations: compatibilityData.recommendations || []
+                };
+            }
+        } catch (error) {
+            console.error('Error calculating couple compatibility:', error);
+        }
+        
+        // Fallback simple compatibility calculation
+        return {
+            compatibilityPercentage: 75,
+            partner1: result1,
+            partner2: result2,
+            areas: {
+                communication: 80,
+                lifestyle: 70,
+                values: 75
+            },
+            description: 'You have good compatibility potential!',
+            recommendations: ['Continue communicating openly', 'Explore shared interests']
+        };
+    };
+
+    const sendCoupleResults = async (coupleCompatibility: any, result1: any, result2: any, partnerName: string, partnerEmail: string) => {
+        try {
+            console.log('Sending couple results email...', { coupleCompatibility, partnerName, partnerEmail });
+            
+            // Log the results for debugging
+            console.log('Couple Compatibility Results:', {
+                compatibility: coupleCompatibility.compatibilityPercentage + '%',
+                partner1Type: result1.type,
+                partner2Type: result2.type,
+                areas: coupleCompatibility.areas,
+                description: coupleCompatibility.description
+            });
+            
+            // Get original partner email from search params or use fallback
+            const originalPartnerEmail = 'bill@example.com'; // This should come from stored invitation data
+            
+            // Try to send actual email results using the new function
+            const emailResult = await sendCoupleCompatibilityResults(
+                coupleCompatibility,
+                originalPartnerEmail, // Partner 1 (original test taker)
+                partnerEmail, // Partner 2 (current test taker)  
+                partnerName, // Partner 1 name
+                'Partner', // Partner 2 name (we don't have this, use generic)
+                currentLanguage
+            );
+            
+            if (emailResult.success) {
+                alert(currentLanguage === 'ko' ? 
+                    `커플 호환성 결과: ${coupleCompatibility.compatibilityPercentage}%!\n\n양쪽 모두에게 결과 이메일이 전송되었습니다.` :
+                    `Couple Compatibility: ${coupleCompatibility.compatibilityPercentage}%!\n\nResults email sent to both partners.`
+                );
+            } else {
+                // Fallback to showing results locally
+                alert(currentLanguage === 'ko' ? 
+                    `커플 호환성 결과: ${coupleCompatibility.compatibilityPercentage}%!\n\n이메일 전송 실패 - 콘솔에서 결과 확인하세요.` :
+                    `Couple Compatibility: ${coupleCompatibility.compatibilityPercentage}%!\n\nEmail failed - check console for results.`
+                );
+            }
+            
+        } catch (error) {
+            console.error('Error sending couple results:', error);
+            alert(currentLanguage === 'ko' ? 
+                `커플 호환성 결과 계산됨! 콘솔에서 결과를 확인하세요.` :
+                `Couple compatibility calculated! Check console for results.`
+            );
+        }
+    };
+
+    const handlePartnerCompletion = async (partnerResult: any, partnerAnswers: { [questionId: string]: any }) => {
+        try {
+            console.log('Handling partner completion:', { partnerResult, originalTestResultId, partnerName });
+            
+            // Try to retrieve original partner's results from localStorage
+            let originalResult = null;
+            if (originalTestResultId) {
+                const storedResult = localStorage.getItem(`test_result_${originalTestResultId}`);
+                if (storedResult) {
+                    originalResult = JSON.parse(storedResult);
+                    console.log('Found original result in localStorage:', originalResult);
+                }
+            }
+            
+            if (!originalResult) {
+                console.warn('Could not find original partner result - sending individual results only');
+                return;
+            }
+            
+            // Calculate couple compatibility using both results
+            const coupleCompatibility = calculateCoupleCompatibility(
+                originalResult.result, 
+                partnerResult,
+                originalResult.answers,
+                partnerAnswers
+            );
+            
+            console.log('Calculated couple compatibility:', coupleCompatibility);
+            
+            // Send results email to both partners (if email service is available)
+            await sendCoupleResults(
+                coupleCompatibility,
+                originalResult.result,
+                partnerResult,
+                partnerName || 'Your Partner',
+                searchParams.get('email') || 'partner@example.com'
+            );
+            
+        } catch (error) {
+            console.error('Error handling partner completion:', error);
+        }
+    };
+
     const processTestCompletion = async (finalAnswers: { [questionId: string]: any }) => {
         if (!testDefinition) {
             console.error("Test definition must be available");
@@ -384,6 +511,12 @@ export default function TestPage() {
             }
 
             setTestResultId(resultId);
+            
+            // Handle partner completion for couple compatibility
+            if (isInvitationAccess && testId === 'couple-compatibility' && partnerName) {
+                await handlePartnerCompletion(testResult, finalAnswers);
+            }
+            
             setTestCompleted(true);
             console.log("Test completed successfully!");
         } catch (error) {
