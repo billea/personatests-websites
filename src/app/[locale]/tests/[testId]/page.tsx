@@ -23,6 +23,17 @@ export default function TestPage() {
     const originalTestResultId = searchParams.get('testResultId');
     const isInvitationAccess = Boolean(invitationId && testId === 'couple-compatibility');
     
+    // DEBUG: Log invitation detection
+    console.log('🔍 INVITATION DEBUG:', {
+        invitationId,
+        partnerName,
+        originalTestResultId,
+        testId,
+        isInvitationAccess,
+        searchParamsString: searchParams.toString(),
+        allParams: Object.fromEntries(searchParams.entries())
+    });
+    
     // Check if this is a protected test (but couple compatibility allows invitation access)
     const isProtectedTest = (testId === 'couple-compatibility' && !isInvitationAccess) || testId === 'feedback-360';
     const [authChecked, setAuthChecked] = useState(false);
@@ -421,7 +432,10 @@ export default function TestPage() {
 
     const handlePartnerCompletion = async (partnerResult: any, partnerAnswers: { [questionId: string]: any }) => {
         try {
-            console.log('Handling partner completion:', { partnerResult, originalTestResultId, partnerName });
+            console.log('🎯 === PARTNER COMPLETION START ===');
+            console.log('Partner result:', partnerResult);
+            console.log('Original test result ID:', originalTestResultId);
+            console.log('Partner name:', partnerName);
             
             // Try to retrieve original partner's results from localStorage
             let originalResult = null;
@@ -517,8 +531,18 @@ export default function TestPage() {
             setTestResultId(resultId);
             
             // Handle partner completion for couple compatibility
+            console.log('🔍 PARTNER COMPLETION CHECK:', {
+                isInvitationAccess,
+                testId,
+                partnerName,
+                shouldTrigger: isInvitationAccess && testId === 'couple-compatibility' && partnerName
+            });
+            
             if (isInvitationAccess && testId === 'couple-compatibility' && partnerName) {
+                console.log('🎯 TRIGGERING PARTNER COMPLETION!');
                 await handlePartnerCompletion(testResult, finalAnswers);
+            } else {
+                console.log('❌ Partner completion NOT triggered - missing conditions');
             }
             
             setTestCompleted(true);
@@ -1211,6 +1235,17 @@ export default function TestPage() {
                     )}
                     
                     {/* Couple Compatibility Results Display */}
+                    {(() => {
+                        console.log('🔍 COUPLE RESULTS DEBUG:', {
+                            coupleCompatibilityResults: !!coupleCompatibilityResults,
+                            isInvitationAccess,
+                            shouldShowResults: coupleCompatibilityResults && isInvitationAccess
+                        });
+                        if (coupleCompatibilityResults) {
+                            console.log('Couple results data:', coupleCompatibilityResults);
+                        }
+                        return null;
+                    })()}
                     {coupleCompatibilityResults && isInvitationAccess && (
                         <div className="mb-8 p-6 bg-gradient-to-br from-pink-500/30 to-purple-500/30 border border-pink-400/50 rounded-lg">
                             <h2 className="text-2xl font-bold text-white mb-4 text-center">
@@ -1374,7 +1409,15 @@ export default function TestPage() {
                         personalityType={completedTestResult?.type}
                     />
 
-                    {testDefinition.requiresFeedback && !isInvitationAccess && (
+                    {testDefinition.requiresFeedback && !isInvitationAccess && (() => {
+                        console.log('🔍 INVITATION SECTION DEBUG:', {
+                            requiresFeedback: testDefinition.requiresFeedback,
+                            isInvitationAccess,
+                            testId,
+                            shouldShow: testDefinition.requiresFeedback && !isInvitationAccess
+                        });
+                        return true;
+                    })() && (
                         <div className="mb-8 p-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg">
                             {testId === 'couple-compatibility' ? (
                                 <>
