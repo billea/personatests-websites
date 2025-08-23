@@ -184,6 +184,8 @@ export default function TestPage() {
         console.log('user:', user ? 'AUTHENTICATED' : 'NOT_AUTHENTICATED');
         console.log('currentLanguage:', currentLanguage);
         console.log('isClient:', isClient);
+        console.log('isProtectedTest:', testId === 'feedback-360' || testId === 'couple-compatibility');
+        console.log('should redirect?:', (testId === 'feedback-360' || testId === 'couple-compatibility') && !authLoading && !user);
         console.log('=== AUTH DEBUG END ===');
         
         // For feedback-360 and couple-compatibility tests, require authentication first
@@ -260,13 +262,19 @@ export default function TestPage() {
                 }
             }
         } else {
+            console.log('🔍 DEBUG: Looking for test definition for testId:', testId);
             definition = getTestById(testId) || null;
+            console.log('🔍 DEBUG: getTestById returned:', definition ? 'FOUND' : 'NOT_FOUND');
+            console.log('🔍 DEBUG: definition details:', definition?.id, definition?.title_key);
+            
             if (definition && testDefinition?.id !== definition.id) {
-                console.log('Setting testDefinition for:', definition.id);
+                console.log('✅ Setting testDefinition for:', definition.id);
                 setTestDefinition(definition);
             } else if (definition) {
-                console.log('TestDefinition already set, using existing');
+                console.log('♻️ TestDefinition already set, using existing');
                 definition = testDefinition;
+            } else {
+                console.error('❌ CRITICAL: No test definition found for testId:', testId);
             }
         }
         
@@ -645,6 +653,8 @@ export default function TestPage() {
     useEffect(() => {
         if (isProtectedTest && !authLoading && !user && isClient) {
             console.log('🚨 SAFETY REDIRECT: Unauthorized access attempt');
+            console.log('🚨 Current URL:', window.location.href);
+            console.log('🚨 Redirect URL:', `/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
         }
     });
