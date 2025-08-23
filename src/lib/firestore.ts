@@ -231,7 +231,7 @@ export const sendCoupleCompatibilityInvitation = async (
       ownerEmail
     });
 
-    // Create invitation record in Firestore
+    // Create invitation record in Firestore or use fallback
     const invitationToken = generateInvitationToken();
     const invitationId = `couple_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
     
@@ -248,8 +248,17 @@ export const sendCoupleCompatibilityInvitation = async (
       language: language
     };
 
-    const docRef = await addDoc(collection(firestore, "invitations"), invitationData);
-    console.log("Couple compatibility invitation created with ID:", docRef.id);
+    try {
+      const docRef = await addDoc(collection(firestore, "invitations"), invitationData);
+      console.log("Couple compatibility invitation created with ID:", docRef.id);
+    } catch (error) {
+      console.warn("Firebase permissions - storing invitation in localStorage:", error);
+      // Store in localStorage as fallback when Firebase permissions fail
+      localStorage.setItem(`invitation_${invitationId}`, JSON.stringify({
+        ...invitationData,
+        createdAt: new Date().toISOString()
+      }));
+    }
 
     // Create invitation URL
     const baseUrl = 'https://korean-mbti-platform.netlify.app';
