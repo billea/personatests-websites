@@ -57,8 +57,9 @@ export default function TestPage() {
     const [testCompleted, setTestCompleted] = useState(false);
     const [coupleCompatibilityResults, setCoupleCompatibilityResults] = useState<any>(null);
     const [partnerVerified, setPartnerVerified] = useState<boolean>(false);
-    const [partnerVerificationName, setPartnerVerificationName] = useState<string>('');
+    const [partnerVerificationEmail, setPartnerVerificationEmail] = useState<string>('');
     const [verificationError, setVerificationError] = useState<string>('');
+    const [secondPartnerName, setSecondPartnerName] = useState<string>('');
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
@@ -75,35 +76,42 @@ export default function TestPage() {
         }
     }, [user, userName]);
 
-    // Partner verification function
+    // Partner verification function - verify by email address
     const verifyPartner = () => {
-        const enteredName = partnerVerificationName.trim().toLowerCase();
-        const expectedName = (partnerName || '').toLowerCase();
+        const enteredEmail = partnerVerificationEmail.trim().toLowerCase();
+        const expectedEmail = (searchParams.get('inviterEmail') || '').toLowerCase();
         
-        console.log('🔍 PARTNER VERIFICATION:', {
-            entered: enteredName,
-            expected: expectedName,
-            partnerName: partnerName
+        console.log('🔍 PARTNER EMAIL VERIFICATION:', {
+            entered: enteredEmail,
+            expected: expectedEmail,
+            originalPartnerEmail: searchParams.get('inviterEmail')
         });
         
-        if (!enteredName) {
-            setVerificationError('Please enter your name');
+        if (!enteredEmail) {
+            setVerificationError(currentLanguage === 'ko' ? 
+                '이메일 주소를 입력해주세요' :
+                'Please enter an email address');
             return;
         }
         
-        // Simple name verification - allow partial matches
-        const nameMatch = enteredName.includes(expectedName.split(' ')[0]) || 
-                          expectedName.includes(enteredName) ||
-                          enteredName === expectedName;
+        // Basic email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(enteredEmail)) {
+            setVerificationError(currentLanguage === 'ko' ? 
+                '올바른 이메일 형식을 입력해주세요' :
+                'Please enter a valid email format');
+            return;
+        }
         
-        if (nameMatch || enteredName.length >= 2) { // Accept any name 2+ chars for now
+        // Strict email verification - must match exactly
+        if (enteredEmail === expectedEmail) {
             setPartnerVerified(true);
             setVerificationError('');
-            // Store second partner's name
-            localStorage.setItem('couple_secondPartnerName', partnerVerificationName.trim());
-            console.log('✅ Partner verification successful');
+            console.log('✅ Partner email verification successful');
         } else {
-            setVerificationError('Name doesn\'t match. Please check the spelling.');
+            setVerificationError(currentLanguage === 'ko' ? 
+                '이메일 주소가 일치하지 않습니다. 초대를 보낸 분의 정확한 이메일을 입력해주세요.' :
+                'Email address does not match. Please enter the exact email of the person who invited you.');
         }
     };
     const [nameInputValue, setNameInputValue] = useState<string>('');
@@ -459,13 +467,14 @@ export default function TestPage() {
             }
             
             // Get second partner's name (current user taking the test)
-            const secondPartnerName = searchParams.get('secondPartnerName') || 
-                                    localStorage.getItem('couple_secondPartnerName') || 
-                                    'Your Partner';
+            const finalSecondPartnerName = secondPartnerName || 
+                                         searchParams.get('secondPartnerName') || 
+                                         localStorage.getItem('couple_secondPartnerName') || 
+                                         'Your Partner';
             
             console.log('🔍 PARTNER NAMES:', {
                 firstPartnerName: partnerName,
-                secondPartnerName: secondPartnerName,
+                finalSecondPartnerName: finalSecondPartnerName,
                 firstPartnerEmail: originalPartnerEmail,
                 secondPartnerEmail: partnerEmail
             });
@@ -476,7 +485,7 @@ export default function TestPage() {
                 originalPartnerEmail || 'missing@example.com', // Partner 1 (original test taker)
                 partnerEmail, // Partner 2 (current test taker)  
                 partnerName || 'Partner 1', // Partner 1 name (first taker)
-                secondPartnerName, // Partner 2 name (second taker)
+                finalSecondPartnerName, // Partner 2 name (second taker)
                 currentLanguage
             );
             
@@ -1724,8 +1733,8 @@ export default function TestPage() {
                             </h1>
                             <p className="text-white/90 mb-6">
                                 {currentLanguage === 'ko' ? 
-                                    '시작하기 전에, 본인 확인을 위해 이름을 입력해주세요:' :
-                                    'Before we start, please enter your name to verify:'
+                                    '시작하기 전에, 본인 확인을 위해 초대를 보낸 분의 이메일 주소를 입력해주세요:' :
+                                    'Before we start, please enter the email address of the person who invited you:'
                                 }
                             </p>
                             
@@ -1733,12 +1742,12 @@ export default function TestPage() {
                             <div className="space-y-4">
                                 <div>
                                     <input
-                                        type="text"
-                                        value={partnerVerificationName}
-                                        onChange={(e) => setPartnerVerificationName(e.target.value)}
+                                        type="email"
+                                        value={partnerVerificationEmail}
+                                        onChange={(e) => setPartnerVerificationEmail(e.target.value)}
                                         placeholder={currentLanguage === 'ko' ? 
-                                            '당신의 이름을 입력하세요 (예: 김민수, Sarah)' :
-                                            'Enter your first name (e.g., Sarah, Mike)'
+                                            '초대한 분의 이메일 (예: partner@example.com)' :
+                                            'Inviter\'s email address (e.g., partner@example.com)'
                                         }
                                         className="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-pink-400"
                                         onKeyPress={(e) => e.key === 'Enter' && verifyPartner()}
@@ -1761,21 +1770,67 @@ export default function TestPage() {
                                 
                                 <p className="text-xs text-white/60 text-center">
                                     {currentLanguage === 'ko' ? 
-                                        '이 정보는 결과 이메일 개인화에 사용됩니다' :
-                                        'This helps us personalize your results email'
+                                        '초대를 보낸 분의 정확한 이메일 주소를 입력해야 테스트를 시작할 수 있습니다' :
+                                        'You must enter the exact email address of the person who invited you to start the test'
                                     }
                                 </p>
                             </div>
                         </div>
                     )}
                     
-                    {/* Verified invitation header */}
-                    {isInvitationAccess && partnerName && partnerVerified && (
+                    {/* Verified invitation header with name input */}
+                    {isInvitationAccess && partnerName && partnerVerified && !secondPartnerName && (
                         <div className="mb-6 p-4 bg-green-500/30 border border-green-400/50 rounded-lg">
-                            <h1 className="text-2xl font-bold text-white mb-2">
+                            <h1 className="text-2xl font-bold text-white mb-4">
                                 ✅ {currentLanguage === 'ko' ? 
-                                    `환영합니다, ${partnerVerificationName}님!` :
-                                    `Welcome, ${partnerVerificationName}!`
+                                    '이메일 확인 완료!' :
+                                    'Email Verified!'
+                                }
+                            </h1>
+                            <p className="text-white/90 mb-4">
+                                {currentLanguage === 'ko' ? 
+                                    '마지막으로, 결과 이메일 개인화를 위해 당신의 이름을 입력해주세요:' :
+                                    'Finally, please enter your name for personalized results email:'
+                                }
+                            </p>
+                            <div className="flex gap-3">
+                                <input
+                                    type="text"
+                                    value={secondPartnerName}
+                                    onChange={(e) => setSecondPartnerName(e.target.value)}
+                                    placeholder={currentLanguage === 'ko' ? 
+                                        '당신의 이름 (예: 김민수, Sarah)' :
+                                        'Your name (e.g., Sarah, Mike)'
+                                    }
+                                    className="flex-1 p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-green-400"
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter' && secondPartnerName.trim()) {
+                                            localStorage.setItem('couple_secondPartnerName', secondPartnerName.trim());
+                                        }
+                                    }}
+                                />
+                                <button
+                                    onClick={() => {
+                                        if (secondPartnerName.trim()) {
+                                            localStorage.setItem('couple_secondPartnerName', secondPartnerName.trim());
+                                        }
+                                    }}
+                                    disabled={!secondPartnerName.trim()}
+                                    className="px-4 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-500 text-white font-semibold rounded-lg transition-colors duration-200"
+                                >
+                                    {currentLanguage === 'ko' ? '확인' : 'OK'}
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {/* Ready to start test header */}
+                    {isInvitationAccess && partnerName && partnerVerified && secondPartnerName && (
+                        <div className="mb-6 p-4 bg-blue-500/30 border border-blue-400/50 rounded-lg">
+                            <h1 className="text-2xl font-bold text-white mb-2">
+                                🚀 {currentLanguage === 'ko' ? 
+                                    `환영합니다, ${secondPartnerName}님!` :
+                                    `Welcome, ${secondPartnerName}!`
                                 }
                             </h1>
                             <p className="text-white/90">
@@ -1787,8 +1842,8 @@ export default function TestPage() {
                         </div>
                     )}
                     
-                    {/* Only show test header and progress when partner is verified or not invitation access */}
-                    {(!isInvitationAccess || partnerVerified) && (
+                    {/* Only show test header and progress when partner is verified and name provided, or not invitation access */}
+                    {(!isInvitationAccess || (partnerVerified && secondPartnerName)) && (
                         <>
                             <h1 className="text-3xl font-bold mb-4 text-white" data-translate={testDefinition.title_key}>
                                 {t(testDefinition.title_key) || testDefinition.title_key}
@@ -1806,8 +1861,8 @@ export default function TestPage() {
                     )}
                 </div>
 
-                {/* Only show test questions when partner is verified or not invitation access */}
-                {(!isInvitationAccess || partnerVerified) && (
+                {/* Only show test questions when partner is verified and name provided, or not invitation access */}
+                {(!isInvitationAccess || (partnerVerified && secondPartnerName)) && (
                     <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                         <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
                             {getDisplayedQuestionText()}
