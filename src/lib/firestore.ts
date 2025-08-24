@@ -276,10 +276,17 @@ export const sendCoupleCompatibilityInvitation = async (
       const recipientName = partnerName?.trim() || partnerEmail.split('@')[0];
       
       const emailParams = {
+        // Try multiple common EmailJS variable names
         to_email: partnerEmail,
+        email: partnerEmail,           // Alternative name
+        recipient_email: partnerEmail, // Another common name
         to_name: recipientName,
+        name: recipientName,           // Alternative name
+        recipient_name: recipientName, // Another common name
         from_name: userName,
+        sender_name: userName,         // Alternative name
         invitation_link: invitationUrl,
+        link: invitationUrl,           // Alternative name
         message: `${userName} has invited you to take a Couple Compatibility Test together. Discover how compatible you are as a couple! This fun test analyzes your relationship compatibility across key areas like communication, lifestyle, and values.`,
         time_estimate: '5-10 minutes',
         additional_info: 'Your answers will be combined with your partner\'s to create a compatibility report for both of you.'
