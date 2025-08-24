@@ -507,6 +507,8 @@ export const sendCoupleCompatibilityResults = async (
     // Email parameters for both partners
     const emailParams1 = {
       to_email: partner1Email,
+      email: partner1Email, // Fallback email field
+      recipient_email: partner1Email, // Another fallback
       to_name: partner1Name,
       partner_name: partner2Name,
       compatibility_percentage: compatibilityPercentage + '%',
@@ -515,11 +517,14 @@ export const sendCoupleCompatibilityResults = async (
       partner2_type: coupleCompatibility.partner2?.type || 'Partner Personality Type',
       description: coupleCompatibility.description || 'Great compatibility potential!',
       subject: `💕 Your Couple Compatibility Results with ${partner2Name}`,
-      test_name: 'Couple Compatibility Test'
+      test_name: 'Couple Compatibility Test',
+      invitation_link: `https://korean-mbti-platform.netlify.app/${language}/results` // Results page link
     };
     
     const emailParams2 = {
       to_email: partner2Email,
+      email: partner2Email, // Fallback email field
+      recipient_email: partner2Email, // Another fallback
       to_name: partner2Name,
       partner_name: partner1Name,
       compatibility_percentage: compatibilityPercentage + '%',
@@ -528,7 +533,8 @@ export const sendCoupleCompatibilityResults = async (
       partner2_type: coupleCompatibility.partner2?.type || 'Your Personality Type',
       description: coupleCompatibility.description || 'Great compatibility potential!',
       subject: `💕 Your Couple Compatibility Results with ${partner1Name}`,
-      test_name: 'Couple Compatibility Test'
+      test_name: 'Couple Compatibility Test',
+      invitation_link: `https://korean-mbti-platform.netlify.app/${language}/results` // Results page link
     };
     
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
