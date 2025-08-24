@@ -1409,7 +1409,7 @@ export default function TestPage() {
                     )}
 
                     {/* Partner Comparison Signup Prompt - Only for invited couple tests */}
-                    {isInvitationAccess && partnerName && !user && (
+                    {isInvitationAccess && partnerName && (
                         <div className="mb-8 p-6 bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-400/50 rounded-lg">
                             <h2 className="text-2xl font-bold text-white mb-4 text-center">
                                 🔍 {currentLanguage === 'ko' ? 
@@ -1459,13 +1459,26 @@ export default function TestPage() {
                                 
                                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                                     <button
-                                        onClick={() => router.push(`/${currentLanguage}/auth?redirect=${encodeURIComponent(window.location.pathname)}&action=signup`)}
+                                        onClick={() => {
+                                            if (user) {
+                                                // User is logged in - go to comparison page
+                                                router.push(`/${currentLanguage}/results?comparison=true&partner=${encodeURIComponent(partnerName)}`);
+                                            } else {
+                                                // User not logged in - go to signup
+                                                router.push(`/${currentLanguage}/auth?redirect=${encodeURIComponent(`/${currentLanguage}/results?comparison=true&partner=${encodeURIComponent(partnerName)}`)}&action=signup`);
+                                            }
+                                        }}
                                         className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 text-lg"
                                     >
-                                        {currentLanguage === 'ko' ? 
-                                            '🔍 상세 분석 보기 (무료 가입)' :
-                                            '🔍 View Detailed Analysis (Free Signup)'
-                                        }
+                                        {user ? (
+                                            currentLanguage === 'ko' ? 
+                                                '🔍 상세 분석 보기' :
+                                                '🔍 View Detailed Analysis'
+                                        ) : (
+                                            currentLanguage === 'ko' ? 
+                                                '🔍 상세 분석 보기 (무료 가입)' :
+                                                '🔍 View Detailed Analysis (Free Signup)'
+                                        )}
                                     </button>
                                     <button
                                         onClick={() => {/* Skip for now - results already sent via email */}}
