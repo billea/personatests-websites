@@ -269,14 +269,6 @@ export default function ResultsPage() {
         // Extract partner answers from result data
         const partnerAnswers = result.resultPayload?.result?.partnerAnswers || {};
         
-        // Debug logging
-        console.log('🔍 COMPARISON DEBUG:');
-        console.log('Result object:', result);
-        console.log('Has answers:', !!answers);
-        console.log('Has compatibilityData:', !!compatibilityData);
-        console.log('Partner answers:', partnerAnswers);
-        console.log('Full result payload:', result.resultPayload);
-        
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
@@ -330,6 +322,171 @@ export default function ResultsPage() {
                                 <div className="text-sm text-white/90 font-medium">
                                     {answerTranslations[partnerAnswer] || partnerAnswer}
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }).filter(Boolean);
+    };
+
+    const renderMockComparison = (answers: any) => {
+        // Mock partner answers for demonstration
+        const mockPartnerAnswers = {
+            'couple_1': 'dinner_date',
+            'couple_2': 'beach', 
+            'couple_3': 'relax_home',
+            'couple_4': 'flexible',
+            'couple_5': 'intimate',
+            'couple_6': 'trust',
+            'couple_7': 'compromise',
+            'couple_8': 'quality_time',
+            'couple_9': 'balanced',
+            'couple_10': 'growth',
+            'couple_11': 'balanced',
+            'couple_12': 'healthy_eating',
+            'couple_13': 'flexible_plans',
+            'couple_14': 'small_circle',
+            'couple_15': 'gentle_supportive'
+        };
+
+        const coupleQuestions = [
+            { id: 'couple_1', textKey: 'tests.couple.questions.q1', category: 'Lifestyle & Fun' },
+            { id: 'couple_2', textKey: 'tests.couple.questions.q2', category: 'Lifestyle & Fun' },
+            { id: 'couple_3', textKey: 'tests.couple.questions.q3', category: 'Lifestyle & Fun' },
+            { id: 'couple_4', textKey: 'tests.couple.questions.q4', category: 'Lifestyle & Fun' },
+            { id: 'couple_5', textKey: 'tests.couple.questions.q5', category: 'Lifestyle & Fun' },
+            { id: 'couple_6', textKey: 'tests.couple.questions.q6', category: 'Values & Relationships' },
+            { id: 'couple_7', textKey: 'tests.couple.questions.q7', category: 'Values & Relationships' },
+            { id: 'couple_8', textKey: 'tests.couple.questions.q8', category: 'Values & Relationships' },
+            { id: 'couple_9', textKey: 'tests.couple.questions.q9', category: 'Values & Relationships' },
+            { id: 'couple_10', textKey: 'tests.couple.questions.q10', category: 'Values & Relationships' },
+            { id: 'couple_11', textKey: 'tests.couple.questions.q11', category: 'Lifestyle Compatibility' },
+            { id: 'couple_12', textKey: 'tests.couple.questions.q12', category: 'Lifestyle Compatibility' },
+            { id: 'couple_13', textKey: 'tests.couple.questions.q13', category: 'Lifestyle Compatibility' },
+            { id: 'couple_14', textKey: 'tests.couple.questions.q14', category: 'Lifestyle Compatibility' },
+            { id: 'couple_15', textKey: 'tests.couple.questions.q15', category: 'Lifestyle Compatibility' }
+        ];
+
+        const answerTranslations: { [key: string]: string } = {
+            'movie_chill': t('tests.couple.options.q1_a') || 'Movie & chill',
+            'party_out': t('tests.couple.options.q1_b') || 'Party out', 
+            'dinner_date': t('tests.couple.options.q1_c') || 'Dinner date',
+            'gaming': t('tests.couple.options.q1_d') || 'Gaming',
+            'beach': t('tests.couple.options.q2_a') || 'Beach',
+            'mountains': t('tests.couple.options.q2_b') || 'Mountains',
+            'city_tour': t('tests.couple.options.q2_c') || 'City tour',
+            'staycation': t('tests.couple.options.q2_d') || 'Staycation',
+            'adventure': t('tests.couple.options.q3_a') || 'Outdoor adventure',
+            'culture': t('tests.couple.options.q3_b') || 'Museums/culture',
+            'relax_home': t('tests.couple.options.q3_c') || 'Relax at home',
+            'social': t('tests.couple.options.q3_d') || 'Social events',
+            'early_bird': t('tests.couple.options.q4_a') || 'Early bird',
+            'night_owl': t('tests.couple.options.q4_b') || 'Night owl',
+            'flexible': t('tests.couple.options.q4_c') || 'Flexible',
+            'big_party': t('tests.couple.options.q5_a') || 'Big party',
+            'intimate': t('tests.couple.options.q5_b') || 'Intimate dinner',
+            'adventure_trip': t('tests.couple.options.q5_c') || 'Adventure trip',
+            'simple_home': t('tests.couple.options.q5_d') || 'Simple at home',
+            'trust': t('tests.couple.options.q6_a') || 'Trust',
+            'fun': t('tests.couple.options.q6_b') || 'Fun',
+            'communication': t('tests.couple.options.q6_c') || 'Communication',
+            'support': t('tests.couple.options.q6_d') || 'Support',
+            'talk_immediately': t('tests.couple.options.q7_a') || 'Talk immediately',
+            'cool_down_first': t('tests.couple.options.q7_b') || 'Cool down first',
+            'compromise': t('tests.couple.options.q7_c') || 'Find compromise',
+            'avoid': t('tests.couple.options.q7_d') || 'Avoid conflict',
+            'words': t('tests.couple.options.q8_a') || 'Words of affirmation',
+            'quality_time': t('tests.couple.options.q8_b') || 'Quality time',
+            'physical_touch': t('tests.couple.options.q8_c') || 'Physical touch',
+            'acts_service': t('tests.couple.options.q8_d') || 'Acts of service',
+            'gifts': t('tests.couple.options.q8_e') || 'Gifts',
+            'lots_together': t('tests.couple.options.q9_a') || 'Lots of time together',
+            'balanced': t('tests.couple.options.q9_b') || 'Balanced time',
+            'independent': t('tests.couple.options.q9_c') || 'Need independence',
+            'growth': 'Personal growth',
+            'healthy_eating': 'Healthy eating',
+            'flexible_plans': 'Flexible planning', 
+            'small_circle': 'Small circle',
+            'gentle_supportive': 'Gentle & supportive'
+        };
+
+        const compatibilityMatrix: { [key: string]: { [value: string]: string[] } } = {
+            couple_1: { movie_chill: ['dinner_date'], dinner_date: ['movie_chill'] },
+            couple_2: { beach: ['staycation'], mountains: ['city_tour'] },
+            couple_3: { adventure: ['social'], relax_home: ['culture'] },
+            couple_4: { flexible: ['early_bird', 'night_owl'] },
+            couple_5: { intimate: ['simple_home'] },
+            couple_6: { trust: ['communication'] },
+            couple_7: { compromise: ['talk_immediately', 'cool_down_first'] },
+            couple_8: { quality_time: ['physical_touch'] },
+            couple_9: { balanced: ['lots_together', 'independent'] }
+        };
+
+        const getMatchType = (questionId: string, userAnswer: string, partnerAnswer: string) => {
+            if (userAnswer === partnerAnswer) {
+                return { type: 'exact', label: 'Perfect Match', color: 'text-green-400', bgColor: 'bg-green-500/20', icon: '✅' };
+            } else if (compatibilityMatrix[questionId]?.[userAnswer]?.includes(partnerAnswer)) {
+                return { type: 'partial', label: 'Compatible', color: 'text-yellow-400', bgColor: 'bg-yellow-500/20', icon: '🟡' };
+            } else {
+                return { type: 'different', label: 'Different', color: 'text-gray-400', bgColor: 'bg-gray-500/20', icon: '◯' };
+            }
+        };
+
+        let currentCategory = '';
+
+        return coupleQuestions.map((question) => {
+            const userAnswer = answers[question.id];
+            const mockPartnerAnswer = mockPartnerAnswers[question.id as keyof typeof mockPartnerAnswers];
+            
+            if (!userAnswer) return null;
+
+            const match = getMatchType(question.id, userAnswer, mockPartnerAnswer);
+            const showCategoryHeader = currentCategory !== question.category;
+            currentCategory = question.category;
+
+            return (
+                <div key={question.id}>
+                    {/* Category Header */}
+                    {showCategoryHeader && (
+                        <div className="mb-3 mt-6 first:mt-0">
+                            <h6 className="text-sm font-semibold text-white/90 border-l-4 border-purple-400 pl-3">
+                                {question.category}
+                            </h6>
+                        </div>
+                    )}
+                    
+                    {/* Question Comparison */}
+                    <div className={`p-3 rounded-lg ${match.bgColor} border border-white/10`}>
+                        {/* Question Text */}
+                        <div className="mb-3">
+                            <h6 className="text-sm font-medium text-white/90 mb-1">
+                                {t(question.textKey) || question.textKey}
+                            </h6>
+                            <div className="flex items-center gap-2">
+                                <span className={`text-xs px-2 py-1 rounded-full ${match.bgColor} ${match.color} font-medium`}>
+                                    {match.icon} {match.label}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Side-by-side Answers */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {/* Your Answer */}
+                            <div className="bg-white/5 p-3 rounded">
+                                <div className="text-xs text-white/60 mb-1">You</div>
+                                <div className="text-sm text-white/90 font-medium">
+                                    {answerTranslations[userAnswer] || userAnswer}
+                                </div>
+                            </div>
+                            
+                            {/* Mock Partner Answer */}
+                            <div className="bg-white/5 p-3 rounded relative">
+                                <div className="text-xs text-white/60 mb-1">Your Partner (Preview)</div>
+                                <div className="text-sm text-white/90 font-medium">
+                                    {answerTranslations[mockPartnerAnswer] || mockPartnerAnswer}
+                                </div>
+                                <div className="absolute top-1 right-1 text-xs text-blue-300">👁️</div>
                             </div>
                         </div>
                     </div>
@@ -527,26 +684,20 @@ export default function ResultsPage() {
                                     <h5 className="text-lg font-semibold text-white mb-4">🤝 Question by Question Comparison</h5>
                                     <div className="space-y-4 max-h-96 overflow-y-auto">
                                         {renderQuestionComparison(hasAnswers, compatibilityData, result)}
-                                        
-                                        {/* Debug Info */}
-                                        <div className="mt-4 p-3 bg-red-500/10 rounded text-xs text-white/70">
-                                            <p>Debug: Check browser console for comparison data details</p>
-                                            <p>Has answers: {hasAnswers ? 'Yes' : 'No'}</p>
-                                            <p>Has compatibility data: {compatibilityData ? 'Yes' : 'No'}</p>
-                                            <p>Partner answers found: {result.resultPayload?.result?.partnerAnswers ? 'Yes' : 'No'}</p>
-                                        </div>
                                     </div>
                                 </div>
                             )}
                             
-                            {/* Show debug section if no comparison available */}
+                            {/* Mock Comparison for Incomplete Results */}
                             {hasAnswers && !compatibilityData && (
-                                <div className="p-4 bg-yellow-500/10 rounded-lg">
-                                    <h5 className="text-lg font-semibold text-white mb-4">⚠️ Debug: Missing Compatibility Data</h5>
-                                    <div className="text-sm text-white/80 space-y-2">
-                                        <p>Answers available: {Object.keys(hasAnswers).length} questions</p>
-                                        <p>Compatibility data: {compatibilityData ? 'Available' : 'Missing'}</p>
-                                        <p>This might be a single-user result waiting for partner completion.</p>
+                                <div className="p-4 bg-white/5 rounded-lg">
+                                    <h5 className="text-lg font-semibold text-white mb-4">🤝 Question by Question Comparison Preview</h5>
+                                    <div className="mb-4 p-3 bg-blue-500/10 rounded text-sm text-blue-200">
+                                        <p>📋 <strong>Preview Mode:</strong> This shows how your comparison will look when your partner completes the test!</p>
+                                        <p className="text-xs mt-1">Showing sample answers for demonstration purposes.</p>
+                                    </div>
+                                    <div className="space-y-4 max-h-96 overflow-y-auto">
+                                        {renderMockComparison(hasAnswers)}
                                     </div>
                                 </div>
                             )}
