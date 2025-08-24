@@ -223,14 +223,16 @@ export const sendCoupleCompatibilityInvitation = async (
   partnerName?: string
 ): Promise<FeedbackInvitationResponse> => {
   try {
-    console.log('sendCoupleCompatibilityInvitation called with:', {
+    const callId = Math.random().toString(36).substring(2, 15);
+    console.log(`🚀 [${callId}] sendCoupleCompatibilityInvitation called with:`, {
       userId,
       testResultId,
       partnerEmail,
       userName,
       language,
       ownerEmail,
-      partnerName
+      partnerName,
+      timestamp: new Date().toISOString()
     });
 
     // Create invitation record in Firestore or use fallback
@@ -297,7 +299,7 @@ export const sendCoupleCompatibilityInvitation = async (
       const templateId = 'template_m5atn39'; // Couple compatibility specific template
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
       
-      console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
+      console.log(`=== [${callId}] COUPLE COMPATIBILITY EMAILJS DEBUG ===`);
       console.log('Service ID:', serviceId);
       console.log('Template ID:', templateId);
       console.log('Public Key:', publicKey ? `${publicKey.substring(0, 8)}...` : 'MISSING');
@@ -308,7 +310,7 @@ export const sendCoupleCompatibilityInvitation = async (
       console.log('User name:', userName);
       console.log('Partner name (input):', partnerName);
       console.log('Recipient name (computed):', recipientName);
-      console.log('=== ATTEMPTING EMAILJS SEND ===');
+      console.log(`=== [${callId}] ATTEMPTING EMAILJS SEND ===`);
 
       const emailResponse = await emailjs.send(
         serviceId,
@@ -317,7 +319,7 @@ export const sendCoupleCompatibilityInvitation = async (
         publicKey
       );
 
-      console.log('✅ EMAIL SENT SUCCESSFULLY:', emailResponse);
+      console.log(`✅ [${callId}] EMAIL SENT SUCCESSFULLY:`, emailResponse);
       console.log('Response status:', emailResponse.status);
       console.log('Response text:', emailResponse.text);
 

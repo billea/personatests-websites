@@ -590,6 +590,24 @@ export default function TestPage() {
             return;
         }
 
+        // Prevent duplicate invitations
+        const invitationKey = `invitation_sent_${testResultId}_${partnerEmail}`;
+        const alreadySent = localStorage.getItem(invitationKey);
+        
+        if (alreadySent) {
+            const timeSent = parseInt(alreadySent);
+            const timeSinceLastSend = Date.now() - timeSent;
+            const cooldownPeriod = 60000; // 1 minute cooldown
+            
+            if (timeSinceLastSend < cooldownPeriod) {
+                alert(currentLanguage === 'ko' ? 
+                    '최근에 이미 초대장을 보냈습니다. 잠시 후 다시 시도해주세요.' : 
+                    'An invitation was recently sent. Please wait before sending another one.'
+                );
+                return;
+            }
+        }
+
         try {
             setSaving(true);
 
@@ -613,6 +631,9 @@ export default function TestPage() {
             console.log('Couple compatibility invitation result:', result);
 
             if (result.success && result.invitations && result.invitations.length > 0) {
+                // Mark invitation as sent to prevent duplicates
+                localStorage.setItem(invitationKey, Date.now().toString());
+                
                 const invitationLink = result.invitations[0].link;
                 
                 // Try to show success with the generated link for manual sharing
