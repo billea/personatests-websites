@@ -829,13 +829,13 @@ export default function TestPage() {
         }
     }, [isProtectedTest, isClient, authLoading, user, router, currentLanguage, testId]);
 
-    // Additional safety check - runs on every render
+    // Additional safety check - runs only when dependencies change to prevent infinite loops
     useEffect(() => {
         if (isProtectedTest && !authLoading && !user && isClient) {
-            console.log('SAFETY REDIRECT: Unauthorized access attempt');
+            console.log('🚨 SAFETY REDIRECT: Unauthorized access attempt');
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
         }
-    });
+    }, [isProtectedTest, authLoading, user, isClient, currentLanguage, testId, router]);
 
     const addEmailField = () => {
         setFeedbackEmails([...feedbackEmails, '']);
