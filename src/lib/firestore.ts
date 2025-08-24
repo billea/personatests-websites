@@ -532,8 +532,13 @@ export const sendCoupleCompatibilityResults = async (
     };
     
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_RESULTS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+    const templateId = 'template_cqvgidu'; // Use dedicated couple compatibility results template
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+    
+    console.log('🔍 COUPLE RESULTS EMAIL DEBUG:');
+    console.log('- Service ID:', serviceId);
+    console.log('- Template ID (hardcoded):', templateId);
+    console.log('- Sending to partner1:', partner1Email, '- partner2:', partner2Email);
     
     // Send emails to both partners
     await Promise.all([
