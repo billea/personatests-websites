@@ -22,7 +22,8 @@ export default function AuthPage() {
     const [isSignUp, setIsSignUp] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     
     // Get context from URL params
     const returnUrl = searchParams.get('returnUrl');
@@ -85,9 +86,10 @@ export default function AuthPage() {
                 result = await createUserWithEmailAndPassword(auth, email, password);
                 
                 // Update display name if provided
-                if (name.trim()) {
+                const fullName = `${firstName.trim()} ${lastName.trim()}`.trim();
+                if (fullName) {
                     await updateProfile(result.user, {
-                        displayName: name.trim()
+                        displayName: fullName
                     });
                 }
             } else {
@@ -198,14 +200,25 @@ export default function AuthPage() {
                 {/* Email Authentication Form */}
                 <form onSubmit={handleEmailAuth} className="space-y-4 mb-6">
                     {isSignUp && (
-                        <div>
-                            <input
-                                type="text"
-                                placeholder={currentLanguage === 'ko' ? '이름 (선택사항)' : 'Name (optional)'}
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                            />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder={currentLanguage === 'ko' ? '이름 (선택사항)' : 'First Name (optional)'}
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder={currentLanguage === 'ko' ? '성 (선택사항)' : 'Last Name (optional)'}
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                />
+                            </div>
                         </div>
                     )}
                     
