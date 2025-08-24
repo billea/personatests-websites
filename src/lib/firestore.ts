@@ -1000,6 +1000,12 @@ export const sendFeedbackNotification = async (
     // Prepare email parameters for notification - different content based on test type
     const isCoupleCompatibility = testId === 'couple-compatibility';
     
+    console.log('🔍 TEMPLATE SELECTION DEBUG:');
+    console.log('- testId received:', testId);
+    console.log('- testId type:', typeof testId);
+    console.log('- isCoupleCompatibility:', isCoupleCompatibility);
+    console.log('- Comparison result:', testId === 'couple-compatibility');
+    
     const emailParams = {
       to_email: ownerEmail,
       to_name: ownerName,
