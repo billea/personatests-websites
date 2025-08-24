@@ -171,6 +171,196 @@ export default function ResultsPage() {
         const hasResult = result.resultPayload?.result;
         const resultFeedback = result.id ? (feedback[result.id] || []) : [];
 
+        // Check if this is a couple compatibility test
+        const isCoupleTest = result.testId === 'couple-compatibility';
+        
+        // Get compatibility data for couple tests
+        const compatibilityData = hasResult?.compatibilityData;
+        const compatibilityScore = hasResult?.scores?.compatibility || 0;
+        
+        // Get result tier based on compatibility score
+        const getCompatibilityTier = (score: number) => {
+            if (score >= 95) return { emoji: '💍', label: 'Soulmates', color: 'text-pink-400' };
+            if (score >= 85) return { emoji: '⚡', label: 'Power Couple', color: 'text-yellow-400' };
+            if (score >= 75) return { emoji: '🌍', label: 'Adventurous Duo', color: 'text-green-400' };
+            if (score >= 65) return { emoji: '💕', label: 'Sweet Match', color: 'text-red-400' };
+            if (score >= 50) return { emoji: '🔨', label: 'Work in Progress', color: 'text-blue-400' };
+            if (score >= 35) return { emoji: '📚', label: 'Learning Together', color: 'text-purple-400' };
+            return { emoji: '🤔', label: 'Opposites Attract', color: 'text-gray-400' };
+        };
+
+        if (isCoupleTest && hasResult) {
+            const tier = getCompatibilityTier(compatibilityScore);
+            
+            return (
+                <div key={result.id} className="p-8 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
+                    {/* Header */}
+                    <div className="text-center mb-8">
+                        <div className="text-6xl mb-4">{tier.emoji}</div>
+                        <h3 className="text-3xl font-bold text-white mb-2">
+                            💕 Couple Compatibility Results
+                        </h3>
+                        <p className="text-white/80 text-lg">
+                            Completed on {formatDate(result.createdAt)}
+                        </p>
+                    </div>
+
+                    {/* Main Compatibility Score */}
+                    <div className="text-center mb-8 p-6 bg-white/10 rounded-xl">
+                        <div className="text-5xl font-bold text-white mb-2">
+                            {compatibilityScore}%
+                        </div>
+                        <div className={`text-2xl font-semibold mb-4 ${tier.color}`}>
+                            {tier.emoji} {tier.label}
+                        </div>
+                        
+                        {/* Progress Bar */}
+                        <div className="w-full bg-white/20 rounded-full h-4 mb-4">
+                            <div 
+                                className="bg-gradient-to-r from-pink-400 to-red-400 h-4 rounded-full transition-all duration-1000 ease-out"
+                                style={{ width: `${compatibilityScore}%` }}
+                            ></div>
+                        </div>
+                        
+                        <p className="text-white/90 text-lg">
+                            {compatibilityScore >= 85 ? "You two are incredibly compatible! 🎉" :
+                             compatibilityScore >= 65 ? "You have great potential together! 💫" :
+                             compatibilityScore >= 50 ? "There's room to grow together! 🌱" :
+                             "Every couple can learn and grow! 💪"}
+                        </p>
+                    </div>
+
+                    {/* Personality Types */}
+                    {hasResult.type && (
+                        <div className="mb-8 p-6 bg-white/10 rounded-xl">
+                            <h4 className="text-xl font-semibold text-white mb-4 text-center">
+                                💫 Your Personality Type
+                            </h4>
+                            <div className="text-center">
+                                <div className="text-2xl font-bold text-purple-300 mb-2">
+                                    {hasResult.type}
+                                </div>
+                                {hasResult.traits && (
+                                    <div className="flex justify-center flex-wrap gap-2 mt-4">
+                                        {hasResult.traits.map((trait: string, index: number) => (
+                                            <span 
+                                                key={index}
+                                                className="px-3 py-1 bg-purple-500/30 text-purple-100 rounded-full text-sm"
+                                            >
+                                                {trait}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Compatibility Areas */}
+                    {compatibilityData?.areaBreakdown && (
+                        <div className="mb-8 p-6 bg-white/10 rounded-xl">
+                            <h4 className="text-xl font-semibold text-white mb-6 text-center">
+                                🎯 Compatibility Areas
+                            </h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {Object.entries(compatibilityData.areaBreakdown).map(([area, score]) => (
+                                    <div key={area} className="bg-white/5 p-4 rounded-lg">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <span className="text-white font-medium capitalize">
+                                                {area.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                                            </span>
+                                            <span className="text-white/80 font-semibold">
+                                                {typeof score === 'number' ? `${Math.round(score)}%` : score}
+                                            </span>
+                                        </div>
+                                        <div className="w-full bg-white/20 rounded-full h-2">
+                                            <div 
+                                                className="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full transition-all duration-1000 ease-out"
+                                                style={{ width: `${typeof score === 'number' ? score : 0}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Action Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+                        <button 
+                            onClick={() => {
+                                const shareText = `We scored ${compatibilityScore}% compatibility! ${tier.emoji} ${tier.label} 💕`;
+                                const shareUrl = `https://korean-mbti-platform.netlify.app/${currentLanguage}/tests/couple-compatibility/`;
+                                if (navigator.share) {
+                                    navigator.share({
+                                        title: 'Couple Compatibility Results',
+                                        text: shareText,
+                                        url: shareUrl,
+                                    });
+                                } else {
+                                    navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+                                    alert('Results copied to clipboard!');
+                                }
+                            }}
+                            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-lg hover:from-pink-600 hover:to-red-600 transition-all duration-300 shadow-lg"
+                        >
+                            💕 Share Results
+                        </button>
+                        
+                        <Link href={`/${currentLanguage}/tests/couple-compatibility/`}>
+                            <button className="px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-300">
+                                🔄 Test with Another Partner
+                            </button>
+                        </Link>
+                        
+                        <button 
+                            onClick={() => setSelectedResultId(
+                                selectedResultId === result.id ? null : result.id!
+                            )}
+                            className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 rounded-lg hover:bg-white/20 transition-all duration-300"
+                        >
+                            {selectedResultId === result.id ? 'Hide Details' : 'Show Details'}
+                        </button>
+                    </div>
+
+                    {/* Detailed View (collapsed by default) */}
+                    {selectedResultId === result.id && (
+                        <div className="mt-8 pt-8 border-t border-white/20 space-y-6">
+                            {/* Partner Information */}
+                            {compatibilityData && (
+                                <div className="p-4 bg-white/5 rounded-lg">
+                                    <h5 className="text-lg font-semibold text-white mb-4">👫 Partner Information</h5>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                        <div className="text-white/80">
+                                            <p><span className="font-medium">Your Partner:</span> {compatibilityData.partnerName || 'Unknown'}</p>
+                                            <p><span className="font-medium">Test Date:</span> {formatDate(result.createdAt)}</p>
+                                        </div>
+                                        <div className="text-white/80">
+                                            <p><span className="font-medium">Questions Answered:</span> 15</p>
+                                            <p><span className="font-medium">Analysis Depth:</span> Advanced</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Detailed Insights */}
+                            {hasResult.insights && (
+                                <div className="p-4 bg-white/5 rounded-lg">
+                                    <h5 className="text-lg font-semibold text-white mb-3">💡 Relationship Insights</h5>
+                                    <div className="text-white/90 space-y-2">
+                                        {hasResult.insights.map((insight: string, index: number) => (
+                                            <p key={index} className="text-sm">• {insight}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        // Default rendering for other test types (MBTI, etc.)
         return (
             <div key={result.id} className="p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                 <div className="flex justify-between items-start mb-4">
@@ -184,12 +374,12 @@ export default function ResultsPage() {
                         <div className="flex gap-4 text-sm text-white/70 mt-1">
                             <span>Questions: {Object.keys(hasAnswers || {}).length}</span>
                             {resultFeedback.length > 0 && (
-                                <span className="text-green-600">
+                                <span className="text-green-400">
                                     Feedback: {resultFeedback.length} responses
                                 </span>
                             )}
                             {testDef?.requiresFeedback && (
-                                <span className="text-blue-600">Feedback-enabled</span>
+                                <span className="text-blue-400">Feedback-enabled</span>
                             )}
                         </div>
                     </div>
@@ -198,99 +388,112 @@ export default function ResultsPage() {
                             onClick={() => setSelectedResultId(
                                 selectedResultId === result.id ? null : result.id!
                             )}
-                            className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300"
+                            className="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-300"
                         >
                             {selectedResultId === result.id ? 'Hide Details' : 'View Details'}
                         </button>
                     </div>
                 </div>
 
+                {/* Enhanced MBTI Results Display */}
+                {hasResult && !selectedResultId && (
+                    <div className="mt-4 p-4 bg-white/10 rounded-lg">
+                        {hasResult.type && (
+                            <div className="text-center mb-4">
+                                <div className="text-2xl font-bold text-white mb-2">
+                                    {hasResult.type}
+                                </div>
+                                {hasResult.traits && (
+                                    <div className="flex justify-center flex-wrap gap-2">
+                                        {hasResult.traits.map((trait: string, index: number) => (
+                                            <span 
+                                                key={index}
+                                                className="px-3 py-1 bg-blue-500/30 text-blue-100 rounded-full text-sm"
+                                            >
+                                                {trait}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                        
+                        {/* MBTI Percentages */}
+                        {hasResult.scores?.percentages && (
+                            <div className="grid grid-cols-2 gap-3 mt-4">
+                                {Object.entries(hasResult.scores.percentages).map(([key, value]) => (
+                                    <div key={key} className="bg-white/5 p-3 rounded">
+                                        <div className="flex justify-between items-center mb-1">
+                                            <span className="text-white/90 text-sm font-medium">{key}</span>
+                                            <span className="text-white font-semibold">
+                                                {typeof value === 'number' ? `${value}%` : String(value)}
+                                            </span>
+                                        </div>
+                                        {typeof value === 'number' && (
+                                            <div className="w-full bg-white/20 rounded-full h-1.5">
+                                                <div 
+                                                    className="bg-gradient-to-r from-blue-400 to-purple-400 h-1.5 rounded-full"
+                                                    style={{ width: `${value}%` }}
+                                                ></div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 {selectedResultId === result.id && (
                     <div className="mt-4 space-y-4">
-                        {/* Test Results */}
+                        {/* Full Results */}
                         {hasResult && (
-                            <div className="p-4 bg-green-50 rounded dark:bg-green-900/20">
-                                <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Your Results:</h4>
-                                <div className="space-y-2">
+                            <div className="p-4 bg-white/10 rounded-lg">
+                                <h4 className="font-semibold mb-3 text-white">📊 Complete Results</h4>
+                                <div className="space-y-3">
                                     {hasResult.type && (
-                                        <p className="text-lg font-medium text-green-700 dark:text-green-300">
-                                            Type: {hasResult.type}
-                                        </p>
+                                        <div className="text-center p-4 bg-white/5 rounded">
+                                            <div className="text-xl font-bold text-purple-300 mb-2">
+                                                {hasResult.type}
+                                            </div>
+                                            {hasResult.traits && (
+                                                <div className="flex justify-center flex-wrap gap-2">
+                                                    {hasResult.traits.map((trait: string, index: number) => (
+                                                        <span key={index} className="px-2 py-1 bg-purple-500/30 text-purple-100 rounded-full text-xs">
+                                                            {trait}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
                                     )}
+                                    
+                                    {/* Detailed Scores */}
                                     {hasResult.scores && (
-                                        <div className="space-y-2">
-                                            {/* Display MBTI percentages if available */}
-                                            {hasResult.scores.percentages && (
-                                                <div>
-                                                    <h5 className="font-medium text-sm mb-1">Dimension Percentages:</h5>
-                                                    <div className="grid grid-cols-2 gap-2">
-                                                        {Object.entries(hasResult.scores.percentages).map(([key, value]) => (
-                                                            <div key={key} className="text-sm">
-                                                                <span className="font-medium">{key}:</span> {typeof value === 'number' ? `${value}%` : String(value)}
-                                                            </div>
-                                                        ))}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            {Object.entries(hasResult.scores)
+                                                .filter(([key, value]) => key !== 'percentages')
+                                                .map(([key, value]) => (
+                                                    <div key={key} className="bg-white/5 p-3 rounded">
+                                                        <span className="text-white/90 font-medium capitalize">{key}: </span>
+                                                        <span className="text-white">{String(value)}</span>
                                                     </div>
-                                                </div>
-                                            )}
-                                            
-                                            {/* Display raw scores if available */}
-                                            {hasResult.scores && !hasResult.scores.percentages && (
-                                                <div>
-                                                    <h5 className="font-medium text-sm mb-1">Scores:</h5>
-                                                    <div className="grid grid-cols-2 gap-2">
-                                                        {Object.entries(hasResult.scores)
-                                                            .filter(([key, value]) => typeof value === 'number' || typeof value === 'string')
-                                                            .map(([key, value]) => (
-                                                                <div key={key} className="text-sm">
-                                                                    <span className="font-medium">{key}:</span> {String(value)}
-                                                                </div>
-                                                            ))}
-                                                    </div>
-                                                </div>
-                                            )}
+                                                ))}
                                         </div>
-                                    )}
-                                    {hasResult.traits && (
-                                        <p className="text-sm">
-                                            <span className="font-medium">Traits:</span> {hasResult.traits.join(', ')}
-                                        </p>
                                     )}
                                 </div>
                             </div>
                         )}
 
-                        {/* Feedback Summary */}
-                        {resultFeedback.length > 0 && (
-                            <div className="p-4 bg-blue-50 rounded dark:bg-blue-900/20">
-                                <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">
-                                    Feedback Summary ({resultFeedback.length} responses):
-                                </h4>
-                                <div className="space-y-2 max-h-32 overflow-y-auto">
-                                    {resultFeedback.map((fb, index) => (
-                                        <div key={index} className="text-sm p-2 bg-white rounded dark:bg-gray-800">
-                                            <p className="text-gray-600 dark:text-gray-400">
-                                                Submitted: {formatDate(fb.submittedAt)}
-                                            </p>
-                                            {/* Feedback content would be displayed based on the feedback structure */}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Detailed Answers */}
+                        {/* Raw Answers (Technical Details) */}
                         {hasAnswers && (
-                            <div className="p-4 bg-gray-50 rounded dark:bg-gray-700">
-                                <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Your Answers:</h4>
-                                <div className="space-y-2 max-h-64 overflow-y-auto">
+                            <div className="p-4 bg-white/5 rounded-lg">
+                                <h4 className="font-semibold mb-3 text-white/80">🔧 Technical Details</h4>
+                                <div className="space-y-2 max-h-64 overflow-y-auto text-xs">
                                     {Object.entries(hasAnswers).map(([questionId, answer]) => (
-                                        <div key={questionId} className="text-sm">
-                                            <p className="font-medium text-gray-800 dark:text-gray-200">
-                                                {questionId}: 
-                                            </p>
-                                            <p className="text-gray-600 dark:text-gray-400 ml-4">
-                                                → {String(answer)}
-                                            </p>
+                                        <div key={questionId} className="flex">
+                                            <span className="text-white/60 font-mono w-24 flex-shrink-0">{questionId}:</span>
+                                            <span className="text-white/80 ml-2">{String(answer)}</span>
                                         </div>
                                     ))}
                                 </div>
