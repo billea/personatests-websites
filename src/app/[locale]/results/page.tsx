@@ -263,24 +263,29 @@ export default function ResultsPage() {
                                 🎯 Compatibility Areas
                             </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {Object.entries(compatibilityData.areaBreakdown).map(([area, score]) => (
-                                    <div key={area} className="bg-white/5 p-4 rounded-lg">
-                                        <div className="flex justify-between items-center mb-2">
-                                            <span className="text-white font-medium capitalize">
-                                                {area.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                                            </span>
-                                            <span className="text-white/80 font-semibold">
-                                                {typeof score === 'number' ? `${Math.round(score)}%` : score}
-                                            </span>
+                                {Object.entries(compatibilityData.areaBreakdown).map(([area, scoreValue]) => {
+                                    const score = typeof scoreValue === 'number' ? scoreValue : 0;
+                                    const displayScore = typeof scoreValue === 'number' ? `${Math.round(scoreValue)}%` : String(scoreValue);
+                                    
+                                    return (
+                                        <div key={area} className="bg-white/5 p-4 rounded-lg">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <span className="text-white font-medium capitalize">
+                                                    {area.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                                                </span>
+                                                <span className="text-white/80 font-semibold">
+                                                    {displayScore}
+                                                </span>
+                                            </div>
+                                            <div className="w-full bg-white/20 rounded-full h-2">
+                                                <div 
+                                                    className="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full transition-all duration-1000 ease-out"
+                                                    style={{ width: `${score}%` }}
+                                                ></div>
+                                            </div>
                                         </div>
-                                        <div className="w-full bg-white/20 rounded-full h-2">
-                                            <div 
-                                                className="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full transition-all duration-1000 ease-out"
-                                                style={{ width: `${typeof score === 'number' ? score : 0}%` }}
-                                            ></div>
-                                        </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
