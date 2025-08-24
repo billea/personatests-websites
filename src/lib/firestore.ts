@@ -1034,7 +1034,7 @@ export const sendFeedbackNotification = async (
     
     // Send notification email using appropriate template based on test type
     const templateId = isCoupleCompatibility ? 
-      'template_m5atn39' : // Couple compatibility specific template
+      'template_cqvgidu' : // Couple compatibility completion notification template
       (process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''); // Default 360 feedback template
       
     console.log(`Using EmailJS template: ${templateId} for ${isCoupleCompatibility ? 'couple compatibility' : '360 feedback'} notification`);
