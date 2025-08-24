@@ -280,21 +280,14 @@ export const sendCoupleCompatibilityInvitation = async (
         to_name: recipientName,
         from_name: userName,
         invitation_link: invitationUrl,
-        // Override 360 feedback content with couple compatibility content
-        subject: `💕 Couple Compatibility Test Invitation from ${userName}`,
-        message: `Hi ${recipientName}!\n\n${userName} has invited you to take a Couple Compatibility Test together. Discover how compatible you are as a couple! This fun test analyzes your relationship compatibility across key areas like communication, lifestyle, and values.\n\nClick the link below to take the test together!`,
-        test_name: 'Couple Compatibility Test',
-        action_text: 'Take Compatibility Test Together',
-        description_text: `has invited you to take a Couple Compatibility Test together to discover your relationship compatibility.`,
+        message: `${userName} has invited you to take a Couple Compatibility Test together. Discover how compatible you are as a couple! This fun test analyzes your relationship compatibility across key areas like communication, lifestyle, and values.`,
         time_estimate: '5-10 minutes',
-        additional_info: 'Your answers will be combined with your partner\'s to create a compatibility report for both of you.',
-        greeting: `Hello ${recipientName}`,
-        invitation_type: 'couple_compatibility'
+        additional_info: 'Your answers will be combined with your partner\'s to create a compatibility report for both of you.'
       };
 
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      // Try couple-specific template first, fall back to 360 feedback template
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+      // Use dedicated couple compatibility template
+      const templateId = 'template_m5atn39'; // Couple compatibility specific template
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
       
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
