@@ -219,7 +219,8 @@ export const sendCoupleCompatibilityInvitation = async (
   partnerEmail: string,
   userName: string,
   language: string = 'en',
-  ownerEmail?: string
+  ownerEmail?: string,
+  partnerName?: string
 ): Promise<FeedbackInvitationResponse> => {
   try {
     console.log('sendCoupleCompatibilityInvitation called with:', {
@@ -228,7 +229,8 @@ export const sendCoupleCompatibilityInvitation = async (
       partnerEmail,
       userName,
       language,
-      ownerEmail
+      ownerEmail,
+      partnerName
     });
 
     // Create invitation record in Firestore or use fallback
@@ -270,19 +272,24 @@ export const sendCoupleCompatibilityInvitation = async (
     try {
       const emailjs = (await import('@emailjs/browser')).default;
       
+      // Use provided partner name or fall back to email prefix
+      const recipientName = partnerName?.trim() || partnerEmail.split('@')[0];
+      
       const emailParams = {
         to_email: partnerEmail,
-        to_name: partnerEmail.split('@')[0],
+        to_name: recipientName,
         from_name: userName,
         invitation_link: invitationUrl,
         // Override 360 feedback content with couple compatibility content
-        subject: 'Couple Compatibility Test Invitation from ' + userName,
-        message: `${userName} has invited you to take a Couple Compatibility Test together. Discover how compatible you are as a couple! This fun test analyzes your relationship compatibility across key areas like communication, lifestyle, and values.`,
+        subject: `💕 Couple Compatibility Test Invitation from ${userName}`,
+        message: `Hi ${recipientName}!\n\n${userName} has invited you to take a Couple Compatibility Test together. Discover how compatible you are as a couple! This fun test analyzes your relationship compatibility across key areas like communication, lifestyle, and values.\n\nClick the link below to take the test together!`,
         test_name: 'Couple Compatibility Test',
-        action_text: 'Take Compatibility Test',
-        description_text: 'has invited you to take a Couple Compatibility Test together.',
+        action_text: 'Take Compatibility Test Together',
+        description_text: `has invited you to take a Couple Compatibility Test together to discover your relationship compatibility.`,
         time_estimate: '5-10 minutes',
-        additional_info: 'Your answers will be combined with your partner\'s to create a compatibility report for both of you.'
+        additional_info: 'Your answers will be combined with your partner\'s to create a compatibility report for both of you.',
+        greeting: `Hello ${recipientName}`,
+        invitation_type: 'couple_compatibility'
       };
 
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';

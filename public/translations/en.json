@@ -586,6 +586,8 @@
     "invite_partner_title": "Invite Your Partner",
     "invite_partner_description": "Send an invitation to your partner to complete their part of the compatibility test. You'll both receive the results once they finish.",
     "your_name_for_partner": "Your name (so your partner knows who invited them)",
+    "partner_name": "Your Partner's Name",
+    "partner_name_placeholder": "Enter your partner's first name (e.g., Sarah, Mike)",
     "partner_email": "Your Partner's Email Address",
     "partner_email_placeholder": "Enter your partner's email address",
     "send_partner_invitation": "💕 Send Partner Invitation",

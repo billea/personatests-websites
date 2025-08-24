@@ -70,6 +70,7 @@ export default function TestPage() {
     const [showNameInput, setShowNameInput] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [showCategorySelection, setShowCategorySelection] = useState(false);
+    const [partnerNameInput, setPartnerNameInput] = useState<string>('');
 
     // Generate unique progress key for this test session
     const getProgressKey = () => `test_progress_${testId}_${user?.uid || 'anonymous'}`;
@@ -571,6 +572,14 @@ export default function TestPage() {
             return;
         }
 
+        if (!partnerNameInput.trim()) {
+            alert(currentLanguage === 'ko' ? 
+                '파트너의 이름을 입력해주세요.' : 
+                'Please enter your partner\'s name'
+            );
+            return;
+        }
+
         // For couple compatibility, we only need one email (the partner's)
         const partnerEmail = feedbackEmails[0]?.trim();
         if (!partnerEmail || !partnerEmail.includes('@')) {
@@ -597,7 +606,8 @@ export default function TestPage() {
                 partnerEmail,
                 userName.trim(),
                 currentLanguage || 'en',
-                user.email || undefined
+                user.email || undefined,
+                partnerNameInput.trim()
             );
 
             console.log('Couple compatibility invitation result:', result);
@@ -1466,8 +1476,20 @@ export default function TestPage() {
                             </div>
                             
                             {testId === 'couple-compatibility' ? (
-                                // Single email input for partner
+                                // Partner name and email inputs for couple compatibility
                                 <>
+                                    <div className="mb-4">
+                                        <label className="block text-sm font-medium mb-2 text-white">
+                                            {t('test.partner_name') || 'Your Partner\'s Name'}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={partnerNameInput || ''}
+                                            onChange={(e) => setPartnerNameInput(e.target.value)}
+                                            placeholder={t('test.partner_name_placeholder') || 'Enter your partner\'s first name (e.g., Sarah, Mike)'}
+                                            className="w-full p-3 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                        />
+                                    </div>
                                     <div className="mb-4">
                                         <label className="block text-sm font-medium mb-2 text-white">
                                             {t('test.partner_email') || 'Your Partner\'s Email Address'}
