@@ -396,16 +396,30 @@ export default function TestPage() {
                 description: coupleCompatibility.description
             });
             
-            // Get original partner email from search params or use fallback
-            const originalPartnerEmail = 'bill@example.com'; // This should come from stored invitation data
+            // Get original partner email from search params 
+            // The inviter email should be passed in the URL or retrieved from the original test result
+            const originalPartnerEmail = searchParams.get('inviterEmail');
+            
+            console.log('🔍 ORIGINAL PARTNER EMAIL RETRIEVAL:', {
+                fromSearchParams: searchParams.get('inviterEmail'),
+                allSearchParams: Object.fromEntries(searchParams.entries()),
+                finalEmail: originalPartnerEmail
+            });
+            
+            // Ensure we have the original partner email before sending results
+            if (!originalPartnerEmail || originalPartnerEmail === 'unknown@example.com') {
+                console.error('❌ Cannot send results to original partner - email missing from invitation URL');
+                console.log('Available search params:', Object.fromEntries(searchParams.entries()));
+                // Still send email to second partner, but log the issue
+            }
             
             // Try to send actual email results using the new function
             const emailResult = await sendCoupleCompatibilityResults(
                 coupleCompatibility,
-                originalPartnerEmail, // Partner 1 (original test taker)
+                originalPartnerEmail || 'missing@example.com', // Partner 1 (original test taker)
                 partnerEmail, // Partner 2 (current test taker)  
-                partnerName, // Partner 1 name
-                'Partner', // Partner 2 name (we don't have this, use generic)
+                partnerName || 'Partner 1', // Partner 1 name
+                'Partner 2', // Partner 2 name (we don't have this, use generic)
                 currentLanguage
             );
             
