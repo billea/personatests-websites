@@ -1941,6 +1941,8 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
       `${exactMatches}/${totalQuestions} Perfect Matches`,
       `${partialMatches} Partial Matches`
     ],
+    userAnswers: answers, // Store user answers for comparison
+    partnerAnswers: partnerAnswers, // Store partner answers for comparison
     compatibilityData: {
       percentage: compatibilityPercentage,
       tier: compatibilityTier,
@@ -1950,6 +1952,7 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
       partialMatches: partialMatches,
       totalQuestions: totalQuestions,
       areaScores: areaScores,
+      areaBreakdown: areaScores, // Add this for the results page compatibility areas
       isShareable: true, // Enable SNS sharing features
       shareTitle: `We're ${compatibilityPercentage}% Compatible! ${compatibilityEmoji}`,
       shareDescription: `${compatibilityTier}: ${compatibilityDescription}`,

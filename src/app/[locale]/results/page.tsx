@@ -269,6 +269,14 @@ export default function ResultsPage() {
         // Extract partner answers from result data
         const partnerAnswers = result.resultPayload?.result?.partnerAnswers || {};
         
+        // Debug logging
+        console.log('🔍 COMPARISON DEBUG:');
+        console.log('Result object:', result);
+        console.log('Has answers:', !!answers);
+        console.log('Has compatibilityData:', !!compatibilityData);
+        console.log('Partner answers:', partnerAnswers);
+        console.log('Full result payload:', result.resultPayload);
+        
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
@@ -519,6 +527,26 @@ export default function ResultsPage() {
                                     <h5 className="text-lg font-semibold text-white mb-4">🤝 Question by Question Comparison</h5>
                                     <div className="space-y-4 max-h-96 overflow-y-auto">
                                         {renderQuestionComparison(hasAnswers, compatibilityData, result)}
+                                        
+                                        {/* Debug Info */}
+                                        <div className="mt-4 p-3 bg-red-500/10 rounded text-xs text-white/70">
+                                            <p>Debug: Check browser console for comparison data details</p>
+                                            <p>Has answers: {hasAnswers ? 'Yes' : 'No'}</p>
+                                            <p>Has compatibility data: {compatibilityData ? 'Yes' : 'No'}</p>
+                                            <p>Partner answers found: {result.resultPayload?.result?.partnerAnswers ? 'Yes' : 'No'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {/* Show debug section if no comparison available */}
+                            {hasAnswers && !compatibilityData && (
+                                <div className="p-4 bg-yellow-500/10 rounded-lg">
+                                    <h5 className="text-lg font-semibold text-white mb-4">⚠️ Debug: Missing Compatibility Data</h5>
+                                    <div className="text-sm text-white/80 space-y-2">
+                                        <p>Answers available: {Object.keys(hasAnswers).length} questions</p>
+                                        <p>Compatibility data: {compatibilityData ? 'Available' : 'Missing'}</p>
+                                        <p>This might be a single-user result waiting for partner completion.</p>
                                     </div>
                                 </div>
                             )}
