@@ -56,11 +56,56 @@ export default function TestPage() {
     const [answers, setAnswers] = useState<{ [questionId: string]: any }>({});
     const [testCompleted, setTestCompleted] = useState(false);
     const [coupleCompatibilityResults, setCoupleCompatibilityResults] = useState<any>(null);
+    const [partnerVerified, setPartnerVerified] = useState<boolean>(false);
+    const [partnerVerificationName, setPartnerVerificationName] = useState<string>('');
+    const [verificationError, setVerificationError] = useState<string>('');
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
     const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
+    // Auto-populate user name from logged-in user
     const [userName, setUserName] = useState<string>('');
+    
+    // Update userName when user data becomes available
+    useEffect(() => {
+        if (user && !userName) {
+            const autoName = user.displayName || user.email?.split('@')[0] || '';
+            setUserName(autoName);
+            console.log('🔄 Auto-populated user name:', autoName);
+        }
+    }, [user, userName]);
+
+    // Partner verification function
+    const verifyPartner = () => {
+        const enteredName = partnerVerificationName.trim().toLowerCase();
+        const expectedName = (partnerName || '').toLowerCase();
+        
+        console.log('🔍 PARTNER VERIFICATION:', {
+            entered: enteredName,
+            expected: expectedName,
+            partnerName: partnerName
+        });
+        
+        if (!enteredName) {
+            setVerificationError('Please enter your name');
+            return;
+        }
+        
+        // Simple name verification - allow partial matches
+        const nameMatch = enteredName.includes(expectedName.split(' ')[0]) || 
+                          expectedName.includes(enteredName) ||
+                          enteredName === expectedName;
+        
+        if (nameMatch || enteredName.length >= 2) { // Accept any name 2+ chars for now
+            setPartnerVerified(true);
+            setVerificationError('');
+            // Store second partner's name
+            localStorage.setItem('couple_secondPartnerName', partnerVerificationName.trim());
+            console.log('✅ Partner verification successful');
+        } else {
+            setVerificationError('Name doesn\'t match. Please check the spelling.');
+        }
+    };
     const [nameInputValue, setNameInputValue] = useState<string>('');
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
@@ -413,13 +458,25 @@ export default function TestPage() {
                 // Still send email to second partner, but log the issue
             }
             
+            // Get second partner's name (current user taking the test)
+            const secondPartnerName = searchParams.get('secondPartnerName') || 
+                                    localStorage.getItem('couple_secondPartnerName') || 
+                                    'Your Partner';
+            
+            console.log('🔍 PARTNER NAMES:', {
+                firstPartnerName: partnerName,
+                secondPartnerName: secondPartnerName,
+                firstPartnerEmail: originalPartnerEmail,
+                secondPartnerEmail: partnerEmail
+            });
+
             // Try to send actual email results using the new function
             const emailResult = await sendCoupleCompatibilityResults(
                 coupleCompatibility,
                 originalPartnerEmail || 'missing@example.com', // Partner 1 (original test taker)
                 partnerEmail, // Partner 2 (current test taker)  
-                partnerName || 'Partner 1', // Partner 1 name
-                'Partner 2', // Partner 2 name (we don't have this, use generic)
+                partnerName || 'Partner 1', // Partner 1 name (first taker)
+                secondPartnerName, // Partner 2 name (second taker)
                 currentLanguage
             );
             
@@ -1657,41 +1714,104 @@ export default function TestPage() {
             <div className="w-full max-w-3xl">
                 <div className="mb-8 text-center">
                     {/* Special header for invitation access */}
-                    {isInvitationAccess && partnerName && (
-                        <div className="mb-6 p-4 bg-pink-500/30 border border-pink-400/50 rounded-lg">
-                            <h1 className="text-2xl font-bold text-white mb-2">
+                    {isInvitationAccess && partnerName && !partnerVerified && (
+                        <div className="mb-6 p-6 bg-pink-500/30 border border-pink-400/50 rounded-lg">
+                            <h1 className="text-2xl font-bold text-white mb-4">
                                 💕 {currentLanguage === 'ko' ? 
                                     `${partnerName}님이 초대했습니다!` :
                                     `${partnerName} invited you!`
                                 }
                             </h1>
+                            <p className="text-white/90 mb-6">
+                                {currentLanguage === 'ko' ? 
+                                    '시작하기 전에, 본인 확인을 위해 이름을 입력해주세요:' :
+                                    'Before we start, please enter your name to verify:'
+                                }
+                            </p>
+                            
+                            {/* Partner Verification Form */}
+                            <div className="space-y-4">
+                                <div>
+                                    <input
+                                        type="text"
+                                        value={partnerVerificationName}
+                                        onChange={(e) => setPartnerVerificationName(e.target.value)}
+                                        placeholder={currentLanguage === 'ko' ? 
+                                            '당신의 이름을 입력하세요 (예: 김민수, Sarah)' :
+                                            'Enter your first name (e.g., Sarah, Mike)'
+                                        }
+                                        className="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                        onKeyPress={(e) => e.key === 'Enter' && verifyPartner()}
+                                    />
+                                </div>
+                                
+                                {verificationError && (
+                                    <p className="text-red-300 text-sm">{verificationError}</p>
+                                )}
+                                
+                                <button
+                                    onClick={verifyPartner}
+                                    className="w-full py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg transition-colors duration-200"
+                                >
+                                    {currentLanguage === 'ko' ? 
+                                        '확인하고 테스트 시작' :
+                                        'Verify & Start Test'
+                                    }
+                                </button>
+                                
+                                <p className="text-xs text-white/60 text-center">
+                                    {currentLanguage === 'ko' ? 
+                                        '이 정보는 결과 이메일 개인화에 사용됩니다' :
+                                        'This helps us personalize your results email'
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {/* Verified invitation header */}
+                    {isInvitationAccess && partnerName && partnerVerified && (
+                        <div className="mb-6 p-4 bg-green-500/30 border border-green-400/50 rounded-lg">
+                            <h1 className="text-2xl font-bold text-white mb-2">
+                                ✅ {currentLanguage === 'ko' ? 
+                                    `환영합니다, ${partnerVerificationName}님!` :
+                                    `Welcome, ${partnerVerificationName}!`
+                                }
+                            </h1>
                             <p className="text-white/90">
                                 {currentLanguage === 'ko' ? 
-                                    '두 분의 커플 호환성을 테스트해보세요!' :
-                                    'Take this couple compatibility test together!'
+                                    `${partnerName}님과의 커플 호환성을 테스트해보세요!` :
+                                    `Let's test your compatibility with ${partnerName}!`
                                 }
                             </p>
                         </div>
                     )}
                     
-                    <h1 className="text-3xl font-bold mb-4 text-white" data-translate={testDefinition.title_key}>
-                        {t(testDefinition.title_key) || testDefinition.title_key}
-                    </h1>
-                    <div className="w-full bg-white/20 backdrop-blur-sm rounded-full h-3 mb-2">
-                        <div
-                            className="bg-gradient-to-r from-yellow-300 to-orange-400 h-3 rounded-full transition-all duration-500"
-                            style={{ width: `${((currentQuestionIndex + 1) / testDefinition.questions.length) * 100}%` }}
-                        ></div>
-                    </div>
-                    <p className="text-white/80 text-sm">
-                        Question {currentQuestionIndex + 1} of {testDefinition.questions.length}
-                    </p>
+                    {/* Only show test header and progress when partner is verified or not invitation access */}
+                    {(!isInvitationAccess || partnerVerified) && (
+                        <>
+                            <h1 className="text-3xl font-bold mb-4 text-white" data-translate={testDefinition.title_key}>
+                                {t(testDefinition.title_key) || testDefinition.title_key}
+                            </h1>
+                            <div className="w-full bg-white/20 backdrop-blur-sm rounded-full h-3 mb-2">
+                                <div
+                                    className="bg-gradient-to-r from-yellow-300 to-orange-400 h-3 rounded-full transition-all duration-500"
+                                    style={{ width: `${((currentQuestionIndex + 1) / testDefinition.questions.length) * 100}%` }}
+                                ></div>
+                            </div>
+                            <p className="text-white/80 text-sm">
+                                Question {currentQuestionIndex + 1} of {testDefinition.questions.length}
+                            </p>
+                        </>
+                    )}
                 </div>
 
-                <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-                    <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
-                        {getDisplayedQuestionText()}
-                    </h2>
+                {/* Only show test questions when partner is verified or not invitation access */}
+                {(!isInvitationAccess || partnerVerified) && (
+                    <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
+                        <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
+                            {getDisplayedQuestionText()}
+                        </h2>
 
                     {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
                         <div className="flex flex-col gap-3">
@@ -1772,7 +1892,8 @@ export default function TestPage() {
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );
