@@ -29,7 +29,7 @@ export interface TestDefinition {
   isCompatibilityTest?: boolean;
 }
 
-export type ScoringFunction = (answers: { [questionId: string]: any }) => TestResult;
+export type ScoringFunction = (answers: { [questionId: string]: any }, partnerAnswers?: { [questionId: string]: any }) => TestResult;
 
 // Utility function to personalize questions with user's name
 export const personalizeQuestions = (questions: TestQuestion[], userName: string): TestQuestion[] => {
@@ -46,6 +46,21 @@ export interface TestResult {
   traits?: string[];
   recommendations?: string[];
   dimensions?: { [key: string]: { preference: string; strength: number } };
+  compatibilityData?: {
+    percentage: number;
+    tier: string;
+    emoji: string;
+    description: string;
+    exactMatches: number;
+    partialMatches: number;
+    totalQuestions: number;
+    areaScores: { [area: string]: number };
+    isShareable: boolean;
+    shareTitle: string;
+    shareDescription: string;
+    shareHashtags: string[];
+    testStatus: string;
+  };
 }
 
 // 20-question MBTI test with forced-choice pairs (5 questions per dimension)

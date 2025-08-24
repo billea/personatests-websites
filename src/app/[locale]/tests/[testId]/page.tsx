@@ -358,8 +358,8 @@ export default function TestPage() {
                     compatibilityPercentage: compatibilityData.scores?.compatibility || 75,
                     partner1: result1,
                     partner2: result2,
-                    areas: compatibilityData.areas || {},
-                    description: compatibilityData.description || 'Good compatibility!',
+                    areas: compatibilityData.compatibilityData?.areaScores || {},
+                    description: compatibilityData.compatibilityData?.description || 'Good compatibility!',
                     recommendations: compatibilityData.recommendations || []
                 };
             }
