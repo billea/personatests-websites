@@ -293,13 +293,15 @@ export const sendCoupleCompatibilityInvitation = async (
       console.log('=== COUPLE COMPATIBILITY EMAILJS DEBUG ===');
       console.log('Service ID:', serviceId);
       console.log('Template ID:', templateId);
-      console.log('Public Key:', publicKey);
+      console.log('Public Key:', publicKey ? `${publicKey.substring(0, 8)}...` : 'MISSING');
       console.log('EmailJS parameters:', emailParams);
       console.log('Full invitation link being sent:', invitationUrl);
       console.log('Link length:', invitationUrl.length);
       console.log('Partner email:', partnerEmail);
       console.log('User name:', userName);
-      console.log('=== END EMAILJS DEBUG ===');
+      console.log('Partner name (input):', partnerName);
+      console.log('Recipient name (computed):', recipientName);
+      console.log('=== ATTEMPTING EMAILJS SEND ===');
 
       const emailResponse = await emailjs.send(
         serviceId,
@@ -308,7 +310,9 @@ export const sendCoupleCompatibilityInvitation = async (
         publicKey
       );
 
-      console.log('Email sent successfully:', emailResponse);
+      console.log('✅ EMAIL SENT SUCCESSFULLY:', emailResponse);
+      console.log('Response status:', emailResponse.status);
+      console.log('Response text:', emailResponse.text);
 
       // NOTE: Owner notification should be sent when partner COMPLETES test, not when invitation is sent
       // Removing this to prevent duplicate emails during invitation phase
@@ -332,7 +336,12 @@ export const sendCoupleCompatibilityInvitation = async (
     };
 
   } catch (error) {
-    console.error("Error sending couple compatibility invitation:", error);
+    console.error("❌ ERROR SENDING COUPLE COMPATIBILITY INVITATION:", error);
+    console.error("Error details:", {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      name: error instanceof Error ? error.name : 'Unknown error type'
+    });
     
     // Always return a success response with fallback manual sharing
     const fallbackUrl = `https://korean-mbti-platform.netlify.app/${language}/tests/couple-compatibility?partner=${encodeURIComponent(userName)}`;
