@@ -60,6 +60,7 @@ export default function TestPage() {
     const [partnerVerificationEmail, setPartnerVerificationEmail] = useState<string>('');
     const [verificationError, setVerificationError] = useState<string>('');
     const [secondPartnerName, setSecondPartnerName] = useState<string>('');
+    const [nameConfirmed, setNameConfirmed] = useState<boolean>(false);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
@@ -1779,7 +1780,7 @@ export default function TestPage() {
                     )}
                     
                     {/* Verified invitation header with name input */}
-                    {isInvitationAccess && partnerName && partnerVerified && !secondPartnerName && (
+                    {isInvitationAccess && partnerName && partnerVerified && !nameConfirmed && (
                         <div className="mb-6 p-4 bg-green-500/30 border border-green-400/50 rounded-lg">
                             <h1 className="text-2xl font-bold text-white mb-4">
                                 ✅ {currentLanguage === 'ko' ? 
@@ -1789,43 +1790,55 @@ export default function TestPage() {
                             </h1>
                             <p className="text-white/90 mb-4">
                                 {currentLanguage === 'ko' ? 
-                                    '마지막으로, 결과 이메일 개인화를 위해 당신의 이름을 입력해주세요:' :
-                                    'Finally, please enter your name for personalized results email:'
+                                    '마지막으로, 결과 이메일 개인화를 위해 당신의 이름을 입력해주세요 (최소 2글자):' :
+                                    'Finally, please enter your name for personalized results email (minimum 2 characters):'
                                 }
                             </p>
-                            <div className="flex gap-3">
-                                <input
-                                    type="text"
-                                    value={secondPartnerName}
-                                    onChange={(e) => setSecondPartnerName(e.target.value)}
-                                    placeholder={currentLanguage === 'ko' ? 
-                                        '당신의 이름 (예: 김민수, Sarah)' :
-                                        'Your name (e.g., Sarah, Mike)'
-                                    }
-                                    className="flex-1 p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-green-400"
-                                    onKeyPress={(e) => {
-                                        if (e.key === 'Enter' && secondPartnerName.trim()) {
-                                            localStorage.setItem('couple_secondPartnerName', secondPartnerName.trim());
+                            <div className="space-y-3">
+                                <div className="flex gap-3">
+                                    <input
+                                        type="text"
+                                        value={secondPartnerName}
+                                        onChange={(e) => setSecondPartnerName(e.target.value)}
+                                        placeholder={currentLanguage === 'ko' ? 
+                                            '당신의 이름 (예: 김민수, Sarah)' :
+                                            'Your name (e.g., Sarah, Mike)'
                                         }
-                                    }}
-                                />
-                                <button
-                                    onClick={() => {
-                                        if (secondPartnerName.trim()) {
-                                            localStorage.setItem('couple_secondPartnerName', secondPartnerName.trim());
+                                        className="flex-1 p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-green-400"
+                                        onKeyPress={(e) => {
+                                            if (e.key === 'Enter' && secondPartnerName.trim().length >= 2) {
+                                                localStorage.setItem('couple_secondPartnerName', secondPartnerName.trim());
+                                                setNameConfirmed(true);
+                                            }
+                                        }}
+                                    />
+                                    <button
+                                        onClick={() => {
+                                            if (secondPartnerName.trim().length >= 2) {
+                                                localStorage.setItem('couple_secondPartnerName', secondPartnerName.trim());
+                                                setNameConfirmed(true);
+                                            }
+                                        }}
+                                        disabled={secondPartnerName.trim().length < 2}
+                                        className="px-4 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-500 text-white font-semibold rounded-lg transition-colors duration-200"
+                                    >
+                                        {currentLanguage === 'ko' ? '확인' : 'OK'}
+                                    </button>
+                                </div>
+                                {secondPartnerName.trim().length > 0 && secondPartnerName.trim().length < 2 && (
+                                    <p className="text-yellow-300 text-xs">
+                                        {currentLanguage === 'ko' ? 
+                                            `최소 2글자 필요 (현재 ${secondPartnerName.trim().length}글자)` :
+                                            `Minimum 2 characters required (current: ${secondPartnerName.trim().length})`
                                         }
-                                    }}
-                                    disabled={!secondPartnerName.trim()}
-                                    className="px-4 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-500 text-white font-semibold rounded-lg transition-colors duration-200"
-                                >
-                                    {currentLanguage === 'ko' ? '확인' : 'OK'}
-                                </button>
+                                    </p>
+                                )}
                             </div>
                         </div>
                     )}
                     
                     {/* Ready to start test header */}
-                    {isInvitationAccess && partnerName && partnerVerified && secondPartnerName && (
+                    {isInvitationAccess && partnerName && partnerVerified && nameConfirmed && (
                         <div className="mb-6 p-4 bg-blue-500/30 border border-blue-400/50 rounded-lg">
                             <h1 className="text-2xl font-bold text-white mb-2">
                                 🚀 {currentLanguage === 'ko' ? 
@@ -1842,8 +1855,8 @@ export default function TestPage() {
                         </div>
                     )}
                     
-                    {/* Only show test header and progress when partner is verified and name provided, or not invitation access */}
-                    {(!isInvitationAccess || (partnerVerified && secondPartnerName)) && (
+                    {/* Only show test header and progress when partner is verified and name confirmed, or not invitation access */}
+                    {(!isInvitationAccess || (partnerVerified && nameConfirmed)) && (
                         <>
                             <h1 className="text-3xl font-bold mb-4 text-white" data-translate={testDefinition.title_key}>
                                 {t(testDefinition.title_key) || testDefinition.title_key}
@@ -1861,8 +1874,8 @@ export default function TestPage() {
                     )}
                 </div>
 
-                {/* Only show test questions when partner is verified and name provided, or not invitation access */}
-                {(!isInvitationAccess || (partnerVerified && secondPartnerName)) && (
+                {/* Only show test questions when partner is verified and name confirmed, or not invitation access */}
+                {(!isInvitationAccess || (partnerVerified && nameConfirmed)) && (
                     <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                         <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
                             {getDisplayedQuestionText()}
