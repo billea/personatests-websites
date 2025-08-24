@@ -997,20 +997,30 @@ export const sendFeedbackNotification = async (
     // Initialize EmailJS
     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
     
-    // Prepare email parameters for notification
+    // Prepare email parameters for notification - different content based on test type
+    const isCoupleCompatibility = testId === 'couple-compatibility';
+    
     const emailParams = {
       to_email: ownerEmail,
       to_name: ownerName,
       from_name: 'Korean MBTI Platform',
-      subject: language === 'ko' ? 
-        `새로운 360° 피드백이 도착했습니다!` : 
-        `New 360° Feedback Received!`,
-      message: language === 'ko' ? 
-        `안녕하세요 ${ownerName}님,\n\n360° 피드백 평가에 새로운 응답이 제출되었습니다.\n\n결과를 확인하려면 플랫폼에 로그인하세요:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\n감사합니다!\nKorean MBTI Platform` :
-        `Hello ${ownerName},\n\nA new response has been submitted for your 360° Feedback Assessment.\n\nLog in to your platform to view the results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`,
-      reviewer_anonymous: language === 'ko' ? 
-        '새로운 익명 피드백' : 
-        'New anonymous feedback'
+      subject: isCoupleCompatibility ? 
+        (language === 'ko' ? 
+          `💕 커플 호환성 결과가 준비되었습니다!` : 
+          `💕 Your Couple Compatibility Results Are Ready!`) :
+        (language === 'ko' ? 
+          `새로운 360° 피드백이 도착했습니다!` : 
+          `New 360° Feedback Received!`),
+      message: isCoupleCompatibility ? 
+        (language === 'ko' ? 
+          `안녕하세요 ${ownerName}님,\n\n파트너가 커플 호환성 테스트를 완료했습니다! 이제 두 분의 호환성 결과를 확인하실 수 있습니다.\n\n결과를 확인하려면 플랫폼에 로그인하세요:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\n감사합니다!\nKorean MBTI Platform` :
+          `Hello ${ownerName},\n\nYour partner has completed the Couple Compatibility Test! Your compatibility results are now ready to view.\n\nLog in to your platform to see your results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`) :
+        (language === 'ko' ? 
+          `안녕하세요 ${ownerName}님,\n\n360° 피드백 평가에 새로운 응답이 제출되었습니다.\n\n결과를 확인하려면 플랫폼에 로그인하세요:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\n감사합니다!\nKorean MBTI Platform` :
+          `Hello ${ownerName},\n\nA new response has been submitted for your 360° Feedback Assessment.\n\nLog in to your platform to view the results:\nhttps://korean-mbti-platform.netlify.app/${language}/results\n\nThank you!\nKorean MBTI Platform`),
+      reviewer_anonymous: isCoupleCompatibility ?
+        (language === 'ko' ? '커플 호환성 결과 준비됨' : 'Couple compatibility results ready') :
+        (language === 'ko' ? '새로운 익명 피드백' : 'New anonymous feedback')
     };
     
     console.log('=== FEEDBACK NOTIFICATION DEBUG ===');
@@ -1022,18 +1032,28 @@ export const sendFeedbackNotification = async (
     });
     console.log('=== END NOTIFICATION DEBUG ===');
     
-    // Send notification email using same template but different subject/content
-    // For now, we'll use the same template but with notification-specific content
+    // Send notification email using appropriate template based on test type
+    const templateId = isCoupleCompatibility ? 
+      'template_m5atn39' : // Couple compatibility specific template
+      (process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''); // Default 360 feedback template
+      
+    console.log(`Using EmailJS template: ${templateId} for ${isCoupleCompatibility ? 'couple compatibility' : '360 feedback'} notification`);
+    
     const result = await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+      templateId,
       {
         to_email: emailParams.to_email,
+        email: emailParams.to_email, // Add fallback email field
+        recipient_email: emailParams.to_email, // Add another fallback
         to_name: emailParams.to_name,
         from_name: emailParams.from_name,
         invitation_link: `https://korean-mbti-platform.netlify.app/${language}/results`, // Direct link to results page
         subject: emailParams.subject,
-        message: emailParams.message
+        message: emailParams.message,
+        // Add couple-specific parameters for template compatibility
+        partner_name: isCoupleCompatibility ? 'Your Partner' : '',
+        test_type: isCoupleCompatibility ? 'Couple Compatibility' : '360 Feedback'
       }
     );
     
