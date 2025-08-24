@@ -505,6 +505,10 @@ export const sendCoupleCompatibilityResults = async (
     const resultTier = getCompatibilityTier(compatibilityPercentage);
     
     // Email parameters for both partners
+    const baseUrl = 'https://korean-mbti-platform.netlify.app';
+    const signupUrl1 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner2Name)}&source=couple-email`;
+    const signupUrl2 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner1Name)}&source=couple-email`;
+    
     const emailParams1 = {
       to_email: partner1Email,
       email: partner1Email, // Fallback email field
@@ -518,7 +522,15 @@ export const sendCoupleCompatibilityResults = async (
       description: coupleCompatibility.description || 'Great compatibility potential!',
       subject: `💕 Your Couple Compatibility Results with ${partner2Name}`,
       test_name: 'Couple Compatibility Test',
-      invitation_link: `https://korean-mbti-platform.netlify.app/${language}/results` // Results page link
+      invitation_link: `${baseUrl}/${language}/results`, // Basic results page link
+      signup_cta: language === 'ko' ? 
+        `${partner2Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
+        `Sign up free to unlock detailed compatibility analysis with ${partner2Name}!`,
+      signup_url: signupUrl1,
+      signup_button_text: language === 'ko' ? '🔍 상세 분석 보기 (무료)' : '🔍 View Detailed Analysis (Free)',
+      comparison_features: language === 'ko' ? 
+        '• 15개 질문별 답변 비교\n• 상세 호환성 분석 보고서\n• 관계 개선 제안사항\n• 결과 저장 및 재열람' :
+        '• Question-by-question answer comparison\n• Detailed compatibility report\n• Relationship improvement suggestions\n• Save results for future access'
     };
     
     const emailParams2 = {
@@ -534,7 +546,15 @@ export const sendCoupleCompatibilityResults = async (
       description: coupleCompatibility.description || 'Great compatibility potential!',
       subject: `💕 Your Couple Compatibility Results with ${partner1Name}`,
       test_name: 'Couple Compatibility Test',
-      invitation_link: `https://korean-mbti-platform.netlify.app/${language}/results` // Results page link
+      invitation_link: `${baseUrl}/${language}/results`, // Basic results page link
+      signup_cta: language === 'ko' ? 
+        `${partner1Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
+        `Sign up free to unlock detailed compatibility analysis with ${partner1Name}!`,
+      signup_url: signupUrl2,
+      signup_button_text: language === 'ko' ? '🔍 상세 분석 보기 (무료)' : '🔍 View Detailed Analysis (Free)',
+      comparison_features: language === 'ko' ? 
+        '• 15개 질문별 답변 비교\n• 상세 호환성 분석 보고서\n• 관계 개선 제안사항\n• 결과 저장 및 재열람' :
+        '• Question-by-question answer comparison\n• Detailed compatibility report\n• Relationship improvement suggestions\n• Save results for future access'
     };
     
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';

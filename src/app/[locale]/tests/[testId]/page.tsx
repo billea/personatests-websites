@@ -1407,6 +1407,86 @@ export default function TestPage() {
                             </div>
                         </div>
                     )}
+
+                    {/* Partner Comparison Signup Prompt - Only for invited couple tests */}
+                    {isInvitationAccess && partnerName && !user && (
+                        <div className="mb-8 p-6 bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-400/50 rounded-lg">
+                            <h2 className="text-2xl font-bold text-white mb-4 text-center">
+                                🔍 {currentLanguage === 'ko' ? 
+                                    '상세 호환성 분석을 보시겠어요?' :
+                                    'Want to See Detailed Compatibility Analysis?'
+                                }
+                            </h2>
+                            
+                            <div className="text-center mb-6">
+                                <p className="text-white/90 text-lg mb-4">
+                                    {currentLanguage === 'ko' ? 
+                                        `${partnerName}님과의 심화 분석 결과를 확인하세요:` :
+                                        `Unlock in-depth analysis with ${partnerName}:`
+                                    }
+                                </p>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left text-white/80 text-sm mb-6">
+                                    <div className="flex items-center">
+                                        <span className="text-green-400 mr-2">✅</span>
+                                        <span>{currentLanguage === 'ko' ? 
+                                            '15개 질문별 답변 비교' :
+                                            'Question-by-question answer comparison'
+                                        }</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <span className="text-green-400 mr-2">✅</span>
+                                        <span>{currentLanguage === 'ko' ? 
+                                            '상세 호환성 분석 보고서' :
+                                            'Detailed compatibility report'
+                                        }</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <span className="text-green-400 mr-2">✅</span>
+                                        <span>{currentLanguage === 'ko' ? 
+                                            '관계 개선 제안사항' :
+                                            'Relationship improvement suggestions'
+                                        }</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <span className="text-green-400 mr-2">✅</span>
+                                        <span>{currentLanguage === 'ko' ? 
+                                            '결과 저장 및 재열람' :
+                                            'Save results for future access'
+                                        }</span>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                    <button
+                                        onClick={() => router.push(`/${currentLanguage}/auth?redirect=${encodeURIComponent(window.location.pathname)}&action=signup`)}
+                                        className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 text-lg"
+                                    >
+                                        {currentLanguage === 'ko' ? 
+                                            '🔍 상세 분석 보기 (무료 가입)' :
+                                            '🔍 View Detailed Analysis (Free Signup)'
+                                        }
+                                    </button>
+                                    <button
+                                        onClick={() => {/* Skip for now - results already sent via email */}}
+                                        className="px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
+                                    >
+                                        {currentLanguage === 'ko' ? 
+                                            '나중에 하기' :
+                                            'Skip for Now'
+                                        }
+                                    </button>
+                                </div>
+                                
+                                <p className="text-xs text-white/60 mt-4">
+                                    {currentLanguage === 'ko' ? 
+                                        '기본 결과는 이미 이메일로 전송되었습니다. 가입 후 더 자세한 분석을 확인하세요.' :
+                                        'Basic results already sent via email. Sign up to access detailed partner comparison.'
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    )}
                     
                     {/* Show Results Immediately */}
                     {completedTestResult && (
