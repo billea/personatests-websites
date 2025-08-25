@@ -95,6 +95,32 @@ export default function AuthPage() {
                     });
                 }
                 
+                // Transfer couple compatibility results to Firestore if they exist in localStorage
+                if (result.user.email) {
+                    const coupleResultKey = `couple_result_${result.user.email}`;
+                    const coupleResults = localStorage.getItem(coupleResultKey);
+                    if (coupleResults) {
+                        try {
+                            const coupleData = JSON.parse(coupleResults);
+                            console.log('🔄 Transferring couple results to Firestore for:', result.user.email);
+                            
+                            // Import saveTestResult dynamically to avoid build issues
+                            const { saveTestResult } = await import('@/lib/firestore');
+                            await saveTestResult(
+                                result.user.uid,
+                                'couple-compatibility-results',
+                                coupleData,
+                                false
+                            );
+                            
+                            console.log('✅ Successfully transferred couple results to Firestore');
+                            // Keep localStorage copy as backup
+                        } catch (transferError) {
+                            console.warn('⚠️ Failed to transfer couple results to Firestore:', transferError);
+                        }
+                    }
+                }
+                
                 // Send email verification
                 console.log('📧 Sending email verification to:', result.user.email);
                 console.log('🔍 User object:', result.user);

@@ -557,6 +557,56 @@ export default function TestPage() {
                 searchParams.get('email') || 'partner@example.com'
             );
             
+            // Save couple compatibility results to localStorage for both partners
+            // This allows users to access results after signing up
+            const coupleResultData = {
+                testId: 'couple-compatibility',
+                partnerNames: {
+                    partner1: partnerName || 'Partner 1',
+                    partner2: secondPartnerName || 'Partner 2'
+                },
+                partnerEmails: {
+                    partner1: searchParams.get('inviterEmail') || 'unknown@example.com',
+                    partner2: searchParams.get('email') || 'unknown@example.com'
+                },
+                compatibilityResults: coupleCompatibility,
+                individualResults: {
+                    partner1: originalResult.result,
+                    partner2: partnerResult
+                },
+                completedAt: new Date().toISOString(),
+                resultType: 'couple_compatibility'
+            };
+            
+            // Save for both partners using their email as identifier
+            const partner1Email = searchParams.get('inviterEmail');
+            const partner2Email = searchParams.get('email');
+            
+            if (partner1Email) {
+                localStorage.setItem(`couple_result_${partner1Email}`, JSON.stringify(coupleResultData));
+                console.log('💾 Saved couple results for partner 1:', partner1Email);
+            }
+            
+            if (partner2Email) {
+                localStorage.setItem(`couple_result_${partner2Email}`, JSON.stringify(coupleResultData));
+                console.log('💾 Saved couple results for partner 2:', partner2Email);
+            }
+            
+            // Also try to save to Firestore if user is authenticated
+            if (user && partner2Email) {
+                try {
+                    await saveTestResult(
+                        user.uid,
+                        'couple-compatibility-results',
+                        coupleResultData,
+                        false
+                    );
+                    console.log('✅ Saved couple results to Firestore for authenticated user');
+                } catch (error) {
+                    console.warn('Failed to save couple results to Firestore:', error);
+                }
+            }
+            
         } catch (error) {
             console.error('Error handling partner completion:', error);
         }

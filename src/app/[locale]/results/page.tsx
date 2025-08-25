@@ -20,6 +20,7 @@ export default function ResultsPage() {
     const [results, setResults] = useState<TestResult[]>([]);
     const [invitations, setInvitations] = useState<TestInvitation[]>([]);
     const [feedback, setFeedback] = useState<{ [resultId: string]: FeedbackSubmission[] }>({});
+    const [coupleResults, setCoupleResults] = useState<any[]>([]);
     const [resultsLoading, setResultsLoading] = useState(true);
     const [selectedResultId, setSelectedResultId] = useState<string | null>(null);
 
@@ -49,6 +50,13 @@ export default function ResultsPage() {
             console.log('Firestore results loaded:', userResults);
             setResults(userResults);
             setInvitations(pendingInvitations);
+            
+            // Load couple compatibility results
+            const coupleCompatibilityResults = userResults.filter(result => 
+                result.testId === 'couple-compatibility-results'
+            );
+            console.log('Couple compatibility results found:', coupleCompatibilityResults);
+            setCoupleResults(coupleCompatibilityResults);
 
             // Load feedback for each result
             const feedbackData: { [resultId: string]: FeedbackSubmission[] } = {};
@@ -956,11 +964,80 @@ export default function ResultsPage() {
                     </div>
                 ) : (
                     <div className="space-y-6">
+                        {/* Couple Compatibility Results Section */}
+                        {coupleResults.length > 0 && (
+                            <div className="mb-8">
+                                <h2 className="text-2xl font-bold text-white mb-4">
+                                    💕 {currentLanguage === 'ko' ? '커플 호환성 결과' : 'Couple Compatibility Results'}
+                                </h2>
+                                <div className="space-y-4">
+                                    {coupleResults.map((coupleResult, index) => (
+                                        <div key={coupleResult.id || index} className="p-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg">
+                                            <div className="text-center mb-4">
+                                                <div className="text-3xl font-bold text-white mb-2">
+                                                    {coupleResult.result?.compatibilityResults?.compatibilityPercentage || 
+                                                     coupleResult.result?.compatibilityData?.percentage}%
+                                                </div>
+                                                <div className="text-xl text-white/90">
+                                                    {coupleResult.result?.compatibilityResults?.description ||
+                                                     coupleResult.result?.compatibilityData?.description ||
+                                                     'Great compatibility!'}
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="grid grid-cols-2 gap-4 mb-4">
+                                                <div className="text-center">
+                                                    <div className="text-lg font-semibold text-white">
+                                                        {coupleResult.result?.partnerNames?.partner1 || 'Partner 1'}
+                                                    </div>
+                                                    <div className="text-white/80">
+                                                        {coupleResult.result?.individualResults?.partner1?.type || 'The Devoted Partner 💕'}
+                                                    </div>
+                                                </div>
+                                                <div className="text-center">
+                                                    <div className="text-lg font-semibold text-white">
+                                                        {coupleResult.result?.partnerNames?.partner2 || 'Partner 2'}
+                                                    </div>
+                                                    <div className="text-white/80">
+                                                        {coupleResult.result?.individualResults?.partner2?.type || 'The Devoted Partner 💕'}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            {/* Compatibility Areas */}
+                                            {coupleResult.result?.compatibilityResults?.areaScores && (
+                                                <div className="mt-4">
+                                                    <h4 className="text-lg font-semibold text-white mb-2">
+                                                        {currentLanguage === 'ko' ? '호환성 영역:' : 'Compatibility Areas:'}
+                                                    </h4>
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white/90">
+                                                        {Object.entries(coupleResult.result.compatibilityResults.areaScores).map(([area, score]) => (
+                                                            <div key={area} className="flex justify-between">
+                                                                <span>{area}:</span>
+                                                                <span className="font-semibold">{score}%</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
+                                            <div className="mt-4 text-center">
+                                                <div className="text-sm text-white/70">
+                                                    {currentLanguage === 'ko' ? '완료 날짜:' : 'Completed:'} {new Date(coupleResult.result?.completedAt || coupleResult.createdAt).toLocaleDateString()}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {/* Individual Test Results Section */}
                         <div className="text-sm text-gray-600 dark:text-gray-400">
-                            {t('results.total_completed') || 'Total tests completed'}: <span className="font-semibold">{results.length}</span>
+                            {t('results.total_completed') || 'Total tests completed'}: <span className="font-semibold">{results.filter(r => r.testId !== 'couple-compatibility-results').length}</span>
                         </div>
                         
-                        {results.map((result) => renderTestResult(result))}
+                        {results.filter(r => r.testId !== 'couple-compatibility-results').map((result) => renderTestResult(result))}
                     </div>
                 )}
             </div>
