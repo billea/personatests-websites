@@ -41,7 +41,11 @@ export default function ResultsPage() {
         if (!user) return;
         
         try {
-            console.log('Attempting to load Firestore data...');
+            console.log('🔍 DEBUG: loadData() called for authenticated user');
+            console.log('🔍 DEBUG: User email:', user.email);
+            console.log('🔍 DEBUG: User uid:', user.uid);
+            console.log('🔍 DEBUG: Attempting to load Firestore data...');
+            
             // Load all user data in parallel
             const [userResults, pendingInvitations, coupleCompatibilityResults] = await Promise.all([
                 getUserTestResults(user.uid),
@@ -49,11 +53,83 @@ export default function ResultsPage() {
                 getCoupleCompatibilityResultsByEmail(user.email || '')
             ]);
 
-            console.log('Firestore results loaded:', userResults);
-            console.log('Couple compatibility results found:', coupleCompatibilityResults);
+            console.log('🔍 DEBUG: Firestore results loaded:', userResults.length, 'results');
+            console.log('🔍 DEBUG: Pending invitations:', pendingInvitations.length);
+            console.log('🔍 DEBUG: Couple compatibility results found:', coupleCompatibilityResults.length);
+            
+            // Also check localStorage for couple compatibility results as fallback
+            console.log('🔍 DEBUG: Checking localStorage for couple results backup...');
+            let localCoupleResults: any[] = [];
+            
+            try {
+                // Check for couple results in localStorage using the user's email
+                const coupleResultKey = `couple_result_${user.email}`;
+                const localCoupleData = localStorage.getItem(coupleResultKey);
+                
+                console.log('🔍 DEBUG: Looking for localStorage key:', coupleResultKey);
+                console.log('🔍 DEBUG: Found local couple data:', !!localCoupleData);
+                
+                if (localCoupleData) {
+                    const parsedData = JSON.parse(localCoupleData);
+                    localCoupleResults.push(parsedData);
+                    console.log('🔍 DEBUG: Parsed local couple result:', parsedData);
+                }
+                
+                // Also scan ALL localStorage items for any couple results involving this user's email
+                console.log('🔍 DEBUG: Scanning all localStorage items for couple results...');
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith('couple_result_') && key !== coupleResultKey) {
+                        const itemData = localStorage.getItem(key);
+                        if (itemData) {
+                            try {
+                                const parsedItem = JSON.parse(itemData);
+                                // Check if this couple result involves the current user's email
+                                if (parsedItem.partner1Email === user.email || 
+                                    parsedItem.partner2Email === user.email ||
+                                    parsedItem.partnerEmails?.partner1 === user.email ||
+                                    parsedItem.partnerEmails?.partner2 === user.email) {
+                                    
+                                    console.log('🔍 DEBUG: Found matching couple result in localStorage:', key, parsedItem);
+                                    localCoupleResults.push(parsedItem);
+                                }
+                            } catch (parseError) {
+                                console.warn('🔍 DEBUG: Error parsing localStorage item:', key, parseError);
+                            }
+                        }
+                    }
+                }
+                
+                console.log('🔍 DEBUG: Total localStorage couple results found:', localCoupleResults.length);
+            } catch (error) {
+                console.error('🔍 DEBUG: Error loading localStorage couple results:', error);
+            }
+            
+            // Combine Firestore and localStorage results
+            const allCoupleResults = [...coupleCompatibilityResults];
+            
+            // Add localStorage results that aren't already in Firestore results
+            localCoupleResults.forEach(localResult => {
+                const isDuplicate = coupleCompatibilityResults.some(firestoreResult => 
+                    firestoreResult.searchKey === localResult.searchKey
+                );
+                if (!isDuplicate) {
+                    console.log('🔍 DEBUG: Adding localStorage result not found in Firestore');
+                    allCoupleResults.push(localResult);
+                }
+            });
+            
+            if (coupleCompatibilityResults.length > 0) {
+                console.log('🔍 DEBUG: First couple result:', coupleCompatibilityResults[0]);
+            } else {
+                console.log('🔍 DEBUG: No couple compatibility results found for email:', user.email);
+            }
+            
+            console.log('🔍 DEBUG: Total couple results (Firestore + localStorage):', allCoupleResults.length);
+            
             setResults(userResults);
             setInvitations(pendingInvitations);
-            setCoupleResults(coupleCompatibilityResults);
+            setCoupleResults(allCoupleResults);
 
             // Load feedback for each result
             const feedbackData: { [resultId: string]: FeedbackSubmission[] } = {};
@@ -67,8 +143,14 @@ export default function ResultsPage() {
             );
             setFeedback(feedbackData);
 
+            console.log('🔍 DEBUG: loadData() completed successfully');
+
         } catch (error) {
-            console.error("Error loading Firestore data:", error);
+            console.error("❌ Error loading Firestore data:", error);
+            console.error('❌ Error details:', {
+                message: error instanceof Error ? error.message : 'Unknown error',
+                stack: error instanceof Error ? error.stack : 'No stack trace'
+            });
             // No fallback to localStorage - require authentication
         } finally {
             setResultsLoading(false);
@@ -945,19 +1027,28 @@ export default function ResultsPage() {
                     </div>
                 )}
 
-                {results.length === 0 ? (
+                {results.length === 0 && coupleResults.length === 0 ? (
                     <div className="text-center p-8 bg-gray-50 rounded-lg dark:bg-gray-800">
                         <h2 className="text-2xl font-semibold mb-4" data-translate="results.no_results_title">
                             {t('results.no_results_title') || 'No Test Results Yet'}
                         </h2>
                         <p className="text-gray-600 dark:text-gray-400 mb-6" data-translate="results.no_results_message">
-                            {t('results.no_results_message') || 'You haven\'t completed any tests yet. Take your first personality test to see results here!'}
+                            {t('results.no_results_message') || 'You haven\'t completed any personality tests yet. Start your journey of self-discovery today!'}
                         </p>
                         <Link href={`/${currentLanguage}/tests`}>
                             <button className="p-4 bg-green-500 text-white rounded-lg hover:bg-green-600" data-translate="results.take_first_test">
                                 {t('results.take_first_test') || 'Take a Test'}
                             </button>
                         </Link>
+                        
+                        {/* Debug Information */}
+                        <div className="mt-8 p-4 bg-red-50 rounded-lg text-left text-sm">
+                            <h3 className="font-semibold mb-2">🔍 Debug Information:</h3>
+                            <p><strong>User Email:</strong> {user?.email || 'No email'}</p>
+                            <p><strong>Individual Results:</strong> {results.length}</p>
+                            <p><strong>Couple Results:</strong> {coupleResults.length}</p>
+                            <p><strong>Total Results:</strong> {results.length + coupleResults.length}</p>
+                        </div>
                     </div>
                 ) : (
                     <div className="space-y-6">
