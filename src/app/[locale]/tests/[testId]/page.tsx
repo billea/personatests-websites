@@ -1411,8 +1411,8 @@ export default function TestPage() {
                             </p>
                             <div className="text-sm text-white/80">
                                 {currentLanguage === 'ko' ? 
-                                    '결과가 아래에 표시됩니다. 이메일 시스템 복구 중입니다.' :
-                                    'Results are shown below. Email system is being restored.'
+                                    '결과가 아래에 표시됩니다.' :
+                                    'Results are shown below.'
                                 }
                             </div>
                         </div>
