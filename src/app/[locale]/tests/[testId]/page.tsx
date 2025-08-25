@@ -1481,7 +1481,10 @@ export default function TestPage() {
                                         )}
                                     </button>
                                     <button
-                                        onClick={() => {/* Skip for now - results already sent via email */}}
+                                        onClick={() => {
+                                            // Navigate back to home page
+                                            router.push(`/${locale}`);
+                                        }}
                                         className="px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
                                     >
                                         {currentLanguage === 'ko' ? 

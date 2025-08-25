@@ -29,8 +29,9 @@ export default function ResultsPage() {
             console.log('Loading data for authenticated user');
             loadData();
         } else if (!loading) {
-            console.log('Loading local results for anonymous user');
-            loadLocalResults();
+            console.log('Anonymous user - redirecting to auth');
+            // Anonymous users should not access results page
+            setResultsLoading(false);
         }
     }, [user, loading]);
 
@@ -62,10 +63,8 @@ export default function ResultsPage() {
             setFeedback(feedbackData);
 
         } catch (error) {
-            console.error("Error loading Firestore data, falling back to localStorage:", error);
-            // Fallback to localStorage if Firestore fails (e.g., missing indexes)
-            loadLocalResults();
-            return;
+            console.error("Error loading Firestore data:", error);
+            // No fallback to localStorage - require authentication
         } finally {
             setResultsLoading(false);
         }
@@ -875,8 +874,8 @@ export default function ResultsPage() {
         );
     }
 
-    // Show signin message only if no local results exist
-    if (!user && results.length === 0 && !resultsLoading) {
+    // Show signin message for anonymous users
+    if (!user && !resultsLoading) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="text-center p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
