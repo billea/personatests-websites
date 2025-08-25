@@ -47,7 +47,7 @@ export default function TestPage() {
     
     console.log('TestPage mounted with params:', params);
     console.log('testId extracted:', testId);
-    console.log('🚨 DEPLOYMENT CHECK: Version a23d7c7 deployed successfully!');
+    console.log('🚨 DEPLOYMENT CHECK: Version 45885b6 with database-first architecture deployed successfully!');
     console.log('🔍 URL CHECK:', window.location.href);
     console.log('🔍 SEARCH PARAMS:', searchParams.toString());
 
