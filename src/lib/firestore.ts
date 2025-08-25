@@ -510,7 +510,10 @@ export const sendCoupleCompatibilityResults = async (
     const signupUrl2 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner1Name)}&source=couple-email`;
     
     // Extract area breakdown for detailed results
-    const areaBreakdown = coupleCompatibility.areaBreakdown || coupleCompatibility.areaScores || {};
+    const areaBreakdown = coupleCompatibility.areaBreakdown || 
+                         coupleCompatibility.areaScores || 
+                         coupleCompatibility.compatibilityData?.areaScores || 
+                         {};
     
     // Format area breakdown for email display
     const formatAreaBreakdown = (areas: any) => {
@@ -535,6 +538,11 @@ export const sendCoupleCompatibilityResults = async (
     };
 
     const areaBreakdownText = formatAreaBreakdown(areaBreakdown);
+    
+    // Fallback if no area breakdown data is available
+    const hasAreaData = Object.keys(areaBreakdown).length > 0;
+    const finalAreaBreakdownText = hasAreaData ? areaBreakdownText : 
+      (language === 'ko' ? '상세한 영역별 분석을 보려면 가입하세요!' : 'Sign up to see detailed area analysis!');
 
     const emailParams1 = {
       to_email: partner1Email,
@@ -551,8 +559,8 @@ export const sendCoupleCompatibilityResults = async (
       test_name: 'Couple Compatibility Test',
       invitation_link: `${baseUrl}/${language}/results`, // Basic results page link
       // Add detailed results for email display
-      area_breakdown: areaBreakdownText,
-      detailed_results: `💕 Couple Compatibility Results\n${compatibilityPercentage}%\n${coupleCompatibility.description || 'You complement each other beautifully!'}\n\n${partner1Name}\n${coupleCompatibility.partner1?.type || 'The Devoted Partner 💕'}\n\n${partner2Name}\n${coupleCompatibility.partner2?.type || 'The Devoted Partner 💕'}\n\nCompatibility Areas:\n${areaBreakdownText}`,
+      area_breakdown: finalAreaBreakdownText,
+      detailed_results: `💕 Couple Compatibility Results\n${compatibilityPercentage}%\n${coupleCompatibility.description || 'You complement each other beautifully!'}\n\n${partner1Name}\n${coupleCompatibility.partner1?.type || 'The Devoted Partner 💕'}\n\n${partner2Name}\n${coupleCompatibility.partner2?.type || 'The Devoted Partner 💕'}\n\nCompatibility Areas:\n${finalAreaBreakdownText}`,
       signup_cta: language === 'ko' ? 
         `${partner2Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
         `Sign up free to unlock detailed compatibility analysis with ${partner2Name}!`,
@@ -581,8 +589,8 @@ export const sendCoupleCompatibilityResults = async (
       test_name: 'Couple Compatibility Test',
       invitation_link: `${baseUrl}/${language}/results`, // Basic results page link
       // Add detailed results for email display
-      area_breakdown: areaBreakdownText,
-      detailed_results: `💕 Couple Compatibility Results\n${compatibilityPercentage}%\n${coupleCompatibility.description || 'You complement each other beautifully!'}\n\n${partner2Name}\n${coupleCompatibility.partner2?.type || 'The Devoted Partner 💕'}\n\n${partner1Name}\n${coupleCompatibility.partner1?.type || 'The Devoted Partner 💕'}\n\nCompatibility Areas:\n${areaBreakdownText}`,
+      area_breakdown: finalAreaBreakdownText,
+      detailed_results: `💕 Couple Compatibility Results\n${compatibilityPercentage}%\n${coupleCompatibility.description || 'You complement each other beautifully!'}\n\n${partner2Name}\n${coupleCompatibility.partner2?.type || 'The Devoted Partner 💕'}\n\n${partner1Name}\n${coupleCompatibility.partner1?.type || 'The Devoted Partner 💕'}\n\nCompatibility Areas:\n${finalAreaBreakdownText}`,
       signup_cta: language === 'ko' ? 
         `${partner1Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
         `Sign up free to unlock detailed compatibility analysis with ${partner1Name}!`,
@@ -604,6 +612,9 @@ export const sendCoupleCompatibilityResults = async (
     console.log('- Service ID:', serviceId);
     console.log('- Template ID (hardcoded):', templateId);
     console.log('- Sending to partner1:', partner1Email, '- partner2:', partner2Email);
+    console.log('- Couple compatibility data structure:', coupleCompatibility);
+    console.log('- Area breakdown extracted:', areaBreakdown);
+    console.log('- Area breakdown formatted:', formatAreaBreakdown(areaBreakdown));
     
     // Send emails to both partners
     await Promise.all([
