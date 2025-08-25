@@ -25,6 +25,7 @@ export default function AuthPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [emailVerificationSent, setEmailVerificationSent] = useState(false);
+    const [resendingVerification, setResendingVerification] = useState(false);
     
     // Get context from URL params
     const returnUrl = searchParams.get('returnUrl');
@@ -96,9 +97,28 @@ export default function AuthPage() {
                 
                 // Send email verification
                 console.log('📧 Sending email verification to:', result.user.email);
-                await sendEmailVerification(result.user);
-                console.log('✅ Email verification sent successfully');
-                setEmailVerificationSent(true);
+                console.log('🔍 User object:', result.user);
+                console.log('📱 User providers:', result.user.providerData);
+                
+                try {
+                    await sendEmailVerification(result.user, {
+                        url: `${window.location.origin}/${locale}/auth?verified=true`,
+                        handleCodeInApp: false
+                    });
+                    console.log('✅ Email verification sent successfully to:', result.user.email);
+                    setEmailVerificationSent(true);
+                } catch (verificationError: any) {
+                    console.error('❌ Email verification failed:', verificationError);
+                    console.error('Error code:', verificationError.code);
+                    console.error('Error message:', verificationError.message);
+                    
+                    // Show error to user
+                    setAuthError(currentLanguage === 'ko' ? 
+                        `이메일 확인 발송에 실패했습니다: ${verificationError.message}` : 
+                        `Failed to send verification email: ${verificationError.message}`
+                    );
+                    return;
+                }
                 
                 // Don't redirect immediately - show verification message
                 console.log('🔒 Signup completed, showing verification prompt');
@@ -152,6 +172,37 @@ export default function AuthPage() {
             setAuthError(errorMessage);
         } finally {
             setIsSigningIn(false);
+        }
+    };
+
+    const handleResendVerification = async () => {
+        if (!auth.currentUser) {
+            setAuthError('No user found. Please sign up again.');
+            return;
+        }
+
+        setResendingVerification(true);
+        setAuthError(null);
+
+        try {
+            console.log('🔄 Resending email verification to:', auth.currentUser.email);
+            await sendEmailVerification(auth.currentUser, {
+                url: `${window.location.origin}/${locale}/auth?verified=true`,
+                handleCodeInApp: false
+            });
+            console.log('✅ Verification email resent successfully');
+            setAuthError(currentLanguage === 'ko' ? 
+                '확인 이메일을 다시 보냈습니다.' : 
+                'Verification email resent successfully.'
+            );
+        } catch (error: any) {
+            console.error('❌ Resend verification failed:', error);
+            setAuthError(currentLanguage === 'ko' ? 
+                `이메일 재발송 실패: ${error.message}` : 
+                `Failed to resend email: ${error.message}`
+            );
+        } finally {
+            setResendingVerification(false);
         }
     };
 
@@ -239,16 +290,29 @@ export default function AuthPage() {
                                         `We sent a verification email to ${email}. Please click the link in the email to verify your account, then sign in.`
                                     }
                                 </p>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setEmailVerificationSent(false);
-                                        setIsSignUp(false);
-                                    }}
-                                    className="mt-2 text-sm text-green-600 hover:text-green-800 font-medium"
-                                >
-                                    {currentLanguage === 'ko' ? '로그인으로 돌아가기' : 'Back to Sign In'}
-                                </button>
+                                <div className="mt-3 space-y-2">
+                                    <button
+                                        type="button"
+                                        onClick={handleResendVerification}
+                                        disabled={resendingVerification}
+                                        className="mr-4 text-sm text-blue-600 hover:text-blue-800 font-medium disabled:text-gray-400"
+                                    >
+                                        {resendingVerification ? 
+                                            (currentLanguage === 'ko' ? '재발송 중...' : 'Resending...') :
+                                            (currentLanguage === 'ko' ? '이메일 다시 보내기' : 'Resend Email')
+                                        }
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setEmailVerificationSent(false);
+                                            setIsSignUp(false);
+                                        }}
+                                        className="text-sm text-green-600 hover:text-green-800 font-medium"
+                                    >
+                                        {currentLanguage === 'ko' ? '로그인으로 돌아가기' : 'Back to Sign In'}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
