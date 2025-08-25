@@ -1008,10 +1008,10 @@ export default function ResultsPage() {
                                                         {currentLanguage === 'ko' ? '호환성 영역:' : 'Compatibility Areas:'}
                                                     </h4>
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white/90">
-                                                        {Object.entries(coupleResult.compatibilityResults.areaScores).map(([area, score]) => (
+                                                        {Object.entries(coupleResult.compatibilityResults.areaScores).map(([area, score]: [string, any]) => (
                                                             <div key={area} className="flex justify-between">
-                                                                <span>{area}:</span>
-                                                                <span className="font-semibold">{score}%</span>
+                                                                <span>{area as string}:</span>
+                                                                <span className="font-semibold">{score as number}%</span>
                                                             </div>
                                                         ))}
                                                     </div>

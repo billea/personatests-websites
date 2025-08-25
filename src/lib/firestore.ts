@@ -674,7 +674,7 @@ const sendCompatibilityNotification = async (ownerEmail: string, partnerName: st
 export const saveCoupleCompatibilityResult = async (coupleResultData: any) => {
   try {
     // Save to a dedicated couple_results collection with email-based lookup
-    const docRef = doc(db, 'couple_results', coupleResultData.searchKey);
+    const docRef = doc(firestore, 'couple_results', coupleResultData.searchKey);
     await setDoc(docRef, {
       ...coupleResultData,
       createdAt: new Date().toISOString(),
@@ -693,12 +693,12 @@ export const saveCoupleCompatibilityResult = async (coupleResultData: any) => {
 export const getCoupleCompatibilityResultsByEmail = async (email: string) => {
   try {
     const q = query(
-      collection(db, 'couple_results'),
+      collection(firestore, 'couple_results'),
       where('partner1Email', '==', email)
     );
     
     const q2 = query(
-      collection(db, 'couple_results'),
+      collection(firestore, 'couple_results'),
       where('partner2Email', '==', email)
     );
     
