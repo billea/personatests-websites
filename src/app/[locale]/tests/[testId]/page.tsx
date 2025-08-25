@@ -1971,8 +1971,45 @@ export default function TestPage() {
                         </div>
                     )}
                     
+                    {/* Start test button for non-invitation couple compatibility tests */}
+                    {testId === 'couple-compatibility' && !isInvitationAccess && !testStarted && (
+                        <div className="mb-6 p-6 bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-400/50 rounded-lg">
+                            <h1 className="text-2xl font-bold text-white mb-4 text-center">
+                                💕 {currentLanguage === 'ko' ? 
+                                    '커플 호환성 테스트' :
+                                    'Couple Compatibility Test'
+                                }
+                            </h1>
+                            <p className="text-white/90 mb-6 text-lg text-center">
+                                {currentLanguage === 'ko' ? 
+                                    '15개의 질문을 통해 당신과 파트너의 관계 호환성을 분석합니다.' :
+                                    'Analyze your relationship compatibility through 15 questions.'
+                                }
+                            </p>
+                            
+                            <div className="text-center">
+                                <button
+                                    onClick={() => setTestStarted(true)}
+                                    className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                >
+                                    {currentLanguage === 'ko' ? 
+                                        '💕 테스트 시작하기' :
+                                        '💕 Start Compatibility Test'
+                                    }
+                                </button>
+                                
+                                <p className="text-white/70 text-sm mt-3">
+                                    {currentLanguage === 'ko' ? 
+                                        '약 5-10분이 소요됩니다' :
+                                        'Takes about 5-10 minutes'
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                    
                     {/* Only show test header and progress when test has started */}
-                    {(!isInvitationAccess || (partnerVerified && nameConfirmed && testStarted)) && (
+                    {(testId === 'couple-compatibility' ? testStarted : true) && (!isInvitationAccess || (partnerVerified && nameConfirmed && testStarted)) && (
                         <>
                             <h1 className="text-3xl font-bold mb-4 text-white" data-translate={testDefinition.title_key}>
                                 {t(testDefinition.title_key) || testDefinition.title_key}
@@ -1991,7 +2028,7 @@ export default function TestPage() {
                 </div>
 
                 {/* Only show test questions when test has started */}
-                {(!isInvitationAccess || (partnerVerified && nameConfirmed && testStarted)) && (
+                {(testId === 'couple-compatibility' ? testStarted : true) && (!isInvitationAccess || (partnerVerified && nameConfirmed && testStarted)) && (
                     <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                         <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
                             {getDisplayedQuestionText()}
