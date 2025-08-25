@@ -249,6 +249,7 @@ export default function AuthPage() {
 
                 {/* Email Authentication Form */}
                 {!emailVerificationSent && (
+                <>
                 <form onSubmit={handleEmailAuth} className="space-y-4 mb-6">
                     {isSignUp && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -332,10 +333,8 @@ export default function AuthPage() {
                         </button>
                     </div>
                 </form>
-                )}
 
                 {/* Divider */}
-                {!emailVerificationSent && (
                 <div className="relative my-6">
                     <div className="absolute inset-0 flex items-center">
                         <div className="w-full border-t border-gray-300" />
@@ -381,6 +380,7 @@ export default function AuthPage() {
                         </div>
                     )}
                 </div>
+                </>
                 )}
 
                 {/* Benefits for 360 Feedback */}
