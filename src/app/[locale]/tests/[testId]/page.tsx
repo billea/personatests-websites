@@ -1483,7 +1483,7 @@ export default function TestPage() {
                                     <button
                                         onClick={() => {
                                             // Navigate back to home page
-                                            router.push(`/${locale}`);
+                                            router.push(`/${currentLanguage}`);
                                         }}
                                         className="px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
                                     >
