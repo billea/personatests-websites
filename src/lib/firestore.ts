@@ -670,6 +670,66 @@ const sendCompatibilityNotification = async (ownerEmail: string, partnerName: st
   }
 };
 
+// Function to save couple compatibility results to database
+export const saveCoupleCompatibilityResult = async (coupleResultData: any) => {
+  try {
+    // Save to a dedicated couple_results collection with email-based lookup
+    const docRef = doc(db, 'couple_results', coupleResultData.searchKey);
+    await setDoc(docRef, {
+      ...coupleResultData,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    });
+    
+    console.log('✅ Couple compatibility result saved to couple_results collection');
+    return { success: true, id: coupleResultData.searchKey };
+  } catch (error) {
+    console.error('❌ Error saving couple compatibility result:', error);
+    throw error;
+  }
+};
+
+// Function to get couple compatibility results by email (for either partner)
+export const getCoupleCompatibilityResultsByEmail = async (email: string) => {
+  try {
+    const q = query(
+      collection(db, 'couple_results'),
+      where('partner1Email', '==', email)
+    );
+    
+    const q2 = query(
+      collection(db, 'couple_results'),
+      where('partner2Email', '==', email)
+    );
+    
+    const [snapshot1, snapshot2] = await Promise.all([
+      getDocs(q),
+      getDocs(q2)
+    ]);
+    
+    const results: any[] = [];
+    
+    snapshot1.forEach(doc => {
+      results.push({ id: doc.id, ...doc.data() });
+    });
+    
+    snapshot2.forEach(doc => {
+      results.push({ id: doc.id, ...doc.data() });
+    });
+    
+    // Remove duplicates based on searchKey
+    const uniqueResults = results.filter((result, index, self) => 
+      index === self.findIndex(r => r.searchKey === result.searchKey)
+    );
+    
+    console.log('📊 Found couple compatibility results for email:', email, uniqueResults.length);
+    return uniqueResults;
+  } catch (error) {
+    console.error('❌ Error fetching couple compatibility results:', error);
+    return [];
+  }
+};
+
 // Helper function to generate invitation tokens
 function generateInvitationToken(): string {
   return Math.random().toString(36).substring(2, 15) + 

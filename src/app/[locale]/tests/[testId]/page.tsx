@@ -6,7 +6,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
-import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults } from "@/lib/firestore";
+import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
@@ -557,8 +557,8 @@ export default function TestPage() {
                 searchParams.get('email') || 'partner@example.com'
             );
             
-            // Save couple compatibility results to localStorage for both partners
-            // This allows users to access results after signing up
+            // Save couple compatibility results to 1st test taker's database immediately
+            // This ensures reliable storage even if 2nd user never signs up
             const coupleResultData = {
                 testId: 'couple-compatibility',
                 partnerNames: {
@@ -578,33 +578,51 @@ export default function TestPage() {
                 resultType: 'couple_compatibility'
             };
             
-            // Save for both partners using their email as identifier
+            // Get partner emails
             const partner1Email = searchParams.get('inviterEmail');
             const partner2Email = searchParams.get('email');
             
+            // Keep localStorage as backup
             if (partner1Email) {
                 localStorage.setItem(`couple_result_${partner1Email}`, JSON.stringify(coupleResultData));
-                console.log('💾 Saved couple results for partner 1:', partner1Email);
+                console.log('💾 Backup saved to localStorage for partner 1:', partner1Email);
             }
             
             if (partner2Email) {
                 localStorage.setItem(`couple_result_${partner2Email}`, JSON.stringify(coupleResultData));
-                console.log('💾 Saved couple results for partner 2:', partner2Email);
+                console.log('💾 Backup saved to localStorage for partner 2:', partner2Email);
             }
             
-            // Also try to save to Firestore if user is authenticated
-            if (user && partner2Email) {
-                try {
-                    await saveTestResult(
-                        user.uid,
-                        'couple-compatibility-results',
-                        coupleResultData,
-                        false
-                    );
-                    console.log('✅ Saved couple results to Firestore for authenticated user');
-                } catch (error) {
-                    console.warn('Failed to save couple results to Firestore:', error);
-                }
+            // MAIN STORAGE: Save to 1st test taker's database immediately
+            // We need to find the 1st test taker's user ID from their email
+            try {
+                // We'll need to add a function to find user by email
+                // For now, let's save using a predictable structure that can be found later
+                const coupleResultWithMetadata = {
+                    ...coupleResultData,
+                    searchKey: `couple_${partner1Email}_${partner2Email}`,
+                    partner1Email: partner1Email,
+                    partner2Email: partner2Email,
+                    inviter: partner1Email, // The person who sent the invitation
+                    invitee: partner2Email, // The person who completed the test
+                    status: 'completed'
+                };
+                
+                console.log('💾 Attempting to save couple results to 1st test taker database...');
+                console.log('Search metadata:', {
+                    partner1Email,
+                    partner2Email,
+                    searchKey: coupleResultWithMetadata.searchKey
+                });
+                
+                // We need a new function to save couple results by email lookup
+                // Let's save it in a way that can be found by either partner's email
+                await saveCoupleCompatibilityResult(coupleResultWithMetadata);
+                
+                console.log('✅ Successfully saved couple results to database');
+            } catch (error) {
+                console.error('❌ Failed to save couple results to database:', error);
+                console.log('📝 Results are still saved in localStorage as backup');
             }
             
         } catch (error) {

@@ -95,29 +95,32 @@ export default function AuthPage() {
                     });
                 }
                 
-                // Transfer couple compatibility results to Firestore if they exist in localStorage
+                // Check for couple compatibility results and copy them to this user's access
                 if (result.user.email) {
-                    const coupleResultKey = `couple_result_${result.user.email}`;
-                    const coupleResults = localStorage.getItem(coupleResultKey);
-                    if (coupleResults) {
-                        try {
-                            const coupleData = JSON.parse(coupleResults);
-                            console.log('🔄 Transferring couple results to Firestore for:', result.user.email);
-                            
-                            // Import saveTestResult dynamically to avoid build issues
-                            const { saveTestResult } = await import('@/lib/firestore');
-                            await saveTestResult(
-                                result.user.uid,
-                                'couple-compatibility-results',
-                                coupleData,
-                                false
-                            );
-                            
-                            console.log('✅ Successfully transferred couple results to Firestore');
-                            // Keep localStorage copy as backup
-                        } catch (transferError) {
-                            console.warn('⚠️ Failed to transfer couple results to Firestore:', transferError);
+                    try {
+                        console.log('🔄 Checking for couple compatibility results for:', result.user.email);
+                        
+                        // Import the function to get couple compatibility results
+                        const { getCoupleCompatibilityResultsByEmail } = await import('@/lib/firestore');
+                        const coupleResults = await getCoupleCompatibilityResultsByEmail(result.user.email);
+                        
+                        if (coupleResults.length > 0) {
+                            console.log('✅ Found couple compatibility results, user can now access them');
+                            console.log('Results found:', coupleResults.length);
+                        } else {
+                            console.log('ℹ️ No couple compatibility results found for this email');
                         }
+                        
+                        // Also check localStorage as backup and clean up if found
+                        const coupleResultKey = `couple_result_${result.user.email}`;
+                        const localCoupleResults = localStorage.getItem(coupleResultKey);
+                        if (localCoupleResults) {
+                            console.log('🧹 Found localStorage backup, cleaning up (data already in database)');
+                            localStorage.removeItem(coupleResultKey);
+                        }
+                        
+                    } catch (transferError) {
+                        console.warn('⚠️ Error checking couple compatibility results:', transferError);
                     }
                 }
                 

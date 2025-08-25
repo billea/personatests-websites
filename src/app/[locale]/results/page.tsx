@@ -8,6 +8,7 @@ import {
     getUserTestResults, 
     getPendingInvitations, 
     getFeedbackForResult,
+    getCoupleCompatibilityResultsByEmail,
     TestResult,
     TestInvitation,
     FeedbackSubmission 
@@ -42,20 +43,16 @@ export default function ResultsPage() {
         try {
             console.log('Attempting to load Firestore data...');
             // Load all user data in parallel
-            const [userResults, pendingInvitations] = await Promise.all([
+            const [userResults, pendingInvitations, coupleCompatibilityResults] = await Promise.all([
                 getUserTestResults(user.uid),
-                getPendingInvitations(user.uid)
+                getPendingInvitations(user.uid),
+                getCoupleCompatibilityResultsByEmail(user.email || '')
             ]);
 
             console.log('Firestore results loaded:', userResults);
+            console.log('Couple compatibility results found:', coupleCompatibilityResults);
             setResults(userResults);
             setInvitations(pendingInvitations);
-            
-            // Load couple compatibility results
-            const coupleCompatibilityResults = userResults.filter(result => 
-                result.testId === 'couple-compatibility-results'
-            );
-            console.log('Couple compatibility results found:', coupleCompatibilityResults);
             setCoupleResults(coupleCompatibilityResults);
 
             // Load feedback for each result
@@ -975,12 +972,12 @@ export default function ResultsPage() {
                                         <div key={coupleResult.id || index} className="p-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg">
                                             <div className="text-center mb-4">
                                                 <div className="text-3xl font-bold text-white mb-2">
-                                                    {coupleResult.result?.compatibilityResults?.compatibilityPercentage || 
-                                                     coupleResult.result?.compatibilityData?.percentage}%
+                                                    {coupleResult.compatibilityResults?.compatibilityPercentage || 
+                                                     coupleResult.compatibilityResults?.compatibilityData?.percentage}%
                                                 </div>
                                                 <div className="text-xl text-white/90">
-                                                    {coupleResult.result?.compatibilityResults?.description ||
-                                                     coupleResult.result?.compatibilityData?.description ||
+                                                    {coupleResult.compatibilityResults?.description ||
+                                                     coupleResult.compatibilityResults?.compatibilityData?.description ||
                                                      'Great compatibility!'}
                                                 </div>
                                             </div>
@@ -988,30 +985,30 @@ export default function ResultsPage() {
                                             <div className="grid grid-cols-2 gap-4 mb-4">
                                                 <div className="text-center">
                                                     <div className="text-lg font-semibold text-white">
-                                                        {coupleResult.result?.partnerNames?.partner1 || 'Partner 1'}
+                                                        {coupleResult.partnerNames?.partner1 || 'Partner 1'}
                                                     </div>
                                                     <div className="text-white/80">
-                                                        {coupleResult.result?.individualResults?.partner1?.type || 'The Devoted Partner 💕'}
+                                                        {coupleResult.individualResults?.partner1?.type || 'The Devoted Partner 💕'}
                                                     </div>
                                                 </div>
                                                 <div className="text-center">
                                                     <div className="text-lg font-semibold text-white">
-                                                        {coupleResult.result?.partnerNames?.partner2 || 'Partner 2'}
+                                                        {coupleResult.partnerNames?.partner2 || 'Partner 2'}
                                                     </div>
                                                     <div className="text-white/80">
-                                                        {coupleResult.result?.individualResults?.partner2?.type || 'The Devoted Partner 💕'}
+                                                        {coupleResult.individualResults?.partner2?.type || 'The Devoted Partner 💕'}
                                                     </div>
                                                 </div>
                                             </div>
                                             
                                             {/* Compatibility Areas */}
-                                            {coupleResult.result?.compatibilityResults?.areaScores && (
+                                            {coupleResult.compatibilityResults?.areaScores && (
                                                 <div className="mt-4">
                                                     <h4 className="text-lg font-semibold text-white mb-2">
                                                         {currentLanguage === 'ko' ? '호환성 영역:' : 'Compatibility Areas:'}
                                                     </h4>
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white/90">
-                                                        {Object.entries(coupleResult.result.compatibilityResults.areaScores).map(([area, score]) => (
+                                                        {Object.entries(coupleResult.compatibilityResults.areaScores).map(([area, score]) => (
                                                             <div key={area} className="flex justify-between">
                                                                 <span>{area}:</span>
                                                                 <span className="font-semibold">{score}%</span>
@@ -1023,7 +1020,7 @@ export default function ResultsPage() {
                                             
                                             <div className="mt-4 text-center">
                                                 <div className="text-sm text-white/70">
-                                                    {currentLanguage === 'ko' ? '완료 날짜:' : 'Completed:'} {new Date(coupleResult.result?.completedAt || coupleResult.createdAt).toLocaleDateString()}
+                                                    {currentLanguage === 'ko' ? '완료 날짜:' : 'Completed:'} {new Date(coupleResult.completedAt || coupleResult.createdAt).toLocaleDateString()}
                                                 </div>
                                             </div>
                                         </div>
