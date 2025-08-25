@@ -557,7 +557,10 @@ export const sendCoupleCompatibilityResults = async (
         `${partner2Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
         `Sign up free to unlock detailed compatibility analysis with ${partner2Name}!`,
       signup_url: signupUrl1,
-      signup_button_text: language === 'ko' ? '🔍 상세 분석 보기 (무료)' : '🔍 View Detailed Analysis (Free)',
+      signup_button_text: language === 'ko' ? '🔍 상세 비교 보기 (무료)' : '🔍 View Detailed Comparison (Free)',
+      button_explanation: language === 'ko' ? 
+        '질문별 답변 비교, 심화 분석 및 관계 개선 팁을 확인하세요' :
+        'See question-by-question answers, in-depth analysis, and relationship tips',
       comparison_features: language === 'ko' ? 
         '• 15개 질문별 답변 비교\n• 상세 호환성 분석 보고서\n• 관계 개선 제안사항\n• 결과 저장 및 재열람' :
         '• Question-by-question answer comparison\n• Detailed compatibility report\n• Relationship improvement suggestions\n• Save results for future access'
@@ -584,7 +587,10 @@ export const sendCoupleCompatibilityResults = async (
         `${partner1Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
         `Sign up free to unlock detailed compatibility analysis with ${partner1Name}!`,
       signup_url: signupUrl2,
-      signup_button_text: language === 'ko' ? '🔍 상세 분석 보기 (무료)' : '🔍 View Detailed Analysis (Free)',
+      signup_button_text: language === 'ko' ? '🔍 상세 비교 보기 (무료)' : '🔍 View Detailed Comparison (Free)',
+      button_explanation: language === 'ko' ? 
+        '질문별 답변 비교, 심화 분석 및 관계 개선 팁을 확인하세요' :
+        'See question-by-question answers, in-depth analysis, and relationship tips',
       comparison_features: language === 'ko' ? 
         '• 15개 질문별 답변 비교\n• 상세 호환성 분석 보고서\n• 관계 개선 제안사항\n• 결과 저장 및 재열람' :
         '• Question-by-question answer comparison\n• Detailed compatibility report\n• Relationship improvement suggestions\n• Save results for future access'
