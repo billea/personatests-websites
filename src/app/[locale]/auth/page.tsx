@@ -204,7 +204,8 @@ export default function AuthPage() {
                             <div>
                                 <input
                                     type="text"
-                                    placeholder={currentLanguage === 'ko' ? '이름 (선택사항)' : 'First Name (optional)'}
+                                    placeholder={currentLanguage === 'ko' ? '이름' : 'First Name'}
+                                    required
                                     value={firstName}
                                     onChange={(e) => setFirstName(e.target.value)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -213,7 +214,8 @@ export default function AuthPage() {
                             <div>
                                 <input
                                     type="text"
-                                    placeholder={currentLanguage === 'ko' ? '성 (선택사항)' : 'Last Name (optional)'}
+                                    placeholder={currentLanguage === 'ko' ? '성' : 'Last Name'}
+                                    required
                                     value={lastName}
                                     onChange={(e) => setLastName(e.target.value)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
