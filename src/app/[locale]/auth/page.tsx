@@ -4,7 +4,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
 export default function AuthPage() {
@@ -24,6 +24,7 @@ export default function AuthPage() {
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [emailVerificationSent, setEmailVerificationSent] = useState(false);
     
     // Get context from URL params
     const returnUrl = searchParams.get('returnUrl');
@@ -92,9 +93,25 @@ export default function AuthPage() {
                         displayName: fullName
                     });
                 }
+                
+                // Send email verification
+                await sendEmailVerification(result.user);
+                setEmailVerificationSent(true);
+                
+                // Don't redirect immediately - show verification message
+                return;
             } else {
                 // Sign in existing user
                 result = await signInWithEmailAndPassword(auth, email, password);
+                
+                // Check if email is verified
+                if (!result.user.emailVerified) {
+                    setAuthError(currentLanguage === 'ko' ? 
+                        '이메일 확인이 필요합니다. 이메일 확인 링크를 클릭한 후 다시 로그인해주세요.' : 
+                        'Please verify your email address by clicking the link in your email before signing in.'
+                    );
+                    return;
+                }
             }
             
             console.log('Email auth successful:', result.user.email);
@@ -197,7 +214,41 @@ export default function AuthPage() {
                     </div>
                 )}
 
+                {/* Email Verification Success Message */}
+                {emailVerificationSent && (
+                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center">
+                            <div className="text-2xl mr-3">📧</div>
+                            <div>
+                                <h3 className="font-semibold text-green-800 mb-1">
+                                    {currentLanguage === 'ko' ? 
+                                        '이메일 확인이 필요합니다' : 
+                                        'Email Verification Required'
+                                    }
+                                </h3>
+                                <p className="text-sm text-green-700">
+                                    {currentLanguage === 'ko' ? 
+                                        `${email}으로 확인 이메일을 보냈습니다. 이메일의 링크를 클릭하여 계정을 확인한 후 로그인해주세요.` : 
+                                        `We sent a verification email to ${email}. Please click the link in the email to verify your account, then sign in.`
+                                    }
+                                </p>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setEmailVerificationSent(false);
+                                        setIsSignUp(false);
+                                    }}
+                                    className="mt-2 text-sm text-green-600 hover:text-green-800 font-medium"
+                                >
+                                    {currentLanguage === 'ko' ? '로그인으로 돌아가기' : 'Back to Sign In'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {/* Email Authentication Form */}
+                {!emailVerificationSent && (
                 <form onSubmit={handleEmailAuth} className="space-y-4 mb-6">
                     {isSignUp && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -281,8 +332,10 @@ export default function AuthPage() {
                         </button>
                     </div>
                 </form>
+                )}
 
                 {/* Divider */}
+                {!emailVerificationSent && (
                 <div className="relative my-6">
                     <div className="absolute inset-0 flex items-center">
                         <div className="w-full border-t border-gray-300" />
@@ -328,6 +381,7 @@ export default function AuthPage() {
                         </div>
                     )}
                 </div>
+                )}
 
                 {/* Benefits for 360 Feedback */}
                 {is360Feedback && (
