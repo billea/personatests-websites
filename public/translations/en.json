@@ -34,6 +34,8 @@
   },
   "tests": {
     "page_title": "Personality Tests",
+    "requires_feedback": "Requires inviting others for feedback",
+    "compatibility_test": "Couple Compatibility Test",
     "mbti": {
       "title": "16 Personalities (MBTI)",
       "description": "Discover your Myers-Briggs personality type with this 20-question assessment",
