@@ -509,6 +509,33 @@ export const sendCoupleCompatibilityResults = async (
     const signupUrl1 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner2Name)}&source=couple-email`;
     const signupUrl2 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner1Name)}&source=couple-email`;
     
+    // Extract area breakdown for detailed results
+    const areaBreakdown = coupleCompatibility.areaBreakdown || coupleCompatibility.areaScores || {};
+    
+    // Format area breakdown for email display
+    const formatAreaBreakdown = (areas: any) => {
+      const areaNames = language === 'ko' ? {
+        'Fun & Lifestyle': '재미 & 라이프스타일',
+        'Values & Trust': '가치관 & 신뢰',
+        'Communication': '의사소통',
+        'Lifestyle Habits': '생활 습관',
+        'Romance & Love': '로맨스 & 사랑'
+      } : {
+        'Fun & Lifestyle': 'Fun & Lifestyle',
+        'Values & Trust': 'Values & Trust', 
+        'Communication': 'Communication',
+        'Lifestyle Habits': 'Lifestyle Habits',
+        'Romance & Love': 'Romance & Love'
+      };
+      
+      return Object.entries(areas).map(([area, score]) => {
+        const areaName = areaNames[area as keyof typeof areaNames] || area;
+        return `${areaName}: ${score}%`;
+      }).join('\n');
+    };
+
+    const areaBreakdownText = formatAreaBreakdown(areaBreakdown);
+
     const emailParams1 = {
       to_email: partner1Email,
       email: partner1Email, // Fallback email field
@@ -523,6 +550,9 @@ export const sendCoupleCompatibilityResults = async (
       subject: `💕 Your Couple Compatibility Results with ${partner2Name}`,
       test_name: 'Couple Compatibility Test',
       invitation_link: `${baseUrl}/${language}/results`, // Basic results page link
+      // Add detailed results for email display
+      area_breakdown: areaBreakdownText,
+      detailed_results: `💕 Couple Compatibility Results\n${compatibilityPercentage}%\n${coupleCompatibility.description || 'You complement each other beautifully!'}\n\n${partner1Name}\n${coupleCompatibility.partner1?.type || 'The Devoted Partner 💕'}\n\n${partner2Name}\n${coupleCompatibility.partner2?.type || 'The Devoted Partner 💕'}\n\nCompatibility Areas:\n${areaBreakdownText}`,
       signup_cta: language === 'ko' ? 
         `${partner2Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
         `Sign up free to unlock detailed compatibility analysis with ${partner2Name}!`,
@@ -547,6 +577,9 @@ export const sendCoupleCompatibilityResults = async (
       subject: `💕 Your Couple Compatibility Results with ${partner1Name}`,
       test_name: 'Couple Compatibility Test',
       invitation_link: `${baseUrl}/${language}/results`, // Basic results page link
+      // Add detailed results for email display
+      area_breakdown: areaBreakdownText,
+      detailed_results: `💕 Couple Compatibility Results\n${compatibilityPercentage}%\n${coupleCompatibility.description || 'You complement each other beautifully!'}\n\n${partner2Name}\n${coupleCompatibility.partner2?.type || 'The Devoted Partner 💕'}\n\n${partner1Name}\n${coupleCompatibility.partner1?.type || 'The Devoted Partner 💕'}\n\nCompatibility Areas:\n${areaBreakdownText}`,
       signup_cta: language === 'ko' ? 
         `${partner1Name}님과의 상세 호환성 분석을 확인하려면 무료 가입하세요!` :
         `Sign up free to unlock detailed compatibility analysis with ${partner1Name}!`,
