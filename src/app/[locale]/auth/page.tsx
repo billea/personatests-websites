@@ -95,22 +95,29 @@ export default function AuthPage() {
                 }
                 
                 // Send email verification
+                console.log('📧 Sending email verification to:', result.user.email);
                 await sendEmailVerification(result.user);
+                console.log('✅ Email verification sent successfully');
                 setEmailVerificationSent(true);
                 
                 // Don't redirect immediately - show verification message
+                console.log('🔒 Signup completed, showing verification prompt');
                 return;
             } else {
                 // Sign in existing user
                 result = await signInWithEmailAndPassword(auth, email, password);
                 
                 // Check if email is verified
+                console.log('🔍 Email verification status:', result.user.emailVerified);
                 if (!result.user.emailVerified) {
+                    console.log('❌ Blocking unverified user from signing in');
                     setAuthError(currentLanguage === 'ko' ? 
                         '이메일 확인이 필요합니다. 이메일 확인 링크를 클릭한 후 다시 로그인해주세요.' : 
                         'Please verify your email address by clicking the link in your email before signing in.'
                     );
                     return;
+                } else {
+                    console.log('✅ Email verified, proceeding with sign-in');
                 }
             }
             
