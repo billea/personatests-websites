@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { User, onAuthStateChanged } from 'firebase/auth';
+import { User, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase';
 import { createUserProfileDocument } from '@/lib/firestore';
@@ -39,6 +39,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const previousUser = user;
       
       if (currentUser) {
+        // Check email verification for email/password users (Google users are pre-verified)
+        const isGoogleUser = currentUser.providerData.some(provider => provider.providerId === 'google.com');
+        
+        if (!isGoogleUser && !currentUser.emailVerified) {
+          console.log('🚨 AuthProvider: Blocking unverified email user:', currentUser.email);
+          console.log('📧 Email verification status:', currentUser.emailVerified);
+          // Sign out unverified users
+          await signOut(auth);
+          setUser(null);
+          setLoading(false);
+          return;
+        }
+        
+        console.log('✅ AuthProvider: User verified, proceeding:', currentUser.email);
+        
         // If the user is logged in, ensure their profile exists in Firestore
         try {
           await createUserProfileDocument(currentUser);
