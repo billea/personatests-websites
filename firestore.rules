@@ -13,12 +13,51 @@ service cloud.firestore {
       allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
     }
     
+    // Couple compatibility results - allow read if user's email matches either partner email
+    match /couple_results/{resultId} {
+      allow read: if request.auth != null && 
+        (request.auth.token.email == resource.data.partner1Email ||
+         request.auth.token.email == resource.data.partner2Email ||
+         request.auth.token.email == resource.data.partnerEmails.partner1 ||
+         request.auth.token.email == resource.data.partnerEmails.partner2);
+      allow create: if true; // Allow anonymous creation during test completion
+      allow write: if request.auth != null && 
+        (request.auth.token.email == resource.data.partner1Email ||
+         request.auth.token.email == resource.data.partner2Email ||
+         request.auth.token.email == resource.data.partnerEmails.partner1 ||
+         request.auth.token.email == resource.data.partnerEmails.partner2);
+    }
+    
     // Invitations - users can read invitations they created
     match /invitations/{invitationId} {
       allow read: if request.auth != null && request.auth.uid == resource.data.inviterUid;
       allow write: if request.auth != null && request.auth.uid == resource.data.inviterUid;
       // Allow read without auth for invitation verification (with token validation in functions)
       allow read: if true;
+    }
+    
+    // Test Invitations - users can read invitations they created or are invited to
+    match /testInvitations/{invitationId} {
+      allow read: if request.auth != null && 
+        (request.auth.uid == resource.data.inviterUid ||
+         request.auth.token.email == resource.data.participantEmail);
+      allow write: if request.auth != null && request.auth.uid == resource.data.inviterUid;
+      allow create: if request.auth != null;
+    }
+    
+    // Feedback Progress - users can read/write their own progress
+    match /feedbackProgress/{progressId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Feedback Submissions - users can read submissions for their tests
+    match /feedbackSubmissions/{submissionId} {
+      allow read: if request.auth != null && 
+        request.auth.uid == resource.data.testOwnerId;
+      allow create: if true; // Allow anonymous submission
     }
     
     // Anonymous feedback - no authentication required for submission
