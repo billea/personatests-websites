@@ -34,6 +34,17 @@ export default function TestPage() {
         allParams: Object.fromEntries(searchParams.entries())
     });
     
+    // DEBUG: Log component state
+    console.log('🔍 COMPONENT STATE:', {
+        loading,
+        authLoading,
+        isClient,
+        partnerVerified,
+        nameConfirmed,
+        testStarted,
+        testDefinition: !!testDefinition
+    });
+    
     // Check if this is a protected test (but couple compatibility allows invitation access)
     const isProtectedTest = (testId === 'couple-compatibility' && !isInvitationAccess) || testId === 'feedback-360';
     const [authChecked, setAuthChecked] = useState(false);
@@ -43,7 +54,23 @@ export default function TestPage() {
     
     useEffect(() => {
         setIsClient(true);
-    }, []);
+        
+        // For invitation access, set loading to false immediately since we don't need auth
+        if (isInvitationAccess) {
+            console.log('🚀 Invitation access detected, setting loading to false');
+            setLoading(false);
+        }
+        
+        // Safety timeout: ensure loading doesn't get stuck for more than 5 seconds
+        const loadingTimeout = setTimeout(() => {
+            if (loading) {
+                console.log('⚠️ Loading timeout - force setting loading to false');
+                setLoading(false);
+            }
+        }, 5000);
+        
+        return () => clearTimeout(loadingTimeout);
+    }, [isInvitationAccess, loading]);
     
     console.log('TestPage mounted with params:', params);
     console.log('testId extracted:', testId);
