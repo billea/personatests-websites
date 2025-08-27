@@ -34,16 +34,7 @@ export default function TestPage() {
         allParams: Object.fromEntries(searchParams.entries())
     });
     
-    // DEBUG: Log component state
-    console.log('🔍 COMPONENT STATE:', {
-        loading,
-        authLoading,
-        isClient,
-        partnerVerified,
-        nameConfirmed,
-        testStarted,
-        testDefinition: !!testDefinition
-    });
+    // Note: Component state logging moved to after state declarations
     
     // Check if this is a protected test (but couple compatibility allows invitation access)
     const isProtectedTest = (testId === 'couple-compatibility' && !isInvitationAccess) || testId === 'feedback-360';
@@ -70,7 +61,7 @@ export default function TestPage() {
         }, 5000);
         
         return () => clearTimeout(loadingTimeout);
-    }, [isInvitationAccess, loading]);
+    }, [isInvitationAccess]);
     
     console.log('TestPage mounted with params:', params);
     console.log('testId extracted:', testId);
@@ -104,6 +95,19 @@ export default function TestPage() {
             console.log('🔄 Auto-populated user name:', autoName);
         }
     }, [user, userName]);
+
+    // DEBUG: Log component state (after state declarations)
+    useEffect(() => {
+        console.log('🔍 COMPONENT STATE:', {
+            loading,
+            authLoading,
+            isClient,
+            partnerVerified,
+            nameConfirmed,
+            testStarted,
+            testDefinition: !!testDefinition
+        });
+    }, [loading, authLoading, isClient, partnerVerified, nameConfirmed, testStarted, testDefinition]);
 
     // Partner verification function - verify by email address
     const verifyPartner = () => {
