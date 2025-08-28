@@ -104,6 +104,15 @@ export default function ResultsPage() {
             
             console.log('Results loaded:', finalUserResults.length, 'tests,', allCoupleResults.length, 'couple results');
             
+            // Debug: Show the actual structure of couple results
+            if (allCoupleResults.length > 0) {
+                console.log('🔍 DEBUG: First couple result keys:', Object.keys(allCoupleResults[0]));
+                console.log('🔍 DEBUG: Compatibility results keys:', Object.keys(allCoupleResults[0]?.compatibilityResults || {}));
+                console.log('🔍 DEBUG: Partner1 data:', !!allCoupleResults[0]?.partner1);
+                console.log('🔍 DEBUG: Partner2 data:', !!allCoupleResults[0]?.partner2);
+                console.log('🔍 DEBUG: Areas data:', !!allCoupleResults[0]?.areas);
+            }
+            
             // Set results immediately for faster UI response
             setResults(finalUserResults);
             setInvitations(finalInvitations);
@@ -221,6 +230,10 @@ export default function ResultsPage() {
     };
 
     const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult) => {
+        console.log('🔍 DEBUG: renderQuestionComparison called with:');
+        console.log('🔍 DEBUG: answers:', answers);
+        console.log('🔍 DEBUG: compatibilityData keys:', Object.keys(compatibilityData || {}));
+        console.log('🔍 DEBUG: result keys:', Object.keys(result || {}));
         // Couple compatibility questions and their translations
         const coupleQuestions = [
             { id: 'couple_1', textKey: 'tests.couple.questions.q1', category: 'Lifestyle & Fun' },
@@ -330,12 +343,23 @@ export default function ResultsPage() {
         let partnerAnswers = {};
         
         // Try different possible locations for partner answers
+        // First check if compatibilityData has partner data directly (couple results structure)
         if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
-            // If we have both partners' data, determine which one is NOT the current user
-            // For now, let's use partner2 as the "other" partner (the one who completed the test via invitation)
             partnerAnswers = compatibilityData.partner2.answers;
-            console.log('🔍 DEBUG: Using partner2 answers:', partnerAnswers);
-        } else if (result.resultPayload?.result?.partnerAnswers) {
+            console.log('🔍 DEBUG: Using partner2 answers from compatibilityData:', partnerAnswers);
+        } 
+        // Check if the result itself has partner data (couple results saved directly)
+        else if (result.partner1?.answers && result.partner2?.answers) {
+            partnerAnswers = result.partner2.answers;
+            console.log('🔍 DEBUG: Using partner2 answers from result:', partnerAnswers);
+        }
+        // Check if result has areas and partner data
+        else if (result.compatibilityResults?.partner1?.answers && result.compatibilityResults?.partner2?.answers) {
+            partnerAnswers = result.compatibilityResults.partner2.answers;
+            console.log('🔍 DEBUG: Using partner2 answers from result.compatibilityResults:', partnerAnswers);
+        }
+        // Fallback to other possible locations
+        else if (result.resultPayload?.result?.partnerAnswers) {
             partnerAnswers = result.resultPayload.result.partnerAnswers;
             console.log('🔍 DEBUG: Using stored partnerAnswers:', partnerAnswers);
         } else if (result.resultPayload?.partnerAnswers) {
@@ -348,10 +372,16 @@ export default function ResultsPage() {
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
-            // Try to get user answer from the provided answers or from compatibility data
+            // Try to get user answer from multiple possible locations
             let userAnswer = answers[question.id];
+            
+            // Try different locations for user answers
             if (!userAnswer && compatibilityData?.partner1?.answers) {
                 userAnswer = compatibilityData.partner1.answers[question.id];
+            } else if (!userAnswer && result.partner1?.answers) {
+                userAnswer = result.partner1.answers[question.id];
+            } else if (!userAnswer && result.compatibilityResults?.partner1?.answers) {
+                userAnswer = result.compatibilityResults.partner1.answers[question.id];
             }
             
             const partnerAnswer = partnerAnswers[question.id];
