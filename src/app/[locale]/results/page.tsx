@@ -62,26 +62,16 @@ export default function ResultsPage() {
         if (!user) return;
         
         try {
-            console.log('Loading results for user:', user.email);
-            
-            // Load all user data in parallel with error handling for missing indexes
+            // Load data in parallel - focus on couple results first for faster rendering
             const [userResults, pendingInvitations, coupleCompatibilityResults] = await Promise.allSettled([
                 getUserTestResults(user.uid),
                 getPendingInvitations(user.uid),
                 getCoupleCompatibilityResultsByEmail(user.email || '')
             ]);
 
-            // Handle results with error handling
             const finalUserResults = userResults.status === 'fulfilled' ? userResults.value : [];
             const finalInvitations = pendingInvitations.status === 'fulfilled' ? pendingInvitations.value : [];
             const finalCoupleResults = coupleCompatibilityResults.status === 'fulfilled' ? coupleCompatibilityResults.value : [];
-
-            if (userResults.status === 'rejected') {
-                console.warn('Individual results failed to load:', userResults.reason);
-            }
-            if (pendingInvitations.status === 'rejected') {
-                console.warn('Invitations failed to load:', pendingInvitations.reason);
-            }
             
             // Quick localStorage check for couple compatibility results (optimized)
             let localCoupleResults: any[] = [];
@@ -99,21 +89,9 @@ export default function ResultsPage() {
                 console.warn('Error loading localStorage couple results:', error);
             }
             
-            // Combine Firestore and localStorage results (simplified)
             const allCoupleResults = [...finalCoupleResults, ...localCoupleResults];
             
-            console.log('Results loaded:', finalUserResults.length, 'tests,', allCoupleResults.length, 'couple results');
-            
-            // Debug: Show the actual structure of couple results
-            if (allCoupleResults.length > 0) {
-                console.log('🔍 DEBUG: First couple result keys:', Object.keys(allCoupleResults[0]));
-                console.log('🔍 DEBUG: Compatibility results keys:', Object.keys(allCoupleResults[0]?.compatibilityResults || {}));
-                console.log('🔍 DEBUG: Partner1 data:', !!allCoupleResults[0]?.partner1);
-                console.log('🔍 DEBUG: Partner2 data:', !!allCoupleResults[0]?.partner2);
-                console.log('🔍 DEBUG: Areas data:', !!allCoupleResults[0]?.areas);
-            }
-            
-            // Set results immediately for faster UI response
+            // Set results immediately for fastest possible rendering
             setResults(finalUserResults);
             setInvitations(finalInvitations);
             setCoupleResults(allCoupleResults);
@@ -230,10 +208,6 @@ export default function ResultsPage() {
     };
 
     const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult) => {
-        console.log('🔍 DEBUG: renderQuestionComparison called with:');
-        console.log('🔍 DEBUG: answers:', answers);
-        console.log('🔍 DEBUG: compatibilityData keys:', Object.keys(compatibilityData || {}));
-        console.log('🔍 DEBUG: result keys:', Object.keys(result || {}));
         // Couple compatibility questions and their translations
         const coupleQuestions = [
             { id: 'couple_1', textKey: 'tests.couple.questions.q1', category: 'Lifestyle & Fun' },
@@ -335,25 +309,15 @@ export default function ResultsPage() {
         };
 
         // Extract partner answers from couple compatibility result data
-        // The couple results contain both partners' data and answers
-        console.log('🔍 DEBUG: Extracting partner answers from result:', result);
-        console.log('🔍 DEBUG: Result payload:', result.resultPayload);
-        console.log('🔍 DEBUG: Compatibility data:', compatibilityData);
         
         let partnerAnswers = {};
         
         // Based on confirmed structure: compatibilityResults has partner1 and partner2 objects
         if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
             partnerAnswers = compatibilityData.partner2.answers;
-            console.log('🔍 DEBUG: Using partner2 answers from compatibilityData');
         } else if (result.compatibilityResults?.partner1?.answers && result.compatibilityResults?.partner2?.answers) {
             partnerAnswers = result.compatibilityResults.partner2.answers;
-            console.log('🔍 DEBUG: Using partner2 answers from result.compatibilityResults');
-        } else {
-            console.log('⚠️ No partner answers found in expected locations');
         }
-        
-        console.log('🔍 DEBUG: Final partner answers for comparison:', partnerAnswers);
         
         let currentCategory = '';
 
@@ -369,10 +333,7 @@ export default function ResultsPage() {
             
             const partnerAnswer = partnerAnswers[question.id];
             
-            console.log(`🔍 DEBUG: Question ${question.id}:`, { userAnswer, partnerAnswer });
-            
             if (!userAnswer || !partnerAnswer) {
-                console.log(`⚠️ Missing data for ${question.id}: user=${userAnswer}, partner=${partnerAnswer}`);
                 return null;
             }
 
