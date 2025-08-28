@@ -372,16 +372,47 @@ export default function ResultsPage() {
             }
         };
 
-        // Extract partner answers from result data
-        const partnerAnswers = result.resultPayload?.result?.partnerAnswers || {};
+        // Extract partner answers from couple compatibility result data
+        // The couple results contain both partners' data and answers
+        console.log('🔍 DEBUG: Extracting partner answers from result:', result);
+        console.log('🔍 DEBUG: Result payload:', result.resultPayload);
+        console.log('🔍 DEBUG: Compatibility data:', compatibilityData);
+        
+        let partnerAnswers = {};
+        
+        // Try different possible locations for partner answers
+        if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
+            // If we have both partners' data, determine which one is NOT the current user
+            // For now, let's use partner2 as the "other" partner (the one who completed the test via invitation)
+            partnerAnswers = compatibilityData.partner2.answers;
+            console.log('🔍 DEBUG: Using partner2 answers:', partnerAnswers);
+        } else if (result.resultPayload?.result?.partnerAnswers) {
+            partnerAnswers = result.resultPayload.result.partnerAnswers;
+            console.log('🔍 DEBUG: Using stored partnerAnswers:', partnerAnswers);
+        } else if (result.resultPayload?.partnerAnswers) {
+            partnerAnswers = result.resultPayload.partnerAnswers;
+            console.log('🔍 DEBUG: Using direct partnerAnswers:', partnerAnswers);
+        }
+        
+        console.log('🔍 DEBUG: Final partner answers for comparison:', partnerAnswers);
         
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
-            const userAnswer = answers[question.id];
+            // Try to get user answer from the provided answers or from compatibility data
+            let userAnswer = answers[question.id];
+            if (!userAnswer && compatibilityData?.partner1?.answers) {
+                userAnswer = compatibilityData.partner1.answers[question.id];
+            }
+            
             const partnerAnswer = partnerAnswers[question.id];
             
-            if (!userAnswer || !partnerAnswer) return null;
+            console.log(`🔍 DEBUG: Question ${question.id}:`, { userAnswer, partnerAnswer });
+            
+            if (!userAnswer || !partnerAnswer) {
+                console.log(`⚠️ Missing data for ${question.id}: user=${userAnswer}, partner=${partnerAnswer}`);
+                return null;
+            }
 
             const match = getMatchType(question.id, userAnswer, partnerAnswer);
             const showCategoryHeader = currentCategory !== question.category;
@@ -785,9 +816,12 @@ export default function ResultsPage() {
                             )}
 
                             {/* Question by Question Comparison */}
-                            {hasAnswers && compatibilityData && (
+                            {compatibilityData && (
                                 <div className="p-4 bg-white/5 rounded-lg">
                                     <h5 className="text-lg font-semibold text-white mb-4">🤝 Question by Question Comparison</h5>
+                                    <div className="mb-2 text-xs text-white/60">
+                                        Debug: hasAnswers={hasAnswers ? 'yes' : 'no'}, compatibilityData={compatibilityData ? 'yes' : 'no'}
+                                    </div>
                                     <div className="space-y-4 max-h-96 overflow-y-auto">
                                         {renderQuestionComparison(hasAnswers, compatibilityData, result)}
                                     </div>
