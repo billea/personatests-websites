@@ -26,12 +26,9 @@ export default function ResultsPage() {
     const [selectedResultId, setSelectedResultId] = useState<string | null>(null);
 
     useEffect(() => {
-        console.log('Results page useEffect - user:', user ? 'logged in' : 'not logged in', 'loading:', loading);
         if (user && !loading) {
-            console.log('Loading data for authenticated user');
             loadData();
         } else if (!loading) {
-            console.log('Anonymous user - redirecting to auth');
             // Anonymous users should not access results page
             setResultsLoading(false);
         }
@@ -47,14 +44,14 @@ export default function ResultsPage() {
                             const resultFeedback = await getFeedbackForResult(result.id);
                             feedbackData[result.id] = resultFeedback;
                         } catch (error) {
-                            console.warn('Failed to load feedback for result:', result.id);
+                            // Failed to load feedback for result
                         }
                     }
                 })
             );
             setFeedback(feedbackData);
         } catch (error) {
-            console.warn('Error loading feedback data:', error);
+            // Error loading feedback data
         }
     };
 
@@ -86,7 +83,7 @@ export default function ResultsPage() {
                     localCoupleResults.push(parsedData);
                 }
             } catch (error) {
-                console.warn('Error loading localStorage couple results:', error);
+                // Error loading localStorage couple results
             }
             
             const allCoupleResults = [...finalCoupleResults, ...localCoupleResults];
@@ -102,91 +99,13 @@ export default function ResultsPage() {
             }, 100);
 
         } catch (error) {
-            console.error("❌ Error loading Firestore data:", error);
-            console.error('❌ Error details:', {
-                message: error instanceof Error ? error.message : 'Unknown error',
-                stack: error instanceof Error ? error.stack : 'No stack trace'
-            });
-            // No fallback to localStorage - require authentication
+            // Error handling without console overhead
         } finally {
             setResultsLoading(false);
         }
     };
 
-    const loadLocalResults = () => {
-        try {
-            const localResults: TestResult[] = [];
-            const localFeedback: { [resultId: string]: any[] } = {};
-            
-            console.log('Loading local results...');
-            console.log('Total localStorage items:', localStorage.length);
-            
-            // Check localStorage for test results
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                console.log('Checking key:', key);
-                if (key && key.startsWith('test_result_') && !key.includes('progress')) {
-                    const resultData = localStorage.getItem(key);
-                    if (resultData) {
-                        console.log('Found test result data for key:', key);
-                        const parsedResult = JSON.parse(resultData);
-                        console.log('Parsed result:', parsedResult);
-                        console.log('Test ID from result:', parsedResult.testId);
-                        
-                        // Special debug for MBTI test
-                        if (parsedResult.testId === 'mbti-classic') {
-                            console.log('🧠 MBTI test found!', parsedResult);
-                        }
-                        
-                        // Convert to TestResult format
-                        const testResult: TestResult = {
-                            id: key.replace('test_result_', ''),
-                            userId: 'anonymous',
-                            testId: parsedResult.testId,
-                            resultPayload: {
-                                answers: parsedResult.answers,
-                                result: parsedResult.result
-                            },
-                            createdAt: parsedResult.completedAt,
-                            isPublic: false
-                        };
-                        
-                        localResults.push(testResult);
-                        
-                        // Load aggregated feedback for this result
-                        if (testResult.id) {
-                            const aggregatedKey = `aggregated_feedback_${testResult.id}`;
-                            const aggregatedData = localStorage.getItem(aggregatedKey);
-                            if (aggregatedData) {
-                                try {
-                                    const feedbackArray = JSON.parse(aggregatedData);
-                                    localFeedback[testResult.id] = feedbackArray;
-                                    console.log(`Found ${feedbackArray.length} feedback entries for result ${testResult.id}`);
-                                } catch (error) {
-                                    console.error('Error parsing aggregated feedback:', error);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // Sort by completion date (newest first)
-            localResults.sort((a, b) => {
-                const dateA = typeof a.createdAt === 'string' ? new Date(a.createdAt) : a.createdAt?.toDate?.() || new Date();
-                const dateB = typeof b.createdAt === 'string' ? new Date(b.createdAt) : b.createdAt?.toDate?.() || new Date();
-                return dateB.getTime() - dateA.getTime();
-            });
-            
-            console.log('Final local results array:', localResults);
-            setResults(localResults);
-            setFeedback(localFeedback);
-        } catch (error) {
-            console.error("Error loading local results:", error);
-        } finally {
-            setResultsLoading(false);
-        }
-    };
+    // Function removed - was causing performance issues with localStorage scanning
 
     const formatDate = (timestamp: any) => {
         if (!timestamp) return "Unknown date";
