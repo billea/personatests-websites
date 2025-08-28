@@ -229,7 +229,7 @@ export default function ResultsPage() {
 
         // Extract partner answers from couple compatibility result data
         
-        let partnerAnswers = {};
+        let partnerAnswers: { [key: string]: any } = {};
         
         // Based on confirmed structure: compatibilityResults has partner1 and partner2 objects
         if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
