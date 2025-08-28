@@ -10,31 +10,18 @@ import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitat
 import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
-    console.log('🚀 TestPage component starting...');
     const { t, currentLanguage } = useTranslation();
     const { user, loading: authLoading } = useAuth();
     const params = useParams();
     const router = useRouter();
     const searchParams = useSearchParams();
     const testId = params.testId as string;
-    console.log('🎯 TestPage initialized with testId:', testId);
     
     // Check if this is an invitation link
     const invitationId = searchParams.get('invitation');
     const partnerName = searchParams.get('partner');
     const originalTestResultId = searchParams.get('testResultId');
     const isInvitationAccess = Boolean(invitationId && testId === 'couple-compatibility');
-    
-    // DEBUG: Log invitation detection
-    console.log('🔍 INVITATION DEBUG:', {
-        invitationId,
-        partnerName,
-        originalTestResultId,
-        testId,
-        isInvitationAccess,
-        searchParamsString: searchParams.toString(),
-        allParams: Object.fromEntries(searchParams.entries())
-    });
     
     // Note: Component state logging moved to after state declarations
     
@@ -65,11 +52,6 @@ export default function TestPage() {
         return () => clearTimeout(loadingTimeout);
     }, [isInvitationAccess]);
     
-    console.log('TestPage mounted with params:', params);
-    console.log('testId extracted:', testId);
-    console.log('🚨 DEPLOYMENT CHECK: Version 45885b6 with database-first architecture deployed successfully!');
-    console.log('🔍 URL CHECK:', window.location.href);
-    console.log('🔍 SEARCH PARAMS:', searchParams.toString());
 
     const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -99,29 +81,12 @@ export default function TestPage() {
         }
     }, [user, userName]);
 
-    // DEBUG: Log component state (after state declarations)
-    useEffect(() => {
-        console.log('🔍 COMPONENT STATE:', {
-            loading,
-            authLoading,
-            isClient,
-            partnerVerified,
-            nameConfirmed,
-            testStarted,
-            testDefinition: !!testDefinition
-        });
-    }, [loading, authLoading, isClient, partnerVerified, nameConfirmed, testStarted, testDefinition]);
 
     // Partner verification function - verify by email address
     const verifyPartner = () => {
         const enteredEmail = partnerVerificationEmail.trim().toLowerCase();
         const expectedEmail = (searchParams.get('inviterEmail') || '').toLowerCase();
         
-        console.log('🔍 PARTNER EMAIL VERIFICATION:', {
-            entered: enteredEmail,
-            expected: expectedEmail,
-            originalPartnerEmail: searchParams.get('inviterEmail')
-        });
         
         if (!enteredEmail) {
             setVerificationError(currentLanguage === 'ko' ? 
@@ -143,7 +108,6 @@ export default function TestPage() {
         if (enteredEmail === expectedEmail) {
             setPartnerVerified(true);
             setVerificationError('');
-            console.log('✅ Partner email verification successful');
         } else {
             setVerificationError(currentLanguage === 'ko' ? 
                 '이메일 주소가 일치하지 않습니다. 초대를 보낸 분의 정확한 이메일을 입력해주세요.' :
@@ -281,23 +245,11 @@ export default function TestPage() {
         console.log('Started fresh test');
     };
 
-    // Load test definition and check for saved progress
+    // Authentication check effect (separated for performance)
     useEffect(() => {
-        // Only run authentication check on client-side
-        if (!isClient) {
-            console.log('⏳ Waiting for client-side rendering...');
-            return;
-        }
+        if (!isClient) return;
         
-        // Authentication check for protected tests
-        console.log('Authentication check:', { testId, authLoading, hasUser: !!user, isClient });
-        
-        // For protected tests, require authentication first (unless it's invitation access)
-        // Wait for auth loading to complete before checking authentication
         if (isProtectedTest && !authLoading && !user) {
-            console.log(`🔐 ${testId} requires authentication - redirecting to login`);
-            
-            // Store return URL and context in localStorage (same pattern as 360 feedback)
             const returnUrl = `/${currentLanguage}/tests/${testId}${isInvitationAccess ? '?' + searchParams.toString() : ''}`;
             const context = testId === 'feedback-360' ? 'feedback-360-test' : 'couple-compatibility-test';
             
@@ -307,66 +259,37 @@ export default function TestPage() {
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(returnUrl)}&context=${context}`);
             return;
         }
-        
-        // Skip loading test definition while auth is still loading for protected tests
-        if (isProtectedTest && authLoading) {
-            console.log('⏳ Waiting for authentication to complete...');
-            return;
-        }
-        
-        // If we reach here for protected tests, user must be authenticated (or it's invitation access)
-        if ((testId === 'feedback-360' || (testId === 'couple-compatibility' && !isInvitationAccess)) && user) {
-            console.log(`✅ User authenticated, proceeding with ${testId} test`);
-        }
-        
-        // For invitation access, show welcome message
-        if (isInvitationAccess && partnerName) {
-            console.log(`✅ Partner invitation access: ${partnerName} invited to couple compatibility test`);
-        }
-        
-        // For feedback-360 test, handle category selection first
+    }, [isProtectedTest, authLoading, user, isClient, currentLanguage, testId, isInvitationAccess, searchParams, router]);
+
+    // Load test definition effect (optimized)
+    useEffect(() => {
+        if (!isClient) return;
+        if (isProtectedTest && authLoading) return;
         let definition: TestDefinition | null = null;
         
-        console.log('useEffect running with testId:', testId);
-        console.log('Current testDefinition:', testDefinition?.id);
-        console.log('selectedCategory:', selectedCategory);
-        console.log('showCategorySelection:', showCategorySelection);
-        
         if (testId === 'feedback-360') {
-            console.log('Detected feedback-360 test');
             if (!selectedCategory) {
-                console.log('No category selected - showing category selection');
                 setShowCategorySelection(true);
                 setLoading(false);
                 return;
             }
             
-            // Hide category selection once a category is selected
             if (showCategorySelection) {
-                console.log('Category selected, hiding category selection UI');
                 setShowCategorySelection(false);
             }
             
-            // Generate test definition based on selected category
-            console.log('Generating feedback360 definition for category:', selectedCategory);
             try {
                 definition = getFeedback360TestDefinition(selectedCategory);
-                console.log('Generated definition:', definition ? 'SUCCESS' : 'FAILED');
-                console.log('Definition ID:', definition?.id);
-                console.log('Questions count:', definition?.questions?.length);
             } catch (error) {
                 console.error('Error generating feedback360 definition:', error);
                 definition = null;
             }
             
-            // Set the test definition
             if (definition) {
                 const expectedId = `feedback-360-${selectedCategory}`;
                 if (testDefinition?.id !== expectedId) {
-                    console.log('Setting new testDefinition:', expectedId);
                     setTestDefinition(definition);
                 } else {
-                    console.log('TestDefinition already set, using existing');
                     definition = testDefinition;
                 }
             }
@@ -374,44 +297,32 @@ export default function TestPage() {
             definition = getTestById(testId) || null;
             
             if (definition && testDefinition?.id !== definition.id) {
-                console.log('Setting testDefinition for:', definition.id);
                 setTestDefinition(definition);
             } else if (definition) {
-                console.log('TestDefinition already set, using existing');
                 definition = testDefinition;
             } else {
-                console.error('CRITICAL: No test definition found for testId:', testId);
+                console.error('Test not found:', testId);
             }
         }
         
-        // Check for saved progress only after test definition is set
         if (definition) {
             const savedProgress = loadTestProgress();
             if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
                 setHasInProgressTest(true);
                 setShowResumePrompt(true);
-                console.log(`Found saved progress: ${Object.keys(savedProgress.answers).length} answers, question ${savedProgress.questionIndex + 1}`);
             }
             
-            // For 360-degree test, show name input after category selection
             if (testId === 'feedback-360' && !userName && !hasInProgressTest) {
-                console.log('Setting showNameInput to true for 360-degree test');
                 setShowNameInput(true);
-            } else {
-                console.log('Name input conditions:', { testId, userName, hasInProgressTest });
             }
             
             setLoading(false);
         } else if (testId === 'feedback-360' && !selectedCategory) {
-            // Don't redirect if we're still in category selection phase
-            console.log('Feedback-360 test without category - staying on category selection');
             setLoading(false);
         } else {
-            console.error(`Test ${testId} not found - redirecting to tests page`);
-            console.error('Debug info:', { testId, selectedCategory, definition });
             router.push(`/${currentLanguage}/tests`);
         }
-    }, [testId, selectedCategory, currentLanguage, authLoading, user, isClient]);
+    }, [testId, selectedCategory, isClient, authLoading]);
 
     const handleAnswer = (answer: any) => {
         const currentQuestion = testDefinition?.questions[currentQuestionIndex];
