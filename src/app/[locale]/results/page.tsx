@@ -1035,6 +1035,34 @@ export default function ResultsPage() {
                                                 </div>
                                             )}
 
+                                            {/* Show Details Button for Couple Results */}
+                                            <div className="mt-4 text-center">
+                                                <button 
+                                                    onClick={() => setSelectedResultId(
+                                                        selectedResultId === `couple-${index}` ? null : `couple-${index}`
+                                                    )}
+                                                    className="px-6 py-2 bg-purple-500/30 backdrop-blur-sm border border-purple-400/50 text-white rounded-lg hover:bg-purple-500/50 transition-all duration-300"
+                                                >
+                                                    {selectedResultId === `couple-${index}` ? 'Hide Details' : 'Show Details'}
+                                                </button>
+                                            </div>
+
+                                            {/* Question-by-Question Comparison - Show when button clicked */}
+                                            {selectedResultId === `couple-${index}` && (
+                                                <div className="mt-6 p-4 bg-white/5 rounded-lg">
+                                                    <h4 className="text-lg font-semibold text-white mb-4">
+                                                        Question-by-Question Comparison
+                                                    </h4>
+                                                    <div className="space-y-3">
+                                                        {renderQuestionComparison(
+                                                            coupleResult.compatibilityResults?.partner1?.answers || {}, 
+                                                            coupleResult.compatibilityResults, 
+                                                            coupleResult
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+
                                             {/* Alternative: Show detailed answers if structured differently */}
                                             {coupleResult.compatibilityResults?.questionComparisons && (
                                                 <div className="mt-6">
