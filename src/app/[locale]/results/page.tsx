@@ -768,11 +768,24 @@ export default function ResultsPage() {
                             {compatibilityData && (
                                 <div className="p-4 bg-white/5 rounded-lg">
                                     <h5 className="text-lg font-semibold text-white mb-4">🤝 Question by Question Comparison</h5>
-                                    <div className="mb-2 text-xs text-white/60">
-                                        Debug: hasAnswers={hasAnswers ? 'yes' : 'no'}, compatibilityData={compatibilityData ? 'yes' : 'no'}
-                                    </div>
                                     <div className="space-y-4 max-h-96 overflow-y-auto">
-                                        {renderQuestionComparison(hasAnswers, compatibilityData, result)}
+                                        {(() => {
+                                            const comparisonResults = renderQuestionComparison(hasAnswers, compatibilityData, result);
+                                            if (comparisonResults.length === 0) {
+                                                return (
+                                                    <div className="text-white/60 text-sm p-4 bg-yellow-500/10 rounded">
+                                                        ⚠️ No comparison data available. Check console for debugging info.
+                                                        <div className="mt-2 text-xs">
+                                                            hasAnswers: {hasAnswers ? 'yes' : 'no'}, 
+                                                            compatibilityData: {compatibilityData ? 'yes' : 'no'},
+                                                            partner1: {compatibilityData?.partner1 ? 'yes' : 'no'},
+                                                            partner2: {compatibilityData?.partner2 ? 'yes' : 'no'}
+                                                        </div>
+                                                    </div>
+                                                );
+                                            }
+                                            return comparisonResults;
+                                        })()}
                                     </div>
                                 </div>
                             )}
