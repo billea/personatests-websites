@@ -10,12 +10,14 @@ import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitat
 import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
+    console.log('🚀 TestPage component starting...');
     const { t, currentLanguage } = useTranslation();
     const { user, loading: authLoading } = useAuth();
     const params = useParams();
     const router = useRouter();
     const searchParams = useSearchParams();
     const testId = params.testId as string;
+    console.log('🎯 TestPage initialized with testId:', testId);
     
     // Check if this is an invitation link
     const invitationId = searchParams.get('invitation');
@@ -80,7 +82,8 @@ export default function TestPage() {
     const [secondPartnerName, setSecondPartnerName] = useState<string>('');
     const [nameConfirmed, setNameConfirmed] = useState<boolean>(false);
     const [testStarted, setTestStarted] = useState<boolean>(false);
-    const [loading, setLoading] = useState(true);
+    // Set initial loading state - false for invitation access to avoid white screen
+    const [loading, setLoading] = useState(!isInvitationAccess);
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
     const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
@@ -1093,7 +1096,8 @@ export default function TestPage() {
     }
     
     // Show normal loading for non-protected tests or when loading test definition
-    if (loading) {
+    // Skip loading screen entirely for invitation access to prevent white background delay
+    if (loading && !isInvitationAccess) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center">
                 <div className="text-center">
