@@ -342,29 +342,15 @@ export default function ResultsPage() {
         
         let partnerAnswers = {};
         
-        // Try different possible locations for partner answers
-        // First check if compatibilityData has partner data directly (couple results structure)
+        // Based on confirmed structure: compatibilityResults has partner1 and partner2 objects
         if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
             partnerAnswers = compatibilityData.partner2.answers;
-            console.log('🔍 DEBUG: Using partner2 answers from compatibilityData:', partnerAnswers);
-        } 
-        // Check if the result itself has partner data (couple results saved directly)
-        else if (result.partner1?.answers && result.partner2?.answers) {
-            partnerAnswers = result.partner2.answers;
-            console.log('🔍 DEBUG: Using partner2 answers from result:', partnerAnswers);
-        }
-        // Check if result has areas and partner data
-        else if (result.compatibilityResults?.partner1?.answers && result.compatibilityResults?.partner2?.answers) {
+            console.log('🔍 DEBUG: Using partner2 answers from compatibilityData');
+        } else if (result.compatibilityResults?.partner1?.answers && result.compatibilityResults?.partner2?.answers) {
             partnerAnswers = result.compatibilityResults.partner2.answers;
-            console.log('🔍 DEBUG: Using partner2 answers from result.compatibilityResults:', partnerAnswers);
-        }
-        // Fallback to other possible locations
-        else if (result.resultPayload?.result?.partnerAnswers) {
-            partnerAnswers = result.resultPayload.result.partnerAnswers;
-            console.log('🔍 DEBUG: Using stored partnerAnswers:', partnerAnswers);
-        } else if (result.resultPayload?.partnerAnswers) {
-            partnerAnswers = result.resultPayload.partnerAnswers;
-            console.log('🔍 DEBUG: Using direct partnerAnswers:', partnerAnswers);
+            console.log('🔍 DEBUG: Using partner2 answers from result.compatibilityResults');
+        } else {
+            console.log('⚠️ No partner answers found in expected locations');
         }
         
         console.log('🔍 DEBUG: Final partner answers for comparison:', partnerAnswers);
@@ -372,14 +358,11 @@ export default function ResultsPage() {
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
-            // Try to get user answer from multiple possible locations
+            // Try to get user answer (partner1 is the original test taker)
             let userAnswer = answers[question.id];
             
-            // Try different locations for user answers
             if (!userAnswer && compatibilityData?.partner1?.answers) {
                 userAnswer = compatibilityData.partner1.answers[question.id];
-            } else if (!userAnswer && result.partner1?.answers) {
-                userAnswer = result.partner1.answers[question.id];
             } else if (!userAnswer && result.compatibilityResults?.partner1?.answers) {
                 userAnswer = result.compatibilityResults.partner1.answers[question.id];
             }
@@ -799,23 +782,7 @@ export default function ResultsPage() {
                                 <div className="p-4 bg-white/5 rounded-lg">
                                     <h5 className="text-lg font-semibold text-white mb-4">🤝 Question by Question Comparison</h5>
                                     <div className="space-y-4 max-h-96 overflow-y-auto">
-                                        {(() => {
-                                            const comparisonResults = renderQuestionComparison(hasAnswers, compatibilityData, result);
-                                            if (comparisonResults.length === 0) {
-                                                return (
-                                                    <div className="text-white/60 text-sm p-4 bg-yellow-500/10 rounded">
-                                                        ⚠️ No comparison data available. Check console for debugging info.
-                                                        <div className="mt-2 text-xs">
-                                                            hasAnswers: {hasAnswers ? 'yes' : 'no'}, 
-                                                            compatibilityData: {compatibilityData ? 'yes' : 'no'},
-                                                            partner1: {compatibilityData?.partner1 ? 'yes' : 'no'},
-                                                            partner2: {compatibilityData?.partner2 ? 'yes' : 'no'}
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }
-                                            return comparisonResults;
-                                        })()}
+                                        {renderQuestionComparison(hasAnswers, compatibilityData, result)}
                                     </div>
                                 </div>
                             )}
