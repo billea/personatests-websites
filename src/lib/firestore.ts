@@ -692,9 +692,6 @@ export const saveCoupleCompatibilityResult = async (coupleResultData: any) => {
 // Function to get couple compatibility results by email (for either partner)
 export const getCoupleCompatibilityResultsByEmail = async (email: string) => {
   try {
-    console.log('🔍 DEBUG: getCoupleCompatibilityResultsByEmail called with email:', email);
-    console.log('🔍 DEBUG: Email type:', typeof email);
-    console.log('🔍 DEBUG: Email length:', email?.length);
     
     // Query for partner1Email
     const q = query(
@@ -708,72 +705,30 @@ export const getCoupleCompatibilityResultsByEmail = async (email: string) => {
       where('partner2Email', '==', email)
     );
     
-    console.log('🔍 DEBUG: Executing Firestore queries...');
     const [snapshot1, snapshot2] = await Promise.all([
       getDocs(q),
       getDocs(q2)
     ]);
     
-    console.log('🔍 DEBUG: Query 1 (partner1Email) results:', snapshot1.size);
-    console.log('🔍 DEBUG: Query 2 (partner2Email) results:', snapshot2.size);
-    
     const results: any[] = [];
     
-    console.log('🔍 DEBUG: Processing snapshot1 documents...');
     snapshot1.forEach(doc => {
       const data = doc.data();
-      console.log('🔍 DEBUG: Found document from partner1Email query:', {
-        id: doc.id,
-        partner1Email: data.partner1Email,
-        partner2Email: data.partner2Email,
-        searchKey: data.searchKey,
-        createdAt: data.createdAt,
-        hasCompatibilityResults: !!data.compatibilityResults
-      });
       results.push({ id: doc.id, ...data });
     });
     
-    console.log('🔍 DEBUG: Processing snapshot2 documents...');
     snapshot2.forEach(doc => {
       const data = doc.data();
-      console.log('🔍 DEBUG: Found document from partner2Email query:', {
-        id: doc.id,
-        partner1Email: data.partner1Email,
-        partner2Email: data.partner2Email,
-        searchKey: data.searchKey,
-        createdAt: data.createdAt,
-        hasCompatibilityResults: !!data.compatibilityResults
-      });
       results.push({ id: doc.id, ...data });
     });
-    
-    console.log('🔍 DEBUG: Raw results before deduplication:', results.length);
     
     // Remove duplicates based on searchKey
     const uniqueResults = results.filter((result, index, self) => 
       index === self.findIndex(r => r.searchKey === result.searchKey)
     );
     
-    console.log('🔍 DEBUG: Unique results after deduplication:', uniqueResults.length);
-    console.log('📊 Found couple compatibility results for email:', email, uniqueResults.length);
-    
-    if (uniqueResults.length > 0) {
-      console.log('🔍 DEBUG: Sample result structure:', {
-        searchKey: uniqueResults[0].searchKey,
-        keys: Object.keys(uniqueResults[0]),
-        hasCompatibilityResults: !!uniqueResults[0].compatibilityResults,
-        hasPartnerNames: !!uniqueResults[0].partnerNames,
-        hasIndividualResults: !!uniqueResults[0].individualResults
-      });
-    }
-    
     return uniqueResults;
   } catch (error) {
-    console.error('❌ Error fetching couple compatibility results:', error);
-    console.error('❌ Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : 'No stack trace'
-    });
     return [];
   }
 };
