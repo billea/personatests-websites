@@ -37,14 +37,32 @@ export default function ResultsPage() {
         }
     }, [user, loading]);
 
+    const loadFeedbackData = async (userResults: TestResult[]) => {
+        try {
+            const feedbackData: { [resultId: string]: FeedbackSubmission[] } = {};
+            await Promise.all(
+                userResults.map(async (result) => {
+                    if (result.id) {
+                        try {
+                            const resultFeedback = await getFeedbackForResult(result.id);
+                            feedbackData[result.id] = resultFeedback;
+                        } catch (error) {
+                            console.warn('Failed to load feedback for result:', result.id);
+                        }
+                    }
+                })
+            );
+            setFeedback(feedbackData);
+        } catch (error) {
+            console.warn('Error loading feedback data:', error);
+        }
+    };
+
     const loadData = async () => {
         if (!user) return;
         
         try {
-            console.log('🔍 DEBUG: loadData() called for authenticated user');
-            console.log('🔍 DEBUG: User email:', user.email);
-            console.log('🔍 DEBUG: User uid:', user.uid);
-            console.log('🔍 DEBUG: Attempting to load Firestore data...');
+            console.log('Loading results for user:', user.email);
             
             // Load all user data in parallel with error handling for missing indexes
             const [userResults, pendingInvitations, coupleCompatibilityResults] = await Promise.allSettled([
@@ -59,111 +77,42 @@ export default function ResultsPage() {
             const finalCoupleResults = coupleCompatibilityResults.status === 'fulfilled' ? coupleCompatibilityResults.value : [];
 
             if (userResults.status === 'rejected') {
-                console.warn('⚠️ Individual results failed to load (probably missing index):', userResults.reason);
+                console.warn('Individual results failed to load:', userResults.reason);
             }
             if (pendingInvitations.status === 'rejected') {
-                console.warn('⚠️ Invitations failed to load (probably missing index):', pendingInvitations.reason);
+                console.warn('Invitations failed to load:', pendingInvitations.reason);
             }
-
-            console.log('🔍 DEBUG: Firestore results loaded:', finalUserResults.length, 'results');
-            console.log('🔍 DEBUG: Pending invitations:', finalInvitations.length);
-            console.log('🔍 DEBUG: Couple compatibility results found:', finalCoupleResults.length);
             
-            // Also check localStorage for couple compatibility results as fallback
-            console.log('🔍 DEBUG: Checking localStorage for couple results backup...');
+            // Quick localStorage check for couple compatibility results (optimized)
             let localCoupleResults: any[] = [];
             
             try {
-                // Check for couple results in localStorage using the user's email
+                // Only check the specific key for this user (no expensive scanning)
                 const coupleResultKey = `couple_result_${user.email}`;
                 const localCoupleData = localStorage.getItem(coupleResultKey);
-                
-                console.log('🔍 DEBUG: Looking for localStorage key:', coupleResultKey);
-                console.log('🔍 DEBUG: Found local couple data:', !!localCoupleData);
                 
                 if (localCoupleData) {
                     const parsedData = JSON.parse(localCoupleData);
                     localCoupleResults.push(parsedData);
-                    console.log('🔍 DEBUG: Parsed local couple result:', parsedData);
                 }
-                
-                // Also scan ALL localStorage items for any couple results involving this user's email
-                console.log('🔍 DEBUG: Scanning all localStorage items for couple results...');
-                for (let i = 0; i < localStorage.length; i++) {
-                    const key = localStorage.key(i);
-                    if (key && key.startsWith('couple_result_') && key !== coupleResultKey) {
-                        const itemData = localStorage.getItem(key);
-                        if (itemData) {
-                            try {
-                                const parsedItem = JSON.parse(itemData);
-                                // Check if this couple result involves the current user's email
-                                if (parsedItem.partner1Email === user.email || 
-                                    parsedItem.partner2Email === user.email ||
-                                    parsedItem.partnerEmails?.partner1 === user.email ||
-                                    parsedItem.partnerEmails?.partner2 === user.email) {
-                                    
-                                    console.log('🔍 DEBUG: Found matching couple result in localStorage:', key, parsedItem);
-                                    localCoupleResults.push(parsedItem);
-                                }
-                            } catch (parseError) {
-                                console.warn('🔍 DEBUG: Error parsing localStorage item:', key, parseError);
-                            }
-                        }
-                    }
-                }
-                
-                console.log('🔍 DEBUG: Total localStorage couple results found:', localCoupleResults.length);
             } catch (error) {
-                console.error('🔍 DEBUG: Error loading localStorage couple results:', error);
+                console.warn('Error loading localStorage couple results:', error);
             }
             
-            // Combine Firestore and localStorage results
-            const allCoupleResults = [...finalCoupleResults];
+            // Combine Firestore and localStorage results (simplified)
+            const allCoupleResults = [...finalCoupleResults, ...localCoupleResults];
             
-            // Add localStorage results that aren't already in Firestore results
-            localCoupleResults.forEach(localResult => {
-                const isDuplicate = finalCoupleResults.some(firestoreResult => 
-                    firestoreResult.searchKey === localResult.searchKey
-                );
-                if (!isDuplicate) {
-                    console.log('🔍 DEBUG: Adding localStorage result not found in Firestore');
-                    allCoupleResults.push(localResult);
-                }
-            });
+            console.log('Results loaded:', finalUserResults.length, 'tests,', allCoupleResults.length, 'couple results');
             
-            if (finalCoupleResults.length > 0) {
-                console.log('🔍 DEBUG: First couple result:', finalCoupleResults[0]);
-                console.log('🔍 DEBUG: Compatibility data structure:', finalCoupleResults[0]?.compatibilityResults);
-                console.log('🔍 DEBUG: Has detailedComparison:', !!finalCoupleResults[0]?.compatibilityResults?.detailedComparison);
-                console.log('🔍 DEBUG: Has questionComparisons:', !!finalCoupleResults[0]?.compatibilityResults?.questionComparisons);
-                console.log('🔍 DEBUG: Available keys in compatibilityResults:', Object.keys(finalCoupleResults[0]?.compatibilityResults || {}));
-            } else {
-                console.log('🔍 DEBUG: No couple compatibility results found for email:', user.email);
-            }
-            
-            console.log('🔍 DEBUG: Total couple results (Firestore + localStorage):', allCoupleResults.length);
-            
+            // Set results immediately for faster UI response
             setResults(finalUserResults);
             setInvitations(finalInvitations);
             setCoupleResults(allCoupleResults);
 
-            // Load feedback for each result
-            const feedbackData: { [resultId: string]: FeedbackSubmission[] } = {};
-            await Promise.all(
-                finalUserResults.map(async (result) => {
-                    if (result.id) {
-                        try {
-                            const resultFeedback = await getFeedbackForResult(result.id);
-                            feedbackData[result.id] = resultFeedback;
-                        } catch (error) {
-                            console.warn('⚠️ Failed to load feedback for result:', result.id, error);
-                        }
-                    }
-                })
-            );
-            setFeedback(feedbackData);
-
-            console.log('🔍 DEBUG: loadData() completed successfully');
+            // Load feedback lazily in background (don't block initial render)
+            setTimeout(() => {
+                loadFeedbackData(finalUserResults);
+            }, 100);
 
         } catch (error) {
             console.error("❌ Error loading Firestore data:", error);
