@@ -234,7 +234,7 @@ export default function ResultsPage() {
         // Based on confirmed structure: compatibilityResults has partner1 and partner2 objects
         if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
             partnerAnswers = compatibilityData.partner2.answers;
-        } else if (result.compatibilityResults?.partner1?.answers && result.compatibilityResults?.partner2?.answers) {
+        } else if (result?.compatibilityResults?.partner1?.answers && result?.compatibilityResults?.partner2?.answers) {
             partnerAnswers = result.compatibilityResults.partner2.answers;
         }
         
@@ -246,7 +246,7 @@ export default function ResultsPage() {
             
             if (!userAnswer && compatibilityData?.partner1?.answers) {
                 userAnswer = compatibilityData.partner1.answers[question.id];
-            } else if (!userAnswer && result.compatibilityResults?.partner1?.answers) {
+            } else if (!userAnswer && result?.compatibilityResults?.partner1?.answers) {
                 userAnswer = result.compatibilityResults.partner1.answers[question.id];
             }
             
@@ -1057,7 +1057,7 @@ export default function ResultsPage() {
                                                         {renderQuestionComparison(
                                                             coupleResult.compatibilityResults?.partner1?.answers || {}, 
                                                             coupleResult.compatibilityResults, 
-                                                            coupleResult
+                                                            null as any
                                                         )}
                                                     </div>
                                                 </div>
