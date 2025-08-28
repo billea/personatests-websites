@@ -133,6 +133,10 @@ export default function ResultsPage() {
             
             if (finalCoupleResults.length > 0) {
                 console.log('🔍 DEBUG: First couple result:', finalCoupleResults[0]);
+                console.log('🔍 DEBUG: Compatibility data structure:', finalCoupleResults[0]?.compatibilityResults);
+                console.log('🔍 DEBUG: Has detailedComparison:', !!finalCoupleResults[0]?.compatibilityResults?.detailedComparison);
+                console.log('🔍 DEBUG: Has questionComparisons:', !!finalCoupleResults[0]?.compatibilityResults?.questionComparisons);
+                console.log('🔍 DEBUG: Available keys in compatibilityResults:', Object.keys(finalCoupleResults[0]?.compatibilityResults || {}));
             } else {
                 console.log('🔍 DEBUG: No couple compatibility results found for email:', user.email);
             }
@@ -1119,6 +1123,72 @@ export default function ResultsPage() {
                                                             <div key={area} className="flex justify-between">
                                                                 <span>{area as string}:</span>
                                                                 <span className="font-semibold">{score as number}%</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
+                                            {/* Question-by-Question Detailed Comparison */}
+                                            {coupleResult.compatibilityResults?.detailedComparison && (
+                                                <div className="mt-6">
+                                                    <h4 className="text-lg font-semibold text-white mb-4">
+                                                        {currentLanguage === 'ko' ? '문항별 상세 비교:' : 'Question-by-Question Comparison:'}
+                                                    </h4>
+                                                    <div className="space-y-3 max-h-64 overflow-y-auto">
+                                                        {coupleResult.compatibilityResults.detailedComparison.map((comparison: any, qIndex: number) => (
+                                                            <div key={qIndex} className="p-3 bg-white/5 rounded border border-white/20">
+                                                                <div className="text-sm text-white/90 mb-2">
+                                                                    <strong>Q{qIndex + 1}:</strong> {comparison.question || `Question ${qIndex + 1}`}
+                                                                </div>
+                                                                <div className="grid grid-cols-2 gap-4 text-xs">
+                                                                    <div className="text-white/80">
+                                                                        <span className="font-medium">{coupleResult.partnerNames?.partner1}:</span> {comparison.partner1Answer}
+                                                                    </div>
+                                                                    <div className="text-white/80">
+                                                                        <span className="font-medium">{coupleResult.partnerNames?.partner2}:</span> {comparison.partner2Answer}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="text-center mt-2">
+                                                                    <span className={`inline-flex px-2 py-1 rounded text-xs ${
+                                                                        comparison.match ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'
+                                                                    }`}>
+                                                                        {comparison.match ? '✓ Match' : '✗ Different'}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Alternative: Show detailed answers if structured differently */}
+                                            {coupleResult.compatibilityResults?.questionComparisons && (
+                                                <div className="mt-6">
+                                                    <h4 className="text-lg font-semibold text-white mb-4">
+                                                        {currentLanguage === 'ko' ? '문항별 상세 비교:' : 'Question-by-Question Comparison:'}
+                                                    </h4>
+                                                    <div className="space-y-3 max-h-64 overflow-y-auto">
+                                                        {Object.entries(coupleResult.compatibilityResults.questionComparisons).map(([questionId, comparison]: [string, any], qIndex: number) => (
+                                                            <div key={questionId} className="p-3 bg-white/5 rounded border border-white/20">
+                                                                <div className="text-sm text-white/90 mb-2">
+                                                                    <strong>Q{qIndex + 1}:</strong> {comparison.question || questionId}
+                                                                </div>
+                                                                <div className="grid grid-cols-2 gap-4 text-xs">
+                                                                    <div className="text-white/80">
+                                                                        <span className="font-medium">{coupleResult.partnerNames?.partner1}:</span> {comparison.answer1}
+                                                                    </div>
+                                                                    <div className="text-white/80">
+                                                                        <span className="font-medium">{coupleResult.partnerNames?.partner2}:</span> {comparison.answer2}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="text-center mt-2">
+                                                                    <span className={`inline-flex px-2 py-1 rounded text-xs ${
+                                                                        comparison.match ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'
+                                                                    }`}>
+                                                                        {comparison.match ? '✓ Match' : '✗ Different'}
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         ))}
                                                     </div>
