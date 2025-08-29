@@ -126,7 +126,7 @@ export default function ResultsPage() {
         return testDef ? (t(testDef.title_key) || testDef.title_key) : testId;
     };
 
-    const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult, realPartnerAnswers?: any) => {
+    const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult) => {
         // Couple compatibility questions and their translations
         const coupleQuestions = [
             { id: 'couple_1', textKey: 'tests.couple.questions.q1', category: 'Lifestyle & Fun' },
@@ -227,22 +227,52 @@ export default function ResultsPage() {
             }
         };
 
-        // Extract partner answers from couple compatibility result data (legacy path)
+        // Extract partner answers from couple compatibility result data
+        let partnerAnswers: { [key: string]: any } = {};
+        let hasRealPartnerAnswers = false;
         
-        let legacyPartnerAnswers: { [key: string]: any } = {};
-        
-        // Based on confirmed structure: compatibilityResults has partner1 and partner2 objects
-        if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
-            legacyPartnerAnswers = compatibilityData.partner2.answers;
+        // Check for new userPreferences-based structure first
+        if (compatibilityData?.partner2?.userPreferences) {
+            // Transform userPreferences to question IDs (new structure)
+            const keyToQuestionId: { [key: string]: string } = {
+                'friday_night': 'couple_1',
+                'vacation_type': 'couple_2', 
+                'weekend_style': 'couple_3',
+                'schedule': 'couple_4',
+                'celebrations': 'couple_5',
+                'relationship_priority': 'couple_6',
+                'conflict_style': 'couple_7',
+                'love_language': 'couple_8', 
+                'time_together': 'couple_9',
+                'partner_values': 'couple_10',
+                'money_philosophy': 'couple_11',
+                'food_preferences': 'couple_12',
+                'planning_style': 'couple_13',
+                'social_preferences': 'couple_14',
+                'communication_style': 'couple_15'
+            };
+            
+            Object.keys(compatibilityData.partner2.userPreferences).forEach(category => {
+                Object.keys(compatibilityData.partner2.userPreferences[category] || {}).forEach(key => {
+                    const questionId = keyToQuestionId[key];
+                    if (questionId) {
+                        partnerAnswers[questionId] = compatibilityData.partner2.userPreferences[category][key];
+                    }
+                });
+            });
+            hasRealPartnerAnswers = true;
+        }
+        // Fallback to legacy structure
+        else if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
+            partnerAnswers = compatibilityData.partner2.answers;
+            hasRealPartnerAnswers = true;
         }
         
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
             const userAnswer = answers[question.id];
-            
-            // Use the passed realPartnerAnswers parameter (new approach) or fallback to legacy
-            const partnerAnswer = realPartnerAnswers ? realPartnerAnswers[question.id] : legacyPartnerAnswers[question.id];
+            const partnerAnswer = partnerAnswers[question.id];
             
             if (!userAnswer) {
                 return null;
@@ -251,6 +281,10 @@ export default function ResultsPage() {
             const match = getMatchType(question.id, userAnswer, partnerAnswer);
             const showCategoryHeader = currentCategory !== question.category;
             currentCategory = question.category;
+            
+            // Pre-compute display values for JSX (simplified to fix TypeScript scope issue)
+            const partnerLabel = 'Your Partner';
+            const showPreviewIcon = false;
 
             return (
                 <div key={question.id}>
@@ -454,12 +488,11 @@ export default function ResultsPage() {
                             {/* Partner Answer */}
                             <div className="bg-white/5 p-3 rounded relative">
                                 <div className="text-xs text-white/60 mb-1">
-                                    {realPartnerAnswers ? 'Your Partner' : 'Your Partner (Preview)'}
+                                    Your Partner
                                 </div>
                                 <div className="text-sm text-white/90 font-medium">
                                     {answerTranslations[partnerAnswer] || partnerAnswer}
                                 </div>
-                                {!realPartnerAnswers && <div className="absolute top-1 right-1 text-xs text-blue-300">👁️</div>}
                             </div>
                         </div>
                     </div>
@@ -1097,8 +1130,7 @@ export default function ResultsPage() {
                                                             const result = renderQuestionComparison(
                                                                 partner1Answers, 
                                                                 coupleResult.compatibilityResults, 
-                                                                null as any,
-                                                                partner2Answers
+                                                                null as any
                                                             );
                                                             console.log('🔍 DEBUG: renderQuestionComparison result length:', result?.length);
                                                             return result;
