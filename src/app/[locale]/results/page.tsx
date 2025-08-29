@@ -1054,8 +1054,12 @@ export default function ResultsPage() {
                                                             console.log('🔍 DEBUG: Rendering question comparison for couple result:', index);
                                                             console.log('🔍 DEBUG: coupleResult keys:', Object.keys(coupleResult));
                                                             console.log('🔍 DEBUG: compatibilityResults keys:', Object.keys(coupleResult.compatibilityResults || {}));
+                                                            console.log('🔍 DEBUG: partner1 full object:', coupleResult.compatibilityResults?.partner1);
+                                                            console.log('🔍 DEBUG: partner2 full object:', coupleResult.compatibilityResults?.partner2);
                                                             console.log('🔍 DEBUG: partner1 answers:', coupleResult.compatibilityResults?.partner1?.answers);
                                                             console.log('🔍 DEBUG: partner2 answers:', coupleResult.compatibilityResults?.partner2?.answers);
+                                                            console.log('🔍 DEBUG: individualResults:', coupleResult.individualResults);
+                                                            console.log('🔍 DEBUG: Full coupleResult structure:', JSON.stringify(coupleResult, null, 2));
                                                             
                                                             const result = renderQuestionComparison(
                                                                 coupleResult.compatibilityResults?.partner1?.answers || {}, 
