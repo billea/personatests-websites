@@ -1055,20 +1055,42 @@ export default function ResultsPage() {
                                                             const partner1UserPrefs = coupleResult.compatibilityResults?.partner1?.userPreferences || {};
                                                             const partner2UserPrefs = coupleResult.compatibilityResults?.partner2?.userPreferences || {};
                                                             
-                                                            // Flatten userPreferences into simple key-value pairs
-                                                            const flattenUserPrefs = (userPrefs: any) => {
+                                                            // Create mapping from descriptive keys to question IDs
+                                                            const keyToQuestionId: { [key: string]: string } = {
+                                                                'friday_night': 'couple_1',
+                                                                'vacation_type': 'couple_2', 
+                                                                'weekend_style': 'couple_3',
+                                                                'schedule': 'couple_4',
+                                                                'celebrations': 'couple_5',
+                                                                'relationship_priority': 'couple_6',
+                                                                'conflict_style': 'couple_7',
+                                                                'love_language': 'couple_8', 
+                                                                'time_together': 'couple_9',
+                                                                'partner_values': 'couple_10',
+                                                                'money_philosophy': 'couple_11',
+                                                                'food_preferences': 'couple_12',
+                                                                'planning_style': 'couple_13',
+                                                                'social_preferences': 'couple_14',
+                                                                'communication_style': 'couple_15'
+                                                            };
+
+                                                            // Flatten userPreferences and map to question IDs
+                                                            const flattenAndMapUserPrefs = (userPrefs: any) => {
                                                                 const flattened: any = {};
                                                                 Object.keys(userPrefs).forEach(category => {
                                                                     Object.keys(userPrefs[category] || {}).forEach(key => {
-                                                                        flattened[key] = userPrefs[category][key];
+                                                                        const questionId = keyToQuestionId[key];
+                                                                        if (questionId) {
+                                                                            flattened[questionId] = userPrefs[category][key];
+                                                                        }
                                                                     });
                                                                 });
                                                                 return flattened;
                                                             };
                                                             
-                                                            const partner1Answers = flattenUserPrefs(partner1UserPrefs);
-                                                            console.log('🔍 DEBUG: Flattened partner1 answers:', partner1Answers);
-                                                            console.log('🔍 DEBUG: Sample keys:', Object.keys(partner1Answers).slice(0, 5));
+                                                            const partner1Answers = flattenAndMapUserPrefs(partner1UserPrefs);
+                                                            console.log('🔍 DEBUG: Mapped partner1 answers:', partner1Answers);
+                                                            console.log('🔍 DEBUG: Sample question IDs:', Object.keys(partner1Answers).slice(0, 5));
                                                             
                                                             const result = renderQuestionComparison(
                                                                 partner1Answers, 
