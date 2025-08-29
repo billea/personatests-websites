@@ -126,7 +126,7 @@ export default function ResultsPage() {
         return testDef ? (t(testDef.title_key) || testDef.title_key) : testId;
     };
 
-    const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult, partnerAnswers?: any) => {
+    const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult, realPartnerAnswers?: any) => {
         // Couple compatibility questions and their translations
         const coupleQuestions = [
             { id: 'couple_1', textKey: 'tests.couple.questions.q1', category: 'Lifestyle & Fun' },
@@ -241,8 +241,8 @@ export default function ResultsPage() {
         return coupleQuestions.map((question) => {
             const userAnswer = answers[question.id];
             
-            // Use the passed partnerAnswers parameter (new approach) or fallback to legacy
-            const partnerAnswer = partnerAnswers ? partnerAnswers[question.id] : legacyPartnerAnswers[question.id];
+            // Use the passed realPartnerAnswers parameter (new approach) or fallback to legacy
+            const partnerAnswer = realPartnerAnswers ? realPartnerAnswers[question.id] : legacyPartnerAnswers[question.id];
             
             if (!userAnswer) {
                 return null;
@@ -454,12 +454,12 @@ export default function ResultsPage() {
                             {/* Partner Answer */}
                             <div className="bg-white/5 p-3 rounded relative">
                                 <div className="text-xs text-white/60 mb-1">
-                                    {partnerAnswers ? 'Your Partner' : 'Your Partner (Preview)'}
+                                    {realPartnerAnswers ? 'Your Partner' : 'Your Partner (Preview)'}
                                 </div>
                                 <div className="text-sm text-white/90 font-medium">
                                     {answerTranslations[partnerAnswer] || partnerAnswer}
                                 </div>
-                                {!partnerAnswers && <div className="absolute top-1 right-1 text-xs text-blue-300">👁️</div>}
+                                {!realPartnerAnswers && <div className="absolute top-1 right-1 text-xs text-blue-300">👁️</div>}
                             </div>
                         </div>
                     </div>
