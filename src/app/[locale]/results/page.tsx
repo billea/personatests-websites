@@ -1050,11 +1050,23 @@ export default function ResultsPage() {
                                                         Question-by-Question Comparison
                                                     </h4>
                                                     <div className="space-y-3">
-                                                        {renderQuestionComparison(
-                                                            coupleResult.compatibilityResults?.partner1?.answers || {}, 
-                                                            coupleResult.compatibilityResults, 
-                                                            null as any
-                                                        )}
+                                                        {(() => {
+                                                            console.log('🔍 DEBUG: Rendering question comparison for couple result:', index);
+                                                            console.log('🔍 DEBUG: coupleResult keys:', Object.keys(coupleResult));
+                                                            console.log('🔍 DEBUG: compatibilityResults keys:', Object.keys(coupleResult.compatibilityResults || {}));
+                                                            console.log('🔍 DEBUG: partner1 answers:', coupleResult.compatibilityResults?.partner1?.answers);
+                                                            console.log('🔍 DEBUG: partner2 answers:', coupleResult.compatibilityResults?.partner2?.answers);
+                                                            
+                                                            const result = renderQuestionComparison(
+                                                                coupleResult.compatibilityResults?.partner1?.answers || {}, 
+                                                                coupleResult.compatibilityResults, 
+                                                                null as any
+                                                            );
+                                                            console.log('🔍 DEBUG: renderQuestionComparison result:', result);
+                                                            console.log('🔍 DEBUG: result type:', typeof result);
+                                                            console.log('🔍 DEBUG: result length:', result?.length);
+                                                            return result;
+                                                        })()}
                                                     </div>
                                                 </div>
                                             )}
