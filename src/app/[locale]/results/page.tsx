@@ -126,7 +126,7 @@ export default function ResultsPage() {
         return testDef ? (t(testDef.title_key) || testDef.title_key) : testId;
     };
 
-    const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult) => {
+    const renderQuestionComparison = (answers: any, compatibilityData: any, result: TestResult, partnerAnswers?: any) => {
         // Couple compatibility questions and their translations
         const coupleQuestions = [
             { id: 'couple_1', textKey: 'tests.couple.questions.q1', category: 'Lifestyle & Fun' },
@@ -412,11 +412,11 @@ export default function ResultsPage() {
 
         return coupleQuestions.map((question) => {
             const userAnswer = answers[question.id];
-            const mockPartnerAnswer = mockPartnerAnswers[question.id as keyof typeof mockPartnerAnswers];
+            const partnerAnswer = partnerAnswers ? partnerAnswers[question.id] : mockPartnerAnswers[question.id as keyof typeof mockPartnerAnswers];
             
             if (!userAnswer) return null;
 
-            const match = getMatchType(question.id, userAnswer, mockPartnerAnswer);
+            const match = getMatchType(question.id, userAnswer, partnerAnswer);
             const showCategoryHeader = currentCategory !== question.category;
             currentCategory = question.category;
 
@@ -455,13 +455,15 @@ export default function ResultsPage() {
                                 </div>
                             </div>
                             
-                            {/* Mock Partner Answer */}
+                            {/* Partner Answer */}
                             <div className="bg-white/5 p-3 rounded relative">
-                                <div className="text-xs text-white/60 mb-1">Your Partner (Preview)</div>
-                                <div className="text-sm text-white/90 font-medium">
-                                    {answerTranslations[mockPartnerAnswer] || mockPartnerAnswer}
+                                <div className="text-xs text-white/60 mb-1">
+                                    {partnerAnswers ? 'Your Partner' : 'Your Partner (Preview)'}
                                 </div>
-                                <div className="absolute top-1 right-1 text-xs text-blue-300">👁️</div>
+                                <div className="text-sm text-white/90 font-medium">
+                                    {answerTranslations[partnerAnswer] || partnerAnswer}
+                                </div>
+                                {!partnerAnswers && <div className="absolute top-1 right-1 text-xs text-blue-300">👁️</div>}
                             </div>
                         </div>
                     </div>
@@ -1092,10 +1094,15 @@ export default function ResultsPage() {
                                                             console.log('🔍 DEBUG: Mapped partner1 answers:', partner1Answers);
                                                             console.log('🔍 DEBUG: Sample question IDs:', Object.keys(partner1Answers).slice(0, 5));
                                                             
+                                                            // Also get partner2 answers
+                                                            const partner2Answers = flattenAndMapUserPrefs(partner2UserPrefs);
+                                                            console.log('🔍 DEBUG: Mapped partner2 answers:', partner2Answers);
+                                                            
                                                             const result = renderQuestionComparison(
                                                                 partner1Answers, 
                                                                 coupleResult.compatibilityResults, 
-                                                                null as any
+                                                                null as any,
+                                                                partner2Answers
                                                             );
                                                             console.log('🔍 DEBUG: renderQuestionComparison result length:', result?.length);
                                                             return result;
