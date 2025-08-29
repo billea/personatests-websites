@@ -1051,24 +1051,31 @@ export default function ResultsPage() {
                                                     </h4>
                                                     <div className="space-y-3">
                                                         {(() => {
-                                                            console.log('🔍 DEBUG: Rendering question comparison for couple result:', index);
-                                                            console.log('🔍 DEBUG: coupleResult keys:', Object.keys(coupleResult));
-                                                            console.log('🔍 DEBUG: compatibilityResults keys:', Object.keys(coupleResult.compatibilityResults || {}));
-                                                            console.log('🔍 DEBUG: partner1 full object:', coupleResult.compatibilityResults?.partner1);
-                                                            console.log('🔍 DEBUG: partner2 full object:', coupleResult.compatibilityResults?.partner2);
-                                                            console.log('🔍 DEBUG: partner1 answers:', coupleResult.compatibilityResults?.partner1?.answers);
-                                                            console.log('🔍 DEBUG: partner2 answers:', coupleResult.compatibilityResults?.partner2?.answers);
-                                                            console.log('🔍 DEBUG: individualResults:', coupleResult.individualResults);
-                                                            console.log('🔍 DEBUG: Full coupleResult structure:', JSON.stringify(coupleResult, null, 2));
+                                                            // Transform userPreferences to the expected answers format
+                                                            const partner1UserPrefs = coupleResult.compatibilityResults?.partner1?.userPreferences || {};
+                                                            const partner2UserPrefs = coupleResult.compatibilityResults?.partner2?.userPreferences || {};
+                                                            
+                                                            // Flatten userPreferences into simple key-value pairs
+                                                            const flattenUserPrefs = (userPrefs: any) => {
+                                                                const flattened: any = {};
+                                                                Object.keys(userPrefs).forEach(category => {
+                                                                    Object.keys(userPrefs[category] || {}).forEach(key => {
+                                                                        flattened[key] = userPrefs[category][key];
+                                                                    });
+                                                                });
+                                                                return flattened;
+                                                            };
+                                                            
+                                                            const partner1Answers = flattenUserPrefs(partner1UserPrefs);
+                                                            console.log('🔍 DEBUG: Flattened partner1 answers:', partner1Answers);
+                                                            console.log('🔍 DEBUG: Sample keys:', Object.keys(partner1Answers).slice(0, 5));
                                                             
                                                             const result = renderQuestionComparison(
-                                                                coupleResult.compatibilityResults?.partner1?.answers || {}, 
+                                                                partner1Answers, 
                                                                 coupleResult.compatibilityResults, 
                                                                 null as any
                                                             );
-                                                            console.log('🔍 DEBUG: renderQuestionComparison result:', result);
-                                                            console.log('🔍 DEBUG: result type:', typeof result);
-                                                            console.log('🔍 DEBUG: result length:', result?.length);
+                                                            console.log('🔍 DEBUG: renderQuestionComparison result length:', result?.length);
                                                             return result;
                                                         })()}
                                                     </div>
