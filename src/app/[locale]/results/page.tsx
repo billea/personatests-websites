@@ -227,28 +227,24 @@ export default function ResultsPage() {
             }
         };
 
-        // Extract partner answers from couple compatibility result data
+        // Extract partner answers from couple compatibility result data (legacy path)
         
-        let partnerAnswers: { [key: string]: any } = {};
+        let legacyPartnerAnswers: { [key: string]: any } = {};
         
         // Based on confirmed structure: compatibilityResults has partner1 and partner2 objects
         if (compatibilityData?.partner1?.answers && compatibilityData?.partner2?.answers) {
-            partnerAnswers = compatibilityData.partner2.answers;
+            legacyPartnerAnswers = compatibilityData.partner2.answers;
         }
         
         let currentCategory = '';
 
         return coupleQuestions.map((question) => {
-            // Try to get user answer (partner1 is the original test taker)
-            let userAnswer = answers[question.id];
+            const userAnswer = answers[question.id];
             
-            if (!userAnswer && compatibilityData?.partner1?.answers) {
-                userAnswer = compatibilityData.partner1.answers[question.id];
-            }
+            // Use the passed partnerAnswers parameter (new approach) or fallback to legacy
+            const partnerAnswer = partnerAnswers ? partnerAnswers[question.id] : legacyPartnerAnswers[question.id];
             
-            const partnerAnswer = partnerAnswers[question.id];
-            
-            if (!userAnswer || !partnerAnswer) {
+            if (!userAnswer) {
                 return null;
             }
 
