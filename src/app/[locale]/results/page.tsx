@@ -408,7 +408,7 @@ export default function ResultsPage() {
 
         return coupleQuestions.map((question) => {
             const userAnswer = answers[question.id];
-            const partnerAnswer = partnerAnswers ? partnerAnswers[question.id] : mockPartnerAnswers[question.id as keyof typeof mockPartnerAnswers];
+            const partnerAnswer = mockPartnerAnswers[question.id as keyof typeof mockPartnerAnswers];
             
             if (!userAnswer) return null;
 
