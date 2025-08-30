@@ -36,7 +36,9 @@ export default function EmailJSTestPage() {
             const testUserId = 'test-user-123';
             const testId = 'feedback-360';
             const testResultId = 'test-result-456';
-            const validEmails = emails.filter(email => email.trim() && email.includes('@'));
+            const validEmails = emails
+                .filter(email => email.trim() && email.includes('@'))
+                .map(email => ({ name: email.split('@')[0], email: email }));
             const feedbackCategory = 'general';
             
             console.log('Test parameters:', {

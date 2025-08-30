@@ -771,8 +771,9 @@
     "exampleText": "Questions will be like:",
     "exampleQuestion": " good at getting people excited about stuff they want to do?",
     "exampleQuestionFallback": " good at working well with others?",
+    "namePlaceholder": "Enter name (e.g., John, Sarah)",
     "emailPlaceholder": "Enter email address",
-    "addAnother": "Add Another Email",
+    "addAnother": "Add Another Person",
     "sendInvitations": "Send Invitations",
     "sending": "Sending..."
   },

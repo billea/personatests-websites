@@ -2643,8 +2643,9 @@
     "exampleText": "질문 예시:",
     "exampleQuestion": "이 사람은 자신의 아이디어나 관점을 다른 사람들에게 효과적으로 전달하나요?",
     "exampleQuestionFallback": "이 사람은 다른 사람들과 함께 일하거나 활동할 때 팀워크를 발휘하나요?",
+    "namePlaceholder": "이름 입력 (예: 철수, 영희)",
     "emailPlaceholder": "이메일 주소 입력",
-    "addAnother": "다른 이메일 추가",
+    "addAnother": "다른 사람 추가",
     "sendInvitations": "초대장 보내기",
     "sending": "보내는 중..."
   },

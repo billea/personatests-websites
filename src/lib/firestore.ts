@@ -371,7 +371,7 @@ export const sendFeedbackInvitations = async (
   userId: string,
   testId: string,
   testResultId: string,
-  participantEmails: string[],
+  participants: {name: string, email: string}[],
   userName: string,
   feedbackCategory: 'work' | 'friends' | 'family' | 'academic' | 'general',
   language: string = 'en',
@@ -383,7 +383,7 @@ export const sendFeedbackInvitations = async (
       userId,
       testId,
       testResultId,
-      participantEmails,
+      participants,
       userName,
       feedbackCategory,
       language,
@@ -391,9 +391,10 @@ export const sendFeedbackInvitations = async (
     });
     
     // Generate unique invitation tokens for each participant
-    const invitations = participantEmails.map(email => ({
+    const invitations = participants.map(participant => ({
       id: `invite_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
-      email,
+      email: participant.email,
+      name: participant.name,
       testId,
       testResultId,
       userName,
@@ -431,7 +432,7 @@ export const sendFeedbackInvitations = async (
       
       // Create or update feedback progress tracking
       try {
-        await updateFeedbackProgress(userId, testResultId, testId, participantEmails.length, savedInvitations.map(inv => inv.id), feedbackCategory);
+        await updateFeedbackProgress(userId, testResultId, testId, participants.length, savedInvitations.map(inv => inv.id), feedbackCategory);
       } catch (progressError) {
         console.warn('Failed to update feedback progress, but continuing with invitation generation:', progressError);
       }
@@ -491,8 +492,9 @@ export const sendFeedbackInvitations = async (
     try {
       const emailjs = (await import('@emailjs/browser')).default;
       
-      const emailPromises = feedbackLinks.map(async (link) => {
-        const recipientName = link.email.split('@')[0];
+      const emailPromises = feedbackLinks.map(async (link, index) => {
+        const participant = invitations[index];
+        const recipientName = participant.name || link.email.split('@')[0];
         const friendlyCategory = {
           work: language === 'ko' ? '직장 동료' : 'Work Colleagues',
           friends: language === 'ko' ? '친구' : 'Friends', 
@@ -589,17 +591,17 @@ export const sendFeedbackInvitations = async (
     
     // Provide fallback response even when Firebase permissions fail
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
-    const fallbackLinks = participantEmails.map(email => {
-      const fallbackUrl = `${baseUrl}/${language}/feedback?email=${encodeURIComponent(email)}&name=${encodeURIComponent(userName)}&testId=${encodeURIComponent(testId)}`;
+    const fallbackLinks = participants.map(participant => {
+      const fallbackUrl = `${baseUrl}/${language}/feedback?email=${encodeURIComponent(participant.email)}&name=${encodeURIComponent(userName)}&testId=${encodeURIComponent(testId)}`;
       return {
-        email: email,
+        email: participant.email,
         link: fallbackUrl
       };
     });
     
     return {
       success: true,
-      invitationsSent: participantEmails.length,
+      invitationsSent: participants.length,
       invitations: fallbackLinks,
       message: 'Feedback invitations ready! If emails failed to send automatically, you can share these links manually with your reviewers.'
     };

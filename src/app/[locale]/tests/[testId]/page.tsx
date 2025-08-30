@@ -68,7 +68,7 @@ export default function TestPage() {
     const [loading, setLoading] = useState(!isInvitationAccess);
     const [saving, setSaving] = useState(false);
     const [testResultId, setTestResultId] = useState<string | null>(null);
-    const [feedbackEmails, setFeedbackEmails] = useState<string[]>(['']);
+    const [feedbackEmails, setFeedbackEmails] = useState<{name: string, email: string}[]>([{name: '', email: ''}]);
     // Auto-populate user name from logged-in user
     const [userName, setUserName] = useState<string>('');
     
@@ -676,7 +676,7 @@ export default function TestPage() {
         }
 
         // For couple compatibility, we only need one email (the partner's)
-        const partnerEmail = feedbackEmails[0]?.trim();
+        const partnerEmail = feedbackEmails[0]?.email?.trim();
         if (!partnerEmail || !partnerEmail.includes('@')) {
             alert(currentLanguage === 'ko' ? 
                 '파트너의 유효한 이메일 주소를 입력해주세요.' : 
@@ -784,8 +784,8 @@ export default function TestPage() {
             return;
         }
 
-        const validEmails = feedbackEmails.filter(email => 
-            email.trim() && email.includes('@')
+        const validEmails = feedbackEmails.filter(item => 
+            item.email.trim() && item.email.includes('@') && item.name.trim()
         );
 
         if (!userName.trim()) {
@@ -798,8 +798,8 @@ export default function TestPage() {
 
         if (validEmails.length === 0) {
             alert(currentLanguage === 'ko' ? 
-                '유효한 이메일 주소를 최소 하나 이상 입력해주세요.' : 
-                'Please enter at least one valid email address'
+                '유효한 이름과 이메일 주소를 최소 하나 이상 입력해주세요.' : 
+                'Please enter at least one valid name and email address'
             );
             return;
         }
@@ -964,12 +964,18 @@ export default function TestPage() {
     }, [isProtectedTest, authLoading, user, isClient, currentLanguage, testId, router]);
 
     const addEmailField = () => {
-        setFeedbackEmails([...feedbackEmails, '']);
+        setFeedbackEmails([...feedbackEmails, {name: '', email: ''}]);
     };
 
     const updateEmail = (index: number, email: string) => {
         const newEmails = [...feedbackEmails];
-        newEmails[index] = email;
+        newEmails[index] = {...newEmails[index], email};
+        setFeedbackEmails(newEmails);
+    };
+
+    const updateName = (index: number, name: string) => {
+        const newEmails = [...feedbackEmails];
+        newEmails[index] = {...newEmails[index], name};
         setFeedbackEmails(newEmails);
     };
 
@@ -1709,7 +1715,7 @@ export default function TestPage() {
                                         </label>
                                         <input
                                             type="email"
-                                            value={feedbackEmails[0] || ''}
+                                            value={feedbackEmails[0]?.email || ''}
                                             onChange={(e) => updateEmail(0, e.target.value)}
                                             placeholder={t('test.partner_email_placeholder') || 'Enter your partner\'s email address'}
                                             className="w-full p-3 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
@@ -1728,24 +1734,34 @@ export default function TestPage() {
                             ) : (
                                 // Multiple email inputs for feedback
                                 <>
-                                    <div className="space-y-3 mb-4">
-                                        {feedbackEmails.map((email, index) => (
-                                            <div key={index} className="flex gap-2">
+                                    <div className="space-y-4 mb-4">
+                                        {feedbackEmails.map((participant, index) => (
+                                            <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/20">
+                                                <div className="flex gap-2 mb-2">
+                                                    <input
+                                                        type="text"
+                                                        value={participant.name}
+                                                        onChange={(e) => updateName(index, e.target.value)}
+                                                        placeholder={t('feedbackInvite.namePlaceholder') || 'Enter name (e.g., John, Sarah)'}
+                                                        className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                    />
+                                                    {feedbackEmails.length > 1 && (
+                                                        <button
+                                                            onClick={() => removeEmailField(index)}
+                                                            className="p-2 text-red-500 hover:text-red-700 bg-white/10 rounded"
+                                                            title="Remove this person"
+                                                        >
+                                                            ✕
+                                                        </button>
+                                                    )}
+                                                </div>
                                                 <input
                                                     type="email"
-                                                    value={email}
+                                                    value={participant.email}
                                                     onChange={(e) => updateEmail(index, e.target.value)}
                                                     placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
-                                                    className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                    className="w-full p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                                 />
-                                                {feedbackEmails.length > 1 && (
-                                                    <button
-                                                        onClick={() => removeEmailField(index)}
-                                                        className="p-2 text-red-500 hover:text-red-700"
-                                                    >
-                                                        ✕
-                                                    </button>
-                                                )}
                                             </div>
                                         ))}
                                     </div>
@@ -1755,7 +1771,7 @@ export default function TestPage() {
                                             onClick={addEmailField}
                                             className="px-4 py-2 text-sm bg-white/20 text-white rounded hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300"
                                         >
-                                            {t('feedbackInvite.addAnother') || 'Add Another Email'}
+                                            {t('feedbackInvite.addAnother') || 'Add Another Person'}
                                         </button>
                                         <button
                                             onClick={handleSendFeedbackInvitations}
