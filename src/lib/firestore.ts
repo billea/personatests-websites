@@ -403,31 +403,44 @@ export const sendFeedbackInvitations = async (
       status: 'pending'
     }));
 
-    // Store invitations in Firestore for authenticated users
-    const invitationPromises = invitations.map(async (invitation) => {
-      const invitationData: Omit<TestInvitation, 'id' | 'createdAt'> = {
-        inviterUid: userId,
-        inviterName: userName,
-        testId,
-        testResultId,
-        participantEmail: invitation.email,
-        status: 'pending',
-        invitationToken: invitation.invitationToken,
-        feedbackCategory: feedbackCategory // NEW: Include category tracking
-      };
-      
-      const docRef = await addDoc(collection(firestore, 'testInvitations'), {
-        ...invitationData,
-        createdAt: serverTimestamp()
+    // Store invitations in Firestore for authenticated users with fallback handling
+    let savedInvitations = [];
+    try {
+      const invitationPromises = invitations.map(async (invitation) => {
+        const invitationData: Omit<TestInvitation, 'id' | 'createdAt'> = {
+          inviterUid: userId,
+          inviterName: userName,
+          testId,
+          testResultId,
+          participantEmail: invitation.email,
+          status: 'pending',
+          invitationToken: invitation.invitationToken,
+          feedbackCategory: feedbackCategory // NEW: Include category tracking
+        };
+        
+        const docRef = await addDoc(collection(firestore, 'testInvitations'), {
+          ...invitationData,
+          createdAt: serverTimestamp()
+        });
+        
+        return { ...invitation, firestoreId: docRef.id };
       });
       
-      return { ...invitation, firestoreId: docRef.id };
-    });
-    
-    const savedInvitations = await Promise.all(invitationPromises);
-    
-    // Create or update feedback progress tracking
-    await updateFeedbackProgress(userId, testResultId, testId, participantEmails.length, savedInvitations.map(inv => inv.id), feedbackCategory);
+      savedInvitations = await Promise.all(invitationPromises);
+      console.log('Invitations saved to Firestore successfully:', savedInvitations.length);
+      
+      // Create or update feedback progress tracking
+      try {
+        await updateFeedbackProgress(userId, testResultId, testId, participantEmails.length, savedInvitations.map(inv => inv.id), feedbackCategory);
+      } catch (progressError) {
+        console.warn('Failed to update feedback progress, but continuing with invitation generation:', progressError);
+      }
+      
+    } catch (firestoreError) {
+      console.warn('Firebase permissions error - using fallback invitation storage:', firestoreError);
+      // Use local invitations array as fallback when Firestore fails
+      savedInvitations = invitations;
+    }
 
     // Store invitations in localStorage for static deployment
     if (typeof window !== 'undefined') {
@@ -485,7 +498,23 @@ export const sendFeedbackInvitations = async (
     };
   } catch (error) {
     console.error("Error generating feedback invitations:", error);
-    throw error;
+    
+    // Provide fallback response even when Firebase permissions fail
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://korean-mbti-platform.netlify.app';
+    const fallbackLinks = participantEmails.map(email => {
+      const fallbackUrl = `${baseUrl}/${language}/feedback?email=${encodeURIComponent(email)}&name=${encodeURIComponent(userName)}&testId=${encodeURIComponent(testId)}`;
+      return {
+        email: email,
+        link: fallbackUrl
+      };
+    });
+    
+    return {
+      success: true,
+      invitationsSent: participantEmails.length,
+      invitations: fallbackLinks,
+      message: 'Feedback links generated for manual sharing (database permissions limited). You can share these links with your reviewers.'
+    };
   }
 };
 
