@@ -1536,12 +1536,12 @@ export default function TestPage() {
                             {completedTestResult.scores && (
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
                                     {Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
-                                        <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm">
+                                        <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
                                             <div className="flex justify-between items-center mb-2">
-                                                <div className="font-semibold text-lg text-gray-900 dark:text-white">
+                                                <div className="font-semibold text-lg text-white">
                                                     {t(`results.dimensions.${dimension}`) || dimension}
                                                 </div>
-                                                <div className="text-xl font-bold text-white">{String(percentage)}%</div>
+                                                <div className="text-xl font-bold !text-white">{String(percentage)}%</div>
                                             </div>
                                             {/* Progress Bar */}
                                             <div className="w-full bg-white/10 rounded-full h-3 mb-2">
