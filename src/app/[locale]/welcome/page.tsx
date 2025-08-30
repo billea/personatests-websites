@@ -16,7 +16,6 @@ export default function WelcomePage() {
     const returnUrl = searchParams.get('returnUrl');
     const context = searchParams.get('context');
     const userName = searchParams.get('userName');
-    const [countdown, setCountdown] = useState(3);
     const [isRedirecting, setIsRedirecting] = useState(false);
     
     // Get user's display name or fallback
@@ -25,26 +24,6 @@ export default function WelcomePage() {
     
     const is360Feedback = context === 'feedback-360-test';
     const isCoupleCompatibility = context === 'couple-compatibility-test';
-    
-    // Auto-redirect after countdown
-    useEffect(() => {
-        if (!returnUrl || loading || !user) return;
-        
-        const timer = setInterval(() => {
-            setCountdown((prev) => {
-                if (prev <= 1) {
-                    setIsRedirecting(true);
-                    setTimeout(() => {
-                        router.push(returnUrl);
-                    }, 500);
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-        
-        return () => clearInterval(timer);
-    }, [returnUrl, loading, router, user]);
     
     // Redirect if no user or missing parameters
     useEffect(() => {
@@ -168,15 +147,6 @@ export default function WelcomePage() {
                         )}
                     </button>
                     
-                    {/* Auto-redirect countdown */}
-                    {countdown > 0 && !isRedirecting && (
-                        <p className="text-sm text-gray-500">
-                            {currentLanguage === 'ko' ? 
-                                `${countdown}초 후 자동으로 이동합니다` : 
-                                `Auto-redirecting in ${countdown} seconds`
-                            }
-                        </p>
-                    )}
                 </div>
                 
                 {/* User Benefits Reminder */}
