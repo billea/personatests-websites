@@ -1414,7 +1414,6 @@
     },
     "requires_feedback": "피드백 필요",
     "compatibility_test": "궁합 테스트",
-    "feedback360": {
       "title": "남들이 나를 어떻게 보는지? 360° 피드백",
       "description": "친구, 가족, 동료, 학우들이 당신을 어떻게 보는지 알아보세요! 관계 카테고리별로 맞춤형 질문을 통해 종합적인 피드백을 받아보세요.",
       "categories": {
