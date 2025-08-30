@@ -1526,7 +1526,7 @@ export default function TestPage() {
                                 {t('results.personalityType') || 'Your Personality Type'}
                             </h2>
                             {completedTestResult.type && (
-                                <div className="text-3xl font-bold text-yellow-300 mb-4">
+                                <div className="text-3xl font-bold text-white mb-4">
                                     {testId === 'couple-compatibility' 
                                         ? (t(`couple.personalityTypes.${completedTestResult.type}`) || completedTestResult.type)
                                         : (t(completedTestResult.type) || completedTestResult.type)}
@@ -1541,7 +1541,7 @@ export default function TestPage() {
                                                 <div className="font-semibold text-lg text-gray-900 dark:text-white">
                                                     {t(`results.dimensions.${dimension}`) || dimension}
                                                 </div>
-                                                <div className="text-xl font-bold text-yellow-300">{String(percentage)}%</div>
+                                                <div className="text-xl font-bold text-white">{String(percentage)}%</div>
                                             </div>
                                             {/* Progress Bar */}
                                             <div className="w-full bg-white/10 rounded-full h-3 mb-2">
