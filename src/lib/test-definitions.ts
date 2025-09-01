@@ -576,113 +576,113 @@ const universalQuestions: TestQuestion[] = [
   // Big Five Core Dimensions (Q1-5)
   {
     id: 'universal_1',
-    text_key: 'feedback360.universal.q1',
+    text_key: 'tests.feedback360.universal.q1',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_2',
-    text_key: 'feedback360.universal.q2',
+    text_key: 'tests.feedback360.universal.q2',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_3',
-    text_key: 'feedback360.universal.q3',
+    text_key: 'tests.feedback360.universal.q3',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_4',
-    text_key: 'feedback360.universal.q4',
+    text_key: 'tests.feedback360.universal.q4',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_5',
-    text_key: 'feedback360.universal.q5',
+    text_key: 'tests.feedback360.universal.q5',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   // Core Interpersonal Competencies (Q6-10)
   {
     id: 'universal_6',
-    text_key: 'feedback360.universal.q6',
+    text_key: 'tests.feedback360.universal.q6',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_7',
-    text_key: 'feedback360.universal.q7',
+    text_key: 'tests.feedback360.universal.q7',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_8',
-    text_key: 'feedback360.universal.q8',
+    text_key: 'tests.feedback360.universal.q8',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_9',
-    text_key: 'feedback360.universal.q9',
+    text_key: 'tests.feedback360.universal.q9',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'universal_10',
-    text_key: 'feedback360.universal.q10',
+    text_key: 'tests.feedback360.universal.q10',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   }
 ];
@@ -691,112 +691,112 @@ const universalQuestions: TestQuestion[] = [
 const workSpecificQuestions: TestQuestion[] = [
   {
     id: 'work_11',
-    text_key: 'feedback360.work.q11',
+    text_key: 'tests.feedback360.work.q11',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_12',
-    text_key: 'feedback360.work.q12',
+    text_key: 'tests.feedback360.work.q12',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_13',
-    text_key: 'feedback360.work.q13',
+    text_key: 'tests.feedback360.work.q13',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_14',
-    text_key: 'feedback360.work.q14',
+    text_key: 'tests.feedback360.work.q14',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_15',
-    text_key: 'feedback360.work.q15',
+    text_key: 'tests.feedback360.work.q15',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_16',
-    text_key: 'feedback360.work.q16',
+    text_key: 'tests.feedback360.work.q16',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_17',
-    text_key: 'feedback360.work.q17',
+    text_key: 'tests.feedback360.work.q17',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_18',
-    text_key: 'feedback360.work.q18',
+    text_key: 'tests.feedback360.work.q18',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_19',
-    text_key: 'feedback360.work.q19',
+    text_key: 'tests.feedback360.work.q19',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'work_20',
-    text_key: 'feedback360.work.q20',
+    text_key: 'tests.feedback360.work.q20',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   }
 ];
@@ -805,112 +805,112 @@ const workSpecificQuestions: TestQuestion[] = [
 const friendsSpecificQuestions: TestQuestion[] = [
   {
     id: 'friends_11',
-    text_key: 'feedback360.friends.q11',
+    text_key: 'tests.feedback360.friends.q11',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_12',
-    text_key: 'feedback360.friends.q12',
+    text_key: 'tests.feedback360.friends.q12',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_13',
-    text_key: 'feedback360.friends.q13',
+    text_key: 'tests.feedback360.friends.q13',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_14',
-    text_key: 'feedback360.friends.q14',
+    text_key: 'tests.feedback360.friends.q14',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_15',
-    text_key: 'feedback360.friends.q15',
+    text_key: 'tests.feedback360.friends.q15',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_16',
-    text_key: 'feedback360.friends.q16',
+    text_key: 'tests.feedback360.friends.q16',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_17',
-    text_key: 'feedback360.friends.q17',
+    text_key: 'tests.feedback360.friends.q17',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_18',
-    text_key: 'feedback360.friends.q18',
+    text_key: 'tests.feedback360.friends.q18',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_19',
-    text_key: 'feedback360.friends.q19',
+    text_key: 'tests.feedback360.friends.q19',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'friends_20',
-    text_key: 'feedback360.friends.q20',
+    text_key: 'tests.feedback360.friends.q20',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   }
 ];
@@ -918,112 +918,112 @@ const friendsSpecificQuestions: TestQuestion[] = [
 const familySpecificQuestions: TestQuestion[] = [
   {
     id: 'family_11',
-    text_key: 'feedback360.family.q11',
+    text_key: 'tests.feedback360.family.q11',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_12',
-    text_key: 'feedback360.family.q12',
+    text_key: 'tests.feedback360.family.q12',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_13',
-    text_key: 'feedback360.family.q13',
+    text_key: 'tests.feedback360.family.q13',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_14',
-    text_key: 'feedback360.family.q14',
+    text_key: 'tests.feedback360.family.q14',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_15',
-    text_key: 'feedback360.family.q15',
+    text_key: 'tests.feedback360.family.q15',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_16',
-    text_key: 'feedback360.family.q16',
+    text_key: 'tests.feedback360.family.q16',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_17',
-    text_key: 'feedback360.family.q17',
+    text_key: 'tests.feedback360.family.q17',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_18',
-    text_key: 'feedback360.family.q18',
+    text_key: 'tests.feedback360.family.q18',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_19',
-    text_key: 'feedback360.family.q19',
+    text_key: 'tests.feedback360.family.q19',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'family_20',
-    text_key: 'feedback360.family.q20',
+    text_key: 'tests.feedback360.family.q20',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   }
 ];
@@ -1031,112 +1031,112 @@ const familySpecificQuestions: TestQuestion[] = [
 const academicSpecificQuestions: TestQuestion[] = [
   {
     id: 'academic_11',
-    text_key: 'feedback360.academic.q11',
+    text_key: 'tests.feedback360.academic.q11',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_12',
-    text_key: 'feedback360.academic.q12',
+    text_key: 'tests.feedback360.academic.q12',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_13',
-    text_key: 'feedback360.academic.q13',
+    text_key: 'tests.feedback360.academic.q13',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_14',
-    text_key: 'feedback360.academic.q14',
+    text_key: 'tests.feedback360.academic.q14',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_15',
-    text_key: 'feedback360.academic.q15',
+    text_key: 'tests.feedback360.academic.q15',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_16',
-    text_key: 'feedback360.academic.q16',
+    text_key: 'tests.feedback360.academic.q16',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_17',
-    text_key: 'feedback360.academic.q17',
+    text_key: 'tests.feedback360.academic.q17',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_18',
-    text_key: 'feedback360.academic.q18',
+    text_key: 'tests.feedback360.academic.q18',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_19',
-    text_key: 'feedback360.academic.q19',
+    text_key: 'tests.feedback360.academic.q19',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'academic_20',
-    text_key: 'feedback360.academic.q20',
+    text_key: 'tests.feedback360.academic.q20',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   }
 ];
@@ -1144,112 +1144,112 @@ const academicSpecificQuestions: TestQuestion[] = [
 const generalSpecificQuestions: TestQuestion[] = [
   {
     id: 'general_11',
-    text_key: 'feedback360.general.q11',
+    text_key: 'tests.feedback360.general.q11',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_12',
-    text_key: 'feedback360.general.q12',
+    text_key: 'tests.feedback360.general.q12',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_13',
-    text_key: 'feedback360.general.q13',
+    text_key: 'tests.feedback360.general.q13',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_14',
-    text_key: 'feedback360.general.q14',
+    text_key: 'tests.feedback360.general.q14',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_15',
-    text_key: 'feedback360.general.q15',
+    text_key: 'tests.feedback360.general.q15',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_16',
-    text_key: 'feedback360.general.q16',
+    text_key: 'tests.feedback360.general.q16',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_17',
-    text_key: 'feedback360.general.q17',
+    text_key: 'tests.feedback360.general.q17',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_18',
-    text_key: 'feedback360.general.q18',
+    text_key: 'tests.feedback360.general.q18',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_19',
-    text_key: 'feedback360.general.q19',
+    text_key: 'tests.feedback360.general.q19',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   },
   {
     id: 'general_20',
-    text_key: 'feedback360.general.q20',
+    text_key: 'tests.feedback360.general.q20',
     type: 'scale',
     scale: {
       min: 1,
       max: 5,
-      minLabel_key: 'feedback360.scale.1',
-      maxLabel_key: 'feedback360.scale.5'
+      minLabel_key: 'tests.feedback360.scale.1',
+      maxLabel_key: 'tests.feedback360.scale.5'
     }
   }
 ];
