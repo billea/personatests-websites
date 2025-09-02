@@ -6,7 +6,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
-import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult } from "@/lib/firestore";
+import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 
 export default function TestPage() {
@@ -124,6 +124,8 @@ export default function TestPage() {
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [showCategorySelection, setShowCategorySelection] = useState(false);
     const [partnerNameInput, setPartnerNameInput] = useState<string>('');
+    const [existingResult, setExistingResult] = useState<any>(null);
+    const [showExistingResultOptions, setShowExistingResultOptions] = useState(false);
 
     // Generate unique progress key for this test session
     const getProgressKey = () => `test_progress_${testId}_${user?.uid || 'anonymous'}`;
@@ -222,6 +224,50 @@ export default function TestPage() {
             console.error('Error clearing test progress:', error);
         }
     };
+
+    // Check for existing completed test results
+    const checkForExistingResults = async () => {
+        if (!user) return null;
+        
+        try {
+            // For 360° feedback, check for any completed results of this test type
+            if (testId === 'feedback-360') {
+                // First check Firestore for logged-in users
+                const userResults = await getUserTestResults(user.uid);
+                const existingFeedback360 = userResults.find(result => 
+                    result.testId.startsWith('feedback-360')
+                );
+                
+                if (existingFeedback360) {
+                    console.log('Found existing 360° feedback result in Firestore:', existingFeedback360);
+                    return existingFeedback360;
+                }
+                
+                // Also check localStorage as fallback
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key?.startsWith('test_result_') && key.includes('feedback-360')) {
+                        try {
+                            const savedResult = localStorage.getItem(key);
+                            if (savedResult) {
+                                const parsedResult = JSON.parse(savedResult);
+                                if (parsedResult.testId?.startsWith('feedback-360')) {
+                                    console.log('Found existing 360° feedback result in localStorage:', parsedResult);
+                                    return parsedResult;
+                                }
+                            }
+                        } catch (error) {
+                            console.error('Error checking localStorage result:', error);
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('Error checking for existing results:', error);
+        }
+        
+        return null;
+    };
     
     // Resume from saved progress
     const resumeFromProgress = () => {
@@ -306,17 +352,43 @@ export default function TestPage() {
         }
         
         if (definition) {
-            const savedProgress = loadTestProgress();
-            if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
-                setHasInProgressTest(true);
-                setShowResumePrompt(true);
+            // Check for existing completed results first (only for logged-in users and feedback-360)
+            if (user && testId === 'feedback-360') {
+                checkForExistingResults().then(existingResult => {
+                    if (existingResult) {
+                        setExistingResult(existingResult);
+                        setShowExistingResultOptions(true);
+                        setLoading(false);
+                        return;
+                    }
+                    
+                    // No existing results, check for in-progress test
+                    const savedProgress = loadTestProgress();
+                    if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
+                        setHasInProgressTest(true);
+                        setShowResumePrompt(true);
+                    }
+                    
+                    if (!userName && !hasInProgressTest) {
+                        setShowNameInput(true);
+                    }
+                    
+                    setLoading(false);
+                });
+            } else {
+                // For other tests or anonymous users, check for in-progress test normally
+                const savedProgress = loadTestProgress();
+                if (savedProgress && Object.keys(savedProgress.answers).length > 0) {
+                    setHasInProgressTest(true);
+                    setShowResumePrompt(true);
+                }
+                
+                if (testId === 'feedback-360' && !userName && !hasInProgressTest) {
+                    setShowNameInput(true);
+                }
+                
+                setLoading(false);
             }
-            
-            if (testId === 'feedback-360' && !userName && !hasInProgressTest) {
-                setShowNameInput(true);
-            }
-            
-            setLoading(false);
         } else if (testId === 'feedback-360' && !selectedCategory) {
             setLoading(false);
         } else {
@@ -1029,6 +1101,86 @@ export default function TestPage() {
                             'Loading test...'
                         }
                     </p>
+                </div>
+            </div>
+        );
+    }
+
+    // Show existing result options for feedback-360 test
+    if (showExistingResultOptions && existingResult && testId === 'feedback-360') {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
+                <div className="w-full max-w-2xl p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg text-center">
+                    <div className="mb-6">
+                        <h1 className="text-3xl font-bold mb-4 text-white">
+                            🎯 {currentLanguage === 'ko' ? '이미 완료된 360° 피드백이 있습니다!' : 'You already have a completed 360° Feedback!'}
+                        </h1>
+                        <p className="text-lg text-white/90 mb-4">
+                            {currentLanguage === 'ko' ? 
+                                '다음 중 원하는 옵션을 선택해주세요:' :
+                                'Please choose what you would like to do:'
+                            }
+                        </p>
+                        <div className="text-sm text-white/70 mb-6">
+                            {currentLanguage === 'ko' ? 
+                                `완료 날짜: ${new Date(existingResult.completedAt || existingResult.result?.completedAt || Date.now()).toLocaleDateString('ko-KR')}` :
+                                `Completed: ${new Date(existingResult.completedAt || existingResult.result?.completedAt || Date.now()).toLocaleDateString()}`
+                            }
+                        </div>
+                    </div>
+
+                    <div className="space-y-4">
+                        {/* View Results */}
+                        <button
+                            onClick={() => {
+                                router.push(`/${currentLanguage}/results`);
+                            }}
+                            className="w-full py-4 px-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 text-lg shadow-lg"
+                        >
+                            📊 {currentLanguage === 'ko' ? '결과 보기' : 'View Results'}
+                        </button>
+
+                        {/* Send Invitations */}
+                        <button
+                            onClick={() => {
+                                // Set up the test result and go to invitation sending
+                                setCompletedTestResult(existingResult.result || existingResult);
+                                setTestResultId(existingResult.id || 'existing');
+                                setTestCompleted(true);
+                                setShowExistingResultOptions(false);
+                            }}
+                            className="w-full py-4 px-6 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold rounded-lg hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 text-lg shadow-lg"
+                        >
+                            📧 {currentLanguage === 'ko' ? '피드백 초대장 보내기' : 'Send Feedback Invitations'}
+                        </button>
+
+                        {/* Retake Test */}
+                        <button
+                            onClick={() => {
+                                if (window.confirm(currentLanguage === 'ko' ? 
+                                    '정말 테스트를 다시 받으시겠습니까? 기존 결과는 유지됩니다.' :
+                                    'Are you sure you want to retake the test? Your existing results will be kept.'
+                                )) {
+                                    setExistingResult(null);
+                                    setShowExistingResultOptions(false);
+                                    setShowCategorySelection(true);
+                                }
+                            }}
+                            className="w-full py-4 px-6 bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold rounded-lg hover:from-yellow-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 text-lg shadow-lg"
+                        >
+                            🔄 {currentLanguage === 'ko' ? '테스트 다시 받기' : 'Retake Test'}
+                        </button>
+
+                        {/* Go Back */}
+                        <button
+                            onClick={() => {
+                                router.push(`/${currentLanguage}/tests`);
+                            }}
+                            className="w-full py-3 px-6 bg-gray-500/70 text-white font-medium rounded-lg hover:bg-gray-600/70 transition-colors duration-200"
+                        >
+                            ← {currentLanguage === 'ko' ? '테스트 목록으로 돌아가기' : 'Back to Test List'}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
