@@ -555,11 +555,14 @@ export const sendFeedbackInvitations = async (
         };
 
         console.log(`Sending 360 feedback invitation email to: ${link.email}`);
+        console.log('Email parameters:', emailParams);
         
-        // Use the same service and a 360-feedback specific template
+        // Use the same service and default EmailJS template
         const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-        const templateId = 'template_360_feedback_request'; // Use existing working template
+        const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''; // Use default template from environment
         const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+        
+        console.log(`Using EmailJS template: ${templateId} for 360 feedback invitation`);
         
         try {
           const emailResponse = await emailjs.send(serviceId, templateId, emailParams, publicKey);
