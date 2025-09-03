@@ -536,7 +536,7 @@ export default function ResultsPage() {
                         <h3 className="text-3xl font-bold text-white mb-2">
                             💕 Couple Compatibility Results
                         </h3>
-                        <p className="text-white/80 text-lg">
+                        <p className="text-white text-lg">
                             Completed on {formatDate(result.createdAt)}
                         </p>
                     </div>
@@ -658,7 +658,7 @@ export default function ResultsPage() {
                             onClick={() => setSelectedResultId(
                                 selectedResultId === result.id ? null : result.id!
                             )}
-                            className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 rounded-lg hover:bg-white/20 transition-all duration-300"
+                            className="px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/30 transition-all duration-300"
                         >
                             {selectedResultId === result.id ? 'Hide Details' : 'Show Details'}
                         </button>
@@ -727,16 +727,16 @@ export default function ResultsPage() {
 
         // Default rendering for other test types (MBTI, etc.)
         return (
-            <div key={result.id} className="p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
+            <div key={result.id} className="p-6 bg-white/30 backdrop-blur-md border border-white/40 rounded-lg shadow-lg">
                 <div className="flex justify-between items-start mb-4">
                     <div>
                         <h3 className="text-xl font-semibold text-white">
                             {getTestName(result.testId)}
                         </h3>
-                        <p className="text-white/80">
+                        <p className="text-white">
                             Completed on {formatDate(result.createdAt)}
                         </p>
-                        <div className="flex gap-4 text-sm text-white/70 mt-1">
+                        <div className="flex gap-4 text-sm text-white mt-1">
                             <span>Questions: {Object.keys(hasAnswers || {}).length}</span>
                             {resultFeedback.length > 0 && (
                                 <span className="text-green-400">

@@ -33,9 +33,20 @@
     "invite_feedback_description": "Get a complete picture by inviting friends and colleagues to provide feedback about you."
   },
   "tests": {
-    "page_title": "Personality Tests",
+    "page_title": "Personality Tests", 
     "requires_feedback": "Requires inviting others for feedback",
     "compatibility_test": "Couple Compatibility Test",
+    "feedback360": {
+      "title": "360° Feedback Assessment",
+      "description": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.",
+      "categories": {
+        "work": "Work Colleagues",
+        "friends": "Friends", 
+        "family": "Family",
+        "academic": "Academic Partners",
+        "general": "General Relationships"
+      }
+    },
     "mbti": {
       "title": "16 Personalities (MBTI)",
       "description": "Discover your Myers-Briggs personality type with this 20-question assessment",
@@ -610,6 +621,7 @@
     "strengths": "Your Strengths",
     "growthOpportunities": "Growth Opportunities",
     "aboutType": "About Your Type",
+    "feedback360Profile": "360° Feedback Profile",
     "indicators": {
       "strongPreference": "Strong preference",
       "clearTendency": "Clear tendency",
@@ -704,7 +716,6 @@
   "Agreeableness": "Agreeableness",
   "Conscientiousness": "Conscientiousness",
   "Openness": "Openness",
-  "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.",
   "emailSignup": {
     "title": "Want More Insights About Your Personality?",
     "description": "Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.",
