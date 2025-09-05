@@ -160,6 +160,19 @@
         "academic": "Academic Partners",
         "general": "General Relationships"
       },
+      "ui": {
+        "title": "Feedback Request",
+        "instructions": "Please answer the following questions honestly. Your responses will be kept completely anonymous.",
+        "loading": "Loading feedback form...",
+        "submitting": "Submitting your feedback...",
+        "thank_you": "Thank You!",
+        "submitted_message": "Your feedback for {name} has been successfully submitted.",
+        "submitted_description": "{name} will receive your insights while your identity remains completely anonymous.",
+        "scale_labels": {
+          "not_at_all": "Not at all",
+          "always": "Always"
+        }
+      },
       "universal": {
         "q1": "Does this person manage emotions well and stay calm under stress or pressure?",
         "q2": "How well does this person adapt to new situations or unexpected changes?",
