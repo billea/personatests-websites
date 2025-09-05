@@ -231,16 +231,49 @@ async function sendFeedbackEmail(invitation: any, testId: string) {
 
   const feedbackUrl = `${functions.config().app?.base_url || 'https://localhost:3000'}/feedback/${invitation.id}?token=${invitation.invitationToken}`;
 
+  const recipientName = invitation.participantEmail.split('@')[0];
+  
   const emailData = {
     service_id: emailjsServiceId,
     template_id: emailjsTemplateId,
     user_id: emailjsUserId,
     accessToken: emailjsPrivateKey,
     template_params: {
+      // Standard EmailJS parameters
       to_email: invitation.participantEmail,
-      inviter_name: invitation.inviterName,
-      feedback_url: feedbackUrl,
-      test_name: getTestName(testId)
+      email: invitation.participantEmail,
+      recipient_email: invitation.participantEmail,
+      to_name: recipientName,
+      name: recipientName,
+      recipient_name: recipientName,
+      from_name: invitation.inviterName,
+      sender_name: invitation.inviterName,
+      invitation_link: feedbackUrl,
+      link: feedbackUrl,
+      
+      // 360 Feedback specific parameters
+      test_title: '🎯 360° Feedback Assessment',
+      header_title: '360° Feedback Assessment',
+      header_subtitle: 'Help Provide Multi-Perspective Personality Insights',
+      greeting: `Hello ${recipientName}!`,
+      invitation_message: `${invitation.inviterName} has requested your participation in a 360° feedback assessment.`,
+      description: `This assessment helps ${invitation.inviterName} gain comprehensive insights into their personality and behavior. You'll evaluate areas like leadership, communication, teamwork, and emotional intelligence.`,
+      
+      // Benefits list
+      benefits: [
+        `🎯 Provide valuable insights into ${invitation.inviterName}'s personality`,
+        '💬 Evaluate key areas like leadership, communication, and teamwork',
+        '🔒 Complete anonymity - individual responses never shared',
+        `🎁 Opportunity to contribute to ${invitation.inviterName}'s growth and development`
+      ].join('\n'),
+      
+      // Call to action
+      cta_text: 'Provide Feedback',
+      time_estimate: 'Time Required: 5-10 minutes',
+      privacy_note: 'Privacy: Your individual answers remain private - only the combined feedback results are shared.',
+      
+      // Footer
+      category_context: `Please answer questions about ${invitation.inviterName} from your perspective as their contact.`
     }
   };
 
