@@ -371,82 +371,92 @@ If you received this link via email, the email client may have broken the link. 
     });
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-8">
-            <div className="w-full max-w-3xl">
-                <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold mb-4 text-gray-900">
-                        {t('feedback360.ui.title') || '피드백 요청'}
-                    </h1>
-                    <p className="text-lg text-gray-600 mb-2">
-                        {isKorean 
-                            ? `${invitation.inviterName}이 피드백을 요청했습니다`
-                            : `${invitation.inviterName} has asked for your feedback`
-                        }
-                    </p>
-                    <p className="text-gray-500 mb-6">
-                        {t('feedback360.ui.instructions') || '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.'}
-                    </p>
-                    
-                    {/* Progress Bar */}
-                    <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                        <div
-                            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                            style={{ width: `${((currentQuestionIndex + 1) / testDefinition.questions.length) * 100}%` }}
-                        ></div>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-2">
-                        {isKorean 
-                            ? `질문 ${currentQuestionIndex + 1}/${testDefinition.questions.length}`
-                            : `Question ${currentQuestionIndex + 1} of ${testDefinition.questions.length}`
-                        }
-                    </p>
-                </div>
-
-                <div className="p-8 bg-white border border-gray-200 rounded-lg shadow">
-                    <h2 className="mb-6 text-xl font-semibold text-gray-900" data-translate={currentQuestion.text_key}>
-                        {t(currentQuestion.text_key) || currentQuestion.text_key}
-                    </h2>
-                    
-                    <p className="text-sm text-gray-500 mb-6">
-                        {isKorean 
-                            ? `이 질문에 답할 때 ${invitation.inviterName}을 생각해 주세요.`
-                            : `Think about ${invitation.inviterName} when answering this question.`
-                        }
-                    </p>
-
-                    {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
-                        <div className="flex flex-col gap-3">
-                            {currentQuestion.options.map((option, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => handleAnswer(option.value)}
-                                    className="w-full p-4 text-left bg-gray-50 border border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
-                                    data-translate={option.text_key}
-                                >
-                                    {t(option.text_key) || option.text_key}
-                                </button>
-                            ))}
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-purple-100">
+            <main className="flex min-h-screen flex-col items-center justify-center p-8">
+                <div className="w-full max-w-4xl">
+                    {/* Header Card */}
+                    <div className="mb-8 text-center bg-white/80 backdrop-blur-sm border border-purple-200/50 rounded-2xl shadow-xl p-8">
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white text-2xl font-bold mb-6">
+                            🎯
                         </div>
-                    )}
+                        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                            {t('feedback360.ui.title') || '피드백 요청'}
+                        </h1>
+                        <p className="text-xl text-gray-700 mb-2 font-medium">
+                            {isKorean 
+                                ? `${invitation.inviterName}님이 피드백을 요청했습니다`
+                                : `${invitation.inviterName} has asked for your feedback`
+                            }
+                        </p>
+                        <p className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                            {t('feedback360.ui.instructions') || '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.'}
+                        </p>
+                        
+                        {/* Enhanced Progress Bar */}
+                        <div className="w-full bg-gradient-to-r from-purple-100 to-blue-100 rounded-full h-3 mb-4 shadow-inner">
+                            <div
+                                className="bg-gradient-to-r from-purple-500 to-blue-500 h-3 rounded-full transition-all duration-500 shadow-sm"
+                                style={{ width: `${((currentQuestionIndex + 1) / testDefinition.questions.length) * 100}%` }}
+                            ></div>
+                        </div>
+                        <p className="text-sm font-medium text-gray-600">
+                            {isKorean 
+                                ? `질문 ${currentQuestionIndex + 1} / ${testDefinition.questions.length}`
+                                : `Question ${currentQuestionIndex + 1} of ${testDefinition.questions.length}`
+                            }
+                        </p>
+                    </div>
 
-                    {currentQuestion.type === 'scale' && currentQuestion.scale && (
-                        <div className="space-y-4">
-                            <div className="flex justify-between text-sm text-gray-500">
-                                <span>
-                                    {t('feedback360.ui.scale_labels.not_at_all') || '전혀 그렇지 않다'}
-                                </span>
-                                <span>
-                                    {t('feedback360.ui.scale_labels.always') || '매우 그렇다'}
-                                </span>
+                    {/* Question Card */}
+                    <div className="bg-white/90 backdrop-blur-sm border border-purple-200/50 rounded-2xl shadow-2xl p-10">
+                        <h2 className="mb-6 text-2xl font-bold text-gray-800" data-translate={currentQuestion.text_key}>
+                            {t(currentQuestion.text_key) || currentQuestion.text_key}
+                        </h2>
+                        
+                        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4 mb-8 border border-purple-100">
+                            <p className="text-sm text-gray-600 font-medium">
+                                {isKorean 
+                                    ? `이 질문에 답할 때 ${invitation.inviterName}님을 생각해 주세요.`
+                                    : `Think about ${invitation.inviterName} when answering this question.`
+                                }
+                            </p>
+                        </div>
+
+                        {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
+                            <div className="flex flex-col gap-4">
+                                {currentQuestion.options.map((option, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleAnswer(option.value)}
+                                        className="w-full p-6 text-left bg-gradient-to-r from-white to-purple-50 border border-purple-200 rounded-xl hover:from-purple-100 hover:to-blue-100 hover:border-purple-300 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
+                                        data-translate={option.text_key}
+                                    >
+                                        <span className="font-medium text-gray-800">{t(option.text_key) || option.text_key}</span>
+                                    </button>
+                                ))}
                             </div>
-                            <div className="flex justify-between gap-2">
-                                {Array.from({ length: currentQuestion.scale.max - currentQuestion.scale.min + 1 }, (_, i) => {
-                                    const value = currentQuestion.scale!.min + i;
-                                    return (
-                                        <button
-                                            key={value}
-                                            onClick={() => handleAnswer(value)}
-                                            className="flex-1 py-3 text-center bg-gray-50 border border-gray-300 rounded hover:bg-blue-100 hover:border-blue-300 transition-colors"
+                        )}
+
+                        {currentQuestion.type === 'scale' && currentQuestion.scale && (
+                            <div className="space-y-6">
+                                <div className="flex justify-between text-sm font-medium text-gray-600 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4">
+                                    <span className="flex items-center">
+                                        <span className="w-3 h-3 rounded-full bg-red-400 mr-2"></span>
+                                        {t('feedback360.ui.scale_labels.not_at_all') || '전혀 그렇지 않다'}
+                                    </span>
+                                    <span className="flex items-center">
+                                        {t('feedback360.ui.scale_labels.always') || '매우 그렇다'}
+                                        <span className="w-3 h-3 rounded-full bg-green-400 ml-2"></span>
+                                    </span>
+                                </div>
+                                <div className="flex justify-between gap-3">
+                                    {Array.from({ length: currentQuestion.scale.max - currentQuestion.scale.min + 1 }, (_, i) => {
+                                        const value = currentQuestion.scale!.min + i;
+                                        return (
+                                            <button
+                                                key={value}
+                                                onClick={() => handleAnswer(value)}
+                                                className="flex-1 py-4 text-center font-bold text-lg bg-gradient-to-b from-white to-purple-50 border-2 border-purple-200 rounded-xl hover:from-purple-100 hover:to-blue-100 hover:border-purple-400 transition-all duration-300 shadow-sm hover:shadow-lg transform hover:scale-105"
                                         >
                                             {value}
                                         </button>
@@ -457,36 +467,47 @@ If you received this link via email, the email client may have broken the link. 
                     )}
                 </div>
 
-                {/* Navigation buttons */}
-                <div className="mt-6 flex justify-between items-center">
-                    <button
-                        onClick={handlePreviousQuestion}
-                        disabled={currentQuestionIndex === 0}
-                        className={`px-4 py-2 text-sm rounded-lg transition-colors ${
-                            currentQuestionIndex === 0
-                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
-                    >
-                        ← {isKorean ? '이전' : 'Previous'}
-                    </button>
-                    
-                    <span className="text-sm text-gray-500">
-                        {currentQuestionIndex + 1} / {testDefinition.questions.length}
-                    </span>
-                    
-                    <div className="w-20"></div> {/* Spacer to center the progress */}
-                </div>
+                        {/* Navigation buttons */}
+                        <div className="mt-8 flex justify-between items-center">
+                            <button
+                                onClick={handlePreviousQuestion}
+                                disabled={currentQuestionIndex === 0}
+                                className={`px-6 py-3 text-sm rounded-xl font-medium transition-all duration-300 ${
+                                    currentQuestionIndex === 0
+                                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        : 'bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 hover:from-purple-200 hover:to-blue-200 border border-purple-200 shadow-sm hover:shadow-md'
+                                }`}
+                            >
+                                ← {isKorean ? '이전' : 'Previous'}
+                            </button>
+                            
+                            <span className="text-sm font-medium text-gray-600 bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-2 rounded-full border border-purple-200">
+                                {currentQuestionIndex + 1} / {testDefinition.questions.length}
+                            </span>
+                            
+                            <div className="w-20"></div> {/* Spacer to center the progress */}
+                        </div>
+                    </div>
 
-                <div className="mt-4 text-center text-sm text-gray-500">
-                    <p>
-                        {isKorean 
-                            ? `이 피드백은 완전히 익명입니다. ${invitation.inviterName}은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.`
-                            : `This feedback is completely anonymous. ${invitation.inviterName} will see aggregated results but not individual responses or who provided them.`
-                        }
-                    </p>
+                    {/* Footer */}
+                    <div className="mt-8 text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-purple-200/50 shadow-lg">
+                        <div className="flex items-center justify-center mb-3">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 flex items-center justify-center mr-3">
+                                <span className="text-white text-sm">🔒</span>
+                            </div>
+                            <p className="text-sm font-semibold text-gray-700">
+                                {isKorean ? '100% 익명 보장' : '100% Anonymous Guarantee'}
+                            </p>
+                        </div>
+                        <p className="text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                            {isKorean 
+                                ? `이 피드백은 완전히 익명입니다. ${invitation.inviterName}님은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.`
+                                : `This feedback is completely anonymous. ${invitation.inviterName} will see aggregated results but not individual responses or who provided them.`
+                            }
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     );
 }

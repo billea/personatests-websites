@@ -39,6 +39,19 @@
     "feedback360": {
       "title": "360° Feedback Assessment",
       "description": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.",
+      "ui": {
+        "title": "Feedback Request",
+        "loading": "Loading...",
+        "instructions": "Please answer the following questions honestly. Your responses will be handled anonymously.",
+        "thank_you": "Thank you!",
+        "submitted_message": "Your feedback for {name} has been successfully submitted.",
+        "submitted_description": "{name} will receive your insights, and your identity will remain completely anonymous.",
+        "submitting": "Submitting your feedback...",
+        "scale_labels": {
+          "not_at_all": "Not at all",
+          "always": "Always"
+        }
+      },
       "categories": {
         "work": "Work Colleagues",
         "friends": "Friends", 
