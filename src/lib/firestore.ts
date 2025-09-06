@@ -512,7 +512,7 @@ export const sendFeedbackInvitations = async (
         }[feedbackCategory] || (language === 'ko' ? '360도 피드백' : '360° Feedback');
         
         const emailParams = {
-          // Use same simple parameter structure as couple compatibility
+          // Standard EmailJS parameters
           to_email: link.email,
           email: link.email,
           recipient_email: link.email,
@@ -523,11 +523,23 @@ export const sendFeedbackInvitations = async (
           sender_name: userName,
           invitation_link: link.link,
           link: link.link,
-          message: language === 'ko' ?
-            `${userName}님이 360도 피드백 평가에 참여해 달라고 요청했습니다. 리더십, 소통, 팀워크, 감정 지능 등을 평가해 주세요. 귀하의 응답은 완전히 익명으로 처리되며, ${userName}님의 성장에 도움이 됩니다.` :
-            `${userName} has requested your participation in a 360° feedback assessment. You'll evaluate areas like leadership, communication, teamwork, and emotional intelligence. Your responses are completely anonymous and will help ${userName} grow professionally.`,
-          time_estimate: language === 'ko' ? '소요 시간: 5-10분' : 'Time Required: 5-10 minutes',
-          additional_info: language === 'ko' ?
+          
+          // Template-specific parameters matching template_ftlg4we
+          test_title: language === 'ko' ? '🎯 360도 피드백 평가' : '🎯 360° Feedback Assessment',
+          greeting: language === 'ko' ? `안녕하세요 ${recipientName}님!` : `Hello ${recipientName}!`,
+          invitation_message: language === 'ko' ? 
+            `${userName}님이 360도 피드백 평가에 참여해 달라고 요청했습니다.` :
+            `${userName} has requested your participation in a 360° feedback assessment.`,
+          assessment_info_title: language === 'ko' ? '평가 정보' : 'Assessment Information',
+          assessment_info_description: language === 'ko' ?
+            `이 평가는 ${userName}님이 자신의 성격과 행동에 대한 포괄적인 피드백을 받을 수 있도록 도와줍니다. 리더십, 소통, 팀워크, 감정 지능 등을 평가하게 됩니다.` :
+            `This assessment helps ${userName} gain comprehensive insights into their personality and behavior. You'll evaluate areas like leadership, communication, teamwork, and emotional intelligence.`,
+          cta_text: language === 'ko' ? '피드백 제공하기' : 'Provide Feedback',
+          additional_info: language === 'ko' ? '소요 시간: 5-10분' : 'Time Required: 5-10 minutes',
+          footer_message: language === 'ko' ? 
+            `${friendlyCategory} 관점에서 ${userName}님에 대한 질문에 답해주세요.` :
+            `Please answer questions about ${userName} from your perspective as ${friendlyCategory.toLowerCase()}.`,
+          privacy_note: language === 'ko' ? 
             '개인정보 보호: 귀하의 개별 답변은 비공개로 유지되며 결합된 피드백 결과만 공유됩니다.' :
             'Privacy: Your individual answers remain private - only the combined feedback results are shared.'
         };
