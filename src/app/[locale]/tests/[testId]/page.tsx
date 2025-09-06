@@ -900,94 +900,16 @@ export default function TestPage() {
             );
             
             if (result.success && result.invitations) {
-                // Try to send emails automatically using EmailJS
-                try {
-                    console.log('Starting EmailJS integration...');
-                    const emailjs = (await import('@emailjs/browser')).default;
-                    
-                    // Debug: Check environment variables
-                    console.log('EmailJS Config:', {
-                        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.substring(0, 10) + '...',
-                        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-                        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-                    });
-                    
-                    // Initialize EmailJS with your public key
-                    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
-                    console.log('EmailJS initialized successfully');
-                    
-                    // Send emails to all participants
-                    const emailPromises = result.invitations.map(async (invitation: any) => {
-                        // Debug: Log the email being sent
-                        console.log('Sending email to:', invitation.email);
-                        
-                        const emailParams = {
-                            to_email: invitation.email,
-                            to_name: invitation.email.split('@')[0],
-                            from_name: userName.trim(),
-                            invitation_link: invitation.link
-                        };
-                        
-                        // Enhanced EmailJS debug logging
-                        console.log('=== EMAILJS DEBUG ===');
-                        console.log('EmailJS parameters:', emailParams);
-                        console.log('Full invitation link being sent:', invitation.link);
-                        console.log('Link length:', invitation.link.length);
-                        console.log('Link contains all params?', invitation.link.includes('token=') && invitation.link.includes('name=') && invitation.link.includes('testId=') && invitation.link.includes('testResultId=') && invitation.link.includes('email='));
-                        console.log('=== END EMAILJS DEBUG ===');
-
-                        try {
-                            const result = await emailjs.send(
-                                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-                                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-                                emailParams
-                            );
-                            console.log('Email sent successfully to:', invitation.email, result);
-                            return result;
-                        } catch (emailError) {
-                            console.error('Failed to send email to:', invitation.email, emailError);
-                            throw emailError;
-                        }
-                    });
-
-                    console.log('Sending all emails...');
-                    await Promise.all(emailPromises);
-                    console.log('All emails sent successfully!');
-
-                    // Success! Emails were sent
-                    alert(currentLanguage === 'ko' ? 
-                        `이메일 초대장이 성공적으로 발송되었습니다!\n\n${validEmails.length}개의 이메일이 발송되었습니다. 참가자들이 이메일을 확인하여 피드백을 제공할 수 있습니다.` :
-                        `Email invitations sent successfully!\n\n${validEmails.length} emails have been sent. Participants can check their email to provide feedback.`
-                    );
-                    
-                    router.push(`/${currentLanguage}/results`);
-
-                } catch (emailError) {
-                    console.error('Email sending failed, falling back to manual sharing:', emailError);
-                    
-                    // Fallback to manual sharing if email service fails
-                    const linksText = result.invitations.map((inv: any) => 
-                        `${inv.email}: ${inv.link}`
-                    ).join('\n\n');
-                    
-                    const message = currentLanguage === 'ko' ? 
-                        `자동 이메일 발송에 실패했습니다.\n\n다음 링크들을 각 참가자에게 수동으로 공유해주세요:\n\n${linksText}` :
-                        `Automatic email sending failed.\n\nPlease manually share these links with your reviewers:\n\n${linksText}`;
-                    
-                    const confirmed = confirm(`${message}\n\n링크를 클립보드에 복사하시겠습니까? (Would you like to copy the links to clipboard?)`);
-                    
-                    if (confirmed) {
-                        try {
-                            await navigator.clipboard.writeText(linksText);
-                            alert(currentLanguage === 'ko' ? '링크가 클립보드에 복사되었습니다!' : 'Links copied to clipboard!');
-                        } catch (clipboardError) {
-                            console.error('Failed to copy to clipboard:', clipboardError);
-                            prompt(currentLanguage === 'ko' ? '다음 링크들을 복사하세요:' : 'Copy these links:', linksText);
-                        }
-                    }
-                    
-                    router.push(`/${currentLanguage}/results`);
-                }
+                // Email sending is now handled in sendFeedbackInvitations function to prevent duplicates
+                console.log('Email sending delegated to sendFeedbackInvitations function - skipping duplicate EmailJS calls');
+                
+                // Success! Show confirmation
+                alert(currentLanguage === 'ko' ? 
+                    `이메일 초대장이 성공적으로 발송되었습니다!\n\n${validEmails.length}개의 이메일이 발송되었습니다. 참가자들이 이메일을 확인하여 피드백을 제공할 수 있습니다.` :
+                    `Email invitations sent successfully!\n\n${validEmails.length} emails have been sent. Participants can check their email to provide feedback.`
+                );
+                
+                router.push(`/${currentLanguage}/results`);
             } else {
                 throw new Error('Failed to generate invitation links');
             }
