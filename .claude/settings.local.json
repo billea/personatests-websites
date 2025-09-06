@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(/dev/null)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(where code)",
+      "Bash(chmod:*)",
+      "Bash(git rm:*)",
+      "Read(//c/Users/durha/OneDrive/Pictures/Screenshots/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

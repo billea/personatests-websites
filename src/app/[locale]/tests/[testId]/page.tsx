@@ -803,23 +803,12 @@ export default function TestPage() {
                 
                 const invitationLink = result.invitations[0].link;
                 
-                // Try to show success with the generated link for manual sharing
-                const shareMessage = currentLanguage === 'ko' ?
-                    `호환성 테스트 링크가 생성되었습니다!\n\n다음 링크를 파트너에게 공유하세요:\n${invitationLink}\n\n링크를 클립보드에 복사하시겠습니까?` :
-                    `Compatibility test link generated!\n\nShare this link with your partner:\n${invitationLink}\n\nWould you like to copy the link to clipboard?`;
-                    
-                const shouldCopy = confirm(shareMessage);
+                // Show clean success message
+                const successMessage = currentLanguage === 'ko' ?
+                    `✅ 파트너 초대가 성공적으로 전송되었습니다!\n\n${partnerEmail}님에게 이메일이 발송되었습니다.` :
+                    `✅ Partner invitation sent successfully!\n\nEmail has been sent to ${partnerEmail}.`;
                 
-                if (shouldCopy) {
-                    try {
-                        await navigator.clipboard.writeText(invitationLink);
-                        alert(currentLanguage === 'ko' ? '링크가 클립보드에 복사되었습니다!' : 'Link copied to clipboard!');
-                    } catch (clipboardError) {
-                        console.error('Failed to copy to clipboard:', clipboardError);
-                        // Fallback: show link in a prompt for manual copying
-                        prompt(currentLanguage === 'ko' ? '다음 링크를 복사하세요:' : 'Copy this link:', invitationLink);
-                    }
-                }
+                alert(successMessage);
             } else {
                 throw new Error('Failed to generate invitation link');
             }
