@@ -253,7 +253,8 @@ async function sendFeedbackEmail(invitation: any, testId: string) {
       
       // 360 Feedback specific parameters
       test_title: '🎯 360° Feedback Assessment',
-      header_title: '360° Feedback Assessment',
+      emoji_icon: '🎯',
+      header_title: '360° Feedback Assessment', 
       header_subtitle: 'Help Provide Multi-Perspective Personality Insights',
       greeting: `Hello ${recipientName}!`,
       invitation_message: `${invitation.inviterName} has requested your participation in a 360° feedback assessment.`,
@@ -267,12 +268,16 @@ async function sendFeedbackEmail(invitation: any, testId: string) {
         `🎁 Opportunity to contribute to ${invitation.inviterName}'s growth and development`
       ].join('\n'),
       
+      // Detailed description
+      detailed_description: `${invitation.inviterName} has requested your participation in a 360° feedback assessment. You'll evaluate areas like leadership, communication, teamwork, and emotional intelligence. Your responses are completely anonymous and will help ${invitation.inviterName} grow professionally.`,
+      
       // Call to action
       cta_text: 'Provide Feedback',
       time_estimate: 'Time Required: 5-10 minutes',
       privacy_note: 'Privacy: Your individual answers remain private - only the combined feedback results are shared.',
       
       // Footer
+      footer_message: `Please answer questions about ${invitation.inviterName} from your perspective as their contact.`,
       category_context: `Please answer questions about ${invitation.inviterName} from your perspective as their contact.`
     }
   };
