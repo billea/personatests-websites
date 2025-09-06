@@ -163,9 +163,17 @@ export const getUserTestResults = async (userId: string): Promise<TestResult[]> 
     });
     
     return results;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error getting user test results:", error);
-    throw error;
+    
+    // Handle missing Firestore index gracefully to prevent infinite loops
+    if (error?.code === 'failed-precondition' && error?.message?.includes('index')) {
+      console.warn("Firestore index missing for getUserTestResults - returning empty results to prevent infinite loops");
+      return [];
+    }
+    
+    // For other errors, return empty array instead of throwing to prevent crashes
+    return [];
   }
 };
 
@@ -1104,9 +1112,17 @@ export const getPendingInvitations = async (userId: string): Promise<TestInvitat
     });
     
     return invitations;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error getting pending invitations:", error);
-    throw error;
+    
+    // Handle missing Firestore index gracefully to prevent infinite loops
+    if (error?.code === 'failed-precondition' && error?.message?.includes('index')) {
+      console.warn("Firestore index missing for getPendingInvitations - returning empty results to prevent infinite loops");
+      return [];
+    }
+    
+    // For other errors, return empty array instead of throwing to prevent crashes
+    return [];
   }
 };
 
