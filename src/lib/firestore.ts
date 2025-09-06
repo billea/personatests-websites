@@ -535,9 +535,9 @@ export const sendFeedbackInvitations = async (
         console.log(`Sending 360 feedback invitation email to: ${link.email}`);
         console.log('Email parameters:', emailParams);
         
-        // Use the same service and working template as couple compatibility
+        // Use the dedicated 360° feedback template
         const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-        const templateId = 'template_m5atn39'; // Use same working template as couple compatibility
+        const templateId = 'template_ftlg4we'; // Dedicated 360° feedback template
         const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
         
         console.log(`Using EmailJS template: ${templateId} for 360 feedback invitation`);
