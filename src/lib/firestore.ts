@@ -504,7 +504,7 @@ export const sendFeedbackInvitations = async (
         }[feedbackCategory] || (language === 'ko' ? '360도 피드백' : '360° Feedback');
         
         const emailParams = {
-          // Standard EmailJS parameters
+          // Use same simple parameter structure as couple compatibility
           to_email: link.email,
           email: link.email,
           recipient_email: link.email,
@@ -515,51 +515,21 @@ export const sendFeedbackInvitations = async (
           sender_name: userName,
           invitation_link: link.link,
           link: link.link,
-          
-          // 360 Feedback specific parameters (matching couple compatibility style)
-          test_title: language === 'ko' ? '🎯 360도 피드백 평가' : '🎯 360° Feedback Assessment',
-          header_title: language === 'ko' ? '360도 피드백 평가' : '360° Feedback Assessment',
-          header_subtitle: language === 'ko' ? '다각도 성격 평가에 참여해 주세요' : 'Help Provide Multi-Perspective Personality Insights',
-          greeting: language === 'ko' ? `안녕하세요 ${recipientName}님!` : `Hello ${recipientName}!`,
-          invitation_message: language === 'ko' ? 
-            `${userName}님이 360도 피드백 평가에 참여해 달라고 요청했습니다.` :
-            `${userName} has requested your participation in a 360° feedback assessment.`,
-          description: language === 'ko' ?
-            `이 평가는 ${userName}님이 자신의 성격과 행동에 대한 포괄적인 피드백을 받을 수 있도록 도와줍니다. 리더십, 소통, 팀워크, 감정 지능 등을 평가하게 됩니다.` :
-            `This assessment helps ${userName} gain comprehensive insights into their personality and behavior. You'll evaluate areas like leadership, communication, teamwork, and emotional intelligence.`,
-          
-          // Benefits list (bullet points)
-          benefits: language === 'ko' ? [
-            '🎯 ' + userName + '님의 성격에 대한 귀중한 통찰력 제공',
-            '💬 리더십, 소통, 팀워크 등 핵심 영역 평가', 
-            '🔒 완전한 익명성 보장 - 개별 답변은 공개되지 않음',
-            '🎁 ' + userName + '님의 성장과 발전에 기여하는 기회'
-          ].join('\n') : [
-            '🎯 Provide valuable insights into ' + userName + '\'s personality',
-            '💬 Evaluate key areas like leadership, communication, and teamwork',
-            '🔒 Complete anonymity - individual responses never shared', 
-            '🎁 Opportunity to contribute to ' + userName + '\'s growth and development'
-          ].join('\n'),
-          
-          // Call to action
-          cta_text: language === 'ko' ? '피드백 제공하기' : 'Provide Feedback',
+          message: language === 'ko' ?
+            `${userName}님이 360도 피드백 평가에 참여해 달라고 요청했습니다. 리더십, 소통, 팀워크, 감정 지능 등을 평가해 주세요. 귀하의 응답은 완전히 익명으로 처리되며, ${userName}님의 성장에 도움이 됩니다.` :
+            `${userName} has requested your participation in a 360° feedback assessment. You'll evaluate areas like leadership, communication, teamwork, and emotional intelligence. Your responses are completely anonymous and will help ${userName} grow professionally.`,
           time_estimate: language === 'ko' ? '소요 시간: 5-10분' : 'Time Required: 5-10 minutes',
-          privacy_note: language === 'ko' ? 
+          additional_info: language === 'ko' ?
             '개인정보 보호: 귀하의 개별 답변은 비공개로 유지되며 결합된 피드백 결과만 공유됩니다.' :
-            'Privacy: Your individual answers remain private - only the combined feedback results are shared.',
-          
-          // Footer
-          category_context: language === 'ko' ?
-            `${friendlyCategory} 관점에서 ${userName}님에 대한 질문에 답해주세요.` :
-            `Please answer questions about ${userName} from your perspective as ${friendlyCategory.toLowerCase()}.`
+            'Privacy: Your individual answers remain private - only the combined feedback results are shared.'
         };
 
         console.log(`Sending 360 feedback invitation email to: ${link.email}`);
         console.log('Email parameters:', emailParams);
         
-        // Use the same service and default EmailJS template
+        // Use the same service and working template as couple compatibility
         const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-        const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''; // Use default template from environment
+        const templateId = 'template_m5atn39'; // Use same working template as couple compatibility
         const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
         
         console.log(`Using EmailJS template: ${templateId} for 360 feedback invitation`);
