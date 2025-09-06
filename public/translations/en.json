@@ -618,6 +618,16 @@
     "view_compatibility_results": "View Compatibility Results",
     "share_results": "Share Results"
   },
+  "personality_traits": {
+    "Emotional Stability": "Emotional Stability",
+    "Extraversion": "Extraversion", 
+    "Agreeableness": "Agreeableness",
+    "Conscientiousness": "Conscientiousness",
+    "Openness": "Openness"
+  },
+  "test_descriptions": {
+    "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.": "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives."
+  },
   "results": {
     "page_title": "Test Results",
     "take_test": "Take Test", 
