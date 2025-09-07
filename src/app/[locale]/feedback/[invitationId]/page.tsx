@@ -464,8 +464,8 @@ If you received this link via email, the email client may have broken the link. 
                                     );
                                 })}
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
 
                         {/* Navigation buttons */}
