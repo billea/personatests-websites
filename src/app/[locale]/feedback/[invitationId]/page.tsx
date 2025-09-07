@@ -406,9 +406,13 @@ export default function FeedbackPage() {
                         <div className="flex flex-wrap justify-center gap-4">
                             <button
                                 onClick={() => {
+                                    const baseUrl = window.location.origin;
+                                    const testsPath = currentLanguage + '/tests';
+                                    const testsUrl = baseUrl + '/' + testsPath;
+                                    
                                     const shareText = isKorean 
-                                        ? `방금 360도 피드백을 제출했어요! 나도 무료 성격 테스트를 해보고 싶다면: ${window.location.origin}/${currentLanguage}/tests`
-                                        : `Just submitted 360° feedback! Want to try free personality tests too? ${window.location.origin}/${currentLanguage}/tests`;
+                                        ? `방금 360도 피드백을 제출했어요! 나도 무료 성격 테스트를 해보고 싶다면: ${testsUrl}`
+                                        : `Just submitted 360° feedback! Want to try free personality tests too? ${testsUrl}`;
                                     
                                     if (navigator.share) {
                                         navigator.share({
