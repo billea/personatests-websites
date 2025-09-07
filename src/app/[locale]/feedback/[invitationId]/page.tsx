@@ -173,7 +173,7 @@ export default function FeedbackPage() {
             } else {
                 setError('Test not found');
             }
-        } catch (err) {
+        } catch (err: unknown) {
             console.error('Error loading invitation:', err);
             setError('Failed to load invitation');
         } finally {
