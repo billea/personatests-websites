@@ -462,29 +462,28 @@ export default function FeedbackPage() {
                             </div>
                         )}
                     </div>
-                </div>
 
-                        {/* Navigation buttons */}
-                        <div className="mt-8 flex justify-between items-center">
-                            <button
-                                onClick={handlePreviousQuestion}
-                                disabled={currentQuestionIndex === 0}
-                                className={`px-6 py-3 text-sm rounded-xl font-medium transition-all duration-300 ${
-                                    currentQuestionIndex === 0
-                                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                        : 'bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 hover:from-purple-200 hover:to-blue-200 border border-purple-200 shadow-sm hover:shadow-md'
-                                }`}
-                            >
-                                ← {isKorean ? '이전' : 'Previous'}
-                            </button>
-                            
-                            <span className="text-sm font-medium text-gray-600 bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-2 rounded-full border border-purple-200">
-                                {currentQuestionIndex + 1} / {testDefinition.questions.length}
-                            </span>
-                            
-                            <div className="w-20"></div> {/* Spacer to center the progress */}
-                        </div>
+                    {/* Navigation buttons */}
+                    <div className="mt-8 flex justify-between items-center">
+                        <button
+                            onClick={handlePreviousQuestion}
+                            disabled={currentQuestionIndex === 0}
+                            className={`px-6 py-3 text-sm rounded-xl font-medium transition-all duration-300 ${
+                                currentQuestionIndex === 0
+                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                    : 'bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 hover:from-purple-200 hover:to-blue-200 border border-purple-200 shadow-sm hover:shadow-md'
+                            }`}
+                        >
+                            ← {isKorean ? '이전' : 'Previous'}
+                        </button>
+                        
+                        <span className="text-sm font-medium text-gray-600 bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-2 rounded-full border border-purple-200">
+                            {currentQuestionIndex + 1} / {testDefinition.questions.length}
+                        </span>
+                        
+                        <div className="w-20"></div> {/* Spacer to center the progress */}
                     </div>
+                </div>
 
                     {/* Footer */}
                     <div className="mt-8 text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-purple-200/50 shadow-lg">
