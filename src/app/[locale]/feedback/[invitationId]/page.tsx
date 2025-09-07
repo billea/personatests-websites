@@ -139,11 +139,7 @@ export default function FeedbackPage() {
                 console.error('URL length:', typeof window !== 'undefined' ? window.location.href.length : 'N/A');
                 console.error('Missing params:', missingParams);
                 
-                setError(`Invalid invitation link - missing required parameters: ${missingParams.join(', ')}. 
-                
-URL may have been truncated. Please contact the person who sent you this link for a new invitation.
-                
-If you received this link via email, the email client may have broken the link. Try copying the entire link or asking for a new invitation.`);
+                setError(`Invalid invitation link - missing required parameters: ${missingParams.join(', ')}. URL may have been truncated. Please contact the person who sent you this link for a new invitation. If you received this link via email, the email client may have broken the link. Try copying the entire link or asking for a new invitation.`);
                 setLoading(false);
                 return;
             }
