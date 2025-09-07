@@ -167,7 +167,7 @@ export default function FeedbackPage() {
             setInvitation(invitationData);
 
             // Load test definition
-            const testDef = getTestById(invitationData.testId);
+            const testDef: TestDefinition | undefined = getTestById(invitationData.testId);
             if (testDef) {
                 setTestDefinition(testDef);
             } else {
