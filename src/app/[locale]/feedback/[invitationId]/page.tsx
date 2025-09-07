@@ -483,7 +483,6 @@ export default function FeedbackPage() {
                         
                         <div className="w-20"></div> {/* Spacer to center the progress */}
                     </div>
-                </div>
 
                     {/* Footer */}
                     <div className="mt-8 text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-purple-200/50 shadow-lg">
