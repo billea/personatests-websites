@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable static export for Netlify
+  output: 'export',
+  
   // Improve Windows file system compatibility
   experimental: {
     forceSwcTransforms: true,
-    // Remove windowsFilePath as it's causing issues
   },
   
   // Production optimizations for Netlify  
-  // Remove static export temporarily to fix deployment
   trailingSlash: true,
   images: {
     unoptimized: true
