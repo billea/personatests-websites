@@ -468,11 +468,10 @@ export default function FeedbackPage() {
                         <button
                             onClick={handlePreviousQuestion}
                             disabled={currentQuestionIndex === 0}
-                            className={`px-6 py-3 text-sm rounded-xl font-medium transition-all duration-300 ${
-                                currentQuestionIndex === 0
-                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                    : 'bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 hover:from-purple-200 hover:to-blue-200 border border-purple-200 shadow-sm hover:shadow-md'
-                            }`}
+                            className={currentQuestionIndex === 0
+                                ? 'px-6 py-3 text-sm rounded-xl font-medium transition-all duration-300 bg-gray-200 text-gray-400 cursor-not-allowed'
+                                : 'px-6 py-3 text-sm rounded-xl font-medium transition-all duration-300 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 hover:from-purple-200 hover:to-blue-200 border border-purple-200 shadow-sm hover:shadow-md'
+                            }
                         >
                             ← {isKorean ? '이전' : 'Previous'}
                         </button>
