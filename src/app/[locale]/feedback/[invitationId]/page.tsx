@@ -30,6 +30,7 @@ export default function FeedbackPage() {
     console.log('Feedback page locale:', locale);
     console.log('Translation test:', t('feedback360.ui.title'));
     console.log('Current language from translation provider:', currentLanguage);
+    console.log('Page render timestamp:', new Date().toISOString());
     
     // Korean language detection - use both locale param and currentLanguage
     const isKorean = locale === 'ko' || currentLanguage === 'ko';
