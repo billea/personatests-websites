@@ -321,20 +321,113 @@ export default function FeedbackPage() {
 
     if (submitted) {
         return (
-            <main className="flex min-h-screen items-center justify-center p-8">
-                <div className="text-center max-w-2xl">
-                    <div className="text-green-500 text-6xl mb-4">✅</div>
-                    <h1 className="text-4xl font-bold mb-4 text-gray-900">
-                        {t('feedback360.ui.thank_you') || '감사합니다!'}
-                    </h1>
-                    <p className="text-lg text-gray-600 mb-6">
-                        {(t('feedback360.ui.submitted_message') || '{name}을 위한 피드백이 성공적으로 제출되었습니다.').replace('{name}', invitation?.inviterName || '')}
-                    </p>
-                    <p className="text-gray-500">
-                        {(t('feedback360.ui.submitted_description') || '{name}은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.').replace('{name}', invitation?.inviterName || '')}
-                    </p>
+            <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
+                <div className="w-full max-w-4xl">
+                    {/* Main Thank You Section */}
+                    <div className="text-center mb-8 p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
+                        <div className="text-green-400 text-6xl mb-6">✅</div>
+                        <h1 className="text-4xl font-bold mb-4 text-white">
+                            {(t('feedback360.ui.thank_you') !== 'feedback360.ui.thank_you' ? t('feedback360.ui.thank_you') : null) || 
+                             (isKorean ? '감사합니다!' : 'Thank You!')}
+                        </h1>
+                        <p className="text-lg text-white/90 mb-6">
+                            {isKorean 
+                                ? `${invitation?.inviterName || ''}님을 위한 피드백이 성공적으로 제출되었습니다.`
+                                : `Your feedback for ${invitation?.inviterName || ''} has been successfully submitted.`
+                            }
+                        </p>
+                        <p className="text-white/80 mb-8">
+                            {isKorean 
+                                ? `${invitation?.inviterName || ''}님은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.`
+                                : `${invitation?.inviterName || ''} will receive your insights, and your identity will remain completely anonymous.`
+                            }
+                        </p>
+                    </div>
+
+                    {/* Viral Growth Sections */}
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {/* Sign Up Section */}
+                        <div className="p-6 bg-gradient-to-br from-pink-500/30 to-purple-500/30 border border-pink-400/50 rounded-lg">
+                            <h2 className="text-2xl font-bold text-white mb-4 text-center">
+                                🎯 {isKorean ? '무료 성격 테스트 받기' : 'Get Your Free Personality Test'}
+                            </h2>
+                            <p className="text-white/90 mb-6 text-center">
+                                {isKorean 
+                                    ? '16가지 성격 유형, Big Five, 커플 호환성 등 다양한 무료 테스트를 체험해보세요!'
+                                    : 'Experience 16 personality types, Big Five, couple compatibility and more free tests!'
+                                }
+                            </p>
+                            <div className="text-center">
+                                <a
+                                    href={`/${currentLanguage}/tests`}
+                                    className="inline-block px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                >
+                                    {isKorean ? '🚀 무료 테스트 시작하기' : '🚀 Start Free Tests'}
+                                </a>
+                                <p className="text-white/70 text-sm mt-3">
+                                    {isKorean ? '회원가입 없이 바로 시작!' : 'No signup required!'}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* 360° Feedback Section */}
+                        <div className="p-6 bg-gradient-to-br from-green-500/30 to-blue-500/30 border border-green-400/50 rounded-lg">
+                            <h2 className="text-2xl font-bold text-white mb-4 text-center">
+                                🔄 {isKorean ? '나도 360도 피드백 받기' : 'Get My Own 360° Feedback'}
+                            </h2>
+                            <p className="text-white/90 mb-6 text-center">
+                                {isKorean 
+                                    ? '동료, 친구, 가족으로부터 익명 피드백을 받아 나 자신을 더 깊이 이해해보세요!'
+                                    : 'Get anonymous feedback from colleagues, friends, and family to understand yourself better!'
+                                }
+                            </p>
+                            <div className="text-center">
+                                <a
+                                    href={`/${currentLanguage}/tests/feedback-360`}
+                                    className="inline-block px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold text-lg rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                >
+                                    {isKorean ? '🎯 내 피드백 받기' : '🎯 Get My Feedback'}
+                                </a>
+                                <p className="text-white/70 text-sm mt-3">
+                                    {isKorean ? '다각도 관점으로 나를 발견하기' : 'Discover yourself from multiple perspectives'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Additional CTA */}
+                    <div className="mt-8 text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                        <p className="text-white/80 text-lg mb-4">
+                            {isKorean 
+                                ? '✨ 더 많은 사람들이 이 경험을 할 수 있도록 공유해보세요!'
+                                : '✨ Share this experience so more people can benefit from it!'
+                            }
+                        </p>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <button
+                                onClick={() => {
+                                    const shareText = isKorean 
+                                        ? `방금 360도 피드백을 제출했어요! 나도 무료 성격 테스트를 해보고 싶다면: ${window.location.origin}/${currentLanguage}/tests`
+                                        : `Just submitted 360° feedback! Want to try free personality tests too? ${window.location.origin}/${currentLanguage}/tests`;
+                                    
+                                    if (navigator.share) {
+                                        navigator.share({
+                                            title: isKorean ? 'Korean MBTI Platform' : 'Korean MBTI Platform',
+                                            text: shareText
+                                        });
+                                    } else {
+                                        navigator.clipboard.writeText(shareText);
+                                        alert(isKorean ? '링크가 복사되었습니다!' : 'Link copied to clipboard!');
+                                    }
+                                }}
+                                className="px-6 py-2 bg-blue-500/80 hover:bg-blue-600/80 text-white rounded-lg transition-all duration-300"
+                            >
+                                📱 {isKorean ? '공유하기' : 'Share'}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </main>
+            </div>
         );
     }
 
