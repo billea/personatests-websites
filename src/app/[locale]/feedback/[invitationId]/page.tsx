@@ -447,7 +447,7 @@ export default function FeedbackPage() {
                                     </span>
                                 </div>
                                 <div className="flex justify-between gap-3">
-                                    {Array.from({ length: currentQuestion.scale.max - currentQuestion.scale.min + 1 }, (_, i) => {
+                                    {Array.from({ length: currentQuestion.scale!.max - currentQuestion.scale!.min + 1 }, (_, i) => {
                                         const value = currentQuestion.scale!.min + i;
                                         return (
                                             <button
