@@ -377,7 +377,8 @@ export default function FeedbackPage() {
                             🎯
                         </div>
                         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                            {t('feedback360.ui.title') || '피드백 요청'}
+                            {(t('feedback360.ui.title') !== 'feedback360.ui.title' ? t('feedback360.ui.title') : null) || 
+                             (isKorean ? '피드백 요청' : 'Feedback Request')}
                         </h1>
                         <p className="text-xl text-gray-700 mb-2 font-medium">
                             {isKorean 
@@ -386,7 +387,8 @@ export default function FeedbackPage() {
                             }
                         </p>
                         <p className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                            {t('feedback360.ui.instructions') || '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.'}
+                            {(t('feedback360.ui.instructions') !== 'feedback360.ui.instructions' ? t('feedback360.ui.instructions') : null) || 
+                             (isKorean ? '다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.' : 'Please answer the following questions honestly. Your responses will be handled anonymously.')}
                         </p>
                         
                         {/* Enhanced Progress Bar */}
@@ -439,10 +441,12 @@ export default function FeedbackPage() {
                                 <div className="flex justify-between text-sm font-medium text-gray-600 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4">
                                     <span className="flex items-center">
                                         <span className="w-3 h-3 rounded-full bg-red-400 mr-2"></span>
-                                        {t('feedback360.ui.scale_labels.not_at_all') || '전혀 그렇지 않다'}
+                                        {(t('feedback360.ui.scale_labels.not_at_all') !== 'feedback360.ui.scale_labels.not_at_all' ? t('feedback360.ui.scale_labels.not_at_all') : null) || 
+                                         (isKorean ? '전혀 그렇지 않다' : 'Not at all')}
                                     </span>
                                     <span className="flex items-center">
-                                        {t('feedback360.ui.scale_labels.always') || '매우 그렇다'}
+                                        {(t('feedback360.ui.scale_labels.always') !== 'feedback360.ui.scale_labels.always' ? t('feedback360.ui.scale_labels.always') : null) || 
+                                         (isKorean ? '매우 그렇다' : 'Always')}
                                         <span className="w-3 h-3 rounded-full bg-green-400 ml-2"></span>
                                     </span>
                                 </div>
