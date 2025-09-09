@@ -359,7 +359,7 @@ export default function FeedbackPage() {
                             </p>
                             <div className="text-center">
                                 <a
-                                    href={`/${currentLanguage}/tests`}
+                                    href={'/' + currentLanguage + '/tests'}
                                     className="inline-block px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                                 >
                                     {isKorean ? '🚀 무료 테스트 시작하기' : '🚀 Start Free Tests'}
@@ -383,7 +383,7 @@ export default function FeedbackPage() {
                             </p>
                             <div className="text-center">
                                 <a
-                                    href={`/${currentLanguage}/tests/feedback-360`}
+                                    href={'/' + currentLanguage + '/tests/feedback-360'}
                                     className="inline-block px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold text-lg rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                                 >
                                     {isKorean ? '🎯 내 피드백 받기' : '🎯 Get My Feedback'}
