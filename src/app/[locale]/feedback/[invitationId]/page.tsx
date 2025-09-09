@@ -326,7 +326,6 @@ export default function FeedbackPage() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
                 <div className="w-full max-w-4xl">
-                    {/* Main Thank You Section */}
                     <div className="text-center mb-8 p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                         <div className="text-green-400 text-6xl mb-6">✅</div>
                         <h1 className="text-4xl font-bold mb-4 text-white">
@@ -347,9 +346,7 @@ export default function FeedbackPage() {
                         </p>
                     </div>
 
-                    {/* Viral Growth Sections */}
                     <div className="grid md:grid-cols-2 gap-6">
-                        {/* Sign Up Section */}
                         <div className="p-6 bg-gradient-to-br from-pink-500/30 to-purple-500/30 border border-pink-400/50 rounded-lg">
                             <h2 className="text-2xl font-bold text-white mb-4 text-center">
                                 🎯 {isKorean ? '무료 성격 테스트 받기' : 'Get Your Free Personality Test'}
@@ -373,7 +370,6 @@ export default function FeedbackPage() {
                             </div>
                         </div>
 
-                        {/* 360° Feedback Section */}
                         <div className="p-6 bg-gradient-to-br from-green-500/30 to-blue-500/30 border border-green-400/50 rounded-lg">
                             <h2 className="text-2xl font-bold text-white mb-4 text-center">
                                 🔄 {isKorean ? '나도 360도 피드백 받기' : 'Get My Own 360° Feedback'}
@@ -398,7 +394,6 @@ export default function FeedbackPage() {
                         </div>
                     </div>
 
-                    {/* Additional CTA */}
                     <div className="mt-8 text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
                         <p className="text-white/80 text-lg mb-4">
                             {isKorean 
@@ -459,7 +454,6 @@ export default function FeedbackPage() {
 
     const currentQuestion = testDefinition.questions[currentQuestionIndex];
 
-    // Debug: Log critical values
     console.log('Render debug:', { 
         locale, 
         currentLanguage, 
@@ -471,7 +465,6 @@ export default function FeedbackPage() {
         <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
             <div className="w-full max-w-3xl">
                 <div className="mb-8 text-center">
-                    {/* Header */}
                     <div className="mb-6 p-6 bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-400/50 rounded-lg">
                         <h1 className="text-2xl font-bold text-white mb-4 text-center">
                             🎯 {(t('feedback360.ui.title') !== 'feedback360.ui.title' ? t('feedback360.ui.title') : null) || 
@@ -489,7 +482,6 @@ export default function FeedbackPage() {
                         </p>
                     </div>
                     
-                    {/* Progress Bar */}
                     <div className="w-full bg-white/20 backdrop-blur-sm rounded-full h-3 mb-2">
                         <div
                             className="bg-gradient-to-r from-yellow-300 to-orange-400 h-3 rounded-full transition-all duration-500"
@@ -501,7 +493,6 @@ export default function FeedbackPage() {
                     </p>
                 </div>
 
-                {/* Question Card */}
                 <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
                         <h2 className="mb-6 text-xl font-semibold tracking-tight text-white" data-translate={currentQuestion.text_key}>
                             {t(currentQuestion.text_key) || currentQuestion.text_key}
@@ -561,10 +552,8 @@ export default function FeedbackPage() {
                         )}
                     </div>
 
-                    {/* Navigation buttons */}
                     <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
                         <div className="flex gap-3">
-                            {/* Previous Button */}
                             {currentQuestionIndex > 0 && (
                                 <button
                                     onClick={handlePreviousQuestion}
@@ -579,10 +568,9 @@ export default function FeedbackPage() {
                             Question {currentQuestionIndex + 1} of {testDefinition.questions.length}
                         </div>
                         
-                        <div className="w-20"></div> {/* Spacer for alignment */}
+                        <div className="w-20"></div>
                     </div>
 
-                    {/* Footer */}
                     <div className="mt-8 text-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
                         <div className="flex items-center justify-center mb-3">
                             <div className="w-8 h-8 rounded-full bg-green-500/80 flex items-center justify-center mr-3">
