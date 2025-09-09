@@ -1,10 +1,9 @@
 "use client";
 
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { getTestById, TestDefinition } from "@/lib/test-definitions";
-import { sendFeedbackNotification } from "@/lib/firestore";
 
 interface InvitationData {
     id: string;
@@ -18,14 +17,12 @@ interface InvitationData {
 
 export default function FeedbackPage() {
     const { t, currentLanguage } = useTranslation();
-    const params = useParams();
     const searchParams = useSearchParams();
     
-    const invitationId = params.invitationId as string;
-    const locale = params.locale as string;
+    const invitationId = searchParams.get('invitationId') || '';
     const token = searchParams.get('token') || '';
     
-    const isKorean = locale === 'ko' || currentLanguage === 'ko';
+    const isKorean = currentLanguage === 'ko';
     
     const [invitation, setInvitation] = useState<InvitationData | null>(null);
     const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
@@ -47,8 +44,8 @@ export default function FeedbackPage() {
             let testResultId = searchParams.get('testResultId');
             let participantEmail = searchParams.get('email');
             
-            if (!userName || !testId || !testResultId || !participantEmail || !token) {
-                setError('Invalid invitation link');
+            if (!userName || !testId || !testResultId || !participantEmail || !token || !invitationId) {
+                setError('Invalid invitation link - missing parameters');
                 setLoading(false);
                 return;
             }
@@ -161,6 +158,9 @@ export default function FeedbackPage() {
                     <div className="text-red-500 text-6xl mb-4">⚠️</div>
                     <h1 className="text-2xl font-bold mb-4 text-gray-900">Error</h1>
                     <p className="text-gray-600 mb-6">{error}</p>
+                    <p className="text-sm text-gray-500">
+                        If you think this is a mistake, please contact the person who sent you this link.
+                    </p>
                 </div>
             </main>
         );

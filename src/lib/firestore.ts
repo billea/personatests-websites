@@ -477,7 +477,7 @@ export const sendFeedbackInvitations = async (
         email: invitation.email // Let URLSearchParams handle encoding
       });
       
-      const fullUrl = `${baseUrl}/${language}/feedback/${invitation.id}?${params.toString()}`;
+      const fullUrl = `${baseUrl}/${language}/feedback?invitationId=${invitation.id}&${params.toString()}`;
       
       // Log for debugging
       console.log(`Generated URL for ${invitation.email}:`);
