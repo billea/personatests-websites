@@ -600,7 +600,7 @@ export default function FeedbackPage() {
                         </p>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     );
 }
