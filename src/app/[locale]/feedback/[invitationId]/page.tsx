@@ -38,7 +38,7 @@ export default function FeedbackPage() {
     // Korean translations with fallbacks
     const getLocalizedText = (key: string, fallback: string, koreanText: string) => {
         const translated = t(key);
-        console.log(`getLocalizedText: key="${key}", translated="${translated}", isKorean=${isKorean}`);
+        console.log('getLocalizedText: key="' + key + '", translated="' + translated + '", isKorean=' + isKorean);
         if (translated && translated !== key && translated.trim() !== '') {
             return translated;
         }
@@ -75,7 +75,7 @@ export default function FeedbackPage() {
             console.log('SearchParams toString():', searchParams.toString());
             console.log('All searchParams entries:');
             for (const [key, value] of searchParams.entries()) {
-                console.log(`  "${key}" = "${value}"`);
+                console.log('  "' + key + '" = "' + value + '"');
             }
             
             // Get invitation data from URL parameters with fallback
@@ -91,7 +91,7 @@ export default function FeedbackPage() {
                 console.log('Window location search:', window.location.search);
                 console.log('URLSearchParams from window:');
                 for (const [key, value] of urlParams.entries()) {
-                    console.log(`  "${key}" = "${value}"`);
+                    console.log('  "' + key + '" = "' + value + '"');
                 }
                 
                 userName = userName || urlParams.get('name');
@@ -119,11 +119,11 @@ export default function FeedbackPage() {
             
             // Log each parameter individually for clarity
             console.log('Individual parameters:');
-            console.log('  ✓ name:', userName ? `"${userName}"` : '❌ MISSING');
-            console.log('  ✓ testId:', testId ? `"${testId}"` : '❌ MISSING');
-            console.log('  ✓ testResultId:', testResultId ? `"${testResultId}"` : '❌ MISSING');
-            console.log('  ✓ email:', participantEmail ? `"${participantEmail}"` : '❌ MISSING');
-            console.log('  ✓ token:', token ? `"${token}"` : '❌ MISSING');
+            console.log('  ✓ name:', userName ? '"' + userName + '"' : '❌ MISSING');
+            console.log('  ✓ testId:', testId ? '"' + testId + '"' : '❌ MISSING');
+            console.log('  ✓ testResultId:', testResultId ? '"' + testResultId + '"' : '❌ MISSING');
+            console.log('  ✓ email:', participantEmail ? '"' + participantEmail + '"' : '❌ MISSING');
+            console.log('  ✓ token:', token ? '"' + token + '"' : '❌ MISSING');
             console.log('=== END URL DEBUG ===');
             
             if (!userName || !testId || !testResultId || !participantEmail || !token) {
@@ -234,7 +234,7 @@ export default function FeedbackPage() {
             localStorage.setItem('submitted_feedback', JSON.stringify(existingFeedback));
 
             // Also store aggregated feedback for the test result
-            const aggregatedKey = `aggregated_feedback_${invitation.testResultId}`;
+            const aggregatedKey = 'aggregated_feedback_' + invitation.testResultId;
             const existingAggregated = JSON.parse(localStorage.getItem(aggregatedKey) || '[]');
             existingAggregated.push({
                 result: result,
@@ -510,8 +510,8 @@ export default function FeedbackPage() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6 border border-white/20">
                             <p className="text-sm text-white/90 font-medium">
                                 {isKorean 
-                                    ? `이 질문에 답할 때 ${invitation.inviterName}님을 생각해 주세요.`
-                                    : `Think about ${invitation.inviterName} when answering this question.`
+                                    ? '이 질문에 답할 때 ' + invitation.inviterName + '님을 생각해 주세요.'
+                                    : 'Think about ' + invitation.inviterName + ' when answering this question.'
                                 }
                             </p>
                         </div>
