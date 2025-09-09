@@ -335,14 +335,14 @@ export default function FeedbackPage() {
                         </h1>
                         <p className="text-lg text-white/90 mb-6">
                             {isKorean 
-                                ? `${invitation?.inviterName || ''}님을 위한 피드백이 성공적으로 제출되었습니다.`
-                                : `Your feedback for ${invitation?.inviterName || ''} has been successfully submitted.`
+                                ? (invitation?.inviterName || '') + '님을 위한 피드백이 성공적으로 제출되었습니다.'
+                                : 'Your feedback for ' + (invitation?.inviterName || '') + ' has been successfully submitted.'
                             }
                         </p>
                         <p className="text-white/80 mb-8">
                             {isKorean 
-                                ? `${invitation?.inviterName || ''}님은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.`
-                                : `${invitation?.inviterName || ''} will receive your insights, and your identity will remain completely anonymous.`
+                                ? (invitation?.inviterName || '') + '님은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.'
+                                : (invitation?.inviterName || '') + ' will receive your insights, and your identity will remain completely anonymous.'
                             }
                         </p>
                     </div>
@@ -414,8 +414,8 @@ export default function FeedbackPage() {
                                     const testsUrl = baseUrl + '/' + testsPath;
                                     
                                     const shareText = isKorean 
-                                        ? `방금 360도 피드백을 제출했어요! 나도 무료 성격 테스트를 해보고 싶다면: ${testsUrl}`
-                                        : `Just submitted 360° feedback! Want to try free personality tests too? ${testsUrl}`;
+                                        ? '방금 360도 피드백을 제출했어요! 나도 무료 성격 테스트를 해보고 싶다면: ' + testsUrl
+                                        : 'Just submitted 360° feedback! Want to try free personality tests too? ' + testsUrl;
                                     
                                     if (navigator.share) {
                                         navigator.share({
@@ -479,8 +479,8 @@ export default function FeedbackPage() {
                         </h1>
                         <p className="text-white/90 mb-6 text-lg text-center">
                             {isKorean 
-                                ? `${invitation.inviterName}님이 피드백을 요청했습니다`
-                                : `${invitation.inviterName} has asked for your feedback`
+                                ? invitation.inviterName + '님이 피드백을 요청했습니다'
+                                : invitation.inviterName + ' has asked for your feedback'
                             }
                         </p>
                         <p className="text-white/80 mb-6 text-center">
@@ -493,7 +493,7 @@ export default function FeedbackPage() {
                     <div className="w-full bg-white/20 backdrop-blur-sm rounded-full h-3 mb-2">
                         <div
                             className="bg-gradient-to-r from-yellow-300 to-orange-400 h-3 rounded-full transition-all duration-500"
-                            style={{ width: `${((currentQuestionIndex + 1) / testDefinition.questions.length) * 100}%` }}
+                            style={{ width: ((currentQuestionIndex + 1) / testDefinition.questions.length) * 100 + '%' }}
                         ></div>
                     </div>
                     <p className="text-white/80 text-sm">
