@@ -594,8 +594,8 @@ export default function FeedbackPage() {
                         </div>
                         <p className="text-sm text-white/80 leading-relaxed max-w-2xl mx-auto">
                             {isKorean 
-                                ? `이 피드백은 완전히 익명입니다. ${invitation.inviterName}님은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.`
-                                : `This feedback is completely anonymous. ${invitation.inviterName} will see aggregated results but not individual responses or who provided them.`
+                                ? '이 피드백은 완전히 익명입니다. ' + invitation.inviterName + '님은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.'
+                                : 'This feedback is completely anonymous. ' + invitation.inviterName + ' will see aggregated results but not individual responses or who provided them.'
                             }
                         </p>
                     </div>
