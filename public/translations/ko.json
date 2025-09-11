@@ -2567,12 +2567,125 @@
     "your_name_for_partner": "당신의 이름 (파트너가 누가 초대했는지 알 수 있도록)",
     "partner_email": "파트너의 이메일 주소",
     "partner_email_placeholder": "파트너의 이메일 주소를 입력하세요",
+    "partner_name": "파트너의 이름",
+    "partner_name_placeholder": "파트너의 이름을 입력하세요 (예: Sarah, Mike)",
     "send_partner_invitation": "💕 파트너 초대장 보내기",
-    "sending_invitation": "초대장 전송 중...",
-    "compatibility_results_ready": "궁합 결과가 준비되었습니다!",
-    "compatibility_email_subject": "우리의 커플 궁합 결과가 나왔어요! 💕",
-    "view_compatibility_results": "궁합 결과 보기",
-    "share_results": "결과 공유하기"
+    "sending_invitation": "초대장 보내는 중..."
+  },
+  "invitation": {
+    "selector": {
+      "title": "어떤 방법으로 피드백을 수집하시겠습니까?",
+      "subtitle": "상황과 개인정보 보호 선호도에 가장 적합한 방법을 선택하세요.",
+      "selected": "선택됨:"
+    },
+    "privacy": {
+      "standard": "일반 개인정보 보호",
+      "high": "높은 개인정보 보호",
+      "maximum": "최대 개인정보 보호",
+      "flexible": "유연한 개인정보 보호"
+    },
+    "effort": {
+      "easy": "간단한 설정",
+      "manual": "수동 공유",
+      "veryeasy": "매우 쉬움",
+      "custom": "맞춤 설정"
+    },
+    "change_method": "방법 변경",
+    "email": {
+      "title": "이메일 초대장",
+      "description": "특정 사람들에게 직접 이메일 초대장 보내기",
+      "pro1": "높은 응답률",
+      "pro2": "받은편지함으로 직접 전달",
+      "pro3": "친숙한 과정",
+      "con1": "이메일 주소가 기록됨",
+      "con2": "수신자가 누가 초대했는지 알 수 있음"
+    },
+    "codes": {
+      "title": "익명 코드",
+      "description": "문자, 채팅 또는 직접 만나서 수동으로 공유할 코드 생성",
+      "pro1": "완전한 익명성",
+      "pro2": "이메일 추적 없음",
+      "pro3": "유연한 공유 방법",
+      "con1": "낮은 응답률",
+      "con2": "코드를 잃어버릴 수 있음",
+      "generate": {
+        "title": "익명 피드백 코드 생성",
+        "subtitle": "최대 개인정보 보호를 위해 문자, 채팅 또는 직접 만나서 공유할 수 있는 코드 생성",
+        "button": "익명 코드 생성"
+      },
+      "generated": {
+        "title": "당신의 익명 피드백 코드"
+      },
+      "count": {
+        "label": "생성할 코드 수"
+      },
+      "expiry": {
+        "label": "만료 기간 (일)"
+      },
+      "copyall": "모두 복사",
+      "generating": "코드 생성 중...",
+      "sharing": {
+        "title": "이 코드들을 공유하는 방법",
+        "url": "피드백 URL:",
+        "message": "샘플 메시지:",
+        "sample": "안녕하세요! 개인적 성장을 위한 익명 피드백을 수집하고 있습니다. {url}에 가서 코드 [CODE]를 사용해 주세요. 5-10분 정도 걸립니다. 감사합니다!",
+        "tip1": "문자, 카카오톡, 디스코드 또는 직접 만나서 공유",
+        "tip2": "각 코드는 여러 번 사용 가능",
+        "tip3": "코드는 {date}에 만료됨"
+      }
+    },
+    "link": {
+      "title": "공유 가능한 링크",
+      "description": "소셜 미디어나 그룹에서 공유할 하나의 링크 생성",
+      "pro1": "광범위하게 쉽게 공유",
+      "pro2": "소셜 미디어에 적합",
+      "pro3": "개별 추적 없음",
+      "con1": "누가 응답하는지 제어할 수 없음",
+      "con2": "무작위 응답 가능성",
+      "generate": {
+        "title": "공유 가능한 피드백 링크 생성",
+        "subtitle": "소셜 미디어, 그룹 채팅 또는 온라인 어디에서나 공유할 하나의 링크 생성",
+        "button": "공유 가능한 링크 생성"
+      },
+      "generated": {
+        "title": "공유 가능한 피드백 링크가 준비되었습니다!"
+      },
+      "expiry": {
+        "label": "링크 만료 기간"
+      },
+      "limit": {
+        "label": "응답 제한 (선택사항)"
+      },
+      "generating": "링크 생성 중...",
+      "info": {
+        "expires": "만료일: {date}",
+        "limit": "최대 응답 수: {count}",
+        "responses": "현재 응답 수: {count}"
+      },
+      "social": {
+        "title": "소셜 미디어에서 공유"
+      },
+      "qr": {
+        "title": "QR 코드",
+        "description": "스캔하여 피드백 양식에 접근"
+      },
+      "tips": {
+        "title": "공유 팁",
+        "tip1": "소셜 미디어 게시물과 그룹 채팅에 적합",
+        "tip2": "링크를 가진 누구나 피드백 제공 가능",
+        "tip3": "응답은 완전히 익명",
+        "tip4": "다양한 피드백을 위해 여러 곳에 게시하는 것을 고려하세요"
+      }
+    },
+    "mixed": {
+      "title": "여러 방법",
+      "description": "다른 상황에 맞는 다양한 초대 방법 사용",
+      "pro1": "모든 방법의 장점",
+      "pro2": "다른 관계에 맞게 적응",
+      "pro3": "최대 유연성",
+      "con1": "더 복잡한 설정",
+      "con2": "여러 방법을 관리해야 함"
+    }
   },
   "results": {
     "personalityType": "당신의 성격 유형",

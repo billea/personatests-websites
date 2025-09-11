@@ -32,6 +32,121 @@
     "invite_feedback_title": "Invite Others for Feedback",
     "invite_feedback_description": "Get a complete picture by inviting friends and colleagues to provide feedback about you."
   },
+  "invitation": {
+    "selector": {
+      "title": "How would you like to collect feedback?",
+      "subtitle": "Choose the method that works best for your situation and privacy preferences.",
+      "selected": "Selected:"
+    },
+    "privacy": {
+      "standard": "Standard Privacy",
+      "high": "High Privacy",
+      "maximum": "Maximum Privacy",
+      "flexible": "Flexible Privacy"
+    },
+    "effort": {
+      "easy": "Easy Setup",
+      "manual": "Manual Sharing",
+      "veryeasy": "Very Easy",
+      "custom": "Custom Setup"
+    },
+    "change_method": "Change Method",
+    "email": {
+      "title": "Email Invitations",
+      "description": "Send direct email invites to specific people",
+      "pro1": "Higher response rate",
+      "pro2": "Direct delivery to inbox",
+      "pro3": "Familiar process",
+      "con1": "Email addresses are recorded",
+      "con2": "Recipients know who invited them"
+    },
+    "codes": {
+      "title": "Anonymous Codes",
+      "description": "Generate codes to share manually via text, chat, or in-person",
+      "pro1": "Complete anonymity",
+      "pro2": "No email tracking",
+      "pro3": "Flexible sharing methods",
+      "con1": "Lower response rate",
+      "con2": "Codes might get lost",
+      "generate": {
+        "title": "Generate Anonymous Feedback Codes",
+        "subtitle": "Create codes you can share via text, chat, or in-person for maximum privacy",
+        "button": "Generate Anonymous Codes"
+      },
+      "generated": {
+        "title": "Your Anonymous Feedback Codes"
+      },
+      "count": {
+        "label": "Number of codes to generate"
+      },
+      "expiry": {
+        "label": "Expires in (days)"
+      },
+      "copyall": "Copy All",
+      "generating": "Generating codes...",
+      "sharing": {
+        "title": "How to Share These Codes",
+        "url": "Feedback URL:",
+        "message": "Sample message:",
+        "sample": "Hi! I'm collecting anonymous feedback for personal growth. Please go to {url} and use code: [CODE]. Takes 5-10 minutes. Thanks!",
+        "tip1": "Share via text, WhatsApp, Discord, or in-person",
+        "tip2": "Each code can be used multiple times",
+        "tip3": "Codes expire on {date}"
+      }
+    },
+    "link": {
+      "title": "Shareable Link",
+      "description": "Create one link to share on social media or with groups",
+      "pro1": "Easy to share widely",
+      "pro2": "Great for social media",
+      "pro3": "No individual tracking",
+      "con1": "Can't control who responds",
+      "con2": "Potential for random responses",
+      "generate": {
+        "title": "Create Shareable Feedback Link",
+        "subtitle": "Generate one link to share on social media, group chats, or anywhere online",
+        "button": "Generate Shareable Link"
+      },
+      "generated": {
+        "title": "Your Shareable Feedback Link is Ready!"
+      },
+      "expiry": {
+        "label": "Link expires in"
+      },
+      "limit": {
+        "label": "Response limit (optional)"
+      },
+      "generating": "Generating link...",
+      "info": {
+        "expires": "Expires: {date}",
+        "limit": "Max responses: {count}",
+        "responses": "Current responses: {count}"
+      },
+      "social": {
+        "title": "Share on Social Media"
+      },
+      "qr": {
+        "title": "QR Code",
+        "description": "Scan to access feedback form"
+      },
+      "tips": {
+        "title": "Sharing Tips",
+        "tip1": "Perfect for social media posts and group chats",
+        "tip2": "Anyone with the link can provide feedback",
+        "tip3": "Responses are completely anonymous",
+        "tip4": "Consider posting in multiple places for diverse feedback"
+      }
+    },
+    "mixed": {
+      "title": "Multiple Methods",
+      "description": "Use different invitation methods for different situations",
+      "pro1": "Best of all methods",
+      "pro2": "Adapt to different relationships",
+      "pro3": "Maximum flexibility",
+      "con1": "More complex setup",
+      "con2": "Need to manage multiple methods"
+    }
+  },
   "tests": {
     "page_title": "Personality Tests", 
     "requires_feedback": "Requires inviting others for feedback",

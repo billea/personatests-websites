@@ -8,6 +8,10 @@ import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
+import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
+import AnonymousCodeGenerator from "@/components/AnonymousCodeGenerator";
+import ShareableLinkGenerator from "@/components/ShareableLinkGenerator";
+import { AnonymousCode, ShareableLink } from "@/lib/invitation-types";
 
 export default function TestPage() {
     const { t, currentLanguage } = useTranslation();
@@ -71,6 +75,12 @@ export default function TestPage() {
     const [feedbackEmails, setFeedbackEmails] = useState<{name: string, email: string}[]>([{name: '', email: ''}]);
     // Auto-populate user name from logged-in user
     const [userName, setUserName] = useState<string>('');
+    
+    // Hybrid invitation system states
+    const [selectedInvitationMethod, setSelectedInvitationMethod] = useState<InvitationMethod | null>(null);
+    const [generatedCodes, setGeneratedCodes] = useState<AnonymousCode[]>([]);
+    const [generatedLink, setGeneratedLink] = useState<ShareableLink | null>(null);
+    const [showMethodSelector, setShowMethodSelector] = useState(false);
     
     // Update userName when user data becomes available
     useEffect(() => {
@@ -1758,7 +1768,7 @@ export default function TestPage() {
                             </div>
                             
                             {testId === 'couple-compatibility' ? (
-                                // Partner name and email inputs for couple compatibility
+                                // Partner name and email inputs for couple compatibility (keep existing system for now)
                                 <>
                                     <div className="mb-4">
                                         <label className="block text-sm font-medium mb-2 text-white">
@@ -1795,55 +1805,175 @@ export default function TestPage() {
                                     </div>
                                 </>
                             ) : (
-                                // Multiple email inputs for feedback
+                                // Hybrid invitation system for 360° feedback
                                 <>
-                                    <div className="space-y-4 mb-4">
-                                        {feedbackEmails.map((participant, index) => (
-                                            <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/20">
-                                                <div className="flex gap-2 mb-2">
-                                                    <input
-                                                        type="text"
-                                                        value={participant.name}
-                                                        onChange={(e) => updateName(index, e.target.value)}
-                                                        placeholder={t('feedbackInvite.namePlaceholder') || 'Enter name (e.g., John, Sarah)'}
-                                                        className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
-                                                    />
-                                                    {feedbackEmails.length > 1 && (
-                                                        <button
-                                                            onClick={() => removeEmailField(index)}
-                                                            className="p-2 text-red-500 hover:text-red-700 bg-white/10 rounded"
-                                                            title="Remove this person"
-                                                        >
-                                                            ✕
-                                                        </button>
-                                                    )}
-                                                </div>
-                                                <input
-                                                    type="email"
-                                                    value={participant.email}
-                                                    onChange={(e) => updateEmail(index, e.target.value)}
-                                                    placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
-                                                    className="w-full p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
-                                                />
+                                    {!selectedInvitationMethod ? (
+                                        <InvitationMethodSelector 
+                                            onMethodSelect={(method) => {
+                                                setSelectedInvitationMethod(method);
+                                                console.log('Selected invitation method:', method);
+                                            }}
+                                            testId={testId}
+                                        />
+                                    ) : (
+                                        <div className="space-y-6">
+                                            {/* Method selection header */}
+                                            <div className="flex items-center justify-between">
+                                                <h3 className="text-lg font-bold text-white">
+                                                    {selectedInvitationMethod === 'email' && (t('invitation.email.title') || '📧 Email Invitations')}
+                                                    {selectedInvitationMethod === 'codes' && (t('invitation.codes.title') || '🔑 Anonymous Codes')}
+                                                    {selectedInvitationMethod === 'link' && (t('invitation.link.title') || '🔗 Shareable Link')}
+                                                    {selectedInvitationMethod === 'mixed' && (t('invitation.mixed.title') || '🎯 Multiple Methods')}
+                                                </h3>
+                                                <button
+                                                    onClick={() => setSelectedInvitationMethod(null)}
+                                                    className="px-3 py-1 text-sm bg-white/20 hover:bg-white/30 text-white rounded transition-colors duration-300"
+                                                >
+                                                    {t('invitation.change_method') || 'Change Method'}
+                                                </button>
                                             </div>
-                                        ))}
-                                    </div>
-                                    
-                                    <div className="flex gap-2 justify-center mb-4">
-                                        <button
-                                            onClick={addEmailField}
-                                            className="px-4 py-2 text-sm bg-white/20 text-white rounded hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300"
-                                        >
-                                            {t('feedbackInvite.addAnother') || 'Add Another Person'}
-                                        </button>
-                                        <button
-                                            onClick={handleSendFeedbackInvitations}
-                                            disabled={saving}
-                                            className="px-4 py-2 text-sm bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 backdrop-blur-sm border border-white/20 transition-all duration-300"
-                                        >
-                                            {saving ? (t('feedbackInvite.sending') || 'Sending...') : (t('feedbackInvite.sendInvitations') || 'Send Invitations')}
-                                        </button>
-                                    </div>
+
+                                            {/* Email Method (Original System) */}
+                                            {selectedInvitationMethod === 'email' && (
+                                                <div className="space-y-4">
+                                                    {feedbackEmails.map((participant, index) => (
+                                                        <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/20">
+                                                            <div className="flex gap-2 mb-2">
+                                                                <input
+                                                                    type="text"
+                                                                    value={participant.name}
+                                                                    onChange={(e) => updateName(index, e.target.value)}
+                                                                    placeholder={t('feedbackInvite.namePlaceholder') || 'Enter name (e.g., John, Sarah)'}
+                                                                    className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                                />
+                                                                {feedbackEmails.length > 1 && (
+                                                                    <button
+                                                                        onClick={() => removeEmailField(index)}
+                                                                        className="p-2 text-red-500 hover:text-red-700 bg-white/10 rounded"
+                                                                        title="Remove this person"
+                                                                    >
+                                                                        ✕
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                            <input
+                                                                type="email"
+                                                                value={participant.email}
+                                                                onChange={(e) => updateEmail(index, e.target.value)}
+                                                                placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
+                                                                className="w-full p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                    
+                                                    <div className="flex gap-2 justify-center">
+                                                        <button
+                                                            onClick={addEmailField}
+                                                            className="px-4 py-2 text-sm bg-white/20 text-white rounded hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300"
+                                                        >
+                                                            {t('feedbackInvite.addAnother') || 'Add Another Person'}
+                                                        </button>
+                                                        <button
+                                                            onClick={handleSendFeedbackInvitations}
+                                                            disabled={saving}
+                                                            className="px-4 py-2 text-sm bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 backdrop-blur-sm border border-white/20 transition-all duration-300"
+                                                        >
+                                                            {saving ? (t('feedbackInvite.sending') || 'Sending...') : (t('feedbackInvite.sendInvitations') || 'Send Invitations')}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Anonymous Codes Method */}
+                                            {selectedInvitationMethod === 'codes' && (
+                                                <AnonymousCodeGenerator
+                                                    testResultId={testResultId || ''}
+                                                    testId={testId}
+                                                    userName={userName}
+                                                    onCodesGenerated={(codes) => {
+                                                        setGeneratedCodes(codes);
+                                                        console.log('Generated codes:', codes);
+                                                    }}
+                                                />
+                                            )}
+
+                                            {/* Shareable Link Method */}
+                                            {selectedInvitationMethod === 'link' && (
+                                                <ShareableLinkGenerator
+                                                    testResultId={testResultId || ''}
+                                                    testId={testId}
+                                                    userName={userName}
+                                                    onLinkGenerated={(linkData) => {
+                                                        setGeneratedLink(linkData);
+                                                        console.log('Generated link:', linkData);
+                                                    }}
+                                                />
+                                            )}
+
+                                            {/* Mixed Method - Show all options */}
+                                            {selectedInvitationMethod === 'mixed' && (
+                                                <div className="space-y-8">
+                                                    <div className="text-center mb-6">
+                                                        <p className="text-white/80">
+                                                            {t('invitation.mixed.description') || 'Use different methods for different people and situations'}
+                                                        </p>
+                                                    </div>
+                                                    
+                                                    {/* Email Section */}
+                                                    <div className="p-4 bg-white/5 rounded-lg border border-white/20">
+                                                        <h4 className="text-md font-bold text-white mb-3">📧 Email Invitations</h4>
+                                                        <div className="space-y-2">
+                                                            {feedbackEmails.slice(0, 2).map((participant, index) => (
+                                                                <div key={index} className="flex gap-2">
+                                                                    <input
+                                                                        type="text"
+                                                                        value={participant.name}
+                                                                        onChange={(e) => updateName(index, e.target.value)}
+                                                                        placeholder="Name"
+                                                                        className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 text-sm"
+                                                                    />
+                                                                    <input
+                                                                        type="email"
+                                                                        value={participant.email}
+                                                                        onChange={(e) => updateEmail(index, e.target.value)}
+                                                                        placeholder="Email"
+                                                                        className="flex-2 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 text-sm"
+                                                                    />
+                                                                </div>
+                                                            ))}
+                                                            <button
+                                                                onClick={handleSendFeedbackInvitations}
+                                                                disabled={saving}
+                                                                className="w-full px-3 py-2 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors duration-300"
+                                                            >
+                                                                Send Email Invitations
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Anonymous Codes Section */}
+                                                    <div className="p-4 bg-white/5 rounded-lg border border-white/20">
+                                                        <AnonymousCodeGenerator
+                                                            testResultId={testResultId || ''}
+                                                            testId={testId}
+                                                            userName={userName}
+                                                            onCodesGenerated={setGeneratedCodes}
+                                                        />
+                                                    </div>
+
+                                                    {/* Shareable Link Section */}
+                                                    <div className="p-4 bg-white/5 rounded-lg border border-white/20">
+                                                        <ShareableLinkGenerator
+                                                            testResultId={testResultId || ''}
+                                                            testId={testId}
+                                                            userName={userName}
+                                                            onLinkGenerated={setGeneratedLink}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
                                 </>
                             )}
                         </div>

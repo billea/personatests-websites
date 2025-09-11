@@ -18,7 +18,13 @@
       "Bash(npm run lint)",
       "Bash(npx tsc:*)",
       "Bash(powershell:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm run firebase:deploy:*)",
+      "Bash(firebase deploy:*)",
+      "Bash(firebase init:*)",
+      "Bash(firebase hosting:sites:*)",
+      "Bash(firebase hosting:channel:list:*)",
+      "WebFetch(domain:personatest-c8eb1.web.app)"
     ],
     "deny": [],
     "ask": []

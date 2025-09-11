@@ -3,6 +3,9 @@ const nextConfig = {
   // Enable static export for Netlify
   output: 'export',
   
+  // Handle dynamic routes during export
+  trailingSlash: true,
+  
   // Improve Windows file system compatibility
   experimental: {
     forceSwcTransforms: true,

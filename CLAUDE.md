@@ -11,10 +11,10 @@ This is a multilingual personality testing platform built with Next.js 15, React
 ### Core Development
 - `npm run dev` - Start Next.js development server (port 3004)
 - `npm run dev:clean` - Clean cache and start dev server
-- `npm run dev:stable` - Start stable development environment
-- `npm run build` - Build production version
+- `npm run dev:stable` - Start ultra-stable development environment (batch script for Windows)
+- `npm run build` - Build production version (generates static export for Netlify)
 - `npm run start` - Start production build locally
-- `npm run clean` - Clean cache and temporary files
+- `npm run clean` - Clean cache and temporary files (runs cache-cleanup.js)
 
 ### Testing Commands
 - `npm test` - Run linter and build (basic validation)
@@ -36,9 +36,10 @@ This is a multilingual personality testing platform built with Next.js 15, React
 
 ### Frontend Architecture
 - **Next.js 15** with App Router and locale-based routing (`/[locale]/page.tsx`)
+- **Static Export Configuration** for Netlify deployment (`output: 'export'`)
 - **React 19** with functional components and hooks
-- **TypeScript** with strict type checking
-- **Tailwind CSS** for styling with glassmorphism design
+- **TypeScript** with strict type checking and path aliases (`@/*` → `./src/*`)
+- **Tailwind CSS 4** for styling with glassmorphism design
 - **Custom Translation Engine** with MutationObserver for dynamic content
 
 ### Backend & Services
@@ -48,9 +49,10 @@ This is a multilingual personality testing platform built with Next.js 15, React
 - **EmailJS Integration** for automated email notifications
 
 ### Key Libraries
-- `@emailjs/browser` - Email service integration
-- `firebase` - Firebase SDK for web
-- `@playwright/test` - End-to-end testing framework
+- `@emailjs/browser` - Email service integration for feedback invitations
+- `firebase` - Firebase SDK for web (v12.1.0)
+- `@playwright/test` - End-to-end testing framework with multi-browser support
+- `@tailwindcss/postcss` - PostCSS plugin for Tailwind CSS 4
 
 ## Project Architecture
 
@@ -61,25 +63,35 @@ src/
 │   ├── [locale]/          # Internationalized routes
 │   │   ├── auth/          # Authentication pages
 │   │   ├── tests/         # Test-taking interface
+│   │   │   └── [testId]/  # Dynamic test pages
 │   │   ├── results/       # Results dashboard
-│   │   └── feedback/      # External feedback forms
-│   ├── globals.css        # Global styles
-│   └── layout.tsx         # Root layout
+│   │   ├── feedback/      # External feedback forms
+│   │   ├── profile/       # User profile management
+│   │   ├── welcome/       # Welcome/onboarding pages
+│   │   └── debug-*/       # Development debug pages
+│   ├── globals.css        # Global styles and Tailwind imports
+│   ├── layout.tsx         # Root layout with metadata
+│   └── page.tsx           # Root redirect to locale
 ├── components/            # React components
 │   ├── providers/         # Context providers (auth, translation)
+│   │   ├── auth-provider.tsx    # Firebase auth context
+│   │   └── translation-provider.tsx # Translation context
 │   ├── EmailSignup.tsx    # Email signup component
-│   └── Header.tsx         # Navigation header
+│   ├── Header.tsx         # Navigation header
+│   └── error-boundary.tsx # React error boundary
 ├── lib/                   # Core libraries and utilities
 │   ├── firebase.ts        # Firebase configuration
-│   ├── firestore.ts       # Database operations
-│   ├── test-definitions.ts # Test configurations and scoring
-│   └── translation-engine.js # Multilingual support
-functions/                 # Firebase Functions
+│   ├── firestore.ts       # Database operations and schemas
+│   ├── test-definitions.ts # Test configurations and scoring algorithms
+│   └── translation-engine.js # Custom i18n with MutationObserver
+functions/                 # Firebase Functions (Node.js 20)
 ├── src/
-│   └── index.ts          # Email and feedback processing
+│   └── index.ts          # Email and feedback processing functions
+├── package.json          # Separate dependencies for functions
 tests/                     # Playwright test files
 public/
 ├── translations/          # JSON translation files (en.json, ko.json, etc.)
+└── favicon.ico           # Static assets
 ```
 
 ### Core Components and Systems
@@ -120,8 +132,15 @@ public/
 1. Install dependencies: `npm install`
 2. Install Firebase CLI: `npm install -g firebase-tools`
 3. Install function dependencies: `cd functions && npm install`
-4. Start development server: `npm run dev`
-5. Access application at `http://localhost:3004`
+4. Install Playwright browsers: `npm run test:install`
+5. Start development server: `npm run dev` or `npm run dev:stable` (for Windows stability)
+6. Access application at `http://localhost:3004`
+
+### Important Configuration Notes
+- **Static Export**: Project is configured for static export (`output: 'export'` in next.config.js)
+- **Windows Optimization**: Special webpack configuration for Windows file system compatibility
+- **Cache Management**: Aggressive cache busting with timestamp-based build IDs
+- **Port Configuration**: Development server runs on port 3004 (configurable in Playwright)
 
 ### Testing Strategy
 - **Unit Testing**: Not currently implemented (focused on integration testing)
@@ -180,10 +199,11 @@ firebase functions:config:set \
 ## Testing and Quality Assurance
 
 ### End-to-End Testing
-- **Playwright Configuration**: Tests run on multiple browsers and mobile viewports
+- **Playwright Configuration**: Tests run on multiple browsers (Chromium, Firefox, WebKit) and mobile viewports (Pixel 5, iPhone 12)
 - **Test Scenarios**: Complete user workflows from authentication to result viewing
-- **Base URL**: Tests run against `http://localhost:3004`
-- **CI/CD**: Configured for continuous integration with retry logic
+- **Base URL**: Tests run against `http://localhost:3004` with automatic dev server startup
+- **CI/CD**: Configured for continuous integration with retry logic (2 retries on CI)
+- **Test Commands**: Use `npm run test:e2e:ui` for interactive testing with Playwright UI
 
 ### Manual Testing Workflows
 Refer to `TESTING_GUIDE.md` for comprehensive testing procedures:
@@ -202,10 +222,16 @@ Refer to `TESTING_GUIDE.md` for comprehensive testing procedures:
 ## Deployment and Production
 
 ### Build Process
-1. Run tests: `npm test`
-2. Build application: `npm run build`
+1. Run tests: `npm test` (linting + build validation)
+2. Build application: `npm run build` (generates static export in `/out` directory)
 3. Deploy functions: `npm run firebase:functions`
-4. Deploy hosting: `npm run firebase:deploy`
+4. Deploy hosting: `npm run firebase:deploy` (includes build step)
+
+### Development Scripts and Utilities
+- **cache-cleanup.js**: Cleans Next.js cache and temporary files
+- **dev-ultra-stable.bat**: Windows batch script for ultra-stable development environment
+- **Debug Scripts**: Multiple JavaScript debug files for testing specific features
+- **Validation Scripts**: QA and validation scripts for production testing
 
 ### Production Considerations
 - **Performance**: Optimized builds with Next.js production settings
@@ -214,7 +240,12 @@ Refer to `TESTING_GUIDE.md` for comprehensive testing procedures:
 - **Scalability**: Serverless architecture scales automatically with usage
 
 ### Environment Variables
-No client-side environment variables required. Firebase configuration is included in the codebase for the demo project. For production deployment, update `src/lib/firebase.ts` with your Firebase project configuration.
+No client-side environment variables required. Firebase configuration is included in the codebase for the demo project (`personatest-c8eb1`). For production deployment, update `src/lib/firebase.ts` with your Firebase project configuration.
+
+### Platform-Specific Notes
+- **Windows Development**: Enhanced compatibility with polling-based file watching and aggressive cache management
+- **Netlify Deployment**: Configured for static export with `netlify.toml` for routing
+- **Cache Strategy**: Build IDs include timestamps to prevent infinite loop issues in development
 
 ## Troubleshooting Common Issues
 
