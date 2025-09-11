@@ -930,7 +930,16 @@
         "openness": "Openness to Experience"
       },
       "description": "Your Big Five personality assessment reveals your core traits across five major dimensions of personality. These scientifically validated traits help explain your behavior patterns, preferences, and natural tendencies."
-    }
+    },
+    "page_title": "My Test Results",
+    "take_test": "Take Another Test",
+    "back_home": "Back to Home",
+    "total_completed": "Total tests completed",
+    "no_results_title": "No Test Results Yet",
+    "no_results_message": "You haven't completed any personality tests yet. Start your journey of self-discovery today!",
+    "take_first_test": "Take a Test",
+    "pending_invitations": "Pending Feedback Invitations",
+    "waiting_response": "Waiting for response"
   },
   "tests": {
     "bigfive": {

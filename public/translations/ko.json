@@ -311,9 +311,14 @@
   },
   "results": {
     "page_title": "테스트 결과",
-    "take_test": "테스트 하기",
+    "take_test": "다른 테스트 하기",
     "back_home": "홈으로 돌아가기",
-    "total_completed": "총 완료",
+    "total_completed": "총 완료된 테스트",
+    "no_results_title": "아직 테스트 결과가 없습니다",
+    "no_results_message": "아직 성격 테스트를 완료하지 않았습니다. 오늘 자기 발견의 여정을 시작해보세요!",
+    "take_first_test": "테스트 하기",
+    "pending_invitations": "대기 중인 피드백 초대",
+    "waiting_response": "응답 대기 중",
     "mbtiTraits": {
       "extraversionIntroversion": "외향성/내향성",
       "sensingIntuition": "감각/직관",
