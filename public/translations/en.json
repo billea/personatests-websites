@@ -950,8 +950,17 @@
       "title": "360° Feedback",
       "description": "Get comprehensive feedback from others about your personality and behavior patterns."
     },
+    "enneagram": {
+      "title": "Enneagram",
+      "description": "Discover your core motivations and personality type through the ancient wisdom of the Enneagram."
+    },
+    "couple": {
+      "title": "Couple Compatibility",
+      "description": "Analyze your relationship dynamics and compatibility with your partner through comprehensive assessment."
+    },
     "bigfive": {
       "title": "Big Five Personality",
+      "description": "Explore your personality across five major dimensions with this scientifically validated assessment.",
       "questions": {
         "e1": "I am the life of the party",
         "e2": "I feel comfortable around people",
