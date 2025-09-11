@@ -965,6 +965,33 @@ export default function ResultsPage() {
                             </button>
                         </Link>
                         
+                        {/* Temporary Debug Info */}
+                        <div className="mt-8 p-4 bg-blue-50 rounded-lg text-left text-sm max-w-4xl mx-auto">
+                            <h3 className="font-semibold mb-2">🔧 Debugging Info:</h3>
+                            <div className="space-y-1">
+                                <p><strong>User:</strong> {user ? `${user.email} (${user.uid})` : 'Not authenticated'}</p>
+                                <p><strong>Auth Loading:</strong> {resultsLoading ? 'Loading...' : 'Complete'}</p>
+                                <p><strong>Results Array:</strong> {JSON.stringify(results.map(r => ({id: r.id, testId: r.testId, timestamp: r.createdAt})))}</p>
+                                <p><strong>LocalStorage Check:</strong> {typeof window !== 'undefined' ? Object.keys(localStorage).filter(k => k.startsWith('test_result_')).length + ' items' : 'N/A'}</p>
+                                {typeof window !== 'undefined' && (
+                                    <details className="mt-2">
+                                        <summary className="cursor-pointer text-blue-600">Show LocalStorage Results</summary>
+                                        <pre className="mt-2 p-2 bg-gray-100 rounded text-xs overflow-auto max-h-32">
+                                            {JSON.stringify(
+                                                Object.keys(localStorage)
+                                                    .filter(k => k.startsWith('test_result_'))
+                                                    .map(k => ({
+                                                        key: k, 
+                                                        data: JSON.parse(localStorage.getItem(k) || '{}')
+                                                    })), 
+                                                null, 
+                                                2
+                                            )}
+                                        </pre>
+                                    </details>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <div className="space-y-6">
