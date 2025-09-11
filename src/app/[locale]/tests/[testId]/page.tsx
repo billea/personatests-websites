@@ -1613,15 +1613,44 @@ export default function TestPage() {
                             )}
                             
                             {completedTestResult.scores && (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
-                                    {Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
-                                        <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
-                                            <div className="flex justify-between items-center mb-2">
-                                                <div className="font-semibold text-lg text-white">
-                                                    {t(`results.dimensions.${dimension}`) || dimension}
+                                <div className="mt-6">
+                                    {/* Section Header for Big Five */}
+                                    {completedTestResult.scores.percentages && (
+                                        <h3 className="text-xl font-semibold text-white mb-4" data-translate="results.keyTraits">
+                                            {t('results.keyTraits') || 'Your Key Traits'}
+                                        </h3>
+                                    )}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
+                                        {/* Handle Big Five nested percentages structure */}
+                                        {completedTestResult.scores.percentages ? 
+                                        Object.entries(completedTestResult.scores.percentages).map(([trait, score]) => (
+                                            <div key={trait} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
+                                                <div className="flex justify-between items-center mb-2">
+                                                    <div className="font-semibold text-lg text-white">
+                                                        {t(`results.bigfive.traits.${trait}`) || 
+                                                         t(`results.dimensions.${trait}`) || 
+                                                         trait}
+                                                    </div>
+                                                    <div className="text-xl font-bold !text-white">{typeof score === 'number' ? score : 0}%</div>
                                                 </div>
-                                                <div className="text-xl font-bold !text-white">{String(percentage)}%</div>
+                                                {/* Progress Bar */}
+                                                <div className="w-full bg-white/10 rounded-full h-3 mb-2">
+                                                    <div
+                                                        className="bg-gradient-to-r from-blue-400 to-purple-400 h-3 rounded-full transition-all duration-1000 ease-out"
+                                                        style={{ width: `${typeof score === 'number' ? score : 0}%` }}
+                                                    ></div>
+                                                </div>
                                             </div>
+                                        )) :
+                                        // Handle other test types with direct scores structure
+                                        Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
+                                            <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
+                                                <div className="flex justify-between items-center mb-2">
+                                                    <div className="font-semibold text-lg text-white">
+                                                        {t(`results.dimensions.${dimension}`) || dimension}
+                                                    </div>
+                                                    <div className="text-xl font-bold !text-white">{typeof percentage === 'number' ? percentage : String(percentage)}%</div>
+                                                </div>
                                             {/* Progress Bar */}
                                             <div className="w-full bg-white/10 rounded-full h-3 mb-2">
                                                 <div 
@@ -1641,6 +1670,7 @@ export default function TestPage() {
                                             </div>
                                         </div>
                                     ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
