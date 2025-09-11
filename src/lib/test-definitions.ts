@@ -389,7 +389,9 @@ const mbtiScoring: ScoringFunction = (answers) => {
   };
 
   return {
-    scores: percentages,
+    scores: {
+      percentages: percentages
+    },
     type: type,
     description_key: typeInfo.description,
     traits: typeInfo.traits,
@@ -770,7 +772,9 @@ const bigFiveScoring: ScoringFunction = (answers) => {
     .map(([trait]) => trait);
 
   return {
-    scores: percentageScores,
+    scores: {
+      percentages: percentageScores
+    },
     type: 'Big Five Profile',
     description_key: 'tests.bigfive.results.description',
     primaryTrait: sortedTraits[0],
