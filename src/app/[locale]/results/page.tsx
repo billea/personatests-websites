@@ -574,7 +574,7 @@ export default function ResultsPage() {
                             </h4>
                             <div className="text-center">
                                 <div className="text-2xl font-bold text-purple-300 mb-2">
-                                    {hasResult.type}
+                                    {t(hasResult.type) || hasResult.type}
                                 </div>
                                 {hasResult.traits && (
                                     <div className="flex justify-center flex-wrap gap-2 mt-4">
@@ -766,7 +766,7 @@ export default function ResultsPage() {
                         {hasResult.type && (
                             <div className="text-center mb-4">
                                 <div className="text-2xl font-bold text-white mb-2">
-                                    {hasResult.type}
+                                    {t(hasResult.type) || hasResult.type}
                                 </div>
                                 {hasResult.traits && (
                                     <div className="flex justify-center flex-wrap gap-2">
@@ -823,7 +823,7 @@ export default function ResultsPage() {
                                     {hasResult.type && (
                                         <div className="text-center p-4 bg-white/5 rounded">
                                             <div className="text-xl font-bold text-purple-300 mb-2">
-                                                {hasResult.type}
+                                                {t(hasResult.type) || hasResult.type}
                                             </div>
                                             {hasResult.traits && (
                                                 <div className="flex justify-center flex-wrap gap-2">
