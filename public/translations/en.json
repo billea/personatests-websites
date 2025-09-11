@@ -32,6 +32,17 @@
     "invite_feedback_title": "Invite Others for Feedback",
     "invite_feedback_description": "Get a complete picture by inviting friends and colleagues to provide feedback about you."
   },
+  "share": {
+    "button": "Share",
+    "share_results": "Share Results",
+    "copy_link": "Copy Link",
+    "copied": "Result link copied to clipboard!",
+    "twitter": "Twitter",
+    "facebook": "Facebook", 
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "download": "Download Results"
+  },
   "invitation": {
     "selector": {
       "title": "How would you like to collect feedback?",

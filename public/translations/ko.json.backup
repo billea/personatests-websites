@@ -1,15 +1,4 @@
 {
-  "share": {
-    "button": "공유",
-    "share_results": "결과 공유",
-    "copy_link": "링크 복사",
-    "copied": "결과 링크가 클립보드에 복사되었습니다!",
-    "twitter": "트위터",
-    "facebook": "페이스북",
-    "linkedin": "링크드인",
-    "whatsapp": "왓츠앱",
-    "download": "결과 다운로드"
-  },
   "nav": {
     "home": "홈",
     "tests": "테스트",
