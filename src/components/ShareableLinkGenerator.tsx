@@ -211,11 +211,11 @@ export default function ShareableLinkGenerator({
             </div>
 
             <div className="text-white/80 text-sm">
-              <p>• {t('invitation.link.info.expires') || `Expires: ${new Date(generatedLink.expiresAt).toLocaleDateString()}`}</p>
+              <p>• Expires: {new Date(generatedLink.expiresAt).toLocaleDateString()}</p>
               {generatedLink.maxResponses && (
-                <p>• {t('invitation.link.info.limit') || `Max responses: ${generatedLink.maxResponses}`}</p>
+                <p>• Max responses: {generatedLink.maxResponses}</p>
               )}
-              <p>• {t('invitation.link.info.responses') || `Current responses: ${generatedLink.responseCount}`}</p>
+              <p>• Current responses: {generatedLink.responseCount}</p>
             </div>
           </div>
 

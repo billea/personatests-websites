@@ -24,7 +24,8 @@
       "Bash(firebase init:*)",
       "Bash(firebase hosting:sites:*)",
       "Bash(firebase hosting:channel:list:*)",
-      "WebFetch(domain:personatest-c8eb1.web.app)"
+      "WebFetch(domain:personatest-c8eb1.web.app)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
