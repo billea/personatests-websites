@@ -968,8 +968,12 @@ export default function ResultsPage() {
                         {/* Debug Information */}
                         <div className="mt-8 p-4 bg-red-50 rounded-lg text-left text-sm">
                             <h3 className="font-semibold mb-2">🔍 Debug Information:</h3>
+                            <p><strong>User UID:</strong> {user?.uid || 'No UID'}</p>
                             <p><strong>User Email:</strong> {user?.email || 'No email'}</p>
+                            <p><strong>User Auth State:</strong> {user ? 'Authenticated' : 'Not authenticated'}</p>
+                            <p><strong>Results Loading:</strong> {resultsLoading ? 'Loading...' : 'Complete'}</p>
                             <p><strong>Individual Results:</strong> {results.length}</p>
+                            <p><strong>Individual Results Raw:</strong> {JSON.stringify(results.map(r => ({ id: r.id, testId: r.testId, createdAt: r.createdAt })), null, 2)}</p>
                             <p><strong>Couple Results:</strong> {coupleResults.length}</p>
                             <p><strong>Total Results:</strong> {results.length + coupleResults.length}</p>
                         </div>
@@ -1188,8 +1192,22 @@ export default function ResultsPage() {
                         )}
                         
                         {/* Individual Test Results Section */}
-                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                             {t('results.total_completed') || 'Total tests completed'}: <span className="font-semibold">{results.filter(r => r.testId !== 'couple-compatibility-results').length}</span>
+                        </div>
+                        
+                        {/* Debug information - always show when there are any results */}
+                        <div className="mb-6 p-4 bg-blue-50 rounded-lg text-left text-sm">
+                            <h3 className="font-semibold mb-2">🔍 Individual Results Debug:</h3>
+                            <p><strong>All Results Count:</strong> {results.length}</p>
+                            <p><strong>Filtered Results Count:</strong> {results.filter(r => r.testId !== 'couple-compatibility-results').length}</p>
+                            <p><strong>All Test IDs:</strong> {JSON.stringify(results.map(r => r.testId))}</p>
+                            <p><strong>All Results with Payload Check:</strong> {JSON.stringify(results.map(r => ({ 
+                                testId: r.testId, 
+                                hasPayload: !!r.resultPayload, 
+                                hasAnswers: !!r.resultPayload?.answers, 
+                                hasResult: !!r.resultPayload?.result 
+                            })))}</p>
                         </div>
                         
                         {results.filter(r => r.testId !== 'couple-compatibility-results').map((result) => renderTestResult(result))}
