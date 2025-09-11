@@ -24,6 +24,7 @@ export default function ResultsPage() {
     const [coupleResults, setCoupleResults] = useState<any[]>([]);
     const [resultsLoading, setResultsLoading] = useState(true);
     const [selectedResultId, setSelectedResultId] = useState<string | null>(null);
+    const [showAllResults, setShowAllResults] = useState(false);
 
     useEffect(() => {
         if (user && !loading) {
@@ -499,6 +500,47 @@ export default function ResultsPage() {
                 </div>
             );
         }).filter(Boolean);
+    };
+
+    // Filter results to show only recent 5 per test type
+    const getFilteredResults = () => {
+        if (showAllResults) {
+            return results.filter(r => r.testId !== 'couple-compatibility-results');
+        }
+        
+        // Group results by test type and get 5 most recent for each
+        const resultsByTestType: { [testId: string]: TestResult[] } = {};
+        
+        results
+            .filter(r => r.testId !== 'couple-compatibility-results')
+            .forEach(result => {
+                if (!resultsByTestType[result.testId]) {
+                    resultsByTestType[result.testId] = [];
+                }
+                resultsByTestType[result.testId].push(result);
+            });
+        
+        // Sort each test type by date (most recent first) and take only 5
+        Object.keys(resultsByTestType).forEach(testId => {
+            resultsByTestType[testId] = resultsByTestType[testId]
+                .sort((a, b) => {
+                    const aDate = a.createdAt?.toDate ? a.createdAt.toDate() : (a.createdAt as any ? new Date(a.createdAt as any) : new Date(0));
+                    const bDate = b.createdAt?.toDate ? b.createdAt.toDate() : (b.createdAt as any ? new Date(b.createdAt as any) : new Date(0));
+                    return bDate.getTime() - aDate.getTime();
+                })
+                .slice(0, 5);
+        });
+        
+        // Flatten back to array and sort by overall date
+        const filteredResults = Object.values(resultsByTestType)
+            .flat()
+            .sort((a, b) => {
+                const aDate = a.createdAt?.toDate ? a.createdAt.toDate() : (a.createdAt as any ? new Date(a.createdAt as any) : new Date(0));
+                const bDate = b.createdAt?.toDate ? b.createdAt.toDate() : (b.createdAt as any ? new Date(b.createdAt as any) : new Date(0));
+                return bDate.getTime() - aDate.getTime();
+            });
+            
+        return filteredResults;
     };
 
     const renderTestResult = (result: TestResult) => {
@@ -1180,12 +1222,30 @@ export default function ResultsPage() {
                         )}
                         
                         {/* Individual Test Results Section */}
-                        <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            {t('results.total_completed') || 'Total tests completed'}: <span className="font-semibold">{results.filter(r => r.testId !== 'couple-compatibility-results').length}</span>
+                        <div className="flex justify-between items-center mb-6">
+                            <div className="text-sm text-white/70">
+                                {t('results.total_completed') || 'Total tests completed'}: <span className="font-semibold">{results.filter(r => r.testId !== 'couple-compatibility-results').length}</span>
+                                {!showAllResults && getFilteredResults().length < results.filter(r => r.testId !== 'couple-compatibility-results').length && (
+                                    <span className="ml-2 text-white/50">
+                                        ({t('results.showing_recent') || 'showing'} {getFilteredResults().length} {t('results.showing_recent') ? '' : 'recent results'})
+                                    </span>
+                                )}
+                            </div>
+                            
+                            {results.filter(r => r.testId !== 'couple-compatibility-results').length > 0 && (
+                                <button
+                                    onClick={() => setShowAllResults(!showAllResults)}
+                                    className="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/30 transition-all duration-300 text-sm"
+                                >
+                                    {showAllResults 
+                                        ? `📋 ${t('results.show_recent_only') || 'Show Recent Only'} (${Math.min(25, results.filter(r => r.testId !== 'couple-compatibility-results').length)})` 
+                                        : `📊 ${t('results.show_all_results') || 'Show All Results'} (${results.filter(r => r.testId !== 'couple-compatibility-results').length})`
+                                    }
+                                </button>
+                            )}
                         </div>
                         
-                        
-                        {results.filter(r => r.testId !== 'couple-compatibility-results').map((result) => renderTestResult(result))}
+                        {getFilteredResults().map((result) => renderTestResult(result))}
                     </div>
                 )}
             </div>
