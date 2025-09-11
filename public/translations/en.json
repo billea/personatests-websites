@@ -942,6 +942,10 @@
     "waiting_response": "Waiting for response"
   },
   "tests": {
+    "mbti": {
+      "title": "MBTI Classic",
+      "description": "Discover your Myers-Briggs personality type through this comprehensive assessment."
+    },
     "bigfive": {
       "title": "Big Five Personality",
       "questions": {
