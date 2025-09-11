@@ -247,11 +247,35 @@
       "title": "Big Five Personality",
       "description": "The scientifically validated Big Five model measures your personality across five key dimensions: Openness to new experiences, Conscientiousness in organization and responsibility, Extraversion in social energy, Agreeableness in interpersonal warmth, and Neuroticism in emotional stability. These traits provide deep insights into your behavior patterns, preferences, and natural tendencies.",
       "questions": {
-        "q1": "I am outgoing and sociable",
-        "q2": "I am always prepared and organized",
-        "q3": "I am open to new experiences",
-        "q4": "I am compassionate and understanding",
-        "q5": "I remain calm under pressure"
+        "e1": "I am the life of the party",
+        "e2": "I feel comfortable around people",
+        "e3": "I keep in the background (reverse)",
+        "e4": "I start conversations",
+        "e5": "I talk to many different people at parties",
+        
+        "a1": "I feel others' emotions",
+        "a2": "I am not interested in other people's problems (reverse)",
+        "a3": "I have a soft heart",
+        "a4": "I take time out for others",
+        "a5": "I feel little concern for others (reverse)",
+        
+        "c1": "I am always prepared",
+        "c2": "I leave my belongings around (reverse)",
+        "c3": "I pay attention to details",
+        "c4": "I make a mess of things (reverse)",
+        "c5": "I get chores done right away",
+        
+        "n1": "I get stressed out easily",
+        "n2": "I am relaxed most of the time (reverse)",
+        "n3": "I worry about things",
+        "n4": "I get upset easily",
+        "n5": "I remain calm under pressure (reverse)",
+        
+        "o1": "I have a rich vocabulary",
+        "o2": "I have difficulty understanding abstract ideas (reverse)",
+        "o3": "I have a vivid imagination",
+        "o4": "I am interested in many things",
+        "o5": "I do not have a good imagination (reverse)"
       },
       "scale": {
         "strongly_disagree": "Strongly Disagree",

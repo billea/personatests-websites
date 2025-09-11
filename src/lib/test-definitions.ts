@@ -406,9 +406,10 @@ const mbtiScoring: ScoringFunction = (answers) => {
 
 // Big Five Personality Test Questions
 const bigFiveQuestions: TestQuestion[] = [
+  // Extraversion (E) - 5 questions
   {
-    id: 'bigfive_1',
-    text_key: 'tests.bigfive.questions.q1',
+    id: 'bigfive_e1',
+    text_key: 'tests.bigfive.questions.e1',
     type: 'scale',
     scale: {
       min: 1,
@@ -418,8 +419,8 @@ const bigFiveQuestions: TestQuestion[] = [
     }
   },
   {
-    id: 'bigfive_2',
-    text_key: 'tests.bigfive.questions.q2',
+    id: 'bigfive_e2',
+    text_key: 'tests.bigfive.questions.e2',
     type: 'scale',
     scale: {
       min: 1,
@@ -429,8 +430,8 @@ const bigFiveQuestions: TestQuestion[] = [
     }
   },
   {
-    id: 'bigfive_3',
-    text_key: 'tests.bigfive.questions.q3',
+    id: 'bigfive_e3',
+    text_key: 'tests.bigfive.questions.e3',
     type: 'scale',
     scale: {
       min: 1,
@@ -440,8 +441,8 @@ const bigFiveQuestions: TestQuestion[] = [
     }
   },
   {
-    id: 'bigfive_4',
-    text_key: 'tests.bigfive.questions.q4',
+    id: 'bigfive_e4',
+    text_key: 'tests.bigfive.questions.e4',
     type: 'scale',
     scale: {
       min: 1,
@@ -451,8 +452,236 @@ const bigFiveQuestions: TestQuestion[] = [
     }
   },
   {
-    id: 'bigfive_5',
-    text_key: 'tests.bigfive.questions.q5',
+    id: 'bigfive_e5',
+    text_key: 'tests.bigfive.questions.e5',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  
+  // Agreeableness (A) - 5 questions
+  {
+    id: 'bigfive_a1',
+    text_key: 'tests.bigfive.questions.a1',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_a2',
+    text_key: 'tests.bigfive.questions.a2',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_a3',
+    text_key: 'tests.bigfive.questions.a3',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_a4',
+    text_key: 'tests.bigfive.questions.a4',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_a5',
+    text_key: 'tests.bigfive.questions.a5',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  
+  // Conscientiousness (C) - 5 questions
+  {
+    id: 'bigfive_c1',
+    text_key: 'tests.bigfive.questions.c1',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_c2',
+    text_key: 'tests.bigfive.questions.c2',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_c3',
+    text_key: 'tests.bigfive.questions.c3',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_c4',
+    text_key: 'tests.bigfive.questions.c4',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_c5',
+    text_key: 'tests.bigfive.questions.c5',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  
+  // Neuroticism (N) - 5 questions
+  {
+    id: 'bigfive_n1',
+    text_key: 'tests.bigfive.questions.n1',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_n2',
+    text_key: 'tests.bigfive.questions.n2',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_n3',
+    text_key: 'tests.bigfive.questions.n3',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_n4',
+    text_key: 'tests.bigfive.questions.n4',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_n5',
+    text_key: 'tests.bigfive.questions.n5',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  
+  // Openness (O) - 5 questions
+  {
+    id: 'bigfive_o1',
+    text_key: 'tests.bigfive.questions.o1',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_o2',
+    text_key: 'tests.bigfive.questions.o2',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_o3',
+    text_key: 'tests.bigfive.questions.o3',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_o4',
+    text_key: 'tests.bigfive.questions.o4',
+    type: 'scale',
+    scale: {
+      min: 1,
+      max: 5,
+      minLabel_key: 'tests.bigfive.scale.strongly_disagree',
+      maxLabel_key: 'tests.bigfive.scale.strongly_agree'
+    }
+  },
+  {
+    id: 'bigfive_o5',
+    text_key: 'tests.bigfive.questions.o5',
     type: 'scale',
     scale: {
       min: 1,
@@ -465,52 +694,89 @@ const bigFiveQuestions: TestQuestion[] = [
 
 const bigFiveScoring: ScoringFunction = (answers) => {
   const traits = {
-    openness: 0,
-    conscientiousness: 0,
     extraversion: 0,
     agreeableness: 0,
-    neuroticism: 0
+    conscientiousness: 0,
+    neuroticism: 0,
+    openness: 0
   };
 
-  // Map each question to specific trait (improved scoring)
-  const questionTraitMapping = [
-    'extraversion',      // q1: outgoing and sociable
-    'conscientiousness', // q2: always prepared and organized  
-    'openness',         // q3: open to new experiences
-    'agreeableness',    // q4: compassionate and understanding
-    'neuroticism'       // q5: remain calm under pressure (reverse scored)
-  ];
+  // Define which questions belong to each trait and their scoring direction
+  const questionMappings = {
+    // Extraversion (E) - outgoing, energetic, sociable
+    'bigfive_e1': { trait: 'extraversion', reverse: false },
+    'bigfive_e2': { trait: 'extraversion', reverse: false },
+    'bigfive_e3': { trait: 'extraversion', reverse: true },  // reverse: quiet/reserved
+    'bigfive_e4': { trait: 'extraversion', reverse: false },
+    'bigfive_e5': { trait: 'extraversion', reverse: false },
+    
+    // Agreeableness (A) - cooperative, trusting, helpful
+    'bigfive_a1': { trait: 'agreeableness', reverse: false },
+    'bigfive_a2': { trait: 'agreeableness', reverse: true }, // reverse: critical/harsh
+    'bigfive_a3': { trait: 'agreeableness', reverse: false },
+    'bigfive_a4': { trait: 'agreeableness', reverse: false },
+    'bigfive_a5': { trait: 'agreeableness', reverse: true }, // reverse: competitive
+    
+    // Conscientiousness (C) - organized, responsible, dependable
+    'bigfive_c1': { trait: 'conscientiousness', reverse: false },
+    'bigfive_c2': { trait: 'conscientiousness', reverse: true }, // reverse: disorganized
+    'bigfive_c3': { trait: 'conscientiousness', reverse: false },
+    'bigfive_c4': { trait: 'conscientiousness', reverse: true }, // reverse: procrastinate
+    'bigfive_c5': { trait: 'conscientiousness', reverse: false },
+    
+    // Neuroticism (N) - emotional instability, anxiety, moodiness
+    'bigfive_n1': { trait: 'neuroticism', reverse: false },
+    'bigfive_n2': { trait: 'neuroticism', reverse: true },  // reverse: calm/relaxed
+    'bigfive_n3': { trait: 'neuroticism', reverse: false },
+    'bigfive_n4': { trait: 'neuroticism', reverse: false },
+    'bigfive_n5': { trait: 'neuroticism', reverse: true },  // reverse: handle stress well
+    
+    // Openness (O) - creative, curious, open to new experiences
+    'bigfive_o1': { trait: 'openness', reverse: false },
+    'bigfive_o2': { trait: 'openness', reverse: true },     // reverse: prefer routine
+    'bigfive_o3': { trait: 'openness', reverse: false },
+    'bigfive_o4': { trait: 'openness', reverse: false },
+    'bigfive_o5': { trait: 'openness', reverse: true }      // reverse: practical vs abstract
+  };
 
-  // Calculate scores based on answers (1-5 scale)
-  Object.entries(answers).forEach(([questionId, score], index) => {
-    const trait = questionTraitMapping[index % questionTraitMapping.length];
-    let adjustedScore = score as number;
-    
-    // Reverse score for neuroticism (calm under pressure = low neuroticism)
-    if (trait === 'neuroticism') {
-      adjustedScore = 6 - adjustedScore; // Reverse 1-5 scale
+  // Calculate trait scores
+  Object.entries(answers).forEach(([questionId, score]) => {
+    const mapping = questionMappings[questionId as keyof typeof questionMappings];
+    if (mapping) {
+      let adjustedScore = score as number;
+      
+      // Reverse score if needed (convert 1-5 to 5-1)
+      if (mapping.reverse) {
+        adjustedScore = 6 - adjustedScore;
+      }
+      
+      traits[mapping.trait as keyof typeof traits] += adjustedScore;
     }
-    
-    traits[trait as keyof typeof traits] += adjustedScore;
   });
 
-  // Convert raw scores to percentages (1-5 scale becomes 0-100%)
-  const maxScore = 5; // Maximum possible score per question
-  const questionsPerTrait = Math.ceil(Object.keys(answers).length / 5);
-  const maxPossible = maxScore * questionsPerTrait;
-  
+  // Convert to percentages (5 questions per trait, max score 5 each = 25 total)
+  const maxScorePerTrait = 5 * 5; // 5 questions × max score of 5
   const percentageScores = Object.fromEntries(
-    Object.entries(traits).map(([trait, score]) => [
+    Object.entries(traits).map(([trait, rawScore]) => [
       trait,
-      Math.round((score / maxPossible) * 100)
+      Math.round((rawScore / maxScorePerTrait) * 100)
     ])
   );
+
+  // Determine dominant traits (top 2)
+  const sortedTraits = Object.entries(percentageScores)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 2)
+    .map(([trait]) => trait);
 
   return {
     scores: percentageScores,
     type: 'Big Five Profile',
-    description_key: 'tests.bigfive.description',
-    traits: Object.keys(traits).map(trait => `results.dimensions.${trait}`)
+    description_key: 'tests.bigfive.results.description',
+    primaryTrait: sortedTraits[0],
+    secondaryTrait: sortedTraits[1],
+    traits: sortedTraits.map(trait => `results.bigfive.traits.${trait}`),
+    summary_key: `tests.bigfive.results.${sortedTraits[0]}_${sortedTraits[1]}`
   };
 };
 
