@@ -946,6 +946,10 @@
       "title": "MBTI Classic",
       "description": "Discover your Myers-Briggs personality type through this comprehensive assessment."
     },
+    "feedback360": {
+      "title": "360° Feedback",
+      "description": "Get comprehensive feedback from others about your personality and behavior patterns."
+    },
     "bigfive": {
       "title": "Big Five Personality",
       "questions": {
