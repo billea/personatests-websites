@@ -784,16 +784,16 @@ const bigFiveScoring: ScoringFunction = (answers) => {
   };
 };
 
-// Enneagram Type Test Questions
+// Enneagram Type Test Questions - Comprehensive 18-question assessment
 const enneagramQuestions: TestQuestion[] = [
   {
     id: 'enneagram_1',
     text_key: 'tests.enneagram.questions.q1',
     type: 'multiple_choice',
     options: [
-      { value: 1, text_key: 'tests.enneagram.options.q1_a' },
-      { value: 2, text_key: 'tests.enneagram.options.q1_b' },
-      { value: 3, text_key: 'tests.enneagram.options.q1_c' }
+      { value: 1, text_key: 'tests.enneagram.options.q1_a', points: { 1: 3 } },
+      { value: 8, text_key: 'tests.enneagram.options.q1_b', points: { 8: 3 } },
+      { value: 3, text_key: 'tests.enneagram.options.q1_c', points: { 3: 3 } }
     ]
   },
   {
@@ -801,9 +801,9 @@ const enneagramQuestions: TestQuestion[] = [
     text_key: 'tests.enneagram.questions.q2',
     type: 'multiple_choice',
     options: [
-      { value: 4, text_key: 'tests.enneagram.options.q2_a' },
-      { value: 5, text_key: 'tests.enneagram.options.q2_b' },
-      { value: 6, text_key: 'tests.enneagram.options.q2_c' }
+      { value: 2, text_key: 'tests.enneagram.options.q2_a', points: { 2: 3 } },
+      { value: 9, text_key: 'tests.enneagram.options.q2_b', points: { 9: 3 } },
+      { value: 6, text_key: 'tests.enneagram.options.q2_c', points: { 6: 3 } }
     ]
   },
   {
@@ -811,9 +811,159 @@ const enneagramQuestions: TestQuestion[] = [
     text_key: 'tests.enneagram.questions.q3',
     type: 'multiple_choice',
     options: [
-      { value: 7, text_key: 'tests.enneagram.options.q3_a' },
-      { value: 8, text_key: 'tests.enneagram.options.q3_b' },
-      { value: 9, text_key: 'tests.enneagram.options.q3_c' }
+      { value: 7, text_key: 'tests.enneagram.options.q3_a', points: { 7: 3 } },
+      { value: 4, text_key: 'tests.enneagram.options.q3_b', points: { 4: 3 } },
+      { value: 5, text_key: 'tests.enneagram.options.q3_c', points: { 5: 3 } }
+    ]
+  },
+  {
+    id: 'enneagram_4',
+    text_key: 'tests.enneagram.questions.q4',
+    type: 'multiple_choice',
+    options: [
+      { value: 1, text_key: 'tests.enneagram.options.q4_a', points: { 1: 2 } },
+      { value: 2, text_key: 'tests.enneagram.options.q4_b', points: { 2: 2 } },
+      { value: 3, text_key: 'tests.enneagram.options.q4_c', points: { 3: 2 } }
+    ]
+  },
+  {
+    id: 'enneagram_5',
+    text_key: 'tests.enneagram.questions.q5',
+    type: 'multiple_choice',
+    options: [
+      { value: 4, text_key: 'tests.enneagram.options.q5_a', points: { 4: 2 } },
+      { value: 5, text_key: 'tests.enneagram.options.q5_b', points: { 5: 2 } },
+      { value: 6, text_key: 'tests.enneagram.options.q5_c', points: { 6: 2 } }
+    ]
+  },
+  {
+    id: 'enneagram_6',
+    text_key: 'tests.enneagram.questions.q6',
+    type: 'multiple_choice',
+    options: [
+      { value: 7, text_key: 'tests.enneagram.options.q6_a', points: { 7: 2 } },
+      { value: 8, text_key: 'tests.enneagram.options.q6_b', points: { 8: 2 } },
+      { value: 9, text_key: 'tests.enneagram.options.q6_c', points: { 9: 2 } }
+    ]
+  },
+  {
+    id: 'enneagram_7',
+    text_key: 'tests.enneagram.questions.q7',
+    type: 'multiple_choice',
+    options: [
+      { value: 1, text_key: 'tests.enneagram.options.q7_a', points: { 1: 2 } },
+      { value: 4, text_key: 'tests.enneagram.options.q7_b', points: { 4: 2 } },
+      { value: 7, text_key: 'tests.enneagram.options.q7_c', points: { 7: 2 } }
+    ]
+  },
+  {
+    id: 'enneagram_8',
+    text_key: 'tests.enneagram.questions.q8',
+    type: 'multiple_choice',
+    options: [
+      { value: 2, text_key: 'tests.enneagram.options.q8_a', points: { 2: 2 } },
+      { value: 5, text_key: 'tests.enneagram.options.q8_b', points: { 5: 2 } },
+      { value: 8, text_key: 'tests.enneagram.options.q8_c', points: { 8: 2 } }
+    ]
+  },
+  {
+    id: 'enneagram_9',
+    text_key: 'tests.enneagram.questions.q9',
+    type: 'multiple_choice',
+    options: [
+      { value: 3, text_key: 'tests.enneagram.options.q9_a', points: { 3: 2 } },
+      { value: 6, text_key: 'tests.enneagram.options.q9_b', points: { 6: 2 } },
+      { value: 9, text_key: 'tests.enneagram.options.q9_c', points: { 9: 2 } }
+    ]
+  },
+  {
+    id: 'enneagram_10',
+    text_key: 'tests.enneagram.questions.q10',
+    type: 'multiple_choice',
+    options: [
+      { value: 1, text_key: 'tests.enneagram.options.q10_a', points: { 1: 1, 8: 1 } },
+      { value: 2, text_key: 'tests.enneagram.options.q10_b', points: { 2: 1, 9: 1 } },
+      { value: 3, text_key: 'tests.enneagram.options.q10_c', points: { 3: 1, 6: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_11',
+    text_key: 'tests.enneagram.questions.q11',
+    type: 'multiple_choice',
+    options: [
+      { value: 4, text_key: 'tests.enneagram.options.q11_a', points: { 4: 1, 7: 1 } },
+      { value: 5, text_key: 'tests.enneagram.options.q11_b', points: { 5: 1, 8: 1 } },
+      { value: 6, text_key: 'tests.enneagram.options.q11_c', points: { 6: 1, 9: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_12',
+    text_key: 'tests.enneagram.questions.q12',
+    type: 'multiple_choice',
+    options: [
+      { value: 7, text_key: 'tests.enneagram.options.q12_a', points: { 7: 1, 1: 1 } },
+      { value: 8, text_key: 'tests.enneagram.options.q12_b', points: { 8: 1, 2: 1 } },
+      { value: 9, text_key: 'tests.enneagram.options.q12_c', points: { 9: 1, 3: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_13',
+    text_key: 'tests.enneagram.questions.q13',
+    type: 'multiple_choice',
+    options: [
+      { value: 1, text_key: 'tests.enneagram.options.q13_a', points: { 1: 1 } },
+      { value: 4, text_key: 'tests.enneagram.options.q13_b', points: { 4: 1 } },
+      { value: 5, text_key: 'tests.enneagram.options.q13_c', points: { 5: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_14',
+    text_key: 'tests.enneagram.questions.q14',
+    type: 'multiple_choice',
+    options: [
+      { value: 2, text_key: 'tests.enneagram.options.q14_a', points: { 2: 1 } },
+      { value: 6, text_key: 'tests.enneagram.options.q14_b', points: { 6: 1 } },
+      { value: 7, text_key: 'tests.enneagram.options.q14_c', points: { 7: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_15',
+    text_key: 'tests.enneagram.questions.q15',
+    type: 'multiple_choice',
+    options: [
+      { value: 3, text_key: 'tests.enneagram.options.q15_a', points: { 3: 1 } },
+      { value: 8, text_key: 'tests.enneagram.options.q15_b', points: { 8: 1 } },
+      { value: 9, text_key: 'tests.enneagram.options.q15_c', points: { 9: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_16',
+    text_key: 'tests.enneagram.questions.q16',
+    type: 'multiple_choice',
+    options: [
+      { value: 1, text_key: 'tests.enneagram.options.q16_a', points: { 1: 1 } },
+      { value: 2, text_key: 'tests.enneagram.options.q16_b', points: { 2: 1 } },
+      { value: 9, text_key: 'tests.enneagram.options.q16_c', points: { 9: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_17',
+    text_key: 'tests.enneagram.questions.q17',
+    type: 'multiple_choice',
+    options: [
+      { value: 3, text_key: 'tests.enneagram.options.q17_a', points: { 3: 1 } },
+      { value: 4, text_key: 'tests.enneagram.options.q17_b', points: { 4: 1 } },
+      { value: 5, text_key: 'tests.enneagram.options.q17_c', points: { 5: 1 } }
+    ]
+  },
+  {
+    id: 'enneagram_18',
+    text_key: 'tests.enneagram.questions.q18',
+    type: 'multiple_choice',
+    options: [
+      { value: 6, text_key: 'tests.enneagram.options.q18_a', points: { 6: 1 } },
+      { value: 7, text_key: 'tests.enneagram.options.q18_b', points: { 7: 1 } },
+      { value: 8, text_key: 'tests.enneagram.options.q18_c', points: { 8: 1 } }
     ]
   }
 ];
@@ -821,22 +971,57 @@ const enneagramQuestions: TestQuestion[] = [
 const enneagramScoring: ScoringFunction = (answers) => {
   const types = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
   
-  Object.values(answers).forEach((answer) => {
-    if (typeof answer === 'number' && answer >= 1 && answer <= 9) {
-      types[answer as keyof typeof types]++;
+  // Process answers with point-based scoring
+  enneagramQuestions.forEach((question) => {
+    const answer = answers[question.id];
+    if (answer !== undefined) {
+      const selectedOption = question.options?.find(opt => opt.value === answer);
+      if (selectedOption?.points) {
+        Object.entries(selectedOption.points).forEach(([type, points]) => {
+          const typeNum = parseInt(type);
+          if (typeNum >= 1 && typeNum <= 9) {
+            types[typeNum as keyof typeof types] += points;
+          }
+        });
+      }
     }
   });
 
-  const dominantType = Object.entries(types).reduce((max, [type, count]) => 
-    count > max.count ? { type: parseInt(type), count } : max, 
-    { type: 1, count: 0 }
+  // Find dominant type and calculate percentages
+  const totalPoints = Object.values(types).reduce((sum, points) => sum + points, 0);
+  const percentages = Object.fromEntries(
+    Object.entries(types).map(([type, points]) => [
+      type, 
+      totalPoints > 0 ? Math.round((points / totalPoints) * 100) : 0
+    ])
   );
+
+  const dominantType = Object.entries(types).reduce((max, [type, points]) => 
+    points > max.points ? { type: parseInt(type), points } : max, 
+    { type: 1, points: 0 }
+  );
+
+  // Get secondary type (second highest score)
+  const sortedTypes = Object.entries(types)
+    .sort(([,a], [,b]) => b - a)
+    .map(([type, points]) => ({ type: parseInt(type), points }));
+  
+  const secondaryType = sortedTypes[1];
+
+  const traits = [`Type ${dominantType.type}`];
+  if (secondaryType.points > 0) {
+    traits.push(`Wing ${secondaryType.type}`);
+  }
 
   return {
     scores: types,
+    percentages,
     type: `Type ${dominantType.type}`,
-    description_key: `You are Enneagram Type ${dominantType.type}`,
-    traits: [`Type ${dominantType.type}`]
+    description_key: `tests.enneagram.results.type${dominantType.type}`,
+    traits,
+    dominantType: dominantType.type,
+    secondaryType: secondaryType.points > 0 ? secondaryType.type : null,
+    totalPoints
   };
 };
 
