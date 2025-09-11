@@ -328,6 +328,8 @@
     "showing_recent": "최근 결과 표시",
     "show_all_results": "모든 결과 표시", 
     "show_recent_only": "최근 결과만 표시",
+    "result": "개 결과",
+    "results": "개 결과", 
     "no_results_title": "아직 테스트 결과가 없습니다",
     "no_results_message": "아직 성격 테스트를 완료하지 않았습니다. 오늘 자기 발견의 여정을 시작해보세요!",
     "take_first_test": "테스트 하기",

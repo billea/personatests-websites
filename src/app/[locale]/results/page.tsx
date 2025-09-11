@@ -25,6 +25,7 @@ export default function ResultsPage() {
     const [resultsLoading, setResultsLoading] = useState(true);
     const [selectedResultId, setSelectedResultId] = useState<string | null>(null);
     const [showAllResults, setShowAllResults] = useState(false);
+    const [expandedTestTypes, setExpandedTestTypes] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         if (user && !loading) {
@@ -613,13 +614,8 @@ export default function ResultsPage() {
         }).filter(Boolean);
     };
 
-    // Filter results to show only recent 5 per test type
-    const getFilteredResults = () => {
-        if (showAllResults) {
-            return results.filter(r => r.testId !== 'couple-compatibility-results');
-        }
-        
-        // Group results by test type and get 5 most recent for each
+    // Group results by test type
+    const getResultsByTestType = () => {
         const resultsByTestType: { [testId: string]: TestResult[] } = {};
         
         results
@@ -631,27 +627,36 @@ export default function ResultsPage() {
                 resultsByTestType[result.testId].push(result);
             });
         
-        // Sort each test type by date (most recent first) and take only 5
+        // Sort each test type by date (most recent first)
         Object.keys(resultsByTestType).forEach(testId => {
             resultsByTestType[testId] = resultsByTestType[testId]
                 .sort((a, b) => {
                     const aDate = a.createdAt?.toDate ? a.createdAt.toDate() : (a.createdAt as any ? new Date(a.createdAt as any) : new Date(0));
                     const bDate = b.createdAt?.toDate ? b.createdAt.toDate() : (b.createdAt as any ? new Date(b.createdAt as any) : new Date(0));
                     return bDate.getTime() - aDate.getTime();
-                })
-                .slice(0, 5);
+                });
         });
-        
-        // Flatten back to array and sort by overall date
-        const filteredResults = Object.values(resultsByTestType)
-            .flat()
-            .sort((a, b) => {
-                const aDate = a.createdAt?.toDate ? a.createdAt.toDate() : (a.createdAt as any ? new Date(a.createdAt as any) : new Date(0));
-                const bDate = b.createdAt?.toDate ? b.createdAt.toDate() : (b.createdAt as any ? new Date(b.createdAt as any) : new Date(0));
-                return bDate.getTime() - aDate.getTime();
-            });
             
-        return filteredResults;
+        return resultsByTestType;
+    };
+
+    // Get results to display for a specific test type
+    const getResultsForTestType = (testId: string, allResultsForType: TestResult[]) => {
+        if (expandedTestTypes.has(testId)) {
+            return allResultsForType; // Show all results for this test type
+        }
+        return allResultsForType.slice(0, 1); // Show only most recent
+    };
+
+    // Toggle expansion for a test type
+    const toggleTestTypeExpansion = (testId: string) => {
+        const newExpanded = new Set(expandedTestTypes);
+        if (newExpanded.has(testId)) {
+            newExpanded.delete(testId);
+        } else {
+            newExpanded.add(testId);
+        }
+        setExpandedTestTypes(newExpanded);
     };
 
     const renderTestResult = (result: TestResult) => {
@@ -1414,31 +1419,52 @@ export default function ResultsPage() {
                             </div>
                         )}
                         
-                        {/* Individual Test Results Section */}
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="text-sm text-white/70">
+                        {/* Individual Test Results Section - Grouped by Test Type */}
+                        <div className="mb-6">
+                            <div className="text-sm text-white/70 mb-4">
                                 {t('results.total_completed') || 'Total tests completed'}: <span className="font-semibold">{results.filter(r => r.testId !== 'couple-compatibility-results').length}</span>
-                                {!showAllResults && getFilteredResults().length < results.filter(r => r.testId !== 'couple-compatibility-results').length && (
-                                    <span className="ml-2 text-white/50">
-                                        ({t('results.showing_recent') || 'showing'} {getFilteredResults().length} {t('results.showing_recent') ? '' : 'recent results'})
-                                    </span>
-                                )}
                             </div>
                             
-                            {results.filter(r => r.testId !== 'couple-compatibility-results').length > 0 && (
-                                <button
-                                    onClick={() => setShowAllResults(!showAllResults)}
-                                    className="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/30 transition-all duration-300 text-sm"
-                                >
-                                    {showAllResults 
-                                        ? `📋 ${t('results.show_recent_only') || 'Show Recent Only'} (${Math.min(25, results.filter(r => r.testId !== 'couple-compatibility-results').length)})` 
-                                        : `📊 ${t('results.show_all_results') || 'Show All Results'} (${results.filter(r => r.testId !== 'couple-compatibility-results').length})`
-                                    }
-                                </button>
-                            )}
+                            {Object.entries(getResultsByTestType()).map(([testId, testResults]) => (
+                                <div key={testId} className="mb-8">
+                                    {/* Test Type Header */}
+                                    <div className="flex justify-between items-center mb-4">
+                                        <div className="flex items-center gap-3">
+                                            <h3 className="text-xl font-semibold text-white">
+                                                {getTestName(testId)}
+                                            </h3>
+                                            <span className="px-3 py-1 bg-white/20 rounded-full text-white/80 text-sm">
+                                                {testResults.length} {testResults.length === 1 ? (t('results.result') || 'result') : (t('results.results') || 'results')}
+                                            </span>
+                                        </div>
+                                        
+                                        {testResults.length > 1 && (
+                                            <button
+                                                onClick={() => toggleTestTypeExpansion(testId)}
+                                                className="px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/30 transition-all duration-300 text-sm flex items-center gap-2"
+                                            >
+                                                {expandedTestTypes.has(testId) ? (
+                                                    <>
+                                                        <span>📋</span>
+                                                        <span>{t('results.show_recent_only') || 'Show Recent Only'}</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span>📊</span>
+                                                        <span>{t('results.show_all_results') || 'Show All Results'} ({testResults.length})</span>
+                                                    </>
+                                                )}
+                                            </button>
+                                        )}
+                                    </div>
+                                    
+                                    {/* Test Results for this Type */}
+                                    <div className="space-y-4">
+                                        {getResultsForTestType(testId, testResults).map((result) => renderTestResult(result))}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        
-                        {getFilteredResults().map((result) => renderTestResult(result))}
                     </div>
                 )}
             </div>
