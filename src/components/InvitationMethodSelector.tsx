@@ -40,7 +40,7 @@ export default function InvitationMethodSelector({ onMethodSelect, testId }: Inv
       ],
       cons: [
         t('invitation.email.con1') || 'Email addresses are recorded',
-        t('invitation.email.con2') || 'Recipients know who invited them'
+        t('invitation.email.con2') || 'Requires recipients to have email accounts'
       ]
     },
     {
