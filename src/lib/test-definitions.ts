@@ -775,11 +775,11 @@ const bigFiveScoring: ScoringFunction = (answers) => {
     scores: {
       percentages: percentageScores
     },
-    type: 'Big Five Profile',
+    type: 'results.bigfive.profile',
     description_key: 'tests.bigfive.results.description',
     primaryTrait: sortedTraits[0],
     secondaryTrait: sortedTraits[1],
-    traits: sortedTraits.map(trait => `results.bigfive.traits.${trait}`),
+    traits: sortedTraits,
     summary_key: `tests.bigfive.results.${sortedTraits[0]}_${sortedTraits[1]}`
   };
 };

@@ -2782,9 +2782,17 @@
     "sending": "보내는 중..."
   },
   "results": {
+    "personalityType": "당신의 성격 유형",
     "keyTraits": "주요 특성",
     "aboutType": "성격 유형 정보",
+    "indicators": {
+      "strongPreference": "강한 선호",
+      "clearTendency": "명확한 경향", 
+      "moderateLean": "중간 정도",
+      "balanced": "균형적"
+    },
     "bigfive": {
+      "profile": "빅파이브 프로필",
       "traits": {
         "extraversion": "외향성",
         "agreeableness": "호감성", 

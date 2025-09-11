@@ -911,9 +911,17 @@
     "sending": "Sending..."
   },
   "results": {
+    "personalityType": "Your Personality Type",
     "keyTraits": "Your Key Traits",
     "aboutType": "About Your Type",
+    "indicators": {
+      "strongPreference": "Strong preference",
+      "clearTendency": "Clear tendency", 
+      "moderateLean": "Moderate lean",
+      "balanced": "Balanced"
+    },
     "bigfive": {
+      "profile": "Big Five Profile",
       "traits": {
         "extraversion": "Extraversion",
         "agreeableness": "Agreeableness", 
