@@ -10,6 +10,7 @@ export default function ShareLinkFeedbackPage() {
   const { t } = useTranslation();
   const searchParams = useSearchParams();
   const linkId = searchParams.get('linkId');
+  const encodedData = searchParams.get('data');
   
   const [linkData, setLinkData] = useState<ShareableLink | null>(null);
   const [testDefinition, setTestDefinition] = useState<TestDefinition | null>(null);
@@ -22,9 +23,73 @@ export default function ShareLinkFeedbackPage() {
 
   useEffect(() => {
     validateLink();
-  }, [linkId]);
+  }, [linkId, encodedData]);
 
   const validateLink = async () => {
+    // Handle new encoded data format (cross-device compatible)
+    if (encodedData) {
+      try {
+        const decodedData = JSON.parse(atob(encodedData));
+        
+        // Check if link has expired
+        if (new Date(decodedData.expiresAt) <= new Date()) {
+          setError('This feedback link has expired.');
+          setLoading(false);
+          return;
+        }
+
+        // Create ShareableLink object from decoded data
+        const reconstructedLink: ShareableLink = {
+          id: `link_${decodedData.testResultId}_decoded`,
+          testResultId: decodedData.testResultId,
+          testId: decodedData.testId,
+          userId: decodedData.userId,
+          userName: decodedData.userName,
+          method: 'link' as const,
+          createdAt: decodedData.createdAt,
+          expiresAt: decodedData.expiresAt,
+          status: 'active' as const,
+          link: window.location.href,
+          linkId: `link_${decodedData.testResultId}_decoded`,
+          responseCount: 0,
+          maxResponses: decodedData.maxResponses,
+          isPublic: true
+        };
+
+        // Check if already submitted from this device (prevent spam)
+        const submittedFeedback = JSON.parse(localStorage.getItem('submitted_link_feedback') || '[]');
+        const alreadySubmitted = submittedFeedback.some((fb: any) => 
+          fb.testResultId === decodedData.testResultId && 
+          fb.testId === decodedData.testId
+        );
+        
+        if (alreadySubmitted) {
+          setError('You have already provided feedback for this person.');
+          setLoading(false);
+          return;
+        }
+
+        setLinkData(reconstructedLink);
+
+        // Load test definition
+        const testDef = getTestById(decodedData.testId);
+        if (!testDef) {
+          setError('Test not found');
+          setLoading(false);
+          return;
+        }
+
+        setTestDefinition(testDef);
+        setLoading(false);
+        return;
+      } catch (err) {
+        setError('Invalid feedback link format.');
+        setLoading(false);
+        return;
+      }
+    }
+
+    // Handle legacy linkId format (backward compatibility)
     if (!linkId) {
       setError('Invalid feedback link');
       setLoading(false);

@@ -32,14 +32,27 @@ export default function ShareableLinkGenerator({
       const expiry = new Date(now.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
       const linkId = `link_${testResultId}_${Date.now()}`;
       
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-      const shareableUrl = `${baseUrl}/en/feedback/share?linkId=${linkId}`;
+      // Encode essential data in URL for cross-device compatibility
+      const linkData = {
+        testResultId,
+        testId,
+        userId: 'current_user',
+        userName,
+        createdAt: now.toISOString(),
+        expiresAt: expiry.toISOString(),
+        maxResponses: enableLimit ? maxResponses : undefined
+      };
       
-      const linkData: ShareableLink = {
+      // Base64 encode the data for URL
+      const encodedData = btoa(JSON.stringify(linkData));
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+      const shareableUrl = `${baseUrl}/en/feedback/share?data=${encodedData}`;
+      
+      const fullLinkData: ShareableLink = {
         id: linkId,
         testResultId,
         testId,
-        userId: 'current_user', // In real app, get from auth context
+        userId: 'current_user',
         userName,
         method: 'link' as const,
         createdAt: now.toISOString(),
@@ -54,11 +67,11 @@ export default function ShareableLinkGenerator({
 
       // Store link data in localStorage for static deployment
       const existingLinks = JSON.parse(localStorage.getItem('shareable_links') || '[]');
-      const allLinks = [...existingLinks, linkData];
+      const allLinks = [...existingLinks, fullLinkData];
       localStorage.setItem('shareable_links', JSON.stringify(allLinks));
 
-      setGeneratedLink(linkData);
-      onLinkGenerated(linkData);
+      setGeneratedLink(fullLinkData);
+      onLinkGenerated(fullLinkData);
     } catch (error) {
       console.error('Error generating shareable link:', error);
     } finally {
