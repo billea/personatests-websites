@@ -789,7 +789,11 @@ export default function ResultsPage() {
                                 {Object.entries(hasResult.scores.percentages).map(([key, value]) => (
                                     <div key={key} className="bg-white/5 p-3 rounded">
                                         <div className="flex justify-between items-center mb-1">
-                                            <span className="text-white/90 text-sm font-medium">{key}</span>
+                                            <span className="text-white/90 text-sm font-medium">
+                                                {t(`results.bigfive.traits.${key.toLowerCase()}`) || 
+                                                 t(`results.dimensions.${key}`) || 
+                                                 key}
+                                            </span>
                                             <span className="text-white font-semibold">
                                                 {typeof value === 'number' ? `${value}%` : String(value)}
                                             </span>

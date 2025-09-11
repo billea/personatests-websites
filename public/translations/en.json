@@ -910,6 +910,27 @@
     "sendInvitations": "Send Invitations",
     "sending": "Sending..."
   },
+  "results": {
+    "keyTraits": "Your Key Traits",
+    "aboutType": "About Your Type",
+    "bigfive": {
+      "traits": {
+        "extraversion": "Extraversion",
+        "agreeableness": "Agreeableness", 
+        "conscientiousness": "Conscientiousness",
+        "neuroticism": "Emotional Stability",
+        "openness": "Openness to Experience"
+      },
+      "description": "Your Big Five personality assessment reveals your core traits across five major dimensions of personality. These scientifically validated traits help explain your behavior patterns, preferences, and natural tendencies."
+    }
+  },
+  "tests": {
+    "bigfive": {
+      "results": {
+        "description": "Your Big Five personality assessment reveals your core traits across five major dimensions of personality. These scientifically validated traits help explain your behavior patterns, preferences, and natural tendencies."
+      }
+    }
+  },
   "couple": {
     "personalityTypes": {
       "The Devoted Partner 💕": "The Devoted Partner 💕",

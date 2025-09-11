@@ -2781,6 +2781,27 @@
     "sendInvitations": "초대장 보내기",
     "sending": "보내는 중..."
   },
+  "results": {
+    "keyTraits": "주요 특성",
+    "aboutType": "성격 유형 정보",
+    "bigfive": {
+      "traits": {
+        "extraversion": "외향성",
+        "agreeableness": "호감성", 
+        "conscientiousness": "성실성",
+        "neuroticism": "감정 안정성",
+        "openness": "경험에 대한 개방성"
+      },
+      "description": "빅파이브 성격 평가는 성격의 다섯 가지 주요 차원에서 당신의 핵심 특성을 드러냅니다. 이러한 과학적으로 검증된 특성들은 당신의 행동 패턴, 선호도, 자연스러운 성향을 설명하는 데 도움이 됩니다."
+    }
+  },
+  "tests": {
+    "bigfive": {
+      "results": {
+        "description": "빅파이브 성격 평가는 성격의 다섯 가지 주요 차원에서 당신의 핵심 특성을 드러냅니다. 이러한 과학적으로 검증된 특성들은 당신의 행동 패턴, 선호도, 자연스러운 성향을 설명하는 데 도움이 됩니다."
+      }
+    }
+  },
   "Emotional Stability": "감정 안정성",
   "Extraversion": "외향성",
   "Agreeableness": "호감성", 
