@@ -686,6 +686,12 @@ export default function TestPage() {
             console.log("Test saved to localStorage for fallback access");
             
             // If user is logged in, also save to Firestore
+            console.log("User authentication state:", { 
+                authenticated: !!user, 
+                uid: user?.uid, 
+                email: user?.email 
+            });
+            
             if (user) {
                 try {
                     const firestoreResultId = await saveTestResult(
@@ -704,6 +710,9 @@ export default function TestPage() {
                     console.log("Test also saved to localStorage with Firestore ID for consistency");
                 } catch (error) {
                     console.error("Error saving to Firestore, using local storage only:", error);
+                    // Show user-friendly error message
+                    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+                    alert(`Warning: Test results saved locally only due to sync error: ${errorMessage}. Your results are still saved but won't appear in your account history.`);
                 }
             } else {
                 console.log("Anonymous user - using localStorage only");
