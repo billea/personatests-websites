@@ -27,6 +27,14 @@ export interface TestDefinition {
   scoring: ScoringFunction;
   requiresFeedback?: boolean;
   isCompatibilityTest?: boolean;
+  features?: {
+    popularity: number; // 1-5 stars
+    scientificValidity: number; // 1-5 stars
+    resultType: string;
+    testLength: string;
+    engagement: string;
+    popularityNote?: string;
+  };
 }
 
 export type ScoringFunction = (answers: { [questionId: string]: any }, partnerAnswers?: { [questionId: string]: any }) => TestResult;
@@ -2424,7 +2432,15 @@ export const testDefinitions: TestDefinition[] = [
     title_key: 'tests.mbti.title',
     description_key: 'tests.mbti.description',
     questions: fullMbtiQuestions,
-    scoring: mbtiScoring
+    scoring: mbtiScoring,
+    features: {
+      popularity: 4,
+      scientificValidity: 1,
+      resultType: '16 "types"',
+      testLength: 'Short (20-40 Qs)',
+      engagement: 'Fun nicknames, memes',
+      popularityNote: '(viral, shareable)'
+    }
   },
   {
     id: 'big-five',
@@ -2432,7 +2448,15 @@ export const testDefinitions: TestDefinition[] = [
     title_key: 'tests.bigfive.title',
     description_key: 'tests.bigfive.description',
     questions: bigFiveQuestions,
-    scoring: bigFiveScoring
+    scoring: bigFiveScoring,
+    features: {
+      popularity: 2,
+      scientificValidity: 5,
+      resultType: '5 continuous trait scores',
+      testLength: 'Medium (30-44 Qs recommended)',
+      engagement: 'Charts, detailed personality profiles',
+      popularityNote: '(less viral, more serious)'
+    }
   },
   {
     id: 'enneagram',
@@ -2440,7 +2464,15 @@ export const testDefinitions: TestDefinition[] = [
     title_key: 'tests.enneagram.title',
     description_key: 'tests.enneagram.description',
     questions: enneagramQuestions,
-    scoring: enneagramScoring
+    scoring: enneagramScoring,
+    features: {
+      popularity: 3,
+      scientificValidity: 2,
+      resultType: '9 personality types',
+      testLength: 'Medium (18 Qs)',
+      engagement: 'Core motivations, growth paths',
+      popularityNote: '(spiritual, transformative)'
+    }
   },
   {
     id: 'feedback-360',
@@ -2449,7 +2481,15 @@ export const testDefinitions: TestDefinition[] = [
     description_key: 'tests.feedback360.description',
     questions: getFeedback360Questions('general'), // Use dynamic system with general as default
     scoring: feedback360Scoring,
-    requiresFeedback: true
+    requiresFeedback: true,
+    features: {
+      popularity: 3,
+      scientificValidity: 4,
+      resultType: 'Multi-perspective analysis',
+      testLength: 'Long (20+ Qs per person)',
+      engagement: 'Social insights, blind spots',
+      popularityNote: '(professional, insightful)'
+    }
   },
   {
     id: 'couple-compatibility',
@@ -2459,7 +2499,15 @@ export const testDefinitions: TestDefinition[] = [
     questions: coupleCompatibilityQuestions,
     scoring: coupleCompatibilityScoring,
     isCompatibilityTest: true,
-    requiresFeedback: true // Requires partner participation like 360° feedback
+    requiresFeedback: true, // Requires partner participation like 360° feedback
+    features: {
+      popularity: 4,
+      scientificValidity: 3,
+      resultType: 'Compatibility percentage',
+      testLength: 'Medium (15 Qs each)',
+      engagement: 'Relationship dynamics, tips',
+      popularityNote: '(romantic, shareable)'
+    }
   }
 ];
 

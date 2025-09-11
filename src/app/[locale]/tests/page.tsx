@@ -76,21 +76,74 @@ export default function TestsPage() {
                                             <h3 className="mb-3 text-xl font-bold tracking-tight text-white">
                                                 {t(test.title_key)}
                                             </h3>
-                                            <p className="text-white/90 text-sm">
+                                            <p className="text-white/90 text-sm mb-4">
                                                 {t(test.description_key)}
                                             </p>
                                             
-                                            {test.requiresFeedback && (
-                                                <span className="inline-block mt-3 px-3 py-1 text-xs bg-blue-500/80 text-white rounded-full backdrop-blur-sm">
-                                                    {t('tests.requires_feedback') !== 'tests.requires_feedback' ? t('tests.requires_feedback') : 'Requires Feedback'}
-                                                </span>
+                                            {test.features && (
+                                                <div className="mb-4 space-y-3 text-sm">
+                                                    {/* Popularity */}
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-white/80 font-medium">Popularity</span>
+                                                        <div className="flex items-center space-x-1">
+                                                            {Array.from({length: 5}, (_, i) => (
+                                                                <span key={i} className={`text-lg ${i < (test.features?.popularity || 0) ? 'text-yellow-400' : 'text-white/30'}`}>
+                                                                    ⭐
+                                                                </span>
+                                                            ))}
+                                                            {test.features?.popularityNote && (
+                                                                <span className="text-white/60 text-xs ml-1">
+                                                                    {test.features.popularityNote}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    {/* Scientific Validity */}
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-white/80 font-medium">Scientific Validity</span>
+                                                        <div className="flex items-center space-x-1">
+                                                            {Array.from({length: 5}, (_, i) => (
+                                                                <span key={i} className={`text-lg ${i < (test.features?.scientificValidity || 0) ? 'text-yellow-400' : 'text-white/30'}`}>
+                                                                    ⭐
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    {/* Results */}
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-white/80 font-medium">Results</span>
+                                                        <span className="text-white text-xs">{test.features?.resultType}</span>
+                                                    </div>
+                                                    
+                                                    {/* Test Length */}
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-white/80 font-medium">Test Length</span>
+                                                        <span className="text-white text-xs">{test.features?.testLength}</span>
+                                                    </div>
+                                                    
+                                                    {/* Engagement */}
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-white/80 font-medium">Engagement</span>
+                                                        <span className="text-white text-xs">{test.features?.engagement}</span>
+                                                    </div>
+                                                </div>
                                             )}
                                             
-                                            {test.isCompatibilityTest && (
-                                                <span className="inline-block mt-3 px-3 py-1 text-xs bg-pink-500/80 text-white rounded-full backdrop-blur-sm">
-                                                    {t('tests.compatibility_test') !== 'tests.compatibility_test' ? t('tests.compatibility_test') : 'Compatibility Test'}
-                                                </span>
-                                            )}
+                                            <div className="flex flex-wrap gap-2 mt-4">
+                                                {test.requiresFeedback && (
+                                                    <span className="px-3 py-1 text-xs bg-blue-500/80 text-white rounded-full backdrop-blur-sm">
+                                                        {t('tests.requires_feedback') !== 'tests.requires_feedback' ? t('tests.requires_feedback') : 'Requires Feedback'}
+                                                    </span>
+                                                )}
+                                                
+                                                {test.isCompatibilityTest && (
+                                                    <span className="px-3 py-1 text-xs bg-pink-500/80 text-white rounded-full backdrop-blur-sm">
+                                                        {t('tests.compatibility_test') !== 'tests.compatibility_test' ? t('tests.compatibility_test') : 'Compatibility Test'}
+                                                    </span>
+                                                )}
+                                            </div>
                                         </div>
                                     </Link>
                                 ))}
