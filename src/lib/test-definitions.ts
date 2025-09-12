@@ -20,7 +20,7 @@ export interface TestOption {
 
 export interface TestDefinition {
   id: string;
-  category: 'know-yourself' | 'how-others-see-me' | 'couple-compatibility';
+  category: 'know-yourself' | 'how-others-see-me' | 'couple-compatibility' | 'knowledge-and-skill' | 'just-for-fun';
   title_key: string;
   description_key: string;
   questions: TestQuestion[];
