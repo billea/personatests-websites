@@ -26,7 +26,8 @@
       "Bash(firebase hosting:channel:list:*)",
       "WebFetch(domain:personatest-c8eb1.web.app)",
       "Bash(npm install:*)",
-      "WebFetch(domain:korean-mbti-platform.netlify.app)"
+      "WebFetch(domain:korean-mbti-platform.netlify.app)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []
