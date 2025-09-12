@@ -2854,17 +2854,22 @@ const generalKnowledgeScoring = (answers: Record<string, string>) => {
   }
   
   return {
-    score,
-    total,
-    percentage,
-    level,
-    description,
-    correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => ({
-      questionId: id,
-      correctAnswer: answer,
-      userAnswer: answers[id],
-      isCorrect: answers[id] === answer
-    }))
+    scores: {
+      score,
+      total,
+      percentage,
+      level,
+      description,
+      correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => ({
+        questionId: id,
+        correctAnswer: answer,
+        userAnswer: answers[id],
+        isCorrect: answers[id] === answer
+      }))
+    },
+    type: level,
+    description_key: description,
+    traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
 };
 
@@ -2905,11 +2910,16 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
   }
   
   return {
-    score,
-    total,
-    percentage,
-    level,
-    description
+    scores: {
+      score,
+      total,
+      percentage,
+      level,
+      description
+    },
+    type: level,
+    description_key: description,
+    traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
 };
 
@@ -2942,11 +2952,16 @@ const memoryPowerScoring = (answers: Record<string, string>) => {
   }
   
   return {
-    score,
-    total,
-    percentage,
-    level,
-    description
+    scores: {
+      score,
+      total,
+      percentage,
+      level,
+      description
+    },
+    type: level,
+    description_key: description,
+    traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
 };
 
@@ -2998,10 +3013,15 @@ const countryMatchScoring = (answers: Record<string, string>) => {
   };
   
   return {
-    country: topCountry[0],
-    countryData: countryInfo[topCountry[0] as keyof typeof countryInfo],
-    score: topCountry[1],
-    allScores: countryScores
+    scores: {
+      country: topCountry[0],
+      countryData: countryInfo[topCountry[0] as keyof typeof countryInfo],
+      score: topCountry[1],
+      allScores: countryScores
+    },
+    type: `${countryInfo[topCountry[0] as keyof typeof countryInfo].flag} ${countryInfo[topCountry[0] as keyof typeof countryInfo].name}`,
+    description_key: countryInfo[topCountry[0] as keyof typeof countryInfo].description,
+    traits: [`Matched: ${countryInfo[topCountry[0] as keyof typeof countryInfo].name}`, `Score: ${topCountry[1]} points`]
   };
 };
 
@@ -3043,9 +3063,14 @@ const mentalAgeScoring = (answers: Record<string, string>) => {
   }
   
   return {
-    mentalAge,
-    description,
-    category: mentalAge < 25 ? 'Young Spirit' : mentalAge < 40 ? 'Balanced Soul' : 'Wise Heart'
+    scores: {
+      mentalAge,
+      description,
+      category: mentalAge < 25 ? 'Young Spirit' : mentalAge < 40 ? 'Balanced Soul' : 'Wise Heart'
+    },
+    type: `Mental Age: ${mentalAge}`,
+    description_key: description,
+    traits: [`Age: ${mentalAge}`, mentalAge < 25 ? 'Young Spirit' : mentalAge < 40 ? 'Balanced Soul' : 'Wise Heart']
   };
 };
 
@@ -3104,10 +3129,15 @@ const spiritAnimalScoring = (answers: Record<string, string>) => {
   };
   
   return {
-    animal: topAnimal[0],
-    animalData: animalInfo[topAnimal[0] as keyof typeof animalInfo],
-    score: topAnimal[1],
-    allScores: animalScores
+    scores: {
+      animal: topAnimal[0],
+      animalData: animalInfo[topAnimal[0] as keyof typeof animalInfo],
+      score: topAnimal[1],
+      allScores: animalScores
+    },
+    type: `${animalInfo[topAnimal[0] as keyof typeof animalInfo].emoji} ${animalInfo[topAnimal[0] as keyof typeof animalInfo].name}`,
+    description_key: animalInfo[topAnimal[0] as keyof typeof animalInfo].description,
+    traits: [`Spirit Animal: ${animalInfo[topAnimal[0] as keyof typeof animalInfo].name}`, `Score: ${topAnimal[1]} points`]
   };
 };
 
