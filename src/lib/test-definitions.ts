@@ -2425,6 +2425,692 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
   };
 };
 
+// 🧠 Knowledge and Skill Tests
+const generalKnowledgeQuestions: TestQuestion[] = [
+  {
+    id: 'gk_1',
+    text_key: 'tests.general_knowledge.questions.q1',
+    type: 'multiple_choice',
+    options: [
+      { value: 'egypt', text_key: 'tests.general_knowledge.options.q1_a' },
+      { value: 'china', text_key: 'tests.general_knowledge.options.q1_b' },
+      { value: 'peru', text_key: 'tests.general_knowledge.options.q1_c' },
+      { value: 'jordan', text_key: 'tests.general_knowledge.options.q1_d' }
+    ]
+  },
+  {
+    id: 'gk_2',
+    text_key: 'tests.general_knowledge.questions.q2',
+    type: 'multiple_choice',
+    options: [
+      { value: 'mercury', text_key: 'tests.general_knowledge.options.q2_a' },
+      { value: 'venus', text_key: 'tests.general_knowledge.options.q2_b' },
+      { value: 'mars', text_key: 'tests.general_knowledge.options.q2_c' },
+      { value: 'jupiter', text_key: 'tests.general_knowledge.options.q2_d' }
+    ]
+  },
+  {
+    id: 'gk_3',
+    text_key: 'tests.general_knowledge.questions.q3',
+    type: 'multiple_choice',
+    options: [
+      { value: 'da_vinci', text_key: 'tests.general_knowledge.options.q3_a' },
+      { value: 'michelangelo', text_key: 'tests.general_knowledge.options.q3_b' },
+      { value: 'picasso', text_key: 'tests.general_knowledge.options.q3_c' },
+      { value: 'van_gogh', text_key: 'tests.general_knowledge.options.q3_d' }
+    ]
+  },
+  {
+    id: 'gk_4',
+    text_key: 'tests.general_knowledge.questions.q4',
+    type: 'multiple_choice',
+    options: [
+      { value: 'pacific', text_key: 'tests.general_knowledge.options.q4_a' },
+      { value: 'atlantic', text_key: 'tests.general_knowledge.options.q4_b' },
+      { value: 'indian', text_key: 'tests.general_knowledge.options.q4_c' },
+      { value: 'arctic', text_key: 'tests.general_knowledge.options.q4_d' }
+    ]
+  },
+  {
+    id: 'gk_5',
+    text_key: 'tests.general_knowledge.questions.q5',
+    type: 'multiple_choice',
+    options: [
+      { value: 'shakespeare', text_key: 'tests.general_knowledge.options.q5_a' },
+      { value: 'dickens', text_key: 'tests.general_knowledge.options.q5_b' },
+      { value: 'austen', text_key: 'tests.general_knowledge.options.q5_c' },
+      { value: 'tolkien', text_key: 'tests.general_knowledge.options.q5_d' }
+    ]
+  },
+  {
+    id: 'gk_6',
+    text_key: 'tests.general_knowledge.questions.q6',
+    type: 'multiple_choice',
+    options: [
+      { value: 'hydrogen', text_key: 'tests.general_knowledge.options.q6_a' },
+      { value: 'helium', text_key: 'tests.general_knowledge.options.q6_b' },
+      { value: 'oxygen', text_key: 'tests.general_knowledge.options.q6_c' },
+      { value: 'carbon', text_key: 'tests.general_knowledge.options.q6_d' }
+    ]
+  },
+  {
+    id: 'gk_7',
+    text_key: 'tests.general_knowledge.questions.q7',
+    type: 'multiple_choice',
+    options: [
+      { value: '1912', text_key: 'tests.general_knowledge.options.q7_a' },
+      { value: '1914', text_key: 'tests.general_knowledge.options.q7_b' },
+      { value: '1916', text_key: 'tests.general_knowledge.options.q7_c' },
+      { value: '1918', text_key: 'tests.general_knowledge.options.q7_d' }
+    ]
+  },
+  {
+    id: 'gk_8',
+    text_key: 'tests.general_knowledge.questions.q8',
+    type: 'multiple_choice',
+    options: [
+      { value: 'nile', text_key: 'tests.general_knowledge.options.q8_a' },
+      { value: 'amazon', text_key: 'tests.general_knowledge.options.q8_b' },
+      { value: 'yangtze', text_key: 'tests.general_knowledge.options.q8_c' },
+      { value: 'mississippi', text_key: 'tests.general_knowledge.options.q8_d' }
+    ]
+  },
+  {
+    id: 'gk_9',
+    text_key: 'tests.general_knowledge.questions.q9',
+    type: 'multiple_choice',
+    options: [
+      { value: 'einstein', text_key: 'tests.general_knowledge.options.q9_a' },
+      { value: 'newton', text_key: 'tests.general_knowledge.options.q9_b' },
+      { value: 'darwin', text_key: 'tests.general_knowledge.options.q9_c' },
+      { value: 'galileo', text_key: 'tests.general_knowledge.options.q9_d' }
+    ]
+  },
+  {
+    id: 'gk_10',
+    text_key: 'tests.general_knowledge.questions.q10',
+    type: 'multiple_choice',
+    options: [
+      { value: 'asia', text_key: 'tests.general_knowledge.options.q10_a' },
+      { value: 'africa', text_key: 'tests.general_knowledge.options.q10_b' },
+      { value: 'north_america', text_key: 'tests.general_knowledge.options.q10_c' },
+      { value: 'south_america', text_key: 'tests.general_knowledge.options.q10_d' }
+    ]
+  }
+];
+
+const mathSpeedQuestions: TestQuestion[] = [
+  {
+    id: 'math_1',
+    text_key: 'tests.math_speed.questions.q1',
+    type: 'multiple_choice',
+    options: [
+      { value: '15', text_key: 'tests.math_speed.options.q1_a' },
+      { value: '17', text_key: 'tests.math_speed.options.q1_b' },
+      { value: '19', text_key: 'tests.math_speed.options.q1_c' },
+      { value: '21', text_key: 'tests.math_speed.options.q1_d' }
+    ]
+  },
+  {
+    id: 'math_2',
+    text_key: 'tests.math_speed.questions.q2',
+    type: 'multiple_choice',
+    options: [
+      { value: '56', text_key: 'tests.math_speed.options.q2_a' },
+      { value: '64', text_key: 'tests.math_speed.options.q2_b' },
+      { value: '72', text_key: 'tests.math_speed.options.q2_c' },
+      { value: '81', text_key: 'tests.math_speed.options.q2_d' }
+    ]
+  },
+  {
+    id: 'math_3',
+    text_key: 'tests.math_speed.questions.q3',
+    type: 'multiple_choice',
+    options: [
+      { value: '12', text_key: 'tests.math_speed.options.q3_a' },
+      { value: '13', text_key: 'tests.math_speed.options.q3_b' },
+      { value: '14', text_key: 'tests.math_speed.options.q3_c' },
+      { value: '15', text_key: 'tests.math_speed.options.q3_d' }
+    ]
+  },
+  {
+    id: 'math_4',
+    text_key: 'tests.math_speed.questions.q4',
+    type: 'multiple_choice',
+    options: [
+      { value: '144', text_key: 'tests.math_speed.options.q4_a' },
+      { value: '154', text_key: 'tests.math_speed.options.q4_b' },
+      { value: '164', text_key: 'tests.math_speed.options.q4_c' },
+      { value: '174', text_key: 'tests.math_speed.options.q4_d' }
+    ]
+  },
+  {
+    id: 'math_5',
+    text_key: 'tests.math_speed.questions.q5',
+    type: 'multiple_choice',
+    options: [
+      { value: '7', text_key: 'tests.math_speed.options.q5_a' },
+      { value: '8', text_key: 'tests.math_speed.options.q5_b' },
+      { value: '9', text_key: 'tests.math_speed.options.q5_c' },
+      { value: '10', text_key: 'tests.math_speed.options.q5_d' }
+    ]
+  }
+];
+
+const memoryPowerQuestions: TestQuestion[] = [
+  {
+    id: 'memory_1',
+    text_key: 'tests.memory_power.questions.q1',
+    type: 'multiple_choice',
+    options: [
+      { value: 'sequence_1', text_key: 'tests.memory_power.options.q1_a' },
+      { value: 'sequence_2', text_key: 'tests.memory_power.options.q1_b' },
+      { value: 'sequence_3', text_key: 'tests.memory_power.options.q1_c' },
+      { value: 'sequence_4', text_key: 'tests.memory_power.options.q1_d' }
+    ]
+  },
+  {
+    id: 'memory_2',
+    text_key: 'tests.memory_power.questions.q2',
+    type: 'multiple_choice',
+    options: [
+      { value: 'pattern_1', text_key: 'tests.memory_power.options.q2_a' },
+      { value: 'pattern_2', text_key: 'tests.memory_power.options.q2_b' },
+      { value: 'pattern_3', text_key: 'tests.memory_power.options.q2_c' },
+      { value: 'pattern_4', text_key: 'tests.memory_power.options.q2_d' }
+    ]
+  },
+  {
+    id: 'memory_3',
+    text_key: 'tests.memory_power.questions.q3',
+    type: 'multiple_choice',
+    options: [
+      { value: 'word_list_1', text_key: 'tests.memory_power.options.q3_a' },
+      { value: 'word_list_2', text_key: 'tests.memory_power.options.q3_b' },
+      { value: 'word_list_3', text_key: 'tests.memory_power.options.q3_c' },
+      { value: 'word_list_4', text_key: 'tests.memory_power.options.q3_d' }
+    ]
+  }
+];
+
+// 🎉 Just for Fun Tests
+const countryMatchQuestions: TestQuestion[] = [
+  {
+    id: 'country_1',
+    text_key: 'tests.country_match.questions.q1',
+    type: 'multiple_choice',
+    options: [
+      { value: 'early_riser', text_key: 'tests.country_match.options.q1_a' },
+      { value: 'night_owl', text_key: 'tests.country_match.options.q1_b' },
+      { value: 'afternoon_person', text_key: 'tests.country_match.options.q1_c' },
+      { value: 'whenever', text_key: 'tests.country_match.options.q1_d' }
+    ]
+  },
+  {
+    id: 'country_2',
+    text_key: 'tests.country_match.questions.q2',
+    type: 'multiple_choice',
+    options: [
+      { value: 'pasta_pizza', text_key: 'tests.country_match.options.q2_a' },
+      { value: 'sushi_ramen', text_key: 'tests.country_match.options.q2_b' },
+      { value: 'tacos_burritos', text_key: 'tests.country_match.options.q2_c' },
+      { value: 'croissant_cheese', text_key: 'tests.country_match.options.q2_d' }
+    ]
+  },
+  {
+    id: 'country_3',
+    text_key: 'tests.country_match.questions.q3',
+    type: 'multiple_choice',
+    options: [
+      { value: 'beach_sun', text_key: 'tests.country_match.options.q3_a' },
+      { value: 'mountains_hiking', text_key: 'tests.country_match.options.q3_b' },
+      { value: 'city_culture', text_key: 'tests.country_match.options.q3_c' },
+      { value: 'countryside_peace', text_key: 'tests.country_match.options.q3_d' }
+    ]
+  },
+  {
+    id: 'country_4',
+    text_key: 'tests.country_match.questions.q4',
+    type: 'multiple_choice',
+    options: [
+      { value: 'very_social', text_key: 'tests.country_match.options.q4_a' },
+      { value: 'somewhat_social', text_key: 'tests.country_match.options.q4_b' },
+      { value: 'prefer_small_groups', text_key: 'tests.country_match.options.q4_c' },
+      { value: 'love_solitude', text_key: 'tests.country_match.options.q4_d' }
+    ]
+  },
+  {
+    id: 'country_5',
+    text_key: 'tests.country_match.questions.q5',
+    type: 'multiple_choice',
+    options: [
+      { value: 'warm_tropical', text_key: 'tests.country_match.options.q5_a' },
+      { value: 'mild_pleasant', text_key: 'tests.country_match.options.q5_b' },
+      { value: 'four_seasons', text_key: 'tests.country_match.options.q5_c' },
+      { value: 'cool_crisp', text_key: 'tests.country_match.options.q5_d' }
+    ]
+  }
+];
+
+const mentalAgeQuestions: TestQuestion[] = [
+  {
+    id: 'age_1',
+    text_key: 'tests.mental_age.questions.q1',
+    type: 'multiple_choice',
+    options: [
+      { value: 'video_games', text_key: 'tests.mental_age.options.q1_a' },
+      { value: 'reading_book', text_key: 'tests.mental_age.options.q1_b' },
+      { value: 'social_media', text_key: 'tests.mental_age.options.q1_c' },
+      { value: 'gardening', text_key: 'tests.mental_age.options.q1_d' }
+    ]
+  },
+  {
+    id: 'age_2',
+    text_key: 'tests.mental_age.questions.q2',
+    type: 'multiple_choice',
+    options: [
+      { value: 'memes_jokes', text_key: 'tests.mental_age.options.q2_a' },
+      { value: 'witty_wordplay', text_key: 'tests.mental_age.options.q2_b' },
+      { value: 'slapstick_physical', text_key: 'tests.mental_age.options.q2_c' },
+      { value: 'dry_sarcastic', text_key: 'tests.mental_age.options.q2_d' }
+    ]
+  },
+  {
+    id: 'age_3',
+    text_key: 'tests.mental_age.questions.q3',
+    type: 'multiple_choice',
+    options: [
+      { value: 'text_immediately', text_key: 'tests.mental_age.options.q3_a' },
+      { value: 'call_right_away', text_key: 'tests.mental_age.options.q3_b' },
+      { value: 'think_then_respond', text_key: 'tests.mental_age.options.q3_c' },
+      { value: 'write_letter', text_key: 'tests.mental_age.options.q3_d' }
+    ]
+  },
+  {
+    id: 'age_4',
+    text_key: 'tests.mental_age.questions.q4',
+    type: 'multiple_choice',
+    options: [
+      { value: 'latest_trends', text_key: 'tests.mental_age.options.q4_a' },
+      { value: 'comfortable_classic', text_key: 'tests.mental_age.options.q4_b' },
+      { value: 'practical_functional', text_key: 'tests.mental_age.options.q4_c' },
+      { value: 'whatever_clean', text_key: 'tests.mental_age.options.q4_d' }
+    ]
+  },
+  {
+    id: 'age_5',
+    text_key: 'tests.mental_age.questions.q5',
+    type: 'multiple_choice',
+    options: [
+      { value: 'party_friends', text_key: 'tests.mental_age.options.q5_a' },
+      { value: 'dinner_partner', text_key: 'tests.mental_age.options.q5_b' },
+      { value: 'movie_home', text_key: 'tests.mental_age.options.q5_c' },
+      { value: 'early_bed', text_key: 'tests.mental_age.options.q5_d' }
+    ]
+  }
+];
+
+const spiritAnimalQuestions: TestQuestion[] = [
+  {
+    id: 'animal_1',
+    text_key: 'tests.spirit_animal.questions.q1',
+    type: 'multiple_choice',
+    options: [
+      { value: 'lead_group', text_key: 'tests.spirit_animal.options.q1_a' },
+      { value: 'support_others', text_key: 'tests.spirit_animal.options.q1_b' },
+      { value: 'work_independently', text_key: 'tests.spirit_animal.options.q1_c' },
+      { value: 'observe_analyze', text_key: 'tests.spirit_animal.options.q1_d' }
+    ]
+  },
+  {
+    id: 'animal_2',
+    text_key: 'tests.spirit_animal.questions.q2',
+    type: 'multiple_choice',
+    options: [
+      { value: 'ocean_depths', text_key: 'tests.spirit_animal.options.q2_a' },
+      { value: 'forest_trees', text_key: 'tests.spirit_animal.options.q2_b' },
+      { value: 'mountain_peaks', text_key: 'tests.spirit_animal.options.q2_c' },
+      { value: 'open_plains', text_key: 'tests.spirit_animal.options.q2_d' }
+    ]
+  },
+  {
+    id: 'animal_3',
+    text_key: 'tests.spirit_animal.questions.q3',
+    type: 'multiple_choice',
+    options: [
+      { value: 'strength_courage', text_key: 'tests.spirit_animal.options.q3_a' },
+      { value: 'wisdom_intelligence', text_key: 'tests.spirit_animal.options.q3_b' },
+      { value: 'loyalty_friendship', text_key: 'tests.spirit_animal.options.q3_c' },
+      { value: 'freedom_independence', text_key: 'tests.spirit_animal.options.q3_d' }
+    ]
+  },
+  {
+    id: 'animal_4',
+    text_key: 'tests.spirit_animal.questions.q4',
+    type: 'multiple_choice',
+    options: [
+      { value: 'face_directly', text_key: 'tests.spirit_animal.options.q4_a' },
+      { value: 'think_strategize', text_key: 'tests.spirit_animal.options.q4_b' },
+      { value: 'seek_help', text_key: 'tests.spirit_animal.options.q4_c' },
+      { value: 'wait_observe', text_key: 'tests.spirit_animal.options.q4_d' }
+    ]
+  },
+  {
+    id: 'animal_5',
+    text_key: 'tests.spirit_animal.questions.q5',
+    type: 'multiple_choice',
+    options: [
+      { value: 'day_active', text_key: 'tests.spirit_animal.options.q5_a' },
+      { value: 'night_mysterious', text_key: 'tests.spirit_animal.options.q5_b' },
+      { value: 'dawn_fresh_start', text_key: 'tests.spirit_animal.options.q5_c' },
+      { value: 'sunset_reflection', text_key: 'tests.spirit_animal.options.q5_d' }
+    ]
+  }
+];
+
+// Scoring functions for new tests
+const generalKnowledgeScoring = (answers: Record<string, string>) => {
+  const correctAnswers = {
+    'gk_1': 'jordan', // Petra
+    'gk_2': 'venus', // Brightest planet
+    'gk_3': 'da_vinci', // Mona Lisa
+    'gk_4': 'pacific', // Largest ocean
+    'gk_5': 'shakespeare', // Romeo and Juliet
+    'gk_6': 'hydrogen', // Most abundant element
+    'gk_7': '1912', // Titanic sank
+    'gk_8': 'nile', // Longest river
+    'gk_9': 'einstein', // Theory of Relativity
+    'gk_10': 'asia' // Largest continent
+  };
+  
+  let score = 0;
+  const total = Object.keys(correctAnswers).length;
+  
+  Object.entries(correctAnswers).forEach(([questionId, correctAnswer]) => {
+    if (answers[questionId] === correctAnswer) {
+      score++;
+    }
+  });
+  
+  const percentage = Math.round((score / total) * 100);
+  let level = '';
+  let description = '';
+  
+  if (percentage >= 90) {
+    level = 'Genius Level 🧠';
+    description = 'Outstanding! You have exceptional general knowledge.';
+  } else if (percentage >= 70) {
+    level = 'Knowledge Master 📚';
+    description = 'Excellent! You have strong general knowledge.';
+  } else if (percentage >= 50) {
+    level = 'Well-Informed 🎯';
+    description = 'Good job! You have solid general knowledge.';
+  } else if (percentage >= 30) {
+    level = 'Learning Enthusiast 🌱';
+    description = 'Keep learning! There\'s always room to grow.';
+  } else {
+    level = 'Curious Beginner 🔍';
+    description = 'Everyone starts somewhere. Keep exploring!';
+  }
+  
+  return {
+    score,
+    total,
+    percentage,
+    level,
+    description,
+    correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => ({
+      questionId: id,
+      correctAnswer: answer,
+      userAnswer: answers[id],
+      isCorrect: answers[id] === answer
+    }))
+  };
+};
+
+const mathSpeedScoring = (answers: Record<string, string>) => {
+  const correctAnswers = {
+    'math_1': '17', // 8 + 9 = 17
+    'math_2': '72', // 8 × 9 = 72
+    'math_3': '13', // 91 ÷ 7 = 13
+    'math_4': '154', // 77 × 2 = 154
+    'math_5': '8' // √64 = 8
+  };
+  
+  let score = 0;
+  const total = Object.keys(correctAnswers).length;
+  
+  Object.entries(correctAnswers).forEach(([questionId, correctAnswer]) => {
+    if (answers[questionId] === correctAnswer) {
+      score++;
+    }
+  });
+  
+  const percentage = Math.round((score / total) * 100);
+  let level = '';
+  let description = '';
+  
+  if (percentage >= 90) {
+    level = 'Math Wizard ⚡';
+    description = 'Lightning fast! You\'re a mathematical genius.';
+  } else if (percentage >= 70) {
+    level = 'Quick Calculator 🧮';
+    description = 'Impressive speed! You have strong math skills.';
+  } else if (percentage >= 50) {
+    level = 'Steady Solver 📊';
+    description = 'Good work! You handle math problems well.';
+  } else {
+    level = 'Math Explorer 🔢';
+    description = 'Keep practicing! Speed comes with experience.';
+  }
+  
+  return {
+    score,
+    total,
+    percentage,
+    level,
+    description
+  };
+};
+
+const memoryPowerScoring = (answers: Record<string, string>) => {
+  // Simple scoring for memory tests
+  let score = 0;
+  const total = 3;
+  
+  // Mock scoring - in reality would check pattern/sequence accuracy
+  if (answers['memory_1'] === 'sequence_2') score++;
+  if (answers['memory_2'] === 'pattern_3') score++;
+  if (answers['memory_3'] === 'word_list_1') score++;
+  
+  const percentage = Math.round((score / total) * 100);
+  let level = '';
+  let description = '';
+  
+  if (percentage >= 90) {
+    level = 'Memory Master 🧠';
+    description = 'Exceptional! You have outstanding memory power.';
+  } else if (percentage >= 70) {
+    level = 'Sharp Mind 💡';
+    description = 'Great! You have strong memory abilities.';
+  } else if (percentage >= 50) {
+    level = 'Good Recall 🎯';
+    description = 'Well done! You have solid memory skills.';
+  } else {
+    level = 'Memory Builder 🏗️';
+    description = 'Keep training! Memory improves with practice.';
+  }
+  
+  return {
+    score,
+    total,
+    percentage,
+    level,
+    description
+  };
+};
+
+const countryMatchScoring = (answers: Record<string, string>) => {
+  let countryScores: Record<string, number> = {
+    italy: 0,
+    japan: 0,
+    mexico: 0,
+    france: 0,
+    norway: 0,
+    brazil: 0
+  };
+  
+  // Scoring logic based on lifestyle preferences
+  if (answers['country_1'] === 'afternoon_person') countryScores.italy += 2;
+  if (answers['country_1'] === 'early_riser') countryScores.japan += 2;
+  
+  if (answers['country_2'] === 'pasta_pizza') countryScores.italy += 3;
+  if (answers['country_2'] === 'sushi_ramen') countryScores.japan += 3;
+  if (answers['country_2'] === 'tacos_burritos') countryScores.mexico += 3;
+  if (answers['country_2'] === 'croissant_cheese') countryScores.france += 3;
+  
+  if (answers['country_3'] === 'beach_sun') {
+    countryScores.italy += 2;
+    countryScores.brazil += 2;
+  }
+  if (answers['country_3'] === 'mountains_hiking') countryScores.norway += 2;
+  if (answers['country_3'] === 'city_culture') countryScores.france += 2;
+  
+  if (answers['country_4'] === 'very_social') countryScores.brazil += 2;
+  if (answers['country_4'] === 'love_solitude') countryScores.norway += 2;
+  
+  if (answers['country_5'] === 'warm_tropical') countryScores.brazil += 2;
+  if (answers['country_5'] === 'cool_crisp') countryScores.norway += 2;
+  if (answers['country_5'] === 'mild_pleasant') countryScores.france += 1;
+  
+  // Find the country with highest score
+  const topCountry = Object.entries(countryScores).reduce((a, b) => 
+    countryScores[a[0]] > countryScores[b[0]] ? a : b
+  );
+  
+  const countryInfo = {
+    italy: { flag: '🇮🇹', name: 'Italy', description: 'You\'re passionate, artistic, and love the good life! La dolce vita suits you perfectly.' },
+    japan: { flag: '🇯🇵', name: 'Japan', description: 'You\'re disciplined, thoughtful, and appreciate beauty in simplicity. Zen is your way!' },
+    mexico: { flag: '🇲🇽', name: 'Mexico', description: 'You\'re vibrant, warm, and love celebrating life with family and friends. ¡Viva la vida!' },
+    france: { flag: '🇫🇷', name: 'France', description: 'You\'re sophisticated, cultured, and have an appreciation for the finer things. Très chic!' },
+    norway: { flag: '🇳🇴', name: 'Norway', description: 'You\'re independent, nature-loving, and find peace in simplicity. Hygge is your lifestyle!' },
+    brazil: { flag: '🇧🇷', name: 'Brazil', description: 'You\'re energetic, social, and bring sunshine wherever you go. Vida boa!' }
+  };
+  
+  return {
+    country: topCountry[0],
+    countryData: countryInfo[topCountry[0] as keyof typeof countryInfo],
+    score: topCountry[1],
+    allScores: countryScores
+  };
+};
+
+const mentalAgeScoring = (answers: Record<string, string>) => {
+  let agePoints = 25; // Start at 25
+  
+  // Adjust based on answers
+  if (answers['age_1'] === 'video_games') agePoints -= 5;
+  if (answers['age_1'] === 'reading_book') agePoints += 10;
+  if (answers['age_1'] === 'gardening') agePoints += 15;
+  
+  if (answers['age_2'] === 'memes_jokes') agePoints -= 3;
+  if (answers['age_2'] === 'dry_sarcastic') agePoints += 10;
+  
+  if (answers['age_3'] === 'text_immediately') agePoints -= 5;
+  if (answers['age_3'] === 'think_then_respond') agePoints += 5;
+  if (answers['age_3'] === 'write_letter') agePoints += 20;
+  
+  if (answers['age_4'] === 'latest_trends') agePoints -= 5;
+  if (answers['age_4'] === 'practical_functional') agePoints += 10;
+  
+  if (answers['age_5'] === 'party_friends') agePoints -= 5;
+  if (answers['age_5'] === 'early_bed') agePoints += 15;
+  
+  // Ensure reasonable bounds
+  const mentalAge = Math.max(16, Math.min(80, agePoints));
+  
+  let description = '';
+  if (mentalAge < 20) {
+    description = 'You have a youthful, energetic spirit! Life is an adventure.';
+  } else if (mentalAge < 30) {
+    description = 'You balance fun and responsibility beautifully!';
+  } else if (mentalAge < 40) {
+    description = 'You\'re mature and thoughtful, with great life perspective.';
+  } else if (mentalAge < 50) {
+    description = 'You have the wisdom of experience and appreciate life\'s subtleties.';
+  } else {
+    description = 'You\'re an old soul with deep wisdom and patience.';
+  }
+  
+  return {
+    mentalAge,
+    description,
+    category: mentalAge < 25 ? 'Young Spirit' : mentalAge < 40 ? 'Balanced Soul' : 'Wise Heart'
+  };
+};
+
+const spiritAnimalScoring = (answers: Record<string, string>) => {
+  let animalScores: Record<string, number> = {
+    lion: 0,
+    owl: 0,
+    wolf: 0,
+    eagle: 0,
+    dolphin: 0,
+    bear: 0
+  };
+  
+  // Leadership style
+  if (answers['animal_1'] === 'lead_group') animalScores.lion += 3;
+  if (answers['animal_1'] === 'support_others') animalScores.wolf += 2;
+  if (answers['animal_1'] === 'work_independently') animalScores.eagle += 2;
+  if (answers['animal_1'] === 'observe_analyze') animalScores.owl += 3;
+  
+  // Environment preference
+  if (answers['animal_2'] === 'ocean_depths') animalScores.dolphin += 3;
+  if (answers['animal_2'] === 'forest_trees') {
+    animalScores.wolf += 2;
+    animalScores.bear += 2;
+  }
+  if (answers['animal_2'] === 'mountain_peaks') animalScores.eagle += 3;
+  if (answers['animal_2'] === 'open_plains') animalScores.lion += 2;
+  
+  // Values
+  if (answers['animal_3'] === 'strength_courage') animalScores.lion += 2;
+  if (answers['animal_3'] === 'wisdom_intelligence') animalScores.owl += 3;
+  if (answers['animal_3'] === 'loyalty_friendship') animalScores.wolf += 3;
+  if (answers['animal_3'] === 'freedom_independence') animalScores.eagle += 2;
+  
+  // Problem-solving
+  if (answers['animal_4'] === 'face_directly') animalScores.lion += 2;
+  if (answers['animal_4'] === 'think_strategize') animalScores.owl += 2;
+  if (answers['animal_4'] === 'seek_help') animalScores.wolf += 2;
+  if (answers['animal_4'] === 'wait_observe') animalScores.bear += 2;
+  
+  // Time preference
+  if (answers['animal_5'] === 'day_active') animalScores.lion += 1;
+  if (answers['animal_5'] === 'night_mysterious') animalScores.owl += 2;
+  
+  const topAnimal = Object.entries(animalScores).reduce((a, b) => 
+    animalScores[a[0]] > animalScores[b[0]] ? a : b
+  );
+  
+  const animalInfo = {
+    lion: { emoji: '🦁', name: 'Lion', description: 'You\'re a natural born leader with courage and strength. You protect those you love and inspire others to greatness.' },
+    owl: { emoji: '🦉', name: 'Owl', description: 'You\'re wise, intuitive, and see what others miss. Your insight and intelligence guide you through life.' },
+    wolf: { emoji: '🐺', name: 'Wolf', description: 'You\'re loyal, protective, and thrive in community. Family and friendship mean everything to you.' },
+    eagle: { emoji: '🦅', name: 'Eagle', description: 'You\'re independent, visionary, and soar above the ordinary. Freedom and perspective are your gifts.' },
+    dolphin: { emoji: '🐬', name: 'Dolphin', description: 'You\'re playful, intelligent, and deeply social. Joy and connection flow naturally from you.' },
+    bear: { emoji: '🐻', name: 'Bear', description: 'You\'re strong, grounded, and protective. You have great inner power and maternal/paternal instincts.' }
+  };
+  
+  return {
+    animal: topAnimal[0],
+    animalData: animalInfo[topAnimal[0] as keyof typeof animalInfo],
+    score: topAnimal[1],
+    allScores: animalScores
+  };
+};
+
 export const testDefinitions: TestDefinition[] = [
   {
     id: 'mbti-classic',
@@ -2507,6 +3193,106 @@ export const testDefinitions: TestDefinition[] = [
       testLength: 'Medium (15 Qs each)',
       engagement: 'Relationship dynamics, tips',
       popularityNote: '(romantic, shareable)'
+    }
+  },
+
+  // 🧠 Knowledge and Skill Tests
+  {
+    id: 'general-knowledge',
+    category: 'knowledge-and-skill',
+    title_key: 'tests.general_knowledge.title',
+    description_key: 'tests.general_knowledge.description',
+    questions: generalKnowledgeQuestions,
+    scoring: generalKnowledgeScoring,
+    features: {
+      popularity: 4,
+      scientificValidity: 3,
+      resultType: 'Score & Level',
+      testLength: 'Medium (10 Qs)',
+      engagement: 'Trivia challenge, leaderboard potential',
+      popularityNote: '(competitive, educational)'
+    }
+  },
+  {
+    id: 'math-speed',
+    category: 'knowledge-and-skill',
+    title_key: 'tests.math_speed.title',
+    description_key: 'tests.math_speed.description',
+    questions: mathSpeedQuestions,
+    scoring: mathSpeedScoring,
+    features: {
+      popularity: 3,
+      scientificValidity: 2,
+      resultType: 'Speed & Accuracy',
+      testLength: 'Quick (5 Qs)',
+      engagement: 'Time pressure, gamified',
+      popularityNote: '(addictive, competitive)'
+    }
+  },
+  {
+    id: 'memory-power',
+    category: 'knowledge-and-skill',
+    title_key: 'tests.memory_power.title',
+    description_key: 'tests.memory_power.description',
+    questions: memoryPowerQuestions,
+    scoring: memoryPowerScoring,
+    features: {
+      popularity: 3,
+      scientificValidity: 3,
+      resultType: 'Memory Capacity',
+      testLength: 'Short (3 challenges)',
+      engagement: 'Pattern recognition, brain training',
+      popularityNote: '(cognitive, challenging)'
+    }
+  },
+
+  // 🎉 Just for Fun Tests
+  {
+    id: 'country-match',
+    category: 'just-for-fun',
+    title_key: 'tests.country_match.title',
+    description_key: 'tests.country_match.description',
+    questions: countryMatchQuestions,
+    scoring: countryMatchScoring,
+    features: {
+      popularity: 5,
+      scientificValidity: 1,
+      resultType: 'Country match with flag',
+      testLength: 'Quick (5 Qs)',
+      engagement: 'Highly viral, shareable results',
+      popularityNote: '(viral, meme-worthy)'
+    }
+  },
+  {
+    id: 'mental-age',
+    category: 'just-for-fun',
+    title_key: 'tests.mental_age.title',
+    description_key: 'tests.mental_age.description',
+    questions: mentalAgeQuestions,
+    scoring: mentalAgeScoring,
+    features: {
+      popularity: 5,
+      scientificValidity: 1,
+      resultType: 'Mental age number',
+      testLength: 'Quick (5 Qs)',
+      engagement: 'Fun comparison, social sharing',
+      popularityNote: '(relatable, surprising)'
+    }
+  },
+  {
+    id: 'spirit-animal',
+    category: 'just-for-fun',
+    title_key: 'tests.spirit_animal.title',
+    description_key: 'tests.spirit_animal.description',
+    questions: spiritAnimalQuestions,
+    scoring: spiritAnimalScoring,
+    features: {
+      popularity: 5,
+      scientificValidity: 1,
+      resultType: 'Animal match with traits',
+      testLength: 'Quick (5 Qs)',
+      engagement: 'Beautiful graphics potential, spiritual',
+      popularityNote: '(mystical, personal)'
     }
   }
 ];

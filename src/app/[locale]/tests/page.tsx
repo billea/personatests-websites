@@ -19,6 +19,8 @@ export default function TestsPage() {
                 case 'know-yourself': return '나를 알아가기';
                 case 'how-others-see-me': return '남들이 나를 어떻게 보는지';
                 case 'couple-compatibility': return '커플 궁합';
+                case 'knowledge-and-skill': return '지식과 스킬 테스트';
+                case 'just-for-fun': return '재미있는 테스트';
                 default: return category;
             }
         }
@@ -26,6 +28,8 @@ export default function TestsPage() {
             case 'know-yourself': return 'Know Yourself';
             case 'how-others-see-me': return 'How Others See Me';
             case 'couple-compatibility': return 'Couple Compatibility';
+            case 'knowledge-and-skill': return 'Knowledge and Skill Test';
+            case 'just-for-fun': return 'Just for Fun';
             default: return category;
         }
     };
@@ -36,6 +40,8 @@ export default function TestsPage() {
                 case 'know-yourself': return '당신의 성격 특성과 강점을 발견하세요';
                 case 'how-others-see-me': return '친구와 동료들로부터 피드백을 받으세요';
                 case 'couple-compatibility': return '파트너와의 관계 역학을 분석해보세요';
+                case 'knowledge-and-skill': return '일반 상식, 수학, 기억력 등 인지 능력을 테스트하세요';
+                case 'just-for-fun': return '재미있고 바이럴한 테스트로 친구들과 결과를 공유하세요';
                 default: return '';
             }
         }
@@ -43,6 +49,8 @@ export default function TestsPage() {
             case 'know-yourself': return 'Discover your personality traits and strengths';
             case 'how-others-see-me': return 'Get feedback from friends and colleagues';
             case 'couple-compatibility': return 'Analyze relationship dynamics with your partner';
+            case 'knowledge-and-skill': return 'Test your cognitive abilities with trivia, math, and memory challenges';
+            case 'just-for-fun': return 'Fun, viral tests perfect for sharing results with friends';
             default: return '';
         }
     };
