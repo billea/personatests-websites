@@ -3,15 +3,9 @@
 import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { t, currentLanguage } = useTranslation();
-  const router = useRouter();
-
-  const handleLanguageSwitch = (newLang: string) => {
-    router.push(`/${newLang}`);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 relative overflow-hidden">
@@ -29,97 +23,7 @@ export default function Home() {
         <div className="floating-icon absolute bottom-20 right-1/4 text-4xl opacity-40 animate-float" style={{animationDelay: '5s'}}>💡</div>
       </div>
 
-      {/* Navigation with Glassmorphism */}
-      <nav className="relative z-50 bg-black/10 backdrop-blur-xl border-b border-white/10 sticky top-0">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-white text-2xl font-bold">
-              ✨ PersonaTests
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">Home</Link>
-              <Link href={`/${currentLanguage}/tests`} className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">Tests ▼</Link>
-              <Link href="/couples" className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">Couples</Link>
-              <Link href="/about" className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">About</Link>
-              <Link href="/blog" className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">Blog</Link>
-              <Link href="/contact" className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">Contact</Link>
-              <Link href="/login" className="text-white font-medium hover:bg-white/10 px-3 py-2 rounded-lg transition-all transform hover:-translate-y-0.5">Login ✨</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
 
-      {/* Language Selector */}
-      <div className="container mx-auto px-4 mb-8">
-        <div className="flex justify-center">
-          <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 space-x-2">
-            <button 
-              onClick={() => handleLanguageSwitch('en')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'en' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="English"
-            >
-              EN
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('de')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'de' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="Deutsch"
-            >
-              DE
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('fr')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'fr' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="Français"
-            >
-              FR
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('es')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'es' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="Español"
-            >
-              ES
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('it')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'it' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="Italiano"
-            >
-              IT
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('pt')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'pt' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="Português"
-            >
-              PT
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('ja')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'ja' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="日本語"
-            >
-              JP
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('ko')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'ko' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="한국어"
-            >
-              KR
-            </button>
-            <button 
-              onClick={() => handleLanguageSwitch('zh')} 
-              className={`px-3 py-1 rounded-full text-sm font-semibold transition-all hover:scale-105 ${currentLanguage === 'zh' ? 'bg-white text-purple-600' : 'text-white hover:bg-white/20'}`} 
-              title="中文"
-            >
-              CN
-            </button>
-          </div>
-        </div>
-      </div>
 
       {/* Hero Section */}
       <div className="relative z-10 flex items-center min-h-screen pt-20 pb-12">
