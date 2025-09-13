@@ -1,3 +1,5 @@
+// Enhanced translation engine with cache-busting and debugging
+// Updated: 2025-09-13 for translation fix deployment
 export class TranslationEngine {
     constructor() {
         this.translations = {};
@@ -63,6 +65,12 @@ export class TranslationEngine {
 
     // The core translation function.
     t(key) {
+        // Ensure translations are loaded
+        if (!this.translations[this.currentLanguage] && !this.translations['en']) {
+            console.warn(`Translation files not loaded yet for key: ${key}`);
+            return key;
+        }
+
         // Get the value from the current language's dictionary.
         let value = key.split('.').reduce((obj, k) => obj?.[k], this.translations[this.currentLanguage]);
         
@@ -70,12 +78,18 @@ export class TranslationEngine {
         if (value === undefined) {
             value = key.split('.').reduce((obj, k) => obj?.[k], this.translations['en']);
             
-            // Debug missing keys
+            // Debug missing keys - enhanced debugging
             if (value === undefined) {
-                console.log(`Translation missing for key: ${key} in language: ${this.currentLanguage}`);
+                console.log(`🔍 Translation missing for key: ${key} in language: ${this.currentLanguage}`);
+                console.log(`🔍 Available languages:`, Object.keys(this.translations));
+                
                 if (key.includes('results.dimensions')) {
-                    console.log(`DEBUG: Current language translations for results:`, this.translations[this.currentLanguage]?.results);
-                    console.log(`DEBUG: English translations for results:`, this.translations['en']?.results);
+                    console.log(`🔍 DEBUG results structure:`, {
+                        currentLang: this.translations[this.currentLanguage]?.results,
+                        english: this.translations['en']?.results,
+                        dimensionsExist: !!this.translations['en']?.results?.dimensions,
+                        dimensionsKeys: Object.keys(this.translations['en']?.results?.dimensions || {})
+                    });
                 }
             }
         }
