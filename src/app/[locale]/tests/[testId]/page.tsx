@@ -395,22 +395,46 @@ export default function TestPage() {
             definition = getTestById(testId) || null;
             
             if (definition && testDefinition?.id !== definition.id) {
-                // If this is the general knowledge test, use dynamic random questions
+                // If this is the general knowledge test, use dynamic random questions from database
                 if (definition.id === 'general-knowledge') {
-                    definition = {
-                        ...definition,
-                        questions: getGeneralKnowledgeQuestions()
+                    const loadQuestionsAsync = async () => {
+                        try {
+                            const dynamicQuestions = await getGeneralKnowledgeQuestions(currentLanguage);
+                            const updatedDefinition = {
+                                ...definition!,
+                                id: definition!.id!, // Assert that definition and id exist since we checked earlier
+                                questions: dynamicQuestions
+                            };
+                            setTestDefinition(updatedDefinition);
+                        } catch (error) {
+                            console.error('Failed to fetch questions from database, using fallback:', error);
+                            // Use the existing hardcoded questions as fallback
+                            setTestDefinition(definition);
+                        }
                     };
+                    loadQuestionsAsync();
+                } else {
+                    setTestDefinition(definition);
                 }
-                setTestDefinition(definition);
             } else if (definition) {
                 // If using existing definition, also refresh questions for general knowledge
                 if (definition.id === 'general-knowledge') {
-                    definition = {
-                        ...definition,
-                        questions: getGeneralKnowledgeQuestions()
+                    const loadQuestionsAsync = async () => {
+                        try {
+                            const dynamicQuestions = await getGeneralKnowledgeQuestions(currentLanguage);
+                            const updatedDefinition = {
+                                ...definition!,
+                                id: definition!.id!, // Assert that definition and id exist since we checked earlier
+                                questions: dynamicQuestions
+                            };
+                            setTestDefinition(updatedDefinition);
+                        } catch (error) {
+                            console.error('Failed to fetch questions from database, using fallback:', error);
+                            // Keep the existing definition
+                            setTestDefinition(definition);
+                        }
                     };
-                    setTestDefinition(definition);
+                    loadQuestionsAsync();
                 } else {
                     definition = testDefinition;
                 }

@@ -4,6 +4,7 @@ import {
   getDoc, 
   getDocs,
   addDoc,
+  deleteDoc,
   collection,
   query,
   where,
@@ -15,6 +16,7 @@ import { firestore } from "./firebase";
 import { User } from "firebase/auth";
 import { httpsCallable } from "firebase/functions";
 import { getFunctions } from "firebase/functions";
+import type { TestQuestion } from './test-definitions';
 
 const functions = getFunctions();
 
@@ -1361,3 +1363,363 @@ export const sendFeedbackNotification = async (
     };
   }
 };
+
+/**
+ * Deletes a specific test result from the database
+ * @param resultId - The ID of the test result to delete
+ * @param userId - The user's UID for authorization
+ * @returns Promise indicating success/failure
+ */
+export const deleteTestResult = async (resultId: string, userId: string): Promise<{ success: boolean; message: string }> => {
+  try {
+    console.log(`🗑️ Attempting to delete test result: ${resultId} for user: ${userId}`);
+    
+    // First verify that the test result exists and belongs to the user
+    const resultRef = doc(firestore, "testResults", resultId);
+    const resultDoc = await getDoc(resultRef);
+    
+    if (!resultDoc.exists()) {
+      console.log(`❌ Test result ${resultId} does not exist`);
+      return {
+        success: false,
+        message: 'Test result not found'
+      };
+    }
+    
+    const resultData = resultDoc.data();
+    if (resultData.userId !== userId) {
+      console.log(`❌ User ${userId} is not authorized to delete test result ${resultId}`);
+      return {
+        success: false,
+        message: 'Not authorized to delete this test result'
+      };
+    }
+    
+    // Delete the test result
+    await deleteDoc(resultRef);
+    
+    console.log(`✅ Successfully deleted test result: ${resultId}`);
+    return {
+      success: true,
+      message: 'Test result deleted successfully'
+    };
+    
+  } catch (error) {
+    console.error(`❌ Failed to delete test result ${resultId}:`, error);
+    return {
+      success: false,
+      message: `Failed to delete test result: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// ===== GENERAL KNOWLEDGE QUESTIONS DATABASE =====
+
+export interface GeneralKnowledgeQuestion {
+  id: string;
+  category: string; // e.g., "science", "history", "geography", "arts", "sports"
+  difficulty: "easy" | "medium" | "hard";
+  
+  // Multilingual content - each language has its own version
+  translations: {
+    [languageCode: string]: {
+      question: string;
+      options: {
+        a: string;
+        b: string;
+        c: string;
+        d: string;
+      };
+      explanation?: string;
+      tags?: string[]; // Language-specific tags if needed
+    };
+  };
+  
+  correctAnswer: "a" | "b" | "c" | "d"; // Same across all languages
+  defaultLanguage: string; // Fallback language (e.g., 'en')
+  availableLanguages: string[]; // ['en', 'ko', 'ja', 'es', 'fr', 'de', 'pt']
+  isActive: boolean;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}
+
+
+// Fetch random General Knowledge questions from database for a specific language
+export const getRandomGeneralKnowledgeQuestions = async (
+  count: number = 10, 
+  language: string = 'en'
+): Promise<TestQuestion[]> => {
+  try {
+    console.log(`🔍 Fetching ${count} random General Knowledge questions in ${language} from database...`);
+    
+    // Get all active questions that have the requested language
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    const activeQuestionsQuery = query(
+      questionsRef, 
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', language)
+    );
+    const snapshot = await getDocs(activeQuestionsQuery);
+    
+    if (snapshot.empty) {
+      console.warn(`⚠️ No questions found in database for language ${language}, falling back...`);
+      return getHardcodedFallbackQuestions(count, language);
+    }
+    
+    // Convert Firestore questions to TestQuestion format
+    const allQuestions: TestQuestion[] = [];
+    snapshot.forEach((doc) => {
+      const data = doc.data() as GeneralKnowledgeQuestion;
+      
+      // Get the translation for the requested language, fallback to default language
+      const translation = data.translations[language] || data.translations[data.defaultLanguage];
+      
+      if (!translation) {
+        console.warn(`⚠️ No translation found for question ${doc.id} in language ${language}`);
+        return; // Skip this question
+      }
+      
+      const testQuestion: TestQuestion = {
+        id: doc.id,
+        text_key: `dynamic.${doc.id}.question.${language}`,
+        type: 'multiple_choice',
+        options: [
+          { value: 'a', text_key: `dynamic.${doc.id}.option_a.${language}` },
+          { value: 'b', text_key: `dynamic.${doc.id}.option_b.${language}` },
+          { value: 'c', text_key: `dynamic.${doc.id}.option_c.${language}` },
+          { value: 'd', text_key: `dynamic.${doc.id}.option_d.${language}` }
+        ]
+      };
+      
+      allQuestions.push(testQuestion);
+    });
+    
+    // Randomly select the requested number of questions
+    const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+    const selectedQuestions = shuffled.slice(0, count);
+    
+    console.log(`✅ Successfully fetched ${selectedQuestions.length} random questions in ${language} from database`);
+    return selectedQuestions;
+    
+  } catch (error) {
+    console.error(`❌ Error fetching questions from database in ${language}:`, error);
+    console.log('🔄 Falling back to hardcoded questions...');
+    return getHardcodedFallbackQuestions(count, language);
+  }
+};
+
+// Fallback to hardcoded questions if database is unavailable
+const getHardcodedFallbackQuestions = (count: number, language: string = 'en'): TestQuestion[] => {
+  const fallbackQuestions: TestQuestion[] = [
+    {
+      id: 'gk_fallback_1',
+      text_key: 'tests.general_knowledge.questions.q1',
+      type: 'multiple_choice',
+      options: [
+        { value: 'jordan', text_key: 'tests.general_knowledge.options.q1_d' },
+        { value: 'egypt', text_key: 'tests.general_knowledge.options.q1_a' },
+        { value: 'china', text_key: 'tests.general_knowledge.options.q1_b' },
+        { value: 'peru', text_key: 'tests.general_knowledge.options.q1_c' }
+      ]
+    },
+    {
+      id: 'gk_fallback_2',
+      text_key: 'tests.general_knowledge.questions.q2',
+      type: 'multiple_choice',
+      options: [
+        { value: 'venus', text_key: 'tests.general_knowledge.options.q2_b' },
+        { value: 'mercury', text_key: 'tests.general_knowledge.options.q2_a' },
+        { value: 'mars', text_key: 'tests.general_knowledge.options.q2_c' },
+        { value: 'jupiter', text_key: 'tests.general_knowledge.options.q2_d' }
+      ]
+    }
+  ];
+  
+  return fallbackQuestions.slice(0, count);
+};
+
+// Add a new General Knowledge question to the database
+export const addGeneralKnowledgeQuestion = async (question: Omit<GeneralKnowledgeQuestion, 'id' | 'createdAt' | 'updatedAt'>): Promise<{ success: boolean; id?: string; message: string }> => {
+  try {
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    const docRef = await addDoc(questionsRef, {
+      ...question,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    });
+    
+    console.log(`✅ Added new General Knowledge question: ${docRef.id}`);
+    return {
+      success: true,
+      id: docRef.id,
+      message: 'Question added successfully'
+    };
+    
+  } catch (error) {
+    console.error('❌ Error adding question:', error);
+    return {
+      success: false,
+      message: `Failed to add question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Get question statistics
+export const getGeneralKnowledgeStats = async (): Promise<{
+  total: number;
+  active: number;
+  byCategory: Record<string, number>;
+  byDifficulty: Record<string, number>;
+}> => {
+  try {
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    const snapshot = await getDocs(questionsRef);
+    
+    let total = 0;
+    let active = 0;
+    const byCategory: Record<string, number> = {};
+    const byDifficulty: Record<string, number> = {};
+    
+    snapshot.forEach((doc) => {
+      const data = doc.data() as GeneralKnowledgeQuestion;
+      total++;
+      
+      if (data.isActive) {
+        active++;
+      }
+      
+      byCategory[data.category] = (byCategory[data.category] || 0) + 1;
+      byDifficulty[data.difficulty] = (byDifficulty[data.difficulty] || 0) + 1;
+    });
+    
+    return { total, active, byCategory, byDifficulty };
+    
+  } catch (error) {
+    console.error('❌ Error getting stats:', error);
+    return { total: 0, active: 0, byCategory: {}, byDifficulty: {} };
+  }
+};
+
+// Add translation for an existing question
+export const addQuestionTranslation = async (
+  questionId: string, 
+  language: string,
+  translation: {
+    question: string;
+    options: { a: string; b: string; c: string; d: string };
+    explanation?: string;
+    tags?: string[];
+  }
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'generalKnowledgeQuestions', questionId);
+    const questionDoc = await getDoc(questionRef);
+    
+    if (!questionDoc.exists()) {
+      return { success: false, message: 'Question not found' };
+    }
+    
+    const currentData = questionDoc.data() as GeneralKnowledgeQuestion;
+    const updatedTranslations = {
+      ...currentData.translations,
+      [language]: translation
+    };
+    
+    const updatedLanguages = [...new Set([...currentData.availableLanguages, language])];
+    
+    await setDoc(questionRef, {
+      ...currentData,
+      translations: updatedTranslations,
+      availableLanguages: updatedLanguages,
+      updatedAt: serverTimestamp()
+    });
+    
+    console.log(`✅ Added ${language} translation for question ${questionId}`);
+    return {
+      success: true,
+      message: `Translation added successfully for ${language}`
+    };
+    
+  } catch (error) {
+    console.error(`❌ Error adding translation for ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to add translation: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Get questions that need translation for a specific language
+export const getQuestionsNeedingTranslation = async (language: string): Promise<{
+  questions: Array<GeneralKnowledgeQuestion & { id: string }>;
+  total: number;
+}> => {
+  try {
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    const snapshot = await getDocs(query(
+      questionsRef,
+      where('isActive', '==', true)
+    ));
+    
+    const needsTranslation: Array<GeneralKnowledgeQuestion & { id: string }> = [];
+    
+    snapshot.forEach((doc) => {
+      const data = doc.data() as GeneralKnowledgeQuestion;
+      if (!data.availableLanguages.includes(language)) {
+        needsTranslation.push({ ...data, id: doc.id });
+      }
+    });
+    
+    return {
+      questions: needsTranslation,
+      total: needsTranslation.length
+    };
+    
+  } catch (error) {
+    console.error(`❌ Error getting questions needing translation:`, error);
+    return { questions: [], total: 0 };
+  }
+};
+
+// Batch upload multilingual questions
+export const batchUploadMultilingualQuestions = async (questions: Omit<GeneralKnowledgeQuestion, 'id' | 'createdAt' | 'updatedAt'>[]): Promise<{ success: boolean; added: number; errors: number; message: string }> => {
+  try {
+    let added = 0;
+    let errors = 0;
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    
+    for (const question of questions) {
+      try {
+        await addDoc(questionsRef, {
+          ...question,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        });
+        added++;
+        console.log(`✅ Added multilingual question ${added}/${questions.length}`);
+      } catch (error) {
+        errors++;
+        console.error(`❌ Error adding question ${added + errors}:`, error);
+      }
+    }
+    
+    return {
+      success: added > 0,
+      added,
+      errors,
+      message: `Successfully added ${added} multilingual questions. ${errors} errors.`
+    };
+    
+  } catch (error) {
+    console.error('❌ Batch upload error:', error);
+    return {
+      success: false,
+      added: 0,
+      errors: questions.length,
+      message: `Batch upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Legacy function for backward compatibility
+export const batchUploadGeneralKnowledgeQuestions = batchUploadMultilingualQuestions;

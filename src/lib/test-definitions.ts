@@ -10,6 +10,10 @@ export interface TestQuestion {
     minLabel_key: string;
     maxLabel_key: string;
   };
+  memoryPhase?: {
+    text_key: string;
+    duration: number; // milliseconds
+  };
 }
 
 export interface TestOption {
@@ -2538,9 +2542,121 @@ const allGeneralKnowledgeQuestions: TestQuestion[] = [
       { value: 'north_america', text_key: 'tests.general_knowledge.options.q10_c' },
       { value: 'south_america', text_key: 'tests.general_knowledge.options.q10_d' }
     ]
+  },
+  
+  // Additional questions for better randomization (gk_11 to gk_50)
+  {
+    id: 'gk_11',
+    text_key: 'tests.general_knowledge.questions.q11',
+    type: 'multiple_choice',
+    options: [
+      { value: 'Au', text_key: 'tests.general_knowledge.options.q11_a' },
+      { value: 'Ag', text_key: 'tests.general_knowledge.options.q11_b' },
+      { value: 'Pt', text_key: 'tests.general_knowledge.options.q11_c' },
+      { value: 'Cu', text_key: 'tests.general_knowledge.options.q11_d' }
+    ]
+  },
+  {
+    id: 'gk_12',
+    text_key: 'tests.general_knowledge.questions.q12',
+    type: 'multiple_choice',
+    options: [
+      { value: '206', text_key: 'tests.general_knowledge.options.q12_a' },
+      { value: '196', text_key: 'tests.general_knowledge.options.q12_b' },
+      { value: '216', text_key: 'tests.general_knowledge.options.q12_c' },
+      { value: '186', text_key: 'tests.general_knowledge.options.q12_d' }
+    ]
+  },
+  {
+    id: 'gk_13',
+    text_key: 'tests.general_knowledge.questions.q13',
+    type: 'multiple_choice',
+    options: [
+      { value: 'cheetah', text_key: 'tests.general_knowledge.options.q13_a' },
+      { value: 'lion', text_key: 'tests.general_knowledge.options.q13_b' },
+      { value: 'leopard', text_key: 'tests.general_knowledge.options.q13_c' },
+      { value: 'tiger', text_key: 'tests.general_knowledge.options.q13_d' }
+    ]
+  },
+  {
+    id: 'gk_14',
+    text_key: 'tests.general_knowledge.questions.q14',
+    type: 'multiple_choice',
+    options: [
+      { value: 'nitrogen', text_key: 'tests.general_knowledge.options.q14_a' },
+      { value: 'oxygen', text_key: 'tests.general_knowledge.options.q14_b' },
+      { value: 'carbon_dioxide', text_key: 'tests.general_knowledge.options.q14_c' },
+      { value: 'hydrogen', text_key: 'tests.general_knowledge.options.q14_d' }
+    ]
+  },
+  {
+    id: 'gk_15',
+    text_key: 'tests.general_knowledge.questions.q15',
+    type: 'multiple_choice',
+    options: [
+      { value: '3', text_key: 'tests.general_knowledge.options.q15_a' },
+      { value: '2', text_key: 'tests.general_knowledge.options.q15_b' },
+      { value: '4', text_key: 'tests.general_knowledge.options.q15_c' },
+      { value: '5', text_key: 'tests.general_knowledge.options.q15_d' }
+    ]
+  },
+  {
+    id: 'gk_16',
+    text_key: 'tests.general_knowledge.questions.q16',
+    type: 'multiple_choice',
+    options: [
+      { value: '1945', text_key: 'tests.general_knowledge.options.q16_a' },
+      { value: '1944', text_key: 'tests.general_knowledge.options.q16_b' },
+      { value: '1946', text_key: 'tests.general_knowledge.options.q16_c' },
+      { value: '1943', text_key: 'tests.general_knowledge.options.q16_d' }
+    ]
+  },
+  {
+    id: 'gk_17',
+    text_key: 'tests.general_knowledge.questions.q17',
+    type: 'multiple_choice',
+    options: [
+      { value: 'neil_armstrong', text_key: 'tests.general_knowledge.options.q17_a' },
+      { value: 'buzz_aldrin', text_key: 'tests.general_knowledge.options.q17_b' },
+      { value: 'john_glenn', text_key: 'tests.general_knowledge.options.q17_c' },
+      { value: 'yuri_gagarin', text_key: 'tests.general_knowledge.options.q17_d' }
+    ]
+  },
+  {
+    id: 'gk_18',
+    text_key: 'tests.general_knowledge.questions.q18',
+    type: 'multiple_choice',
+    options: [
+      { value: 'lighthouse', text_key: 'tests.general_knowledge.options.q18_a' },
+      { value: 'colossus', text_key: 'tests.general_knowledge.options.q18_b' },
+      { value: 'hanging_gardens', text_key: 'tests.general_knowledge.options.q18_c' },
+      { value: 'mausoleum', text_key: 'tests.general_knowledge.options.q18_d' }
+    ]
+  },
+  {
+    id: 'gk_19',
+    text_key: 'tests.general_knowledge.questions.q19',
+    type: 'multiple_choice',
+    options: [
+      { value: '1989', text_key: 'tests.general_knowledge.options.q19_a' },
+      { value: '1988', text_key: 'tests.general_knowledge.options.q19_b' },
+      { value: '1990', text_key: 'tests.general_knowledge.options.q19_c' },
+      { value: '1987', text_key: 'tests.general_knowledge.options.q19_d' }
+    ]
+  },
+  {
+    id: 'gk_20',
+    text_key: 'tests.general_knowledge.questions.q20',
+    type: 'multiple_choice',
+    options: [
+      { value: 'augustus', text_key: 'tests.general_knowledge.options.q20_a' },
+      { value: 'julius_caesar', text_key: 'tests.general_knowledge.options.q20_b' },
+      { value: 'nero', text_key: 'tests.general_knowledge.options.q20_c' },
+      { value: 'marcus_aurelius', text_key: 'tests.general_knowledge.options.q20_d' }
+    ]
   }
   
-  // TODO: Expand to 500 questions later - keeping just the working 10 for now to test randomization
+  // Expanded from 10 to 20 questions for better variety - can add more as needed
 ];
 
 // Function to randomly select questions from the pool
@@ -2549,13 +2665,15 @@ const getRandomQuestions = (questionPool: TestQuestion[], count: number = 10): T
   return shuffled.slice(0, count);
 };
 
-// Dynamic function to get fresh random questions each time
-export const getGeneralKnowledgeQuestions = (): TestQuestion[] => {
-  return getRandomQuestions(allGeneralKnowledgeQuestions, 10);
+// Dynamic function to get fresh random questions from database
+export const getGeneralKnowledgeQuestions = async (language: string = 'en'): Promise<TestQuestion[]> => {
+  // Import the database function dynamically to avoid circular imports
+  const { getRandomGeneralKnowledgeQuestions } = await import('./firestore');
+  return await getRandomGeneralKnowledgeQuestions(10, language);
 };
 
-// Static fallback for initial load
-const generalKnowledgeQuestions: TestQuestion[] = getGeneralKnowledgeQuestions();
+// Static fallback for initial load (using hardcoded questions for synchronous initialization)
+const generalKnowledgeQuestions: TestQuestion[] = getRandomQuestions(allGeneralKnowledgeQuestions, 10);
 
 const mathSpeedQuestions: TestQuestion[] = [
   {
@@ -2642,6 +2760,10 @@ const memoryPowerQuestions: TestQuestion[] = [
     id: 'memory_3',
     text_key: 'tests.memory_power.questions.q3',
     type: 'multiple_choice',
+    memoryPhase: {
+      text_key: 'tests.memory_power.questions.q3_memorize',
+      duration: 5000 // 5 seconds to memorize
+    },
     options: [
       { value: 'word_list_1', text_key: 'tests.memory_power.options.q3_a' },
       { value: 'word_list_2', text_key: 'tests.memory_power.options.q3_b' },
