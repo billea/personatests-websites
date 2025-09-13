@@ -6,7 +6,15 @@ export async function generateStaticParams() {
         { testId: 'big-five' },
         { testId: 'enneagram' },
         { testId: 'feedback-360' },
-        { testId: 'couple-compatibility' }
+        { testId: 'couple-compatibility' },
+        // New Knowledge and Skill Tests
+        { testId: 'general-knowledge' },
+        { testId: 'math-speed' },
+        { testId: 'memory-power' },
+        // New Just for Fun Tests  
+        { testId: 'country-match' },
+        { testId: 'mental-age' },
+        { testId: 'spirit-animal' }
     ];
 }
 

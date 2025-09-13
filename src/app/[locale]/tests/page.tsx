@@ -79,15 +79,7 @@ export default function TestsPage() {
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {testsInCategory.map(test => (
-                                    <Link 
-                                        key={test.id} 
-                                        href={`${pathname}/${test.id}`}
-                                        onClick={() => {
-                                            console.log('🖱️ Test card clicked:', test.id);
-                                            console.log('🔗 Navigation URL:', `${pathname}/${test.id}`);
-                                            console.log('🔍 Test object:', test);
-                                        }}
-                                    >
+                                    <Link key={test.id} href={`${pathname}/${test.id}`}>
                                         <div className="block p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg hover:bg-white/30 cursor-pointer transition-all duration-300 transform hover:scale-105 h-full">
                                             <h3 className="mb-3 text-xl font-bold tracking-tight text-white">
                                                 {t(test.title_key)}
