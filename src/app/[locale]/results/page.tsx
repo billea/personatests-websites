@@ -9,6 +9,7 @@ import {
     getPendingInvitations, 
     getFeedbackForResult,
     getCoupleCompatibilityResultsByEmail,
+    deleteTestResult,
     TestResult,
     TestInvitation,
     FeedbackSubmission 
@@ -26,6 +27,8 @@ export default function ResultsPage() {
     const [selectedResultId, setSelectedResultId] = useState<string | null>(null);
     const [showAllResults, setShowAllResults] = useState(false);
     const [expandedTestTypes, setExpandedTestTypes] = useState<Set<string>>(new Set());
+    const [deletingResults, setDeletingResults] = useState<Set<string>>(new Set());
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null);
 
     useEffect(() => {
         if (user && !loading) {
@@ -121,6 +124,41 @@ export default function ResultsPage() {
             hour: '2-digit',
             minute: '2-digit'
         });
+    };
+
+    const handleDeleteResult = async (resultId: string) => {
+        if (!user) return;
+        
+        try {
+            setDeletingResults(prev => new Set([...prev, resultId]));
+            
+            const result = await deleteTestResult(resultId, user.uid);
+            
+            if (result.success) {
+                // Remove the deleted result from state
+                setResults(prev => prev.filter(r => r.id !== resultId));
+                
+                // Close any expanded view for this result
+                if (selectedResultId === resultId) {
+                    setSelectedResultId(null);
+                }
+                
+                console.log('✅ Test result deleted successfully');
+            } else {
+                console.error('❌ Failed to delete test result:', result.message);
+                alert('Failed to delete test result. Please try again.');
+            }
+        } catch (error) {
+            console.error('❌ Error deleting test result:', error);
+            alert('Failed to delete test result. Please try again.');
+        } finally {
+            setDeletingResults(prev => {
+                const newSet = new Set(prev);
+                newSet.delete(resultId);
+                return newSet;
+            });
+            setShowDeleteConfirm(null);
+        }
     };
 
     const getTestName = (testId: string) => {
@@ -689,14 +727,32 @@ export default function ResultsPage() {
             return (
                 <div key={result.id} className="p-8 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
                     {/* Header */}
-                    <div className="text-center mb-8">
-                        <div className="text-6xl mb-4">{tier.emoji}</div>
-                        <h3 className="text-3xl font-bold text-white mb-2">
-                            💕 Couple Compatibility Results
-                        </h3>
-                        <p className="text-white text-lg">
-                            Completed on {formatDate(result.createdAt)}
-                        </p>
+                    <div className="relative">
+                        {/* Delete Button */}
+                        <div className="absolute -top-2 -right-2">
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (result.id) {
+                                        setShowDeleteConfirm(result.id);
+                                    }
+                                }}
+                                className="w-8 h-8 bg-red-500/80 hover:bg-red-600 text-white rounded-full flex items-center justify-center text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
+                                title={t('results.deleteResult') || 'Delete Result'}
+                            >
+                                🗑️
+                            </button>
+                        </div>
+                        
+                        <div className="text-center mb-8">
+                            <div className="text-6xl mb-4">{tier.emoji}</div>
+                            <h3 className="text-3xl font-bold text-white mb-2">
+                                💕 Couple Compatibility Results
+                            </h3>
+                            <p className="text-white text-lg">
+                                Completed on {formatDate(result.createdAt)}
+                            </p>
+                        </div>
                     </div>
 
                     {/* Main Compatibility Score */}
@@ -916,7 +972,23 @@ export default function ResultsPage() {
 
         // Default rendering for other test types (MBTI, etc.)
         return (
-            <div key={result.id} className="p-6 bg-white/30 backdrop-blur-md border border-white/40 rounded-lg shadow-lg">
+            <div key={result.id} className="p-6 bg-white/30 backdrop-blur-md border border-white/40 rounded-lg shadow-lg relative">
+                {/* Delete Button */}
+                <div className="absolute -top-2 -right-2">
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (result.id) {
+                                setShowDeleteConfirm(result.id);
+                            }
+                        }}
+                        className="w-8 h-8 bg-red-500/80 hover:bg-red-600 text-white rounded-full flex items-center justify-center text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
+                        title={t('results.deleteResult') || 'Delete Result'}
+                    >
+                        🗑️
+                    </button>
+                </div>
+                
                 <div className="flex justify-between items-start mb-4">
                     <div>
                         <h3 className="text-xl font-semibold text-white">
@@ -1603,6 +1675,46 @@ export default function ResultsPage() {
                     </div>
                 )}
             </div>
+            
+            {/* Delete Confirmation Dialog */}
+            {showDeleteConfirm && (
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-6 max-w-md mx-4 shadow-2xl">
+                        <h3 className="text-xl font-bold text-white mb-4">
+                            {t('results.confirmDelete.title') || 'Confirm Delete'}
+                        </h3>
+                        <p className="text-white/90 mb-6">
+                            {t('results.confirmDelete.message') || 'Are you sure you want to delete this test result? This action cannot be undone.'}
+                        </p>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={() => setShowDeleteConfirm(null)}
+                                className="flex-1 px-4 py-2 bg-gray-500/20 hover:bg-gray-500/30 text-white rounded-lg transition-all duration-200"
+                            >
+                                {t('results.confirmDelete.cancel') || 'Cancel'}
+                            </button>
+                            <button
+                                onClick={() => {
+                                    if (showDeleteConfirm) {
+                                        handleDeleteResult(showDeleteConfirm);
+                                    }
+                                }}
+                                disabled={deletingResults.has(showDeleteConfirm || '')}
+                                className="flex-1 px-4 py-2 bg-red-500/80 hover:bg-red-600 disabled:bg-red-500/40 text-white rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                            >
+                                {deletingResults.has(showDeleteConfirm || '') ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                        {t('results.confirmDelete.deleting') || 'Deleting...'}
+                                    </>
+                                ) : (
+                                    <>{t('results.confirmDelete.delete') || 'Delete'}</>
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </main>
     );
 }

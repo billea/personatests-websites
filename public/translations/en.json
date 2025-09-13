@@ -1068,6 +1068,14 @@
       "correct": "Correct",
       "incorrect": "Incorrect",
       "noAnswer": "No answer"
+    },
+    "deleteResult": "Delete Result",
+    "confirmDelete": {
+      "title": "Confirm Delete",
+      "message": "Are you sure you want to delete this test result? This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting..."
     }
   },
   "tests": {
@@ -1266,7 +1274,17 @@
         "q7": "In what year did the Titanic sink?",
         "q8": "What is the longest river in the world?",
         "q9": "Who developed the theory of relativity?",
-        "q10": "Which continent is the largest by area?"
+        "q10": "Which continent is the largest by area?",
+        "q11": "What is the chemical symbol for gold?",
+        "q12": "How many bones are in an adult human body?",
+        "q13": "What is the fastest land animal?",
+        "q14": "What gas makes up about 78% of Earth's atmosphere?",
+        "q15": "How many hearts does an octopus have?",
+        "q16": "In what year did World War II end?",
+        "q17": "Who was the first person to walk on the moon?",
+        "q18": "Which wonder of the ancient world was located in Alexandria?",
+        "q19": "In what year did the Berlin Wall fall?",
+        "q20": "Who was the first Roman Emperor?"
       },
       "options": {
         "q1_a": "Egypt",
@@ -1308,7 +1326,47 @@
         "q10_a": "Asia",
         "q10_b": "Africa",
         "q10_c": "North America",
-        "q10_d": "South America"
+        "q10_d": "South America",
+        "q11_a": "Au",
+        "q11_b": "Ag",
+        "q11_c": "Pt",
+        "q11_d": "Cu",
+        "q12_a": "206",
+        "q12_b": "196",
+        "q12_c": "216",
+        "q12_d": "186",
+        "q13_a": "Cheetah",
+        "q13_b": "Lion",
+        "q13_c": "Leopard",
+        "q13_d": "Tiger",
+        "q14_a": "Nitrogen",
+        "q14_b": "Oxygen",
+        "q14_c": "Carbon Dioxide",
+        "q14_d": "Hydrogen",
+        "q15_a": "3",
+        "q15_b": "2",
+        "q15_c": "4",
+        "q15_d": "5",
+        "q16_a": "1945",
+        "q16_b": "1944",
+        "q16_c": "1946",
+        "q16_d": "1943",
+        "q17_a": "Neil Armstrong",
+        "q17_b": "Buzz Aldrin",
+        "q17_c": "John Glenn",
+        "q17_d": "Yuri Gagarin",
+        "q18_a": "Lighthouse of Alexandria",
+        "q18_b": "Colossus of Rhodes",
+        "q18_c": "Hanging Gardens of Babylon",
+        "q18_d": "Mausoleum at Halicarnassus",
+        "q19_a": "1989",
+        "q19_b": "1988",
+        "q19_c": "1990",
+        "q19_d": "1987",
+        "q20_a": "Augustus",
+        "q20_b": "Julius Caesar",
+        "q20_c": "Nero",
+        "q20_d": "Marcus Aurelius"
       }
     },
     "math_speed": {
@@ -1350,7 +1408,8 @@
       "questions": {
         "q1": "Remember this sequence: 3, 7, 2, 9, 1. What comes next in the pattern?",
         "q2": "Study this pattern: Circle, Square, Triangle, Circle, Square, ?",
-        "q3": "Memorize these words: Apple, Book, Chair, Door. Which word is missing from: Apple, ?, Chair, Door?"
+        "q3": "Which word is missing from: Apple, ?, Chair, Door?",
+        "q3_memorize": "Memorize these words: Apple, Book, Chair, Door"
       },
       "options": {
         "q1_a": "5, 8, 4",
