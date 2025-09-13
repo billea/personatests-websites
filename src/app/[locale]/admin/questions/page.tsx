@@ -444,13 +444,19 @@ export default function QuestionsAdminPage() {
     setLoading(false);
   };
 
-  // Simple admin check - you might want to implement proper admin roles
-  if (!user || !user.email?.includes('admin')) {
+  // Simple admin check - temporarily allow any logged-in user
+  if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
         <div className="text-center p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold text-white mb-4">Admin Access Required</h1>
-          <p className="text-white/90">You need admin privileges to access this page.</p>
+          <h1 className="text-2xl font-bold text-white mb-4">Sign In Required</h1>
+          <p className="text-white/90">Please sign in to access the admin panel.</p>
+          <a 
+            href="../auth"
+            className="mt-4 inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+          >
+            Sign In
+          </a>
         </div>
       </div>
     );

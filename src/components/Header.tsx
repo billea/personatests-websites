@@ -116,7 +116,7 @@ export default function Header() {
                             </Link>
                         )}
 
-                        {user && user.email?.includes('admin') && (
+                        {user && (
                             <Link 
                                 href={`/${locale}/admin/questions`}
                                 className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg border-2 border-orange-200 ${
@@ -278,7 +278,7 @@ export default function Header() {
                                 </Link>
                             )}
 
-                            {user && user.email?.includes('admin') && (
+                            {user && (
                                 <Link 
                                     href={`/${locale}/admin/questions`}
                                     onClick={() => setIsMobileMenuOpen(false)}
