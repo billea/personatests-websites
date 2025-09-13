@@ -1066,10 +1066,10 @@ export default function ResultsPage() {
                                             displayValue = `${value}%`;
                                             showProgressBar = true;
                                             progressValue = value;
-                                        } else if (key === 'score' && hasResult.scores?.total) {
+                                        } else if (key === 'score' && typeof value === 'number' && hasResult.scores?.total) {
                                             displayValue = `${value}/${hasResult.scores.total}`;
                                             showProgressBar = true;
-                                            progressValue = (value / hasResult.scores.total) * 100;
+                                            progressValue = (value / (hasResult.scores.total as number)) * 100;
                                         }
                                         
                                         return (
@@ -1132,7 +1132,7 @@ export default function ResultsPage() {
                                                     let displayValue = String(value);
                                                     if (key === 'percentage' && typeof value === 'number') {
                                                         displayValue = `${value}%`;
-                                                    } else if (key === 'score' && hasResult.scores?.total) {
+                                                    } else if (key === 'score' && typeof value === 'number' && hasResult.scores?.total) {
                                                         displayValue = `${value}/${hasResult.scores.total}`;
                                                     }
                                                     
