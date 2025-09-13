@@ -886,6 +886,12 @@
       "balanced": "Balanced"
     },
     "dimensions": {
+      "score": "Score",
+      "total": "Total",
+      "percentage": "Percentage",
+      "level": "Level",
+      "description": "Description",
+      "correctAnswers": "Correct Answers",
       "Leadership & Initiative": "Leadership & Initiative",
       "Communication & Social Skills": "Communication & Social Skills",
       "Teamwork & Collaboration": "Teamwork & Collaboration",

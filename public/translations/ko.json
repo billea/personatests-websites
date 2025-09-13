@@ -3133,6 +3133,12 @@
       "balanced": "균형적"
     },
     "dimensions": {
+      "score": "점수",
+      "total": "총점", 
+      "percentage": "백분율",
+      "level": "수준",
+      "description": "설명",
+      "correctAnswers": "정답",
       "Leadership & Initiative": "리더십과 주도성",
       "Communication & Social Skills": "소통과 사회적 기술", 
       "Teamwork & Collaboration": "팀워크와 협업",
