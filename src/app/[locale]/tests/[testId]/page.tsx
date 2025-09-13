@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
@@ -19,6 +19,7 @@ export default function TestPage() {
     const params = useParams();
     const router = useRouter();
     const searchParams = useSearchParams();
+    const pathname = usePathname();
     const testId = params.testId as string;
     
     // Debug logging for test loading
