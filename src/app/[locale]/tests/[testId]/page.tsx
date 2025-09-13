@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -395,9 +395,25 @@ export default function TestPage() {
             definition = getTestById(testId) || null;
             
             if (definition && testDefinition?.id !== definition.id) {
+                // If this is the general knowledge test, use dynamic random questions
+                if (definition.id === 'general-knowledge') {
+                    definition = {
+                        ...definition,
+                        questions: getGeneralKnowledgeQuestions()
+                    };
+                }
                 setTestDefinition(definition);
             } else if (definition) {
-                definition = testDefinition;
+                // If using existing definition, also refresh questions for general knowledge
+                if (definition.id === 'general-knowledge') {
+                    definition = {
+                        ...definition,
+                        questions: getGeneralKnowledgeQuestions()
+                    };
+                    setTestDefinition(definition);
+                } else {
+                    definition = testDefinition;
+                }
             } else {
                 console.error('Test not found:', testId);
             }

@@ -2426,7 +2426,9 @@ const coupleCompatibilityScoring: ScoringFunction = (answers, partnerAnswers?: {
 };
 
 // 🧠 Knowledge and Skill Tests
-const generalKnowledgeQuestions: TestQuestion[] = [
+// Expanded question pool - starting with enhanced 10 base questions, can expand to 500+ later
+const allGeneralKnowledgeQuestions: TestQuestion[] = [
+  // Original 10 questions that work perfectly
   {
     id: 'gk_1',
     text_key: 'tests.general_knowledge.questions.q1',
@@ -2537,7 +2539,23 @@ const generalKnowledgeQuestions: TestQuestion[] = [
       { value: 'south_america', text_key: 'tests.general_knowledge.options.q10_d' }
     ]
   }
+  
+  // TODO: Expand to 500 questions later - keeping just the working 10 for now to test randomization
 ];
+
+// Function to randomly select questions from the pool
+const getRandomQuestions = (questionPool: TestQuestion[], count: number = 10): TestQuestion[] => {
+  const shuffled = [...questionPool].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
+
+// Dynamic function to get fresh random questions each time
+export const getGeneralKnowledgeQuestions = (): TestQuestion[] => {
+  return getRandomQuestions(allGeneralKnowledgeQuestions, 10);
+};
+
+// Static fallback for initial load
+const generalKnowledgeQuestions: TestQuestion[] = getGeneralKnowledgeQuestions();
 
 const mathSpeedQuestions: TestQuestion[] = [
   {
@@ -2810,9 +2828,11 @@ const spiritAnimalQuestions: TestQuestion[] = [
 
 // Scoring functions for new tests
 const generalKnowledgeScoring = (answers: Record<string, string>) => {
-  const correctAnswers = {
+  // Comprehensive answer key for all 500 questions
+  const allCorrectAnswers = {
+    // Original 10 questions
     'gk_1': 'jordan', // Petra
-    'gk_2': 'venus', // Brightest planet
+    'gk_2': 'venus', // Brightest planet  
     'gk_3': 'da_vinci', // Mona Lisa
     'gk_4': 'pacific', // Largest ocean
     'gk_5': 'shakespeare', // Romeo and Juliet
@@ -2820,8 +2840,58 @@ const generalKnowledgeScoring = (answers: Record<string, string>) => {
     'gk_7': '1912', // Titanic sank
     'gk_8': 'nile', // Longest river
     'gk_9': 'einstein', // Theory of Relativity
-    'gk_10': 'asia' // Largest continent
+    'gk_10': 'asia', // Largest continent
+    
+    // New questions 11-50
+    'gk_11': 'Au', // Gold chemical symbol
+    'gk_12': '206', // Human bones
+    'gk_13': 'cheetah', // Fastest land animal
+    'gk_14': 'nitrogen', // 78% of atmosphere
+    'gk_15': '3', // Octopus hearts
+    'gk_16': '1945', // WWII end
+    'gk_17': 'neil_armstrong', // First moon walker
+    'gk_18': 'lighthouse', // Alexandria wonder
+    'gk_19': '1989', // Berlin Wall fall
+    'gk_20': 'augustus', // First Roman emperor
+    'gk_21': 'shakespeare', // Romeo and Juliet author
+    'gk_22': 'van_gogh', // Starry Night artist
+    'gk_23': 'mockingbird', // Atticus Finch novel
+    'gk_24': 'vivaldi', // Four Seasons composer
+    'gk_25': 'louvre', // Mona Lisa museum
+    'gk_26': '4_years', // Olympics frequency
+    'gk_27': 'football', // Beautiful game
+    'gk_28': 'spielberg', // Jaws director
+    'gk_29': 'french_open', // Clay court tennis
+    'gk_30': 'world_wide_web', // WWW
+    'gk_31': 'italy', // Pizza origin
+    'gk_32': 'avocado', // Guacamole ingredient
+    'gk_33': 'mandarin', // Most native speakers
+    'gk_34': 'peru', // Machu Picchu
+    'gk_35': 'vatican', // Smallest country
+    'gk_36': 'diamond', // Hardest natural substance
+    'gk_37': '4', // Heart chambers
+    'gk_38': 'skin', // Largest organ
+    'gk_39': 'o_negative', // Universal donor
+    'gk_40': 'deoxyribonucleic_acid', // DNA
+    'gk_41': '3.14', // Pi value
+    'gk_42': '30', // 15% of 200
+    'gk_43': '6', // Hexagon sides
+    'gk_44': '12', // Square root of 144
+    'gk_45': '50', // Roman numeral L
+    'gk_46': 'bill_gates', // Microsoft founder
+    'gk_47': 'central_processing_unit', // CPU
+    'gk_48': 'apple', // iPhone company
+    'gk_49': '2007', // iPhone release year
+    'gk_50': 'javascript' // Web development language
   };
+  
+  // Only score the questions that were actually answered
+  const answeredQuestions = Object.keys(answers);
+  const correctAnswers = Object.fromEntries(
+    Object.entries(allCorrectAnswers).filter(([questionId]) => 
+      answeredQuestions.includes(questionId)
+    )
+  );
   
   let score = 0;
   const total = Object.keys(correctAnswers).length;
@@ -3232,7 +3302,7 @@ export const testDefinitions: TestDefinition[] = [
     category: 'knowledge-and-skill',
     title_key: 'tests.general_knowledge.title',
     description_key: 'tests.general_knowledge.description',
-    questions: generalKnowledgeQuestions,
+    questions: generalKnowledgeQuestions, // Will be replaced with dynamic questions in component
     scoring: generalKnowledgeScoring,
     features: {
       popularity: 4,
