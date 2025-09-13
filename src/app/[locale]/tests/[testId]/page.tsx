@@ -1722,34 +1722,63 @@ export default function TestPage() {
                                                 </div>
                                             </div>
                                         )) :
-                                        // Handle other test types with direct scores structure
-                                        Object.entries(completedTestResult.scores).map(([dimension, percentage]) => (
-                                            <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
-                                                <div className="flex justify-between items-center mb-2">
-                                                    <div className="font-semibold text-lg text-white">
-                                                        {t(`results.dimensions.${dimension}`) || dimension}
+                                        // Handle other test types - filter out non-display values for General Knowledge
+                                        Object.entries(completedTestResult.scores)
+                                            .filter(([key]) => key !== 'correctAnswers' && key !== 'level' && key !== 'description')
+                                            .map(([dimension, value]) => {
+                                                // Format display based on dimension type
+                                                let displayValue = String(value);
+                                                let showAsPercentage = false;
+                                                let progressValue = 0;
+                                                let showIndicator = false;
+                                                
+                                                if (dimension === 'percentage' && typeof value === 'number') {
+                                                    displayValue = `${value}%`;
+                                                    showAsPercentage = true;
+                                                    progressValue = value;
+                                                    showIndicator = true; // Only show indicators for actual percentages
+                                                } else if (dimension === 'score' && completedTestResult.scores?.total) {
+                                                    displayValue = `${value}/${completedTestResult.scores.total}`;
+                                                    progressValue = typeof value === 'number' && typeof completedTestResult.scores.total === 'number' 
+                                                        ? (value / completedTestResult.scores.total) * 100 : 0;
+                                                } else if (typeof value === 'number') {
+                                                    // For other numeric values, show as-is
+                                                    displayValue = String(value);
+                                                    progressValue = Math.min(value, 100);
+                                                }
+                                                
+                                                return (
+                                                    <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
+                                                        <div className="flex justify-between items-center mb-2">
+                                                            <div className="font-semibold text-lg text-white">
+                                                                {t(`results.dimensions.${dimension}`) || dimension}
+                                                            </div>
+                                                            <div className="text-xl font-bold !text-white">{displayValue}</div>
+                                                        </div>
+                                                        {/* Progress Bar - only for meaningful progress values */}
+                                                        {progressValue > 0 && (
+                                                            <div className="w-full bg-white/10 rounded-full h-3 mb-2">
+                                                                <div 
+                                                                    className="bg-gradient-to-r from-green-400 to-blue-400 h-3 rounded-full transition-all duration-1000 ease-out"
+                                                                    style={{ 
+                                                                        width: `${Math.min(progressValue, 100)}%`,
+                                                                        animation: 'progressFill 1.5s ease-out'
+                                                                    }}
+                                                                ></div>
+                                                            </div>
+                                                        )}
+                                                        {/* Visual Indicator - only for actual percentages */}
+                                                        {showIndicator && (
+                                                            <div className="text-sm text-gray-800 dark:text-white/90 font-medium">
+                                                                {progressValue >= 75 ? `🔥 ${t('results.indicators.strongPreference') || 'Strong preference'}` : 
+                                                                 progressValue >= 60 ? `✨ ${t('results.indicators.clearTendency') || 'Clear tendency'}` : 
+                                                                 progressValue >= 40 ? `⚖️ ${t('results.indicators.moderateLean') || 'Moderate lean'}` : 
+                                                                 `🤔 ${t('results.indicators.balanced') || 'Balanced'}`}
+                                                            </div>
+                                                        )}
                                                     </div>
-                                                    <div className="text-xl font-bold !text-white">{typeof percentage === 'number' ? percentage : String(percentage)}%</div>
-                                                </div>
-                                            {/* Progress Bar */}
-                                            <div className="w-full bg-white/10 rounded-full h-3 mb-2">
-                                                <div 
-                                                    className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 h-3 rounded-full transition-all duration-1000 ease-out"
-                                                    style={{ 
-                                                        width: `${Math.min(Number(percentage) || 0, 100)}%`,
-                                                        animation: 'progressFill 1.5s ease-out'
-                                                    }}
-                                                ></div>
-                                            </div>
-                                            {/* Visual Indicator */}
-                                            <div className="text-sm text-gray-800 dark:text-white/90 font-medium">
-                                                {Number(percentage) >= 75 ? `🔥 ${t('results.indicators.strongPreference') || 'Strong preference'}` : 
-                                                 Number(percentage) >= 60 ? `✨ ${t('results.indicators.clearTendency') || 'Clear tendency'}` : 
-                                                 Number(percentage) >= 40 ? `⚖️ ${t('results.indicators.moderateLean') || 'Moderate lean'}` : 
-                                                 `🤔 ${t('results.indicators.balanced') || 'Balanced'}`}
-                                            </div>
-                                        </div>
-                                    ))}
+                                                );
+                                            })}
                                     </div>
                                 </div>
                             )}
