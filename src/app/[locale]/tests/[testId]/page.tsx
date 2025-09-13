@@ -98,37 +98,6 @@ export default function TestPage() {
         }
     }, [user, userName]);
 
-    // Load test definition when component mounts or testId changes
-    useEffect(() => {
-        console.log('🔄 Loading test definition for testId:', testId);
-        
-        let definition: TestDefinition | null = null;
-        
-        if (testId === 'feedback-360') {
-            // Special handling for feedback-360 tests
-            if (selectedCategory) {
-                definition = getFeedback360TestDefinition(selectedCategory);
-                console.log('📋 Loaded feedback-360 test for category:', selectedCategory);
-            } else {
-                definition = getFeedback360TestDefinition('general');
-                console.log('📋 Loaded default feedback-360 test');
-            }
-        } else {
-            // Load regular test definition
-            definition = getTestById(testId);
-            console.log('📋 Loaded regular test:', definition ? `✅ ${definition.title_key}` : '❌ Not found');
-        }
-        
-        if (definition && testDefinition?.id !== definition.id) {
-            setTestDefinition(definition);
-            setLoading(false); // Test found, stop loading
-            console.log('✅ Test definition set successfully');
-        } else if (!definition) {
-            console.error('❌ Test not found for ID:', testId);
-            setLoading(false); // Stop loading even if test not found to show error
-        }
-    }, [testId, selectedCategory, testDefinition?.id]);
-
     // Partner verification function - verify by email address
     const verifyPartner = () => {
         const enteredEmail = partnerVerificationEmail.trim().toLowerCase();
@@ -173,6 +142,38 @@ export default function TestPage() {
     const [partnerNameInput, setPartnerNameInput] = useState<string>('');
     const [existingResult, setExistingResult] = useState<any>(null);
     const [showExistingResultOptions, setShowExistingResultOptions] = useState(false);
+
+    // Load test definition when component mounts or testId changes
+    useEffect(() => {
+        console.log('🔄 Loading test definition for testId:', testId);
+        
+        let definition: TestDefinition | null = null;
+        
+        if (testId === 'feedback-360') {
+            // Special handling for feedback-360 tests
+            if (selectedCategory) {
+                definition = getFeedback360TestDefinition(selectedCategory);
+                console.log('📋 Loaded feedback-360 test for category:', selectedCategory);
+            } else {
+                definition = getFeedback360TestDefinition('general');
+                console.log('📋 Loaded default feedback-360 test');
+            }
+        } else {
+            // Load regular test definition - handle undefined by converting to null
+            const foundTest = getTestById(testId);
+            definition = foundTest || null;
+            console.log('📋 Loaded regular test:', definition ? `✅ ${definition.title_key}` : '❌ Not found');
+        }
+        
+        if (definition && testDefinition?.id !== definition.id) {
+            setTestDefinition(definition);
+            setLoading(false); // Test found, stop loading
+            console.log('✅ Test definition set successfully');
+        } else if (!definition) {
+            console.error('❌ Test not found for ID:', testId);
+            setLoading(false); // Stop loading even if test not found to show error
+        }
+    }, [testId, selectedCategory, testDefinition?.id]);
 
     // Generate unique progress key for this test session
     const getProgressKey = () => `test_progress_${testId}_${user?.uid || 'anonymous'}`;
