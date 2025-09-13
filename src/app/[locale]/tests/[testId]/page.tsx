@@ -25,8 +25,11 @@ export default function TestPage() {
     console.log('🔍 TestPage Debug:', {
         testId,
         testFound: !!getTestById(testId),
-        allTestIds: testDefinitions.map(t => t.id)
+        allTestIds: testDefinitions.map(t => t.id),
+        pathname: pathname,
+        searchParams: Object.fromEntries(searchParams.entries())
     });
+    console.log('🔍 Full test definitions:', testDefinitions.filter(t => t.category === 'knowledge-and-skill' || t.category === 'just-for-fun'));
     
     // Check if this is an invitation link
     const invitationId = searchParams.get('invitation');
@@ -1051,6 +1054,19 @@ export default function TestPage() {
             );
         }
     }
+    
+    // Debug render state
+    console.log('🔍 Render State Debug:', {
+        loading,
+        isInvitationAccess,
+        testDefinition: !!testDefinition,
+        showCategorySelection,
+        showExistingResultOptions,
+        authLoading,
+        user: !!user,
+        testCompleted,
+        currentTestId: testId
+    });
     
     // Show normal loading for non-protected tests or when loading test definition
     // Skip loading screen entirely for invitation access to prevent white background delay
