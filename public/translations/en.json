@@ -1032,7 +1032,30 @@
     "no_results_message": "You haven't completed any personality tests yet. Start your journey of self-discovery today!",
     "take_first_test": "Take a Test",
     "pending_invitations": "Pending Feedback Invitations",
-    "waiting_response": "Waiting for response"
+    "waiting_response": "Waiting for response",
+    "dimensions": {
+      "score": "Score",
+      "total": "Total",
+      "percentage": "Percentage",
+      "level": "Level",
+      "description": "Description",
+      "correctAnswers": "Correct Answers",
+      "Leadership & Initiative": "Leadership & Initiative",
+      "Communication & Social Skills": "Communication & Social Skills",
+      "Teamwork & Collaboration": "Teamwork & Collaboration",
+      "Emotional Intelligence & Empathy": "Emotional Intelligence & Empathy",
+      "Problem Solving & Creativity": "Problem Solving & Creativity",
+      "Adaptability & Flexibility": "Adaptability & Flexibility",
+      "Social & Relationship Skills": "Social & Relationship Skills",
+      "Organization & Reliability": "Organization & Reliability",
+      "Emotional Stability": "Emotional Stability",
+      "Extraversion": "Extraversion",
+      "openness": "Openness to Experience",
+      "conscientiousness": "Conscientiousness", 
+      "extraversion": "Extraversion",
+      "agreeableness": "Agreeableness",
+      "neuroticism": "Neuroticism"
+    }
   },
   "tests": {
     "mbti": {
