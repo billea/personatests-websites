@@ -50,6 +50,15 @@ export class TranslationEngine {
             const data = await response.json();
             this.translations[lang] = data;
             console.log(`Successfully loaded ${lang} with ${Object.keys(data).length} top-level keys`);
+            
+            // Debug results structure specifically
+            if (data.results) {
+                console.log(`🔍 Results structure for ${lang}:`, {
+                    topLevelKeys: Object.keys(data.results),
+                    hasDimensions: !!data.results.dimensions,
+                    dimensionsKeys: data.results.dimensions ? Object.keys(data.results.dimensions) : 'MISSING'
+                });
+            }
         } catch (error) {
             console.error(`Error loading language ${lang}:`, error);
             // If a language fails to load, we'll fall back to English, which is already loaded.
