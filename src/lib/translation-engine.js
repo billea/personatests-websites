@@ -37,7 +37,13 @@ export class TranslationEngine {
         try {
             const url = `/translations/${lang}.json?v=${new Date().getTime()}`;
             console.log(`Loading language ${lang} from:`, url);
-            const response = await fetch(url); // Cache-busting with absolute path
+            const response = await fetch(url, { 
+                cache: 'no-cache',  // Force no cache
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache'
+                }
+            });
             if (!response.ok) throw new Error(`Failed to load ${lang}.json: ${response.status} ${response.statusText}`);
             const data = await response.json();
             this.translations[lang] = data;
@@ -63,6 +69,15 @@ export class TranslationEngine {
         // If not found, fall back to English.
         if (value === undefined) {
             value = key.split('.').reduce((obj, k) => obj?.[k], this.translations['en']);
+            
+            // Debug missing keys
+            if (value === undefined) {
+                console.log(`Translation missing for key: ${key} in language: ${this.currentLanguage}`);
+                if (key.includes('results.dimensions')) {
+                    console.log(`DEBUG: Current language translations for results:`, this.translations[this.currentLanguage]?.results);
+                    console.log(`DEBUG: English translations for results:`, this.translations['en']?.results);
+                }
+            }
         }
 
         // If still not found, return the key itself as a fallback.
