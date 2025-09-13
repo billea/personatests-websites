@@ -133,8 +133,20 @@ export default function QuestionsAdminPage() {
     setLoading(true);
     try {
       const questionData = {
-        ...newQuestion,
-        tags: newQuestion.tags.split(',').map(tag => tag.trim()),
+        category: newQuestion.category,
+        difficulty: newQuestion.difficulty,
+        correctAnswer: newQuestion.correctAnswer,
+        defaultLanguage: 'en',
+        availableLanguages: ['en'],
+        translations: {
+          en: {
+            question: newQuestion.question,
+            options: newQuestion.options,
+            explanation: newQuestion.explanation,
+            tags: newQuestion.tags.split(',').map(tag => tag.trim())
+          }
+        },
+        isActive: newQuestion.isActive
       };
       
       const result = await addGeneralKnowledgeQuestion(questionData);
@@ -319,6 +331,14 @@ export default function QuestionsAdminPage() {
                 <option value="c">C is correct</option>
                 <option value="d">D is correct</option>
               </select>
+              
+              <input
+                type="text"
+                placeholder="Explanation (optional)"
+                value={newQuestion.explanation}
+                onChange={(e) => setNewQuestion({ ...newQuestion, explanation: e.target.value })}
+                className="w-full px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
+              />
               
               <input
                 type="text"
