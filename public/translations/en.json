@@ -1055,6 +1055,19 @@
       "extraversion": "Extraversion",
       "agreeableness": "Agreeableness",
       "neuroticism": "Neuroticism"
+    },
+    "answerAnalysis": {
+      "title": "Detailed Answer Analysis",
+      "signUpPrompt": "See Your Detailed Answer Analysis", 
+      "description": "Sign up to see which questions you got right or wrong, compare your answers with the correct ones, and track your progress over time.",
+      "signUpButton": "Sign Up for Free Analysis",
+      "features": "Free forever • Track progress • 100% private",
+      "yourAnswer": "Your answer:",
+      "correctAnswer": "Correct answer:",
+      "question": "Question",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "noAnswer": "No answer"
     }
   },
   "tests": {

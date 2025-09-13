@@ -1147,6 +1147,84 @@ export default function ResultsPage() {
                                                 })}
                                         </div>
                                     )}
+
+                                    {/* Correct Answers Comparison - Premium Feature */}
+                                    {hasResult.scores?.correctAnswers && (
+                                        <div className="mt-6">
+                                            <h4 className="font-semibold mb-3 text-white flex items-center">
+                                                📝 {t('results.answerAnalysis.title') || 'Detailed Answer Analysis'}
+                                            </h4>
+                                            
+                                            {user ? (
+                                                // Show full comparison for logged-in users
+                                                <div className="space-y-2">
+                                                    {hasResult.scores.correctAnswers.map((item: any, index: number) => (
+                                                        <div 
+                                                            key={index} 
+                                                            className={`p-3 rounded-lg border-l-4 ${
+                                                                item.isCorrect 
+                                                                    ? 'bg-green-500/10 border-green-400 text-green-100' 
+                                                                    : 'bg-red-500/10 border-red-400 text-red-100'
+                                                            }`}
+                                                        >
+                                                            <div className="flex items-center justify-between mb-1">
+                                                                <span className="text-sm font-medium">
+                                                                    {t('results.answerAnalysis.question') || 'Question'} {index + 1}
+                                                                </span>
+                                                                <span className="text-xs">
+                                                                    {item.isCorrect 
+                                                                        ? `✅ ${t('results.answerAnalysis.correct') || 'Correct'}` 
+                                                                        : `❌ ${t('results.answerAnalysis.incorrect') || 'Incorrect'}`}
+                                                                </span>
+                                                            </div>
+                                                            <div className="text-sm space-y-1">
+                                                                <div>
+                                                                    <span className="text-white/70">
+                                                                        {t('results.answerAnalysis.yourAnswer') || 'Your answer:'} 
+                                                                    </span>
+                                                                    <span className="font-medium ml-1">
+                                                                        {item.userAnswer || t('results.answerAnalysis.noAnswer') || 'No answer'}
+                                                                    </span>
+                                                                </div>
+                                                                {!item.isCorrect && (
+                                                                    <div>
+                                                                        <span className="text-white/70">
+                                                                            {t('results.answerAnalysis.correctAnswer') || 'Correct answer:'} 
+                                                                        </span>
+                                                                        <span className="font-medium text-green-300 ml-1">{item.correctAnswer}</span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                // Show sign-up prompt for anonymous users
+                                                <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 p-6 rounded-lg border border-purple-400/30">
+                                                    <div className="text-center">
+                                                        <div className="text-2xl mb-2">🔐</div>
+                                                        <h5 className="text-lg font-semibold text-white mb-2">
+                                                            {t('results.answerAnalysis.signUpPrompt') || 'See Your Detailed Answer Analysis'}
+                                                        </h5>
+                                                        <p className="text-white/80 mb-4">
+                                                            {t('results.answerAnalysis.description') || 'Sign up to see which questions you got right or wrong, compare your answers with the correct ones, and track your progress over time.'}
+                                                        </p>
+                                                        <div className="space-y-2">
+                                                            <button
+                                                                onClick={() => window.location.href = `/${currentLanguage}/auth`}
+                                                                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+                                                            >
+                                                                📊 {t('results.answerAnalysis.signUpButton') || 'Sign Up for Free Analysis'}
+                                                            </button>
+                                                            <p className="text-xs text-white/60">
+                                                                ✨ {t('results.answerAnalysis.features') || 'Free forever • Track progress • 100% private'}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )}
