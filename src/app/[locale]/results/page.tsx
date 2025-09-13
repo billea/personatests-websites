@@ -1023,7 +1023,7 @@ export default function ResultsPage() {
                             </div>
                         )}
                         
-                        {/* MBTI Percentages */}
+                        {/* Big Five / MBTI Percentages - only show if percentages exist */}
                         {hasResult.scores?.percentages && (
                             <div className="grid grid-cols-2 gap-3 mt-4">
                                 {Object.entries(hasResult.scores.percentages).map(([key, value]) => (
@@ -1048,6 +1048,51 @@ export default function ResultsPage() {
                                         )}
                                     </div>
                                 ))}
+                            </div>
+                        )}
+
+                        {/* General Knowledge / Quiz Results - show detailed scores */}
+                        {hasResult.scores && !hasResult.scores.percentages && (
+                            <div className="grid grid-cols-2 gap-3 mt-4">
+                                {Object.entries(hasResult.scores)
+                                    .filter(([key, value]) => key !== 'correctAnswers' && key !== 'level' && key !== 'description')
+                                    .map(([key, value]) => {
+                                        // Format values based on key type
+                                        let displayValue = String(value);
+                                        let showProgressBar = false;
+                                        let progressValue = 0;
+                                        
+                                        if (key === 'percentage' && typeof value === 'number') {
+                                            displayValue = `${value}%`;
+                                            showProgressBar = true;
+                                            progressValue = value;
+                                        } else if (key === 'score' && hasResult.scores?.total) {
+                                            displayValue = `${value}/${hasResult.scores.total}`;
+                                            showProgressBar = true;
+                                            progressValue = (value / hasResult.scores.total) * 100;
+                                        }
+                                        
+                                        return (
+                                            <div key={key} className="bg-white/5 p-3 rounded">
+                                                <div className="flex justify-between items-center mb-1">
+                                                    <span className="text-white/90 text-sm font-medium">
+                                                        {t(`results.dimensions.${key}`) || key}
+                                                    </span>
+                                                    <span className="text-white font-semibold">
+                                                        {displayValue}
+                                                    </span>
+                                                </div>
+                                                {showProgressBar && (
+                                                    <div className="w-full bg-white/20 rounded-full h-1.5">
+                                                        <div 
+                                                            className="bg-gradient-to-r from-green-400 to-blue-400 h-1.5 rounded-full"
+                                                            style={{ width: `${progressValue}%` }}
+                                                        ></div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
                             </div>
                         )}
                     </div>
@@ -1081,13 +1126,25 @@ export default function ResultsPage() {
                                     {hasResult.scores && (
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {Object.entries(hasResult.scores)
-                                                .filter(([key, value]) => key !== 'percentages')
-                                                .map(([key, value]) => (
-                                                    <div key={key} className="bg-white/5 p-3 rounded">
-                                                        <span className="text-white/90 font-medium capitalize">{key}: </span>
-                                                        <span className="text-white">{String(value)}</span>
-                                                    </div>
-                                                ))}
+                                                .filter(([key, value]) => key !== 'percentages' && key !== 'correctAnswers')
+                                                .map(([key, value]) => {
+                                                    // Format values based on key type
+                                                    let displayValue = String(value);
+                                                    if (key === 'percentage' && typeof value === 'number') {
+                                                        displayValue = `${value}%`;
+                                                    } else if (key === 'score' && hasResult.scores?.total) {
+                                                        displayValue = `${value}/${hasResult.scores.total}`;
+                                                    }
+                                                    
+                                                    return (
+                                                        <div key={key} className="bg-white/5 p-3 rounded">
+                                                            <span className="text-white/90 font-medium">
+                                                                {t(`results.dimensions.${key}`) || key}: 
+                                                            </span>
+                                                            <span className="text-white ml-2">{displayValue}</span>
+                                                        </div>
+                                                    );
+                                                })}
                                         </div>
                                     )}
                                 </div>

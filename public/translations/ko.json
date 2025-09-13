@@ -335,6 +335,14 @@
     "take_first_test": "테스트 하기",
     "pending_invitations": "대기 중인 피드백 초대",
     "waiting_response": "응답 대기 중",
+    "dimensions": {
+      "score": "점수",
+      "total": "총점",
+      "percentage": "백분율",
+      "level": "수준",
+      "description": "설명",
+      "correctAnswers": "정답"
+    },
     "mbtiTraits": {
       "extraversionIntroversion": "외향성/내향성",
       "sensingIntuition": "감각/직관",
