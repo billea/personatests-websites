@@ -392,14 +392,20 @@ export default function TestPage() {
                 }
             }
         } else {
+            console.log('🔍 Looking for test with ID:', testId);
             definition = getTestById(testId) || null;
+            console.log('🔍 getTestById result:', definition ? `Found: ${definition.id}` : 'Not found');
+            console.log('🔍 Available test IDs:', testDefinitions.map(t => t.id));
             
             if (definition && testDefinition?.id !== definition.id) {
+                console.log('🔄 Setting new test definition:', definition.id);
                 setTestDefinition(definition);
             } else if (definition) {
+                console.log('🔄 Using existing test definition:', definition.id);
                 definition = testDefinition;
             } else {
-                console.error('Test not found:', testId);
+                console.error('❌ Test not found:', testId);
+                console.log('🔍 Available test IDs for debugging:', testDefinitions.map(t => t.id));
             }
         }
         
