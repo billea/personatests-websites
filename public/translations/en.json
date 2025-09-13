@@ -1588,5 +1588,28 @@
       "Planner": "Planner",
       "Quality Time Lover": "Quality Time Lover"
     }
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "questions": {
+      "title": "General Knowledge Questions",
+      "description": "Manage the General Knowledge test question database",
+      "upload_sample": "Upload Sample Questions",
+      "add_question": "Add New Question",
+      "stats": "Database Statistics",
+      "total_questions": "Total Questions",
+      "active_questions": "Active Questions",
+      "categories": "Categories",
+      "languages_supported": "Languages supported"
+    },
+    "navigation": {
+      "admin": "Admin",
+      "questions": "Questions",
+      "management": "Management"
+    },
+    "access": {
+      "required": "Admin Access Required",
+      "privileges": "You need admin privileges to access this page."
+    }
   }
 }

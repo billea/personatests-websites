@@ -3360,5 +3360,28 @@
   "Agreeableness": "호감성", 
   "Conscientiousness": "성실성",
   "Openness": "경험에 대한 개방성",
-  "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.": "리더십, 소통, 팀워크, 감정 지능, 문제 해결, 적응성, 대인관계 기술, 업무 스타일을 다각도로 평가하는 포괄적인 360도 평가입니다."
+  "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.": "리더십, 소통, 팀워크, 감정 지능, 문제 해결, 적응성, 대인관계 기술, 업무 스타일을 다각도로 평가하는 포괄적인 360도 평가입니다.",
+  "admin": {
+    "title": "관리 패널",
+    "questions": {
+      "title": "일반 상식 문제",
+      "description": "일반 상식 테스트 문제 데이터베이스를 관리하세요",
+      "upload_sample": "샘플 문제 업로드",
+      "add_question": "새 문제 추가",
+      "stats": "데이터베이스 통계",
+      "total_questions": "총 문제 수",
+      "active_questions": "활성 문제",
+      "categories": "카테고리",
+      "languages_supported": "지원 언어"
+    },
+    "navigation": {
+      "admin": "관리",
+      "questions": "문제",
+      "management": "관리"
+    },
+    "access": {
+      "required": "관리자 권한 필요",
+      "privileges": "이 페이지에 접근하려면 관리자 권한이 필요합니다."
+    }
+  }
 }
