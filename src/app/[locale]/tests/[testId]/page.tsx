@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -20,6 +20,13 @@ export default function TestPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const testId = params.testId as string;
+    
+    // Debug logging for test loading
+    console.log('🔍 TestPage Debug:', {
+        testId,
+        testFound: !!getTestById(testId),
+        allTestIds: testDefinitions.map(t => t.id)
+    });
     
     // Check if this is an invitation link
     const invitationId = searchParams.get('invitation');
