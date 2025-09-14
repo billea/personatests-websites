@@ -1723,3 +1723,211 @@ export const batchUploadMultilingualQuestions = async (questions: Omit<GeneralKn
 
 // Legacy function for backward compatibility
 export const batchUploadGeneralKnowledgeQuestions = batchUploadMultilingualQuestions;
+
+// ============================================
+// MATH SPEED TEST DATABASE FUNCTIONS
+// ============================================
+
+export interface MathSpeedQuestion {
+  id: string;
+  expression: string; // e.g., "12 + 8", "9 × 7", "45 ÷ 5"
+  correctAnswer: number;
+  difficulty: "easy" | "medium" | "hard";
+  operation: "addition" | "subtraction" | "multiplication" | "division" | "mixed";
+  isActive: boolean;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}
+
+// Fetch random Math Speed questions from database
+export const getRandomMathSpeedQuestions = async (
+  count: number = 20,
+  difficulty?: "easy" | "medium" | "hard"
+): Promise<MathSpeedQuestion[]> => {
+  try {
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    let q = query(questionsRef, where('isActive', '==', true));
+    
+    if (difficulty) {
+      q = query(q, where('difficulty', '==', difficulty));
+    }
+
+    const snapshot = await getDocs(q);
+    const allQuestions = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })) as MathSpeedQuestion[];
+
+    // Shuffle and return requested count
+    const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, Math.min(count, shuffled.length));
+  } catch (error) {
+    console.error('❌ Error fetching math speed questions:', error);
+    return [];
+  }
+};
+
+// Add new Math Speed question to database
+export const addMathSpeedQuestion = async (questionData: Omit<MathSpeedQuestion, 'id' | 'createdAt' | 'updatedAt'>): Promise<string | null> => {
+  try {
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    const docRef = await addDoc(questionsRef, {
+      ...questionData,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now()
+    });
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error adding math speed question:', error);
+    return null;
+  }
+};
+
+// ============================================
+// MEMORY POWER TEST DATABASE FUNCTIONS  
+// ============================================
+
+export interface MemoryPowerQuestion {
+  id: string;
+  type: "word_sequence" | "number_sequence" | "image_sequence" | "pattern_sequence";
+  
+  // Multilingual content
+  translations: {
+    [languageCode: string]: {
+      memorizationContent: string[]; // Items to memorize (words, numbers, etc.)
+      question: string; // "Which item was missing?" or "What was the 3rd item?"
+      options?: string[]; // For multiple choice recall
+      correctAnswer: string | number; // The correct answer
+      tags?: string[]; // Language-specific tags
+    };
+  };
+  
+  defaultLanguage: string;
+  availableLanguages: string[];
+  difficulty: "easy" | "medium" | "hard";
+  memorizationTime: number; // seconds to memorize
+  isActive: boolean;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}
+
+// Fetch random Memory Power questions from database
+export const getRandomMemoryPowerQuestions = async (
+  count: number = 10,
+  language: string = 'en',
+  difficulty?: "easy" | "medium" | "hard"
+): Promise<MemoryPowerQuestion[]> => {
+  try {
+    const questionsRef = collection(firestore, 'memoryPowerQuestions');
+    let q = query(
+      questionsRef, 
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', language)
+    );
+    
+    if (difficulty) {
+      q = query(q, where('difficulty', '==', difficulty));
+    }
+
+    const snapshot = await getDocs(q);
+    const allQuestions = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })) as MemoryPowerQuestion[];
+
+    // Shuffle and return requested count
+    const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, Math.min(count, shuffled.length));
+  } catch (error) {
+    console.error('❌ Error fetching memory power questions:', error);
+    return [];
+  }
+};
+
+// Add new Memory Power question to database
+export const addMemoryPowerQuestion = async (questionData: Omit<MemoryPowerQuestion, 'id' | 'createdAt' | 'updatedAt'>): Promise<string | null> => {
+  try {
+    const questionsRef = collection(firestore, 'memoryPowerQuestions');
+    const docRef = await addDoc(questionsRef, {
+      ...questionData,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now()
+    });
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error adding memory power question:', error);
+    return null;
+  }
+};
+
+// Batch upload Math Speed questions
+export const batchUploadMathSpeedQuestions = async (questions: Omit<MathSpeedQuestion, 'id' | 'createdAt' | 'updatedAt'>[]): Promise<{success: boolean, added: number, errors: number, message: string}> => {
+  try {
+    let added = 0;
+    let errors = 0;
+
+    for (const question of questions) {
+      console.log(`📊 Adding math question ${added + 1}: ${question.expression}`);
+      const questionId = await addMathSpeedQuestion(question);
+      
+      if (questionId) {
+        added++;
+        console.log(`✅ Added question ${added}: ${question.expression}`);
+      } else {
+        errors++;
+        console.log(`❌ Error adding math question: ${question.expression}`);
+      }
+    }
+
+    return {
+      success: added > 0,
+      added,
+      errors,
+      message: `Successfully added ${added} math speed questions. ${errors} errors.`
+    };
+  } catch (error) {
+    console.error('❌ Batch upload math questions error:', error);
+    return {
+      success: false,
+      added: 0,
+      errors: questions.length,
+      message: `Batch upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Batch upload Memory Power questions
+export const batchUploadMemoryPowerQuestions = async (questions: Omit<MemoryPowerQuestion, 'id' | 'createdAt' | 'updatedAt'>[]): Promise<{success: boolean, added: number, errors: number, message: string}> => {
+  try {
+    let added = 0;
+    let errors = 0;
+
+    for (const question of questions) {
+      console.log(`🧠 Adding memory question ${added + 1}: ${question.type}`);
+      const questionId = await addMemoryPowerQuestion(question);
+      
+      if (questionId) {
+        added++;
+        console.log(`✅ Added memory question ${added}: ${question.type}`);
+      } else {
+        errors++;
+        console.log(`❌ Error adding memory question: ${question.type}`);
+      }
+    }
+
+    return {
+      success: added > 0,
+      added,
+      errors,
+      message: `Successfully added ${added} memory power questions. ${errors} errors.`
+    };
+  } catch (error) {
+    console.error('❌ Batch upload memory questions error:', error);
+    return {
+      success: false,
+      added: 0,
+      errors: questions.length,  
+      message: `Batch upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};

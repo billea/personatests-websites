@@ -81,5 +81,24 @@ service cloud.firestore {
     match /tests/{testId} {
       allow read: if true;
     }
+    
+    // Question collections for dynamic tests
+    match /generalKnowledgeQuestions/{questionId} {
+      allow read: if true; // Everyone can read questions for tests
+      allow write: if request.auth != null; // Authenticated users can manage questions
+      allow create: if request.auth != null; // Authenticated users can add questions
+    }
+    
+    match /mathSpeedQuestions/{questionId} {
+      allow read: if true; // Everyone can read questions for tests
+      allow write: if request.auth != null; // Authenticated users can manage questions
+      allow create: if request.auth != null; // Authenticated users can add questions
+    }
+    
+    match /memoryPowerQuestions/{questionId} {
+      allow read: if true; // Everyone can read questions for tests  
+      allow write: if request.auth != null; // Authenticated users can manage questions
+      allow create: if request.auth != null; // Authenticated users can add questions
+    }
   }
 }
