@@ -83,22 +83,29 @@ export class TranslationEngine {
 
         // Get the value from the current language's dictionary.
         let value = key.split('.').reduce((obj, k) => obj?.[k], this.translations[this.currentLanguage]);
-        
+
         // If not found, fall back to English.
         if (value === undefined) {
             value = key.split('.').reduce((obj, k) => obj?.[k], this.translations['en']);
-            
+
             // Debug missing keys - enhanced debugging
             if (value === undefined) {
                 console.log(`🔍 Translation missing for key: ${key} in language: ${this.currentLanguage}`);
                 console.log(`🔍 Available languages:`, Object.keys(this.translations));
-                
+                console.log(`🔍 Translation objects:`, {
+                    currentLangExists: !!this.translations[this.currentLanguage],
+                    englishExists: !!this.translations['en'],
+                    currentLangKeys: this.translations[this.currentLanguage] ? Object.keys(this.translations[this.currentLanguage]) : 'none',
+                    englishKeys: this.translations['en'] ? Object.keys(this.translations['en']) : 'none'
+                });
+
                 if (key.includes('results.dimensions')) {
                     console.log(`🔍 DEBUG results structure:`, {
                         currentLang: this.translations[this.currentLanguage]?.results,
                         english: this.translations['en']?.results,
                         dimensionsExist: !!this.translations['en']?.results?.dimensions,
-                        dimensionsKeys: Object.keys(this.translations['en']?.results?.dimensions || {})
+                        dimensionsKeys: Object.keys(this.translations['en']?.results?.dimensions || {}),
+                        specificKeyTest: this.translations['en']?.results?.dimensions?.[key.split('.').pop()]
                     });
                 }
             }

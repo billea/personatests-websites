@@ -79,6 +79,9 @@ export const TranslationProvider = ({ children }: TranslationProviderProps) => {
       console.log('Translation engine initialized. Current language:', i18nEngine.currentLanguage);
       console.log('Available translations for current language:', Object.keys((i18nEngine.translations as any)[i18nEngine.currentLanguage] || {}));
       console.log('Test translation - tests.page_title:', i18nEngine.t('tests.page_title'));
+      console.log('Test results.dimensions translation - E:', i18nEngine.t('results.dimensions.E'));
+      console.log('Test results.dimensions translation - 8:', i18nEngine.t('results.dimensions.8'));
+      console.log('Test results.dimensions translation - Self-Awareness:', i18nEngine.t('results.dimensions.Self-Awareness'));
       
       setEngine(i18nEngine);
       setIsReady(true);
