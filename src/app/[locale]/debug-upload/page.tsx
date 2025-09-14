@@ -12,25 +12,19 @@ export default function DebugUploadPage() {
 
   const handleUpload = async () => {
     setLoading(true);
-    setMessage('🚀 Loading 100-question dataset...');
+    setMessage('🚀 Loading complete question dataset...');
     
     try {
-      // Import the complete 100 questions dynamically
-      const response = await fetch('/scripts/100-questions-database.js');
-      const scriptText = await response.text();
+      // Fetch the complete questions from the JSON file
+      const response = await fetch('/100-questions.json');
       
-      // Extract the questions array from the script (simple regex approach)
-      const match = scriptText.match(/export const hundredQuestions = (\[[\s\S]*?\]);/);
-      
-      if (!match) {
-        throw new Error('Could not extract questions from script file');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch questions: ${response.status} ${response.statusText}`);
       }
       
-      // Parse the questions (this is a simple approach - in production you'd want more robust parsing)
-      const questionsStr = match[1];
-      const questions = eval(`(${questionsStr})`);
+      const questions = await response.json();
       
-      console.log(`📊 Loaded ${questions.length} questions from script file`);
+      console.log(`📊 Loaded ${questions.length} questions from JSON file`);
       setMessage(`📊 Loaded ${questions.length} questions, uploading to database...`);
       
       // Upload to database
@@ -50,11 +44,11 @@ export default function DebugUploadPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
       <div className="max-w-2xl mx-auto text-center p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-white mb-6">📤 Upload 100 General Knowledge Questions</h1>
+        <h1 className="text-3xl font-bold text-white mb-6">📤 Upload Complete General Knowledge Database</h1>
         <p className="text-white/90 mb-8">
-          To upload the complete 100-question database, use the console method below.
+          Upload the complete multilingual question database to Firebase.
           <br />
-          The questions are ready in <code>scripts/100-questions-database.js</code>
+          97 questions across multiple categories with English & Korean translations.
         </p>
         
         {message && (
@@ -68,12 +62,12 @@ export default function DebugUploadPage() {
           disabled={loading}
           className="px-8 py-4 bg-green-500/80 hover:bg-green-600 disabled:bg-green-500/40 text-white rounded-lg transition-all duration-200 text-lg font-semibold mb-6"
         >
-          {loading ? '⏳ Uploading 100 Questions...' : '📤 Upload 100 Questions Database'}
+          {loading ? '⏳ Uploading Questions...' : '📤 Upload Complete Database (97 Questions)'}
         </button>
         
         <div className="bg-blue-900/30 p-4 rounded-lg mb-6">
           <p className="text-blue-200 text-sm">
-            💡 This will fetch the complete 100-question dataset from scripts/100-questions-database.js and upload it to your Firebase database.
+            💡 This will fetch the complete 97-question dataset and upload it to your Firebase database. All questions include English & Korean translations.
           </p>
         </div>
         

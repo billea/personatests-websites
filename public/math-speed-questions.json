@@ -1,0 +1,1322 @@
+[
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 15,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 23 + 17?",
+        "options": {
+          "a": "39",
+          "b": "40",
+          "c": "41",
+          "d": "42"
+        },
+        "explanation": "23 + 17 = 40",
+        "tags": ["addition", "basic"]
+      },
+      "ko": {
+        "question": "23 + 17은 얼마인가요?",
+        "options": {
+          "a": "39",
+          "b": "40",
+          "c": "41",
+          "d": "42"
+        },
+        "explanation": "23 + 17 = 40",
+        "tags": ["덧셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 15,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 54 - 28?",
+        "options": {
+          "a": "24",
+          "b": "25",
+          "c": "26",
+          "d": "27"
+        },
+        "explanation": "54 - 28 = 26",
+        "tags": ["subtraction", "basic"]
+      },
+      "ko": {
+        "question": "54 - 28은 얼마인가요?",
+        "options": {
+          "a": "24",
+          "b": "25",
+          "c": "26",
+          "d": "27"
+        },
+        "explanation": "54 - 28 = 26",
+        "tags": ["뺄셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 20,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 6 × 7?",
+        "options": {
+          "a": "42",
+          "b": "41",
+          "c": "43",
+          "d": "44"
+        },
+        "explanation": "6 × 7 = 42",
+        "tags": ["multiplication", "basic"]
+      },
+      "ko": {
+        "question": "6 × 7은 얼마인가요?",
+        "options": {
+          "a": "42",
+          "b": "41",
+          "c": "43",
+          "d": "44"
+        },
+        "explanation": "6 × 7 = 42",
+        "tags": ["곱셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 20,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 81 ÷ 9?",
+        "options": {
+          "a": "7",
+          "b": "8",
+          "c": "10",
+          "d": "9"
+        },
+        "explanation": "81 ÷ 9 = 9",
+        "tags": ["division", "basic"]
+      },
+      "ko": {
+        "question": "81 ÷ 9는 얼마인가요?",
+        "options": {
+          "a": "7",
+          "b": "8",
+          "c": "10",
+          "d": "9"
+        },
+        "explanation": "81 ÷ 9 = 9",
+        "tags": ["나눗셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 25,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 15 × 13?",
+        "options": {
+          "a": "185",
+          "b": "195",
+          "c": "205",
+          "d": "215"
+        },
+        "explanation": "15 × 13 = 195",
+        "tags": ["multiplication", "two-digit"]
+      },
+      "ko": {
+        "question": "15 × 13은 얼마인가요?",
+        "options": {
+          "a": "185",
+          "b": "195",
+          "c": "205",
+          "d": "215"
+        },
+        "explanation": "15 × 13 = 195",
+        "tags": ["곱셈", "두자리수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 30,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 144 ÷ 12?",
+        "options": {
+          "a": "10",
+          "b": "11",
+          "c": "12",
+          "d": "13"
+        },
+        "explanation": "144 ÷ 12 = 12",
+        "tags": ["division", "large-numbers"]
+      },
+      "ko": {
+        "question": "144 ÷ 12는 얼마인가요?",
+        "options": {
+          "a": "10",
+          "b": "11",
+          "c": "12",
+          "d": "13"
+        },
+        "explanation": "144 ÷ 12 = 12",
+        "tags": ["나눗셈", "큰수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 25,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 89 + 76?",
+        "options": {
+          "a": "165",
+          "b": "164",
+          "c": "166",
+          "d": "167"
+        },
+        "explanation": "89 + 76 = 165",
+        "tags": ["addition", "two-digit", "carrying"]
+      },
+      "ko": {
+        "question": "89 + 76은 얼마인가요?",
+        "options": {
+          "a": "165",
+          "b": "164",
+          "c": "166",
+          "d": "167"
+        },
+        "explanation": "89 + 76 = 165",
+        "tags": ["덧셈", "두자리수", "받아올림"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "hard",
+    "timeLimit": 35,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 17 × 19?",
+        "options": {
+          "a": "313",
+          "b": "314",
+          "c": "322",
+          "d": "323"
+        },
+        "explanation": "17 × 19 = 323",
+        "tags": ["multiplication", "challenging"]
+      },
+      "ko": {
+        "question": "17 × 19는 얼마인가요?",
+        "options": {
+          "a": "313",
+          "b": "314",
+          "c": "322",
+          "d": "323"
+        },
+        "explanation": "17 × 19 = 323",
+        "tags": ["곱셈", "어려움"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_problem",
+    "difficulty": "easy",
+    "timeLimit": 45,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "Sarah has 12 apples. She gives away 5 apples. How many apples does she have left?",
+        "options": {
+          "a": "6",
+          "b": "7",
+          "c": "8",
+          "d": "9"
+        },
+        "explanation": "12 - 5 = 7 apples",
+        "tags": ["word-problem", "subtraction"]
+      },
+      "ko": {
+        "question": "사라는 사과 12개를 가지고 있습니다. 5개를 나누어 줍니다. 몇 개가 남았나요?",
+        "options": {
+          "a": "6",
+          "b": "7",
+          "c": "8",
+          "d": "9"
+        },
+        "explanation": "12 - 5 = 7개",
+        "tags": ["응용문제", "뺄셈"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_problem",
+    "difficulty": "easy",
+    "timeLimit": 45,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "A box contains 8 pencils. How many pencils are in 3 boxes?",
+        "options": {
+          "a": "22",
+          "b": "23",
+          "c": "24",
+          "d": "25"
+        },
+        "explanation": "8 × 3 = 24 pencils",
+        "tags": ["word-problem", "multiplication"]
+      },
+      "ko": {
+        "question": "상자 하나에 연필이 8자루 들어있습니다. 상자 3개에는 연필이 몇 자루 있나요?",
+        "options": {
+          "a": "22",
+          "b": "23",
+          "c": "24",
+          "d": "25"
+        },
+        "explanation": "8 × 3 = 24자루",
+        "tags": ["응용문제", "곱셈"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_problem",
+    "difficulty": "medium",
+    "timeLimit": 60,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "Tom bought 3 books at $12 each and 2 pens at $3 each. How much did he spend in total?",
+        "options": {
+          "a": "$42",
+          "b": "$40",
+          "c": "$44",
+          "d": "$38"
+        },
+        "explanation": "(3 × $12) + (2 × $3) = $36 + $6 = $42",
+        "tags": ["word-problem", "mixed-operations"]
+      },
+      "ko": {
+        "question": "톰은 책 3권을 권당 12달러에, 펜 2자루를 자루당 3달러에 샀습니다. 총 얼마를 썼나요?",
+        "options": {
+          "a": "$42",
+          "b": "$40",
+          "c": "$44",
+          "d": "$38"
+        },
+        "explanation": "(3 × $12) + (2 × $3) = $36 + $6 = $42",
+        "tags": ["응용문제", "혼합연산"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "sequence",
+    "difficulty": "easy",
+    "timeLimit": 30,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What comes next in the sequence: 2, 4, 6, 8, ?",
+        "options": {
+          "a": "9",
+          "b": "11",
+          "c": "12",
+          "d": "10"
+        },
+        "explanation": "The sequence increases by 2 each time",
+        "tags": ["sequence", "even-numbers"]
+      },
+      "ko": {
+        "question": "다음 수열에서 다음에 올 수는? 2, 4, 6, 8, ?",
+        "options": {
+          "a": "9",
+          "b": "11",
+          "c": "12",
+          "d": "10"
+        },
+        "explanation": "수열은 매번 2씩 증가합니다",
+        "tags": ["수열", "짝수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "sequence",
+    "difficulty": "medium",
+    "timeLimit": 40,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What comes next in the sequence: 3, 6, 12, 24, ?",
+        "options": {
+          "a": "36",
+          "b": "48",
+          "c": "42",
+          "d": "50"
+        },
+        "explanation": "Each number is multiplied by 2",
+        "tags": ["sequence", "doubling"]
+      },
+      "ko": {
+        "question": "다음 수열에서 다음에 올 수는? 3, 6, 12, 24, ?",
+        "options": {
+          "a": "36",
+          "b": "48",
+          "c": "42",
+          "d": "50"
+        },
+        "explanation": "각 수는 2배씩 증가합니다",
+        "tags": ["수열", "배가"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "geometry",
+    "difficulty": "easy",
+    "timeLimit": 30,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "How many sides does a triangle have?",
+        "options": {
+          "a": "3",
+          "b": "4",
+          "c": "5",
+          "d": "6"
+        },
+        "explanation": "A triangle has 3 sides by definition",
+        "tags": ["geometry", "basic-shapes"]
+      },
+      "ko": {
+        "question": "삼각형의 변의 개수는?",
+        "options": {
+          "a": "3",
+          "b": "4",
+          "c": "5",
+          "d": "6"
+        },
+        "explanation": "삼각형은 정의상 3개의 변을 가집니다",
+        "tags": ["기하학", "기본도형"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "geometry",
+    "difficulty": "medium",
+    "timeLimit": 45,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is the perimeter of a square with side length 7?",
+        "options": {
+          "a": "14",
+          "b": "21",
+          "c": "28",
+          "d": "49"
+        },
+        "explanation": "Perimeter of square = 4 × side length = 4 × 7 = 28",
+        "tags": ["geometry", "perimeter"]
+      },
+      "ko": {
+        "question": "한 변의 길이가 7인 정사각형의 둘레는?",
+        "options": {
+          "a": "14",
+          "b": "21",
+          "c": "28",
+          "d": "49"
+        },
+        "explanation": "정사각형의 둘레 = 4 × 한 변의 길이 = 4 × 7 = 28",
+        "tags": ["기하학", "둘레"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "algebra",
+    "difficulty": "easy",
+    "timeLimit": 35,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "If x + 5 = 12, what is x?",
+        "options": {
+          "a": "6",
+          "b": "7",
+          "c": "8",
+          "d": "17"
+        },
+        "explanation": "x = 12 - 5 = 7",
+        "tags": ["algebra", "basic-equations"]
+      },
+      "ko": {
+        "question": "x + 5 = 12일 때, x의 값은?",
+        "options": {
+          "a": "6",
+          "b": "7",
+          "c": "8",
+          "d": "17"
+        },
+        "explanation": "x = 12 - 5 = 7",
+        "tags": ["대수학", "기본방정식"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "algebra",
+    "difficulty": "medium",
+    "timeLimit": 40,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "If 3x = 21, what is x?",
+        "options": {
+          "a": "7",
+          "b": "6",
+          "c": "8",
+          "d": "63"
+        },
+        "explanation": "x = 21 ÷ 3 = 7",
+        "tags": ["algebra", "division"]
+      },
+      "ko": {
+        "question": "3x = 21일 때, x의 값은?",
+        "options": {
+          "a": "7",
+          "b": "6",
+          "c": "8",
+          "d": "63"
+        },
+        "explanation": "x = 21 ÷ 3 = 7",
+        "tags": ["대수학", "나눗셈"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 15,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 45 + 38?",
+        "options": {
+          "a": "81",
+          "b": "82",
+          "c": "83",
+          "d": "84"
+        },
+        "explanation": "45 + 38 = 83",
+        "tags": ["addition", "two-digit"]
+      },
+      "ko": {
+        "question": "45 + 38은 얼마인가요?",
+        "options": {
+          "a": "81",
+          "b": "82",
+          "c": "83",
+          "d": "84"
+        },
+        "explanation": "45 + 38 = 83",
+        "tags": ["덧셈", "두자리수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 20,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 9 × 8?",
+        "options": {
+          "a": "72",
+          "b": "71",
+          "c": "73",
+          "d": "74"
+        },
+        "explanation": "9 × 8 = 72",
+        "tags": ["multiplication", "basic"]
+      },
+      "ko": {
+        "question": "9 × 8은 얼마인가요?",
+        "options": {
+          "a": "72",
+          "b": "71",
+          "c": "73",
+          "d": "74"
+        },
+        "explanation": "9 × 8 = 72",
+        "tags": ["곱셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 30,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 156 ÷ 13?",
+        "options": {
+          "a": "11",
+          "b": "12",
+          "c": "13",
+          "d": "14"
+        },
+        "explanation": "156 ÷ 13 = 12",
+        "tags": ["division", "challenging"]
+      },
+      "ko": {
+        "question": "156 ÷ 13은 얼마인가요?",
+        "options": {
+          "a": "11",
+          "b": "12",
+          "c": "13",
+          "d": "14"
+        },
+        "explanation": "156 ÷ 13 = 12",
+        "tags": ["나눗셈", "어려움"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_problem",
+    "difficulty": "medium",
+    "timeLimit": 50,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "A train travels 60 km in 1 hour. How far will it travel in 4 hours?",
+        "options": {
+          "a": "200 km",
+          "b": "220 km",
+          "c": "230 km",
+          "d": "240 km"
+        },
+        "explanation": "60 km/hour × 4 hours = 240 km",
+        "tags": ["word-problem", "speed-distance"]
+      },
+      "ko": {
+        "question": "기차가 1시간에 60km를 갑니다. 4시간에는 얼마나 갈까요?",
+        "options": {
+          "a": "200 km",
+          "b": "220 km",
+          "c": "230 km",
+          "d": "240 km"
+        },
+        "explanation": "60 km/시간 × 4시간 = 240 km",
+        "tags": ["응용문제", "속도-거리"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "sequence",
+    "difficulty": "hard",
+    "timeLimit": 50,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What comes next in the sequence: 1, 1, 2, 3, 5, 8, ?",
+        "options": {
+          "a": "11",
+          "b": "12",
+          "c": "13",
+          "d": "15"
+        },
+        "explanation": "Fibonacci sequence: each number is the sum of the two preceding ones. 5 + 8 = 13",
+        "tags": ["sequence", "fibonacci"]
+      },
+      "ko": {
+        "question": "다음 수열에서 다음에 올 수는? 1, 1, 2, 3, 5, 8, ?",
+        "options": {
+          "a": "11",
+          "b": "12",
+          "c": "13",
+          "d": "15"
+        },
+        "explanation": "피보나치 수열: 각 수는 앞의 두 수의 합. 5 + 8 = 13",
+        "tags": ["수열", "피보나치"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "geometry",
+    "difficulty": "hard",
+    "timeLimit": 50,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is the area of a rectangle with length 12 and width 8?",
+        "options": {
+          "a": "96",
+          "b": "40",
+          "c": "20",
+          "d": "104"
+        },
+        "explanation": "Area = length × width = 12 × 8 = 96",
+        "tags": ["geometry", "area"]
+      },
+      "ko": {
+        "question": "가로 12, 세로 8인 직사각형의 넓이는?",
+        "options": {
+          "a": "96",
+          "b": "40",
+          "c": "20",
+          "d": "104"
+        },
+        "explanation": "넓이 = 가로 × 세로 = 12 × 8 = 96",
+        "tags": ["기하학", "넓이"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "hard",
+    "timeLimit": 40,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 23 × 25?",
+        "options": {
+          "a": "565",
+          "b": "575",
+          "c": "585",
+          "d": "595"
+        },
+        "explanation": "23 × 25 = 575",
+        "tags": ["multiplication", "challenging"]
+      },
+      "ko": {
+        "question": "23 × 25는 얼마인가요?",
+        "options": {
+          "a": "565",
+          "b": "575",
+          "c": "585",
+          "d": "595"
+        },
+        "explanation": "23 × 25 = 575",
+        "tags": ["곱셈", "어려움"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 15,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 67 - 29?",
+        "options": {
+          "a": "36",
+          "b": "37",
+          "c": "39",
+          "d": "38"
+        },
+        "explanation": "67 - 29 = 38",
+        "tags": ["subtraction", "borrowing"]
+      },
+      "ko": {
+        "question": "67 - 29는 얼마인가요?",
+        "options": {
+          "a": "36",
+          "b": "37",
+          "c": "39",
+          "d": "38"
+        },
+        "explanation": "67 - 29 = 38",
+        "tags": ["뺄셈", "받아내림"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 20,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 7 × 6?",
+        "options": {
+          "a": "42",
+          "b": "41",
+          "c": "43",
+          "d": "48"
+        },
+        "explanation": "7 × 6 = 42",
+        "tags": ["multiplication", "basic"]
+      },
+      "ko": {
+        "question": "7 × 6은 얼마인가요?",
+        "options": {
+          "a": "42",
+          "b": "41",
+          "c": "43",
+          "d": "48"
+        },
+        "explanation": "7 × 6 = 42",
+        "tags": ["곱셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 25,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 14 × 16?",
+        "options": {
+          "a": "220",
+          "b": "224",
+          "c": "230",
+          "d": "240"
+        },
+        "explanation": "14 × 16 = 224",
+        "tags": ["multiplication", "two-digit"]
+      },
+      "ko": {
+        "question": "14 × 16은 얼마인가요?",
+        "options": {
+          "a": "220",
+          "b": "224",
+          "c": "230",
+          "d": "240"
+        },
+        "explanation": "14 × 16 = 224",
+        "tags": ["곱셈", "두자리수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_problem",
+    "difficulty": "easy",
+    "timeLimit": 40,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "Maria has 24 stickers. She uses 9 stickers. How many stickers does she have left?",
+        "options": {
+          "a": "13",
+          "b": "14",
+          "c": "15",
+          "d": "16"
+        },
+        "explanation": "24 - 9 = 15 stickers",
+        "tags": ["word-problem", "subtraction"]
+      },
+      "ko": {
+        "question": "마리아는 스티커 24장을 가지고 있습니다. 9장을 사용했습니다. 몇 장이 남았나요?",
+        "options": {
+          "a": "13",
+          "b": "14",
+          "c": "15",
+          "d": "16"
+        },
+        "explanation": "24 - 9 = 15장",
+        "tags": ["응용문제", "뺄셈"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "sequence",
+    "difficulty": "easy",
+    "timeLimit": 30,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What comes next in the sequence: 10, 20, 30, 40, ?",
+        "options": {
+          "a": "50",
+          "b": "45",
+          "c": "60",
+          "d": "55"
+        },
+        "explanation": "The sequence increases by 10 each time",
+        "tags": ["sequence", "multiples-of-ten"]
+      },
+      "ko": {
+        "question": "다음 수열에서 다음에 올 수는? 10, 20, 30, 40, ?",
+        "options": {
+          "a": "50",
+          "b": "45",
+          "c": "60",
+          "d": "55"
+        },
+        "explanation": "수열은 매번 10씩 증가합니다",
+        "tags": ["수열", "10의배수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "geometry",
+    "difficulty": "easy",
+    "timeLimit": 25,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "How many sides does a rectangle have?",
+        "options": {
+          "a": "3",
+          "b": "4",
+          "c": "5",
+          "d": "6"
+        },
+        "explanation": "A rectangle has 4 sides",
+        "tags": ["geometry", "basic-shapes"]
+      },
+      "ko": {
+        "question": "직사각형의 변의 개수는?",
+        "options": {
+          "a": "3",
+          "b": "4",
+          "c": "5",
+          "d": "6"
+        },
+        "explanation": "직사각형은 4개의 변을 가집니다",
+        "tags": ["기하학", "기본도형"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "algebra",
+    "difficulty": "easy",
+    "timeLimit": 35,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "If x - 4 = 9, what is x?",
+        "options": {
+          "a": "5",
+          "b": "12",
+          "c": "13",
+          "d": "14"
+        },
+        "explanation": "x = 9 + 4 = 13",
+        "tags": ["algebra", "basic-equations"]
+      },
+      "ko": {
+        "question": "x - 4 = 9일 때, x의 값은?",
+        "options": {
+          "a": "5",
+          "b": "12",
+          "c": "13",
+          "d": "14"
+        },
+        "explanation": "x = 9 + 4 = 13",
+        "tags": ["대수학", "기본방정식"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 30,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 168 ÷ 14?",
+        "options": {
+          "a": "10",
+          "b": "11",
+          "c": "13",
+          "d": "12"
+        },
+        "explanation": "168 ÷ 14 = 12",
+        "tags": ["division", "medium"]
+      },
+      "ko": {
+        "question": "168 ÷ 14는 얼마인가요?",
+        "options": {
+          "a": "10",
+          "b": "11",
+          "c": "13",
+          "d": "12"
+        },
+        "explanation": "168 ÷ 14 = 12",
+        "tags": ["나눗셈", "보통"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_problem",
+    "difficulty": "medium",
+    "timeLimit": 55,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "A store sells shirts for $15 each. If John buys 4 shirts, how much does he pay?",
+        "options": {
+          "a": "$50",
+          "b": "$60",
+          "c": "$65",
+          "d": "$70"
+        },
+        "explanation": "$15 × 4 = $60",
+        "tags": ["word-problem", "money"]
+      },
+      "ko": {
+        "question": "가게에서 셔츠를 개당 15달러에 판매합니다. 존이 4개를 사면 얼마를 내야 하나요?",
+        "options": {
+          "a": "$50",
+          "b": "$60",
+          "c": "$65",
+          "d": "$70"
+        },
+        "explanation": "$15 × 4 = $60",
+        "tags": ["응용문제", "돈"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "sequence",
+    "difficulty": "medium",
+    "timeLimit": 40,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What comes next in the sequence: 5, 10, 20, 40, ?",
+        "options": {
+          "a": "80",
+          "b": "60",
+          "c": "70",
+          "d": "90"
+        },
+        "explanation": "Each number is multiplied by 2",
+        "tags": ["sequence", "doubling"]
+      },
+      "ko": {
+        "question": "다음 수열에서 다음에 올 수는? 5, 10, 20, 40, ?",
+        "options": {
+          "a": "80",
+          "b": "60",
+          "c": "70",
+          "d": "90"
+        },
+        "explanation": "각 수는 2배씩 증가합니다",
+        "tags": ["수열", "배가"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "geometry",
+    "difficulty": "medium",
+    "timeLimit": 40,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is the area of a square with side length 9?",
+        "options": {
+          "a": "36",
+          "b": "72",
+          "c": "81",
+          "d": "90"
+        },
+        "explanation": "Area = side × side = 9 × 9 = 81",
+        "tags": ["geometry", "area"]
+      },
+      "ko": {
+        "question": "한 변의 길이가 9인 정사각형의 넓이는?",
+        "options": {
+          "a": "36",
+          "b": "72",
+          "c": "81",
+          "d": "90"
+        },
+        "explanation": "넓이 = 한 변 × 한 변 = 9 × 9 = 81",
+        "tags": ["기하학", "넓이"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 15,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 36 + 47?",
+        "options": {
+          "a": "82",
+          "b": "84",
+          "c": "83",
+          "d": "85"
+        },
+        "explanation": "36 + 47 = 83",
+        "tags": ["addition", "two-digit"]
+      },
+      "ko": {
+        "question": "36 + 47은 얼마인가요?",
+        "options": {
+          "a": "82",
+          "b": "84",
+          "c": "83",
+          "d": "85"
+        },
+        "explanation": "36 + 47 = 83",
+        "tags": ["덧셈", "두자리수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 18,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 8 × 9?",
+        "options": {
+          "a": "72",
+          "b": "71",
+          "c": "73",
+          "d": "74"
+        },
+        "explanation": "8 × 9 = 72",
+        "tags": ["multiplication", "basic"]
+      },
+      "ko": {
+        "question": "8 × 9는 얼마인가요?",
+        "options": {
+          "a": "72",
+          "b": "71",
+          "c": "73",
+          "d": "74"
+        },
+        "explanation": "8 × 9 = 72",
+        "tags": ["곱셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 20,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 63 ÷ 7?",
+        "options": {
+          "a": "8",
+          "b": "9",
+          "c": "7",
+          "d": "10"
+        },
+        "explanation": "63 ÷ 7 = 9",
+        "tags": ["division", "basic"]
+      },
+      "ko": {
+        "question": "63 ÷ 7은 얼마인가요?",
+        "options": {
+          "a": "8",
+          "b": "9",
+          "c": "7",
+          "d": "10"
+        },
+        "explanation": "63 ÷ 7 = 9",
+        "tags": ["나눗셈", "기초"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "easy",
+    "timeLimit": 15,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 85 - 39?",
+        "options": {
+          "a": "44",
+          "b": "47",
+          "c": "48",
+          "d": "46"
+        },
+        "explanation": "85 - 39 = 46",
+        "tags": ["subtraction", "borrowing"]
+      },
+      "ko": {
+        "question": "85 - 39는 얼마인가요?",
+        "options": {
+          "a": "44",
+          "b": "47",
+          "c": "48",
+          "d": "46"
+        },
+        "explanation": "85 - 39 = 46",
+        "tags": ["뺄셈", "받아내림"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "arithmetic",
+    "difficulty": "medium",
+    "timeLimit": 25,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "question": "What is 18 × 12?",
+        "options": {
+          "a": "216",
+          "b": "218",
+          "c": "214",
+          "d": "220"
+        },
+        "explanation": "18 × 12 = 216",
+        "tags": ["multiplication", "two-digit"]
+      },
+      "ko": {
+        "question": "18 × 12는 얼마인가요?",
+        "options": {
+          "a": "216",
+          "b": "218",
+          "c": "214",
+          "d": "220"
+        },
+        "explanation": "18 × 12 = 216",
+        "tags": ["곱셈", "두자리수"]
+      }
+    },
+    "isActive": true
+  }
+]

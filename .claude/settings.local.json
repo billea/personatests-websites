@@ -28,7 +28,11 @@
       "Bash(npm install:*)",
       "WebFetch(domain:korean-mbti-platform.netlify.app)",
       "Bash(npm run dev:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "WebFetch(domain:localhost)",
+      "Bash(npm run:*)",
+      "Bash(move:*)",
+      "Bash(ren:*)"
     ],
     "deny": [],
     "ask": []

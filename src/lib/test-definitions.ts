@@ -2677,20 +2677,10 @@ export const getMathSpeedQuestions = async (): Promise<TestQuestion[]> => {
   try {
     // Import the database function dynamically to avoid circular imports
     const { getRandomMathSpeedQuestions } = await import('./firestore');
-    const mathQuestions = await getRandomMathSpeedQuestions(20, 'easy');
-    
-    // Convert MathSpeedQuestion to TestQuestion format
-    return mathQuestions.map((q, index) => ({
-      id: `math_${index + 1}`,
-      text_key: q.expression, // Direct expression instead of translation key
-      type: 'multiple_choice' as const,
-      options: [
-        { value: q.correctAnswer.toString(), text_key: q.correctAnswer.toString() },
-        { value: (q.correctAnswer + 1).toString(), text_key: (q.correctAnswer + 1).toString() },
-        { value: (q.correctAnswer - 1).toString(), text_key: (q.correctAnswer - 1).toString() },
-        { value: (q.correctAnswer + 2).toString(), text_key: (q.correctAnswer + 2).toString() }
-      ].sort(() => Math.random() - 0.5) // Randomize options
-    }));
+    const mathQuestions = await getRandomMathSpeedQuestions(10, 'en');
+
+    // The function already returns TestQuestion format, so return directly
+    return mathQuestions;
   } catch (error) {
     console.error('❌ Error getting math speed questions from database:', error);
     // Fallback to static questions
@@ -2698,35 +2688,15 @@ export const getMathSpeedQuestions = async (): Promise<TestQuestion[]> => {
   }
 };
 
-// Memory Power Test - Database-driven questions  
+// Memory Power Test - Database-driven questions
 export const getMemoryPowerQuestions = async (language: string = 'en'): Promise<TestQuestion[]> => {
   try {
     // Import the database function dynamically to avoid circular imports
     const { getRandomMemoryPowerQuestions } = await import('./firestore');
-    const memoryQuestions = await getRandomMemoryPowerQuestions(10, language);
-    
-    // Convert MemoryPowerQuestion to TestQuestion format
-    return memoryQuestions.map((q, index) => {
-      const translation = q.translations[language] || q.translations[q.defaultLanguage];
-      return {
-        id: `memory_${index + 1}`,
-        text_key: translation.question,
-        type: 'multiple_choice' as const,
-        memoryPhase: {
-          text_key: translation.memorizationContent.join(', '),
-          duration: q.memorizationTime * 1000 // Convert seconds to milliseconds
-        },
-        options: translation.options ? translation.options.map(option => ({
-          value: option,
-          text_key: option
-        })) : [
-          { value: translation.correctAnswer.toString(), text_key: translation.correctAnswer.toString() },
-          { value: 'option2', text_key: 'Option 2' },
-          { value: 'option3', text_key: 'Option 3' },
-          { value: 'option4', text_key: 'Option 4' }
-        ]
-      };
-    });
+    const memoryQuestions = await getRandomMemoryPowerQuestions(5, language);
+
+    // The function already returns TestQuestion format, so return directly
+    return memoryQuestions;
   } catch (error) {
     console.error('❌ Error getting memory power questions from database:', error);
     // Fallback to static questions

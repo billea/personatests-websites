@@ -1,0 +1,702 @@
+[
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Apple", "Banana", "Cherry", "Date"],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Apple",
+          "b": "Banana",
+          "c": "Cherry",
+          "d": "Date"
+        },
+        "explanation": "The second word was Banana",
+        "tags": ["word-sequence", "position"]
+      },
+      "ko": {
+        "memorizationContent": ["사과", "바나나", "체리", "대추"],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "사과",
+          "b": "바나나",
+          "c": "체리",
+          "d": "대추"
+        },
+        "explanation": "두 번째 단어는 바나나였습니다",
+        "tags": ["단어순서", "위치"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 8,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["3", "7", "2", "9", "5"],
+        "question": "What was the third number in the sequence?",
+        "options": {
+          "a": "7",
+          "b": "9",
+          "c": "2",
+          "d": "5"
+        },
+        "explanation": "The third number was 2",
+        "tags": ["number-sequence", "recall"]
+      },
+      "ko": {
+        "memorizationContent": ["3", "7", "2", "9", "5"],
+        "question": "순서에서 세 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "7",
+          "b": "9",
+          "c": "2",
+          "d": "5"
+        },
+        "explanation": "세 번째 숫자는 2였습니다",
+        "tags": ["숫자순서", "기억"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 12,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Dog", "Cat", "Bird", "Fish", "Mouse"],
+        "question": "What was the first animal in the list?",
+        "options": {
+          "a": "Dog",
+          "b": "Cat",
+          "c": "Bird",
+          "d": "Fish"
+        },
+        "explanation": "The first animal was Dog",
+        "tags": ["animals", "first-position"]
+      },
+      "ko": {
+        "memorizationContent": ["개", "고양이", "새", "물고기", "쥐"],
+        "question": "목록의 첫 번째 동물은 무엇이었나요?",
+        "options": {
+          "a": "개",
+          "b": "고양이",
+          "c": "새",
+          "d": "물고기"
+        },
+        "explanation": "첫 번째 동물은 개였습니다",
+        "tags": ["동물", "첫위치"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 15,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["42", "18", "73", "29", "56", "84", "15"],
+        "question": "What number came after 29?",
+        "options": {
+          "a": "73",
+          "b": "84",
+          "c": "15",
+          "d": "56"
+        },
+        "explanation": "56 came after 29 in the sequence",
+        "tags": ["number-sequence", "following"]
+      },
+      "ko": {
+        "memorizationContent": ["42", "18", "73", "29", "56", "84", "15"],
+        "question": "29 다음에 온 숫자는 무엇이었나요?",
+        "options": {
+          "a": "73",
+          "b": "84",
+          "c": "15",
+          "d": "56"
+        },
+        "explanation": "순서에서 29 다음은 56이었습니다",
+        "tags": ["숫자순서", "다음"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 18,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Mountain", "River", "Forest", "Desert", "Ocean", "Valley"],
+        "question": "Which word came between Forest and Ocean?",
+        "options": {
+          "a": "River",
+          "b": "Desert",
+          "c": "Valley",
+          "d": "Mountain"
+        },
+        "explanation": "Desert came between Forest and Ocean",
+        "tags": ["nature", "sequence-between"]
+      },
+      "ko": {
+        "memorizationContent": ["산", "강", "숲", "사막", "바다", "계곡"],
+        "question": "숲과 바다 사이에 온 단어는 무엇이었나요?",
+        "options": {
+          "a": "강",
+          "b": "사막",
+          "c": "계곡",
+          "d": "산"
+        },
+        "explanation": "숲과 바다 사이에는 사막이 있었습니다",
+        "tags": ["자연", "사이순서"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Red", "Blue", "Red", "Blue"],
+        "question": "What color pattern was shown?",
+        "options": {
+          "a": "Red, Red, Blue, Blue",
+          "b": "Blue, Red, Blue, Red",
+          "c": "Red, Blue, Red, Blue",
+          "d": "Red, Blue, Blue, Red"
+        },
+        "explanation": "The pattern was Red, Blue, Red, Blue",
+        "tags": ["colors", "alternating-pattern"]
+      },
+      "ko": {
+        "memorizationContent": ["빨강", "파랑", "빨강", "파랑"],
+        "question": "어떤 색깔 패턴이 보여졌나요?",
+        "options": {
+          "a": "빨강, 빨강, 파랑, 파랑",
+          "b": "파랑, 빨강, 파랑, 빨강",
+          "c": "빨강, 파랑, 빨강, 파랑",
+          "d": "빨강, 파랑, 파랑, 빨강"
+        },
+        "explanation": "패턴은 빨강, 파랑, 빨강, 파랑이었습니다",
+        "tags": ["색깔", "교대패턴"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 20,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["147", "258", "369", "741", "852", "963", "417", "528", "639"],
+        "question": "What number came before 852?",
+        "options": {
+          "a": "741",
+          "b": "369",
+          "c": "963",
+          "d": "417"
+        },
+        "explanation": "741 came before 852 in the sequence",
+        "tags": ["long-sequence", "three-digit"]
+      },
+      "ko": {
+        "memorizationContent": ["147", "258", "369", "741", "852", "963", "417", "528", "639"],
+        "question": "852 앞에 온 숫자는 무엇이었나요?",
+        "options": {
+          "a": "741",
+          "b": "369",
+          "c": "963",
+          "d": "417"
+        },
+        "explanation": "순서에서 852 앞에는 741이 있었습니다",
+        "tags": ["긴순서", "세자리수"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 25,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Telescope", "Microscope", "Calculator", "Computer", "Smartphone", "Television", "Radio", "Camera"],
+        "question": "What came between Computer and Television?",
+        "options": {
+          "a": "Calculator",
+          "b": "Camera",
+          "c": "Radio",
+          "d": "Smartphone"
+        },
+        "explanation": "Smartphone came between Computer and Television",
+        "tags": ["technology", "complex-sequence"]
+      },
+      "ko": {
+        "memorizationContent": ["망원경", "현미경", "계산기", "컴퓨터", "스마트폰", "텔레비전", "라디오", "카메라"],
+        "question": "컴퓨터와 텔레비전 사이에 온 것은 무엇이었나요?",
+        "options": {
+          "a": "계산기",
+          "b": "카메라",
+          "c": "라디오",
+          "d": "스마트폰"
+        },
+        "explanation": "컴퓨터와 텔레비전 사이에는 스마트폰이 있었습니다",
+        "tags": ["기술", "복잡한순서"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 15,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Circle", "Square", "Triangle", "Circle", "Square", "Triangle"],
+        "question": "What shape pattern was repeated?",
+        "options": {
+          "a": "Circle, Triangle, Square",
+          "b": "Circle, Square, Triangle",
+          "c": "Square, Circle, Triangle",
+          "d": "Triangle, Circle, Square"
+        },
+        "explanation": "The repeating pattern was Circle, Square, Triangle",
+        "tags": ["shapes", "repeating-pattern"]
+      },
+      "ko": {
+        "memorizationContent": ["원", "사각형", "삼각형", "원", "사각형", "삼각형"],
+        "question": "어떤 도형 패턴이 반복되었나요?",
+        "options": {
+          "a": "원, 삼각형, 사각형",
+          "b": "원, 사각형, 삼각형",
+          "c": "사각형, 원, 삼각형",
+          "d": "삼각형, 원, 사각형"
+        },
+        "explanation": "반복된 패턴은 원, 사각형, 삼각형이었습니다",
+        "tags": ["도형", "반복패턴"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Book", "Pen", "Paper"],
+        "question": "What was the last item shown?",
+        "options": {
+          "a": "Book",
+          "b": "Pen",
+          "c": "Paper",
+          "d": "Pencil"
+        },
+        "explanation": "Paper was the last item in the sequence",
+        "tags": ["school-items", "last-position"]
+      },
+      "ko": {
+        "memorizationContent": ["책", "펜", "종이"],
+        "question": "마지막에 보여진 아이템은 무엇이었나요?",
+        "options": {
+          "a": "책",
+          "b": "펜",
+          "c": "종이",
+          "d": "연필"
+        },
+        "explanation": "순서의 마지막은 종이였습니다",
+        "tags": ["학용품", "마지막위치"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 12,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["91", "37", "64", "28", "55", "19"],
+        "question": "Which number appeared twice?",
+        "options": {
+          "a": "None appeared twice",
+          "b": "37",
+          "c": "64",
+          "d": "28"
+        },
+        "explanation": "No number appeared twice in the sequence",
+        "tags": ["duplicates", "observation"]
+      },
+      "ko": {
+        "memorizationContent": ["91", "37", "64", "28", "55", "19"],
+        "question": "어떤 숫자가 두 번 나타났나요?",
+        "options": {
+          "a": "두 번 나타난 숫자가 없음",
+          "b": "37",
+          "c": "64",
+          "d": "28"
+        },
+        "explanation": "순서에서 두 번 나타난 숫자는 없었습니다",
+        "tags": ["중복", "관찰"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 22,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Large Red Circle", "Small Blue Square", "Large Red Circle", "Small Blue Square", "Large Red Circle"],
+        "question": "What was the complete pattern?",
+        "options": {
+          "a": "Large circles and small squares alternating",
+          "b": "Red and blue alternating",
+          "c": "Circles and squares alternating",
+          "d": "Large Red Circle, Small Blue Square alternating"
+        },
+        "explanation": "The pattern alternated between Large Red Circle and Small Blue Square",
+        "tags": ["complex-pattern", "multiple-attributes"]
+      },
+      "ko": {
+        "memorizationContent": ["큰 빨간 원", "작은 파란 사각형", "큰 빨간 원", "작은 파란 사각형", "큰 빨간 원"],
+        "question": "완전한 패턴은 무엇이었나요?",
+        "options": {
+          "a": "큰 원과 작은 사각형이 교대",
+          "b": "빨강과 파랑이 교대",
+          "c": "원과 사각형이 교대",
+          "d": "큰 빨간 원, 작은 파란 사각형이 교대"
+        },
+        "explanation": "패턴은 큰 빨간 원과 작은 파란 사각형이 교대로 나타났습니다",
+        "tags": ["복잡한패턴", "다중속성"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 16,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Piano", "Guitar", "Violin", "Drums", "Flute", "Trumpet"],
+        "question": "How many instruments were shown?",
+        "options": {
+          "a": "5",
+          "b": "6",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "There were 6 instruments in total",
+        "tags": ["counting", "musical-instruments"]
+      },
+      "ko": {
+        "memorizationContent": ["피아노", "기타", "바이올린", "드럼", "플루트", "트럼펫"],
+        "question": "총 몇 개의 악기가 보여졌나요?",
+        "options": {
+          "a": "5",
+          "b": "6",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "총 6개의 악기가 있었습니다",
+        "tags": ["세기", "악기"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 8,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["1", "4", "7"],
+        "question": "What was the middle number?",
+        "options": {
+          "a": "1",
+          "b": "3",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "4 was the middle number in the sequence",
+        "tags": ["middle-position", "short-sequence"]
+      },
+      "ko": {
+        "memorizationContent": ["1", "4", "7"],
+        "question": "가운데 숫자는 무엇이었나요?",
+        "options": {
+          "a": "1",
+          "b": "3",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "순서의 가운데 숫자는 4였습니다",
+        "tags": ["가운데위치", "짧은순서"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 12,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Up", "Down", "Up", "Down", "Up"],
+        "question": "What direction pattern was shown?",
+        "options": {
+          "a": "Up, Down alternating",
+          "b": "Down, Up alternating",
+          "c": "All Up",
+          "d": "All Down"
+        },
+        "explanation": "The pattern alternated between Up and Down, starting with Up",
+        "tags": ["directions", "simple-alternating"]
+      },
+      "ko": {
+        "memorizationContent": ["위", "아래", "위", "아래", "위"],
+        "question": "어떤 방향 패턴이 보여졌나요?",
+        "options": {
+          "a": "위, 아래가 교대",
+          "b": "아래, 위가 교대",
+          "c": "모두 위",
+          "d": "모두 아래"
+        },
+        "explanation": "패턴은 위로 시작해서 위와 아래가 교대로 나타났습니다",
+        "tags": ["방향", "간단한교대"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 20,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Elephant", "Mouse", "Lion", "Ant", "Tiger", "Butterfly", "Bear"],
+        "question": "Which animal came immediately after Lion?",
+        "options": {
+          "a": "Mouse",
+          "b": "Tiger",
+          "c": "Ant",
+          "d": "Butterfly"
+        },
+        "explanation": "Ant came immediately after Lion in the sequence",
+        "tags": ["animals", "immediate-following"]
+      },
+      "ko": {
+        "memorizationContent": ["코끼리", "쥐", "사자", "개미", "호랑이", "나비", "곰"],
+        "question": "사자 바로 다음에 온 동물은 무엇이었나요?",
+        "options": {
+          "a": "쥐",
+          "b": "호랑이",
+          "c": "개미",
+          "d": "나비"
+        },
+        "explanation": "순서에서 사자 바로 다음에는 개미가 있었습니다",
+        "tags": ["동물", "바로다음"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 18,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["23", "67", "45", "89", "12", "34", "78", "56"],
+        "question": "What was the sum of the first and last numbers?",
+        "options": {
+          "a": "77",
+          "b": "79",
+          "c": "81",
+          "d": "75"
+        },
+        "explanation": "First number (23) + Last number (56) = 79",
+        "tags": ["calculation", "first-last"]
+      },
+      "ko": {
+        "memorizationContent": ["23", "67", "45", "89", "12", "34", "78", "56"],
+        "question": "첫 번째와 마지막 숫자의 합은 얼마였나요?",
+        "options": {
+          "a": "77",
+          "b": "79",
+          "c": "81",
+          "d": "75"
+        },
+        "explanation": "첫 번째 숫자(23) + 마지막 숫자(56) = 79",
+        "tags": ["계산", "첫-마지막"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 14,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Small", "Medium", "Large", "Small", "Medium", "Large", "Small"],
+        "question": "What size pattern was repeated?",
+        "options": {
+          "a": "Small, Large, Medium",
+          "b": "Large, Medium, Small",
+          "c": "Medium, Small, Large",
+          "d": "Small, Medium, Large"
+        },
+        "explanation": "The repeating pattern was Small, Medium, Large",
+        "tags": ["sizes", "three-part-pattern"]
+      },
+      "ko": {
+        "memorizationContent": ["작음", "보통", "큼", "작음", "보통", "큼", "작음"],
+        "question": "어떤 크기 패턴이 반복되었나요?",
+        "options": {
+          "a": "작음, 큼, 보통",
+          "b": "큼, 보통, 작음",
+          "c": "보통, 작음, 큼",
+          "d": "작음, 보통, 큼"
+        },
+        "explanation": "반복된 패턴은 작음, 보통, 큼이었습니다",
+        "tags": ["크기", "세부분패턴"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 14,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["Monday", "Wednesday", "Friday", "Sunday"],
+        "question": "Which day of the week was missing from this sequence?",
+        "options": {
+          "a": "Tuesday",
+          "b": "Thursday",
+          "c": "Saturday",
+          "d": "None missing"
+        },
+        "explanation": "Tuesday was the first missing day in the sequence",
+        "tags": ["days-of-week", "missing-item"]
+      },
+      "ko": {
+        "memorizationContent": ["월요일", "수요일", "금요일", "일요일"],
+        "question": "이 순서에서 빠진 요일은 무엇이었나요?",
+        "options": {
+          "a": "화요일",
+          "b": "목요일",
+          "c": "토요일",
+          "d": "빠진 것 없음"
+        },
+        "explanation": "순서에서 처음 빠진 요일은 화요일이었습니다",
+        "tags": ["요일", "빠진항목"]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": ["en", "ko"],
+    "translations": {
+      "en": {
+        "memorizationContent": ["8", "15", "8", "22", "8"],
+        "question": "Which number appeared most frequently?",
+        "options": {
+          "a": "15",
+          "b": "22",
+          "c": "8",
+          "d": "All appeared equally"
+        },
+        "explanation": "The number 8 appeared 3 times, more than any other",
+        "tags": ["frequency", "repetition"]
+      },
+      "ko": {
+        "memorizationContent": ["8", "15", "8", "22", "8"],
+        "question": "어떤 숫자가 가장 많이 나타났나요?",
+        "options": {
+          "a": "15",
+          "b": "22",
+          "c": "8",
+          "d": "모두 똑같이"
+        },
+        "explanation": "숫자 8이 3번으로 가장 많이 나타났습니다",
+        "tags": ["빈도", "반복"]
+      }
+    },
+    "isActive": true
+  }
+]

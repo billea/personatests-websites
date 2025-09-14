@@ -1731,11 +1731,21 @@ export const batchUploadGeneralKnowledgeQuestions = batchUploadMultilingualQuest
 // ============================================
 
 export interface MathSpeedQuestion {
-  id: string;
-  expression: string; // e.g., "12 + 8", "9 × 7", "45 ÷ 5"
-  correctAnswer: number;
-  difficulty: "easy" | "medium" | "hard";
-  operation: "addition" | "subtraction" | "multiplication" | "division" | "mixed";
+  id?: string;
+  category: 'arithmetic' | 'word_problem' | 'sequence' | 'geometry' | 'algebra';
+  difficulty: 'easy' | 'medium' | 'hard';
+  timeLimit: number; // seconds for this question
+  correctAnswer: 'a' | 'b' | 'c' | 'd';
+  defaultLanguage: string;
+  availableLanguages: string[];
+  translations: {
+    [language: string]: {
+      question: string;
+      options: { a: string; b: string; c: string; d: string };
+      explanation?: string;
+      tags?: string[];
+    };
+  };
   isActive: boolean;
   createdAt: Timestamp;
   updatedAt: Timestamp;
@@ -1743,26 +1753,62 @@ export interface MathSpeedQuestion {
 
 // Fetch random Math Speed questions from database
 export const getRandomMathSpeedQuestions = async (
-  count: number = 20,
+  count: number = 10,
+  language: string = 'en',
   difficulty?: "easy" | "medium" | "hard"
-): Promise<MathSpeedQuestion[]> => {
+): Promise<TestQuestion[]> => {
   try {
+    console.log(`🔍 Fetching ${count} random Math Speed questions in ${language} from database...`);
+
     const questionsRef = collection(firestore, 'mathSpeedQuestions');
-    let q = query(questionsRef, where('isActive', '==', true));
-    
+    let q = query(
+      questionsRef,
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', language)
+    );
+
     if (difficulty) {
       q = query(q, where('difficulty', '==', difficulty));
     }
 
     const snapshot = await getDocs(q);
-    const allQuestions = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    })) as MathSpeedQuestion[];
 
-    // Shuffle and return requested count
+    if (snapshot.empty) {
+      console.warn(`⚠️ No math speed questions found in database for language ${language}, falling back...`);
+      return [];
+    }
+
+    const allQuestions: TestQuestion[] = [];
+    snapshot.forEach((doc) => {
+      const data = doc.data() as MathSpeedQuestion;
+      const translation = data.translations[language] || data.translations[data.defaultLanguage];
+
+      if (!translation) {
+        console.warn(`⚠️ No translation found for math question ${doc.id} in language ${language}`);
+        return;
+      }
+
+      const testQuestion: TestQuestion = {
+        id: doc.id,
+        text_key: `dynamic.${doc.id}.question.${language}`,
+        type: 'multiple_choice',
+        options: [
+          { value: 'a', text_key: `dynamic.${doc.id}.option_a.${language}` },
+          { value: 'b', text_key: `dynamic.${doc.id}.option_b.${language}` },
+          { value: 'c', text_key: `dynamic.${doc.id}.option_c.${language}` },
+          { value: 'd', text_key: `dynamic.${doc.id}.option_d.${language}` }
+        ]
+      };
+
+      allQuestions.push(testQuestion);
+    });
+
     const shuffled = allQuestions.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, Math.min(count, shuffled.length));
+    const selected = shuffled.slice(0, count);
+
+    console.log(`✅ Successfully fetched ${selected.length} math speed questions`);
+    return selected;
+
   } catch (error) {
     console.error('❌ Error fetching math speed questions:', error);
     return [];
@@ -1790,24 +1836,22 @@ export const addMathSpeedQuestion = async (questionData: Omit<MathSpeedQuestion,
 // ============================================
 
 export interface MemoryPowerQuestion {
-  id: string;
-  type: "word_sequence" | "number_sequence" | "image_sequence" | "pattern_sequence";
-  
-  // Multilingual content
-  translations: {
-    [languageCode: string]: {
-      memorizationContent: string[]; // Items to memorize (words, numbers, etc.)
-      question: string; // "Which item was missing?" or "What was the 3rd item?"
-      options?: string[]; // For multiple choice recall
-      correctAnswer: string | number; // The correct answer
-      tags?: string[]; // Language-specific tags
-    };
-  };
-  
-  defaultLanguage: string;
-  availableLanguages: string[];
+  id?: string;
+  category: "word_sequence" | "number_sequence" | "image_sequence" | "pattern_sequence";
   difficulty: "easy" | "medium" | "hard";
   memorizationTime: number; // seconds to memorize
+  correctAnswer: 'a' | 'b' | 'c' | 'd';
+  defaultLanguage: string;
+  availableLanguages: string[];
+  translations: {
+    [language: string]: {
+      memorizationContent: string[]; // Items to memorize (words, numbers, etc.)
+      question: string; // "Which item was missing?" or "What was the 3rd item?"
+      options: { a: string; b: string; c: string; d: string };
+      explanation?: string;
+      tags?: string[];
+    };
+  };
   isActive: boolean;
   createdAt: Timestamp;
   updatedAt: Timestamp;
@@ -1818,28 +1862,60 @@ export const getRandomMemoryPowerQuestions = async (
   count: number = 10,
   language: string = 'en',
   difficulty?: "easy" | "medium" | "hard"
-): Promise<MemoryPowerQuestion[]> => {
+): Promise<TestQuestion[]> => {
   try {
+    console.log(`📊 Fetching ${count} memory power questions for language: ${language}`);
+
     const questionsRef = collection(firestore, 'memoryPowerQuestions');
     let q = query(
-      questionsRef, 
+      questionsRef,
       where('isActive', '==', true),
       where('availableLanguages', 'array-contains', language)
     );
-    
+
     if (difficulty) {
       q = query(q, where('difficulty', '==', difficulty));
     }
 
     const snapshot = await getDocs(q);
-    const allQuestions = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    })) as MemoryPowerQuestion[];
+    console.log(`📊 Found ${snapshot.docs.length} memory power questions in database`);
 
-    // Shuffle and return requested count
+    const allQuestions: TestQuestion[] = [];
+
+    snapshot.forEach((doc) => {
+      const data = doc.data() as MemoryPowerQuestion;
+      const translation = data.translations[language] || data.translations[data.defaultLanguage];
+
+      if (!translation) {
+        console.warn(`⚠️ No translation found for memory power question ${doc.id} in language ${language}`);
+        return;
+      }
+
+      const testQuestion: TestQuestion = {
+        id: doc.id,
+        text_key: `dynamic.${doc.id}.question.${language}`,
+        type: 'multiple_choice',
+        options: [
+          { value: 'a', text_key: `dynamic.${doc.id}.option_a.${language}` },
+          { value: 'b', text_key: `dynamic.${doc.id}.option_b.${language}` },
+          { value: 'c', text_key: `dynamic.${doc.id}.option_c.${language}` },
+          { value: 'd', text_key: `dynamic.${doc.id}.option_d.${language}` }
+        ],
+        memoryPhase: {
+          text_key: `dynamic.${doc.id}.memorization.${language}`,
+          duration: data.memorizationTime * 1000 // Convert seconds to milliseconds
+        }
+      };
+
+      allQuestions.push(testQuestion);
+    });
+
     const shuffled = allQuestions.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, Math.min(count, shuffled.length));
+    const selected = shuffled.slice(0, count);
+
+    console.log(`✅ Successfully fetched ${selected.length} memory power questions`);
+    return selected;
+
   } catch (error) {
     console.error('❌ Error fetching memory power questions:', error);
     return [];
@@ -1869,15 +1945,15 @@ export const batchUploadMathSpeedQuestions = async (questions: Omit<MathSpeedQue
     let errors = 0;
 
     for (const question of questions) {
-      console.log(`📊 Adding math question ${added + 1}: ${question.expression}`);
+      console.log(`📊 Adding math question ${added + 1}: ${question.translations.en?.question || question.category}`);
       const questionId = await addMathSpeedQuestion(question);
-      
+
       if (questionId) {
         added++;
-        console.log(`✅ Added question ${added}: ${question.expression}`);
+        console.log(`✅ Added math question ${added}`);
       } else {
         errors++;
-        console.log(`❌ Error adding math question: ${question.expression}`);
+        console.log(`❌ Error adding math question`);
       }
     }
 
@@ -1898,6 +1974,169 @@ export const batchUploadMathSpeedQuestions = async (questions: Omit<MathSpeedQue
   }
 };
 
+// Math Speed Questions Stats
+export const getMathSpeedQuestionStats = async (): Promise<{
+  total: number;
+  active: number;
+  byCategory: { [category: string]: number };
+  byDifficulty: { [difficulty: string]: number };
+}> => {
+  try {
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    const snapshot = await getDocs(questionsRef);
+
+    let total = 0;
+    let active = 0;
+    const byCategory: { [category: string]: number } = {};
+    const byDifficulty: { [difficulty: string]: number } = {};
+
+    snapshot.forEach((doc) => {
+      const data = doc.data() as MathSpeedQuestion;
+      total++;
+
+      if (data.isActive) {
+        active++;
+      }
+
+      byCategory[data.category] = (byCategory[data.category] || 0) + 1;
+      byDifficulty[data.difficulty] = (byDifficulty[data.difficulty] || 0) + 1;
+    });
+
+    return { total, active, byCategory, byDifficulty };
+  } catch (error) {
+    console.error('❌ Error getting math speed question stats:', error);
+    return { total: 0, active: 0, byCategory: {}, byDifficulty: {} };
+  }
+};
+
+// Get all Math Speed questions with pagination
+export const getAllMathSpeedQuestions = async (
+  limitCount: number = 50,
+  lastDoc?: any,
+  category?: string,
+  difficulty?: string
+): Promise<{ questions: (MathSpeedQuestion & { id: string })[]; lastDoc: any }> => {
+  try {
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    let q = query(questionsRef, orderBy('createdAt', 'desc'), limit(limitCount));
+
+    if (category) {
+      q = query(questionsRef, where('category', '==', category), orderBy('createdAt', 'desc'), limit(limitCount));
+    }
+    if (difficulty) {
+      q = query(questionsRef, where('difficulty', '==', difficulty), orderBy('createdAt', 'desc'), limit(limitCount));
+    }
+
+    if (lastDoc) {
+      q = query(q, startAfter(lastDoc));
+    }
+
+    const snapshot = await getDocs(q);
+    const questions: (MathSpeedQuestion & { id: string })[] = [];
+
+    snapshot.forEach((doc) => {
+      questions.push({
+        ...doc.data() as MathSpeedQuestion,
+        id: doc.id
+      });
+    });
+
+    const lastDocument = snapshot.docs[snapshot.docs.length - 1];
+
+    return { questions, lastDoc: lastDocument };
+  } catch (error) {
+    console.error('❌ Error getting math speed questions:', error);
+    return { questions: [], lastDoc: null };
+  }
+};
+
+// Update a Math Speed question
+export const updateMathSpeedQuestion = async (
+  questionId: string,
+  updates: Partial<Omit<MathSpeedQuestion, 'id' | 'createdAt' | 'updatedAt'>>
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'mathSpeedQuestions', questionId);
+
+    await setDoc(questionRef, {
+      ...updates,
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+
+    console.log(`✅ Updated math speed question ${questionId}`);
+    return {
+      success: true,
+      message: 'Math Speed question updated successfully'
+    };
+  } catch (error) {
+    console.error(`❌ Error updating math speed question ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to update question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Delete a Math Speed question
+export const deleteMathSpeedQuestion = async (
+  questionId: string
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'mathSpeedQuestions', questionId);
+    await deleteDoc(questionRef);
+
+    console.log(`✅ Deleted math speed question ${questionId}`);
+    return {
+      success: true,
+      message: 'Math Speed question deleted successfully'
+    };
+  } catch (error) {
+    console.error(`❌ Error deleting math speed question ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to delete question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Bulk delete Math Speed questions
+export const bulkDeleteMathSpeedQuestions = async (
+  questionIds: string[]
+): Promise<{ success: boolean; deleted: number; errors: number; message: string }> => {
+  try {
+    let deleted = 0;
+    let errors = 0;
+
+    for (const questionId of questionIds) {
+      const result = await deleteMathSpeedQuestion(questionId);
+      if (result.success) {
+        deleted++;
+      } else {
+        errors++;
+      }
+    }
+
+    return {
+      success: deleted > 0,
+      deleted,
+      errors,
+      message: `Deleted ${deleted} math speed questions. ${errors} errors.`
+    };
+  } catch (error) {
+    console.error('❌ Error in bulk delete math speed questions:', error);
+    return {
+      success: false,
+      deleted: 0,
+      errors: questionIds.length,
+      message: `Bulk delete failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// ============================================
+// MEMORY POWER TEST DATABASE FUNCTIONS
+// ============================================
+
 // Batch upload Memory Power questions
 export const batchUploadMemoryPowerQuestions = async (questions: Omit<MemoryPowerQuestion, 'id' | 'createdAt' | 'updatedAt'>[]): Promise<{success: boolean, added: number, errors: number, message: string}> => {
   try {
@@ -1905,15 +2144,15 @@ export const batchUploadMemoryPowerQuestions = async (questions: Omit<MemoryPowe
     let errors = 0;
 
     for (const question of questions) {
-      console.log(`🧠 Adding memory question ${added + 1}: ${question.type}`);
+      console.log(`🧠 Adding memory question ${added + 1}: ${question.translations.en?.question || question.category}`);
       const questionId = await addMemoryPowerQuestion(question);
-      
+
       if (questionId) {
         added++;
-        console.log(`✅ Added memory question ${added}: ${question.type}`);
+        console.log(`✅ Added memory question ${added}`);
       } else {
         errors++;
-        console.log(`❌ Error adding memory question: ${question.type}`);
+        console.log(`❌ Error adding memory question`);
       }
     }
 
@@ -1930,6 +2169,165 @@ export const batchUploadMemoryPowerQuestions = async (questions: Omit<MemoryPowe
       added: 0,
       errors: questions.length,
       message: `Batch upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Memory Power Questions Stats
+export const getMemoryPowerQuestionStats = async (): Promise<{
+  total: number;
+  active: number;
+  byCategory: { [category: string]: number };
+  byDifficulty: { [difficulty: string]: number };
+}> => {
+  try {
+    const questionsRef = collection(firestore, 'memoryPowerQuestions');
+    const snapshot = await getDocs(questionsRef);
+
+    let total = 0;
+    let active = 0;
+    const byCategory: { [category: string]: number } = {};
+    const byDifficulty: { [difficulty: string]: number } = {};
+
+    snapshot.forEach((doc) => {
+      const data = doc.data() as MemoryPowerQuestion;
+      total++;
+
+      if (data.isActive) {
+        active++;
+      }
+
+      byCategory[data.category] = (byCategory[data.category] || 0) + 1;
+      byDifficulty[data.difficulty] = (byDifficulty[data.difficulty] || 0) + 1;
+    });
+
+    return { total, active, byCategory, byDifficulty };
+  } catch (error) {
+    console.error('❌ Error getting memory power question stats:', error);
+    return { total: 0, active: 0, byCategory: {}, byDifficulty: {} };
+  }
+};
+
+// Get all Memory Power questions with pagination
+export const getAllMemoryPowerQuestions = async (
+  limitCount: number = 50,
+  lastDoc?: any,
+  category?: string,
+  difficulty?: string
+): Promise<{ questions: (MemoryPowerQuestion & { id: string })[]; lastDoc: any }> => {
+  try {
+    const questionsRef = collection(firestore, 'memoryPowerQuestions');
+    let q = query(questionsRef, orderBy('createdAt', 'desc'), limit(limitCount));
+
+    if (category) {
+      q = query(questionsRef, where('category', '==', category), orderBy('createdAt', 'desc'), limit(limitCount));
+    }
+    if (difficulty) {
+      q = query(questionsRef, where('difficulty', '==', difficulty), orderBy('createdAt', 'desc'), limit(limitCount));
+    }
+
+    if (lastDoc) {
+      q = query(q, startAfter(lastDoc));
+    }
+
+    const snapshot = await getDocs(q);
+    const questions: (MemoryPowerQuestion & { id: string })[] = [];
+
+    snapshot.forEach((doc) => {
+      questions.push({
+        ...doc.data() as MemoryPowerQuestion,
+        id: doc.id
+      });
+    });
+
+    const lastDocument = snapshot.docs[snapshot.docs.length - 1];
+
+    return { questions, lastDoc: lastDocument };
+  } catch (error) {
+    console.error('❌ Error getting memory power questions:', error);
+    return { questions: [], lastDoc: null };
+  }
+};
+
+// Update a Memory Power question
+export const updateMemoryPowerQuestion = async (
+  questionId: string,
+  updates: Partial<Omit<MemoryPowerQuestion, 'id' | 'createdAt' | 'updatedAt'>>
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'memoryPowerQuestions', questionId);
+
+    await setDoc(questionRef, {
+      ...updates,
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+
+    console.log(`✅ Updated memory power question ${questionId}`);
+    return {
+      success: true,
+      message: 'Memory Power question updated successfully'
+    };
+  } catch (error) {
+    console.error(`❌ Error updating memory power question ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to update question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Delete a Memory Power question
+export const deleteMemoryPowerQuestion = async (
+  questionId: string
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'memoryPowerQuestions', questionId);
+    await deleteDoc(questionRef);
+
+    console.log(`✅ Deleted memory power question ${questionId}`);
+    return {
+      success: true,
+      message: 'Memory Power question deleted successfully'
+    };
+  } catch (error) {
+    console.error(`❌ Error deleting memory power question ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to delete question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Bulk delete Memory Power questions
+export const bulkDeleteMemoryPowerQuestions = async (
+  questionIds: string[]
+): Promise<{ success: boolean; deleted: number; errors: number; message: string }> => {
+  try {
+    let deleted = 0;
+    let errors = 0;
+
+    for (const questionId of questionIds) {
+      const result = await deleteMemoryPowerQuestion(questionId);
+      if (result.success) {
+        deleted++;
+      } else {
+        errors++;
+      }
+    }
+
+    return {
+      success: deleted > 0,
+      deleted,
+      errors,
+      message: `Deleted ${deleted} memory power questions. ${errors} errors.`
+    };
+  } catch (error) {
+    console.error('❌ Error in bulk delete memory power questions:', error);
+    return {
+      success: false,
+      deleted: 0,
+      errors: questionIds.length,
+      message: `Bulk delete failed: ${error instanceof Error ? error.message : 'Unknown error'}`
     };
   }
 };
