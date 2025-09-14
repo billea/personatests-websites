@@ -9,12 +9,17 @@ This is a multilingual personality testing platform built with Next.js 15, React
 ## Development Commands
 
 ### Core Development
-- `npm run dev` - Start Next.js development server (configured for port 3004 in Playwright)
+- `npm run dev` - Start Next.js development server on port 3000 (Playwright configured for port 3004)
 - `npm run dev:clean` - Clean cache and start dev server
 - `npm run dev:stable` - Start ultra-stable development environment (batch script for Windows)
 - `npm run build` - Build production version (generates static export for Netlify)
 - `npm run start` - Start production build locally
 - `npm run clean` - Clean cache and temporary files (runs cache-cleanup.js)
+
+### Single Test Execution
+- For E2E tests: `npx playwright test tests/specific-test.spec.ts`
+- For specific browser: `npx playwright test --project=chromium`
+- For debug mode: `npx playwright test --debug tests/specific-test.spec.ts`
 
 ### Testing Commands
 - `npm test` - Run linter and build (basic validation)
@@ -28,9 +33,11 @@ This is a multilingual personality testing platform built with Next.js 15, React
 - No separate format command (using Next.js defaults)
 
 ### Firebase Operations
-- `npm run firebase:emulator` - Start Firebase emulators
-- `npm run firebase:deploy` - Build and deploy to Firebase
+- `npm run firebase:emulator` - Start Firebase emulators for local development
+- `npm run firebase:deploy` - Build and deploy to Firebase (includes functions and hosting)
 - `npm run firebase:functions` - Deploy only Firebase Functions
+- `cd functions && npm run deploy` - Deploy functions from functions directory
+- `firebase functions:log` - View Firebase Functions logs
 
 ## Technology Stack
 
@@ -50,9 +57,16 @@ This is a multilingual personality testing platform built with Next.js 15, React
 
 ### Key Libraries
 - `@emailjs/browser` - Email service integration for feedback invitations
-- `firebase` - Firebase SDK for web (v12.1.0)
+- `firebase` - Firebase SDK for web (v12.2.1)
 - `@playwright/test` - End-to-end testing framework with multi-browser support
 - `@tailwindcss/postcss` - PostCSS plugin for Tailwind CSS 4
+
+### Development Architecture Patterns
+- **Static Export Configuration**: Uses `output: 'export'` for Netlify deployment compatibility
+- **Dynamic Routing**: `[locale]` folder structure for internationalization with fallback routes
+- **TypeScript Path Aliases**: `@/*` maps to `./src/*` for cleaner imports
+- **Windows Compatibility**: Aggressive caching disabled and polling-based file watching for development stability
+- **Cache Busting**: Timestamp-based build IDs to prevent infinite development loops
 
 ## Project Architecture
 
@@ -141,6 +155,8 @@ public/
 - **Windows Optimization**: Special webpack configuration for Windows file system compatibility
 - **Cache Management**: Aggressive cache busting with timestamp-based build IDs
 - **Port Configuration**: Development server configured for port 3004 in Playwright config
+- **Functions Development**: Node.js 20 runtime with separate package.json in `/functions` directory
+- **Translation Loading**: Client-side translation files with cache-busting timestamps
 
 ### Testing Strategy
 - **Unit Testing**: Not currently implemented (focused on integration testing)
@@ -247,7 +263,32 @@ No client-side environment variables required. Firebase configuration is include
 - **Netlify Deployment**: Configured for static export with `netlify.toml` for routing
 - **Cache Strategy**: Build IDs include timestamps to prevent infinite loop issues in development
 
+## Critical Development Notes
+
+### Test System Architecture
+- **Test Definitions**: All tests defined in `src/lib/test-definitions.ts` with TypeScript interfaces
+- **Scoring Algorithms**: Each test has custom scoring functions for different personality frameworks
+- **Dynamic Question Loading**: Questions loaded from database with real-time progress tracking
+- **Translation Integration**: All test content uses translation keys for multilingual support
+
+### Translation System Implementation
+- **MutationObserver Pattern**: DOM changes automatically trigger retranslation
+- **Fallback Hierarchy**: Missing translations fall back to English with console warnings
+- **Cache Prevention**: Translation files loaded with timestamp parameters to prevent caching
+- **Locale Routing**: URL structure `/[locale]/page` with automatic language detection
+
+### Firebase Architecture Specifics
+- **Security Rules**: Users can only access their own data, feedback requires valid tokens
+- **Functions Environment**: EmailJS configuration stored in Firebase Functions config, not environment variables
+- **Database Schema**: Structured collections for users, testResults, invitations, and anonymousFeedback
+- **Authentication Flow**: Google OAuth only, with automatic user profile creation
+
 ## Troubleshooting Common Issues
+
+### Development Environment
+- **Infinite Loops**: Use `npm run dev:stable` on Windows if experiencing build loops
+- **Cache Issues**: Run `npm run clean` to clear Next.js cache and temporary files
+- **Port Conflicts**: Playwright expects dev server on port 3004, adjust if needed
 
 ### Authentication Problems
 - Ensure Google OAuth is enabled in Firebase Console
@@ -255,14 +296,14 @@ No client-side environment variables required. Firebase configuration is include
 - Verify Firebase project permissions and API keys
 
 ### Email Functionality
-- Confirm EmailJS configuration in Firebase Functions
+- Confirm EmailJS configuration in Firebase Functions with `firebase functions:config:get`
 - Check EmailJS service status and template configuration
-- Monitor Firebase Functions logs for email sending errors
+- Monitor Firebase Functions logs with `firebase functions:log`
 
 ### Translation Issues
 - Verify translation JSON files exist in `public/translations/`
 - Check browser console for missing translation key warnings
-- Ensure MutationObserver is properly initialized
+- Ensure MutationObserver is properly initialized in translation-engine.js
 
 ### Database Access
 - Review Firestore security rules for proper user access
