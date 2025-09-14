@@ -1127,7 +1127,7 @@ export default function TestPage() {
         }
     }, [isProtectedTest, authLoading, user, isClient, currentLanguage, testId, router]);
 
-    // Memory phase handling for Memory Power tests
+    // Memory phase initialization for Memory Power tests
     useEffect(() => {
         if (testDefinition && testDefinition.id === 'memory-power') {
             const currentQuestion = testDefinition.questions[currentQuestionIndex];
@@ -1141,23 +1141,27 @@ export default function TestPage() {
                 setMemoryContent(content);
                 setShowMemoryPhase(true);
                 setMemoryPhaseTimeLeft(Math.floor(currentQuestion.memoryPhase.duration / 1000));
-
-                // Start countdown timer
-                const timer = setInterval(() => {
-                    setMemoryPhaseTimeLeft((prev) => {
-                        if (prev <= 1) {
-                            clearInterval(timer);
-                            setShowMemoryPhase(false);
-                            return 0;
-                        }
-                        return prev - 1;
-                    });
-                }, 1000);
-
-                return () => clearInterval(timer);
             }
         }
-    }, [testDefinition, currentQuestionIndex, showMemoryPhase, answers]);
+    }, [testDefinition, currentQuestionIndex, answers]);
+
+    // Memory phase countdown timer
+    useEffect(() => {
+        if (showMemoryPhase) {
+            const timer = setInterval(() => {
+                setMemoryPhaseTimeLeft((prev) => {
+                    if (prev <= 1) {
+                        clearInterval(timer);
+                        setShowMemoryPhase(false);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [showMemoryPhase]);
 
     const addEmailField = () => {
         setFeedbackEmails([...feedbackEmails, {name: '', email: ''}]);
