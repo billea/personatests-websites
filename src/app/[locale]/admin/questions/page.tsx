@@ -11,6 +11,7 @@ import {
   updateGeneralKnowledgeQuestion,
   deleteGeneralKnowledgeQuestion,
   bulkDeleteGeneralKnowledgeQuestions,
+  clearAllGeneralKnowledgeQuestions,
   GeneralKnowledgeQuestion,
 
   // Math Speed functions
@@ -21,6 +22,7 @@ import {
   updateMathSpeedQuestion,
   deleteMathSpeedQuestion,
   bulkDeleteMathSpeedQuestions,
+  clearAllMathSpeedQuestions,
   MathSpeedQuestion,
 
   // Memory Power functions
@@ -31,6 +33,7 @@ import {
   updateMemoryPowerQuestion,
   deleteMemoryPowerQuestion,
   bulkDeleteMemoryPowerQuestions,
+  clearAllMemoryPowerQuestions,
   MemoryPowerQuestion
 } from '@/lib/firestore';
 
@@ -119,27 +122,35 @@ export default function QuestionsAdminPage() {
   const loadQuestions = async () => {
     try {
       setLoading(true);
+      setMessage(`🔍 Loading ${currentQuestionType} questions...`);
       let loadedQuestions;
+
+      console.log(`🔍 Loading questions for: ${currentQuestionType}`, { filters });
 
       switch (currentQuestionType) {
         case 'general-knowledge':
           const generalResult = await getAllGeneralKnowledgeQuestions(100, null, filters.category, filters.difficulty);
           loadedQuestions = generalResult.questions;
+          console.log(`📋 Loaded ${loadedQuestions.length} general knowledge questions:`, generalResult);
           break;
         case 'math-speed':
           const mathResult = await getAllMathSpeedQuestions(100, null, filters.category, filters.difficulty);
           loadedQuestions = mathResult.questions;
+          console.log(`📋 Loaded ${loadedQuestions.length} math speed questions:`, mathResult);
           break;
         case 'memory-power':
           const memoryResult = await getAllMemoryPowerQuestions(100, null, filters.category, filters.difficulty);
           loadedQuestions = memoryResult.questions;
+          console.log(`📋 Loaded ${loadedQuestions.length} memory power questions:`, memoryResult);
           break;
       }
 
-      setQuestions(loadedQuestions);
+      setQuestions(loadedQuestions || []);
+      setMessage(''); // Clear loading message
     } catch (error) {
       console.error(`Error loading ${currentQuestionType} questions:`, error);
-      setMessage(`❌ Error loading ${currentQuestionType} questions`);
+      setMessage(`❌ Error loading ${currentQuestionType} questions: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      setQuestions([]); // Reset to empty array on error
     } finally {
       setLoading(false);
     }
@@ -263,6 +274,41 @@ export default function QuestionsAdminPage() {
       loadQuestions();
     } catch (error) {
       setMessage(`❌ Error deleting questions: ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Clear all questions handler
+  const handleClearAll = async () => {
+    const confirmed = confirm(`⚠️ WARNING: This will permanently delete ALL ${currentConfig.title.toLowerCase()} questions from the database. This action cannot be undone. Are you sure?`);
+    if (!confirmed) return;
+
+    const doubleConfirmed = confirm(`🚨 FINAL CONFIRMATION: Delete ALL ${stats?.total || 0} ${currentConfig.title.toLowerCase()} questions permanently?`);
+    if (!doubleConfirmed) return;
+
+    setLoading(true);
+    try {
+      let result;
+
+      switch (currentQuestionType) {
+        case 'general-knowledge':
+          result = await clearAllGeneralKnowledgeQuestions();
+          break;
+        case 'math-speed':
+          result = await clearAllMathSpeedQuestions();
+          break;
+        case 'memory-power':
+          result = await clearAllMemoryPowerQuestions();
+          break;
+      }
+
+      setMessage(`✅ ${result.message}`);
+      setSelectedQuestions(new Set());
+      loadStats();
+      loadQuestions();
+    } catch (error) {
+      setMessage(`❌ Error clearing all questions: ${error}`);
     } finally {
       setLoading(false);
     }
@@ -428,17 +474,32 @@ export default function QuestionsAdminPage() {
             </div>
 
             {/* Bulk Actions */}
-            {selectedQuestions.size > 0 && (
-              <div className="mb-6 p-4 bg-red-500/20 border border-red-400/30 rounded-lg">
-                <p className="text-white mb-2">{selectedQuestions.size} questions selected</p>
+            <div className="mb-6 flex flex-wrap gap-4">
+              {selectedQuestions.size > 0 && (
+                <div className="p-4 bg-red-500/20 border border-red-400/30 rounded-lg">
+                  <p className="text-white mb-2">{selectedQuestions.size} questions selected</p>
+                  <button
+                    onClick={handleDeleteSelected}
+                    disabled={loading}
+                    className="px-4 py-2 bg-red-500/80 hover:bg-red-600 disabled:bg-red-500/40 text-white rounded-lg"
+                  >
+                    🗑️ Delete Selected
+                  </button>
+                </div>
+              )}
+
+              {/* Clear All Button - Always visible with danger styling */}
+              <div className="p-4 bg-red-600/30 border border-red-500/50 rounded-lg">
+                <p className="text-white mb-2 font-semibold">⚠️ Danger Zone</p>
                 <button
-                  onClick={handleDeleteSelected}
-                  className="px-4 py-2 bg-red-500/80 hover:bg-red-600 text-white rounded-lg"
+                  onClick={handleClearAll}
+                  disabled={loading || (stats?.total || 0) === 0}
+                  className="px-4 py-2 bg-red-600/80 hover:bg-red-700 disabled:bg-red-600/40 text-white rounded-lg font-semibold"
                 >
-                  🗑️ Delete Selected
+                  🧹 Clear All ({stats?.total || 0})
                 </button>
               </div>
-            )}
+            </div>
 
             {/* Questions List */}
             <div className="space-y-4 max-h-96 overflow-y-auto">

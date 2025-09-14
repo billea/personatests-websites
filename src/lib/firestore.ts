@@ -12,7 +12,8 @@ import {
   limit,
   startAfter,
   serverTimestamp,
-  Timestamp
+  Timestamp,
+  writeBatch
 } from "firebase/firestore";
 import { firestore } from "./firebase";
 import { User } from "firebase/auth";
@@ -2216,6 +2217,40 @@ export const bulkDeleteMathSpeedQuestions = async (
   }
 };
 
+// Clear all math speed questions from database
+export const clearAllMathSpeedQuestions = async (): Promise<{ success: boolean; deleted: number; message: string }> => {
+  try {
+    console.log('🧹 Starting to clear all math speed questions...');
+
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    const snapshot = await getDocs(questionsRef);
+
+    const batch = writeBatch(firestore);
+    let deleteCount = 0;
+
+    snapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref);
+      deleteCount++;
+    });
+
+    await batch.commit();
+
+    console.log(`✅ Successfully cleared ${deleteCount} math speed questions`);
+    return {
+      success: true,
+      deleted: deleteCount,
+      message: `Successfully cleared all ${deleteCount} math speed questions`
+    };
+  } catch (error) {
+    console.error('❌ Error clearing all math speed questions:', error);
+    return {
+      success: false,
+      deleted: 0,
+      message: `Failed to clear questions: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
 // ============================================
 // MEMORY POWER TEST DATABASE FUNCTIONS
 // ============================================
@@ -2415,6 +2450,40 @@ export const bulkDeleteMemoryPowerQuestions = async (
   }
 };
 
+// Clear all memory power questions from database
+export const clearAllMemoryPowerQuestions = async (): Promise<{ success: boolean; deleted: number; message: string }> => {
+  try {
+    console.log('🧹 Starting to clear all memory power questions...');
+
+    const questionsRef = collection(firestore, 'memoryPowerQuestions');
+    const snapshot = await getDocs(questionsRef);
+
+    const batch = writeBatch(firestore);
+    let deleteCount = 0;
+
+    snapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref);
+      deleteCount++;
+    });
+
+    await batch.commit();
+
+    console.log(`✅ Successfully cleared ${deleteCount} memory power questions`);
+    return {
+      success: true,
+      deleted: deleteCount,
+      message: `Successfully cleared all ${deleteCount} memory power questions`
+    };
+  } catch (error) {
+    console.error('❌ Error clearing all memory power questions:', error);
+    return {
+      success: false,
+      deleted: 0,
+      message: `Failed to clear questions: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
 // Get all general knowledge questions with pagination for admin management
 export const getAllGeneralKnowledgeQuestions = async (
   limitCount: number = 50,
@@ -2537,6 +2606,40 @@ export const bulkDeleteGeneralKnowledgeQuestions = async (
       deleted: 0,
       errors: questionIds.length,
       message: `Bulk delete failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Clear all general knowledge questions from database
+export const clearAllGeneralKnowledgeQuestions = async (): Promise<{ success: boolean; deleted: number; message: string }> => {
+  try {
+    console.log('🧹 Starting to clear all general knowledge questions...');
+
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    const snapshot = await getDocs(questionsRef);
+
+    const batch = writeBatch(firestore);
+    let deleteCount = 0;
+
+    snapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref);
+      deleteCount++;
+    });
+
+    await batch.commit();
+
+    console.log(`✅ Successfully cleared ${deleteCount} general knowledge questions`);
+    return {
+      success: true,
+      deleted: deleteCount,
+      message: `Successfully cleared all ${deleteCount} general knowledge questions`
+    };
+  } catch (error) {
+    console.error('❌ Error clearing all general knowledge questions:', error);
+    return {
+      success: false,
+      deleted: 0,
+      message: `Failed to clear questions: ${error instanceof Error ? error.message : 'Unknown error'}`
     };
   }
 };
