@@ -56,7 +56,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 8,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -112,7 +112,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 12,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -168,7 +168,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 15,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -228,7 +228,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -340,7 +340,7 @@
   {
     "category": "number_sequence",
     "difficulty": "hard",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -404,7 +404,7 @@
   {
     "category": "word_sequence",
     "difficulty": "hard",
-    "memorizationTime": 25,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -466,7 +466,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 15,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -576,7 +576,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 12,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -634,7 +634,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "hard",
-    "memorizationTime": 22,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -690,7 +690,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -748,7 +748,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 8,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -800,7 +800,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "easy",
-    "memorizationTime": 12,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -856,7 +856,7 @@
   {
     "category": "word_sequence",
     "difficulty": "hard",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -916,7 +916,7 @@
   {
     "category": "number_sequence",
     "difficulty": "hard",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -978,7 +978,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 14,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1038,7 +1038,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 14,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1148,7 +1148,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1208,7 +1208,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1266,7 +1266,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1324,7 +1324,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1380,7 +1380,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1440,7 +1440,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1496,7 +1496,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1552,7 +1552,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1612,7 +1612,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1668,7 +1668,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1724,7 +1724,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1780,7 +1780,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1838,7 +1838,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1898,7 +1898,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -1954,7 +1954,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2014,7 +2014,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2072,7 +2072,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2128,7 +2128,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2184,7 +2184,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2240,7 +2240,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2296,7 +2296,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2354,7 +2354,7 @@
   {
     "category": "word_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2414,7 +2414,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2470,7 +2470,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2526,7 +2526,7 @@
   {
     "category": "word_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2582,7 +2582,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2642,7 +2642,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2704,7 +2704,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 22,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2768,7 +2768,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2828,7 +2828,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2886,7 +2886,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -2944,7 +2944,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3004,7 +3004,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3064,7 +3064,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3124,7 +3124,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 22,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3188,7 +3188,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3248,7 +3248,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3306,7 +3306,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3368,7 +3368,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 22,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3432,7 +3432,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3492,7 +3492,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3550,7 +3550,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3612,7 +3612,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3674,7 +3674,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3736,7 +3736,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3796,7 +3796,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3858,7 +3858,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3918,7 +3918,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -3980,7 +3980,7 @@
   {
     "category": "number_sequence",
     "difficulty": "easy",
-    "memorizationTime": 16,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4038,7 +4038,7 @@
   {
     "category": "number_sequence",
     "difficulty": "medium",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4098,7 +4098,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4154,7 +4154,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4210,7 +4210,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4266,7 +4266,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4322,7 +4322,7 @@
   {
     "category": "image_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4380,7 +4380,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4436,7 +4436,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4492,7 +4492,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4548,7 +4548,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4604,7 +4604,7 @@
   {
     "category": "image_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4662,7 +4662,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4718,7 +4718,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4774,7 +4774,7 @@
   {
     "category": "image_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4832,7 +4832,7 @@
   {
     "category": "image_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4888,7 +4888,7 @@
   {
     "category": "image_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -4946,7 +4946,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 22,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5008,7 +5008,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5066,7 +5066,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "d",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5126,7 +5126,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5184,7 +5184,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5244,7 +5244,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5304,7 +5304,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5364,7 +5364,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5422,7 +5422,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5480,7 +5480,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 22,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5542,7 +5542,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5602,7 +5602,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "easy",
-    "memorizationTime": 18,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5660,7 +5660,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "a",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5720,7 +5720,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "b",
     "defaultLanguage": "en",
     "availableLanguages": [
@@ -5780,7 +5780,7 @@
   {
     "category": "pattern_sequence",
     "difficulty": "medium",
-    "memorizationTime": 20,
+    "memorizationTime": 10,
     "correctAnswer": "c",
     "defaultLanguage": "en",
     "availableLanguages": [

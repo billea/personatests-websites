@@ -2539,10 +2539,15 @@ export default function TestPage() {
                                     🧠 {currentLanguage === 'ko' ? '다음 항목들을 기억하세요:' : 'Memorize the following items:'}
                                 </h2>
                                 <div className="mb-8 p-6 bg-white/10 rounded-lg border-2 border-yellow-300/50">
-                                    <div className="grid grid-cols-2 gap-4 text-xl text-white font-medium">
+                                    <div className="flex flex-col gap-3 text-xl text-white font-medium max-w-md mx-auto">
                                         {memoryContent.map((item, index) => (
-                                            <div key={index} className="p-3 bg-white/10 rounded-lg text-center">
-                                                {item}
+                                            <div key={index} className="flex items-center p-4 bg-white/10 rounded-lg">
+                                                <div className="flex-shrink-0 w-8 h-8 bg-yellow-500 text-black font-bold rounded-full flex items-center justify-center text-lg mr-4">
+                                                    {index + 1}
+                                                </div>
+                                                <div className="flex-1 text-left">
+                                                    {item}
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
