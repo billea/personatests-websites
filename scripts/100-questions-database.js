@@ -1,7 +1,7 @@
 // 100 Comprehensive Multilingual General Knowledge Questions
 // Ready for database upload via admin interface
 
-const hundredQuestions = [
+export const hundredQuestions = [
   // SCIENCE QUESTIONS (25 questions)
   {
     category: 'science',
