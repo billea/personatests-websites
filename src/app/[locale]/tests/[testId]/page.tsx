@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -92,6 +92,9 @@ export default function TestPage() {
     const [generatedCodes, setGeneratedCodes] = useState<AnonymousCode[]>([]);
     const [generatedLink, setGeneratedLink] = useState<ShareableLink | null>(null);
     const [showMethodSelector, setShowMethodSelector] = useState(false);
+
+    // State for storing correct answers for general knowledge test scoring
+    const [generalKnowledgeCorrectAnswers, setGeneralKnowledgeCorrectAnswers] = useState<Array<{id: string, correctAnswer: string}>>([]);
     
     // Update userName when user data becomes available
     useEffect(() => {
@@ -399,17 +402,19 @@ export default function TestPage() {
                 if (definition.id === 'general-knowledge') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const dynamicQuestions = await getGeneralKnowledgeQuestions(currentLanguage);
+                            const questionsWithAnswers = await getGeneralKnowledgeQuestionsWithAnswers(10, currentLanguage);
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!, // Assert that definition and id exist since we checked earlier
-                                questions: dynamicQuestions
+                                questions: questionsWithAnswers.questions
                             };
                             setTestDefinition(updatedDefinition);
+                            setGeneralKnowledgeCorrectAnswers(questionsWithAnswers.correctAnswers);
                         } catch (error) {
                             console.error('Failed to fetch questions from database, using fallback:', error);
                             // Use the existing hardcoded questions as fallback
                             setTestDefinition(definition);
+                            setGeneralKnowledgeCorrectAnswers([]);
                         }
                     };
                     loadQuestionsAsync();
@@ -421,17 +426,19 @@ export default function TestPage() {
                 if (definition.id === 'general-knowledge') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const dynamicQuestions = await getGeneralKnowledgeQuestions(currentLanguage);
+                            const questionsWithAnswers = await getGeneralKnowledgeQuestionsWithAnswers(10, currentLanguage);
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!, // Assert that definition and id exist since we checked earlier
-                                questions: dynamicQuestions
+                                questions: questionsWithAnswers.questions
                             };
                             setTestDefinition(updatedDefinition);
+                            setGeneralKnowledgeCorrectAnswers(questionsWithAnswers.correctAnswers);
                         } catch (error) {
                             console.error('Failed to fetch questions from database, using fallback:', error);
                             // Keep the existing definition
                             setTestDefinition(definition);
+                            setGeneralKnowledgeCorrectAnswers([]);
                         }
                     };
                     loadQuestionsAsync();
@@ -748,7 +755,11 @@ export default function TestPage() {
         setSaving(true);
         try {
             // Score the test
-            const testResult = testDefinition.scoring(finalAnswers);
+            const testResult = testDefinition.scoring(
+                finalAnswers,
+                undefined, // partnerAnswers
+                testId === 'general-knowledge' ? generalKnowledgeCorrectAnswers : undefined
+            );
             
             // Store the result for display
             setCompletedTestResult(testResult);

@@ -1510,6 +1510,89 @@ export const getRandomGeneralKnowledgeQuestions = async (
   }
 };
 
+// Enhanced version that returns both questions and their correct answers
+export const getRandomGeneralKnowledgeQuestionsWithAnswers = async (
+  count: number = 10,
+  language: string = 'en'
+): Promise<{questions: TestQuestion[], correctAnswers: Array<{id: string, correctAnswer: string}>}> => {
+  try {
+    console.log(`🔍 Fetching ${count} random General Knowledge questions with answers in ${language} from database...`);
+
+    // Get all active questions that have the requested language
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    const activeQuestionsQuery = query(
+      questionsRef,
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', language)
+    );
+    const snapshot = await getDocs(activeQuestionsQuery);
+
+    if (snapshot.empty) {
+      console.warn(`⚠️ No questions found in database for language ${language}, falling back...`);
+      const fallbackQuestions = getHardcodedFallbackQuestions(count, language);
+      return {
+        questions: fallbackQuestions,
+        correctAnswers: [] // No correct answers available for fallback
+      };
+    }
+
+    // Convert Firestore questions to TestQuestion format and collect correct answers
+    const allQuestions: TestQuestion[] = [];
+    const allCorrectAnswers: Array<{id: string, correctAnswer: string}> = [];
+
+    snapshot.forEach((doc) => {
+      const data = doc.data() as GeneralKnowledgeQuestion;
+
+      // Get the translation for the requested language, fallback to default language
+      const translation = data.translations[language] || data.translations[data.defaultLanguage];
+
+      if (!translation) {
+        console.warn(`⚠️ No translation found for question ${doc.id} in language ${language}`);
+        return; // Skip this question
+      }
+
+      const testQuestion: TestQuestion = {
+        id: doc.id,
+        text_key: translation.question, // Use actual question text directly
+        type: 'multiple_choice',
+        options: [
+          { value: 'a', text_key: translation.options.a },
+          { value: 'b', text_key: translation.options.b },
+          { value: 'c', text_key: translation.options.c },
+          { value: 'd', text_key: translation.options.d }
+        ]
+      };
+
+      allQuestions.push(testQuestion);
+      allCorrectAnswers.push({
+        id: doc.id,
+        correctAnswer: data.correctAnswer
+      });
+    });
+
+    // Randomly select the requested number of questions (ensure same selection for both arrays)
+    const shuffledIndices = [...Array(allQuestions.length).keys()].sort(() => 0.5 - Math.random());
+    const selectedIndices = shuffledIndices.slice(0, count);
+
+    const selectedQuestions = selectedIndices.map(i => allQuestions[i]);
+    const selectedCorrectAnswers = selectedIndices.map(i => allCorrectAnswers[i]);
+
+    console.log(`✅ Successfully fetched ${selectedQuestions.length} general knowledge questions with answers`);
+    return {
+      questions: selectedQuestions,
+      correctAnswers: selectedCorrectAnswers
+    };
+
+  } catch (error) {
+    console.error('❌ Error fetching general knowledge questions with answers:', error);
+    const fallbackQuestions = getHardcodedFallbackQuestions(count, language);
+    return {
+      questions: fallbackQuestions,
+      correctAnswers: [] // No correct answers available for fallback
+    };
+  }
+};
+
 // Fallback to hardcoded questions if database is unavailable
 const getHardcodedFallbackQuestions = (count: number, language: string = 'en'): TestQuestion[] => {
   const fallbackQuestions: TestQuestion[] = [

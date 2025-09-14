@@ -41,7 +41,11 @@ export interface TestDefinition {
   };
 }
 
-export type ScoringFunction = (answers: { [questionId: string]: any }, partnerAnswers?: { [questionId: string]: any }) => TestResult;
+export type ScoringFunction = (
+  answers: { [questionId: string]: any },
+  partnerAnswers?: { [questionId: string]: any },
+  questionsData?: Array<{id: string, correctAnswer: string}>
+) => TestResult;
 
 // Utility function to personalize questions with user's name
 export const personalizeQuestions = (questions: TestQuestion[], userName: string): TestQuestion[] => {
@@ -2672,6 +2676,16 @@ export const getGeneralKnowledgeQuestions = async (language: string = 'en'): Pro
   return await getRandomGeneralKnowledgeQuestions(10, language);
 };
 
+// Function to get questions with their correct answers for scoring
+export const getGeneralKnowledgeQuestionsWithAnswers = async (
+  count: number = 10,
+  language: string = 'en'
+): Promise<{questions: TestQuestion[], correctAnswers: Array<{id: string, correctAnswer: string}>}> => {
+  // Import the database function dynamically to avoid circular imports
+  const { getRandomGeneralKnowledgeQuestionsWithAnswers } = await import('./firestore');
+  return await getRandomGeneralKnowledgeQuestionsWithAnswers(count, language);
+};
+
 // Math Speed Test - Database-driven questions
 export const getMathSpeedQuestions = async (): Promise<TestQuestion[]> => {
   try {
@@ -2981,85 +2995,67 @@ const spiritAnimalQuestions: TestQuestion[] = [
 ];
 
 // Scoring functions for new tests
-const generalKnowledgeScoring = (answers: Record<string, string>) => {
-  // Comprehensive answer key for all 500 questions
-  const allCorrectAnswers = {
-    // Original 10 questions
-    'gk_1': 'jordan', // Petra
-    'gk_2': 'venus', // Brightest planet  
-    'gk_3': 'da_vinci', // Mona Lisa
-    'gk_4': 'pacific', // Largest ocean
-    'gk_5': 'shakespeare', // Romeo and Juliet
-    'gk_6': 'hydrogen', // Most abundant element
-    'gk_7': '1912', // Titanic sank
-    'gk_8': 'nile', // Longest river
-    'gk_9': 'einstein', // Theory of Relativity
-    'gk_10': 'asia', // Largest continent
-    
-    // New questions 11-50
-    'gk_11': 'Au', // Gold chemical symbol
-    'gk_12': '206', // Human bones
-    'gk_13': 'cheetah', // Fastest land animal
-    'gk_14': 'nitrogen', // 78% of atmosphere
-    'gk_15': '3', // Octopus hearts
-    'gk_16': '1945', // WWII end
-    'gk_17': 'neil_armstrong', // First moon walker
-    'gk_18': 'lighthouse', // Alexandria wonder
-    'gk_19': '1989', // Berlin Wall fall
-    'gk_20': 'augustus', // First Roman emperor
-    'gk_21': 'shakespeare', // Romeo and Juliet author
-    'gk_22': 'van_gogh', // Starry Night artist
-    'gk_23': 'mockingbird', // Atticus Finch novel
-    'gk_24': 'vivaldi', // Four Seasons composer
-    'gk_25': 'louvre', // Mona Lisa museum
-    'gk_26': '4_years', // Olympics frequency
-    'gk_27': 'football', // Beautiful game
-    'gk_28': 'spielberg', // Jaws director
-    'gk_29': 'french_open', // Clay court tennis
-    'gk_30': 'world_wide_web', // WWW
-    'gk_31': 'italy', // Pizza origin
-    'gk_32': 'avocado', // Guacamole ingredient
-    'gk_33': 'mandarin', // Most native speakers
-    'gk_34': 'peru', // Machu Picchu
-    'gk_35': 'vatican', // Smallest country
-    'gk_36': 'diamond', // Hardest natural substance
-    'gk_37': '4', // Heart chambers
-    'gk_38': 'skin', // Largest organ
-    'gk_39': 'o_negative', // Universal donor
-    'gk_40': 'deoxyribonucleic_acid', // DNA
-    'gk_41': '3.14', // Pi value
-    'gk_42': '30', // 15% of 200
-    'gk_43': '6', // Hexagon sides
-    'gk_44': '12', // Square root of 144
-    'gk_45': '50', // Roman numeral L
-    'gk_46': 'bill_gates', // Microsoft founder
-    'gk_47': 'central_processing_unit', // CPU
-    'gk_48': 'apple', // iPhone company
-    'gk_49': '2007', // iPhone release year
-    'gk_50': 'javascript' // Web development language
-  };
-  
+const generalKnowledgeScoring = (
+  answers: Record<string, string>,
+  partnerAnswers?: Record<string, string>,
+  questionsData?: Array<{id: string, correctAnswer: string}>
+) => {
+  // If we have database questions with their correct answers, use those
+  let correctAnswers: Record<string, string> = {};
+
+  if (questionsData && questionsData.length > 0) {
+    // Use the correct answers from the database questions
+    questionsData.forEach(q => {
+      correctAnswers[q.id] = q.correctAnswer;
+    });
+  } else {
+    // Fallback to hardcoded answers for legacy questions
+    correctAnswers = {
+      // Original 10 questions
+      'gk_1': 'jordan', // Petra
+      'gk_2': 'venus', // Brightest planet
+      'gk_3': 'da_vinci', // Mona Lisa
+      'gk_4': 'pacific', // Largest ocean
+      'gk_5': 'shakespeare', // Romeo and Juliet
+      'gk_6': 'hydrogen', // Most abundant element
+      'gk_7': '1912', // Titanic sank
+      'gk_8': 'nile', // Longest river
+      'gk_9': 'einstein', // Theory of Relativity
+      'gk_10': 'asia', // Largest continent
+
+      // Additional hardcoded questions...
+      'gk_11': 'Au', 'gk_12': '206', 'gk_13': 'cheetah', 'gk_14': 'nitrogen', 'gk_15': '3',
+      'gk_16': '1945', 'gk_17': 'neil_armstrong', 'gk_18': 'lighthouse', 'gk_19': '1989', 'gk_20': 'augustus',
+      'gk_21': 'shakespeare', 'gk_22': 'van_gogh', 'gk_23': 'mockingbird', 'gk_24': 'vivaldi', 'gk_25': 'louvre',
+      'gk_26': '4_years', 'gk_27': 'football', 'gk_28': 'spielberg', 'gk_29': 'french_open', 'gk_30': 'world_wide_web',
+      'gk_31': 'italy', 'gk_32': 'avocado', 'gk_33': 'mandarin', 'gk_34': 'peru', 'gk_35': 'vatican',
+      'gk_36': 'diamond', 'gk_37': '4', 'gk_38': 'skin', 'gk_39': 'o_negative', 'gk_40': 'deoxyribonucleic_acid',
+      'gk_41': '3.14', 'gk_42': '30', 'gk_43': '6', 'gk_44': '12', 'gk_45': '50',
+      'gk_46': 'bill_gates', 'gk_47': 'central_processing_unit', 'gk_48': 'apple', 'gk_49': '2007', 'gk_50': 'javascript'
+    };
+  }
+
   // Only score the questions that were actually answered
   const answeredQuestions = Object.keys(answers);
-  const correctAnswers = Object.fromEntries(
-    Object.entries(allCorrectAnswers).filter(([questionId]) => 
+  const validCorrectAnswers = Object.fromEntries(
+    Object.entries(correctAnswers).filter(([questionId]) =>
       answeredQuestions.includes(questionId)
     )
   );
-  
+
   let score = 0;
-  const total = Object.keys(correctAnswers).length;
-  
-  Object.entries(correctAnswers).forEach(([questionId, correctAnswer]) => {
+  const total = Object.keys(validCorrectAnswers).length;
+
+  Object.entries(validCorrectAnswers).forEach(([questionId, correctAnswer]) => {
     if (answers[questionId] === correctAnswer) {
       score++;
     }
   });
-  
-  const percentage = Math.round((score / total) * 100);
+
+  const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
   let level = '';
   let description = '';
-  
+
   if (percentage >= 90) {
     level = 'Genius Level 🧠';
     description = 'Outstanding! You have exceptional general knowledge.';
@@ -3076,7 +3072,7 @@ const generalKnowledgeScoring = (answers: Record<string, string>) => {
     level = 'Curious Beginner 🔍';
     description = 'Everyone starts somewhere. Keep exploring!';
   }
-  
+
   return {
     scores: {
       score,
@@ -3084,7 +3080,7 @@ const generalKnowledgeScoring = (answers: Record<string, string>) => {
       percentage,
       level,
       description,
-      correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => ({
+      correctAnswers: Object.entries(validCorrectAnswers).map(([id, answer]) => ({
         questionId: id,
         correctAnswer: answer,
         userAnswer: answers[id],
