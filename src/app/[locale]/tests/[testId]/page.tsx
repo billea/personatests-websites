@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMemoryPowerQuestions } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMemoryPowerQuestions, getMemoryPowerQuestionsWithAnswers } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -95,6 +95,9 @@ export default function TestPage() {
 
     // State for storing correct answers for general knowledge test scoring
     const [generalKnowledgeCorrectAnswers, setGeneralKnowledgeCorrectAnswers] = useState<Array<{id: string, correctAnswer: string}>>([]);
+
+    // State for storing correct answers for memory power test scoring
+    const [memoryPowerCorrectAnswers, setMemoryPowerCorrectAnswers] = useState<Array<{id: string, correctAnswer: string}>>([]);
 
     // Memory phase state for Memory Power tests
     const [showMemoryPhase, setShowMemoryPhase] = useState(false);
@@ -442,16 +445,18 @@ export default function TestPage() {
                 } else if (definition.id === 'memory-power') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const dynamicQuestions = await getMemoryPowerQuestions(currentLanguage);
+                            const questionsWithAnswers = await getMemoryPowerQuestionsWithAnswers(10, currentLanguage);
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!,
-                                questions: dynamicQuestions
+                                questions: questionsWithAnswers.questions
                             };
                             setTestDefinition(updatedDefinition);
+                            setMemoryPowerCorrectAnswers(questionsWithAnswers.correctAnswers);
                         } catch (error) {
                             console.error('Failed to fetch memory power questions from database, using fallback:', error);
                             setTestDefinition(definition);
+                            setMemoryPowerCorrectAnswers([]);
                         }
                     };
                     loadQuestionsAsync();
@@ -498,16 +503,18 @@ export default function TestPage() {
                 } else if (definition.id === 'memory-power') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const dynamicQuestions = await getMemoryPowerQuestions(currentLanguage);
+                            const questionsWithAnswers = await getMemoryPowerQuestionsWithAnswers(10, currentLanguage);
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!,
-                                questions: dynamicQuestions
+                                questions: questionsWithAnswers.questions
                             };
                             setTestDefinition(updatedDefinition);
+                            setMemoryPowerCorrectAnswers(questionsWithAnswers.correctAnswers);
                         } catch (error) {
                             console.error('Failed to fetch memory power questions from database, using fallback:', error);
                             setTestDefinition(definition);
+                            setMemoryPowerCorrectAnswers([]);
                         }
                     };
                     loadQuestionsAsync();
@@ -827,7 +834,8 @@ export default function TestPage() {
             const testResult = testDefinition.scoring(
                 finalAnswers,
                 undefined, // partnerAnswers
-                testId === 'general-knowledge' ? generalKnowledgeCorrectAnswers : undefined
+                testId === 'general-knowledge' ? generalKnowledgeCorrectAnswers :
+                testId === 'memory-power' ? memoryPowerCorrectAnswers : undefined
             );
             
             // Store the result for display

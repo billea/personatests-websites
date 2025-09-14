@@ -2719,6 +2719,15 @@ export const getMemoryPowerQuestions = async (language: string = 'en'): Promise<
   }
 };
 
+export const getMemoryPowerQuestionsWithAnswers = async (
+  count: number = 10,
+  language: string = 'en'
+): Promise<{questions: TestQuestion[], correctAnswers: Array<{id: string, correctAnswer: string}>}> => {
+  // Import the database function dynamically to avoid circular imports
+  const { getRandomMemoryPowerQuestionsWithAnswers } = await import('./firestore');
+  return await getRandomMemoryPowerQuestionsWithAnswers(count, language);
+};
+
 // Static fallback for initial load (using hardcoded questions for synchronous initialization)
 const generalKnowledgeQuestions: TestQuestion[] = getRandomQuestions(allGeneralKnowledgeQuestions, 10);
 
@@ -3144,20 +3153,43 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
   };
 };
 
-const memoryPowerScoring = (answers: Record<string, string>) => {
-  // Simple scoring for memory tests
+const memoryPowerScoring = (
+  answers: Record<string, string>,
+  partnerAnswers?: Record<string, string>,
+  questionsData?: Array<{id: string, correctAnswer: string}>
+) => {
+  // If we have database questions with their correct answers, use those
+  let correctAnswers: Record<string, string> = {};
+
+  if (questionsData && questionsData.length > 0) {
+    // Use the correct answers from the database questions
+    questionsData.forEach(q => {
+      correctAnswers[q.id] = q.correctAnswer;
+    });
+  } else {
+    // Fallback to hardcoded answers for legacy questions
+    correctAnswers = {
+      'memory_1': 'sequence_2',
+      'memory_2': 'pattern_3',
+      'memory_3': 'word_list_1'
+    };
+  }
+
+  // Calculate score based on actual answers
   let score = 0;
-  const total = 3;
-  
-  // Mock scoring - in reality would check pattern/sequence accuracy
-  if (answers['memory_1'] === 'sequence_2') score++;
-  if (answers['memory_2'] === 'pattern_3') score++;
-  if (answers['memory_3'] === 'word_list_1') score++;
-  
-  const percentage = Math.round((score / total) * 100);
+  const questionIds = Object.keys(answers);
+  const total = questionIds.length;
+
+  questionIds.forEach(questionId => {
+    if (correctAnswers[questionId] && answers[questionId] === correctAnswers[questionId]) {
+      score++;
+    }
+  });
+
+  const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
   let level = '';
   let description = '';
-  
+
   if (percentage >= 90) {
     level = 'Memory Master 🧠';
     description = 'Exceptional! You have outstanding memory power.';
@@ -3171,7 +3203,7 @@ const memoryPowerScoring = (answers: Record<string, string>) => {
     level = 'Memory Builder 🏗️';
     description = 'Keep training! Memory improves with practice.';
   }
-  
+
   return {
     scores: {
       score,

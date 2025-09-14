@@ -2006,6 +2006,77 @@ export const getRandomMemoryPowerQuestions = async (
   }
 };
 
+// Fetch random Memory Power questions from database WITH correct answers for scoring
+export const getRandomMemoryPowerQuestionsWithAnswers = async (
+  count: number = 10,
+  language: string = 'en',
+  difficulty?: "easy" | "medium" | "hard"
+): Promise<{questions: TestQuestion[], correctAnswers: Array<{id: string, correctAnswer: string}>}> => {
+  try {
+    console.log(`📊 Fetching ${count} memory power questions with answers for language: ${language}`);
+
+    const questionsRef = collection(firestore, 'memoryPowerQuestions');
+    let q = query(
+      questionsRef,
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', language)
+    );
+
+    if (difficulty) {
+      q = query(q, where('difficulty', '==', difficulty));
+    }
+
+    const snapshot = await getDocs(q);
+    console.log(`📊 Found ${snapshot.docs.length} memory power questions in database`);
+
+    const allQuestions: TestQuestion[] = [];
+    const correctAnswers: Array<{id: string, correctAnswer: string}> = [];
+
+    snapshot.forEach((doc) => {
+      const data = doc.data() as MemoryPowerQuestion;
+      const translation = data.translations[language] || data.translations[data.defaultLanguage];
+
+      if (!translation) {
+        console.warn(`⚠️ No translation found for memory power question ${doc.id} in language ${language}`);
+        return;
+      }
+
+      const testQuestion: TestQuestion = {
+        id: doc.id,
+        text_key: translation.question, // Use actual question text directly
+        type: 'multiple_choice',
+        options: [
+          { value: 'a', text_key: translation.options.a },
+          { value: 'b', text_key: translation.options.b },
+          { value: 'c', text_key: translation.options.c },
+          { value: 'd', text_key: translation.options.d }
+        ],
+        memoryPhase: {
+          content: translation.memorizationContent, // Pass as array for proper display
+          duration: data.memorizationTime * 1000 // Convert seconds to milliseconds
+        }
+      };
+
+      allQuestions.push(testQuestion);
+      correctAnswers.push({ id: doc.id, correctAnswer: data.correctAnswer });
+    });
+
+    const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, count);
+
+    // Filter correct answers to match selected questions
+    const selectedIds = selected.map(q => q.id);
+    const filteredAnswers = correctAnswers.filter(a => selectedIds.includes(a.id));
+
+    console.log(`✅ Successfully fetched ${selected.length} memory power questions with answers`);
+    return { questions: selected, correctAnswers: filteredAnswers };
+
+  } catch (error) {
+    console.error('❌ Error fetching memory power questions with answers:', error);
+    return { questions: [], correctAnswers: [] };
+  }
+};
+
 // Add new Memory Power question to database
 export const addMemoryPowerQuestion = async (questionData: Omit<MemoryPowerQuestion, 'id' | 'createdAt' | 'updatedAt'>): Promise<string | null> => {
   try {
