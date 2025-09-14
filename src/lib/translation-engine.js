@@ -32,10 +32,11 @@ export class TranslationEngine {
     }
 
     async loadLanguage(lang) {
-        if (this.translations[lang]) {
-            console.log(`Language ${lang} already loaded`);
-            return; // Already loaded
-        }
+        // Force reload translations every time for development - remove this check
+        // if (this.translations[lang]) {
+        //     console.log(`Language ${lang} already loaded`);
+        //     return; // Already loaded
+        // }
         try {
             const url = `/translations/${lang}.json?v=${new Date().getTime()}`;
             console.log(`Loading language ${lang} from:`, url);
