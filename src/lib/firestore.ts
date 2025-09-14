@@ -1,7 +1,7 @@
-import { 
-  doc, 
-  setDoc, 
-  getDoc, 
+import {
+  doc,
+  setDoc,
+  getDoc,
   getDocs,
   addDoc,
   deleteDoc,
@@ -9,8 +9,10 @@ import {
   query,
   where,
   orderBy,
+  limit,
+  startAfter,
   serverTimestamp,
-  Timestamp 
+  Timestamp
 } from "firebase/firestore";
 import { firestore } from "./firebase";
 import { User } from "firebase/auth";
@@ -1926,8 +1928,134 @@ export const batchUploadMemoryPowerQuestions = async (questions: Omit<MemoryPowe
     return {
       success: false,
       added: 0,
-      errors: questions.length,  
+      errors: questions.length,
       message: `Batch upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Get all general knowledge questions with pagination for admin management
+export const getAllGeneralKnowledgeQuestions = async (
+  limit: number = 50,
+  lastDoc?: any,
+  category?: string,
+  difficulty?: string
+): Promise<{ questions: (GeneralKnowledgeQuestion & { id: string })[]; lastDoc: any }> => {
+  try {
+    const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
+    let q = query(questionsRef, orderBy('createdAt', 'desc'), limit(limit));
+
+    // Add filters if provided
+    if (category) {
+      q = query(questionsRef, where('category', '==', category), orderBy('createdAt', 'desc'), limit(limit));
+    }
+    if (difficulty) {
+      q = query(questionsRef, where('difficulty', '==', difficulty), orderBy('createdAt', 'desc'), limit(limit));
+    }
+
+    // Add pagination if lastDoc is provided
+    if (lastDoc) {
+      q = query(q, startAfter(lastDoc));
+    }
+
+    const snapshot = await getDocs(q);
+    const questions: (GeneralKnowledgeQuestion & { id: string })[] = [];
+
+    snapshot.forEach((doc) => {
+      questions.push({
+        id: doc.id,
+        ...doc.data() as GeneralKnowledgeQuestion
+      });
+    });
+
+    const lastDocument = snapshot.docs[snapshot.docs.length - 1];
+
+    return { questions, lastDoc: lastDocument };
+  } catch (error) {
+    console.error('❌ Error getting general knowledge questions:', error);
+    return { questions: [], lastDoc: null };
+  }
+};
+
+// Update a general knowledge question
+export const updateGeneralKnowledgeQuestion = async (
+  questionId: string,
+  updates: Partial<Omit<GeneralKnowledgeQuestion, 'id' | 'createdAt' | 'updatedAt'>>
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'generalKnowledgeQuestions', questionId);
+
+    await setDoc(questionRef, {
+      ...updates,
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+
+    console.log(`✅ Updated question ${questionId}`);
+    return {
+      success: true,
+      message: 'Question updated successfully'
+    };
+  } catch (error) {
+    console.error(`❌ Error updating question ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to update question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Delete a general knowledge question
+export const deleteGeneralKnowledgeQuestion = async (
+  questionId: string
+): Promise<{ success: boolean; message: string }> => {
+  try {
+    const questionRef = doc(firestore, 'generalKnowledgeQuestions', questionId);
+    await deleteDoc(questionRef);
+
+    console.log(`✅ Deleted question ${questionId}`);
+    return {
+      success: true,
+      message: 'Question deleted successfully'
+    };
+  } catch (error) {
+    console.error(`❌ Error deleting question ${questionId}:`, error);
+    return {
+      success: false,
+      message: `Failed to delete question: ${error instanceof Error ? error.message : 'Unknown error'}`
+    };
+  }
+};
+
+// Bulk delete questions
+export const bulkDeleteGeneralKnowledgeQuestions = async (
+  questionIds: string[]
+): Promise<{ success: boolean; deleted: number; errors: number; message: string }> => {
+  try {
+    let deleted = 0;
+    let errors = 0;
+
+    for (const questionId of questionIds) {
+      const result = await deleteGeneralKnowledgeQuestion(questionId);
+      if (result.success) {
+        deleted++;
+      } else {
+        errors++;
+      }
+    }
+
+    return {
+      success: deleted > 0,
+      deleted,
+      errors,
+      message: `Deleted ${deleted} questions. ${errors} errors.`
+    };
+  } catch (error) {
+    console.error('❌ Error in bulk delete:', error);
+    return {
+      success: false,
+      deleted: 0,
+      errors: questionIds.length,
+      message: `Bulk delete failed: ${error instanceof Error ? error.message : 'Unknown error'}`
     };
   }
 };

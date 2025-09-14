@@ -1,368 +1,38 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/components/providers/auth-provider';
-import { 
-  addGeneralKnowledgeQuestion, 
-  getGeneralKnowledgeStats, 
+import {
+  addGeneralKnowledgeQuestion,
+  getGeneralKnowledgeStats,
   batchUploadMultilingualQuestions,
-  getQuestionsNeedingTranslation,
-  addQuestionTranslation,
-  GeneralKnowledgeQuestion 
+  getAllGeneralKnowledgeQuestions,
+  updateGeneralKnowledgeQuestion,
+  deleteGeneralKnowledgeQuestion,
+  bulkDeleteGeneralKnowledgeQuestions,
+  GeneralKnowledgeQuestion
 } from '@/lib/firestore';
 
-// Sample multilingual question data for populating the database (15 questions)
-const sampleQuestions: Omit<GeneralKnowledgeQuestion, 'id' | 'createdAt' | 'updatedAt'>[] = [
-  // Science Questions
-  {
-    category: 'science',
-    difficulty: 'easy',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What is the chemical symbol for gold?',
-        options: { a: 'Au', b: 'Ag', c: 'Pt', d: 'Cu' },
-        explanation: 'Au comes from the Latin word "aurum" meaning gold.',
-        tags: ['chemistry', 'elements']
-      },
-      ko: {
-        question: '금의 화학 기호는 무엇입니까?',
-        options: { a: 'Au', b: 'Ag', c: 'Pt', d: 'Cu' },
-        explanation: 'Au는 금을 의미하는 라틴어 "aurum"에서 유래되었습니다.',
-        tags: ['화학', '원소']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'science',
-    difficulty: 'medium',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'How many bones are in an adult human body?',
-        options: { a: '206', b: '196', c: '216', d: '186' },
-        explanation: 'An adult human skeleton has 206 bones.',
-        tags: ['biology', 'anatomy']
-      },
-      ko: {
-        question: '성인 인간의 몸에는 몇 개의 뼈가 있습니까?',
-        options: { a: '206개', b: '196개', c: '216개', d: '186개' },
-        explanation: '성인 인간의 골격에는 206개의 뼈가 있습니다.',
-        tags: ['생물학', '해부학']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'science',
-    difficulty: 'easy',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What is the fastest land animal?',
-        options: { a: 'Cheetah', b: 'Lion', c: 'Leopard', d: 'Tiger' },
-        explanation: 'Cheetahs can reach speeds up to 70 mph.',
-        tags: ['biology', 'animals']
-      },
-      ko: {
-        question: '가장 빠른 육상 동물은 무엇입니까?',
-        options: { a: '치타', b: '사자', c: '표범', d: '호랑이' },
-        explanation: '치타는 시속 112km까지 달릴 수 있습니다.',
-        tags: ['생물학', '동물']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'science',
-    difficulty: 'medium',
-    correctAnswer: 'b',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What is the hardest natural substance?',
-        options: { a: 'Iron', b: 'Diamond', c: 'Quartz', d: 'Granite' },
-        explanation: 'Diamond is the hardest naturally occurring substance on Earth.',
-        tags: ['chemistry', 'materials']
-      },
-      ko: {
-        question: '가장 단단한 천연 물질은 무엇입니까?',
-        options: { a: '철', b: '다이아몬드', c: '석영', d: '화강암' },
-        explanation: '다이아몬드는 지구에서 자연적으로 발생하는 가장 단단한 물질입니다.',
-        tags: ['화학', '재료']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'science',
-    difficulty: 'easy',
-    correctAnswer: 'c',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What gas do plants absorb from the atmosphere?',
-        options: { a: 'Oxygen', b: 'Nitrogen', c: 'Carbon dioxide', d: 'Hydrogen' },
-        explanation: 'Plants absorb carbon dioxide during photosynthesis.',
-        tags: ['biology', 'photosynthesis']
-      },
-      ko: {
-        question: '식물이 대기에서 흡수하는 기체는 무엇입니까?',
-        options: { a: '산소', b: '질소', c: '이산화탄소', d: '수소' },
-        explanation: '식물은 광합성 과정에서 이산화탄소를 흡수합니다.',
-        tags: ['생물학', '광합성']
-      }
-    },
-    isActive: true
-  },
-  
-  // History Questions
-  {
-    category: 'history',
-    difficulty: 'medium',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'Who was the first person to walk on the moon?',
-        options: { a: 'Neil Armstrong', b: 'Buzz Aldrin', c: 'John Glenn', d: 'Yuri Gagarin' },
-        explanation: 'Neil Armstrong was the first person to set foot on the Moon on July 20, 1969.',
-        tags: ['space exploration', 'apollo']
-      },
-      ko: {
-        question: '달에 처음 발을 딛은 사람은 누구입니까?',
-        options: { a: '닐 암스트롱', b: '버즈 올드린', c: '존 글렌', d: '유리 가가린' },
-        explanation: '닐 암스트롱은 1969년 7월 20일 달에 첫 발을 딛은 사람입니다.',
-        tags: ['우주 탐사', '아폴로']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'history',
-    difficulty: 'medium',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'In what year did World War II end?',
-        options: { a: '1945', b: '1944', c: '1946', d: '1943' },
-        explanation: 'World War II ended in 1945 with Japan\'s surrender.',
-        tags: ['world war', '20th century']
-      },
-      ko: {
-        question: '제2차 세계대전이 끝난 해는 언제입니까?',
-        options: { a: '1945년', b: '1944년', c: '1946년', d: '1943년' },
-        explanation: '제2차 세계대전은 일본의 항복으로 1945년에 끝났습니다.',
-        tags: ['세계대전', '20세기']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'history',
-    difficulty: 'easy',
-    correctAnswer: 'b',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'Which ancient wonder was located in Egypt?',
-        options: { a: 'Hanging Gardens', b: 'Great Pyramid', c: 'Colossus', d: 'Lighthouse' },
-        explanation: 'The Great Pyramid of Giza is the only ancient wonder still standing today.',
-        tags: ['ancient egypt', 'wonders']
-      },
-      ko: {
-        question: '이집트에 위치했던 고대 세계 7대 불가사의는 무엇입니까?',
-        options: { a: '공중정원', b: '대피라미드', c: '거상', d: '등대' },
-        explanation: '기자의 대피라미드는 오늘날까지 남아있는 유일한 고대 불가사의입니다.',
-        tags: ['고대 이집트', '불가사의']
-      }
-    },
-    isActive: true
-  },
-
-  // Geography Questions
-  {
-    category: 'geography',
-    difficulty: 'easy',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'Which continent is the largest by area?',
-        options: { a: 'Asia', b: 'Africa', c: 'North America', d: 'South America' },
-        explanation: 'Asia covers about 30% of Earth\'s total land area.',
-        tags: ['continents', 'world geography']
-      },
-      ko: {
-        question: '면적상 가장 큰 대륙은 어디입니까?',
-        options: { a: '아시아', b: '아프리카', c: '북아메리카', d: '남아메리카' },
-        explanation: '아시아는 지구 전체 육지 면적의 약 30%를 차지합니다.',
-        tags: ['대륙', '세계 지리']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'geography',
-    difficulty: 'medium',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What is the capital of Australia?',
-        options: { a: 'Canberra', b: 'Sydney', c: 'Melbourne', d: 'Brisbane' },
-        explanation: 'Canberra is the capital city of Australia.',
-        tags: ['capitals', 'australia']
-      },
-      ko: {
-        question: '호주의 수도는 어디입니까?',
-        options: { a: '캔버라', b: '시드니', c: '멜버른', d: '브리즈번' },
-        explanation: '캔버라는 호주의 수도입니다.',
-        tags: ['수도', '호주']
-      }
-    },
-    isActive: true
-  },
-
-  // Arts & Literature
-  {
-    category: 'arts',
-    difficulty: 'easy',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'Who painted the Mona Lisa?',
-        options: { a: 'Leonardo da Vinci', b: 'Michelangelo', c: 'Pablo Picasso', d: 'Vincent van Gogh' },
-        explanation: 'Leonardo da Vinci painted the Mona Lisa around 1503-1519.',
-        tags: ['renaissance', 'painting']
-      },
-      ko: {
-        question: '모나리자를 그린 화가는 누구입니까?',
-        options: { a: '레오나르도 다 빈치', b: '미켈란젤로', c: '파블로 피카소', d: '빈센트 반 고흐' },
-        explanation: '레오나르도 다 빈치가 1503-1519년경에 모나리자를 그렸습니다.',
-        tags: ['르네상스', '회화']
-      }
-    },
-    isActive: true
-  },
-  {
-    category: 'arts',
-    difficulty: 'easy',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'Who wrote Romeo and Juliet?',
-        options: { a: 'William Shakespeare', b: 'Charles Dickens', c: 'Mark Twain', d: 'Oscar Wilde' },
-        explanation: 'William Shakespeare wrote Romeo and Juliet around 1595.',
-        tags: ['literature', 'shakespeare']
-      },
-      ko: {
-        question: '로미오와 줄리엣을 쓴 작가는 누구입니까?',
-        options: { a: '윌리엄 셰익스피어', b: '찰스 디킨스', c: '마크 트웨인', d: '오스카 와일드' },
-        explanation: '윌리엄 셰익스피어가 1595년경에 로미오와 줄리엣을 썼습니다.',
-        tags: ['문학', '셰익스피어']
-      }
-    },
-    isActive: true
-  },
-
-  // Sports & Entertainment
-  {
-    category: 'sports',
-    difficulty: 'easy',
-    correctAnswer: 'a',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'How often are the Summer Olympic Games held?',
-        options: { a: 'Every 4 years', b: 'Every 2 years', c: 'Every 5 years', d: 'Every 3 years' },
-        explanation: 'The Summer Olympics are held every four years.',
-        tags: ['olympics', 'international']
-      },
-      ko: {
-        question: '하계 올림픽은 몇 년마다 열립니까?',
-        options: { a: '4년마다', b: '2년마다', c: '5년마다', d: '3년마다' },
-        explanation: '하계 올림픽은 4년마다 열립니다.',
-        tags: ['올림픽', '국제']
-      }
-    },
-    isActive: true
-  },
-  
-  // Technology & Modern Life
-  {
-    category: 'technology',
-    difficulty: 'easy',
-    correctAnswer: 'b',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What does WWW stand for?',
-        options: { a: 'World Wide Web', b: 'World Wide Web', c: 'Web Wide World', d: 'Wide World Web' },
-        explanation: 'WWW stands for World Wide Web, invented by Tim Berners-Lee.',
-        tags: ['internet', 'technology']
-      },
-      ko: {
-        question: 'WWW는 무엇의 약자입니까?',
-        options: { a: '월드 와이드 웹', b: '월드 와이드 웹', c: '웹 와이드 월드', d: '와이드 월드 웹' },
-        explanation: 'WWW는 팀 버너스리가 발명한 월드 와이드 웹의 약자입니다.',
-        tags: ['인터넷', '기술']
-      }
-    },
-    isActive: true
-  },
-  
-  // Mathematics
-  {
-    category: 'math',
-    difficulty: 'easy',
-    correctAnswer: 'c',
-    defaultLanguage: 'en',
-    availableLanguages: ['en', 'ko'],
-    translations: {
-      en: {
-        question: 'What is the value of π (pi) to two decimal places?',
-        options: { a: '3.12', b: '3.15', c: '3.14', d: '3.16' },
-        explanation: 'Pi (π) is approximately 3.14159, so 3.14 to two decimal places.',
-        tags: ['mathematics', 'geometry']
-      },
-      ko: {
-        question: 'π(파이)의 값을 소수점 둘째 자리까지 나타내면?',
-        options: { a: '3.12', b: '3.15', c: '3.14', d: '3.16' },
-        explanation: '파이(π)는 약 3.14159이므로 소수점 둘째 자리까지는 3.14입니다.',
-        tags: ['수학', '기하학']
-      }
-    },
-    isActive: true
-  }
-];
+interface ExtendedQuestion extends GeneralKnowledgeQuestion {
+  id: string;
+}
 
 export default function QuestionsAdminPage() {
   const { user } = useAuth();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [stats, setStats] = useState<any>(null);
+  const [questions, setQuestions] = useState<ExtendedQuestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [activeTab, setActiveTab] = useState<'upload' | 'manage' | 'add'>('upload');
+  const [selectedQuestions, setSelectedQuestions] = useState<Set<string>>(new Set());
+  const [editingQuestion, setEditingQuestion] = useState<ExtendedQuestion | null>(null);
+  const [filters, setFilters] = useState({
+    category: '',
+    difficulty: '',
+  });
+
+  // New question form state
   const [newQuestion, setNewQuestion] = useState({
     category: 'science',
     difficulty: 'easy' as const,
@@ -376,6 +46,7 @@ export default function QuestionsAdminPage() {
 
   useEffect(() => {
     loadStats();
+    loadQuestions();
   }, []);
 
   const loadStats = async () => {
@@ -385,6 +56,84 @@ export default function QuestionsAdminPage() {
     } catch (error) {
       console.error('Error loading stats:', error);
     }
+  };
+
+  const loadQuestions = async () => {
+    try {
+      setLoading(true);
+      const { questions: loadedQuestions } = await getAllGeneralKnowledgeQuestions(100, null, filters.category, filters.difficulty);
+      setQuestions(loadedQuestions);
+    } catch (error) {
+      console.error('Error loading questions:', error);
+      setMessage('❌ Error loading questions');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // File upload handler for JSON files
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setLoading(true);
+    setMessage('📤 Processing file upload...');
+
+    try {
+      const text = await file.text();
+      const questionsData = JSON.parse(text);
+
+      if (!Array.isArray(questionsData)) {
+        throw new Error('File must contain an array of questions');
+      }
+
+      setMessage(`📊 Loaded ${questionsData.length} questions from file, uploading to database...`);
+
+      const result = await batchUploadMultilingualQuestions(questionsData);
+      setMessage(`✅ Upload complete: ${result.message}`);
+
+      loadStats();
+      loadQuestions();
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+      setMessage(`❌ File upload error: ${errorMsg}`);
+    } finally {
+      setLoading(false);
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  // Predefined file upload options
+  const handlePredefinedUpload = async (fileName: string) => {
+    setLoading(true);
+    setMessage(`🚀 Loading ${fileName}...`);
+
+    try {
+      const response = await fetch(`/${fileName}`);
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${fileName}: ${response.status} ${response.statusText}`);
+      }
+
+      const questions = await response.json();
+
+      console.log(`📊 Loaded ${questions.length} questions from ${fileName}`);
+      setMessage(`📊 Loaded ${questions.length} questions, uploading to database...`);
+
+      const result = await batchUploadMultilingualQuestions(questions as any);
+      setMessage(`✅ Success: ${result.message}`);
+
+      loadStats();
+      loadQuestions();
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+      setMessage(`❌ Error uploading ${fileName}: ${errorMsg}`);
+    }
+
+    setLoading(false);
   };
 
   const handleAddQuestion = async (e: React.FormEvent) => {
@@ -402,14 +151,14 @@ export default function QuestionsAdminPage() {
             question: newQuestion.question,
             options: newQuestion.options,
             explanation: newQuestion.explanation,
-            tags: newQuestion.tags.split(',').map(tag => tag.trim())
+            tags: newQuestion.tags.split(',').map(tag => tag.trim()).filter(Boolean)
           }
         },
         isActive: newQuestion.isActive
       };
-      
+
       const result = await addGeneralKnowledgeQuestion(questionData);
-      
+
       if (result.success) {
         setMessage(`✅ Question added successfully! ID: ${result.id}`);
         setNewQuestion({
@@ -423,6 +172,7 @@ export default function QuestionsAdminPage() {
           isActive: true
         });
         loadStats();
+        loadQuestions();
       } else {
         setMessage(`❌ Error: ${result.message}`);
       }
@@ -432,26 +182,77 @@ export default function QuestionsAdminPage() {
     setLoading(false);
   };
 
-  const handleBatchUpload = async () => {
+  const handleDeleteSelected = async () => {
+    if (selectedQuestions.size === 0) return;
+
+    if (!confirm(`Are you sure you want to delete ${selectedQuestions.size} selected questions?`)) {
+      return;
+    }
+
     setLoading(true);
     try {
-      const result = await batchUploadMultilingualQuestions(sampleQuestions);
-      setMessage(`📦 Batch upload: ${result.message}`);
+      const result = await bulkDeleteGeneralKnowledgeQuestions(Array.from(selectedQuestions));
+      setMessage(`🗑️ ${result.message}`);
+      setSelectedQuestions(new Set());
       loadStats();
+      loadQuestions();
     } catch (error) {
-      setMessage(`❌ Batch upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      setMessage(`❌ Error deleting questions: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
-  // Simple admin check - temporarily allow any logged-in user
+  const handleEditQuestion = (question: ExtendedQuestion) => {
+    setEditingQuestion(question);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingQuestion) return;
+
+    setLoading(true);
+    try {
+      const result = await updateGeneralKnowledgeQuestion(editingQuestion.id, editingQuestion);
+      if (result.success) {
+        setMessage(`✅ Question updated successfully!`);
+        setEditingQuestion(null);
+        loadQuestions();
+      } else {
+        setMessage(`❌ Error updating question: ${result.message}`);
+      }
+    } catch (error) {
+      setMessage(`❌ Error updating question: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleQuestionSelection = (questionId: string) => {
+    const newSelected = new Set(selectedQuestions);
+    if (newSelected.has(questionId)) {
+      newSelected.delete(questionId);
+    } else {
+      newSelected.add(questionId);
+    }
+    setSelectedQuestions(newSelected);
+  };
+
+  const selectAllQuestions = () => {
+    if (selectedQuestions.size === questions.length) {
+      setSelectedQuestions(new Set());
+    } else {
+      setSelectedQuestions(new Set(questions.map(q => q.id)));
+    }
+  };
+
+  // Simple admin check
   if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 flex items-center justify-center p-8">
         <div className="text-center p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
           <h1 className="text-2xl font-bold text-white mb-4">Sign In Required</h1>
           <p className="text-white/90">Please sign in to access the admin panel.</p>
-          <a 
+          <a
             href="../auth"
             className="mt-4 inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
           >
@@ -464,10 +265,10 @@ export default function QuestionsAdminPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-purple-600 p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-8">General Knowledge Questions Admin</h1>
-        
-        {/* Statistics */}
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold text-white mb-8">Question Database Management</h1>
+
+        {/* Statistics Dashboard */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
@@ -480,11 +281,11 @@ export default function QuestionsAdminPage() {
             </div>
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white">Categories</h3>
-              <p className="text-3xl font-bold text-blue-300">{Object.keys(stats.byCategory).length}</p>
+              <p className="text-3xl font-bold text-blue-300">{Object.keys(stats.byCategory || {}).length}</p>
             </div>
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white">Ready for 500+</h3>
-              <p className="text-3xl font-bold text-yellow-300">🎯</p>
+              <h3 className="text-lg font-semibold text-white">Selected</h3>
+              <p className="text-3xl font-bold text-yellow-300">{selectedQuestions.size}</p>
             </div>
           </div>
         )}
@@ -496,27 +297,188 @@ export default function QuestionsAdminPage() {
           </div>
         )}
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Batch Upload */}
-          <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-white mb-4">Quick Setup</h2>
-            <p className="text-white/90 mb-4">Upload 15 sample multilingual questions to get started:</p>
+        {/* Tab Navigation */}
+        <div className="flex space-x-1 mb-6">
+          {[
+            { key: 'upload', label: '📤 Upload Questions' },
+            { key: 'manage', label: '🗂️ Manage Questions' },
+            { key: 'add', label: '➕ Add Question' }
+          ].map((tab) => (
             <button
-              onClick={handleBatchUpload}
-              disabled={loading}
-              className="w-full px-6 py-3 bg-green-500/80 hover:bg-green-600 disabled:bg-green-500/40 text-white rounded-lg transition-all duration-200"
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key as any)}
+              className={`px-6 py-3 rounded-lg transition-all ${
+                activeTab === tab.key
+                  ? 'bg-white/30 text-white font-semibold'
+                  : 'bg-white/10 text-white/70 hover:bg-white/20'
+              }`}
             >
-              {loading ? 'Uploading...' : '📦 Upload Sample Questions'}
+              {tab.label}
             </button>
-            <div className="mt-4 text-xs text-white/70">
-              Languages supported: English, Korean, Japanese
+          ))}
+        </div>
+
+        {/* Upload Tab */}
+        {activeTab === 'upload' && (
+          <div className="space-y-6">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-white mb-4">📤 Upload Question Files</h2>
+
+              {/* Predefined Files */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <button
+                  onClick={() => handlePredefinedUpload('100-questions.json')}
+                  disabled={loading}
+                  className="p-4 bg-green-500/80 hover:bg-green-600 disabled:bg-green-500/40 text-white rounded-lg transition-all"
+                >
+                  📊 Upload 100-Questions.json
+                  <div className="text-sm opacity-75">Complete General Knowledge Database</div>
+                </button>
+
+                <div className="p-4 bg-blue-500/80 text-white rounded-lg">
+                  📁 Custom File Upload
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".json"
+                    onChange={handleFileUpload}
+                    disabled={loading}
+                    className="mt-2 w-full text-sm text-white/90 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:bg-white/20 file:text-white"
+                  />
+                  <div className="text-sm opacity-75 mt-1">Upload any JSON question file</div>
+                </div>
+              </div>
+
+              <div className="text-sm text-white/70 bg-white/10 rounded p-3">
+                <strong>Supported formats:</strong> JSON files with question arrays containing category, difficulty, translations, etc.
+              </div>
             </div>
           </div>
+        )}
 
-          {/* Add Individual Question */}
+        {/* Manage Tab */}
+        {activeTab === 'manage' && (
+          <div className="space-y-6">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-white">🗂️ Question Management</h2>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={loadQuestions}
+                    disabled={loading}
+                    className="px-4 py-2 bg-blue-500/80 hover:bg-blue-600 text-white rounded transition-all"
+                  >
+                    🔄 Refresh
+                  </button>
+                  {selectedQuestions.size > 0 && (
+                    <button
+                      onClick={handleDeleteSelected}
+                      disabled={loading}
+                      className="px-4 py-2 bg-red-500/80 hover:bg-red-600 text-white rounded transition-all"
+                    >
+                      🗑️ Delete Selected ({selectedQuestions.size})
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Filters */}
+              <div className="flex space-x-4 mb-4">
+                <select
+                  value={filters.category}
+                  onChange={(e) => setFilters({ ...filters, category: e.target.value })}
+                  className="px-3 py-2 bg-white/20 border border-white/30 text-white rounded"
+                >
+                  <option value="">All Categories</option>
+                  <option value="science">Science</option>
+                  <option value="history">History</option>
+                  <option value="geography">Geography</option>
+                  <option value="arts">Arts</option>
+                  <option value="sports">Sports</option>
+                  <option value="math">Math</option>
+                  <option value="technology">Technology</option>
+                </select>
+
+                <select
+                  value={filters.difficulty}
+                  onChange={(e) => setFilters({ ...filters, difficulty: e.target.value })}
+                  className="px-3 py-2 bg-white/20 border border-white/30 text-white rounded"
+                >
+                  <option value="">All Difficulties</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+
+                <button
+                  onClick={loadQuestions}
+                  className="px-4 py-2 bg-purple-500/80 hover:bg-purple-600 text-white rounded transition-all"
+                >
+                  Apply Filters
+                </button>
+              </div>
+
+              {/* Select All Checkbox */}
+              <div className="mb-4">
+                <label className="flex items-center text-white cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selectedQuestions.size === questions.length && questions.length > 0}
+                    onChange={selectAllQuestions}
+                    className="mr-2"
+                  />
+                  Select All ({questions.length} questions)
+                </label>
+              </div>
+
+              {/* Questions List */}
+              <div className="max-h-96 overflow-y-auto space-y-2">
+                {questions.map((question) => (
+                  <div
+                    key={question.id}
+                    className="bg-white/10 rounded-lg p-4 flex items-center justify-between"
+                  >
+                    <div className="flex items-center space-x-4 flex-1">
+                      <input
+                        type="checkbox"
+                        checked={selectedQuestions.has(question.id)}
+                        onChange={() => toggleQuestionSelection(question.id)}
+                        className="shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-white font-medium truncate">
+                          {question.translations.en?.question || question.translations[question.defaultLanguage]?.question}
+                        </div>
+                        <div className="text-white/70 text-sm">
+                          {question.category} • {question.difficulty} • {question.availableLanguages.join(', ')}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => handleEditQuestion(question)}
+                        className="px-3 py-1 bg-blue-500/80 hover:bg-blue-600 text-white rounded text-sm transition-all"
+                      >
+                        ✏️ Edit
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {questions.length === 0 && !loading && (
+                <div className="text-center text-white/70 py-8">
+                  No questions found. Try adjusting your filters or upload some questions.
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Add Question Tab */}
+        {activeTab === 'add' && (
           <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-white mb-4">Add New Question</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">➕ Add New Question</h2>
             <form onSubmit={handleAddQuestion} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <select
@@ -529,8 +491,10 @@ export default function QuestionsAdminPage() {
                   <option value="geography">Geography</option>
                   <option value="arts">Arts</option>
                   <option value="sports">Sports</option>
+                  <option value="math">Math</option>
+                  <option value="technology">Technology</option>
                 </select>
-                
+
                 <select
                   value={newQuestion.difficulty}
                   onChange={(e) => setNewQuestion({ ...newQuestion, difficulty: e.target.value as any })}
@@ -541,7 +505,7 @@ export default function QuestionsAdminPage() {
                   <option value="hard">Hard</option>
                 </select>
               </div>
-              
+
               <input
                 type="text"
                 placeholder="Question text"
@@ -550,42 +514,24 @@ export default function QuestionsAdminPage() {
                 className="w-full px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
                 required
               />
-              
+
               <div className="grid grid-cols-2 gap-2">
-                <input
-                  type="text"
-                  placeholder="Option A"
-                  value={newQuestion.options.a}
-                  onChange={(e) => setNewQuestion({ ...newQuestion, options: { ...newQuestion.options, a: e.target.value } })}
-                  className="px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Option B"
-                  value={newQuestion.options.b}
-                  onChange={(e) => setNewQuestion({ ...newQuestion, options: { ...newQuestion.options, b: e.target.value } })}
-                  className="px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Option C"
-                  value={newQuestion.options.c}
-                  onChange={(e) => setNewQuestion({ ...newQuestion, options: { ...newQuestion.options, c: e.target.value } })}
-                  className="px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Option D"
-                  value={newQuestion.options.d}
-                  onChange={(e) => setNewQuestion({ ...newQuestion, options: { ...newQuestion.options, d: e.target.value } })}
-                  className="px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
-                  required
-                />
+                {['a', 'b', 'c', 'd'].map((option) => (
+                  <input
+                    key={option}
+                    type="text"
+                    placeholder={`Option ${option.toUpperCase()}`}
+                    value={newQuestion.options[option as keyof typeof newQuestion.options]}
+                    onChange={(e) => setNewQuestion({
+                      ...newQuestion,
+                      options: { ...newQuestion.options, [option]: e.target.value }
+                    })}
+                    className="px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
+                    required
+                  />
+                ))}
               </div>
-              
+
               <select
                 value={newQuestion.correctAnswer}
                 onChange={(e) => setNewQuestion({ ...newQuestion, correctAnswer: e.target.value as any })}
@@ -596,7 +542,7 @@ export default function QuestionsAdminPage() {
                 <option value="c">C is correct</option>
                 <option value="d">D is correct</option>
               </select>
-              
+
               <input
                 type="text"
                 placeholder="Explanation (optional)"
@@ -604,7 +550,7 @@ export default function QuestionsAdminPage() {
                 onChange={(e) => setNewQuestion({ ...newQuestion, explanation: e.target.value })}
                 className="w-full px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
               />
-              
+
               <input
                 type="text"
                 placeholder="Tags (comma-separated)"
@@ -612,7 +558,7 @@ export default function QuestionsAdminPage() {
                 onChange={(e) => setNewQuestion({ ...newQuestion, tags: e.target.value })}
                 className="w-full px-3 py-2 bg-white/20 border border-white/30 text-white placeholder-white/60 rounded-lg"
               />
-              
+
               <button
                 type="submit"
                 disabled={loading}
@@ -622,13 +568,92 @@ export default function QuestionsAdminPage() {
               </button>
             </form>
           </div>
-        </div>
+        )}
+
+        {/* Edit Question Modal */}
+        {editingQuestion && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-96 overflow-y-auto">
+              <h3 className="text-xl font-bold mb-4">Edit Question</h3>
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  value={editingQuestion.translations.en?.question || ''}
+                  onChange={(e) => setEditingQuestion({
+                    ...editingQuestion,
+                    translations: {
+                      ...editingQuestion.translations,
+                      en: {
+                        ...editingQuestion.translations.en!,
+                        question: e.target.value
+                      }
+                    }
+                  })}
+                  className="w-full px-3 py-2 border rounded"
+                  placeholder="Question text"
+                />
+
+                <div className="grid grid-cols-2 gap-2">
+                  {['a', 'b', 'c', 'd'].map((option) => (
+                    <input
+                      key={option}
+                      type="text"
+                      value={editingQuestion.translations.en?.options[option as keyof typeof editingQuestion.translations.en.options] || ''}
+                      onChange={(e) => setEditingQuestion({
+                        ...editingQuestion,
+                        translations: {
+                          ...editingQuestion.translations,
+                          en: {
+                            ...editingQuestion.translations.en!,
+                            options: {
+                              ...editingQuestion.translations.en!.options,
+                              [option]: e.target.value
+                            }
+                          }
+                        }
+                      })}
+                      className="px-3 py-2 border rounded"
+                      placeholder={`Option ${option.toUpperCase()}`}
+                    />
+                  ))}
+                </div>
+
+                <select
+                  value={editingQuestion.correctAnswer}
+                  onChange={(e) => setEditingQuestion({ ...editingQuestion, correctAnswer: e.target.value as any })}
+                  className="w-full px-3 py-2 border rounded"
+                >
+                  <option value="a">A is correct</option>
+                  <option value="b">B is correct</option>
+                  <option value="c">C is correct</option>
+                  <option value="d">D is correct</option>
+                </select>
+
+                <div className="flex justify-end space-x-2">
+                  <button
+                    onClick={() => setEditingQuestion(null)}
+                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSaveEdit}
+                    disabled={loading}
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
+                  >
+                    {loading ? 'Saving...' : 'Save'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Category Breakdown */}
-        {stats && Object.keys(stats.byCategory).length > 0 && (
+        {stats && Object.keys(stats.byCategory || {}).length > 0 && (
           <div className="mt-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-6">
             <h2 className="text-2xl font-bold text-white mb-4">Questions by Category</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {Object.entries(stats.byCategory).map(([category, count]) => (
                 <div key={category} className="bg-white/10 rounded-lg p-4">
                   <h3 className="text-white font-semibold capitalize">{category}</h3>

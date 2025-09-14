@@ -9,7 +9,7 @@ This is a multilingual personality testing platform built with Next.js 15, React
 ## Development Commands
 
 ### Core Development
-- `npm run dev` - Start Next.js development server (port 3004)
+- `npm run dev` - Start Next.js development server (configured for port 3004 in Playwright)
 - `npm run dev:clean` - Clean cache and start dev server
 - `npm run dev:stable` - Start ultra-stable development environment (batch script for Windows)
 - `npm run build` - Build production version (generates static export for Netlify)
@@ -134,13 +134,13 @@ public/
 3. Install function dependencies: `cd functions && npm install`
 4. Install Playwright browsers: `npm run test:install`
 5. Start development server: `npm run dev` or `npm run dev:stable` (for Windows stability)
-6. Access application at `http://localhost:3004`
+6. Access application at `http://localhost:3004` (configured in Playwright)
 
 ### Important Configuration Notes
 - **Static Export**: Project is configured for static export (`output: 'export'` in next.config.js)
 - **Windows Optimization**: Special webpack configuration for Windows file system compatibility
 - **Cache Management**: Aggressive cache busting with timestamp-based build IDs
-- **Port Configuration**: Development server runs on port 3004 (configurable in Playwright)
+- **Port Configuration**: Development server configured for port 3004 in Playwright config
 
 ### Testing Strategy
 - **Unit Testing**: Not currently implemented (focused on integration testing)
@@ -201,7 +201,7 @@ firebase functions:config:set \
 ### End-to-End Testing
 - **Playwright Configuration**: Tests run on multiple browsers (Chromium, Firefox, WebKit) and mobile viewports (Pixel 5, iPhone 12)
 - **Test Scenarios**: Complete user workflows from authentication to result viewing
-- **Base URL**: Tests run against `http://localhost:3004` with automatic dev server startup
+- **Base URL**: Tests configured for `http://localhost:3004` by default, but can be configured to run against deployed site (https://korean-mbti-platform.netlify.app)
 - **CI/CD**: Configured for continuous integration with retry logic (2 retries on CI)
 - **Test Commands**: Use `npm run test:e2e:ui` for interactive testing with Playwright UI
 
