@@ -1483,16 +1483,16 @@ export const getRandomGeneralKnowledgeQuestions = async (
       
       const testQuestion: TestQuestion = {
         id: doc.id,
-        text_key: `dynamic.${doc.id}.question.${language}`,
+        text_key: translation.question, // Use actual question text directly
         type: 'multiple_choice',
         options: [
-          { value: 'a', text_key: `dynamic.${doc.id}.option_a.${language}` },
-          { value: 'b', text_key: `dynamic.${doc.id}.option_b.${language}` },
-          { value: 'c', text_key: `dynamic.${doc.id}.option_c.${language}` },
-          { value: 'd', text_key: `dynamic.${doc.id}.option_d.${language}` }
+          { value: 'a', text_key: translation.options.a },
+          { value: 'b', text_key: translation.options.b },
+          { value: 'c', text_key: translation.options.c },
+          { value: 'd', text_key: translation.options.d }
         ]
       };
-      
+
       allQuestions.push(testQuestion);
     });
     
@@ -1790,13 +1790,13 @@ export const getRandomMathSpeedQuestions = async (
 
       const testQuestion: TestQuestion = {
         id: doc.id,
-        text_key: `dynamic.${doc.id}.question.${language}`,
+        text_key: translation.question, // Use actual question text directly
         type: 'multiple_choice',
         options: [
-          { value: 'a', text_key: `dynamic.${doc.id}.option_a.${language}` },
-          { value: 'b', text_key: `dynamic.${doc.id}.option_b.${language}` },
-          { value: 'c', text_key: `dynamic.${doc.id}.option_c.${language}` },
-          { value: 'd', text_key: `dynamic.${doc.id}.option_d.${language}` }
+          { value: 'a', text_key: translation.options.a },
+          { value: 'b', text_key: translation.options.b },
+          { value: 'c', text_key: translation.options.c },
+          { value: 'd', text_key: translation.options.d }
         ]
       };
 
@@ -1893,16 +1893,16 @@ export const getRandomMemoryPowerQuestions = async (
 
       const testQuestion: TestQuestion = {
         id: doc.id,
-        text_key: `dynamic.${doc.id}.question.${language}`,
+        text_key: translation.question, // Use actual question text directly
         type: 'multiple_choice',
         options: [
-          { value: 'a', text_key: `dynamic.${doc.id}.option_a.${language}` },
-          { value: 'b', text_key: `dynamic.${doc.id}.option_b.${language}` },
-          { value: 'c', text_key: `dynamic.${doc.id}.option_c.${language}` },
-          { value: 'd', text_key: `dynamic.${doc.id}.option_d.${language}` }
+          { value: 'a', text_key: translation.options.a },
+          { value: 'b', text_key: translation.options.b },
+          { value: 'c', text_key: translation.options.c },
+          { value: 'd', text_key: translation.options.d }
         ],
         memoryPhase: {
-          text_key: `dynamic.${doc.id}.memorization.${language}`,
+          text_key: translation.memorizationContent.join(', '), // Use actual memorization content
           duration: data.memorizationTime * 1000 // Convert seconds to milliseconds
         }
       };
