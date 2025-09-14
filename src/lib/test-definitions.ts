@@ -2707,7 +2707,7 @@ export const getMemoryPowerQuestions = async (language: string = 'en'): Promise<
   try {
     // Import the database function dynamically to avoid circular imports
     const { getRandomMemoryPowerQuestions } = await import('./firestore');
-    const memoryQuestions = await getRandomMemoryPowerQuestions(5, language);
+    const memoryQuestions = await getRandomMemoryPowerQuestions(10, language);
 
     // The function already returns TestQuestion format, so return directly
     return memoryQuestions;

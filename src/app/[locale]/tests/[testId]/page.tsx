@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMemoryPowerQuestions } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -398,7 +398,7 @@ export default function TestPage() {
             definition = getTestById(testId) || null;
             
             if (definition && testDefinition?.id !== definition.id) {
-                // If this is the general knowledge test, use dynamic random questions from database
+                // If this is a database-driven test, use dynamic random questions from database
                 if (definition.id === 'general-knowledge') {
                     const loadQuestionsAsync = async () => {
                         try {
@@ -418,11 +418,43 @@ export default function TestPage() {
                         }
                     };
                     loadQuestionsAsync();
+                } else if (definition.id === 'math-speed') {
+                    const loadQuestionsAsync = async () => {
+                        try {
+                            const dynamicQuestions = await getMathSpeedQuestions();
+                            const updatedDefinition = {
+                                ...definition!,
+                                id: definition!.id!,
+                                questions: dynamicQuestions
+                            };
+                            setTestDefinition(updatedDefinition);
+                        } catch (error) {
+                            console.error('Failed to fetch math speed questions from database, using fallback:', error);
+                            setTestDefinition(definition);
+                        }
+                    };
+                    loadQuestionsAsync();
+                } else if (definition.id === 'memory-power') {
+                    const loadQuestionsAsync = async () => {
+                        try {
+                            const dynamicQuestions = await getMemoryPowerQuestions(currentLanguage);
+                            const updatedDefinition = {
+                                ...definition!,
+                                id: definition!.id!,
+                                questions: dynamicQuestions
+                            };
+                            setTestDefinition(updatedDefinition);
+                        } catch (error) {
+                            console.error('Failed to fetch memory power questions from database, using fallback:', error);
+                            setTestDefinition(definition);
+                        }
+                    };
+                    loadQuestionsAsync();
                 } else {
                     setTestDefinition(definition);
                 }
             } else if (definition) {
-                // If using existing definition, also refresh questions for general knowledge
+                // If using existing definition, also refresh questions for database-driven tests
                 if (definition.id === 'general-knowledge') {
                     const loadQuestionsAsync = async () => {
                         try {
@@ -439,6 +471,38 @@ export default function TestPage() {
                             // Keep the existing definition
                             setTestDefinition(definition);
                             setGeneralKnowledgeCorrectAnswers([]);
+                        }
+                    };
+                    loadQuestionsAsync();
+                } else if (definition.id === 'math-speed') {
+                    const loadQuestionsAsync = async () => {
+                        try {
+                            const dynamicQuestions = await getMathSpeedQuestions();
+                            const updatedDefinition = {
+                                ...definition!,
+                                id: definition!.id!,
+                                questions: dynamicQuestions
+                            };
+                            setTestDefinition(updatedDefinition);
+                        } catch (error) {
+                            console.error('Failed to fetch math speed questions from database, using fallback:', error);
+                            setTestDefinition(definition);
+                        }
+                    };
+                    loadQuestionsAsync();
+                } else if (definition.id === 'memory-power') {
+                    const loadQuestionsAsync = async () => {
+                        try {
+                            const dynamicQuestions = await getMemoryPowerQuestions(currentLanguage);
+                            const updatedDefinition = {
+                                ...definition!,
+                                id: definition!.id!,
+                                questions: dynamicQuestions
+                            };
+                            setTestDefinition(updatedDefinition);
+                        } catch (error) {
+                            console.error('Failed to fetch memory power questions from database, using fallback:', error);
+                            setTestDefinition(definition);
                         }
                     };
                     loadQuestionsAsync();
