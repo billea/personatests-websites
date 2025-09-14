@@ -95,6 +95,11 @@ export default function TestPage() {
 
     // State for storing correct answers for general knowledge test scoring
     const [generalKnowledgeCorrectAnswers, setGeneralKnowledgeCorrectAnswers] = useState<Array<{id: string, correctAnswer: string}>>([]);
+
+    // Memory phase state for Memory Power tests
+    const [showMemoryPhase, setShowMemoryPhase] = useState(false);
+    const [memoryPhaseTimeLeft, setMemoryPhaseTimeLeft] = useState(0);
+    const [memoryContent, setMemoryContent] = useState<string[]>([]);
     
     // Update userName when user data becomes available
     useEffect(() => {
@@ -1121,6 +1126,38 @@ export default function TestPage() {
             router.push(`/${currentLanguage}/auth?returnUrl=${encodeURIComponent(`/${currentLanguage}/tests/${testId}`)}`);
         }
     }, [isProtectedTest, authLoading, user, isClient, currentLanguage, testId, router]);
+
+    // Memory phase handling for Memory Power tests
+    useEffect(() => {
+        if (testDefinition && testDefinition.id === 'memory-power') {
+            const currentQuestion = testDefinition.questions[currentQuestionIndex];
+
+            if (currentQuestion?.memoryPhase && !showMemoryPhase && !answers[currentQuestion.id]) {
+                // Initialize memory phase for this question
+                const content = currentQuestion.memoryPhase.content ||
+                                (currentQuestion.memoryPhase.text_key ?
+                                 currentQuestion.memoryPhase.text_key.split(', ') : []);
+
+                setMemoryContent(content);
+                setShowMemoryPhase(true);
+                setMemoryPhaseTimeLeft(Math.floor(currentQuestion.memoryPhase.duration / 1000));
+
+                // Start countdown timer
+                const timer = setInterval(() => {
+                    setMemoryPhaseTimeLeft((prev) => {
+                        if (prev <= 1) {
+                            clearInterval(timer);
+                            setShowMemoryPhase(false);
+                            return 0;
+                        }
+                        return prev - 1;
+                    });
+                }, 1000);
+
+                return () => clearInterval(timer);
+            }
+        }
+    }, [testDefinition, currentQuestionIndex, showMemoryPhase, answers]);
 
     const addEmailField = () => {
         setFeedbackEmails([...feedbackEmails, {name: '', email: ''}]);
@@ -2491,11 +2528,37 @@ export default function TestPage() {
                 {/* Only show test questions when test has started */}
                 {(testId === 'couple-compatibility' ? testStarted : true) && (!isInvitationAccess || (partnerVerified && nameConfirmed && testStarted)) && (
                     <div className="p-8 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg shadow-lg">
-                        <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
-                            {getDisplayedQuestionText()}
-                        </h2>
+                        {/* Memory Phase Display */}
+                        {showMemoryPhase && memoryContent.length > 0 ? (
+                            <div className="text-center">
+                                <h2 className="mb-6 text-2xl font-semibold tracking-tight text-white">
+                                    🧠 {currentLanguage === 'ko' ? '다음 항목들을 기억하세요:' : 'Memorize the following items:'}
+                                </h2>
+                                <div className="mb-8 p-6 bg-white/10 rounded-lg border-2 border-yellow-300/50">
+                                    <div className="grid grid-cols-2 gap-4 text-xl text-white font-medium">
+                                        {memoryContent.map((item, index) => (
+                                            <div key={index} className="p-3 bg-white/10 rounded-lg text-center">
+                                                {item}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-4xl font-bold text-yellow-300 mb-2">
+                                        {memoryPhaseTimeLeft}
+                                    </div>
+                                    <p className="text-white/80">
+                                        {currentLanguage === 'ko' ? '초 남음' : 'seconds remaining'}
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            <>
+                                <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
+                                    {getDisplayedQuestionText()}
+                                </h2>
 
-                    {currentQuestion.type === 'multiple_choice' && currentQuestion.options && (
+                                {currentQuestion.type === 'multiple_choice' && currentQuestion.options && !showMemoryPhase && (
                         <div className="flex flex-col gap-3">
                             {currentQuestion.options.map((option, index) => (
                                 <button
@@ -2536,7 +2599,9 @@ export default function TestPage() {
                             </div>
                         </div>
                     )}
-                    
+                                </>
+                        )}
+
                     {/* Test Controls */}
                     <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
                         <div className="flex gap-3">
@@ -2548,19 +2613,29 @@ export default function TestPage() {
                                         setCurrentQuestionIndex(prevIndex);
                                         saveTestProgress(prevIndex, answers);
                                     }}
-                                    className="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
+                                    disabled={showMemoryPhase}
+                                    className={`px-4 py-2 backdrop-blur-sm border border-white/30 text-white rounded-lg transition-all duration-300 ${
+                                        showMemoryPhase
+                                            ? 'bg-white/5 opacity-50 cursor-not-allowed'
+                                            : 'bg-white/10 hover:bg-white/20'
+                                    }`}
                                 >
                                     ← {t('ui.previous') || 'Previous'}
                                 </button>
                             )}
-                            
+
                             {/* Pause & Save Progress Button */}
                             <button
                                 onClick={() => {
                                     saveTestProgress(currentQuestionIndex, answers);
                                     router.push(`/${currentLanguage}/tests`);
                                 }}
-                                className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+                                disabled={showMemoryPhase}
+                                className={`px-6 py-2 font-semibold rounded-lg transition-all duration-300 ${
+                                    showMemoryPhase
+                                        ? 'bg-gray-500 text-white/50 cursor-not-allowed opacity-50'
+                                        : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transform hover:scale-105'
+                                }`}
                             >
                                 💾 {t('ui.saveExit') || 'Save & Exit'}
                             </button>

@@ -1986,7 +1986,7 @@ export const getRandomMemoryPowerQuestions = async (
           { value: 'd', text_key: translation.options.d }
         ],
         memoryPhase: {
-          text_key: translation.memorizationContent.join(', '), // Use actual memorization content
+          content: translation.memorizationContent, // Pass as array for proper display
           duration: data.memorizationTime * 1000 // Convert seconds to milliseconds
         }
       };

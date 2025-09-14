@@ -11,7 +11,8 @@ export interface TestQuestion {
     maxLabel_key: string;
   };
   memoryPhase?: {
-    text_key: string;
+    text_key?: string; // For backwards compatibility
+    content?: string[]; // For new array-based content
     duration: number; // milliseconds
   };
 }
