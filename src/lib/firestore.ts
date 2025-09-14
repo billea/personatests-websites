@@ -1936,21 +1936,21 @@ export const batchUploadMemoryPowerQuestions = async (questions: Omit<MemoryPowe
 
 // Get all general knowledge questions with pagination for admin management
 export const getAllGeneralKnowledgeQuestions = async (
-  limit: number = 50,
+  limitCount: number = 50,
   lastDoc?: any,
   category?: string,
   difficulty?: string
 ): Promise<{ questions: (GeneralKnowledgeQuestion & { id: string })[]; lastDoc: any }> => {
   try {
     const questionsRef = collection(firestore, 'generalKnowledgeQuestions');
-    let q = query(questionsRef, orderBy('createdAt', 'desc'), limit(limit));
+    let q = query(questionsRef, orderBy('createdAt', 'desc'), limit(limitCount));
 
     // Add filters if provided
     if (category) {
-      q = query(questionsRef, where('category', '==', category), orderBy('createdAt', 'desc'), limit(limit));
+      q = query(questionsRef, where('category', '==', category), orderBy('createdAt', 'desc'), limit(limitCount));
     }
     if (difficulty) {
-      q = query(questionsRef, where('difficulty', '==', difficulty), orderBy('createdAt', 'desc'), limit(limit));
+      q = query(questionsRef, where('difficulty', '==', difficulty), orderBy('createdAt', 'desc'), limit(limitCount));
     }
 
     // Add pagination if lastDoc is provided
@@ -1963,8 +1963,8 @@ export const getAllGeneralKnowledgeQuestions = async (
 
     snapshot.forEach((doc) => {
       questions.push({
-        id: doc.id,
-        ...doc.data() as GeneralKnowledgeQuestion
+        ...doc.data() as GeneralKnowledgeQuestion,
+        id: doc.id
       });
     });
 
