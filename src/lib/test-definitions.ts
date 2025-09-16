@@ -2709,30 +2709,77 @@ export const getMathSpeedQuestionsWithAnswers = async (): Promise<{
   correctAnswers: { [questionId: string]: string }
 }> => {
   try {
-    // Import the database function dynamically to avoid circular imports
-    const { getRandomMathSpeedQuestions } = await import('./firestore');
-    const mathQuestions = await getRandomMathSpeedQuestions(10, 'en');
+    // Import the database function and types dynamically to avoid circular imports
+    const { firestore } = await import('./firebase');
+    const { collection, getDocs, where, query } = await import('firebase/firestore');
 
-    // Extract correct answers from the questions we just loaded
+    console.log('🔍 Loading Math Speed questions directly with correct answers...');
+
+    // Get questions directly from database to preserve correct answers
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    const q = query(
+      questionsRef,
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', 'en')
+    );
+
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      console.warn('⚠️ No math speed questions found in database, falling back...');
+      throw new Error('No questions found in database');
+    }
+
+    const questions: TestQuestion[] = [];
     const correctAnswers: { [questionId: string]: string } = {};
-    mathQuestions.forEach(question => {
-      // Get the correct answer from the question data
-      const questionData = question as any; // Cast to access additional properties
-      if (questionData.correctAnswer) {
-        correctAnswers[question.id] = questionData.correctAnswer;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      const translation = data.translations['en'] || data.translations[data.defaultLanguage];
+
+      if (!translation) {
+        return; // Skip this question
       }
+
+      // Create TestQuestion
+      const testQuestion: TestQuestion = {
+        id: doc.id,
+        text_key: translation.question,
+        type: 'multiple_choice',
+        options: [
+          { value: 'a', text_key: translation.options.a },
+          { value: 'b', text_key: translation.options.b },
+          { value: 'c', text_key: translation.options.c },
+          { value: 'd', text_key: translation.options.d }
+        ]
+      };
+
+      // Extract correct answer from original database data
+      correctAnswers[doc.id] = data.correctAnswer;
+
+      questions.push(testQuestion);
+    });
+
+    // Randomly select 10 questions
+    const shuffled = questions.sort(() => 0.5 - Math.random());
+    const selectedQuestions = shuffled.slice(0, 10);
+
+    // Filter correct answers to only include selected questions
+    const selectedCorrectAnswers: { [questionId: string]: string } = {};
+    selectedQuestions.forEach(q => {
+      selectedCorrectAnswers[q.id] = correctAnswers[q.id];
     });
 
     console.log('🔍 Synchronized questions and answers:', {
-      questionCount: mathQuestions.length,
-      answerCount: Object.keys(correctAnswers).length,
-      questionIds: mathQuestions.map(q => q.id),
-      correctAnswers
+      questionCount: selectedQuestions.length,
+      answerCount: Object.keys(selectedCorrectAnswers).length,
+      questionIds: selectedQuestions.map(q => q.id),
+      correctAnswers: selectedCorrectAnswers
     });
 
     return {
-      questions: mathQuestions,
-      correctAnswers
+      questions: selectedQuestions,
+      correctAnswers: selectedCorrectAnswers
     };
   } catch (error) {
     console.error('❌ Error getting math speed questions from database:', error);
