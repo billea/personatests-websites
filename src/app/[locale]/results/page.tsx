@@ -1261,7 +1261,9 @@ export default function ResultsPage() {
                                                                 {/* Multiple Choice Options */}
                                                                 {item.options && Object.keys(item.options).length > 0 && (
                                                                     <div className="grid grid-cols-1 gap-1 mt-2">
+                                                                        {console.log('🔍 RESULTS - Options for question:', item.questionId, 'options:', item.options)}
                                                                         {Object.entries(item.options).map(([optionKey, optionValue]) => {
+                                                                            console.log('🔍 RESULTS - Option entry:', optionKey, '=', optionValue, 'type:', typeof optionValue);
                                                                             const isUserAnswer = item.userAnswer === optionKey;
                                                                             const isCorrectAnswer = item.correctAnswer === optionKey;
 

@@ -3454,26 +3454,34 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
         // Convert options array to object format for display
         let optionsObject: { [key: string]: string } = {};
         if (questionData?.options) {
+          console.log('🔍 MATH SPEED - Raw options:', questionData.options);
+          console.log('🔍 MATH SPEED - Is array?', Array.isArray(questionData.options));
+
           if (Array.isArray(questionData.options)) {
             // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
             console.log('🔍 MATH SPEED - Processing array format options');
             questionData.options.forEach((option, index) => {
-              console.log('🔍 MATH SPEED - Option', index, ':', option);
-              if (option.value) {
+              console.log('🔍 MATH SPEED - Option', index, ':', option, 'type:', typeof option);
+              if (option && typeof option === 'object' && option.value) {
                 // For database questions, text_key contains the actual text, not a translation key
                 const optionText = option.text_key || String(option);
                 optionsObject[option.value] = optionText;
                 console.log('🔍 MATH SPEED - Added option:', option.value, '=', optionText);
+              } else {
+                console.log('🔍 MATH SPEED - Skipping invalid option:', option);
               }
             });
           } else {
-            // Already in object format
+            // Already in object format - but check if it's actually an options array incorrectly assigned
             console.log('🔍 MATH SPEED - Processing object format options');
-            // Handle case where options might be objects themselves
+            console.log('🔍 MATH SPEED - Object keys:', Object.keys(questionData.options));
             Object.entries(questionData.options).forEach(([key, value]) => {
+              console.log('🔍 MATH SPEED - Object entry:', key, '=', value, 'type:', typeof value);
               optionsObject[key] = typeof value === 'object' ? JSON.stringify(value) : String(value);
             });
           }
+        } else {
+          console.log('🔍 MATH SPEED - No options found for question:', id);
         }
 
         console.log('🔍 MATH SPEED - Final optionsObject:', optionsObject);
