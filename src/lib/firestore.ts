@@ -148,6 +148,79 @@ export const saveTestResult = async (
 };
 
 /**
+ * Transfer anonymous test results from localStorage to authenticated user's account
+ * @param userId - The authenticated user's ID
+ * @param testType - The type of test to preserve (math-speed, general-knowledge, memory-power)
+ * @returns Promise<boolean> - Success status
+ */
+export const transferAnonymousResults = async (
+  userId: string,
+  testType: string
+): Promise<boolean> => {
+  try {
+    console.log('🔄 Transferring anonymous results for test type:', testType);
+
+    // Find the most recent anonymous result for this test type
+    let mostRecentResult = null;
+    let mostRecentTimestamp = 0;
+    let resultKey = '';
+
+    // Scan localStorage for test results
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key?.startsWith('test_result_')) {
+        try {
+          const storedResult = localStorage.getItem(key);
+          if (storedResult) {
+            const result = JSON.parse(storedResult);
+
+            // Check if this is the test type we're looking for
+            if (result.testId === testType && result.timestamp > mostRecentTimestamp) {
+              mostRecentResult = result;
+              mostRecentTimestamp = result.timestamp;
+              resultKey = key;
+            }
+          }
+        } catch (error) {
+          console.error('Error parsing localStorage result:', error);
+        }
+      }
+    }
+
+    if (!mostRecentResult) {
+      console.log('❌ No anonymous results found for test type:', testType);
+      return false;
+    }
+
+    console.log('✅ Found anonymous result to transfer:', mostRecentResult);
+
+    // Save the result to the authenticated user's account
+    const firestoreId = await saveTestResult(
+      userId,
+      testType,
+      mostRecentResult,
+      false // not public
+    );
+
+    console.log('✅ Successfully transferred result to authenticated account with ID:', firestoreId);
+
+    // Update localStorage with the new Firestore ID for consistency
+    localStorage.setItem(`test_result_${firestoreId}`, JSON.stringify(mostRecentResult));
+
+    // Remove the old anonymous result from localStorage
+    localStorage.removeItem(resultKey);
+
+    // Clean up the preservation flag
+    localStorage.removeItem('preserve_test_result');
+
+    return true;
+  } catch (error) {
+    console.error('❌ Error transferring anonymous results:', error);
+    return false;
+  }
+};
+
+/**
  * Gets all test results for a specific user
  * @param userId - The user's UID
  * @returns Array of test results

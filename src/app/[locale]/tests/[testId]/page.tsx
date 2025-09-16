@@ -6,7 +6,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMathSpeedCorrectAnswers, getMathSpeedQuestionsWithAnswers, getMemoryPowerQuestions, getMemoryPowerQuestionsWithAnswers } from "@/lib/test-definitions";
-import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
+import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults, transferAnonymousResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
 import AnonymousCodeGenerator from "@/components/AnonymousCodeGenerator";
@@ -123,6 +123,50 @@ export default function TestPage() {
             console.log('🔄 Auto-populated user name:', autoName);
         }
     }, [user, userName]);
+
+    // Handle result preservation after authentication
+    useEffect(() => {
+        const handleResultPreservation = async () => {
+            // Check if this is a return from auth with preserve flag
+            const shouldPreserve = searchParams.get('preserve') === 'true';
+
+            if (shouldPreserve && user && !authLoading) {
+                console.log('🔄 User authenticated, checking for results to preserve');
+
+                try {
+                    // Get the preservation info from localStorage
+                    const preserveInfo = localStorage.getItem('preserve_test_result');
+                    if (preserveInfo) {
+                        const { testType, preserveResult } = JSON.parse(preserveInfo);
+
+                        if (preserveResult && testType === testId) {
+                            console.log('🔄 Transferring anonymous results for:', testType);
+
+                            const success = await transferAnonymousResults(user.uid, testType);
+
+                            if (success) {
+                                console.log('✅ Successfully transferred results, redirecting to results page');
+                                // Redirect to results page to show the transferred result
+                                router.push(`/${currentLanguage}/results`);
+                                return;
+                            } else {
+                                console.log('❌ No results to transfer, staying on test page');
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('❌ Error during result preservation:', error);
+                }
+
+                // Clean up the URL parameter
+                const url = new URL(window.location.href);
+                url.searchParams.delete('preserve');
+                window.history.replaceState({}, '', url.toString());
+            }
+        };
+
+        handleResultPreservation();
+    }, [user, authLoading, searchParams, testId, currentLanguage, router]);
 
     // Partner verification function - verify by email address
     const verifyPartner = () => {

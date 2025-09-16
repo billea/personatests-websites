@@ -25,7 +25,16 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
   // Handle login/signup redirect for knowledge tests
   const handleLoginSignup = () => {
     const currentPath = window.location.pathname;
-    const returnUrl = `${currentPath}?access=detailed`;
+
+    // Store test result information for preservation after auth
+    const testResultInfo = {
+      testType,
+      preserveResult: true,
+      timestamp: Date.now()
+    };
+    localStorage.setItem('preserve_test_result', JSON.stringify(testResultInfo));
+
+    const returnUrl = `${currentPath}?access=detailed&preserve=true`;
     router.push(`/en/auth?returnUrl=${encodeURIComponent(returnUrl)}&context=detailed-results`);
   };
 
