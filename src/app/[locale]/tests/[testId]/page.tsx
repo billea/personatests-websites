@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMathSpeedCorrectAnswers, getMemoryPowerQuestions, getMemoryPowerQuestionsWithAnswers } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMathSpeedCorrectAnswers, getMathSpeedQuestionsWithAnswers, getMemoryPowerQuestions, getMemoryPowerQuestionsWithAnswers } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -440,10 +440,7 @@ export default function TestPage() {
                 } else if (definition.id === 'math-speed') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const [dynamicQuestions, correctAnswers] = await Promise.all([
-                                getMathSpeedQuestions(),
-                                getMathSpeedCorrectAnswers()
-                            ]);
+                            const { questions: dynamicQuestions, correctAnswers } = await getMathSpeedQuestionsWithAnswers();
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!,
@@ -451,7 +448,11 @@ export default function TestPage() {
                             };
                             setTestDefinition(updatedDefinition);
                             setMathSpeedCorrectAnswers(correctAnswers);
-                            console.log('🔍 Loaded Math Speed correct answers:', correctAnswers);
+                            console.log('🔍 Loaded Math Speed synchronized questions and answers:', {
+                                questionCount: dynamicQuestions.length,
+                                answerCount: Object.keys(correctAnswers).length,
+                                correctAnswers
+                            });
                         } catch (error) {
                             console.error('Failed to fetch math speed questions from database, using fallback:', error);
                             setTestDefinition(definition);
@@ -504,10 +505,7 @@ export default function TestPage() {
                 } else if (definition.id === 'math-speed') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const [dynamicQuestions, correctAnswers] = await Promise.all([
-                                getMathSpeedQuestions(),
-                                getMathSpeedCorrectAnswers()
-                            ]);
+                            const { questions: dynamicQuestions, correctAnswers } = await getMathSpeedQuestionsWithAnswers();
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!,
@@ -515,7 +513,11 @@ export default function TestPage() {
                             };
                             setTestDefinition(updatedDefinition);
                             setMathSpeedCorrectAnswers(correctAnswers);
-                            console.log('🔍 Loaded Math Speed correct answers:', correctAnswers);
+                            console.log('🔍 Loaded Math Speed synchronized questions and answers:', {
+                                questionCount: dynamicQuestions.length,
+                                answerCount: Object.keys(correctAnswers).length,
+                                correctAnswers
+                            });
                         } catch (error) {
                             console.error('Failed to fetch math speed questions from database, using fallback:', error);
                             setTestDefinition(definition);

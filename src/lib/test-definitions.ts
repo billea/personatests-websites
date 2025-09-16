@@ -2703,6 +2703,51 @@ export const getMathSpeedQuestions = async (): Promise<TestQuestion[]> => {
   }
 };
 
+// Updated function to get questions and their correct answers together
+export const getMathSpeedQuestionsWithAnswers = async (): Promise<{
+  questions: TestQuestion[],
+  correctAnswers: { [questionId: string]: string }
+}> => {
+  try {
+    // Import the database function dynamically to avoid circular imports
+    const { getRandomMathSpeedQuestions } = await import('./firestore');
+    const mathQuestions = await getRandomMathSpeedQuestions(10, 'en');
+
+    // Extract correct answers from the questions we just loaded
+    const correctAnswers: { [questionId: string]: string } = {};
+    mathQuestions.forEach(question => {
+      // Get the correct answer from the question data
+      const questionData = question as any; // Cast to access additional properties
+      if (questionData.correctAnswer) {
+        correctAnswers[question.id] = questionData.correctAnswer;
+      }
+    });
+
+    console.log('🔍 Synchronized questions and answers:', {
+      questionCount: mathQuestions.length,
+      answerCount: Object.keys(correctAnswers).length,
+      questionIds: mathQuestions.map(q => q.id),
+      correctAnswers
+    });
+
+    return {
+      questions: mathQuestions,
+      correctAnswers
+    };
+  } catch (error) {
+    console.error('❌ Error getting math speed questions from database:', error);
+    // Fallback to static questions and answers
+    const staticCorrectAnswers = {
+      'math_1': '17', 'math_2': '72', 'math_3': '13', 'math_4': '154', 'math_5': '8',
+      'math_6': '144', 'math_7': '72', 'math_8': '15', 'math_9': '36', 'math_10': '125'
+    };
+    return {
+      questions: mathSpeedQuestions,
+      correctAnswers: staticCorrectAnswers
+    };
+  }
+};
+
 // Function to get correct answers for database-driven Math Speed questions
 export const getMathSpeedCorrectAnswers = async (): Promise<{ [questionId: string]: string }> => {
   try {
@@ -3238,7 +3283,8 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
   }
 
   let score = 0;
-  const total = Object.keys(correctAnswers).length;
+  // Use the number of questions the user actually answered, not the total in database
+  const total = Object.keys(answers).length;
 
   console.log('🔍 QUESTION ID DEBUG: Looking for answers with these IDs:', Object.keys(correctAnswers));
   console.log('🔍 ACTUAL ANSWER IDs received:', Object.keys(answers));
