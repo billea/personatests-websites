@@ -940,7 +940,9 @@ export default function TestPage() {
                 finalAnswers,
                 answerKeys: Object.keys(finalAnswers),
                 answerValues: Object.values(finalAnswers),
-                scoringFunction: typeof testDefinition.scoring
+                scoringFunction: typeof testDefinition.scoring,
+                isMemoryPower: testId === 'memory-power',
+                memoryPowerCorrectAnswers: testId === 'memory-power' ? memoryPowerCorrectAnswers : 'N/A'
             });
 
             const testResult = testDefinition.scoring(
@@ -965,7 +967,15 @@ export default function TestPage() {
                 responseTimes: testDefinition.id === 'math-speed' ? responseTimes : undefined,
                 completedAt: new Date().toISOString()
             };
-            
+
+            console.log('🔍 SAVING DEBUG - Local result to save:', {
+                testId,
+                hasResult: !!testResult,
+                resultType: typeof testResult,
+                resultKeys: testResult ? Object.keys(testResult) : 'none',
+                localResult
+            });
+
             let resultId = 'local_' + Date.now();
             
             // Always save to localStorage as fallback (for static deployment)

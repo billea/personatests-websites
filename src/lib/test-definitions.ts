@@ -3294,13 +3294,18 @@ const generalKnowledgeScoring = (
           if (Array.isArray(questionData.options)) {
             // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
             questionData.options.forEach(option => {
-              if (option.value && option.text_key) {
-                optionsObject[option.value] = option.text_key;
+              if (option.value) {
+                // For database questions, text_key contains the actual text, not a translation key
+                const optionText = option.text_key || String(option);
+                optionsObject[option.value] = optionText;
               }
             });
           } else {
             // Already in object format
-            optionsObject = questionData.options;
+            // Handle case where options might be objects themselves
+            Object.entries(questionData.options).forEach(([key, value]) => {
+              optionsObject[key] = typeof value === 'object' ? JSON.stringify(value) : String(value);
+            });
           }
         }
 
@@ -3438,22 +3443,40 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
         // Find the question data to include text and options
         const questionData = questions?.find(q => q.id === id);
         console.log('🔍 MATH SPEED - Processing question:', id, 'questionData:', questionData);
+        console.log('🔍 MATH SPEED - Options structure:', {
+          hasOptions: !!questionData?.options,
+          optionsType: typeof questionData?.options,
+          isArray: Array.isArray(questionData?.options),
+          optionsRaw: questionData?.options,
+          optionsKeys: questionData?.options ? Object.keys(questionData.options) : 'none'
+        });
 
         // Convert options array to object format for display
         let optionsObject: { [key: string]: string } = {};
         if (questionData?.options) {
           if (Array.isArray(questionData.options)) {
             // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
-            questionData.options.forEach(option => {
-              if (option.value && option.text_key) {
-                optionsObject[option.value] = option.text_key;
+            console.log('🔍 MATH SPEED - Processing array format options');
+            questionData.options.forEach((option, index) => {
+              console.log('🔍 MATH SPEED - Option', index, ':', option);
+              if (option.value) {
+                // For database questions, text_key contains the actual text, not a translation key
+                const optionText = option.text_key || String(option);
+                optionsObject[option.value] = optionText;
+                console.log('🔍 MATH SPEED - Added option:', option.value, '=', optionText);
               }
             });
           } else {
             // Already in object format
-            optionsObject = questionData.options;
+            console.log('🔍 MATH SPEED - Processing object format options');
+            // Handle case where options might be objects themselves
+            Object.entries(questionData.options).forEach(([key, value]) => {
+              optionsObject[key] = typeof value === 'object' ? JSON.stringify(value) : String(value);
+            });
           }
         }
+
+        console.log('🔍 MATH SPEED - Final optionsObject:', optionsObject);
 
         return {
           questionId: id,
@@ -3480,6 +3503,11 @@ const memoryPowerScoring = (
   questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string },
   questions?: TestQuestion[]
 ) => {
+  console.log('🔍 MEMORY POWER SCORING - Starting scoring with:', {
+    answers,
+    questionsData,
+    hasQuestions: !!questions
+  });
   // Process correct answers data - handle both array and object formats
   let correctAnswers: Record<string, string> = {};
 
@@ -3531,7 +3559,7 @@ const memoryPowerScoring = (
     description = 'Keep training! Memory improves with practice.';
   }
 
-  return {
+  const finalResult = {
     scores: {
       score,
       total,
@@ -3548,13 +3576,18 @@ const memoryPowerScoring = (
           if (Array.isArray(questionData.options)) {
             // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
             questionData.options.forEach(option => {
-              if (option.value && option.text_key) {
-                optionsObject[option.value] = option.text_key;
+              if (option.value) {
+                // For database questions, text_key contains the actual text, not a translation key
+                const optionText = option.text_key || String(option);
+                optionsObject[option.value] = optionText;
               }
             });
           } else {
             // Already in object format
-            optionsObject = questionData.options;
+            // Handle case where options might be objects themselves
+            Object.entries(questionData.options).forEach(([key, value]) => {
+              optionsObject[key] = typeof value === 'object' ? JSON.stringify(value) : String(value);
+            });
           }
         }
 
@@ -3572,6 +3605,9 @@ const memoryPowerScoring = (
     description_key: description,
     traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
+
+  console.log('🔍 MEMORY POWER SCORING - Final result:', finalResult);
+  return finalResult;
 };
 
 const countryMatchScoring = (answers: Record<string, string>) => {
