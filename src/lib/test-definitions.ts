@@ -2736,11 +2736,20 @@ export const getMathSpeedQuestionsWithAnswers = async (): Promise<{
     };
   } catch (error) {
     console.error('❌ Error getting math speed questions from database:', error);
+    console.log('🔄 Falling back to static Math Speed questions and answers for anonymous user');
+
     // Fallback to static questions and answers
     const staticCorrectAnswers = {
       'math_1': '17', 'math_2': '72', 'math_3': '13', 'math_4': '154', 'math_5': '8',
       'math_6': '144', 'math_7': '72', 'math_8': '15', 'math_9': '36', 'math_10': '125'
     };
+
+    console.log('🔍 Static fallback - Questions and answers:', {
+      questionCount: mathSpeedQuestions.length,
+      answerCount: Object.keys(staticCorrectAnswers).length,
+      staticCorrectAnswers
+    });
+
     return {
       questions: mathSpeedQuestions,
       correctAnswers: staticCorrectAnswers
