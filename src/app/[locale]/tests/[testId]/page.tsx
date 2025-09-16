@@ -948,7 +948,8 @@ export default function TestPage() {
                 undefined, // partnerAnswers
                 testId === 'general-knowledge' ? generalKnowledgeCorrectAnswers :
                 testId === 'math-speed' ? mathSpeedCorrectAnswers :
-                testId === 'memory-power' ? memoryPowerCorrectAnswers : undefined
+                testId === 'memory-power' ? memoryPowerCorrectAnswers : undefined,
+                testDefinition.questions // Add questions data for detailed breakdown
             );
 
             console.log('🔍 SCORING RESULT:', testResult);

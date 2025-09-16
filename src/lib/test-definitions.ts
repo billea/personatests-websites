@@ -45,7 +45,8 @@ export interface TestDefinition {
 export type ScoringFunction = (
   answers: { [questionId: string]: any },
   partnerAnswers?: { [questionId: string]: any },
-  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }
+  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string },
+  questions?: TestQuestion[]
 ) => TestResult;
 
 // Utility function to personalize questions with user's name
@@ -3195,7 +3196,8 @@ const spiritAnimalQuestions: TestQuestion[] = [
 const generalKnowledgeScoring = (
   answers: Record<string, string>,
   partnerAnswers?: Record<string, string>,
-  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }
+  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string },
+  questions?: TestQuestion[]
 ) => {
   // Process correct answers data - handle both array and object formats
   let correctAnswers: Record<string, string> = {};
@@ -3282,12 +3284,19 @@ const generalKnowledgeScoring = (
       percentage,
       level,
       description,
-      correctAnswers: Object.entries(validCorrectAnswers).map(([id, answer]) => ({
-        questionId: id,
-        correctAnswer: answer,
-        userAnswer: answers[id],
-        isCorrect: answers[id] === answer
-      }))
+      correctAnswers: Object.entries(validCorrectAnswers).map(([id, answer]) => {
+        // Find the question data to include text and options
+        const questionData = questions?.find(q => q.id === id);
+
+        return {
+          questionId: id,
+          correctAnswer: answer,
+          userAnswer: answers[id],
+          isCorrect: answers[id] === answer,
+          questionText: questionData?.text_key || `Question ${id}`,
+          options: questionData?.options || {}
+        };
+      })
     },
     type: level,
     description_key: description,
@@ -3295,7 +3304,7 @@ const generalKnowledgeScoring = (
   };
 };
 
-const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Record<string, string>, correctAnswersData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }) => {
+const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Record<string, string>, correctAnswersData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }, questions?: TestQuestion[]) => {
   console.log('🔍 Math Speed Scoring Debug:', {
     answers,
     answerKeys: Object.keys(answers),
@@ -3408,7 +3417,20 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
       total,
       percentage,
       level,
-      description
+      description,
+      correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => {
+        // Find the question data to include text and options
+        const questionData = questions?.find(q => q.id === id);
+
+        return {
+          questionId: id,
+          correctAnswer: answer,
+          userAnswer: answers[id],
+          isCorrect: answers[id] === answer,
+          questionText: questionData?.text_key || `Question ${id}`,
+          options: questionData?.options || {}
+        };
+      })
     },
     type: level,
     description_key: description,
@@ -3422,7 +3444,8 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
 const memoryPowerScoring = (
   answers: Record<string, string>,
   partnerAnswers?: Record<string, string>,
-  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }
+  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string },
+  questions?: TestQuestion[]
 ) => {
   // Process correct answers data - handle both array and object formats
   let correctAnswers: Record<string, string> = {};
@@ -3481,7 +3504,20 @@ const memoryPowerScoring = (
       total,
       percentage,
       level,
-      description
+      description,
+      correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => {
+        // Find the question data to include text and options
+        const questionData = questions?.find(q => q.id === id);
+
+        return {
+          questionId: id,
+          correctAnswer: answer,
+          userAnswer: answers[id],
+          isCorrect: answers[id] === answer,
+          questionText: questionData?.text_key || `Question ${id}`,
+          options: questionData?.options || {}
+        };
+      })
     },
     type: level,
     description_key: description,

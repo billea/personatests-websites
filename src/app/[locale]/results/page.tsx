@@ -1250,23 +1250,66 @@ export default function ResultsPage() {
                                                                         : `❌ ${t('results.answerAnalysis.incorrect') || 'Incorrect'}`}
                                                                 </span>
                                                             </div>
-                                                            <div className="text-sm space-y-1">
-                                                                <div>
-                                                                    <span className="text-white/70">
-                                                                        {t('results.answerAnalysis.yourAnswer') || 'Your answer:'} 
-                                                                    </span>
-                                                                    <span className="font-medium ml-1">
-                                                                        {item.userAnswer || t('results.answerAnalysis.noAnswer') || 'No answer'}
-                                                                    </span>
-                                                                </div>
-                                                                {!item.isCorrect && (
-                                                                    <div>
-                                                                        <span className="text-white/70">
-                                                                            {t('results.answerAnalysis.correctAnswer') || 'Correct answer:'} 
-                                                                        </span>
-                                                                        <span className="font-medium text-green-300 ml-1">{item.correctAnswer}</span>
+                                                            <div className="text-sm space-y-2">
+                                                                {/* Question Text */}
+                                                                {item.questionText && (
+                                                                    <div className="p-2 bg-white/5 rounded text-white/90">
+                                                                        <strong>Q:</strong> {item.questionText}
                                                                     </div>
                                                                 )}
+
+                                                                {/* Multiple Choice Options */}
+                                                                {item.options && Object.keys(item.options).length > 0 && (
+                                                                    <div className="grid grid-cols-1 gap-1 mt-2">
+                                                                        {Object.entries(item.options).map(([optionKey, optionValue]) => {
+                                                                            const isUserAnswer = item.userAnswer === optionKey;
+                                                                            const isCorrectAnswer = item.correctAnswer === optionKey;
+
+                                                                            return (
+                                                                                <div
+                                                                                    key={optionKey}
+                                                                                    className={`p-2 rounded text-xs flex items-center justify-between ${
+                                                                                        isCorrectAnswer
+                                                                                            ? 'bg-green-500/20 border border-green-400/30 text-green-100'
+                                                                                            : isUserAnswer
+                                                                                                ? 'bg-red-500/20 border border-red-400/30 text-red-100'
+                                                                                                : 'bg-white/5 text-white/70'
+                                                                                    }`}
+                                                                                >
+                                                                                    <span>
+                                                                                        <strong>{optionKey.toUpperCase()}:</strong> {String(optionValue)}
+                                                                                    </span>
+                                                                                    <span className="text-xs">
+                                                                                        {isCorrectAnswer && '✅ Correct'}
+                                                                                        {isUserAnswer && !isCorrectAnswer && '❌ Your choice'}
+                                                                                    </span>
+                                                                                </div>
+                                                                            );
+                                                                        })}
+                                                                    </div>
+                                                                )}
+
+                                                                {/* Answer Summary */}
+                                                                <div className="mt-2">
+                                                                    <div>
+                                                                        <span className="text-white/70">
+                                                                            {t('results.answerAnalysis.yourAnswer') || 'Your answer:'}
+                                                                        </span>
+                                                                        <span className={`font-medium ml-1 ${
+                                                                            item.isCorrect ? 'text-green-300' : 'text-red-300'
+                                                                        }`}>
+                                                                            {item.userAnswer || t('results.answerAnalysis.noAnswer') || 'No answer'}
+                                                                        </span>
+                                                                    </div>
+                                                                    {!item.isCorrect && (
+                                                                        <div>
+                                                                            <span className="text-white/70">
+                                                                                {t('results.answerAnalysis.correctAnswer') || 'Correct answer:'}
+                                                                            </span>
+                                                                            <span className="font-medium text-green-300 ml-1">{item.correctAnswer}</span>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     ))}
