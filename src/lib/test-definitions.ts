@@ -3288,13 +3288,29 @@ const generalKnowledgeScoring = (
         // Find the question data to include text and options
         const questionData = questions?.find(q => q.id === id);
 
+        // Convert options array to object format for display
+        let optionsObject: { [key: string]: string } = {};
+        if (questionData?.options) {
+          if (Array.isArray(questionData.options)) {
+            // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
+            questionData.options.forEach(option => {
+              if (option.value && option.text_key) {
+                optionsObject[option.value] = option.text_key;
+              }
+            });
+          } else {
+            // Already in object format
+            optionsObject = questionData.options;
+          }
+        }
+
         return {
           questionId: id,
           correctAnswer: answer,
           userAnswer: answers[id],
           isCorrect: answers[id] === answer,
           questionText: questionData?.text_key || `Question ${id}`,
-          options: questionData?.options || {}
+          options: optionsObject
         };
       })
     },
@@ -3422,13 +3438,29 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
         // Find the question data to include text and options
         const questionData = questions?.find(q => q.id === id);
 
+        // Convert options array to object format for display
+        let optionsObject: { [key: string]: string } = {};
+        if (questionData?.options) {
+          if (Array.isArray(questionData.options)) {
+            // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
+            questionData.options.forEach(option => {
+              if (option.value && option.text_key) {
+                optionsObject[option.value] = option.text_key;
+              }
+            });
+          } else {
+            // Already in object format
+            optionsObject = questionData.options;
+          }
+        }
+
         return {
           questionId: id,
           correctAnswer: answer,
           userAnswer: answers[id],
           isCorrect: answers[id] === answer,
           questionText: questionData?.text_key || `Question ${id}`,
-          options: questionData?.options || {}
+          options: optionsObject
         };
       })
     },
@@ -3509,13 +3541,29 @@ const memoryPowerScoring = (
         // Find the question data to include text and options
         const questionData = questions?.find(q => q.id === id);
 
+        // Convert options array to object format for display
+        let optionsObject: { [key: string]: string } = {};
+        if (questionData?.options) {
+          if (Array.isArray(questionData.options)) {
+            // Convert array format [{ value: 'a', text_key: 'Option A' }] to { a: 'Option A' }
+            questionData.options.forEach(option => {
+              if (option.value && option.text_key) {
+                optionsObject[option.value] = option.text_key;
+              }
+            });
+          } else {
+            // Already in object format
+            optionsObject = questionData.options;
+          }
+        }
+
         return {
           questionId: id,
           correctAnswer: answer,
           userAnswer: answers[id],
           isCorrect: answers[id] === answer,
           questionText: questionData?.text_key || `Question ${id}`,
-          options: questionData?.options || {}
+          options: optionsObject
         };
       })
     },
