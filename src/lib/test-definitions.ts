@@ -3186,12 +3186,26 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
   let score = 0;
   const total = Object.keys(correctAnswers).length;
 
-  Object.entries(correctAnswers).forEach(([questionId, correctAnswer]) => {
-    const userAnswer = answers[questionId];
-    const isCorrect = userAnswer === correctAnswer;
-    console.log(`Question ${questionId}: user="${userAnswer}" correct="${correctAnswer}" match=${isCorrect}`);
-    if (isCorrect) {
+  console.log('🔍 QUESTION ID DEBUG: Looking for answers with these IDs:', Object.keys(correctAnswers));
+  console.log('🔍 ACTUAL ANSWER IDs received:', Object.keys(answers));
+
+  // The problem: question IDs are dynamic, not static. Let's match by index instead.
+  const questionOrder = ['math_1', 'math_2', 'math_3', 'math_4', 'math_5', 'math_6', 'math_7', 'math_8', 'math_9', 'math_10'];
+  const answerKeys = Object.keys(answers);
+
+  questionOrder.forEach((expectedId, index) => {
+    const actualQuestionId = answerKeys[index];
+    const userAnswer = answers[actualQuestionId];
+    const correctAnswer = correctAnswers[expectedId];
+
+    console.log(`Question ${index + 1} (${expectedId}): user="${userAnswer}" correct="${correctAnswer}" actualId="${actualQuestionId}"`);
+
+    // Check if user answer matches correct answer
+    if (userAnswer === correctAnswer) {
       score++;
+      console.log(`✅ MATCH! Question ${index + 1} correct`);
+    } else {
+      console.log(`❌ NO MATCH: Question ${index + 1} - "${userAnswer}" ≠ "${correctAnswer}"`);
     }
   });
   
