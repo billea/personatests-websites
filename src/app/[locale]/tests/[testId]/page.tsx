@@ -103,6 +103,14 @@ export default function TestPage() {
     const [showMemoryPhase, setShowMemoryPhase] = useState(false);
     const [memoryPhaseTimeLeft, setMemoryPhaseTimeLeft] = useState(0);
     const [memoryContent, setMemoryContent] = useState<string[]>([]);
+
+    // Timer state for knowledge-and-skill tests
+    const [questionTimer, setQuestionTimer] = useState(0);
+    const [showQuestionTimer, setShowQuestionTimer] = useState(false);
+
+    // Response time tracking for Math Speed test
+    const [questionStartTime, setQuestionStartTime] = useState<number | null>(null);
+    const [responseTimes, setResponseTimes] = useState<{ [questionId: string]: number }>({});
     
     // Update userName when user data becomes available
     useEffect(() => {
@@ -575,6 +583,20 @@ export default function TestPage() {
         const currentQuestion = testDefinition?.questions[currentQuestionIndex];
         if (!currentQuestion) return;
 
+        // Calculate response time for Math Speed test
+        if (testDefinition?.id === 'math-speed' && questionStartTime) {
+            const responseTime = (Date.now() - questionStartTime) / 1000; // Convert to seconds
+            setResponseTimes(prev => ({
+                ...prev,
+                [currentQuestion.id]: parseFloat(responseTime.toFixed(2)) // Two decimal precision
+            }));
+        }
+
+        // Reset timer states
+        setShowQuestionTimer(false);
+        setQuestionTimer(0);
+        setQuestionStartTime(null);
+
         const newAnswers = {
             ...answers,
             [currentQuestion.id]: answer
@@ -584,7 +606,7 @@ export default function TestPage() {
         if (currentQuestionIndex < testDefinition.questions.length - 1) {
             const nextQuestionIndex = currentQuestionIndex + 1;
             setCurrentQuestionIndex(nextQuestionIndex);
-            
+
             // Save progress after each answer
             saveTestProgress(nextQuestionIndex, newAnswers);
         } else {
@@ -840,12 +862,13 @@ export default function TestPage() {
             
             // Store the result for display
             setCompletedTestResult(testResult);
-            
+
             // Save to local storage for anonymous users
             const localResult = {
                 testId,
                 answers: finalAnswers,
                 result: testResult,
+                responseTimes: testDefinition.id === 'math-speed' ? responseTimes : undefined,
                 completedAt: new Date().toISOString()
             };
             
@@ -1170,6 +1193,49 @@ export default function TestPage() {
             return () => clearInterval(timer);
         }
     }, [showMemoryPhase]);
+
+    // Question timer initialization for knowledge-and-skill tests
+    useEffect(() => {
+        if (testDefinition && ['general-knowledge', 'math-speed'].includes(testDefinition.id)) {
+            const currentQuestion = testDefinition.questions[currentQuestionIndex];
+
+            if (currentQuestion && !answers[currentQuestion.id] && !showMemoryPhase) {
+                // Start 10-second countdown for knowledge and skill tests
+                setQuestionTimer(10);
+                setShowQuestionTimer(true);
+
+                // Track start time for Math Speed test response time
+                if (testDefinition.id === 'math-speed') {
+                    setQuestionStartTime(Date.now());
+                }
+            }
+        }
+    }, [testDefinition, currentQuestionIndex, answers, showMemoryPhase]);
+
+    // Question countdown timer
+    useEffect(() => {
+        if (showQuestionTimer && questionTimer > 0) {
+            const timer = setInterval(() => {
+                setQuestionTimer((prev) => {
+                    if (prev <= 1) {
+                        clearInterval(timer);
+                        setShowQuestionTimer(false);
+
+                        // Auto-submit with no answer when timer runs out
+                        const currentQuestion = testDefinition?.questions[currentQuestionIndex];
+                        if (currentQuestion && !answers[currentQuestion.id]) {
+                            handleAnswer(null); // Submit with null answer
+                        }
+
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [showQuestionTimer, questionTimer, testDefinition, currentQuestionIndex, answers]);
 
     const addEmailField = () => {
         setFeedbackEmails([...feedbackEmails, {name: '', email: ''}]);
@@ -2533,6 +2599,27 @@ export default function TestPage() {
                             <p className="text-white/80 text-sm">
                                 Question {currentQuestionIndex + 1} of {testDefinition.questions.length}
                             </p>
+
+                            {/* Countdown Timer for Knowledge and Skill Tests */}
+                            {showQuestionTimer && ['general-knowledge', 'math-speed'].includes(testDefinition.id) && (
+                                <div className="mt-4 text-center">
+                                    <div className={`inline-flex items-center px-4 py-2 rounded-full ${
+                                        questionTimer <= 3 ? 'bg-red-500/30 border-red-400' : 'bg-blue-500/30 border-blue-400'
+                                    } border backdrop-blur-sm`}>
+                                        <span className="text-2xl mr-2">⏰</span>
+                                        <span className={`text-lg font-bold ${
+                                            questionTimer <= 3 ? 'text-red-300' : 'text-blue-300'
+                                        }`}>
+                                            {questionTimer}s
+                                        </span>
+                                    </div>
+                                    {testDefinition.id === 'math-speed' && (
+                                        <p className="text-white/60 text-xs mt-1">
+                                            {currentLanguage === 'ko' ? '응답 시간이 기록됩니다' : 'Response time is being recorded'}
+                                        </p>
+                                    )}
+                                </div>
+                            )}
                         </>
                     )}
                 </div>

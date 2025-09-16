@@ -2818,7 +2818,7 @@ const memoryPowerQuestions: TestQuestion[] = [
     type: 'multiple_choice',
     memoryPhase: {
       text_key: 'tests.memory_power.questions.q3_memorize',
-      duration: 5000 // 5 seconds to memorize
+      duration: 7000 // 7 seconds to memorize
     },
     options: [
       { value: 'word_list_1', text_key: 'tests.memory_power.options.q3_a' },
