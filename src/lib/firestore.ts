@@ -166,6 +166,8 @@ export const transferAnonymousResults = async (
     let resultKey = '';
 
     // Scan localStorage for test results
+    console.log('🔍 Scanning localStorage for test results. Total items:', localStorage.length);
+
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key?.startsWith('test_result_')) {
@@ -173,11 +175,21 @@ export const transferAnonymousResults = async (
           const storedResult = localStorage.getItem(key);
           if (storedResult) {
             const result = JSON.parse(storedResult);
+            console.log('🔍 Found localStorage result:', {
+              key,
+              testId: result.testId,
+              completedAt: result.completedAt,
+              hasResult: !!result.result
+            });
 
             // Check if this is the test type we're looking for
-            if (result.testId === testType && result.timestamp > mostRecentTimestamp) {
+            // Use completedAt or timestamp for comparison
+            const resultTimestamp = result.completedAt ? new Date(result.completedAt).getTime() : result.timestamp || 0;
+
+            if (result.testId === testType && resultTimestamp > mostRecentTimestamp) {
+              console.log('✅ This is the most recent result for test type:', testType);
               mostRecentResult = result;
-              mostRecentTimestamp = result.timestamp;
+              mostRecentTimestamp = resultTimestamp;
               resultKey = key;
             }
           }

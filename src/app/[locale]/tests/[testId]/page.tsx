@@ -130,14 +130,25 @@ export default function TestPage() {
             // Check if this is a return from auth with preserve flag
             const shouldPreserve = searchParams.get('preserve') === 'true';
 
+            console.log('🔍 Result preservation check:', {
+                shouldPreserve,
+                hasUser: !!user,
+                authLoading,
+                testId,
+                searchParams: Object.fromEntries(searchParams.entries())
+            });
+
             if (shouldPreserve && user && !authLoading) {
                 console.log('🔄 User authenticated, checking for results to preserve');
 
                 try {
                     // Get the preservation info from localStorage
                     const preserveInfo = localStorage.getItem('preserve_test_result');
+                    console.log('🔍 Preservation info from localStorage:', preserveInfo);
+
                     if (preserveInfo) {
                         const { testType, preserveResult } = JSON.parse(preserveInfo);
+                        console.log('🔍 Parsed preservation info:', { testType, preserveResult, currentTestId: testId });
 
                         if (preserveResult && testType === testId) {
                             console.log('🔄 Transferring anonymous results for:', testType);
