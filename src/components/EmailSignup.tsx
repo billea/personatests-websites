@@ -15,6 +15,9 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
   const [isLoading, setIsLoading] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
+  // Determine if this is a knowledge/skill test vs personality test
+  const isKnowledgeTest = ['math-speed', 'general-knowledge', 'memory-power'].includes(testType);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -49,16 +52,25 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
       <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/30 rounded-lg">
         <div className="text-center">
           <h3 className="text-xl font-bold text-white mb-3">
-            {t('emailSignup.title') || `Want More Insights About Your ${personalityType || 'Personality'}?`}
+            {isKnowledgeTest
+              ? 'Want to See More Details About the Questions?'
+              : (t('emailSignup.title') || `Want More Insights About Your ${personalityType || 'Personality'}?`)
+            }
           </h3>
           <p className="text-white/90 mb-4">
-            {t('emailSignup.description') || 'Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.'}
+            {isKnowledgeTest
+              ? 'Get detailed explanations for each question, study tips, and practice materials delivered to your inbox.'
+              : (t('emailSignup.description') || 'Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.')
+            }
           </p>
           <button
             onClick={() => setShowSignup(true)}
             className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
           >
-            ✨ {t('emailSignup.buttonText') || 'Get Free Personality Insights'}
+            ✨ {isKnowledgeTest
+              ? 'Review the Questions'
+              : (t('emailSignup.buttonText') || 'Get Free Personality Insights')
+            }
           </button>
           <p className="text-white/70 text-sm mt-2">
             {t('emailSignup.freeText') || '100% free'} • {t('emailSignup.unsubscribeText') || 'Unsubscribe anytime'} • {t('emailSignup.noSpamText') || 'No spam'}
@@ -74,7 +86,10 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
         <div className="text-4xl mb-3">✅</div>
         <h3 className="text-xl font-bold text-white mb-2">Thank You!</h3>
         <p className="text-white/90">
-          Check your email for personalized {personalityType} insights and tips!
+          {isKnowledgeTest
+            ? 'Check your email for detailed question explanations and study materials!'
+            : `Check your email for personalized ${personalityType} insights and tips!`
+          }
         </p>
       </div>
     );
@@ -84,10 +99,16 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
     <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/30 rounded-lg">
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold text-white mb-2">
-          Get Your Complete {personalityType || 'Personality'} Guide
+          {isKnowledgeTest
+            ? 'Get Detailed Question Explanations'
+            : `Get Your Complete ${personalityType || 'Personality'} Guide`
+          }
         </h3>
         <p className="text-white/90">
-          Receive detailed insights, career advice, and relationship tips tailored for your personality type.
+          {isKnowledgeTest
+            ? 'Receive step-by-step explanations, learning resources, and practice tips to improve your skills.'
+            : 'Receive detailed insights, career advice, and relationship tips tailored for your personality type.'
+          }
         </p>
       </div>
       
@@ -106,13 +127,16 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
             disabled={isLoading}
             className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? '...' : 'Get Insights'}
+            {isLoading ? '...' : (isKnowledgeTest ? 'Get Explanations' : 'Get Insights')}
           </button>
         </div>
         
         <div className="mt-4 text-center">
           <p className="text-white/70 text-sm">
-            ✓ Free personality guide ✓ Career recommendations ✓ Relationship tips
+            {isKnowledgeTest
+              ? '✓ Question explanations ✓ Study materials ✓ Practice tips'
+              : '✓ Free personality guide ✓ Career recommendations ✓ Relationship tips'
+            }
           </p>
           <p className="text-white/60 text-xs mt-2">
             We respect your privacy. Unsubscribe at any time.
