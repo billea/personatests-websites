@@ -3159,6 +3159,12 @@ const generalKnowledgeScoring = (
 };
 
 const mathSpeedScoring = (answers: Record<string, string>) => {
+  console.log('🔍 Math Speed Scoring Debug:', {
+    answers,
+    answerKeys: Object.keys(answers),
+    answerValues: Object.values(answers)
+  });
+
   const correctAnswers = {
     'math_1': '17', // 8 + 9 = 17
     'math_2': '72', // 8 × 9 = 72
@@ -3171,12 +3177,15 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
     'math_9': '36', // 6³ ÷ 6 = 216 ÷ 6 = 36
     'math_10': '125' // 25 × 5 = 125
   };
-  
+
   let score = 0;
   const total = Object.keys(correctAnswers).length;
-  
+
   Object.entries(correctAnswers).forEach(([questionId, correctAnswer]) => {
-    if (answers[questionId] === correctAnswer) {
+    const userAnswer = answers[questionId];
+    const isCorrect = userAnswer === correctAnswer;
+    console.log(`Question ${questionId}: user="${userAnswer}" correct="${correctAnswer}" match=${isCorrect}`);
+    if (isCorrect) {
       score++;
     }
   });
@@ -3198,8 +3207,8 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
     level = 'Math Explorer 🔢';
     description = 'Keep practicing! Speed comes with experience.';
   }
-  
-  return {
+
+  const result = {
     scores: {
       score,
       total,
@@ -3211,6 +3220,9 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
     description_key: description,
     traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
+
+  console.log('🔍 Math Speed Final Result:', result);
+  return result;
 };
 
 const memoryPowerScoring = (
