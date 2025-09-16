@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMemoryPowerQuestions, getMemoryPowerQuestionsWithAnswers } from "@/lib/test-definitions";
+import { getTestById, TestQuestion, TestDefinition, personalizeQuestions, getFeedback360TestDefinition, testDefinitions, getGeneralKnowledgeQuestions, getGeneralKnowledgeQuestionsWithAnswers, getMathSpeedQuestions, getMathSpeedCorrectAnswers, getMemoryPowerQuestions, getMemoryPowerQuestionsWithAnswers } from "@/lib/test-definitions";
 import { saveTestResult, sendFeedbackInvitations, sendCoupleCompatibilityInvitation, sendCoupleCompatibilityResults, saveCoupleCompatibilityResult, getUserTestResults } from "@/lib/firestore";
 import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
@@ -95,6 +95,9 @@ export default function TestPage() {
 
     // State for storing correct answers for general knowledge test scoring
     const [generalKnowledgeCorrectAnswers, setGeneralKnowledgeCorrectAnswers] = useState<Array<{id: string, correctAnswer: string}>>([]);
+
+    // State for storing correct answers for math speed test scoring
+    const [mathSpeedCorrectAnswers, setMathSpeedCorrectAnswers] = useState<{ [questionId: string]: string }>({});
 
     // State for storing correct answers for memory power test scoring
     const [memoryPowerCorrectAnswers, setMemoryPowerCorrectAnswers] = useState<Array<{id: string, correctAnswer: string}>>([]);
@@ -437,16 +440,22 @@ export default function TestPage() {
                 } else if (definition.id === 'math-speed') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const dynamicQuestions = await getMathSpeedQuestions();
+                            const [dynamicQuestions, correctAnswers] = await Promise.all([
+                                getMathSpeedQuestions(),
+                                getMathSpeedCorrectAnswers()
+                            ]);
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!,
                                 questions: dynamicQuestions
                             };
                             setTestDefinition(updatedDefinition);
+                            setMathSpeedCorrectAnswers(correctAnswers);
+                            console.log('🔍 Loaded Math Speed correct answers:', correctAnswers);
                         } catch (error) {
                             console.error('Failed to fetch math speed questions from database, using fallback:', error);
                             setTestDefinition(definition);
+                            setMathSpeedCorrectAnswers({});
                         }
                     };
                     loadQuestionsAsync();
@@ -495,16 +504,22 @@ export default function TestPage() {
                 } else if (definition.id === 'math-speed') {
                     const loadQuestionsAsync = async () => {
                         try {
-                            const dynamicQuestions = await getMathSpeedQuestions();
+                            const [dynamicQuestions, correctAnswers] = await Promise.all([
+                                getMathSpeedQuestions(),
+                                getMathSpeedCorrectAnswers()
+                            ]);
                             const updatedDefinition = {
                                 ...definition!,
                                 id: definition!.id!,
                                 questions: dynamicQuestions
                             };
                             setTestDefinition(updatedDefinition);
+                            setMathSpeedCorrectAnswers(correctAnswers);
+                            console.log('🔍 Loaded Math Speed correct answers:', correctAnswers);
                         } catch (error) {
                             console.error('Failed to fetch math speed questions from database, using fallback:', error);
                             setTestDefinition(definition);
+                            setMathSpeedCorrectAnswers({});
                         }
                     };
                     loadQuestionsAsync();
@@ -875,6 +890,7 @@ export default function TestPage() {
                 finalAnswers,
                 undefined, // partnerAnswers
                 testId === 'general-knowledge' ? generalKnowledgeCorrectAnswers :
+                testId === 'math-speed' ? mathSpeedCorrectAnswers :
                 testId === 'memory-power' ? memoryPowerCorrectAnswers : undefined
             );
 

@@ -45,7 +45,7 @@ export interface TestDefinition {
 export type ScoringFunction = (
   answers: { [questionId: string]: any },
   partnerAnswers?: { [questionId: string]: any },
-  questionsData?: Array<{id: string, correctAnswer: string}>
+  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }
 ) => TestResult;
 
 // Utility function to personalize questions with user's name
@@ -2703,6 +2703,37 @@ export const getMathSpeedQuestions = async (): Promise<TestQuestion[]> => {
   }
 };
 
+// Function to get correct answers for database-driven Math Speed questions
+export const getMathSpeedCorrectAnswers = async (): Promise<{ [questionId: string]: string }> => {
+  try {
+    const { getRandomMathSpeedQuestions } = await import('./firestore');
+    const { firestore } = await import('./firebase');
+    const { collection, getDocs, where, query } = await import('firebase/firestore');
+
+    // Get the same questions that were loaded for the test
+    const questionsRef = collection(firestore, 'mathSpeedQuestions');
+    const q = query(
+      questionsRef,
+      where('isActive', '==', true),
+      where('availableLanguages', 'array-contains', 'en')
+    );
+
+    const snapshot = await getDocs(q);
+    const correctAnswers: { [questionId: string]: string } = {};
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      correctAnswers[doc.id] = data.correctAnswer; // This will be 'a', 'b', 'c', or 'd'
+    });
+
+    console.log('🔍 Math Speed correct answers from database:', correctAnswers);
+    return correctAnswers;
+  } catch (error) {
+    console.error('❌ Error getting Math Speed correct answers:', error);
+    return {};
+  }
+};
+
 // Memory Power Test - Database-driven questions
 export const getMemoryPowerQuestions = async (language: string = 'en'): Promise<TestQuestion[]> => {
   try {
@@ -3063,16 +3094,21 @@ const spiritAnimalQuestions: TestQuestion[] = [
 const generalKnowledgeScoring = (
   answers: Record<string, string>,
   partnerAnswers?: Record<string, string>,
-  questionsData?: Array<{id: string, correctAnswer: string}>
+  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }
 ) => {
-  // If we have database questions with their correct answers, use those
+  // Process correct answers data - handle both array and object formats
   let correctAnswers: Record<string, string> = {};
 
-  if (questionsData && questionsData.length > 0) {
-    // Use the correct answers from the database questions
-    questionsData.forEach(q => {
-      correctAnswers[q.id] = q.correctAnswer;
-    });
+  if (questionsData) {
+    if (Array.isArray(questionsData) && questionsData.length > 0) {
+      // Use the correct answers from the database questions (array format)
+      questionsData.forEach(q => {
+        correctAnswers[q.id] = q.correctAnswer;
+      });
+    } else if (!Array.isArray(questionsData)) {
+      // Use the correct answers in object format
+      correctAnswers = questionsData;
+    }
   } else {
     // Fallback to hardcoded answers for legacy questions
     correctAnswers = {
@@ -3158,11 +3194,12 @@ const generalKnowledgeScoring = (
   };
 };
 
-const mathSpeedScoring = (answers: Record<string, string>) => {
+const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Record<string, string>, correctAnswersData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }) => {
   console.log('🔍 Math Speed Scoring Debug:', {
     answers,
     answerKeys: Object.keys(answers),
-    answerValues: Object.values(answers)
+    answerValues: Object.values(answers),
+    correctAnswersData
   });
 
   // TEMPORARY DEBUG: Log each individual answer
@@ -3170,18 +3207,35 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
     console.log(`🔍 ANSWER ${key}: "${value}" (type: ${typeof value})`);
   });
 
-  const correctAnswers = {
-    'math_1': '17', // 8 + 9 = 17
-    'math_2': '72', // 8 × 9 = 72
-    'math_3': '13', // 91 ÷ 7 = 13
-    'math_4': '154', // 77 × 2 = 154
-    'math_5': '8', // √64 = 8
-    'math_6': '144', // 12² = 144
-    'math_7': '72', // 12 × 6 = 72
-    'math_8': '15', // 63 ÷ 3 - 6 = 21 - 6 = 15
-    'math_9': '36', // 6³ ÷ 6 = 216 ÷ 6 = 36
-    'math_10': '125' // 25 × 5 = 125
-  };
+  // Process correct answers data - handle both array and object formats
+  let correctAnswers: { [questionId: string]: string };
+
+  if (correctAnswersData) {
+    if (Array.isArray(correctAnswersData)) {
+      // Convert array format to object format for consistent processing
+      correctAnswers = {};
+      correctAnswersData.forEach(item => {
+        correctAnswers[item.id] = item.correctAnswer;
+      });
+    } else {
+      // Already in object format
+      correctAnswers = correctAnswersData;
+    }
+  } else {
+    // Fall back to static answers
+    correctAnswers = {
+      'math_1': '17', // 8 + 9 = 17
+      'math_2': '72', // 8 × 9 = 72
+      'math_3': '13', // 91 ÷ 7 = 13
+      'math_4': '154', // 77 × 2 = 154
+      'math_5': '8', // √64 = 8
+      'math_6': '144', // 12² = 144
+      'math_7': '72', // 12 × 6 = 72
+      'math_8': '15', // 63 ÷ 3 - 6 = 21 - 6 = 15
+      'math_9': '36', // 6³ ÷ 6 = 216 ÷ 6 = 36
+      'math_10': '125' // 25 × 5 = 125
+    };
+  }
 
   let score = 0;
   const total = Object.keys(correctAnswers).length;
@@ -3189,36 +3243,49 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
   console.log('🔍 QUESTION ID DEBUG: Looking for answers with these IDs:', Object.keys(correctAnswers));
   console.log('🔍 ACTUAL ANSWER IDs received:', Object.keys(answers));
 
-  // The problem: question IDs are dynamic, not static. Let's match by index instead.
-  const questionOrder = ['math_1', 'math_2', 'math_3', 'math_4', 'math_5', 'math_6', 'math_7', 'math_8', 'math_9', 'math_10'];
-  const answerKeys = Object.keys(answers);
+  // If we have database correct answers, use direct question ID matching
+  if (correctAnswersData) {
+    console.log('🔍 Using DATABASE scoring with direct question ID matching');
+    Object.entries(answers).forEach(([questionId, userAnswer]) => {
+      const correctAnswer = correctAnswers[questionId];
+      console.log(`Question ${questionId}: user="${userAnswer}" correct="${correctAnswer}"`);
 
-  questionOrder.forEach((expectedId, index) => {
-    const actualQuestionId = answerKeys[index];
-    const userAnswer = answers[actualQuestionId];
-    const correctAnswer = correctAnswers[expectedId as keyof typeof correctAnswers];
+      if (userAnswer === correctAnswer) {
+        score++;
+        console.log(`✅ MATCH! Question ${questionId} correct`);
+      } else {
+        console.log(`❌ NO MATCH: Question ${questionId} - "${userAnswer}" ≠ "${correctAnswer}"`);
+      }
+    });
+  } else {
+    console.log('🔍 Using STATIC scoring with index-based matching');
+    // For static questions, use index-based matching
+    const questionOrder = ['math_1', 'math_2', 'math_3', 'math_4', 'math_5', 'math_6', 'math_7', 'math_8', 'math_9', 'math_10'];
+    const answerKeys = Object.keys(answers);
 
-    console.log(`Question ${index + 1} (${expectedId}): user="${userAnswer}" correct="${correctAnswer}" actualId="${actualQuestionId}"`);
+    questionOrder.forEach((expectedId, index) => {
+      const actualQuestionId = answerKeys[index];
+      const userAnswer = answers[actualQuestionId];
+      const correctAnswer = correctAnswers[expectedId as keyof typeof correctAnswers];
 
-    // Check if user answer matches correct answer
-    if (userAnswer === correctAnswer) {
-      score++;
-      console.log(`✅ MATCH! Question ${index + 1} correct`);
-    } else {
-      console.log(`❌ NO MATCH: Question ${index + 1} - "${userAnswer}" ≠ "${correctAnswer}"`);
-    }
-  });
+      console.log(`Question ${index + 1} (${expectedId}): user="${userAnswer}" correct="${correctAnswer}" actualId="${actualQuestionId}"`);
+
+      if (userAnswer === correctAnswer) {
+        score++;
+        console.log(`✅ MATCH! Question ${index + 1} correct`);
+      } else {
+        console.log(`❌ NO MATCH: Question ${index + 1} - "${userAnswer}" ≠ "${correctAnswer}"`);
+      }
+    });
+  }
   
   const percentage = Math.round((score / total) * 100);
 
-  // TEMPORARY DEBUG: Force a test score to see if the issue is in scoring or display
-  const debugScore = score > 0 ? score : 3; // Force at least 3 correct for testing
-  const debugPercentage = Math.round((debugScore / total) * 100);
-  console.log(`🔍 SCORE DEBUG: actual=${score}/${total} (${percentage}%), debug=${debugScore}/${total} (${debugPercentage}%)`);
+  console.log(`🔍 FINAL SCORE: ${score}/${total} (${percentage}%)`);
 
   let level = '';
   let description = '';
-  
+
   if (percentage >= 90) {
     level = 'Math Wizard ⚡';
     description = 'Lightning fast! You\'re a mathematical genius.';
@@ -3235,15 +3302,15 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
 
   const result = {
     scores: {
-      score: debugScore, // Use debug score temporarily
+      score,
       total,
-      percentage: debugPercentage, // Use debug percentage temporarily
+      percentage,
       level,
       description
     },
     type: level,
     description_key: description,
-    traits: [`${debugScore}/${total} correct`, `${debugPercentage}% accuracy`]
+    traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
 
   console.log('🔍 Math Speed Final Result:', result);
@@ -3253,16 +3320,21 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
 const memoryPowerScoring = (
   answers: Record<string, string>,
   partnerAnswers?: Record<string, string>,
-  questionsData?: Array<{id: string, correctAnswer: string}>
+  questionsData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }
 ) => {
-  // If we have database questions with their correct answers, use those
+  // Process correct answers data - handle both array and object formats
   let correctAnswers: Record<string, string> = {};
 
-  if (questionsData && questionsData.length > 0) {
-    // Use the correct answers from the database questions
-    questionsData.forEach(q => {
-      correctAnswers[q.id] = q.correctAnswer;
-    });
+  if (questionsData) {
+    if (Array.isArray(questionsData) && questionsData.length > 0) {
+      // Use the correct answers from the database questions (array format)
+      questionsData.forEach(q => {
+        correctAnswers[q.id] = q.correctAnswer;
+      });
+    } else if (!Array.isArray(questionsData)) {
+      // Use the correct answers in object format
+      correctAnswers = questionsData;
+    }
   } else {
     // Fallback to hardcoded answers for legacy questions
     correctAnswers = {
