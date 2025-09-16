@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslation } from '@/components/providers/translation-provider';
+import { useAuth } from '@/components/providers/auth-provider';
+import { useRouter } from 'next/navigation';
 
 interface EmailSignupProps {
   testType: string;
@@ -10,6 +12,8 @@ interface EmailSignupProps {
 
 export default function EmailSignup({ testType, personalityType }: EmailSignupProps) {
   const { t } = useTranslation();
+  const { user } = useAuth();
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +21,13 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
 
   // Determine if this is a knowledge/skill test vs personality test
   const isKnowledgeTest = ['math-speed', 'general-knowledge', 'memory-power'].includes(testType);
+
+  // Handle login/signup redirect for knowledge tests
+  const handleLoginSignup = () => {
+    const currentPath = window.location.pathname;
+    const returnUrl = `${currentPath}?access=detailed`;
+    router.push(`/en/auth?returnUrl=${encodeURIComponent(returnUrl)}&context=detailed-results`);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,30 +58,62 @@ export default function EmailSignup({ testType, personalityType }: EmailSignupPr
     }
   };
 
+  // For knowledge tests, show login/signup prompt instead of email signup
+  if (isKnowledgeTest) {
+    return (
+      <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/30 rounded-lg">
+        <div className="text-center">
+          <h3 className="text-xl font-bold text-white mb-3">
+            Want to See More Details About Your Results?
+          </h3>
+          <p className="text-white/90 mb-4">
+            {user
+              ? 'Access your detailed performance analysis, question breakdowns, and improvement recommendations in your dashboard.'
+              : 'Sign in or create an account to access detailed performance analysis, question breakdowns, and improvement recommendations.'
+            }
+          </p>
+          {user ? (
+            <button
+              onClick={() => router.push('/en/results')}
+              className="px-6 py-3 bg-gradient-to-r from-green-500 to-blue-600 text-white font-semibold rounded-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105"
+            >
+              📊 View Detailed Analysis
+            </button>
+          ) : (
+            <button
+              onClick={handleLoginSignup}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            >
+              🔐 Sign In / Sign Up
+            </button>
+          )}
+          <p className="text-white/70 text-sm mt-2">
+            {user
+              ? '✓ Detailed analysis ✓ Performance tracking ✓ Progress history'
+              : '✓ Free account ✓ Detailed analysis ✓ Performance tracking'
+            }
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // For personality tests, continue with email signup flow
   if (!showSignup) {
     return (
       <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/30 rounded-lg">
         <div className="text-center">
           <h3 className="text-xl font-bold text-white mb-3">
-            {isKnowledgeTest
-              ? 'Want to See More Details About Your Results?'
-              : (t('emailSignup.title') || `Want More Insights About Your ${personalityType || 'Personality'}?`)
-            }
+            {t('emailSignup.title') || `Want More Insights About Your ${personalityType || 'Personality'}?`}
           </h3>
           <p className="text-white/90 mb-4">
-            {isKnowledgeTest
-              ? 'Get access to detailed performance analysis, question breakdowns, and improvement recommendations.'
-              : (t('emailSignup.description') || 'Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.')
-            }
+            {t('emailSignup.description') || 'Get personalized tips, detailed analysis, and exclusive personality insights delivered to your inbox.'}
           </p>
           <button
             onClick={() => setShowSignup(true)}
             className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
           >
-            ✨ {isKnowledgeTest
-              ? 'See Detailed Results'
-              : (t('emailSignup.buttonText') || 'Get Free Personality Insights')
-            }
+            ✨ {t('emailSignup.buttonText') || 'Get Free Personality Insights'}
           </button>
           <p className="text-white/70 text-sm mt-2">
             {t('emailSignup.freeText') || '100% free'} • {t('emailSignup.unsubscribeText') || 'Unsubscribe anytime'} • {t('emailSignup.noSpamText') || 'No spam'}
