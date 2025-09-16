@@ -532,8 +532,24 @@ export default function QuestionsAdminPage() {
                         <p className="text-white font-medium mb-2">
                           {question.translations?.en?.question || question.translations?.[question.defaultLanguage]?.question || 'No question text'}
                         </p>
+
+                        {/* Display multiple choice options for Math Speed and other tests that have them */}
+                        {(currentQuestionType === 'math-speed' || currentQuestionType === 'general-knowledge' || currentQuestionType === 'memory-power') && (
+                          <div className="text-sm text-white/80 mb-2 ml-4">
+                            {question.translations?.en?.options && (
+                              <div className="grid grid-cols-2 gap-2">
+                                <div>A: {question.translations.en.options.a}</div>
+                                <div>B: {question.translations.en.options.b}</div>
+                                <div>C: {question.translations.en.options.c}</div>
+                                <div>D: {question.translations.en.options.d}</div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
                         <div className="text-sm text-white/70">
-                          Answer: {question.correctAnswer} | Languages: {question.availableLanguages?.join(', ') || 'Unknown'}
+                          <span className="font-semibold text-green-300">Answer: {question.correctAnswer}</span> |
+                          Languages: {question.availableLanguages?.join(', ') || 'Unknown'}
                         </div>
                       </div>
                       <div className="flex space-x-2">
