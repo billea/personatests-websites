@@ -255,7 +255,8 @@ export default function ResultsPage() {
             });
         }
         
-        if (hasAnswers) {
+        // Include detailed answers only for non-database tests (avoid confusing random IDs)
+        if (hasAnswers && !['math-speed', 'memory-power', 'general-knowledge'].includes(result.testId)) {
             content += `\nDetailed Answers:\n`;
             Object.entries(hasAnswers).forEach(([questionId, answer]) => {
                 content += `  ${questionId}: ${answer}\n`;
@@ -1301,8 +1302,8 @@ export default function ResultsPage() {
                             </div>
                         )}
 
-                        {/* Raw Answers (Technical Details) */}
-                        {hasAnswers && (
+                        {/* Raw Answers (Technical Details) - Hide for database-driven tests with random IDs */}
+                        {hasAnswers && !['math-speed', 'memory-power', 'general-knowledge'].includes(result.testId) && (
                             <div className="p-4 bg-white/5 rounded-lg">
                                 <h4 className="font-semibold mb-3 text-white/80">🔧 Technical Details</h4>
                                 <div className="space-y-2 max-h-64 overflow-y-auto text-xs">
