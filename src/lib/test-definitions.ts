@@ -3437,6 +3437,7 @@ const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Reco
       correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => {
         // Find the question data to include text and options
         const questionData = questions?.find(q => q.id === id);
+        console.log('🔍 MATH SPEED - Processing question:', id, 'questionData:', questionData);
 
         // Convert options array to object format for display
         let optionsObject: { [key: string]: string } = {};
