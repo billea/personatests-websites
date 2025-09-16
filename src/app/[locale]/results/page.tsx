@@ -98,6 +98,26 @@ export default function ResultsPage() {
             setInvitations(finalInvitations);
             setCoupleResults(allCoupleResults);
 
+            // Debug Memory Power results
+            const memoryResults = finalUserResults.filter(r => r.testId === 'memory-power');
+            console.log('🔍 MEMORY POWER RESULTS - Found:', memoryResults.length, 'results');
+            memoryResults.forEach((result, index) => {
+                console.log(`🔍 MEMORY POWER RESULT ${index + 1}:`, {
+                    id: result.id,
+                    testId: result.testId,
+                    hasResult: !!result.result,
+                    resultType: typeof result.result,
+                    resultKeys: result.result ? Object.keys(result.result) : 'none',
+                    hasScores: !!(result.result as any)?.scores,
+                    hasCorrectAnswers: !!(result.result as any)?.scores?.correctAnswers,
+                    correctAnswersLength: (result.result as any)?.scores?.correctAnswers?.length || 0,
+                    completedAt: result.completedAt
+                });
+                if (result.result && (result.result as any).scores?.correctAnswers) {
+                    console.log('🔍 MEMORY POWER CORRECT ANSWERS:', (result.result as any).scores.correctAnswers);
+                }
+            });
+
             // Load feedback lazily in background (don't block initial render)
             setTimeout(() => {
                 loadFeedbackData(finalUserResults);
