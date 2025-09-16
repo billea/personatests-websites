@@ -3165,6 +3165,11 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
     answerValues: Object.values(answers)
   });
 
+  // TEMPORARY DEBUG: Log each individual answer
+  Object.entries(answers).forEach(([key, value]) => {
+    console.log(`🔍 ANSWER ${key}: "${value}" (type: ${typeof value})`);
+  });
+
   const correctAnswers = {
     'math_1': '17', // 8 + 9 = 17
     'math_2': '72', // 8 × 9 = 72
@@ -3191,6 +3196,12 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
   });
   
   const percentage = Math.round((score / total) * 100);
+
+  // TEMPORARY DEBUG: Force a test score to see if the issue is in scoring or display
+  const debugScore = score > 0 ? score : 3; // Force at least 3 correct for testing
+  const debugPercentage = Math.round((debugScore / total) * 100);
+  console.log(`🔍 SCORE DEBUG: actual=${score}/${total} (${percentage}%), debug=${debugScore}/${total} (${debugPercentage}%)`);
+
   let level = '';
   let description = '';
   
@@ -3210,15 +3221,15 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
 
   const result = {
     scores: {
-      score,
+      score: debugScore, // Use debug score temporarily
       total,
-      percentage,
+      percentage: debugPercentage, // Use debug percentage temporarily
       level,
       description
     },
     type: level,
     description_key: description,
-    traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
+    traits: [`${debugScore}/${total} correct`, `${debugPercentage}% accuracy`]
   };
 
   console.log('🔍 Math Speed Final Result:', result);
