@@ -1998,7 +1998,40 @@ export default function TestPage() {
                             )}
                         </div>
                     )}
-                    
+
+                    {/* Response Times for Math Speed Test */}
+                    {completedTestResult && testId === 'math-speed' && responseTimes && Object.keys(responseTimes).length > 0 && (
+                        <div className="mb-8 p-6 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 backdrop-blur-sm border border-white/30 rounded-lg">
+                            <h3 className="text-xl font-bold mb-4 text-white">
+                                ⚡ {currentLanguage === 'ko' ? '응답 시간 분석' : 'Response Time Analysis'}
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {Object.entries(responseTimes).map(([questionId, time], index) => (
+                                    <div key={questionId} className="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-white/80 text-sm">
+                                                {currentLanguage === 'ko' ? `문제 ${index + 1}` : `Question ${index + 1}`}
+                                            </span>
+                                            <span className="text-white font-bold">
+                                                {time}s
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="mt-4 p-3 bg-white/10 rounded-lg">
+                                <div className="flex justify-between items-center text-white">
+                                    <span className="font-semibold">
+                                        {currentLanguage === 'ko' ? '평균 응답 시간:' : 'Average Response Time:'}
+                                    </span>
+                                    <span className="font-bold text-cyan-300">
+                                        {(Object.values(responseTimes).reduce((a, b) => a + b, 0) / Object.values(responseTimes).length).toFixed(2)}s
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Detailed Insights */}
                     {completedTestResult && completedTestResult.traits && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">

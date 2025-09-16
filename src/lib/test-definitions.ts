@@ -2786,6 +2786,61 @@ const mathSpeedQuestions: TestQuestion[] = [
       { value: '9', text_key: 'tests.math_speed.options.q5_c' },
       { value: '10', text_key: 'tests.math_speed.options.q5_d' }
     ]
+  },
+  {
+    id: 'math_6',
+    text_key: 'tests.math_speed.questions.q6',
+    type: 'multiple_choice',
+    options: [
+      { value: '144', text_key: 'tests.math_speed.options.q6_a' },
+      { value: '169', text_key: 'tests.math_speed.options.q6_b' },
+      { value: '196', text_key: 'tests.math_speed.options.q6_c' },
+      { value: '225', text_key: 'tests.math_speed.options.q6_d' }
+    ]
+  },
+  {
+    id: 'math_7',
+    text_key: 'tests.math_speed.questions.q7',
+    type: 'multiple_choice',
+    options: [
+      { value: '60', text_key: 'tests.math_speed.options.q7_a' },
+      { value: '72', text_key: 'tests.math_speed.options.q7_b' },
+      { value: '84', text_key: 'tests.math_speed.options.q7_c' },
+      { value: '96', text_key: 'tests.math_speed.options.q7_d' }
+    ]
+  },
+  {
+    id: 'math_8',
+    text_key: 'tests.math_speed.questions.q8',
+    type: 'multiple_choice',
+    options: [
+      { value: '15', text_key: 'tests.math_speed.options.q8_a' },
+      { value: '18', text_key: 'tests.math_speed.options.q8_b' },
+      { value: '21', text_key: 'tests.math_speed.options.q8_c' },
+      { value: '24', text_key: 'tests.math_speed.options.q8_d' }
+    ]
+  },
+  {
+    id: 'math_9',
+    text_key: 'tests.math_speed.questions.q9',
+    type: 'multiple_choice',
+    options: [
+      { value: '27', text_key: 'tests.math_speed.options.q9_a' },
+      { value: '32', text_key: 'tests.math_speed.options.q9_b' },
+      { value: '36', text_key: 'tests.math_speed.options.q9_c' },
+      { value: '45', text_key: 'tests.math_speed.options.q9_d' }
+    ]
+  },
+  {
+    id: 'math_10',
+    text_key: 'tests.math_speed.questions.q10',
+    type: 'multiple_choice',
+    options: [
+      { value: '120', text_key: 'tests.math_speed.options.q10_a' },
+      { value: '125', text_key: 'tests.math_speed.options.q10_b' },
+      { value: '130', text_key: 'tests.math_speed.options.q10_c' },
+      { value: '135', text_key: 'tests.math_speed.options.q10_d' }
+    ]
   }
 ];
 
@@ -3109,7 +3164,12 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
     'math_2': '72', // 8 × 9 = 72
     'math_3': '13', // 91 ÷ 7 = 13
     'math_4': '154', // 77 × 2 = 154
-    'math_5': '8' // √64 = 8
+    'math_5': '8', // √64 = 8
+    'math_6': '144', // 12² = 144
+    'math_7': '72', // 12 × 6 = 72
+    'math_8': '15', // 63 ÷ 3 - 6 = 21 - 6 = 15
+    'math_9': '36', // 6³ ÷ 6 = 216 ÷ 6 = 36
+    'math_10': '125' // 25 × 5 = 125
   };
   
   let score = 0;
@@ -3507,7 +3567,7 @@ export const testDefinitions: TestDefinition[] = [
       popularity: 3,
       scientificValidity: 2,
       resultType: 'Speed & Accuracy',
-      testLength: 'Quick (5 Qs)',
+      testLength: 'Medium (10 Qs)',
       engagement: 'Time pressure, gamified',
       popularityNote: '(addictive, competitive)'
     }
