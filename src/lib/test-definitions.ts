@@ -3196,7 +3196,7 @@ const mathSpeedScoring = (answers: Record<string, string>) => {
   questionOrder.forEach((expectedId, index) => {
     const actualQuestionId = answerKeys[index];
     const userAnswer = answers[actualQuestionId];
-    const correctAnswer = correctAnswers[expectedId];
+    const correctAnswer = correctAnswers[expectedId as keyof typeof correctAnswers];
 
     console.log(`Question ${index + 1} (${expectedId}): user="${userAnswer}" correct="${correctAnswer}" actualId="${actualQuestionId}"`);
 
