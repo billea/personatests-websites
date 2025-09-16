@@ -601,6 +601,15 @@ export default function TestPage() {
             ...answers,
             [currentQuestion.id]: answer
         };
+
+        console.log('🔍 ANSWER DEBUG:', {
+            questionId: currentQuestion.id,
+            answer,
+            answerType: typeof answer,
+            newAnswers,
+            testId: testDefinition?.id
+        });
+
         setAnswers(newAnswers);
 
         if (currentQuestionIndex < testDefinition.questions.length - 1) {
@@ -853,12 +862,23 @@ export default function TestPage() {
         setSaving(true);
         try {
             // Score the test
+            console.log('🔍 SCORING DEBUG - About to score test:', {
+                testId,
+                testDefinitionId: testDefinition.id,
+                finalAnswers,
+                answerKeys: Object.keys(finalAnswers),
+                answerValues: Object.values(finalAnswers),
+                scoringFunction: typeof testDefinition.scoring
+            });
+
             const testResult = testDefinition.scoring(
                 finalAnswers,
                 undefined, // partnerAnswers
                 testId === 'general-knowledge' ? generalKnowledgeCorrectAnswers :
                 testId === 'memory-power' ? memoryPowerCorrectAnswers : undefined
             );
+
+            console.log('🔍 SCORING RESULT:', testResult);
             
             // Store the result for display
             setCompletedTestResult(testResult);
