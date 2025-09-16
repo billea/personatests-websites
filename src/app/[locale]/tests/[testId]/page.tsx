@@ -1241,11 +1241,16 @@ export default function TestPage() {
                         clearInterval(timer);
                         setShowQuestionTimer(false);
 
-                        // Auto-submit with no answer when timer runs out
-                        const currentQuestion = testDefinition?.questions[currentQuestionIndex];
-                        if (currentQuestion && !answers[currentQuestion.id]) {
-                            handleAnswer(null); // Submit with null answer
-                        }
+                        // Auto-submit with no answer when timer runs out - but check answers again at execution time
+                        setTimeout(() => {
+                            const currentQuestion = testDefinition?.questions[currentQuestionIndex];
+                            if (currentQuestion && !answers[currentQuestion.id]) {
+                                console.log('🔍 TIMER AUTO-SUBMIT: Question timed out, submitting null');
+                                handleAnswer(null); // Submit with null answer
+                            } else {
+                                console.log('🔍 TIMER SKIP: Question already answered, not auto-submitting');
+                            }
+                        }, 100); // Small delay to ensure answer state is updated
 
                         return 0;
                     }
