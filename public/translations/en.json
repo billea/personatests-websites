@@ -1529,7 +1529,12 @@
         "q2": "What's your ideal food style?",
         "q3": "What's your perfect getaway?",
         "q4": "How social are you?",
-        "q5": "What's your ideal climate?"
+        "q5": "What's your ideal climate?",
+        "q6": "What flavors appeal to you most?",
+        "q7": "What's your favorite way to have fun?",
+        "q8": "What's your ideal vacation style?",
+        "q9": "What do you value most in life?",
+        "q10": "What's your preferred lifestyle pace?"
       },
       "options": {
         "q1_a": "Early morning (sunrise energy)",
@@ -1551,7 +1556,27 @@
         "q5_a": "Warm and tropical",
         "q5_b": "Mild and pleasant",
         "q5_c": "Four distinct seasons",
-        "q5_d": "Cool and crisp"
+        "q5_d": "Cool and crisp",
+        "q6_a": "Spicy and bold",
+        "q6_b": "Sweet and comforting",
+        "q6_c": "Fresh and healthy",
+        "q6_d": "Rich and indulgent",
+        "q7_a": "Dancing and music",
+        "q7_b": "Reading and learning",
+        "q7_c": "Sports and games",
+        "q7_d": "Art and crafts",
+        "q8_a": "Adventure and exploration",
+        "q8_b": "Luxury and comfort",
+        "q8_c": "Cultural sites and history",
+        "q8_d": "Nature and wildlife",
+        "q9_a": "Family and traditions",
+        "q9_b": "Innovation and technology",
+        "q9_c": "Work-life balance",
+        "q9_d": "Community and helping others",
+        "q10_a": "Fast-paced and dynamic",
+        "q10_b": "Relaxed and slow",
+        "q10_c": "Structured and organized",
+        "q10_d": "Spontaneous and flexible"
       }
     },
     "mental_age": {
@@ -1562,7 +1587,12 @@
         "q2": "What type of humor do you enjoy most?",
         "q3": "How do you handle exciting news?",
         "q4": "What's your style approach?",
-        "q5": "What's your ideal Friday night?"
+        "q5": "What's your ideal Friday night?",
+        "q6": "What's your approach to technology?",
+        "q7": "What matters most to you in life?",
+        "q8": "How do you handle money?",
+        "q9": "How do you deal with problems?",
+        "q10": "How do you choose entertainment?"
       },
       "options": {
         "q1_a": "Playing video games",
@@ -1584,7 +1614,27 @@
         "q5_a": "Party with friends",
         "q5_b": "Nice dinner with partner",
         "q5_c": "Movie night at home",
-        "q5_d": "Early bedtime with a book"
+        "q5_d": "Early bedtime with a book",
+        "q6_a": "Always need the latest gadgets",
+        "q6_b": "Stick with reliable, proven tech",
+        "q6_c": "Keep it simple and basic",
+        "q6_d": "Don't really need much technology",
+        "q7_a": "Adventure and excitement",
+        "q7_b": "Comfort and familiar routines",
+        "q7_c": "Learning and personal growth",
+        "q7_d": "Peace and quiet reflection",
+        "q8_a": "Spend it and enjoy life now",
+        "q8_b": "Save some, spend some",
+        "q8_c": "Invest wisely for the future",
+        "q8_d": "Save everything possible",
+        "q9_a": "Try to avoid stress",
+        "q9_b": "Complain and vent to others",
+        "q9_c": "Face them head-on directly",
+        "q9_d": "Accept and adapt peacefully",
+        "q10_a": "Whatever's viral and trending",
+        "q10_b": "Friends' recommendations",
+        "q10_c": "Critical reviews and ratings",
+        "q10_d": "Classic, timeless content"
       }
     },
     "spirit_animal": {
@@ -1595,7 +1645,12 @@
         "q2": "Your ideal environment is...",
         "q3": "What do you value most?",
         "q4": "When facing challenges, you...",
-        "q5": "What time of day speaks to your soul?"
+        "q5": "What time of day speaks to your soul?",
+        "q6": "What activity energizes you most?",
+        "q7": "How do you make decisions?",
+        "q8": "How do you prefer to help others?",
+        "q9": "What's your greatest strength?",
+        "q10": "What drives your life philosophy?"
       },
       "options": {
         "q1_a": "Lead the group",
@@ -1617,7 +1672,27 @@
         "q5_a": "Bright daylight",
         "q5_b": "Mysterious nighttime",
         "q5_c": "Fresh dawn",
-        "q5_d": "Peaceful sunset"
+        "q5_d": "Peaceful sunset",
+        "q6_a": "Competitive challenges and winning",
+        "q6_b": "Creative and artistic expression",
+        "q6_c": "Social connection and bonding",
+        "q6_d": "Peaceful meditation and reflection",
+        "q7_a": "Fast and decisive action",
+        "q7_b": "Careful and methodical thinking",
+        "q7_c": "Intuitive feeling and instinct",
+        "q7_d": "Patient waiting and observation",
+        "q8_a": "Protect and defend them",
+        "q8_b": "Teach and guide them",
+        "q8_c": "Play and entertain them",
+        "q8_d": "Explore and discover with them",
+        "q9_a": "Physical strength and endurance",
+        "q9_b": "Mental intelligence and wisdom",
+        "q9_c": "Emotional empathy and compassion",
+        "q9_d": "Spiritual intuition and insight",
+        "q10_a": "Adventure and taking risks",
+        "q10_b": "Knowledge and learning",
+        "q10_c": "Harmony and peaceful existence",
+        "q10_d": "Transformation and personal growth"
       }
     },
     "bigfive": {
