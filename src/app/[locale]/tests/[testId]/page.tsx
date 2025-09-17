@@ -960,13 +960,17 @@ export default function TestPage() {
             setCompletedTestResult(testResult);
 
             // Save to local storage for anonymous users
-            const localResult = {
+            const localResult: any = {
                 testId,
                 answers: finalAnswers,
                 result: testResult,
-                responseTimes: testDefinition.id === 'math-speed' ? responseTimes : undefined,
                 completedAt: new Date().toISOString()
             };
+
+            // Only add responseTimes if it exists (for Math Speed test)
+            if (testDefinition.id === 'math-speed' && responseTimes) {
+                localResult.responseTimes = responseTimes;
+            }
 
             console.log('🔍 SAVING DEBUG - Local result to save:', {
                 testId,
