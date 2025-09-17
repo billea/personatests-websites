@@ -1124,7 +1124,17 @@
       "Communication": "Communication",
       "Conscientiousness": "Conscientiousness",
       "Openness": "Openness",
-      "Agreeableness": "Agreeableness"
+      "Agreeableness": "Agreeableness",
+      "country": "Country Match",
+      "🇯🇵 Japan": "Japan",
+      "🇮🇹 Italy": "Italy",
+      "🇲🇽 Mexico": "Mexico",
+      "🇫🇷 France": "France",
+      "🇳🇴 Norway": "Norway",
+      "🇧🇷 Brazil": "Brazil",
+      "🇪🇸 Spain": "Spain",
+      "🇦🇺 Australia": "Australia",
+      "🇰🇷 South Korea": "South Korea"
     },
     "answerAnalysis": {
       "title": "Detailed Answer Analysis",
