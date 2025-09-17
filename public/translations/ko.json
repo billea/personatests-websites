@@ -3280,7 +3280,9 @@
       "🇦🇺 Australia": "호주",
       "🇰🇷 South Korea": "한국",
       "countryData": "국가 정보",
-      "allScores": "모든 점수"
+      "allScores": "모든 점수",
+      "animal": "정신적 동물",
+      "animalData": "동물 정보"
     },
     "strengthPrefix": "뛰어난",
     "developmentPrefix": "발전시켜야 할"

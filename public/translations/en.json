@@ -1136,7 +1136,9 @@
       "🇦🇺 Australia": "Australia",
       "🇰🇷 South Korea": "South Korea",
       "countryData": "Country Details",
-      "allScores": "All Scores"
+      "allScores": "All Scores",
+      "animal": "Spirit Animal",
+      "animalData": "Animal Details"
     },
     "answerAnalysis": {
       "title": "Detailed Answer Analysis",
