@@ -1134,7 +1134,9 @@
       "🇧🇷 Brazil": "Brazil",
       "🇪🇸 Spain": "Spain",
       "🇦🇺 Australia": "Australia",
-      "🇰🇷 South Korea": "South Korea"
+      "🇰🇷 South Korea": "South Korea",
+      "countryData": "Country Details",
+      "allScores": "All Scores"
     },
     "answerAnalysis": {
       "title": "Detailed Answer Analysis",

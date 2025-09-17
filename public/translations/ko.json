@@ -3278,7 +3278,9 @@
       "🇧🇷 Brazil": "브라질",
       "🇪🇸 Spain": "스페인",
       "🇦🇺 Australia": "호주",
-      "🇰🇷 South Korea": "한국"
+      "🇰🇷 South Korea": "한국",
+      "countryData": "국가 정보",
+      "allScores": "모든 점수"
     },
     "strengthPrefix": "뛰어난",
     "developmentPrefix": "발전시켜야 할"
