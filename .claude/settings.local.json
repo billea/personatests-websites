@@ -32,7 +32,8 @@
       "WebFetch(domain:localhost)",
       "Bash(npm run:*)",
       "Bash(move:*)",
-      "Bash(ren:*)"
+      "Bash(ren:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
