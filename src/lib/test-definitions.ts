@@ -4021,7 +4021,11 @@ const countryMatchScoring = (answers: Record<string, string>) => {
       country: topCountry[0],
       countryData: countryInfo[topCountry[0] as keyof typeof countryInfo].description,
       score: topCountry[1],
-      allScores: Object.entries(countryScores).map(([country, score]) => `${country}: ${score}`).join(', ')
+      allScores: Object.entries(countryScores)
+        .sort(([,a], [,b]) => b - a)
+        .slice(0, 5)
+        .map(([country, score]) => `${country}: ${score}`)
+        .join(', ')
     },
     type: `${countryInfo[topCountry[0] as keyof typeof countryInfo].flag} ${countryInfo[topCountry[0] as keyof typeof countryInfo].name}`,
     description_key: countryInfo[topCountry[0] as keyof typeof countryInfo].description,
@@ -4368,7 +4372,11 @@ const spiritAnimalScoring = (answers: Record<string, string>) => {
       animal: topAnimal[0],
       animalData: animalInfo[topAnimal[0] as keyof typeof animalInfo].description,
       score: topAnimal[1],
-      allScores: Object.entries(animalScores).map(([animal, score]) => `${animal}: ${score}`).join(', ')
+      allScores: Object.entries(animalScores)
+        .sort(([,a], [,b]) => b - a)
+        .slice(0, 5)
+        .map(([animal, score]) => `${animal}: ${score}`)
+        .join(', ')
     },
     type: `${animalInfo[topAnimal[0] as keyof typeof animalInfo].emoji} ${animalInfo[topAnimal[0] as keyof typeof animalInfo].name}`,
     description_key: animalInfo[topAnimal[0] as keyof typeof animalInfo].description,
