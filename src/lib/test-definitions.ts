@@ -3576,7 +3576,23 @@ const memoryPowerScoring = (
       description,
       correctAnswers: Object.entries(correctAnswers).map(([id, answer]) => {
         // Find the question data to include text and options
-        const questionData = questions?.find(q => q.id === id);
+        // For database questions, try to find from questionsData first, then fallback to static questions
+        let questionData = questions?.find(q => q.id === id);
+
+        // If not found in static questions and we have database questionsData, look there
+        if (!questionData && Array.isArray(questionsData)) {
+          const dbQuestion = questionsData.find(q => q.id === id);
+          if (dbQuestion) {
+            console.log('🔍 MEMORY POWER - Using database question for', id);
+            // Convert database question format to our expected format
+            questionData = {
+              id: dbQuestion.id,
+              text_key: (dbQuestion as any).question || `Question ${id}`,
+              type: 'multiple_choice',
+              options: (dbQuestion as any).options || []
+            };
+          }
+        }
 
         // Convert options array to object format for display
         let optionsObject: { [key: string]: string } = {};
@@ -3615,6 +3631,8 @@ const memoryPowerScoring = (
   };
 
   console.log('🔍 MEMORY POWER SCORING - Final result:', finalResult);
+  console.log('🔍 MEMORY POWER SCORING - Correct answers array length:', finalResult.scores.correctAnswers.length);
+  console.log('🔍 MEMORY POWER SCORING - First answer details:', finalResult.scores.correctAnswers[0]);
   return finalResult;
 };
 
