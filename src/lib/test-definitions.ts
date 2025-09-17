@@ -3073,6 +3073,61 @@ const countryMatchQuestions: TestQuestion[] = [
       { value: 'four_seasons', text_key: 'tests.country_match.options.q5_c' },
       { value: 'cool_crisp', text_key: 'tests.country_match.options.q5_d' }
     ]
+  },
+  {
+    id: 'country_6',
+    text_key: 'tests.country_match.questions.q6',
+    type: 'multiple_choice',
+    options: [
+      { value: 'spicy_bold', text_key: 'tests.country_match.options.q6_a' },
+      { value: 'sweet_comforting', text_key: 'tests.country_match.options.q6_b' },
+      { value: 'fresh_healthy', text_key: 'tests.country_match.options.q6_c' },
+      { value: 'rich_indulgent', text_key: 'tests.country_match.options.q6_d' }
+    ]
+  },
+  {
+    id: 'country_7',
+    text_key: 'tests.country_match.questions.q7',
+    type: 'multiple_choice',
+    options: [
+      { value: 'dancing_music', text_key: 'tests.country_match.options.q7_a' },
+      { value: 'reading_learning', text_key: 'tests.country_match.options.q7_b' },
+      { value: 'sports_games', text_key: 'tests.country_match.options.q7_c' },
+      { value: 'art_crafts', text_key: 'tests.country_match.options.q7_d' }
+    ]
+  },
+  {
+    id: 'country_8',
+    text_key: 'tests.country_match.questions.q8',
+    type: 'multiple_choice',
+    options: [
+      { value: 'adventure_travel', text_key: 'tests.country_match.options.q8_a' },
+      { value: 'luxury_comfort', text_key: 'tests.country_match.options.q8_b' },
+      { value: 'cultural_history', text_key: 'tests.country_match.options.q8_c' },
+      { value: 'nature_wildlife', text_key: 'tests.country_match.options.q8_d' }
+    ]
+  },
+  {
+    id: 'country_9',
+    text_key: 'tests.country_match.questions.q9',
+    type: 'multiple_choice',
+    options: [
+      { value: 'family_traditions', text_key: 'tests.country_match.options.q9_a' },
+      { value: 'innovation_technology', text_key: 'tests.country_match.options.q9_b' },
+      { value: 'work_life_balance', text_key: 'tests.country_match.options.q9_c' },
+      { value: 'community_helping', text_key: 'tests.country_match.options.q9_d' }
+    ]
+  },
+  {
+    id: 'country_10',
+    text_key: 'tests.country_match.questions.q10',
+    type: 'multiple_choice',
+    options: [
+      { value: 'fast_paced', text_key: 'tests.country_match.options.q10_a' },
+      { value: 'relaxed_slow', text_key: 'tests.country_match.options.q10_b' },
+      { value: 'structured_organized', text_key: 'tests.country_match.options.q10_c' },
+      { value: 'spontaneous_flexible', text_key: 'tests.country_match.options.q10_d' }
+    ]
   }
 ];
 
@@ -3131,6 +3186,61 @@ const mentalAgeQuestions: TestQuestion[] = [
       { value: 'movie_home', text_key: 'tests.mental_age.options.q5_c' },
       { value: 'early_bed', text_key: 'tests.mental_age.options.q5_d' }
     ]
+  },
+  {
+    id: 'age_6',
+    text_key: 'tests.mental_age.questions.q6',
+    type: 'multiple_choice',
+    options: [
+      { value: 'latest_gadgets', text_key: 'tests.mental_age.options.q6_a' },
+      { value: 'reliable_proven', text_key: 'tests.mental_age.options.q6_b' },
+      { value: 'simple_basic', text_key: 'tests.mental_age.options.q6_c' },
+      { value: 'dont_need_much', text_key: 'tests.mental_age.options.q6_d' }
+    ]
+  },
+  {
+    id: 'age_7',
+    text_key: 'tests.mental_age.questions.q7',
+    type: 'multiple_choice',
+    options: [
+      { value: 'adventure_excitement', text_key: 'tests.mental_age.options.q7_a' },
+      { value: 'comfort_familiar', text_key: 'tests.mental_age.options.q7_b' },
+      { value: 'learning_growth', text_key: 'tests.mental_age.options.q7_c' },
+      { value: 'peace_quiet', text_key: 'tests.mental_age.options.q7_d' }
+    ]
+  },
+  {
+    id: 'age_8',
+    text_key: 'tests.mental_age.questions.q8',
+    type: 'multiple_choice',
+    options: [
+      { value: 'spend_enjoy', text_key: 'tests.mental_age.options.q8_a' },
+      { value: 'save_some_spend', text_key: 'tests.mental_age.options.q8_b' },
+      { value: 'invest_future', text_key: 'tests.mental_age.options.q8_c' },
+      { value: 'save_everything', text_key: 'tests.mental_age.options.q8_d' }
+    ]
+  },
+  {
+    id: 'age_9',
+    text_key: 'tests.mental_age.questions.q9',
+    type: 'multiple_choice',
+    options: [
+      { value: 'avoid_stress', text_key: 'tests.mental_age.options.q9_a' },
+      { value: 'complain_vent', text_key: 'tests.mental_age.options.q9_b' },
+      { value: 'solve_directly', text_key: 'tests.mental_age.options.q9_c' },
+      { value: 'accept_adapt', text_key: 'tests.mental_age.options.q9_d' }
+    ]
+  },
+  {
+    id: 'age_10',
+    text_key: 'tests.mental_age.questions.q10',
+    type: 'multiple_choice',
+    options: [
+      { value: 'viral_trending', text_key: 'tests.mental_age.options.q10_a' },
+      { value: 'friends_recommendations', text_key: 'tests.mental_age.options.q10_b' },
+      { value: 'critic_reviews', text_key: 'tests.mental_age.options.q10_c' },
+      { value: 'classic_timeless', text_key: 'tests.mental_age.options.q10_d' }
+    ]
   }
 ];
 
@@ -3188,6 +3298,61 @@ const spiritAnimalQuestions: TestQuestion[] = [
       { value: 'night_mysterious', text_key: 'tests.spirit_animal.options.q5_b' },
       { value: 'dawn_fresh_start', text_key: 'tests.spirit_animal.options.q5_c' },
       { value: 'sunset_reflection', text_key: 'tests.spirit_animal.options.q5_d' }
+    ]
+  },
+  {
+    id: 'animal_6',
+    text_key: 'tests.spirit_animal.questions.q6',
+    type: 'multiple_choice',
+    options: [
+      { value: 'competitive_winning', text_key: 'tests.spirit_animal.options.q6_a' },
+      { value: 'creative_artistic', text_key: 'tests.spirit_animal.options.q6_b' },
+      { value: 'social_connecting', text_key: 'tests.spirit_animal.options.q6_c' },
+      { value: 'peaceful_meditating', text_key: 'tests.spirit_animal.options.q6_d' }
+    ]
+  },
+  {
+    id: 'animal_7',
+    text_key: 'tests.spirit_animal.questions.q7',
+    type: 'multiple_choice',
+    options: [
+      { value: 'fast_decisive', text_key: 'tests.spirit_animal.options.q7_a' },
+      { value: 'careful_methodical', text_key: 'tests.spirit_animal.options.q7_b' },
+      { value: 'intuitive_feeling', text_key: 'tests.spirit_animal.options.q7_c' },
+      { value: 'patient_waiting', text_key: 'tests.spirit_animal.options.q7_d' }
+    ]
+  },
+  {
+    id: 'animal_8',
+    text_key: 'tests.spirit_animal.questions.q8',
+    type: 'multiple_choice',
+    options: [
+      { value: 'protect_defend', text_key: 'tests.spirit_animal.options.q8_a' },
+      { value: 'teach_guide', text_key: 'tests.spirit_animal.options.q8_b' },
+      { value: 'play_entertain', text_key: 'tests.spirit_animal.options.q8_c' },
+      { value: 'explore_discover', text_key: 'tests.spirit_animal.options.q8_d' }
+    ]
+  },
+  {
+    id: 'animal_9',
+    text_key: 'tests.spirit_animal.questions.q9',
+    type: 'multiple_choice',
+    options: [
+      { value: 'physical_strength', text_key: 'tests.spirit_animal.options.q9_a' },
+      { value: 'mental_intelligence', text_key: 'tests.spirit_animal.options.q9_b' },
+      { value: 'emotional_empathy', text_key: 'tests.spirit_animal.options.q9_c' },
+      { value: 'spiritual_intuition', text_key: 'tests.spirit_animal.options.q9_d' }
+    ]
+  },
+  {
+    id: 'animal_10',
+    text_key: 'tests.spirit_animal.questions.q10',
+    type: 'multiple_choice',
+    options: [
+      { value: 'adventure_risk', text_key: 'tests.spirit_animal.options.q10_a' },
+      { value: 'knowledge_learning', text_key: 'tests.spirit_animal.options.q10_b' },
+      { value: 'harmony_peace', text_key: 'tests.spirit_animal.options.q10_c' },
+      { value: 'transformation_growth', text_key: 'tests.spirit_animal.options.q10_d' }
     ]
   }
 ];
@@ -3665,44 +3830,190 @@ const countryMatchScoring = (answers: Record<string, string>) => {
     mexico: 0,
     france: 0,
     norway: 0,
-    brazil: 0
+    brazil: 0,
+    spain: 0,
+    australia: 0,
+    south_korea: 0,
+    netherlands: 0,
+    canada: 0,
+    thailand: 0
   };
-  
-  // Scoring logic based on lifestyle preferences
+
+  // Question 1: Daily rhythm
   if (answers['country_1'] === 'afternoon_person') countryScores.italy += 2;
   if (answers['country_1'] === 'early_riser') countryScores.japan += 2;
-  
+  if (answers['country_1'] === 'night_owl') countryScores.spain += 2;
+  if (answers['country_1'] === 'whenever') countryScores.australia += 1;
+
+  // Question 2: Food preferences
   if (answers['country_2'] === 'pasta_pizza') countryScores.italy += 3;
   if (answers['country_2'] === 'sushi_ramen') countryScores.japan += 3;
   if (answers['country_2'] === 'tacos_burritos') countryScores.mexico += 3;
   if (answers['country_2'] === 'croissant_cheese') countryScores.france += 3;
-  
+
+  // Question 3: Environment preference
   if (answers['country_3'] === 'beach_sun') {
     countryScores.italy += 2;
     countryScores.brazil += 2;
+    countryScores.spain += 2;
+    countryScores.australia += 2;
   }
-  if (answers['country_3'] === 'mountains_hiking') countryScores.norway += 2;
-  if (answers['country_3'] === 'city_culture') countryScores.france += 2;
-  
-  if (answers['country_4'] === 'very_social') countryScores.brazil += 2;
-  if (answers['country_4'] === 'love_solitude') countryScores.norway += 2;
-  
-  if (answers['country_5'] === 'warm_tropical') countryScores.brazil += 2;
-  if (answers['country_5'] === 'cool_crisp') countryScores.norway += 2;
-  if (answers['country_5'] === 'mild_pleasant') countryScores.france += 1;
-  
+  if (answers['country_3'] === 'mountains_hiking') {
+    countryScores.norway += 2;
+    countryScores.canada += 2;
+  }
+  if (answers['country_3'] === 'city_culture') {
+    countryScores.france += 2;
+    countryScores.south_korea += 2;
+  }
+  if (answers['country_3'] === 'countryside_peace') {
+    countryScores.netherlands += 2;
+    countryScores.norway += 1;
+  }
+
+  // Question 4: Social preferences
+  if (answers['country_4'] === 'very_social') {
+    countryScores.brazil += 2;
+    countryScores.spain += 2;
+    countryScores.mexico += 2;
+  }
+  if (answers['country_4'] === 'love_solitude') {
+    countryScores.norway += 2;
+    countryScores.canada += 1;
+  }
+  if (answers['country_4'] === 'prefer_small_groups') {
+    countryScores.netherlands += 2;
+    countryScores.japan += 1;
+  }
+
+  // Question 5: Climate preference
+  if (answers['country_5'] === 'warm_tropical') {
+    countryScores.brazil += 2;
+    countryScores.thailand += 3;
+    countryScores.australia += 2;
+  }
+  if (answers['country_5'] === 'cool_crisp') {
+    countryScores.norway += 2;
+    countryScores.canada += 2;
+  }
+  if (answers['country_5'] === 'mild_pleasant') {
+    countryScores.france += 1;
+    countryScores.netherlands += 2;
+  }
+  if (answers['country_5'] === 'four_seasons') {
+    countryScores.south_korea += 2;
+    countryScores.japan += 1;
+  }
+
+  // Question 6: Food flavor preferences
+  if (answers['country_6'] === 'spicy_bold') {
+    countryScores.mexico += 2;
+    countryScores.thailand += 3;
+    countryScores.south_korea += 2;
+  }
+  if (answers['country_6'] === 'sweet_comforting') {
+    countryScores.netherlands += 2;
+    countryScores.japan += 1;
+  }
+  if (answers['country_6'] === 'fresh_healthy') {
+    countryScores.japan += 2;
+    countryScores.norway += 1;
+  }
+  if (answers['country_6'] === 'rich_indulgent') {
+    countryScores.france += 2;
+    countryScores.italy += 2;
+  }
+
+  // Question 7: Hobbies
+  if (answers['country_7'] === 'dancing_music') {
+    countryScores.brazil += 3;
+    countryScores.spain += 2;
+  }
+  if (answers['country_7'] === 'reading_learning') {
+    countryScores.japan += 2;
+    countryScores.norway += 1;
+  }
+  if (answers['country_7'] === 'sports_games') {
+    countryScores.australia += 2;
+    countryScores.canada += 1;
+  }
+  if (answers['country_7'] === 'art_crafts') {
+    countryScores.italy += 2;
+    countryScores.france += 2;
+  }
+
+  // Question 8: Travel style
+  if (answers['country_8'] === 'adventure_travel') {
+    countryScores.australia += 3;
+    countryScores.norway += 2;
+  }
+  if (answers['country_8'] === 'luxury_comfort') {
+    countryScores.france += 2;
+    countryScores.italy += 1;
+  }
+  if (answers['country_8'] === 'cultural_history') {
+    countryScores.japan += 2;
+    countryScores.south_korea += 2;
+  }
+  if (answers['country_8'] === 'nature_wildlife') {
+    countryScores.canada += 3;
+    countryScores.australia += 2;
+  }
+
+  // Question 9: Values
+  if (answers['country_9'] === 'family_traditions') {
+    countryScores.mexico += 3;
+    countryScores.south_korea += 2;
+  }
+  if (answers['country_9'] === 'innovation_technology') {
+    countryScores.japan += 3;
+    countryScores.south_korea += 2;
+  }
+  if (answers['country_9'] === 'work_life_balance') {
+    countryScores.norway += 3;
+    countryScores.netherlands += 2;
+  }
+  if (answers['country_9'] === 'community_helping') {
+    countryScores.canada += 2;
+    countryScores.thailand += 2;
+  }
+
+  // Question 10: Lifestyle pace
+  if (answers['country_10'] === 'fast_paced') {
+    countryScores.japan += 2;
+    countryScores.south_korea += 2;
+  }
+  if (answers['country_10'] === 'relaxed_slow') {
+    countryScores.thailand += 3;
+    countryScores.spain += 2;
+  }
+  if (answers['country_10'] === 'structured_organized') {
+    countryScores.japan += 2;
+    countryScores.netherlands += 2;
+  }
+  if (answers['country_10'] === 'spontaneous_flexible') {
+    countryScores.brazil += 2;
+    countryScores.australia += 2;
+  }
+
   // Find the country with highest score
-  const topCountry = Object.entries(countryScores).reduce((a, b) => 
+  const topCountry = Object.entries(countryScores).reduce((a, b) =>
     countryScores[a[0]] > countryScores[b[0]] ? a : b
   );
-  
+
   const countryInfo = {
-    italy: { flag: '🇮🇹', name: 'Italy', description: 'You\'re passionate, artistic, and love the good life! La dolce vita suits you perfectly.' },
-    japan: { flag: '🇯🇵', name: 'Japan', description: 'You\'re disciplined, thoughtful, and appreciate beauty in simplicity. Zen is your way!' },
-    mexico: { flag: '🇲🇽', name: 'Mexico', description: 'You\'re vibrant, warm, and love celebrating life with family and friends. ¡Viva la vida!' },
-    france: { flag: '🇫🇷', name: 'France', description: 'You\'re sophisticated, cultured, and have an appreciation for the finer things. Très chic!' },
-    norway: { flag: '🇳🇴', name: 'Norway', description: 'You\'re independent, nature-loving, and find peace in simplicity. Hygge is your lifestyle!' },
-    brazil: { flag: '🇧🇷', name: 'Brazil', description: 'You\'re energetic, social, and bring sunshine wherever you go. Vida boa!' }
+    italy: { flag: '🇮🇹', name: 'Italy', description: 'You\'re passionate, artistic, and love the good life! La dolce vita suits you perfectly. You appreciate beauty, family, and taking time to savor life\'s pleasures.' },
+    japan: { flag: '🇯🇵', name: 'Japan', description: 'You\'re disciplined, thoughtful, and appreciate beauty in simplicity. Zen is your way! You value tradition, harmony, and continuous improvement in all aspects of life.' },
+    mexico: { flag: '🇲🇽', name: 'Mexico', description: 'You\'re vibrant, warm, and love celebrating life with family and friends. ¡Viva la vida! You bring joy and energy wherever you go, and family means everything to you.' },
+    france: { flag: '🇫🇷', name: 'France', description: 'You\'re sophisticated, cultured, and have an appreciation for the finer things. Très chic! You love art, excellent food, and intellectual conversations.' },
+    norway: { flag: '🇳🇴', name: 'Norway', description: 'You\'re independent, nature-loving, and find peace in simplicity. Hygge is your lifestyle! You value equality, outdoor adventures, and cozy moments.' },
+    brazil: { flag: '🇧🇷', name: 'Brazil', description: 'You\'re energetic, social, and bring sunshine wherever you go. Vida boa! You love music, dancing, and making connections with people from all walks of life.' },
+    spain: { flag: '🇪🇸', name: 'Spain', description: 'You\'re passionate, lively, and know how to enjoy life! Siesta and fiesta perfectly capture your spirit. You love late nights, good food, and vibrant celebrations.' },
+    australia: { flag: '🇦🇺', name: 'Australia', description: 'You\'re laid-back, adventurous, and have a great sense of humor! No worries, mate! You love the outdoors, trying new things, and living life with an easy-going attitude.' },
+    south_korea: { flag: '🇰🇷', name: 'South Korea', description: 'You\'re dynamic, tech-savvy, and appreciate both tradition and innovation! You love learning, connecting with others, and experiencing the perfect blend of old and new.' },
+    netherlands: { flag: '🇳🇱', name: 'Netherlands', description: 'You\'re practical, open-minded, and value balance in life! You appreciate efficiency, cycling everywhere, and creating cozy, comfortable spaces for yourself and others.' },
+    canada: { flag: '🇨🇦', name: 'Canada', description: 'You\'re friendly, polite, and love the great outdoors! Eh? You value kindness, diversity, and endless natural beauty. You\'re the person everyone wants as a neighbor!' },
+    thailand: { flag: '🇹🇭', name: 'Thailand', description: 'You\'re peaceful, spiritual, and love life\'s simple pleasures! Sabai sabai is your motto. You appreciate spicy food, warm hearts, and finding inner tranquility.'  }
   };
   
   return {
@@ -3720,50 +4031,117 @@ const countryMatchScoring = (answers: Record<string, string>) => {
 
 const mentalAgeScoring = (answers: Record<string, string>) => {
   let agePoints = 25; // Start at 25
-  
-  // Adjust based on answers
+
+  // Question 1: Free time activity
   if (answers['age_1'] === 'video_games') agePoints -= 5;
   if (answers['age_1'] === 'reading_book') agePoints += 10;
+  if (answers['age_1'] === 'social_media') agePoints -= 3;
   if (answers['age_1'] === 'gardening') agePoints += 15;
-  
+
+  // Question 2: Humor style
   if (answers['age_2'] === 'memes_jokes') agePoints -= 3;
+  if (answers['age_2'] === 'witty_wordplay') agePoints += 5;
+  if (answers['age_2'] === 'slapstick_physical') agePoints -= 2;
   if (answers['age_2'] === 'dry_sarcastic') agePoints += 10;
-  
+
+  // Question 3: Communication style
   if (answers['age_3'] === 'text_immediately') agePoints -= 5;
+  if (answers['age_3'] === 'call_right_away') agePoints -= 2;
   if (answers['age_3'] === 'think_then_respond') agePoints += 5;
   if (answers['age_3'] === 'write_letter') agePoints += 20;
-  
+
+  // Question 4: Fashion style
   if (answers['age_4'] === 'latest_trends') agePoints -= 5;
+  if (answers['age_4'] === 'comfortable_classic') agePoints += 5;
   if (answers['age_4'] === 'practical_functional') agePoints += 10;
-  
+  if (answers['age_4'] === 'whatever_clean') agePoints += 3;
+
+  // Question 5: Night preference
   if (answers['age_5'] === 'party_friends') agePoints -= 5;
+  if (answers['age_5'] === 'dinner_partner') agePoints += 8;
+  if (answers['age_5'] === 'movie_home') agePoints += 5;
   if (answers['age_5'] === 'early_bed') agePoints += 15;
-  
-  // Ensure reasonable bounds
-  const mentalAge = Math.max(16, Math.min(80, agePoints));
-  
+
+  // Question 6: Technology approach
+  if (answers['age_6'] === 'latest_gadgets') agePoints -= 4;
+  if (answers['age_6'] === 'reliable_proven') agePoints += 8;
+  if (answers['age_6'] === 'simple_basic') agePoints += 12;
+  if (answers['age_6'] === 'dont_need_much') agePoints += 18;
+
+  // Question 7: Life priorities
+  if (answers['age_7'] === 'adventure_excitement') agePoints -= 3;
+  if (answers['age_7'] === 'comfort_familiar') agePoints += 8;
+  if (answers['age_7'] === 'learning_growth') agePoints += 5;
+  if (answers['age_7'] === 'peace_quiet') agePoints += 15;
+
+  // Question 8: Money approach
+  if (answers['age_8'] === 'spend_enjoy') agePoints -= 6;
+  if (answers['age_8'] === 'save_some_spend') agePoints += 3;
+  if (answers['age_8'] === 'invest_future') agePoints += 10;
+  if (answers['age_8'] === 'save_everything') agePoints += 20;
+
+  // Question 9: Problem handling
+  if (answers['age_9'] === 'avoid_stress') agePoints -= 2;
+  if (answers['age_9'] === 'complain_vent') agePoints -= 1;
+  if (answers['age_9'] === 'solve_directly') agePoints += 5;
+  if (answers['age_9'] === 'accept_adapt') agePoints += 12;
+
+  // Question 10: Entertainment choice
+  if (answers['age_10'] === 'viral_trending') agePoints -= 4;
+  if (answers['age_10'] === 'friends_recommendations') agePoints += 2;
+  if (answers['age_10'] === 'critic_reviews') agePoints += 8;
+  if (answers['age_10'] === 'classic_timeless') agePoints += 15;
+
+  // Ensure reasonable bounds with more variety
+  const mentalAge = Math.max(14, Math.min(85, agePoints));
+
   let description = '';
-  if (mentalAge < 20) {
-    description = 'You have a youthful, energetic spirit! Life is an adventure.';
+  let category = '';
+  let emoji = '';
+
+  if (mentalAge < 18) {
+    category = 'Teen Spirit 🌟';
+    emoji = '🌟';
+    description = 'You have an incredibly youthful, energetic spirit! You see the world with fresh eyes and endless possibilities. Life is your playground!';
+  } else if (mentalAge < 23) {
+    category = 'Young Explorer 🚀';
+    emoji = '🚀';
+    description = 'You\'re young at heart with a thirst for adventure! You balance spontaneity with some wisdom, making you fun and exciting to be around.';
   } else if (mentalAge < 30) {
-    description = 'You balance fun and responsibility beautifully!';
+    category = 'Balanced Adventurer ⚖️';
+    emoji = '⚖️';
+    description = 'You beautifully balance fun and responsibility! You know when to let loose and when to be serious, making you incredibly well-rounded.';
   } else if (mentalAge < 40) {
-    description = 'You\'re mature and thoughtful, with great life perspective.';
+    category = 'Thoughtful Achiever 🎯';
+    emoji = '🎯';
+    description = 'You\'re mature and thoughtful with great life perspective. You make decisions carefully and appreciate both simple and complex pleasures.';
   } else if (mentalAge < 50) {
-    description = 'You have the wisdom of experience and appreciate life\'s subtleties.';
+    category = 'Wise Counselor 🧠';
+    emoji = '🧠';
+    description = 'You have the wisdom of experience and appreciate life\'s subtleties. People come to you for advice because of your deep understanding.';
+  } else if (mentalAge < 65) {
+    category = 'Sage Philosopher 📚';
+    emoji = '📚';
+    description = 'You\'re a wise soul with profound insights into life. You value depth over superficiality and have developed a rich inner world.';
   } else {
-    description = 'You\'re an old soul with deep wisdom and patience.';
+    category = 'Ancient Soul 🌸';
+    emoji = '🌸';
+    description = 'You\'re an old soul with transcendent wisdom and infinite patience. You see the bigger picture and understand life\'s deeper meanings.';
   }
-  
+
   return {
     scores: {
       mentalAge,
       description,
-      category: mentalAge < 25 ? 'Young Spirit' : mentalAge < 40 ? 'Balanced Soul' : 'Wise Heart'
+      category,
+      emoji,
+      ageRange: mentalAge < 25 ? '14-24: Young & Free' :
+                mentalAge < 40 ? '25-39: Balanced & Wise' :
+                mentalAge < 60 ? '40-59: Experienced & Deep' : '60+: Ancient & Sage'
     },
-    type: `Mental Age: ${mentalAge}`,
+    type: `${emoji} Mental Age: ${mentalAge}`,
     description_key: description,
-    traits: [`Age: ${mentalAge}`, mentalAge < 25 ? 'Young Spirit' : mentalAge < 40 ? 'Balanced Soul' : 'Wise Heart']
+    traits: [`Age: ${mentalAge}`, category, `Personality: ${mentalAge < 30 ? 'Energetic' : mentalAge < 50 ? 'Balanced' : 'Wise'}`]
   };
 };
 
@@ -3774,51 +4152,215 @@ const spiritAnimalScoring = (answers: Record<string, string>) => {
     wolf: 0,
     eagle: 0,
     dolphin: 0,
-    bear: 0
+    bear: 0,
+    fox: 0,
+    turtle: 0,
+    butterfly: 0,
+    tiger: 0,
+    elephant: 0,
+    deer: 0
   };
   
-  // Leadership style
-  if (answers['animal_1'] === 'lead_group') animalScores.lion += 3;
-  if (answers['animal_1'] === 'support_others') animalScores.wolf += 2;
-  if (answers['animal_1'] === 'work_independently') animalScores.eagle += 2;
-  if (answers['animal_1'] === 'observe_analyze') animalScores.owl += 3;
-  
-  // Environment preference
-  if (answers['animal_2'] === 'ocean_depths') animalScores.dolphin += 3;
-  if (answers['animal_2'] === 'forest_trees') {
+  // Question 1: Leadership style
+  if (answers['animal_1'] === 'lead_group') {
+    animalScores.lion += 3;
+    animalScores.tiger += 2;
+  }
+  if (answers['animal_1'] === 'work_independently') {
+    animalScores.eagle += 2;
+    animalScores.fox += 2;
+  }
+  if (answers['animal_1'] === 'observe_analyze') {
+    animalScores.owl += 3;
+    animalScores.turtle += 2;
+  }
+  if (answers['animal_1'] === 'support_others') {
     animalScores.wolf += 2;
+    animalScores.elephant += 3;
+  }
+
+  // Question 2: Environment preference
+  if (answers['animal_2'] === 'ocean_depths') {
+    animalScores.dolphin += 3;
+    animalScores.turtle += 2;
+  }
+  if (answers['animal_2'] === 'forest_trees') {
+    animalScores.bear += 2;
+    animalScores.deer += 3;
+    animalScores.fox += 2;
+  }
+  if (answers['animal_2'] === 'mountain_peaks') {
+    animalScores.eagle += 3;
+    animalScores.tiger += 2;
+  }
+  if (answers['animal_2'] === 'open_plains') {
+    animalScores.lion += 2;
+    animalScores.elephant += 2;
+  }
+
+  // Question 3: Core values
+  if (answers['animal_3'] === 'strength_courage') {
+    animalScores.lion += 2;
+    animalScores.tiger += 3;
     animalScores.bear += 2;
   }
-  if (answers['animal_2'] === 'mountain_peaks') animalScores.eagle += 3;
-  if (answers['animal_2'] === 'open_plains') animalScores.lion += 2;
-  
-  // Values
-  if (answers['animal_3'] === 'strength_courage') animalScores.lion += 2;
-  if (answers['animal_3'] === 'wisdom_intelligence') animalScores.owl += 3;
-  if (answers['animal_3'] === 'loyalty_friendship') animalScores.wolf += 3;
-  if (answers['animal_3'] === 'freedom_independence') animalScores.eagle += 2;
-  
-  // Problem-solving
-  if (answers['animal_4'] === 'face_directly') animalScores.lion += 2;
-  if (answers['animal_4'] === 'think_strategize') animalScores.owl += 2;
-  if (answers['animal_4'] === 'seek_help') animalScores.wolf += 2;
-  if (answers['animal_4'] === 'wait_observe') animalScores.bear += 2;
-  
-  // Time preference
-  if (answers['animal_5'] === 'day_active') animalScores.lion += 1;
-  if (answers['animal_5'] === 'night_mysterious') animalScores.owl += 2;
+  if (answers['animal_3'] === 'wisdom_intelligence') {
+    animalScores.owl += 3;
+    animalScores.elephant += 2;
+  }
+  if (answers['animal_3'] === 'loyalty_friendship') {
+    animalScores.wolf += 3;
+    animalScores.dolphin += 2;
+  }
+  if (answers['animal_3'] === 'freedom_independence') {
+    animalScores.eagle += 2;
+    animalScores.butterfly += 3;
+  }
+
+  // Question 4: Problem-solving approach
+  if (answers['animal_4'] === 'face_directly') {
+    animalScores.lion += 2;
+    animalScores.tiger += 2;
+  }
+  if (answers['animal_4'] === 'think_strategize') {
+    animalScores.owl += 2;
+    animalScores.fox += 3;
+  }
+  if (answers['animal_4'] === 'seek_help') {
+    animalScores.wolf += 2;
+    animalScores.elephant += 2;
+  }
+  if (answers['animal_4'] === 'wait_observe') {
+    animalScores.bear += 2;
+    animalScores.deer += 2;
+    animalScores.turtle += 3;
+  }
+
+  // Question 5: Time preference
+  if (answers['animal_5'] === 'day_active') {
+    animalScores.lion += 1;
+    animalScores.butterfly += 2;
+  }
+  if (answers['animal_5'] === 'night_mysterious') {
+    animalScores.owl += 2;
+    animalScores.fox += 2;
+  }
+  if (answers['animal_5'] === 'dawn_fresh_start') {
+    animalScores.deer += 2;
+    animalScores.eagle += 1;
+  }
+  if (answers['animal_5'] === 'sunset_reflection') {
+    animalScores.turtle += 2;
+    animalScores.elephant += 1;
+  }
+
+  // Question 6: Activity preference
+  if (answers['animal_6'] === 'competitive_winning') {
+    animalScores.tiger += 3;
+    animalScores.lion += 2;
+  }
+  if (answers['animal_6'] === 'creative_artistic') {
+    animalScores.butterfly += 3;
+    animalScores.fox += 2;
+  }
+  if (answers['animal_6'] === 'social_connecting') {
+    animalScores.dolphin += 3;
+    animalScores.wolf += 2;
+  }
+  if (answers['animal_6'] === 'peaceful_meditating') {
+    animalScores.turtle += 3;
+    animalScores.deer += 2;
+  }
+
+  // Question 7: Decision-making style
+  if (answers['animal_7'] === 'fast_decisive') {
+    animalScores.tiger += 2;
+    animalScores.eagle += 2;
+  }
+  if (answers['animal_7'] === 'careful_methodical') {
+    animalScores.owl += 2;
+    animalScores.elephant += 2;
+  }
+  if (answers['animal_7'] === 'intuitive_feeling') {
+    animalScores.deer += 3;
+    animalScores.butterfly += 2;
+  }
+  if (answers['animal_7'] === 'patient_waiting') {
+    animalScores.turtle += 3;
+    animalScores.bear += 2;
+  }
+
+  // Question 8: How you help others
+  if (answers['animal_8'] === 'protect_defend') {
+    animalScores.bear += 3;
+    animalScores.wolf += 2;
+  }
+  if (answers['animal_8'] === 'teach_guide') {
+    animalScores.owl += 3;
+    animalScores.elephant += 2;
+  }
+  if (answers['animal_8'] === 'play_entertain') {
+    animalScores.dolphin += 3;
+    animalScores.butterfly += 2;
+  }
+  if (answers['animal_8'] === 'explore_discover') {
+    animalScores.fox += 3;
+    animalScores.eagle += 2;
+  }
+
+  // Question 9: Greatest strength
+  if (answers['animal_9'] === 'physical_strength') {
+    animalScores.bear += 3;
+    animalScores.tiger += 2;
+  }
+  if (answers['animal_9'] === 'mental_intelligence') {
+    animalScores.owl += 3;
+    animalScores.fox += 2;
+  }
+  if (answers['animal_9'] === 'emotional_empathy') {
+    animalScores.deer += 3;
+    animalScores.dolphin += 2;
+  }
+  if (answers['animal_9'] === 'spiritual_intuition') {
+    animalScores.butterfly += 3;
+    animalScores.turtle += 2;
+  }
+
+  // Question 10: Life philosophy
+  if (answers['animal_10'] === 'adventure_risk') {
+    animalScores.tiger += 2;
+    animalScores.eagle += 2;
+  }
+  if (answers['animal_10'] === 'knowledge_learning') {
+    animalScores.owl += 3;
+    animalScores.elephant += 2;
+  }
+  if (answers['animal_10'] === 'harmony_peace') {
+    animalScores.deer += 3;
+    animalScores.turtle += 2;
+  }
+  if (answers['animal_10'] === 'transformation_growth') {
+    animalScores.butterfly += 3;
+    animalScores.fox += 2;
+  }
   
   const topAnimal = Object.entries(animalScores).reduce((a, b) => 
     animalScores[a[0]] > animalScores[b[0]] ? a : b
   );
   
   const animalInfo = {
-    lion: { emoji: '🦁', name: 'Lion', description: 'You\'re a natural born leader with courage and strength. You protect those you love and inspire others to greatness.' },
-    owl: { emoji: '🦉', name: 'Owl', description: 'You\'re wise, intuitive, and see what others miss. Your insight and intelligence guide you through life.' },
-    wolf: { emoji: '🐺', name: 'Wolf', description: 'You\'re loyal, protective, and thrive in community. Family and friendship mean everything to you.' },
-    eagle: { emoji: '🦅', name: 'Eagle', description: 'You\'re independent, visionary, and soar above the ordinary. Freedom and perspective are your gifts.' },
-    dolphin: { emoji: '🐬', name: 'Dolphin', description: 'You\'re playful, intelligent, and deeply social. Joy and connection flow naturally from you.' },
-    bear: { emoji: '🐻', name: 'Bear', description: 'You\'re strong, grounded, and protective. You have great inner power and maternal/paternal instincts.' }
+    lion: { emoji: '🦁', name: 'Lion', description: 'You\'re a natural born leader with courage and strength. You protect those you love and inspire others to greatness. Your presence commands respect, and your roar can rally troops to action.' },
+    owl: { emoji: '🦉', name: 'Owl', description: 'You\'re wise, intuitive, and see what others miss. Your insight and intelligence guide you through life. You possess ancient wisdom and can navigate both light and shadow with grace.' },
+    wolf: { emoji: '🐺', name: 'Wolf', description: 'You\'re loyal, protective, and thrive in community. Family and friendship mean everything to you. Your pack is your strength, and you\'d do anything to protect those you love.' },
+    eagle: { emoji: '🦅', name: 'Eagle', description: 'You\'re independent, visionary, and soar above the ordinary. Freedom and perspective are your gifts. You see the big picture and inspire others to reach new heights.' },
+    dolphin: { emoji: '🐬', name: 'Dolphin', description: 'You\'re playful, intelligent, and deeply social. Joy and connection flow naturally from you. Your emotional intelligence and ability to communicate make you a natural healer.' },
+    bear: { emoji: '🐻', name: 'Bear', description: 'You\'re strong, grounded, and protective. You have great inner power and nurturing instincts. Your presence brings comfort and security to those around you.' },
+    fox: { emoji: '🦊', name: 'Fox', description: 'You\'re clever, adaptable, and resourceful. Your wit and cunning help you navigate any situation. You possess the perfect balance of intelligence and playfulness.' },
+    turtle: { emoji: '🐢', name: 'Turtle', description: 'You\'re patient, wise, and deeply connected to ancient knowledge. You understand that slow and steady wins the race. Your calm presence brings peace to chaotic situations.' },
+    butterfly: { emoji: '🦋', name: 'Butterfly', description: 'You\'re transformative, graceful, and represent rebirth. Your journey of growth inspires others to embrace change. You bring beauty and magic wherever you go.' },
+    tiger: { emoji: '🐅', name: 'Tiger', description: 'You\'re powerful, independent, and fiercely determined. Your strength and courage are legendary. You walk your own path with confidence and face challenges head-on.' },
+    elephant: { emoji: '🐘', name: 'Elephant', description: 'You\'re wise, compassionate, and have an incredible memory. Your gentle strength and family bonds are unbreakable. You carry the wisdom of generations within you.' },
+    deer: { emoji: '🦌', name: 'Deer', description: 'You\'re gentle, intuitive, and deeply sensitive to your surroundings. Your grace and alertness help you navigate life with elegance. You bring peace and natural beauty to the world.' }
   };
   
   return {
@@ -3981,7 +4523,7 @@ export const testDefinitions: TestDefinition[] = [
       popularity: 5,
       scientificValidity: 1,
       resultType: 'Country match with flag',
-      testLength: 'Quick (5 Qs)',
+      testLength: 'Medium (10 Qs)',
       engagement: 'Highly viral, shareable results',
       popularityNote: '(viral, meme-worthy)'
     }
@@ -3997,7 +4539,7 @@ export const testDefinitions: TestDefinition[] = [
       popularity: 5,
       scientificValidity: 1,
       resultType: 'Mental age number',
-      testLength: 'Quick (5 Qs)',
+      testLength: 'Medium (10 Qs)',
       engagement: 'Fun comparison, social sharing',
       popularityNote: '(relatable, surprising)'
     }
@@ -4013,7 +4555,7 @@ export const testDefinitions: TestDefinition[] = [
       popularity: 5,
       scientificValidity: 1,
       resultType: 'Animal match with traits',
-      testLength: 'Quick (5 Qs)',
+      testLength: 'Medium (10 Qs)',
       engagement: 'Beautiful graphics potential, spiritual',
       popularityNote: '(mystical, personal)'
     }
