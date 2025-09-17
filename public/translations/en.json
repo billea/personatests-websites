@@ -1138,7 +1138,12 @@
       "countryData": "Country Details",
       "allScores": "All Scores",
       "animal": "Spirit Animal",
-      "animalData": "Animal Details"
+      "animalData": "Animal Details",
+      "mentalAge": "Mental Age",
+      "description": "Description",
+      "category": "Life Stage",
+      "emoji": "Symbol",
+      "ageRange": "Age Range"
     },
     "answerAnalysis": {
       "title": "Detailed Answer Analysis",

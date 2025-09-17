@@ -3282,7 +3282,12 @@
       "countryData": "국가 정보",
       "allScores": "모든 점수",
       "animal": "정신적 동물",
-      "animalData": "동물 정보"
+      "animalData": "동물 정보",
+      "mentalAge": "정신 연령",
+      "description": "설명",
+      "category": "인생 단계",
+      "emoji": "기호",
+      "ageRange": "연령 범위"
     },
     "strengthPrefix": "뛰어난",
     "developmentPrefix": "발전시켜야 할"
