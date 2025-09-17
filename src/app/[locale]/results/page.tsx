@@ -99,6 +99,8 @@ export default function ResultsPage() {
             setCoupleResults(allCoupleResults);
 
             // Debug Memory Power results
+            console.log('🔍 ALL RESULTS DEBUG - Total results:', finalUserResults.length);
+            console.log('🔍 ALL RESULTS DEBUG - Test IDs found:', finalUserResults.map(r => r.testId));
             const memoryResults = finalUserResults.filter(r => r.testId === 'memory-power');
             console.log('🔍 MEMORY POWER RESULTS - Found:', memoryResults.length, 'results');
             memoryResults.forEach((result, index) => {
