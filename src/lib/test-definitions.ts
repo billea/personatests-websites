@@ -3240,6 +3240,14 @@ const generalKnowledgeScoring = (
   }
 
   // Only score the questions that were actually answered
+  console.log('🔍 General Knowledge Scoring Debug:', {
+    answers,
+    questionsData: questionsData ? 'present' : 'missing',
+    questions: questions ? `${questions.length} questions` : 'no questions',
+    correctAnswersProcessed: correctAnswers,
+    correctAnswersKeys: Object.keys(correctAnswers)
+  });
+
   const answeredQuestions = Object.keys(answers);
   const validCorrectAnswers = Object.fromEntries(
     Object.entries(correctAnswers).filter(([questionId]) =>
@@ -3277,7 +3285,7 @@ const generalKnowledgeScoring = (
     description = 'Everyone starts somewhere. Keep exploring!';
   }
 
-  return {
+  const finalResult = {
     scores: {
       score,
       total,
@@ -3287,6 +3295,13 @@ const generalKnowledgeScoring = (
       correctAnswers: Object.entries(validCorrectAnswers).map(([id, answer]) => {
         // Find the question data to include text and options
         const questionData = questions?.find(q => q.id === id);
+        console.log('🔍 General Knowledge - Processing question:', {
+          id,
+          answer,
+          questionData: questionData ? 'found' : 'not found',
+          questionText: questionData?.text_key,
+          optionsCount: questionData?.options ? questionData.options.length : 0
+        });
 
         // Convert options array to object format for display
         let optionsObject: { [key: string]: string } = {};
@@ -3323,6 +3338,13 @@ const generalKnowledgeScoring = (
     description_key: description,
     traits: [`${score}/${total} correct`, `${percentage}% accuracy`]
   };
+
+  console.log('🔍 General Knowledge Final Result:', finalResult);
+  console.log('🔍 General Knowledge - Correct answers array length:', finalResult.scores.correctAnswers.length);
+  if (finalResult.scores.correctAnswers.length > 0) {
+    console.log('🔍 General Knowledge - First answer details:', finalResult.scores.correctAnswers[0]);
+  }
+  return finalResult;
 };
 
 const mathSpeedScoring = (answers: Record<string, string>, partnerAnswers?: Record<string, string>, correctAnswersData?: Array<{id: string, correctAnswer: string}> | { [questionId: string]: string }, questions?: TestQuestion[]) => {
