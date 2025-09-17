@@ -107,16 +107,16 @@ export default function ResultsPage() {
                 console.log(`🔍 MEMORY POWER RESULT ${index + 1}:`, {
                     id: result.id,
                     testId: result.testId,
-                    hasResult: !!result.result,
-                    resultType: typeof result.result,
-                    resultKeys: result.result ? Object.keys(result.result) : 'none',
-                    hasScores: !!(result.result as any)?.scores,
-                    hasCorrectAnswers: !!(result.result as any)?.scores?.correctAnswers,
-                    correctAnswersLength: (result.result as any)?.scores?.correctAnswers?.length || 0,
-                    completedAt: result.completedAt
+                    hasResultPayload: !!result.resultPayload,
+                    resultPayloadType: typeof result.resultPayload,
+                    resultPayloadKeys: result.resultPayload ? Object.keys(result.resultPayload) : 'none',
+                    hasScores: !!(result.resultPayload as any)?.scores,
+                    hasCorrectAnswers: !!(result.resultPayload as any)?.scores?.correctAnswers,
+                    correctAnswersLength: (result.resultPayload as any)?.scores?.correctAnswers?.length || 0,
+                    createdAt: result.createdAt
                 });
-                if (result.result && (result.result as any).scores?.correctAnswers) {
-                    console.log('🔍 MEMORY POWER CORRECT ANSWERS:', (result.result as any).scores.correctAnswers);
+                if (result.resultPayload && (result.resultPayload as any).scores?.correctAnswers) {
+                    console.log('🔍 MEMORY POWER CORRECT ANSWERS:', (result.resultPayload as any).scores.correctAnswers);
                 }
             });
 
@@ -1283,7 +1283,6 @@ export default function ResultsPage() {
                                                                 {/* Multiple Choice Options */}
                                                                 {item.options && Object.keys(item.options).length > 0 && (
                                                                     <div className="grid grid-cols-1 gap-1 mt-2">
-                                                                        {console.log('🔍 RESULTS - Options for question:', item.questionId, 'options:', item.options)}
                                                                         {Object.entries(item.options).map(([optionKey, optionValue]) => {
                                                                             console.log('🔍 RESULTS - Option entry:', optionKey, '=', optionValue, 'type:', typeof optionValue);
                                                                             const isUserAnswer = item.userAnswer === optionKey;
