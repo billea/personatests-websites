@@ -119,7 +119,9 @@
     "saveExit": "저장 후 종료",
     "progressSaved": "진행상황이 자동 저장됩니다",
     "answersSaved": "답변이 저장되고 있습니다",
-    "yourName": "당신의 이름"
+    "yourName": "당신의 이름",
+    "chooseOptionBelow": "가장 공감되는 옵션을 선택해주세요",
+    "questionsRemaining": "개 질문 남음"
   },
   "scale": {
     "notReally": "별로 아니요",

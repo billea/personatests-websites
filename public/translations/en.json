@@ -630,7 +630,9 @@
     "saveExit": "Save & Exit",
     "progressSaved": "Progress automatically saved",
     "answersSaved": "Your answers are being saved",
-    "yourName": "your name"
+    "yourName": "your name",
+    "chooseOptionBelow": "Choose the option that resonates most with you",
+    "questionsRemaining": "questions remaining"
   },
   "scale": {
     "notReally": "Not really",

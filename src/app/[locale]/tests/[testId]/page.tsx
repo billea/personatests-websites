@@ -2804,22 +2804,71 @@ export default function TestPage() {
                             </div>
                         ) : (
                             <>
-                                <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
-                                    {getDisplayedQuestionText()}
-                                </h2>
+                                <div className="mb-8 text-center">
+                                    {/* Test type indicator for Just for Fun tests */}
+                                    {(testId === 'spirit-animal' || testId === 'country-match' || testId === 'mental-age') && (
+                                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-sm rounded-full border border-white/20 mb-6">
+                                            <span className="text-2xl animate-pulse">
+                                                {testId === 'spirit-animal' ? '🦋' : testId === 'country-match' ? '🌍' : '🧠'}
+                                            </span>
+                                            <span className="text-sm font-medium text-white/90">
+                                                {testId === 'spirit-animal' ? (t('tests.spirit_animal.title') || 'Spirit Animal Discovery') :
+                                                 testId === 'country-match' ? (t('tests.country_match.title') || 'Country Match') :
+                                                 testId === 'mental-age' ? (t('tests.mental_age.title') || 'Mental Age') :
+                                                 'Personality Discovery'}
+                                            </span>
+                                        </div>
+                                    )}
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-white leading-relaxed tracking-tight mb-3 px-4">
+                                        {getDisplayedQuestionText()}
+                                    </h2>
+                                    <p className="text-white/70 text-sm font-medium">
+                                        {t('ui.chooseOptionBelow') || 'Choose the option that resonates most with you'}
+                                    </p>
+                                </div>
 
                                 {currentQuestion.type === 'multiple_choice' && currentQuestion.options && !showMemoryPhase && (
-                        <div className="flex flex-col gap-3">
-                            {currentQuestion.options.map((option, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => handleAnswer(option.value)}
-                                    className="w-full p-4 text-left bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg hover:bg-white/30 transition-all duration-300 transform hover:scale-105 text-white"
-                                    data-translate={option.text_key}
-                                >
-                                    {t(option.text_key) || option.text_key}
-                                </button>
-                            ))}
+                        <div className="grid gap-4">
+                            {currentQuestion.options.map((option, index) => {
+                                const optionEmojis = ['✨', '🌟', '💫', '⭐'];
+                                const gradients = [
+                                    'from-rose-400 to-pink-500',
+                                    'from-violet-400 to-purple-500',
+                                    'from-blue-400 to-indigo-500',
+                                    'from-emerald-400 to-teal-500'
+                                ];
+                                return (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleAnswer(option.value)}
+                                        className="group relative w-full p-6 text-left bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl text-white overflow-hidden"
+                                        data-translate={option.text_key}
+                                    >
+                                        {/* Hover background effect */}
+                                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${gradients[index % gradients.length]}`}></div>
+
+                                        {/* Content */}
+                                        <div className="relative z-10 flex items-center gap-4">
+                                            <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${gradients[index % gradients.length]} rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                                                {String.fromCharCode(65 + index)}
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="text-white/95 font-medium text-lg leading-relaxed group-hover:text-white transition-colors duration-300">
+                                                    {t(option.text_key) || option.text_key}
+                                                </p>
+                                            </div>
+                                            <div className="flex-shrink-0 text-2xl opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+                                                {optionEmojis[index % optionEmojis.length]}
+                                            </div>
+                                        </div>
+
+                                        {/* Shimmer effect on hover */}
+                                        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${gradients[index % gradients.length]} opacity-20`}></div>
+                                        </div>
+                                    </button>
+                                );
+                            })}
                         </div>
                     )}
 
