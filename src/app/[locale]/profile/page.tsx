@@ -4,19 +4,9 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@/components/providers/auth-provider';
 import { useTranslation } from '@/components/providers/translation-provider';
 import { useRouter } from 'next/navigation';
-import { getUserTestResults } from '@/lib/firestore';
+import { getUserTestResults, TestResult } from '@/lib/firestore';
 import { getTestById } from '@/lib/test-definitions';
 import Link from 'next/link';
-
-interface TestResult {
-  id: string;
-  testId: string;
-  type?: string;
-  completedAt: any;
-  createdAt: any;
-  scores: any;
-  traits?: string[];
-}
 
 export default function ProfilePage() {
   const { user, loading: authLoading } = useAuth();
@@ -52,7 +42,7 @@ export default function ProfilePage() {
 
     const formatDate = (timestamp: any) => {
         if (!timestamp) return "Unknown date";
-        
+
         const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
         return date.toLocaleDateString(currentLanguage, {
             year: 'numeric',
@@ -88,7 +78,7 @@ export default function ProfilePage() {
         const mbtiResults = testResults.filter(r => r.testId === 'mbti');
         if (mbtiResults.length > 0) {
             const latest = mbtiResults[0];
-            return latest.scores?.type || 'Unknown';
+            return latest.resultPayload?.type || 'Unknown';
         }
         return null;
     };
@@ -96,7 +86,7 @@ export default function ProfilePage() {
     const getPersonalityTraits = () => {
         const bigFiveResults = testResults.filter(r => r.testId === 'big-five');
         if (bigFiveResults.length > 0) {
-            return bigFiveResults[0].traits || [];
+            return bigFiveResults[0].resultPayload?.traits || [];
         }
         return [];
     };
@@ -108,7 +98,11 @@ export default function ProfilePage() {
 
     const getRecentActivity = () => {
         return testResults
-            .sort((a, b) => b.createdAt - a.createdAt)
+            .sort((a, b) => {
+                const aTime = a.createdAt?.toDate ? a.createdAt.toDate().getTime() : 0;
+                const bTime = b.createdAt?.toDate ? b.createdAt.toDate().getTime() : 0;
+                return bTime - aTime;
+            })
             .slice(0, 3);
     };
 
@@ -230,9 +224,9 @@ export default function ProfilePage() {
                                             <div className="flex-1">
                                                 <h4 className="font-medium text-white">{getTestName(result.testId)}</h4>
                                                 <p className="text-sm text-white/60 mt-1">{formatDate(result.createdAt)}</p>
-                                                {result.scores?.type && (
+                                                {result.resultPayload?.type && (
                                                     <span className="inline-block mt-2 px-2 py-1 bg-purple-500/30 text-purple-200 text-xs rounded-full">
-                                                        {result.scores.type}
+                                                        {result.resultPayload.type}
                                                     </span>
                                                 )}
                                             </div>
@@ -289,7 +283,7 @@ export default function ProfilePage() {
                                                 {currentLanguage === 'ko' ? '성격 특성' : 'Personality Traits'}
                                             </h4>
                                             <div className="flex flex-wrap gap-2">
-                                                {getPersonalityTraits().map((trait, index) => (
+                                                {getPersonalityTraits().map((trait: string, index: number) => (
                                                     <span key={index} className="px-3 py-1 bg-white/20 text-white text-sm rounded-full">
                                                         {trait}
                                                     </span>
