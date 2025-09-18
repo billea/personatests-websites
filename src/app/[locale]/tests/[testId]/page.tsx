@@ -2811,7 +2811,7 @@ export default function TestPage() {
                                             <span className="text-2xl animate-pulse">
                                                 {testId === 'spirit-animal' ? '🦋' : testId === 'country-match' ? '🌍' : '🧠'}
                                             </span>
-                                            <span className="text-sm font-medium text-white/90">
+                                            <span className="text-sm font-medium text-gray-100">
                                                 {testId === 'spirit-animal' ? (t('tests.spirit_animal.title') || 'Spirit Animal Discovery') :
                                                  testId === 'country-match' ? (t('tests.country_match.title') || 'Country Match') :
                                                  testId === 'mental-age' ? (t('tests.mental_age.title') || 'Mental Age') :
@@ -2819,10 +2819,10 @@ export default function TestPage() {
                                             </span>
                                         </div>
                                     )}
-                                    <h2 className="text-2xl lg:text-3xl font-bold text-white leading-relaxed tracking-tight mb-4 px-4 text-enhanced max-w-4xl mx-auto">
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-gray-50 leading-relaxed tracking-tight mb-4 px-4 text-enhanced max-w-4xl mx-auto">
                                         {getDisplayedQuestionText()}
                                     </h2>
-                                    <p className="text-white/70 text-sm font-medium text-enhanced">
+                                    <p className="text-gray-200 text-sm font-medium text-enhanced">
                                         {t('ui.chooseOptionBelow') || 'Choose the option that resonates most with you'}
                                     </p>
                                 </div>
@@ -2841,7 +2841,7 @@ export default function TestPage() {
                                     <button
                                         key={index}
                                         onClick={() => handleAnswer(option.value)}
-                                        className="group relative w-full p-7 md:p-8 text-left bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl text-white overflow-hidden"
+                                        className="group relative w-full p-7 md:p-8 text-left bg-black/20 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-black/30 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl text-white overflow-hidden"
                                         data-translate={option.text_key}
                                     >
                                         {/* Hover background effect */}
@@ -2856,7 +2856,7 @@ export default function TestPage() {
 
                                             {/* Text Content */}
                                             <div className="flex-1 py-2">
-                                                <p className="text-white/95 font-medium text-lg md:text-xl leading-relaxed group-hover:text-white transition-colors duration-300 tracking-wide text-enhanced">
+                                                <p className="text-gray-100 font-medium text-lg md:text-xl leading-relaxed group-hover:text-white transition-colors duration-300 tracking-wide text-enhanced">
                                                     {t(option.text_key) || option.text_key}
                                                 </p>
                                             </div>
