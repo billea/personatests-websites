@@ -138,6 +138,13 @@ body {
   animation: fadeInScale 0.6s ease-out both;
 }
 
+/* Enhanced text rendering for better readability */
+.text-enhanced {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Radial gradient background */
 .bg-radial-gradient {
   background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),

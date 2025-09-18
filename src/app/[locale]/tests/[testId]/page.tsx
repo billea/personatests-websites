@@ -2819,16 +2819,16 @@ export default function TestPage() {
                                             </span>
                                         </div>
                                     )}
-                                    <h2 className="text-2xl lg:text-3xl font-bold text-white leading-relaxed tracking-tight mb-3 px-4">
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-white leading-relaxed tracking-tight mb-4 px-4 text-enhanced max-w-4xl mx-auto">
                                         {getDisplayedQuestionText()}
                                     </h2>
-                                    <p className="text-white/70 text-sm font-medium">
+                                    <p className="text-white/70 text-sm font-medium text-enhanced">
                                         {t('ui.chooseOptionBelow') || 'Choose the option that resonates most with you'}
                                     </p>
                                 </div>
 
                                 {currentQuestion.type === 'multiple_choice' && currentQuestion.options && !showMemoryPhase && (
-                        <div className="grid gap-4">
+                        <div className="grid gap-5 md:gap-6">
                             {currentQuestion.options.map((option, index) => {
                                 const optionEmojis = ['✨', '🌟', '💫', '⭐'];
                                 const gradients = [
@@ -2841,23 +2841,28 @@ export default function TestPage() {
                                     <button
                                         key={index}
                                         onClick={() => handleAnswer(option.value)}
-                                        className="group relative w-full p-6 text-left bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl text-white overflow-hidden"
+                                        className="group relative w-full p-7 md:p-8 text-left bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl text-white overflow-hidden"
                                         data-translate={option.text_key}
                                     >
                                         {/* Hover background effect */}
                                         <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${gradients[index % gradients.length]}`}></div>
 
                                         {/* Content */}
-                                        <div className="relative z-10 flex items-center gap-4">
-                                            <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${gradients[index % gradients.length]} rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                                        <div className="relative z-10 flex items-start gap-5">
+                                            {/* Letter Badge */}
+                                            <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${gradients[index % gradients.length]} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 mt-1`}>
                                                 {String.fromCharCode(65 + index)}
                                             </div>
-                                            <div className="flex-1">
-                                                <p className="text-white/95 font-medium text-lg leading-relaxed group-hover:text-white transition-colors duration-300">
+
+                                            {/* Text Content */}
+                                            <div className="flex-1 py-2">
+                                                <p className="text-white/95 font-medium text-lg md:text-xl leading-relaxed group-hover:text-white transition-colors duration-300 tracking-wide text-enhanced">
                                                     {t(option.text_key) || option.text_key}
                                                 </p>
                                             </div>
-                                            <div className="flex-shrink-0 text-2xl opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+
+                                            {/* Decorative Emoji */}
+                                            <div className="flex-shrink-0 text-3xl opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 mt-2">
                                                 {optionEmojis[index % optionEmojis.length]}
                                             </div>
                                         </div>
