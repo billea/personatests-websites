@@ -2005,108 +2005,105 @@ export default function TestPage() {
                         </div>
                     )}
                     
-                    {/* Show Results Immediately */}
+                    {/* Show Results Immediately - Clean Design */}
                     {completedTestResult && (
-                        <div className="mb-8 p-6 bg-white/30 backdrop-blur-sm border border-white/40 rounded-lg">
-                            <h2 className="text-2xl font-bold mb-4 text-white" data-translate="results.personalityType">
-                                {t('results.personalityType') || 'Your Personality Type'}
-                            </h2>
-                            {completedTestResult.type && (
-                                <div className="text-3xl font-bold text-white mb-4">
-                                    {testId === 'couple-compatibility' 
-                                        ? (t(`couple.personalityTypes.${completedTestResult.type}`) || completedTestResult.type)
-                                        : (t(completedTestResult.type) || completedTestResult.type)}
-                                </div>
-                            )}
+                        <div className="mb-8 bg-white/15 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-2xl">
+                            {/* Main Result Header */}
+                            <div className="text-center py-8 px-6 bg-gradient-to-br from-white/10 to-white/5">
+                                <h2 className="text-xl font-semibold mb-3 text-gray-200" data-translate="results.personalityType">
+                                    {t('results.personalityType') || 'Your Personality Type'}
+                                </h2>
+                                {completedTestResult.type && (
+                                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 text-enhanced">
+                                        {testId === 'couple-compatibility'
+                                            ? (t(`couple.personalityTypes.${completedTestResult.type}`) || completedTestResult.type)
+                                            : (t(completedTestResult.type) || completedTestResult.type)}
+                                    </div>
+                                )}
+                                {/* Result description if available */}
+                                {completedTestResult.description_key && (
+                                    <p className="text-gray-100 text-lg leading-relaxed max-w-2xl mx-auto text-enhanced">
+                                        {completedTestResult.description_key}
+                                    </p>
+                                )}
+                            </div>
                             
+                            {/* Clean Score Display */}
                             {completedTestResult.scores && (
-                                <div className="mt-6">
-                                    {/* Section Header for Big Five */}
-                                    {completedTestResult.scores.percentages && (
-                                        <h3 className="text-xl font-semibold text-white mb-4" data-translate="results.keyTraits">
-                                            {t('results.keyTraits') || 'Your Key Traits'}
-                                        </h3>
-                                    )}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
-                                        {/* Handle Big Five nested percentages structure */}
-                                        {completedTestResult.scores.percentages ? 
-                                        Object.entries(completedTestResult.scores.percentages).map(([trait, score]) => (
-                                            <div key={trait} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
-                                                <div className="flex justify-between items-center mb-2">
-                                                    <div className="font-semibold text-lg text-white">
-                                                        {t(`results.bigfive.traits.${trait}`) || 
-                                                         t(`results.dimensions.${trait}`) || 
-                                                         trait}
-                                                    </div>
-                                                    <div className="text-xl font-bold !text-white">{typeof score === 'number' ? score : 0}%</div>
-                                                </div>
-                                                {/* Progress Bar */}
-                                                <div className="w-full bg-white/10 rounded-full h-3 mb-2">
-                                                    <div
-                                                        className="bg-gradient-to-r from-blue-400 to-purple-400 h-3 rounded-full transition-all duration-1000 ease-out"
-                                                        style={{ width: `${typeof score === 'number' ? score : 0}%` }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        )) :
-                                        // Handle other test types - filter out non-display values for General Knowledge
-                                        Object.entries(completedTestResult.scores)
-                                            .filter(([key]) => key !== 'correctAnswers' && key !== 'level' && key !== 'description')
-                                            .map(([dimension, value]) => {
-                                                // Format display based on dimension type
-                                                let displayValue = String(value);
-                                                let showAsPercentage = false;
-                                                let progressValue = 0;
-                                                let showIndicator = false;
-                                                
-                                                if (dimension === 'percentage' && typeof value === 'number') {
-                                                    displayValue = `${value}%`;
-                                                    showAsPercentage = true;
-                                                    progressValue = value;
-                                                    showIndicator = true; // Only show indicators for actual percentages
-                                                } else if (dimension === 'score' && completedTestResult.scores?.total) {
-                                                    displayValue = `${value}/${completedTestResult.scores.total}`;
-                                                    progressValue = typeof value === 'number' && typeof completedTestResult.scores.total === 'number' 
-                                                        ? (value / completedTestResult.scores.total) * 100 : 0;
-                                                } else if (typeof value === 'number') {
-                                                    // For other numeric values, show as-is
-                                                    displayValue = String(value);
-                                                    progressValue = Math.min(value, 100);
-                                                }
-                                                
-                                                return (
-                                                    <div key={dimension} className="bg-white/20 p-4 rounded-lg backdrop-blur-sm text-white">
-                                                        <div className="flex justify-between items-center mb-2">
-                                                            <div className="font-semibold text-lg text-white">
-                                                                {t(`results.dimensions.${dimension}`) || dimension}
+                                <div className="px-6 pb-8">
+                                    {/* For Spirit Animal, Country Match, Mental Age tests - show clean minimal info */}
+                                    {(testId === 'spirit-animal' || testId === 'country-match' || testId === 'mental-age') && (
+                                        <div className="grid gap-4 max-w-md mx-auto">
+                                            {Object.entries(completedTestResult.scores)
+                                                .filter(([key]) => !['allScores'].includes(key))
+                                                .map(([key, value]) => {
+                                                    // Only show the main meaningful results
+                                                    if (key === 'animal' || key === 'country' || key === 'mentalAge') return null;
+                                                    if (key === 'animalData' || key === 'countryData' || key === 'description') return null;
+                                                    if (key === 'category' || key === 'emoji' || key === 'ageRange') return null;
+
+                                                    return (
+                                                        <div key={key} className="text-center py-3 px-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+                                                            <div className="text-sm font-medium text-gray-200 mb-1">
+                                                                {t(`results.dimensions.${key}`) || key}
                                                             </div>
-                                                            <div className="text-xl font-bold !text-white">{displayValue}</div>
+                                                            <div className="text-2xl font-bold text-white text-enhanced">
+                                                                {typeof value === 'number' ? value : String(value)}
+                                                            </div>
                                                         </div>
-                                                        {/* Progress Bar - only for meaningful progress values */}
-                                                        {progressValue > 0 && (
-                                                            <div className="w-full bg-white/10 rounded-full h-3 mb-2">
-                                                                <div 
-                                                                    className="bg-gradient-to-r from-green-400 to-blue-400 h-3 rounded-full transition-all duration-1000 ease-out"
-                                                                    style={{ 
-                                                                        width: `${Math.min(progressValue, 100)}%`,
-                                                                        animation: 'progressFill 1.5s ease-out'
-                                                                    }}
+                                                    );
+                                                })}
+                                        </div>
+                                    )}
+
+                                    {/* For other complex tests - show organized grid */}
+                                    {!(testId === 'spirit-animal' || testId === 'country-match' || testId === 'mental-age') && (
+                                        <div>
+                                            {completedTestResult.scores.percentages && (
+                                                <h3 className="text-xl font-semibold text-gray-200 mb-6 text-center" data-translate="results.keyTraits">
+                                                    {t('results.keyTraits') || 'Your Key Traits'}
+                                                </h3>
+                                            )}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                                                {/* Clean organized results for complex tests */}
+                                                {completedTestResult.scores.percentages ?
+                                                    // Big Five percentage results
+                                                    Object.entries(completedTestResult.scores.percentages).map(([trait, score]) => (
+                                                        <div key={trait} className="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/20">
+                                                            <div className="flex justify-between items-center mb-3">
+                                                                <div className="font-semibold text-lg text-gray-100">
+                                                                    {t(`results.bigfive.traits.${trait}`) ||
+                                                                     t(`results.dimensions.${trait}`) ||
+                                                                     trait}
+                                                                </div>
+                                                                <div className="text-2xl font-bold text-white">{typeof score === 'number' ? score : 0}%</div>
+                                                            </div>
+                                                            <div className="w-full bg-white/10 rounded-full h-2">
+                                                                <div
+                                                                    className="bg-gradient-to-r from-emerald-400 to-cyan-400 h-2 rounded-full transition-all duration-1000 ease-out"
+                                                                    style={{ width: `${typeof score === 'number' ? score : 0}%` }}
                                                                 ></div>
                                                             </div>
-                                                        )}
-                                                        {/* Visual Indicator - only for actual percentages */}
-                                                        {showIndicator && (
-                                                            <div className="text-sm text-gray-800 dark:text-white/90 font-medium">
-                                                                {progressValue >= 75 ? `🔥 ${t('results.indicators.strongPreference') || 'Strong preference'}` : 
-                                                                 progressValue >= 60 ? `✨ ${t('results.indicators.clearTendency') || 'Clear tendency'}` : 
-                                                                 progressValue >= 40 ? `⚖️ ${t('results.indicators.moderateLean') || 'Moderate lean'}` : 
-                                                                 `🤔 ${t('results.indicators.balanced') || 'Balanced'}`}
+                                                        </div>
+                                                    )) :
+                                                    // Other test types - show only essential data
+                                                    Object.entries(completedTestResult.scores)
+                                                        .filter(([key]) => !['correctAnswers', 'level', 'description', 'allScores'].includes(key))
+                                                        .slice(0, 4) // Limit to max 4 items for clean layout
+                                                        .map(([dimension, value]) => (
+                                                            <div key={dimension} className="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/20 text-center">
+                                                                <div className="text-sm font-medium text-gray-200 mb-2">
+                                                                    {t(`results.dimensions.${dimension}`) || dimension}
+                                                                </div>
+                                                                <div className="text-2xl font-bold text-white">
+                                                                    {typeof value === 'number' ? value : String(value).slice(0, 20)}
+                                                                </div>
                                                             </div>
-                                                        )}
-                                                    </div>
-                                                );
-                                            })}
-                                    </div>
+                                                        ))
+                                                }
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
