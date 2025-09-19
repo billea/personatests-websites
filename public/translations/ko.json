@@ -341,6 +341,9 @@
     "no_results_title": "아직 테스트 결과가 없습니다",
     "no_results_message": "아직 성격 테스트를 완료하지 않았습니다. 오늘 자기 발견의 여정을 시작해보세요!",
     "take_first_test": "테스트 하기",
+    "signin_required_title": "로그인이 필요합니다",
+    "signin_required_message": "테스트 결과를 보려면 로그인이 필요합니다.",
+    "go_to_homepage": "홈페이지로 이동",
     "pending_invitations": "대기 중인 피드백 초대",
     "waiting_response": "응답 대기 중",
     "dimensions": {
