@@ -33,7 +33,9 @@
       "Bash(npm run:*)",
       "Bash(move:*)",
       "Bash(ren:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Read(//c//**)",
+      "Bash(git update-index:*)"
     ],
     "deny": [],
     "ask": []

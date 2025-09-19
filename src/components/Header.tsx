@@ -92,23 +92,34 @@ export default function Header() {
                             {currentLanguage === 'ko' ? '테스트' : 'Tests'}
                         </Link>
                         
-                        <Link 
+                        <Link
                             href={`/${locale}/results`}
                             className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg ${
-                                pathname.includes('/results') 
-                                    ? 'text-purple-600 bg-purple-50' 
+                                pathname.includes('/results')
+                                    ? 'text-purple-600 bg-purple-50'
                                     : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
                             }`}
                         >
                             {currentLanguage === 'ko' ? '결과' : 'Results'}
                         </Link>
 
+                        <Link
+                            href={`/${locale}/contact`}
+                            className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg ${
+                                pathname.includes('/contact')
+                                    ? 'text-purple-600 bg-purple-50'
+                                    : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
+                            }`}
+                        >
+                            {currentLanguage === 'ko' ? '문의하기' : 'Contact'}
+                        </Link>
+
                         {user && (
-                            <Link 
+                            <Link
                                 href={`/${locale}/profile`}
                                 className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg ${
-                                    pathname.includes('/profile') 
-                                        ? 'text-purple-600 bg-purple-50' 
+                                    pathname.includes('/profile')
+                                        ? 'text-purple-600 bg-purple-50'
                                         : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
                                 }`}
                             >
@@ -117,11 +128,11 @@ export default function Header() {
                         )}
 
                         {user && (
-                            <Link 
+                            <Link
                                 href={`/${locale}/admin/questions`}
                                 className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg border-2 border-orange-200 ${
-                                    pathname.includes('/admin') 
-                                        ? 'text-orange-700 bg-orange-50 border-orange-300' 
+                                    pathname.includes('/admin')
+                                        ? 'text-orange-700 bg-orange-50 border-orange-300'
                                         : 'text-orange-600 hover:text-orange-700 hover:bg-orange-50 hover:border-orange-300'
                                 }`}
                             >
@@ -252,25 +263,37 @@ export default function Header() {
                                 {currentLanguage === 'ko' ? '테스트' : 'Tests'}
                             </Link>
                             
-                            <Link 
+                            <Link
                                 href={`/${locale}/results`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                                    pathname.includes('/results') 
-                                        ? 'text-purple-600 bg-purple-50' 
+                                    pathname.includes('/results')
+                                        ? 'text-purple-600 bg-purple-50'
                                         : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
                                 }`}
                             >
                                 {currentLanguage === 'ko' ? '결과' : 'Results'}
                             </Link>
 
+                            <Link
+                                href={`/${locale}/contact`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                                    pathname.includes('/contact')
+                                        ? 'text-purple-600 bg-purple-50'
+                                        : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
+                                }`}
+                            >
+                                {currentLanguage === 'ko' ? '문의하기' : 'Contact'}
+                            </Link>
+
                             {user && (
-                                <Link 
+                                <Link
                                     href={`/${locale}/profile`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                                        pathname.includes('/profile') 
-                                            ? 'text-purple-600 bg-purple-50' 
+                                        pathname.includes('/profile')
+                                            ? 'text-purple-600 bg-purple-50'
                                             : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
                                     }`}
                                 >

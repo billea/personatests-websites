@@ -1808,5 +1808,44 @@
       "required": "Admin Access Required",
       "privileges": "You need admin privileges to access this page."
     }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We value your feedback and are here to help with any questions or suggestions you may have.",
+    "info": {
+      "title": "Get in Touch",
+      "email": {
+        "title": "Email Support",
+        "description": "Send us your questions and we'll respond within 24 hours."
+      },
+      "improvement": {
+        "title": "Service Improvement",
+        "description": "Help us improve by sharing your suggestions and feedback."
+      },
+      "response": {
+        "title": "Quick Response",
+        "description": "We typically respond to all inquiries within 24 hours."
+      }
+    },
+    "form": {
+      "title": "Send us a Message",
+      "name": "Name",
+      "name_placeholder": "Your full name",
+      "email": "Email",
+      "email_placeholder": "your.email@example.com",
+      "category": "Category",
+      "category_general": "General Inquiry",
+      "category_technical": "Technical Issue",
+      "category_feedback": "Feedback & Suggestions",
+      "category_partnership": "Partnership",
+      "subject": "Subject",
+      "subject_placeholder": "Brief description of your message",
+      "message": "Message",
+      "message_placeholder": "Please provide details about your inquiry, issue, or suggestion...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll respond within 24 hours.",
+      "error": "Failed to send message. Please try again later."
+    }
   }
 }

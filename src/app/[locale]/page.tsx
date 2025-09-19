@@ -66,22 +66,22 @@ export default function Home() {
             </div>
 
             {/* Enhanced Stats with Glassmorphism */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 animate-slideInUp" style={{animationDelay: '0.6s'}}>
-              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">Multiple</div>
-                <div className="text-white/90 font-semibold" data-translate="hero.stats.tests">{t('hero.stats.tests') || 'Personality Tests'}</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 animate-slideInUp" style={{animationDelay: '0.6s'}}>
+              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight">Multiple</div>
+                <div className="text-sm md:text-base text-white/90 font-semibold leading-tight" data-translate="hero.stats.tests">{t('hero.stats.tests') || 'Personality Tests'}</div>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">Global</div>
-                <div className="text-white/90 font-semibold" data-translate="hero.stats.languages">{t('hero.stats.languages') || 'Languages'}</div>
+              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight">Global</div>
+                <div className="text-sm md:text-base text-white/90 font-semibold leading-tight" data-translate="hero.stats.languages">{t('hero.stats.languages') || 'Languages'}</div>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">Free</div>
-                <div className="text-white/90 font-semibold" data-translate="hero.stats.access">{t('hero.stats.access') || 'Always Free'}</div>
+              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight">Free</div>
+                <div className="text-sm md:text-base text-white/90 font-semibold leading-tight" data-translate="hero.stats.access">{t('hero.stats.access') || 'Always Free'}</div>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">100%</div>
-                <div className="text-white/90 font-semibold" data-translate="hero.stats.private">{t('hero.stats.private') || 'Private'}</div>
+              <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 md:p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight">100%</div>
+                <div className="text-sm md:text-base text-white/90 font-semibold leading-tight" data-translate="hero.stats.private">{t('hero.stats.private') || 'Private'}</div>
               </div>
             </div>
 
