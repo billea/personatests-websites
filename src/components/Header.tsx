@@ -129,7 +129,7 @@ export default function Header() {
 
                         {user && (
                             <Link
-                                href={`/${locale}/admin/questions`}
+                                href={`/${locale}/admin`}
                                 className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg border-2 border-orange-200 ${
                                     pathname.includes('/admin')
                                         ? 'text-orange-700 bg-orange-50 border-orange-300'
@@ -302,12 +302,12 @@ export default function Header() {
                             )}
 
                             {user && (
-                                <Link 
-                                    href={`/${locale}/admin/questions`}
+                                <Link
+                                    href={`/${locale}/admin`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors border-2 border-orange-200 ${
-                                        pathname.includes('/admin') 
-                                            ? 'text-orange-700 bg-orange-50 border-orange-300' 
+                                        pathname.includes('/admin')
+                                            ? 'text-orange-700 bg-orange-50 border-orange-300'
                                             : 'text-orange-600 hover:text-orange-700 hover:bg-orange-50 hover:border-orange-300'
                                     }`}
                                 >
