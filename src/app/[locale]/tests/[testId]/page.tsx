@@ -11,6 +11,7 @@ import EmailSignup from "@/components/EmailSignup";
 import InvitationMethodSelector, { InvitationMethod } from "@/components/InvitationMethodSelector";
 import AnonymousCodeGenerator from "@/components/AnonymousCodeGenerator";
 import ShareableLinkGenerator from "@/components/ShareableLinkGenerator";
+import ShareButton from "@/components/ShareButton";
 import { AnonymousCode, ShareableLink } from "@/lib/invitation-types";
 
 export default function TestPage() {
@@ -2472,6 +2473,19 @@ export default function TestPage() {
                                     )}
                                 </>
                             )}
+                        </div>
+                    )}
+
+                    {/* Share Your Results - New SNS Sharing */}
+                    {completedTestResult && testDefinition && (
+                        <div className="mt-8 mb-8">
+                            <ShareButton
+                                testId={testId}
+                                testName={testDefinition.title_key ? (t(testDefinition.title_key) || testDefinition.title_key) : 'Personality Test'}
+                                result={completedTestResult}
+                                variant="grid"
+                                className="max-w-2xl mx-auto"
+                            />
                         </div>
                     )}
 

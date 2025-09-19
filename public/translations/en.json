@@ -35,12 +35,18 @@
   "share": {
     "button": "Share",
     "share_results": "Share Results",
+    "share_result": "Share Your Result",
     "copy_link": "Copy Link",
     "copied": "Result link copied to clipboard!",
     "twitter": "Twitter",
-    "facebook": "Facebook", 
+    "facebook": "Facebook",
     "linkedin": "LinkedIn",
     "whatsapp": "WhatsApp",
+    "kakao": "KakaoTalk",
+    "line": "LINE",
+    "telegram": "Telegram",
+    "reddit": "Reddit",
+    "email": "Email",
     "download": "Download Results"
   },
   "invitation": {

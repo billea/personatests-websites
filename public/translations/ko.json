@@ -2,12 +2,18 @@
   "share": {
     "button": "공유",
     "share_results": "결과 공유",
+    "share_result": "결과 공유하기",
     "copy_link": "링크 복사",
     "copied": "결과 링크가 클립보드에 복사되었습니다!",
     "twitter": "트위터",
     "facebook": "페이스북",
     "linkedin": "링크드인",
     "whatsapp": "왓츠앱",
+    "kakao": "카카오톡",
+    "line": "라인",
+    "telegram": "텔레그램",
+    "reddit": "레딧",
+    "email": "이메일",
     "download": "결과 다운로드"
   },
   "nav": {
