@@ -3388,6 +3388,39 @@
     "access": {
       "required": "관리자 권한 필요",
       "privileges": "이 페이지에 접근하려면 관리자 권한이 필요합니다."
+    },
+    "dashboard": {
+      "title": "관리자 대시보드",
+      "subtitle": "성격 테스트 플랫폼을 관리하세요",
+      "messages_title": "문의 메시지",
+      "messages_desc": "사용자 문의사항과 피드백을 관리하세요",
+      "questions_title": "질문 관리",
+      "questions_desc": "테스트 질문과 콘텐츠를 관리하세요",
+      "questions_features": "기능:",
+      "manage_messages": "메시지 관리",
+      "manage_questions": "질문 관리",
+      "quick_actions": "빠른 작업"
+    },
+    "messages": {
+      "title": "문의 메시지",
+      "subtitle": "사용자 문의사항을 관리하고 응답하세요",
+      "search": "검색",
+      "search_placeholder": "메시지 검색...",
+      "status": "상태",
+      "category": "카테고리",
+      "all_statuses": "모든 상태",
+      "all_categories": "모든 카테고리",
+      "new": "새 메시지",
+      "read": "읽음",
+      "resolved": "해결됨",
+      "total": "전체",
+      "filtered": "필터됨",
+      "messages_list": "메시지 목록",
+      "loading": "메시지 로딩 중...",
+      "no_messages": "메시지가 없습니다",
+      "message_details": "메시지 상세 정보",
+      "select_message": "상세 정보를 보려면 메시지를 선택하세요",
+      "confirm_delete": "정말로 이 메시지를 삭제하시겠습니까?"
     }
   },
   "contact": {

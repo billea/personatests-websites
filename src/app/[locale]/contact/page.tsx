@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslation } from '@/components/providers/translation-provider';
 import { useAuth } from '@/components/providers/auth-provider';
+import { createContactMessage } from '@/lib/firestore';
 
 export default function ContactPage() {
   const { t, currentLanguage } = useTranslation();
@@ -31,15 +32,19 @@ export default function ContactPage() {
     setSubmitStatus('idle');
 
     try {
-      // TODO: Implement actual email sending logic
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      console.log('Contact form submission:', {
-        ...formData,
+      // Save contact message to Firestore
+      const messageData = {
+        name: formData.name,
+        email: formData.email,
+        category: formData.category as 'general' | 'technical' | 'feedback' | 'partnership',
+        subject: formData.subject,
+        message: formData.message,
         userEmail: user?.email,
-        timestamp: new Date().toISOString()
-      });
+        userId: user?.uid
+      };
+
+      const messageId = await createContactMessage(messageData);
+      console.log('✅ Contact message saved with ID:', messageId);
 
       setSubmitStatus('success');
       setFormData({
@@ -50,7 +55,7 @@ export default function ContactPage() {
         category: 'general'
       });
     } catch (error) {
-      console.error('Error submitting contact form:', error);
+      console.error('❌ Error submitting contact form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

@@ -76,6 +76,22 @@ export interface FeedbackProgress {
   };
 }
 
+export interface ContactMessage {
+  id?: string;
+  name: string;
+  email: string;
+  category: 'general' | 'technical' | 'feedback' | 'partnership';
+  subject: string;
+  message: string;
+  userEmail?: string; // Email of logged-in user (if any)
+  userId?: string; // ID of logged-in user (if any)
+  status: 'new' | 'read' | 'resolved';
+  adminNotes?: string;
+  createdAt: Timestamp;
+  readAt?: Timestamp;
+  resolvedAt?: Timestamp;
+}
+
 /**
  * Creates a user profile document in Firestore if one doesn't already exist.
  * This is typically called right after a user signs up or logs in for the first time.
@@ -2797,5 +2813,143 @@ export const clearAllGeneralKnowledgeQuestions = async (): Promise<{ success: bo
       deleted: 0,
       message: `Failed to clear questions: ${error instanceof Error ? error.message : 'Unknown error'}`
     };
+  }
+};
+
+// ===== CONTACT MESSAGE FUNCTIONS =====
+
+/**
+ * Creates a new contact message in Firestore
+ */
+export const createContactMessage = async (messageData: Omit<ContactMessage, 'id' | 'createdAt' | 'status'>): Promise<string> => {
+  try {
+    const contactMessage: Omit<ContactMessage, 'id'> = {
+      ...messageData,
+      status: 'new',
+      createdAt: serverTimestamp() as Timestamp
+    };
+
+    const docRef = await addDoc(collection(firestore, 'contactMessages'), contactMessage);
+    console.log('✅ Contact message created with ID:', docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error creating contact message:', error);
+    throw error;
+  }
+};
+
+/**
+ * Gets all contact messages (admin function)
+ */
+export const getAllContactMessages = async (): Promise<ContactMessage[]> => {
+  try {
+    const q = query(
+      collection(firestore, 'contactMessages'),
+      orderBy('createdAt', 'desc')
+    );
+
+    const querySnapshot = await getDocs(q);
+    const messages: ContactMessage[] = [];
+
+    querySnapshot.forEach((doc) => {
+      messages.push({
+        id: doc.id,
+        ...doc.data()
+      } as ContactMessage);
+    });
+
+    return messages;
+  } catch (error) {
+    console.error('❌ Error fetching contact messages:', error);
+    throw error;
+  }
+};
+
+/**
+ * Updates contact message status (admin function)
+ */
+export const updateContactMessageStatus = async (
+  messageId: string,
+  status: ContactMessage['status'],
+  adminNotes?: string
+): Promise<void> => {
+  try {
+    const messageRef = doc(firestore, 'contactMessages', messageId);
+    const updateData: Partial<ContactMessage> = {
+      status,
+      ...(adminNotes !== undefined && { adminNotes }),
+      ...(status === 'read' && { readAt: serverTimestamp() as Timestamp }),
+      ...(status === 'resolved' && { resolvedAt: serverTimestamp() as Timestamp })
+    };
+
+    await setDoc(messageRef, updateData, { merge: true });
+    console.log(`✅ Contact message ${messageId} status updated to: ${status}`);
+  } catch (error) {
+    console.error('❌ Error updating contact message status:', error);
+    throw error;
+  }
+};
+
+/**
+ * Gets contact message by ID
+ */
+export const getContactMessage = async (messageId: string): Promise<ContactMessage | null> => {
+  try {
+    const messageRef = doc(firestore, 'contactMessages', messageId);
+    const messageSnap = await getDoc(messageRef);
+
+    if (messageSnap.exists()) {
+      return {
+        id: messageSnap.id,
+        ...messageSnap.data()
+      } as ContactMessage;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('❌ Error fetching contact message:', error);
+    throw error;
+  }
+};
+
+/**
+ * Deletes a contact message (admin function)
+ */
+export const deleteContactMessage = async (messageId: string): Promise<void> => {
+  try {
+    const messageRef = doc(firestore, 'contactMessages', messageId);
+    await deleteDoc(messageRef);
+    console.log(`✅ Contact message ${messageId} deleted`);
+  } catch (error) {
+    console.error('❌ Error deleting contact message:', error);
+    throw error;
+  }
+};
+
+/**
+ * Gets contact messages by status (admin function)
+ */
+export const getContactMessagesByStatus = async (status: ContactMessage['status']): Promise<ContactMessage[]> => {
+  try {
+    const q = query(
+      collection(firestore, 'contactMessages'),
+      where('status', '==', status),
+      orderBy('createdAt', 'desc')
+    );
+
+    const querySnapshot = await getDocs(q);
+    const messages: ContactMessage[] = [];
+
+    querySnapshot.forEach((doc) => {
+      messages.push({
+        id: doc.id,
+        ...doc.data()
+      } as ContactMessage);
+    });
+
+    return messages;
+  } catch (error) {
+    console.error('❌ Error fetching contact messages by status:', error);
+    throw error;
   }
 };
