@@ -39,7 +39,7 @@ export default function ContactPage() {
         category: formData.category as 'general' | 'technical' | 'feedback' | 'partnership',
         subject: formData.subject,
         message: formData.message,
-        userEmail: user?.email,
+        userEmail: user?.email || undefined,
         userId: user?.uid
       };
 
