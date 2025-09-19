@@ -68,11 +68,11 @@ export default function Home() {
             {/* Enhanced Stats with Glassmorphism */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 animate-slideInUp" style={{animationDelay: '0.6s'}}>
               <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="text-4xl md:text-5xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">15+</div>
+                <div className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">Multiple</div>
                 <div className="text-white/90 font-semibold" data-translate="hero.stats.tests">{t('hero.stats.tests') || 'Personality Tests'}</div>
               </div>
               <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="text-4xl md:text-5xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">9</div>
+                <div className="text-3xl md:text-4xl font-black text-white mb-2 bg-gradient-to-br from-yellow-300 to-orange-400 bg-clip-text text-transparent">Global</div>
                 <div className="text-white/90 font-semibold" data-translate="hero.stats.languages">{t('hero.stats.languages') || 'Languages'}</div>
               </div>
               <div className="text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
