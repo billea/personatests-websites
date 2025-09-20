@@ -7,7 +7,8 @@ import {
   getAllContactMessages,
   updateContactMessageStatus,
   deleteContactMessage,
-  ContactMessage
+  ContactMessage,
+  isUserAdmin
 } from '@/lib/firestore';
 
 export default function AdminMessagesPage() {
@@ -21,11 +22,27 @@ export default function AdminMessagesPage() {
   const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
   const [adminNotes, setAdminNotes] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(true);
 
   useEffect(() => {
-    if (user && !authLoading) {
-      loadMessages();
-    }
+    const checkAdminRole = async () => {
+      if (user && !authLoading) {
+        try {
+          const adminStatus = await isUserAdmin(user.uid);
+          setIsAdmin(adminStatus);
+          if (adminStatus) {
+            loadMessages();
+          }
+        } catch (error) {
+          console.error('Error checking admin role:', error);
+          setIsAdmin(false);
+        }
+      }
+      setAdminLoading(false);
+    };
+
+    checkAdminRole();
   }, [user, authLoading]);
 
   const loadMessages = async () => {
@@ -103,7 +120,7 @@ export default function AdminMessagesPage() {
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
 
-  if (authLoading) {
+  if (authLoading || adminLoading) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="text-gray-600">Loading...</div>
     </div>;
@@ -112,6 +129,20 @@ export default function AdminMessagesPage() {
   if (!user) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="text-gray-600">Please sign in to access admin features.</div>
+    </div>;
+  }
+
+  if (!isAdmin) {
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-sm border max-w-md w-full text-center">
+        <div className="text-red-600 text-6xl mb-4">🚫</div>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">
+          {t('admin.access.denied') || 'Access Denied'}
+        </h1>
+        <p className="text-gray-600 mb-6">
+          {t('admin.access.admin_only') || 'You need administrator privileges to access this page.'}
+        </p>
+      </div>
     </div>;
   }
 

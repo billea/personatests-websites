@@ -101,11 +101,26 @@ service cloud.firestore {
       allow create: if request.auth != null; // Authenticated users can add questions
     }
 
-    // Contact Messages - anyone can create, authenticated users can read/manage
+    // Contact Messages - anyone can create, only admins can read/manage
     match /contactMessages/{messageId} {
       allow create: if true; // Anyone can submit contact messages
-      allow read: if request.auth != null; // Only authenticated users (admins) can read messages
-      allow write: if request.auth != null; // Only authenticated users (admins) can update/delete messages
+      allow read: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      allow write: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Language Configurations - everyone can read, only admins can write
+    match /languageConfigs/{configId} {
+      allow read: if true; // Everyone can read language settings for UI
+      allow write: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      allow create: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
   }
 }

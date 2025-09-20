@@ -6,7 +6,8 @@ import { useTranslation } from "@/components/providers/translation-provider";
 import { useAuth } from "@/components/providers/auth-provider";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getEnabledLanguages, LanguageConfig } from "@/lib/firestore";
 
 export default function Header() {
     const pathname = usePathname();
@@ -15,9 +16,34 @@ export default function Header() {
     const { user, loading: authLoading } = useAuth();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+    const [enabledLanguages, setEnabledLanguages] = useState<LanguageConfig[]>([]);
 
     // Extract locale from pathname
     const locale = pathname.split('/')[1] || 'en';
+
+    // Load enabled languages from admin settings
+    useEffect(() => {
+        const loadEnabledLanguages = async () => {
+            try {
+                const languages = await getEnabledLanguages();
+                setEnabledLanguages(languages);
+            } catch (error) {
+                console.error('Error loading enabled languages:', error);
+                // Fallback to English only
+                setEnabledLanguages([{
+                    code: 'en',
+                    name: 'English',
+                    flag: '🇺🇸',
+                    isEnabled: true,
+                    isDefault: true,
+                    completionPercentage: 100,
+                    lastUpdated: new Date() as any
+                }]);
+            }
+        };
+
+        loadEnabledLanguages();
+    }, []);
 
     const handleSignOut = async () => {
         try {
@@ -34,19 +60,10 @@ export default function Header() {
         setIsLanguageDropdownOpen(false);
     };
 
-    const languages = [
-        { code: 'en', name: 'English', flag: '🇺🇸' },
-        { code: 'ko', name: '한국어', flag: '🇰🇷' },
-        { code: 'ja', name: '日本語', flag: '🇯🇵' },
-        { code: 'zh', name: '中文', flag: '🇨🇳' },
-        { code: 'es', name: 'Español', flag: '🇪🇸' },
-        { code: 'fr', name: 'Français', flag: '🇫🇷' },
-        { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-        { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-        { code: 'pt', name: 'Português', flag: '🇵🇹' }
-    ];
-
-    const currentLang = languages.find(lang => lang.code === currentLanguage) || languages[0];
+    const currentLang = enabledLanguages.find(lang => lang.code === currentLanguage) ||
+                      enabledLanguages.find(lang => lang.isDefault) ||
+                      enabledLanguages[0] ||
+                      { code: 'en', name: 'English', flag: '🇺🇸' };
 
     // Don't render header while auth is loading
     if (authLoading) {
@@ -159,7 +176,7 @@ export default function Header() {
                             {/* Language Dropdown */}
                             {isLanguageDropdownOpen && (
                                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
-                                    {languages.map((lang) => (
+                                    {enabledLanguages.map((lang) => (
                                         <button
                                             key={lang.code}
                                             onClick={() => handleLanguageSwitch(lang.code)}

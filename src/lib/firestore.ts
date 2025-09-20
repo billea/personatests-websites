@@ -2953,3 +2953,271 @@ export const getContactMessagesByStatus = async (status: ContactMessage['status'
     throw error;
   }
 };
+
+// ===== ADMIN ROLE MANAGEMENT =====
+
+// User profile interface with admin role
+export interface UserProfile {
+  uid: string;
+  email: string;
+  displayName?: string;
+  role: 'user' | 'admin';
+  createdAt: Timestamp;
+  preferredLanguage?: string;
+}
+
+// Language configuration interface
+export interface LanguageConfig {
+  id?: string;
+  code: string; // 'en', 'ko', 'ja', etc.
+  name: string; // 'English', '한국어', '日本語'
+  flag: string; // '🇺🇸', '🇰🇷', '🇯🇵'
+  isEnabled: boolean; // Whether this language is available to users
+  isDefault: boolean; // Whether this is the default language
+  completionPercentage: number; // Translation completion percentage (0-100)
+  lastUpdated: Timestamp;
+}
+
+/**
+ * Checks if a user has admin role
+ */
+export const isUserAdmin = async (userId: string): Promise<boolean> => {
+  try {
+    const userRef = doc(firestore, 'users', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      return userData.role === 'admin';
+    }
+
+    return false;
+  } catch (error) {
+    console.error('❌ Error checking admin role:', error);
+    return false;
+  }
+};
+
+/**
+ * Sets admin role for a user (should be called manually for initial setup)
+ */
+export const setUserAdminRole = async (userId: string): Promise<void> => {
+  try {
+    const userRef = doc(firestore, 'users', userId);
+    await setDoc(userRef, { role: 'admin' }, { merge: true });
+    console.log(`✅ Admin role set for user ${userId}`);
+  } catch (error) {
+    console.error('❌ Error setting admin role:', error);
+    throw error;
+  }
+};
+
+/**
+ * Gets user profile with role information
+ */
+export const getUserProfile = async (userId: string): Promise<UserProfile | null> => {
+  try {
+    const userRef = doc(firestore, 'users', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      return {
+        uid: userData.uid,
+        email: userData.email,
+        displayName: userData.displayName,
+        role: userData.role || 'user', // Default to 'user' if no role set
+        createdAt: userData.createdAt,
+        preferredLanguage: userData.preferredLanguage
+      } as UserProfile;
+    }
+
+    return null;
+  } catch (error) {
+    console.error('❌ Error getting user profile:', error);
+    return null;
+  }
+};
+
+// ===== LANGUAGE CONFIGURATION MANAGEMENT =====
+
+/**
+ * Gets all language configurations
+ */
+export const getLanguageConfigs = async (): Promise<LanguageConfig[]> => {
+  try {
+    const q = query(
+      collection(firestore, 'languageConfigs'),
+      orderBy('isDefault', 'desc'),
+      orderBy('name', 'asc')
+    );
+
+    const querySnapshot = await getDocs(q);
+    const configs: LanguageConfig[] = [];
+
+    querySnapshot.forEach((doc) => {
+      configs.push({
+        id: doc.id,
+        ...doc.data()
+      } as LanguageConfig);
+    });
+
+    return configs;
+  } catch (error) {
+    console.error('❌ Error fetching language configs:', error);
+    // Return default English config if database fails
+    return [{
+      code: 'en',
+      name: 'English',
+      flag: '🇺🇸',
+      isEnabled: true,
+      isDefault: true,
+      completionPercentage: 100,
+      lastUpdated: Timestamp.now()
+    }];
+  }
+};
+
+/**
+ * Gets only enabled language configurations for user interface
+ */
+export const getEnabledLanguages = async (): Promise<LanguageConfig[]> => {
+  try {
+    const allConfigs = await getLanguageConfigs();
+    return allConfigs.filter(config => config.isEnabled);
+  } catch (error) {
+    console.error('❌ Error fetching enabled languages:', error);
+    return [{
+      code: 'en',
+      name: 'English',
+      flag: '🇺🇸',
+      isEnabled: true,
+      isDefault: true,
+      completionPercentage: 100,
+      lastUpdated: Timestamp.now()
+    }];
+  }
+};
+
+/**
+ * Updates language configuration (admin only)
+ */
+export const updateLanguageConfig = async (
+  configId: string,
+  updates: Partial<Omit<LanguageConfig, 'id' | 'lastUpdated'>>
+): Promise<void> => {
+  try {
+    const configRef = doc(firestore, 'languageConfigs', configId);
+    await setDoc(configRef, {
+      ...updates,
+      lastUpdated: serverTimestamp()
+    }, { merge: true });
+
+    console.log(`✅ Language config ${configId} updated`);
+  } catch (error) {
+    console.error('❌ Error updating language config:', error);
+    throw error;
+  }
+};
+
+/**
+ * Initializes default language configurations
+ */
+export const initializeLanguageConfigs = async (): Promise<void> => {
+  try {
+    // Check if configs already exist
+    const existingConfigs = await getDocs(collection(firestore, 'languageConfigs'));
+    if (!existingConfigs.empty) {
+      console.log('Language configs already exist, skipping initialization');
+      return;
+    }
+
+    const defaultLanguages: Omit<LanguageConfig, 'id' | 'lastUpdated'>[] = [
+      {
+        code: 'en',
+        name: 'English',
+        flag: '🇺🇸',
+        isEnabled: true,
+        isDefault: true,
+        completionPercentage: 100
+      },
+      {
+        code: 'ko',
+        name: '한국어',
+        flag: '🇰🇷',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 85
+      },
+      {
+        code: 'ja',
+        name: '日本語',
+        flag: '🇯🇵',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 70
+      },
+      {
+        code: 'zh',
+        name: '中文',
+        flag: '🇨🇳',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 60
+      },
+      {
+        code: 'es',
+        name: 'Español',
+        flag: '🇪🇸',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 50
+      },
+      {
+        code: 'fr',
+        name: 'Français',
+        flag: '🇫🇷',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 40
+      },
+      {
+        code: 'de',
+        name: 'Deutsch',
+        flag: '🇩🇪',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 35
+      },
+      {
+        code: 'it',
+        name: 'Italiano',
+        flag: '🇮🇹',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 30
+      },
+      {
+        code: 'pt',
+        name: 'Português',
+        flag: '🇵🇹',
+        isEnabled: false,
+        isDefault: false,
+        completionPercentage: 25
+      }
+    ];
+
+    // Create all language configs
+    for (const langConfig of defaultLanguages) {
+      await addDoc(collection(firestore, 'languageConfigs'), {
+        ...langConfig,
+        lastUpdated: serverTimestamp()
+      });
+    }
+
+    console.log('✅ Language configurations initialized successfully');
+  } catch (error) {
+    console.error('❌ Error initializing language configs:', error);
+    throw error;
+  }
+};

@@ -4,7 +4,7 @@ import { useTranslation } from '@/components/providers/translation-provider';
 import { useAuth } from '@/components/providers/auth-provider';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { getAllContactMessages, getContactMessagesByStatus } from '@/lib/firestore';
+import { getAllContactMessages, getContactMessagesByStatus, isUserAdmin, getLanguageConfigs, updateLanguageConfig, initializeLanguageConfigs, LanguageConfig } from '@/lib/firestore';
 
 export default function AdminPage() {
   const { t, currentLanguage } = useTranslation();
@@ -15,13 +15,32 @@ export default function AdminPage() {
     read: 0,
     resolved: 0
   });
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(true);
+  const [languageConfigs, setLanguageConfigs] = useState<LanguageConfig[]>([]);
+  const [languageLoading, setLanguageLoading] = useState(true);
 
   const locale = currentLanguage;
 
   useEffect(() => {
-    if (user && !authLoading) {
-      loadMessageStats();
-    }
+    const checkAdminRole = async () => {
+      if (user && !authLoading) {
+        try {
+          const adminStatus = await isUserAdmin(user.uid);
+          setIsAdmin(adminStatus);
+          if (adminStatus) {
+            loadMessageStats();
+            loadLanguageConfigs();
+          }
+        } catch (error) {
+          console.error('Error checking admin role:', error);
+          setIsAdmin(false);
+        }
+      }
+      setAdminLoading(false);
+    };
+
+    checkAdminRole();
   }, [user, authLoading]);
 
   const loadMessageStats = async () => {
@@ -44,7 +63,35 @@ export default function AdminPage() {
     }
   };
 
-  if (authLoading) {
+  const loadLanguageConfigs = async () => {
+    try {
+      setLanguageLoading(true);
+      let configs = await getLanguageConfigs();
+
+      // Initialize language configs if empty
+      if (configs.length === 0) {
+        await initializeLanguageConfigs();
+        configs = await getLanguageConfigs();
+      }
+
+      setLanguageConfigs(configs);
+    } catch (error) {
+      console.error('Error loading language configs:', error);
+    } finally {
+      setLanguageLoading(false);
+    }
+  };
+
+  const handleLanguageToggle = async (configId: string, isEnabled: boolean) => {
+    try {
+      await updateLanguageConfig(configId, { isEnabled });
+      await loadLanguageConfigs(); // Reload configs
+    } catch (error) {
+      console.error('Error updating language config:', error);
+    }
+  };
+
+  if (authLoading || adminLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-gray-600">Loading...</div>
@@ -67,6 +114,28 @@ export default function AdminPage() {
             className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
             {currentLanguage === 'ko' ? '로그인' : 'Sign In'}
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="bg-white p-8 rounded-lg shadow-sm border max-w-md w-full text-center">
+          <div className="text-red-600 text-6xl mb-4">🚫</div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            {t('admin.access.denied') || 'Access Denied'}
+          </h1>
+          <p className="text-gray-600 mb-6">
+            {t('admin.access.admin_only') || 'You need administrator privileges to access this page.'}
+          </p>
+          <Link
+            href={`/${locale}`}
+            className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          >
+            {currentLanguage === 'ko' ? '홈으로' : 'Go Home'}
           </Link>
         </div>
       </div>
@@ -230,6 +299,98 @@ export default function AdminPage() {
               {t('admin.dashboard.manage_questions') || 'Manage Questions'}
             </Link>
           </div>
+        </div>
+
+        {/* Language Management Section */}
+        <div className="mt-8 bg-white rounded-lg shadow-sm border p-6">
+          <div className="flex items-center mb-6">
+            <div className="p-3 bg-blue-100 rounded-lg">
+              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+            </div>
+            <div className="ml-4">
+              <h2 className="text-xl font-semibold text-gray-900">
+                {t('admin.dashboard.languages_title') || 'Language Management'}
+              </h2>
+              <p className="text-gray-600">
+                {t('admin.dashboard.languages_desc') || 'Control which languages are available to users'}
+              </p>
+            </div>
+          </div>
+
+          {languageLoading ? (
+            <div className="text-center py-4">
+              <div className="text-gray-600">Loading language configurations...</div>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {languageConfigs.map((config) => (
+                <div
+                  key={config.id}
+                  className={`flex items-center justify-between p-4 rounded-lg border-2 transition-colors ${
+                    config.isEnabled
+                      ? 'border-green-200 bg-green-50'
+                      : 'border-gray-200 bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl">{config.flag}</span>
+                    <div>
+                      <div className="font-medium text-gray-900">
+                        {config.name}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        {config.code.toUpperCase()} • {config.completionPercentage}% complete
+                        {config.isDefault && (
+                          <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">
+                            Default
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <div className={`text-sm font-medium ${
+                      config.isEnabled ? 'text-green-600' : 'text-gray-500'
+                    }`}>
+                      {config.isEnabled ? 'Available' : 'Disabled'}
+                    </div>
+
+                    {!config.isDefault && (
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={config.isEnabled}
+                          onChange={(e) => handleLanguageToggle(config.id!, e.target.checked)}
+                          className="sr-only peer"
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      </label>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                <div className="flex items-start space-x-2">
+                  <div className="text-blue-600 mt-0.5">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div className="text-sm">
+                    <div className="font-medium text-blue-900 mb-1">Language Launch Strategy</div>
+                    <div className="text-blue-700">
+                      Start with English only for initial launch. Enable other languages after thorough testing.
+                      Completion percentages show translation readiness.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Quick Actions */}
