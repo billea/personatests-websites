@@ -96,9 +96,16 @@ service cloud.firestore {
     }
     
     match /memoryPowerQuestions/{questionId} {
-      allow read: if true; // Everyone can read questions for tests  
+      allow read: if true; // Everyone can read questions for tests
       allow write: if request.auth != null; // Authenticated users can manage questions
       allow create: if request.auth != null; // Authenticated users can add questions
+    }
+
+    // Contact Messages - anyone can create, authenticated users can read/manage
+    match /contactMessages/{messageId} {
+      allow create: if true; // Anyone can submit contact messages
+      allow read: if request.auth != null; // Only authenticated users (admins) can read messages
+      allow write: if request.auth != null; // Only authenticated users (admins) can update/delete messages
     }
   }
 }
