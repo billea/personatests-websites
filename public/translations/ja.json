@@ -1,0 +1,1346 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "tests": "テスト",
+    "about": "について",
+    "contact": "お問い合わせ",
+    "faq": "FAQ",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "knowYourself": "🧠 Know Yourself",
+    "howOthersSeeMe": "👥 How Others See Me",
+    "couples": "カップル",
+    "blog": "ブログ",
+    "results": "私の結果",
+    "login": "ログイン ✨",
+    "logout": "ログアウト"
+  },
+  "hero": {
+    "badge": "Most Accurate Personality Tests",
+    "title": "あなたの✨を発見",
+    "title_accent": "本当の自分",
+    "subtitle": "科学的に検証された性格テストで本当の自分を見つけましょう。MBTIからビッグファイブまで、あなたをユニークにするものを発見してください！🔥",
+    "cta": "テストを始める",
+    "startJourney": "旅を始める",
+    "stats": {
+      "tests": "性格テスト",
+      "languages": "言語",
+      "access": "常に無料",
+      "private": "プライベート"
+    },
+    "features": {
+      "scientific": "科学に基づく",
+      "instant": "即座の結果",
+      "personalized": "100% パーソナライズ",
+      "private": "完全にプライベート"
+    }
+  },
+  "stats": {
+    "categories": "テストカテゴリー",
+    "reliability": "科学的信頼性",
+    "available": "いつでも利用可能"
+  },
+  "ui": {
+    "pageTitle": "PersonaTests - 無料の性格テスト | MBTI、ビッグファイブなど",
+    "siteTitle": "✨ PersonaTests",
+    "previous": "前へ",
+    "next": "次へ",
+    "finishTest": "テスト完了",
+    "home": "🏠 ホーム",
+    "close": "×",
+    "back": "戻る",
+    "submit": "送信",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "question": "質問",
+    "of": "の",
+    "progress": "進行状況",
+    "resumeTest": "テストを再開しますか？",
+    "resumeTestDescription": "未完了の{testName}テストがあります。",
+    "resumeTestProgress": "進行状況: 質問 {current} / {total}",
+    "resumeTestQuestion": "中断したところから続けますか、それとも最初からやり直しますか？",
+    "resumeTestButton": "テストを再開",
+    "startOver": "最初からやり直す",
+    "cancel": "キャンセル",
+    "startTest": "テスト開始",
+    "takeTest": "テストを受ける",
+    "retakeTest": "テスト再実行",
+    "viewResults": "結果を見る",
+    "shareResults": "結果を共有",
+    "loading": "読み込み中...",
+    "saving": "保存中...",
+    "completed": "完了",
+    "error": "エラー",
+    "success": "成功",
+    "warning": "警告",
+    "confirm": "確認",
+    "yes": "はい",
+    "no": "いいえ",
+    "ok": "OK",
+    "tryAgain": "再試行",
+    "duration": "所要時間",
+    "accuracy": "精度",
+    "category": "カテゴリー",
+    "difficulty": "難易度",
+    "yourResult": "あなたの結果",
+    "resultSummary": "結果要約",
+    "shareOnSocial": "ソーシャルメディアで共有",
+    "copyLink": "リンクをコピー",
+    "downloadResult": "結果をダウンロード"
+  },
+  "results": {
+    "mbtiTraits": {
+      "extraversionIntroversion": "Extraversion/Introversion",
+      "sensingIntuition": "Sensing/Intuition",
+      "thinkingFeeling": "Thinking/Feeling",
+      "judgingPerceiving": "Judging/Perceiving",
+      "extraversion": "Extraversion",
+      "introversion": "Introversion",
+      "sensing": "Sensing",
+      "intuition": "Intuition",
+      "thinking": "Thinking",
+      "feeling": "Feeling",
+      "judging": "Judging",
+      "perceiving": "Perceiving"
+    },
+    "sections": {
+      "yourStrengths": "Your Strengths",
+      "potentialChallenges": "Potential Challenges",
+      "careerSuggestions": "Career Suggestions",
+      "personalityBreakdown": "Your Personality Breakdown",
+      "compatibleTypes": "Compatible Types",
+      "growthAreas": "Growth Areas"
+    },
+    "sharing": {
+      "mbtiShareText": "I'm {type} energy ({title}) and it's honestly perfect for me! What's your vibe? 🔥",
+      "bigFiveShareText": "Just got my Big Five personality results and they're spot on! {summary}",
+      "defaultShareText": "Just discovered my personality type and it's so accurate! Check yours out too!"
+    },
+    "bigFiveTraits": {
+      "openness": "Openness to Experience",
+      "conscientiousness": "Conscientiousness",
+      "extraversion": "Extraversion",
+      "agreeableness": "Agreeableness",
+      "neuroticism": "Neuroticism",
+      "high": "High",
+      "low": "Low",
+      "average": "Average"
+    },
+    "labels": {
+      "yourResult": "Your Result",
+      "score": "Score",
+      "traits": "Traits",
+      "summary": "Summary",
+      "recommendations": "Recommendations",
+      "shareYourResults": "Share Your Results"
+    },
+    "iqResults": {
+      "categories": {
+        "exceptionallyGifted": "Exceptionally Gifted! 🧠✨",
+        "highlyGifted": "Highly Gifted! 🚀",
+        "aboveAverage": "Above Average Intelligence! 📈",
+        "average": "Average Intelligence! 👍",
+        "belowAverage": "Below Average Intelligence",
+        "lowAverage": "Low Average Intelligence"
+      },
+      "descriptions": {
+        "exceptionallyGifted": "Your cognitive abilities are truly exceptional and rare.",
+        "highlyGifted": "You have superior intellectual abilities that place you in the gifted range.",
+        "aboveAverage": "Your cognitive abilities are stronger than most people.",
+        "average": "Your cognitive abilities are right in the typical range.",
+        "belowAverage": "Your cognitive abilities are in the lower range but still within normal variation.",
+        "lowAverage": "This suggests areas where additional support or practice could be beneficial."
+      },
+      "percentiles": {
+        "exceptional": "99.9th percentile",
+        "highly": "98th percentile",
+        "above": "84th percentile",
+        "average": "50th percentile",
+        "below": "16th percentile",
+        "low": "2nd percentile"
+      },
+      "population": {
+        "exceptional": "Only 0.1% of people score this high",
+        "highly": "About 2% of people score in this range",
+        "above": "About 16% of people score in this range",
+        "average": "About 68% of people score in this range",
+        "below": "About 16% of people score in this range",
+        "low": "About 2% of people score in this range"
+      },
+      "shareText": "Just took an IQ test and scored {score}! That puts me in the {percentile}. What's your cognitive superpower? 🧠"
+    },
+    "iqQuestions": [
+      {
+        "text": "どの単語が当てはまらないでしょうか：リンゴ、オレンジ、バナナ、ニンジン、ブドウ",
+        "options": [
+          "リンゴ",
+          "オレンジ",
+          "ニンジン",
+          "ブドウ"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "このパターンで次に来るのは何でしょう：○ △ ○ △ △ ○ △ △ △ ?",
+        "options": [
+          "○",
+          "△",
+          "○ △",
+          "△ △"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "5台の機械が5分で5個のウィジェットを作る場合、100台の機械が100個のウィジェットを作るのにどのくらい時間がかかりますか？",
+        "options": [
+          "5分",
+          "20分",
+          "100分",
+          "500分"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "欠けている数字は何でしょう：3、7、15、31、?",
+        "options": [
+          "47",
+          "63",
+          "71",
+          "127"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "本が読書と関係するように、フォークは何と関係しますか：",
+        "options": [
+          "食事",
+          "キッチン",
+          "スプーン",
+          "食べ物"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "どの図形が異なりますか？",
+        "options": [
+          "正方形",
+          "円",
+          "三角形",
+          "長方形"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "AはBより背が高く、BはCより背が高い場合、誰が一番背が高いですか？",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "同じ"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "数列の次の数字は何でしょう：2、4、8、16、?",
+        "options": [
+          "24",
+          "32",
+          "20",
+          "18"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "どの数字が当てはまらないでしょう：4、6、8、9、10、12？",
+        "options": [
+          "4",
+          "6",
+          "9",
+          "10"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "もし今日が月曜日なら、3日後は何曜日ですか？",
+        "options": [
+          "水曜日",
+          "木曜日",
+          "金曜日",
+          "土曜日"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "鉛筆が書くことと関係するように、ブラシは何と関係しますか？",
+        "options": [
+          "絵を描く",
+          "掃除",
+          "髪",
+          "色"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "論理的な順序はどれでしょう：卵、ひよこ、鶏",
+        "options": [
+          "卵、ひよこ、鶏",
+          "鶏、卵、ひよこ",
+          "ひよこ、卵、鶏",
+          "卵、鶏、ひよこ"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "どの文字が次に来るでしょう：A、C、E、G、?",
+        "options": [
+          "H",
+          "I",
+          "J",
+          "K"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "5個のリンゴがあり、2個を取った場合、何個残りますか？",
+        "options": [
+          "2個",
+          "3個",
+          "5個",
+          "7個"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "どの単語が他と最も関係がありませんか：犬、猫、魚、鳥？",
+        "options": [
+          "犬",
+          "猫",
+          "魚",
+          "鳥"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "パターンを完成させてください：1、1、2、3、5、8、?",
+        "options": [
+          "11",
+          "13",
+          "15",
+          "10"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "60分は1時間と同じように、24時間は何と同じですか？",
+        "options": [
+          "1日",
+          "1週間",
+          "1ヶ月",
+          "1年"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "どの形が他と異なりますか？",
+        "options": [
+          "正方形",
+          "長方形",
+          "円",
+          "菱形"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "Maryには5個のリンゴがあります。彼女が3個をあげた場合、何個残りますか？",
+        "options": [
+          "1個",
+          "2個",
+          "3個",
+          "8個"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "どの数字が次に来るでしょう：10、20、30、?",
+        "options": [
+          "35",
+          "40",
+          "50",
+          "60"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "車がガソリンで動くように、時計は何で動きますか？",
+        "options": [
+          "電池",
+          "風",
+          "水",
+          "太陽"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "どのペアが他と最も異なりますか？",
+        "options": [
+          "黒-白",
+          "上-下",
+          "大-小",
+          "速い-青"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "1ダースは12個です。半ダースは何個ですか？",
+        "options": [
+          "4個",
+          "6個",
+          "8個",
+          "10個"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "どの動物が他と異なりますか：コウモリ、鷲、蝶、ペンギン？",
+        "options": [
+          "コウモリ",
+          "鷲",
+          "蝶",
+          "ペンギン"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "雨が濡れることと関係するように、火は何と関係しますか？",
+        "options": [
+          "熱い",
+          "明るい",
+          "赤い",
+          "危険"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "論理的な順序：種子、植物、花",
+        "options": [
+          "種子、植物、花",
+          "花、植物、種子",
+          "植物、種子、花",
+          "種子、花、植物"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "どの数字が数列に当てはまりませんか：2、4、6、9、10？",
+        "options": [
+          "2",
+          "4",
+          "6",
+          "9"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "類推を完成させてください：昼が夜と関係するように、夏は何と関係しますか？",
+        "options": [
+          "春",
+          "冬",
+          "秋",
+          "雨"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "5×5＋5はいくつですか？",
+        "options": [
+          "25",
+          "30",
+          "35",
+          "55"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "どの文字が異なりますか：B、C、D、F、G？",
+        "options": [
+          "B",
+          "C",
+          "F",
+          "G"
+        ],
+        "correct": 2
+      }
+    ],
+    "bigFiveQuestions": [
+      {
+        "text": "私はおしゃべりです",
+        "dimension": "extraversion",
+        "reverse": false,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "私は他人の欠点を見つけがちです",
+        "dimension": "agreeableness", 
+        "reverse": true,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [5, 4, 3, 2, 1]
+      },
+      {
+        "text": "私は丁寧に仕事をします",
+        "dimension": "conscientiousness",
+        "reverse": false,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "私は落ち込んだり憂鬱になったりします",
+        "dimension": "neuroticism",
+        "reverse": false,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "私は独創的で新しいアイデアを思いつきます",
+        "dimension": "openness",
+        "reverse": false,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "私は控えめです",
+        "dimension": "extraversion",
+        "reverse": true,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [5, 4, 3, 2, 1]
+      },
+      {
+        "text": "私は他人に親切で無私です",
+        "dimension": "agreeableness",
+        "reverse": false,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "私はときどき不注意になることがあります",
+        "dimension": "conscientiousness",
+        "reverse": true,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [5, 4, 3, 2, 1]
+      },
+      {
+        "text": "私はリラックスしていてストレスをうまく処理します",
+        "dimension": "neuroticism",
+        "reverse": true,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [5, 4, 3, 2, 1]
+      },
+      {
+        "text": "私は芸術的な興味がほとんどありません",
+        "dimension": "openness",
+        "reverse": true,
+        "options": ["全くそうでない", "あまりそうでない", "どちらでもない", "まあまあそうだ", "非常にそうだ"],
+        "scores": [5, 4, 3, 2, 1]
+      }
+    ],
+    "mbtiQuestions": [
+      {
+        "text": "2時間のネットワーキングイベントに参加した後、あなたの気持ちは？",
+        "options": ["エネルギッシュで興奮 - たくさんの新しい人に会えた", "精神的に疲れたが達成感 - 家に帰る準備ができた"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "プロジェクトを計画するとき：",
+        "options": ["詳細なスケジュールとチェックリストを作成する", "大まかな方向性だけ決めて進みながら調整する"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "難しい決定を下すとき、より重視するのは：",
+        "options": ["論理的分析と客観的事実", "人への影響と関わる価値観"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "新しいアイデアを学ぶとき、以下のどちらを好みますか：",
+        "options": ["現実的な例と実用的な応用", "理論的概念と抽象的可能性"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      },
+      {
+        "text": "職場で、エネルギーを得る源は：",
+        "options": ["同僚との協力と会議", "一人で集中して作業すること"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "休暇を計画するとき：",
+        "options": ["詳細な旅程で全てを事前予約する", "自由度を保ち自発的に決める"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "チームで対立があるとき、焦点を当てるのは：",
+        "options": ["問題を客観的に分析して解決策を見つける", "皆の感情を考慮して調和を回復する"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "情報を処理するとき、より信頼するのは：",
+        "options": ["直接的な経験と観察からの具体的事実", "パターンと関連性を見る直感"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      },
+      {
+        "text": "社交的な集まりで、あなたは：",
+        "options": ["会話をリードし多くの人と話す", "少数の親しい友人と深い会話をする"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "好む職場環境は：",
+        "options": ["明確な締切と確立された手順", "柔軟なスケジュールと創造的自由"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "批判を受けたとき、最初の思考は：",
+        "options": ["このフィードバックは事実に基づいているか？", "この人は私をどう思っているか？"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "問題解決へのアプローチは：",
+        "options": ["実証済みの方法と過去の経験を使用する", "新しい視点と創造的アイデアを探索する"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      },
+      {
+        "text": "仕事の後、充電する方法は：",
+        "options": ["同僚と食事をして一日を共有する", "一人静かに考える時間を持つ"],
+        "dimension": "E/I",
+        "trait": ["E", "I"]
+      },
+      {
+        "text": "新しいプロジェクトを始めるとき：",
+        "options": ["すべての詳細を計画しステップごとに進める", "全体的な方向性を設定し必要に応じて適応する"],
+        "dimension": "J/P",
+        "trait": ["J", "P"]
+      },
+      {
+        "text": "意思決定において優先するのは：",
+        "options": ["効率性と論理的結果", "人の満足度と調和"],
+        "dimension": "T/F",
+        "trait": ["T", "F"]
+      },
+      {
+        "text": "学習において、より興味を持つのは：",
+        "options": ["具体的事実と実用的スキル", "理論と概念的理解"],
+        "dimension": "S/N",
+        "trait": ["S", "N"]
+      }
+    ],
+    "eqQuestions": [
+      {
+        "text": "ストレスを感じているとき、自分の感情をどの程度識別できますか？",
+        "options": ["全くできない", "あまりできない", "普通", "かなりできる", "非常によくできる"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "怒っているとき、感情をどの程度コントロールできますか？",
+        "options": ["全くできない", "あまりできない", "普通", "かなりできる", "非常によくできる"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "他者が悲しんでいるとき、その感情をどの程度理解できますか？",
+        "options": ["全く理解できない", "あまり理解できない", "普通", "かなり理解できる", "非常によく理解できる"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "対立状況で解決策を見つけるのはどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "自分の感情が行動に与える影響をどの程度意識していますか？",
+        "options": ["全く意識していない", "少し意識している", "普通に意識している", "かなり意識している", "非常に意識している"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "イライラする状況で冷静を保つのはどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "友人が喜んでいるとき、その喜びをどの程度共有できますか？",
+        "options": ["全く共有できない", "あまり共有できない", "普通", "かなり共有できる", "非常によく共有できる"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "新しい人との関係構築はどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "自分の長所と短所の評価はどの程度正確ですか？",
+        "options": ["全く正確ではない", "あまり正確ではない", "普通に正確", "かなり正確", "非常に正確"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "衝動的に行動することをどの程度抵抗できますか？",
+        "options": ["全く抵抗できない", "あまり抵抗できない", "普通", "かなり抵抗できる", "非常によく抵抗できる"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "他者の非言語的信号（表情、ボディランゲージ）をどの程度読み取れますか？",
+        "options": ["全く読み取れない", "あまり読み取れない", "普通", "かなり読み取れる", "非常によく読み取れる"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "チーム環境での協力はどの程度効果的ですか？",
+        "options": ["全く効果的ではない", "あまり効果的ではない", "普通に効果的", "かなり効果的", "非常に効果的"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "自分の感情の引き金を特定するのはどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "self-awareness",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "プレッシャーの下で冷静さを保つのはどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "self-regulation",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "他者の立場に立って考えるのはどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "empathy",
+        "scores": [1, 2, 3, 4, 5]
+      },
+      {
+        "text": "困難な会話を進めるのはどの程度得意ですか？",
+        "options": ["全く得意ではない", "あまり得意ではない", "普通", "かなり得意", "非常に得意"],
+        "dimension": "social-skills",
+        "scores": [1, 2, 3, 4, 5]
+      }
+    ]
+  },
+  "categories": {
+    "all": "すべて",
+    "knowYourself": "🧠 自分を知る",
+    "howOthersSeeMe": "👥 他の人から見た私",
+    "knowYourselfTitle": "🧠 自分を知る",
+    "knowYourselfSubtitle": "科学的に検証された評価を通じて、あなたの内面の性格、強み、ユニークな特性を発見しましょう",
+    "howOthersSeeTitle": "👥 他の人から見た私",
+    "howOthersSubtitle": "正直なフィードバックを受け取り、友人、家族、同僚があなたをどう本当に見ているかを発見しましょう"
+  },
+  "tests": {
+    "sectionTitle": "Discover Your Complete Picture ✨",
+    "sectionSubtitle": "Get the full view: who you are inside AND how others see you! 💫",
+    "disclaimer": "🎯 Important: For Entertainment & Self-Reflection Only",
+    "disclaimerText": "These assessments are designed for fun and self-reflection, not professional diagnosis. If you need mental health support, please consult a licensed healthcare provider.",
+    "takeTest": "テストを受ける",
+    "new": "🔥 新着",
+    "trending": "🔥 トレンド",
+    "popular": "✨ 人気",
+    "mbti": {
+      "title": "16 Personalities (MBTI)",
+      "description": "The ultimate personality test that actually gets you. Are you INTJ mastermind energy or ENFP golden retriever vibes? Time to find out! 💅"
+    },
+    "bigfive": {
+      "title": "Big Five Personality",
+      "description": "The science-backed test that psychology professors actually approve of. Get your personality breakdown across 5 major traits! 🧠"
+    },
+    "eq": {
+      "title": "Emotional Intelligence (EQ)",
+      "description": "How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝"
+    },
+    "ei": {
+      "title": "Emotional Intelligence",
+      "description": "How well do you understand emotions - yours and others? Test your self-awareness, empathy, and social skills! 💝"
+    },
+    "iq": {
+      "title": "Brain Teaser Challenge",
+      "description": "Fun logic puzzles and brain games! This is just for entertainment - real IQ testing needs professional administration. Let's see how you do! 🤓"
+    },
+    "lovelanguage": {
+      "title": "Love Language Test",
+      "description": "Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖"
+    },
+    "adhd": "集中力とエネルギースタイル",
+    "anxiety": "ストレス管理スタイル",
+    "depression": "感情調節スタイル",
+    "strengths": "キャラクター強み (VIA)",
+    "careerpath": {
+      "title": "Career Path Finder",
+      "description": "Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀"
+    },
+    "relationshipstyle": {
+      "title": "Relationship Style",
+      "description": "How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨"
+    },
+    "360assessment": {
+      "title": "360° 私についての認識",
+      "description": "他の人があなたを複数の角度からどのように認識しているかを発見しましょう。友人、同僚、家族など、さまざまな状況であなたを知る人々から正直な洞察を得て、あなたの影響力と成長領域を理解しましょう。"
+    },
+    "trending": "🔥 トレンド",
+    "popular": "✨ 人気",
+    "new": "🔥 新着",
+    "createQuestions": "Create Questions",
+    "startAssessment": "Ask My People",
+    "meta": {
+      "duration": "⏱️ 8分",
+      "duration5": "⏱️ 5分",
+      "duration6": "⏱️ 6分",
+      "duration7": "⏱️ 7分",
+      "duration8": "⏱️ 8分",
+      "duration10": "⏱️ 10分",
+      "duration12": "⏱️ 12分",
+      "duration15": "⏱️ 15分",
+      "setup5": "⏱️ 5分設定",
+      "setup10": "⏱️ 10分設定",
+      "accurate": "🎯 高精度",
+      "scienceBased": "🔬 科学的根拠",
+      "researchGrade": "🎯 研究グレード",
+      "mostAccurate": "🏆 最も正確",
+      "relationship": "💝 関係",
+      "couplesFriendly": "❤️ カップル向け",
+      "funGame": "🎮 楽しいゲーム",
+      "brainTraining": "🧠 脳トレーニング",
+      "careerFocused": "🎯 キャリア重視",
+      "leadership": "💼 リーダーシップ",
+      "teamwork": "🤝 チームワーク",
+      "selfReflection": "🔍 自己反省",
+      "notMedical": "⚠️ 医療用ではない",
+      "wellness": "🧘 ウェルネス",
+      "moodTracking": "🌈 気分追跡",
+      "strengthsBased": "🌟 強みベース",
+      "personalGrowth": "🎯 個人成長",
+      "careerFocus": "💼 キャリアフォーカス",
+      "personalized": "🎯 パーソナライズ",
+      "relationships": "💕 人間関係",
+      "connection": "🤝 つながり",
+      "detailed": "📊 詳細",
+      "viral": "🔥 バイラル",
+      "couples": "💕 カップル",
+      "instant": "⚡ 即座",
+      "fun": "😄 楽しい",
+      "socialPeople": "👥 ソーシャルフィードバック"
+    },
+    "disc": "DISC性格テスト",
+    "discDesc": "あなたのコミュニケーションスタイルを発見！支配的、影響力がある、安定している、慎重？仕事と人間関係の動力学を理解するのに最適！💼",
+    "adhdDesc": "あなたのユニークな注意力とエネルギーパターンを発見しましょう！これは楽しい自己反省のためのものです - 医学的評価ではありません。⚡",
+    "anxietyDesc": "ストレスとプレッシャーにどう対処しますか？これは楽しみと自己認識のためのものです - 医学的アドバイスではありません。💚",
+    "depressionDesc": "感情をどう処理しますか？これは自己反省と娯楽のためのものです - メンタルヘルス評価ではありません。🌻",
+    "strengthsDesc": "あなたの核となるキャラクター強みを発見しましょう！創造性からリーダーシップ、親切さまで - あなたをユニークに素晴らしくするものを発見しましょう！✨",
+    "conflict": "Conflict Style Assessment",
+    "conflictDesc": "How do you handle disagreements? Discover whether you're a collaborator, competitor, accommodator, avoider, or compromiser! 🤝",
+    "trendingTitle": "Trending Now 🔥",
+    "trendingSubtitle": "The hottest personality tests everyone's talking about! Perfect for sharing with friends and social media 📱",
+    "love": "Love Language Test",
+    "loveDesc": "Discover how you give and receive love! Are you physical touch, words of affirmation, or something else? Perfect for couples! 💖",
+    "pet": "What Pet Matches Your Personality?",
+    "petDesc": "Are you a loyal dog, independent cat, playful hamster, or something else? Find your perfect pet match based on your personality! 🐱",
+    "career": "What's Your Ideal Career Path?",
+    "careerDesc": "Discover the career that matches your personality! Are you a leader, creator, helper, analyst, or entrepreneur? 🚀",
+    "relationship": "What's Your Relationship Style?",
+    "relationshipDesc": "How do you love and connect with others? Discover your unique relationship style and what makes you tick in love! ✨",
+    "buttons": {
+      "discoverType": "Discover My Type ✨",
+      "takeTest": "Take The Test",
+      "takeBrainChallenge": "Take Brain Challenge",
+      "checkEQ": "Check My EQ",
+      "findStyle": "Find My Style",
+      "checkStyle": "Check My Style",
+      "findStrengths": "Find My Strengths",
+      "findLoveLanguage": "Find My Love Language",
+      "findPetMatch": "Find My Pet Match",
+      "findCareer": "Find My Career"
+    },
+    "askfriends": {
+      "title": "See Who Knows Me Best",
+      "description": "Create questions about yourself, provide YOUR answers, then see who knows you best! Friends will try to match your answers and get scored on how well they know you.",
+      "heroTitle": "See Who Knows Me Best 🧩",
+      "heroSubtitle": "Create questions about yourself, provide YOUR answers, then see who knows you best! Friends will try to match your answers and get scored on how well they know you.",
+      "viralBadge": "🔥 VIRAL SOCIAL FEATURE",
+      "categoriesTitle": "What do you want to know about yourself?",
+      "categoriesSubtitle": "Choose question categories or create your own personalized questions!",
+      "customTab": "🎨 Custom Questions",
+      "categoryTab": "📋 Categories",
+      "customInstructions": "Create your own personalized questions that you're curious about!",
+      "categoryInstructions": "Pick categories and we'll suggest questions, or customize them yourself!",
+      "addCustomQuestion": "Add Question",
+      "customPlaceholder": "What's something you're curious to know about yourself?",
+      "createButton": "Create My Question Set 🚀",
+      "trackResultsTitle": "📊 Track Your Results",
+      "trackResultsDesc": "Your friends' responses will be collected here. We'll email you when someone answers!",
+      "namePlaceholder": "Your name (optional)",
+      "emailPlaceholder": "Your email for notifications",
+      "questionSetReady": "🎉 Your Question Set is Ready!",
+      "shareInstructions": "Share this link with your friends and see what they think about you!",
+      "copyLink": "📋 Copy Link",
+      "emailFriend": "📧 Email Friend",
+      "quickShare": "🚀 Quick Share",
+      "whatsappShare": "💬 WhatsApp",
+      "twitterShare": "🐦 Twitter",
+      "facebookShare": "📘 Facebook",
+      "categories": {
+        "musicTitle": "Music & Entertainment",
+        "musicDesc": "Songs, movies, shows you love",
+        "foodTitle": "Food & Lifestyle",
+        "foodDesc": "Favorite foods, restaurants, habits",
+        "personalityTitle": "Personality Traits",
+        "personalityDesc": "How others see your personality",
+        "styleTitle": "Style & Fashion",
+        "styleDesc": "Your fashion sense and style",
+        "socialTitle": "Social & Relationships",
+        "socialDesc": "How you interact with others",
+        "hobbiesTitle": "Hobbies & Interests",
+        "hobbiesDesc": "Your passions and activities"
+      },
+      "previewTab": "👀 Preview",
+      "previewTitle": "Your Question Set",
+      "previewPlaceholder": "Select categories or add custom questions to see them here!"
+    },
+    "featured": "🔥 POPULAR",
+    "connect": "💝 CONNECT"
+  },
+  "couples": {
+    "title": "カップルの相性 ❤️",
+    "subtitle": "個別にテストを受け、パートナーと繋がって関係のダイナミクスと相性の洞察を発見しましょう！💕",
+    "shareResults": "結果をシェア",
+    "shareDesc": "任意のテストを受けた後、パートナーと繋がってバイブを比較するためのユニークなIDを取得！",
+    "shareButton": "パートナーと繋がる",
+    "compatibility": "相性分析",
+    "compatibilityDesc": "関係のダイナミクス、コミュニケーションスタイル、調和や成長の領域について詳細な洞察を得る！",
+    "compatibilityButton": "私たちの相性を見る",
+    "growth": "関係の成長",
+    "growthDesc": "両方の性格タイプと結果に基づいて絆を強化するコツと戦略を発見！",
+    "growthButton": "一緒に成長する"
+  },
+  "whyChoose": {
+    "title": "なぜPersonaTestsを選ぶの？ ✨",
+    "scientific": "真に科学的",
+    "scientificDesc": "私たちのテストは本物の心理学研究に基づいており、単なるランダムな質問ではありません。真剣です！🧠",
+    "instant": "即座の結果",
+    "instantDesc": "性格分析を即座に取得。待時間なし、遅延なし、純粋な即座満足！⚡",
+    "safe": "あなたの秘密は安全",
+    "safeDesc": "回答をプライベートに保ちます。データの販売や変なメールはありません。あなたと結果だけ！🔒",
+    "everywhere": "どこでも動作",
+    "everywhereDesc": "スマホ、ラップトップ、タブレットでテストを受けられます - 文字通りどこででも性格を発見！📱",
+    "researchBased": "📚 研究に基づく",
+    "validatedMethods": "🎯 検証済み方法",
+    "psychologyDriven": "🧠 心理学主導",
+    "immediate": "⚡ 即座",
+    "fastProcessing": "🚀 高速処理",
+    "userFriendly": "👆 使いやすい",
+    "comprehensive": "📋 包括的",
+    "actionable": "💡 実用的",
+    "growthFocused": "🌱 成長重視",
+    "evidenceBased": "🔬 証拠に基づく",
+    "practical": "🎯 実践的",
+    "insightful": "🔍 洞察力のある",
+    "realTimeAnalysis": "📊 リアルタイム分析",
+    "privacyFirst": "🔒 プライバシー第一",
+    "dataProtection": "🛡️ データ保護",
+    "noSpam": "✨ スパムなし",
+    "mobileFriendly": "📱 モバイル対応",
+    "crossPlatform": "💻 クロスプラットフォーム",
+    "anyDevice": "🌐 あらゆるデバイス"
+  },
+  "whyMatters": {
+    "title": "性格テストが重要な理由",
+    "selfAwareness": "自己認識",
+    "selfAwarenessDesc": "あなたの自然な傾向、強み、成長分野を理解して、より良い人生の決断を下しましょう。",
+    "careerDevelopment": "キャリア開発",
+    "careerDevelopmentDesc": "あなたの性格に合うキャリアパスを発見し、仕事の満足度と成功を高めましょう。",
+    "betterRelationships": "より良い人間関係",
+    "betterRelationshipsDesc": "個人的および職業的な関係において、コミュニケーションと理解を向上させましょう。"
+  },
+  "blog": {
+    "title": "心理学の洞察とヒント 📚",
+    "subtitle": "パーソナリティ心理学、自己改善、人間関係の洞察について学ぶ",
+    "coming_soon": "より多くの心理学記事と洞察が近日公開！ ✨"
+  },
+  "about": {
+    "hero": {
+      "title": "About PersonaTests ✨",
+      "subtitle": "Discover the story behind the world's most engaging personality testing platform"
+    },
+    "mission": {
+      "title": "Our Mission 🎯",
+      "paragraph1": "At PersonaTests, we believe that understanding your personality is the key to unlocking your potential. Our mission is to make scientifically-backed personality assessments accessible, engaging, and genuinely helpful for people worldwide.",
+      "paragraph2": "We've taken the complex world of psychological research and transformed it into fun, interactive experiences that provide real insights into who you are, how you think, and what makes you unique."
+    },
+    "different": {
+      "title": "What Makes Us Different 🌟",
+      "scientific": {
+        "title": "🔬 Scientific Foundation",
+        "description": "Our tests are built on decades of psychological research, including validated frameworks like the Big Five model, Myers-Briggs Type Indicator principles, and emotional intelligence theories."
+      },
+      "modern": {
+        "title": "⚡ Modern Experience",
+        "description": "We've reimagined personality testing for the digital age with engaging interfaces, instant results, and social sharing capabilities that make self-discovery fun."
+      },
+      "privacy": {
+        "title": "🔒 Privacy First",
+        "description": "Your personality data belongs to you. We never sell your information, and our tests can be taken anonymously with results shared only at your discretion."
+      },
+      "global": {
+        "title": "🌍 Global Accessibility",
+        "description": "Available in 9+ languages with cultural adaptations, our tests work across devices and are designed to be inclusive and accessible to everyone."
+      }
+    },
+    "tests": {
+      "title": "Our Test Collection 📚",
+      "description": "We offer a comprehensive suite of personality assessments, each designed to reveal different aspects of your psychological profile:",
+      "types": {
+        "title": "16 Personality Types",
+        "description": "Based on Carl Jung's psychological types and the Myers-Briggs framework"
+      },
+      "bigfive": {
+        "title": "Big Five Personality",
+        "description": "The gold standard in personality psychology with decades of research validation"
+      },
+      "emotional": {
+        "title": "Emotional Intelligence",
+        "description": "Measure your ability to understand and manage emotions effectively"
+      },
+      "specialized": {
+        "title": "Specialized Assessments",
+        "description": "DISC, conflict styles, strengths assessment, and relationship compatibility"
+      }
+    },
+    "quality": {
+      "title": "Quality & Accuracy 🎯",
+      "commitment": "Our Commitment to Scientific Rigor",
+      "frameworks": "Validated Frameworks: All our tests are based on peer-reviewed psychological research and established personality models",
+      "improvement": "Continuous Improvement: We regularly update our assessments based on the latest findings in personality psychology",
+      "reliability": "Statistical Reliability: Our tests undergo rigorous statistical analysis to ensure consistent and meaningful results",
+      "cultural": "Cultural Adaptation: Questions and interpretations are adapted for different cultural contexts and languages",
+      "ethical": "Ethical Standards: We follow APA guidelines for psychological testing and maintain strict ethical standards"
+    },
+    "values": {
+      "title": "Our Values 💎",
+      "scientific": {
+        "title": "Scientific Integrity",
+        "description": "Evidence-based approaches backed by research"
+      },
+      "experience": {
+        "title": "User Experience",
+        "description": "Making psychology accessible and engaging"
+      },
+      "privacy": {
+        "title": "Privacy Protection",
+        "description": "Your data security is our top priority"
+      },
+      "inclusion": {
+        "title": "Global Inclusion",
+        "description": "Accessible across cultures and languages"
+      }
+    },
+    "community": {
+      "title": "Join Our Community 🤝",
+      "question": "Ready to Discover Your Personality?",
+      "description": "Join millions of people who have already discovered their unique personality insights with PersonaTests."
+    },
+    "footer": {
+      "copyright": "© 2025 PersonaTests. All rights reserved. Made with ✨ for discovering your true personality."
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact Us - PersonaTests",
+    "hero": {
+      "title": "Contact Us 💬",
+      "subtitle": "We'd love to hear from you! Get support, share feedback, or ask questions."
+    },
+    "form": {
+      "title": "📝 Send Us a Message",
+      "name": "Name *",
+      "email": "Email *",
+      "subject": "Subject *",
+      "message": "Message *",
+      "selectTopic": "Select a topic...",
+      "messagePlaceholder": "Please describe your question or issue in detail...",
+      "sendButton": "Send Message 📤"
+    },
+    "responseTime": "💚 We typically respond within 24-48 hours. For urgent issues, please check our FAQ page first!",
+    "quickSupport": {
+      "title": "Quick Support",
+      "description": "Check our FAQ page for immediate answers to common questions",
+      "link": "Visit FAQ Page →"
+    },
+    "company": {
+      "title": "PersonaTests",
+      "subtitle": "Digital Personality Assessment Platform",
+      "purpose": "Created for entertainment and self-discovery",
+      "operating": "Operating since 2025"
+    },
+    "responseTimes": {
+      "title": "📅 Response Times",
+      "general": "General Support",
+      "generalTime": "24-48 hours",
+      "privacy": "Privacy Requests",
+      "privacyTime": "48-72 hours",
+      "business": "Business Inquiries",
+      "businessTime": "3-5 business days"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions 🤔",
+      "delete": {
+        "question": "How do I delete my account and data?",
+        "answer": "Email privacy@personatests.com with your account email address. We'll delete all your data within 30 days as required by GDPR and CCPA."
+      },
+      "accurate": {
+        "question": "Are your personality tests accurate?",
+        "answer": "Our tests are based on established psychological frameworks but are for entertainment and self-reflection only. They're not professional psychological assessments."
+      },
+      "employment": {
+        "question": "Can I use test results for employment decisions?",
+        "answer": "No. Our tests are for entertainment only and should never be used for medical, employment, or legal decisions. Only licensed professionals can provide such assessments."
+      },
+      "premium": {
+        "question": "How do premium reports work?",
+        "answer": "Premium reports ($2.99) provide detailed insights and are delivered via email within 24 hours. All payments are securely processed through Stripe."
+      }
+    },
+    "backToTests": "Back to Tests"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy - PersonaTests",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated:",
+    "infoCollected": {
+      "title": "Information We Collect",
+      "description": "When you use PersonaTests, we collect:",
+      "responses": "Your responses to personality tests",
+      "results": "Test results and personality type information",
+      "email": "Email address if you create an account",
+      "usage": "Usage data to improve our services"
+    },
+    "howWeUse": {
+      "title": "How We Use Your Information",
+      "description": "We use your information to:",
+      "personalized": "Provide personalized test results",
+      "saveHistory": "Save your test history (if you create an account)",
+      "improve": "Improve our personality tests and user experience",
+      "sendUpdates": "Send you test results and updates (with your consent)"
+    },
+    "thirdParty": {
+      "title": "Third-Party Services & Advertising",
+      "googleAdSense": {
+        "title": "Google AdSense",
+        "description": "We use Google AdSense to display advertisements on our website. Google and its partners use cookies and other technologies to:",
+        "serveAds": "Serve ads based on your visits to this site and other sites on the Internet",
+        "measure": "Measure ad effectiveness and provide reporting",
+        "interestBased": "Provide interest-based advertising across the web",
+        "preventFraud": "Prevent fraudulent activity and improve ad quality",
+        "yourChoicesTitle": "Your Choices:",
+        "optOutGoogle": "You can opt out of personalized advertising by visiting <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" style=\"color: #4f46e5;\">Google's Ad Settings</a>",
+        "optOutDAA": "You can also opt out via the <a href=\"https://optout.aboutads.info/\" target=\"_blank\" style=\"color: #4f46e5;\">Digital Advertising Alliance</a>",
+        "optOutEU": "European users can visit <a href=\"https://www.youronlinechoices.eu/\" target=\"_blank\" style=\"color: #4f46e5;\">Your Online Choices</a>",
+        "moreInfo": "For more information about Google's privacy practices, please visit <a href=\"https://policies.google.com/privacy\" target=\"_blank\" style=\"color: #4f46e5;\">Google's Privacy Policy</a>."
+      },
+      "otherServices": {
+        "title": "Other Third-Party Services",
+        "description": "We also use the following third-party services:",
+        "analytics": "Google Analytics: ウェブサイト分析とユーザー行動インサイトのため",
+        "stripe": "Stripe: プレミアムレポートの安全な決済処理のため",
+        "firebase": "Firebase: ユーザー認証と安全なデータストレージのため",
+        "emailjs": "EmailJS: メールでのプレミアムレポート配信のため"
+      }
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "description": "We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, no internet transmission is completely secure."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "description": "You have the right to:",
+      "access": "Access your personal data",
+      "correct": "Correct inaccurate data",
+      "delete": "Delete your account and data",
+      "object": "Object to data processing"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "このプライバシーポリシーに関してご質問がございましたら、privacy@personatests.com までお問い合わせください"
+    },
+    "backToTests": "Back to Tests"
+  },
+  "terms": {
+    "pageTitle": "Terms of Service - PersonaTests",
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated:",
+    "acceptance": {
+      "title": "Acceptance of Terms",
+      "description": "By using PersonaTests, you agree to these Terms of Service. If you don't agree, please don't use our service."
+    },
+    "description": {
+      "title": "Description of Service",
+      "description": "PersonaTests provides personality tests and assessments for entertainment and self-discovery purposes. Our tests are not professional psychological evaluations."
+    },
+    "responsibilities": {
+      "title": "User Responsibilities",
+      "intro": "You agree to:",
+      "accurate": "Provide accurate information when taking tests",
+      "lawful": "Use our service for lawful purposes only",
+      "respect": "Respect the intellectual property rights of PersonaTests",
+      "noReverse": "Not attempt to reverse engineer or copy our tests"
+    },
+    "disclaimer": {
+      "title": "Important Medical & Legal Disclaimer",
+      "warning": "⚠️ Entertainment Only - Not Medical or Professional Services",
+      "intro": "ALL TESTS ARE FOR ENTERTAINMENT AND SELF-REFLECTION PURPOSES ONLY. Our assessments are NOT:",
+      "notMedical": "Medical diagnoses or screenings",
+      "notProfessional": "Professional psychological evaluations",
+      "notSubstitute": "Substitute for licensed mental health care",
+      "notEmployment": "Appropriate for employment or legal decisions",
+      "notValidated": "Clinically validated diagnostic instruments",
+      "mentalHealth": "Mental Health Disclaimer: Tests related to mental health topics (anxiety, depression, ADHD-like symptoms) are purely for fun and cannot diagnose any condition. Only licensed healthcare professionals can provide mental health diagnoses.",
+      "iq": "IQ Disclaimer: Our \"Brain Teaser Challenge\" is not a real IQ test. Authentic IQ testing requires professional administration by qualified psychologists using standardized instruments.",
+      "help": "If you need professional help, please contact: Licensed therapists or your healthcare provider.",
+      "acknowledgment": "By using this website, you acknowledge that you understand these tests are for entertainment only and will not use results for medical, professional, or legal purposes."
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "description": "All content on PersonaTests, including tests, questions, and results, is owned by PersonaTests and protected by copyright laws."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "description": "PersonaTests is provided \"as is\" without warranties. We are not liable for any damages resulting from your use of our service."
+    },
+    "changes": {
+      "title": "Changes to Terms",
+      "description": "We may update these terms at any time. Continued use of our service constitutes acceptance of updated terms."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Questions about these terms? Contact us at: support@personatests.com"
+    },
+    "backToTests": "Back to Tests"
+  },
+  "360assessment": {
+    "badge": "🔍 MULTI-PERSPECTIVE REVIEW",
+    "heroTitle": "360 Perception About Me 🎯",
+    "heroSubtitle": "Discover how others perceive you from multiple angles. Get honest insights from people who know you in different contexts - friends, colleagues, family - to understand your impact and areas for growth.",
+    "steps": {
+      "setup": "Setup",
+      "share": "Share",
+      "results": "Results"
+    },
+    "tabs": {
+      "personal": "👤 Personal Info",
+      "areas": "📊 Feedback Areas",
+      "reviewers": "👥 Reviewers",
+      "preview": "👀 Preview"
+    },
+    "personalInfo": {
+      "title": "Let's start with the basics about you! 😊",
+      "fullName": "Full Name *",
+      "namePlaceholder": "Your full name",
+      "email": "Email Address *",
+      "emailPlaceholder": "your@email.com",
+      "jobTitle": "Job Title",
+      "jobPlaceholder": "Your current role",
+      "company": "Organization",
+      "companyPlaceholder": "Company or organization",
+      "whyFeedback": "Why do you want feedback? (Optional)",
+      "purposePlaceholder": "Just curious about myself, want to improve at work, working on personal growth, etc."
+    },
+    "feedbackAreas": {
+      "whatFeedbackTitle": "What do you want feedback about? Pick your favorites! ✨",
+      "areas": {
+        "leadership": {
+          "title": "How I Lead & Take Charge",
+          "desc": "Do I inspire people? Am I good at making decisions? Do I motivate others?"
+        },
+        "communication": {
+          "title": "How I Talk & Listen",
+          "desc": "Am I a good listener? Do I explain things clearly? How's my texting game?"
+        },
+        "teamwork": {
+          "title": "How I Work With Others",
+          "desc": "Am I easy to work with? Do I help teammates? How do I handle drama?"
+        },
+        "emotional-intelligence": {
+          "title": "My Emotional Side",
+          "desc": "Do I read people well? Am I aware of my feelings? How empathetic am I?"
+        },
+        "problem-solving": {
+          "title": "How I Handle Problems",
+          "desc": "Am I creative with solutions? Do I think things through? Can I figure stuff out?"
+        },
+        "adaptability": {
+          "title": "How I Handle Change",
+          "desc": "Do I roll with the punches? Am I flexible? How do I deal when things get crazy?"
+        },
+        "interpersonal": {
+          "title": "How I Connect With People",
+          "desc": "Do people trust me? Am I good at making friends? Do I build solid relationships?"
+        },
+        "work-style": {
+          "title": "How I Get Things Done",
+          "desc": "Am I organized? Do I meet deadlines? Can people count on me to deliver?"
+        }
+      }
+    },
+    "reviewers": {
+      "whoKnowsYou": "Who knows you well enough to give honest feedback? 😊",
+      "relationshipLabels": {
+        "Manager/Supervisor": "Manager/Supervisor",
+        "Colleagues/Peers": "Colleagues/Peers",
+        "Direct Reports": "Direct Reports",
+        "Clients/Customers": "Clients/Customers",
+        "Friends": "Friends",
+        "Family": "Family",
+        "Teacher": "Teacher",
+        "Student": "Student"
+      },
+      "peopleCount": {
+        "1-2 people": "1-2 people",
+        "3-5 people": "3-5 people",
+        "2-4 people": "2-4 people",
+        "1-3 people": "1-3 people",
+        "2-5 people": "2-5 people"
+      }
+    },
+    "preview": {
+      "lookingGood": "Looking good! Let's make sure everything's right 🔍",
+      "assessmentSubject": "Assessment Subject",
+      "feedbackAreas": "Feedback Areas",
+      "reviewerTypes": "Reviewer Types",
+      "notSet": "Not set",
+      "noneSelected": "None selected"
+    },
+    "startButton": "Start My Assessment"
+  },
+  "footer": {
+    "description": "あなたを理解する科学的に裏付けされたテストで性格を発見。",
+    "popularTests": "人気テスト",
+    "sixteenTypes": "16の性格タイプ",
+    "bigFive": "ビッグファイブテスト",
+    "brainTeaser": "脳チャレンジ",
+    "moreInfo": "詳細情報",
+    "aboutUs": "私たちについて",
+    "blog": "ブログ",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約"
+  }
+}

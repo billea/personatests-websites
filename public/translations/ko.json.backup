@@ -1,0 +1,3513 @@
+{
+  "share": {
+    "button": "공유",
+    "share_results": "결과 공유",
+    "share_result": "결과 공유하기",
+    "copy_link": "링크 복사",
+    "copied": "결과 링크가 클립보드에 복사되었습니다!",
+    "twitter": "트위터",
+    "facebook": "페이스북",
+    "linkedin": "링크드인",
+    "whatsapp": "왓츠앱",
+    "kakao": "카카오톡",
+    "line": "라인",
+    "telegram": "텔레그램",
+    "reddit": "레딧",
+    "email": "이메일",
+    "download": "결과 다운로드"
+  },
+  "nav": {
+    "home": "홈",
+    "tests": "테스트",
+    "about": "소개",
+    "contact": "문의",
+    "faq": "FAQ",
+    "privacy": "개인정보",
+    "terms": "약관",
+    "knowYourself": "🧠 나를 알아가기",
+    "howOthersSeeMe": "👥 다른 사람들이 보는 나",
+    "couples": "커플",
+    "blog": "블로그",
+    "results": "내 결과",
+    "login": "로그인 ✨",
+    "logout": "로그아웃"
+  },
+  "hero": {
+    "badge": "종합적인 성격 테스트",
+    "title": "당신의 ✨ 발견",
+    "title_accent": "진정한 자아",
+    "subtitle": "과학적으로 검증된 성격 테스트로 진짜 나를 찾아보세요. MBTI부터 빅파이브까지, 나만의 특별함을 발견해보세요! 🔥",
+    "cta": "내 바이브 체크하기",
+    "startJourney": "여정을 시작하세요",
+    "stats": {
+      "tests": "성격 테스트",
+      "languages": "언어",
+      "access": "항상 무료",
+      "private": "완전 비공개"
+    },
+    "features": {
+      "scientific": "과학적 근거",
+      "instant": "즉시 결과",
+      "personalized": "100% 개인화",
+      "private": "완전 비공개"
+    }
+  },
+  "stats": {
+    "categories": "테스트 카테고리",
+    "reliability": "과학적 신뢰도",
+    "available": "항상 이용 가능"
+  },
+  "ui": {
+    "pageTitle": "PersonaTests - 무료 성격 테스트 | MBTI, 빅파이브 등",
+    "siteTitle": "✨ PersonaTests",
+    "previous": "이전",
+    "next": "다음",
+    "finishTest": "테스트 완료",
+    "home": "🏠 홈",
+    "close": "×",
+    "back": "뒤로",
+    "submit": "제출",
+    "save": "저장",
+    "delete": "삭제",
+    "edit": "편집",
+    "question": "질문",
+    "of": "/",
+    "progress": "진행상황",
+    "resumeTest": "테스트를 재개하시겠습니까?",
+    "resumeTestDescription": "미완료된 {testName} 테스트가 있습니다.",
+    "resumeTestProgress": "진행상황: 질문 {current} / {total}",
+    "resumeTestQuestion": "중단했던 곳부터 계속하시겠습니까, 아니면 처음부터 다시 시작하시겠습니까?",
+    "resumeTestButton": "테스트 재개",
+    "startOver": "처음부터 다시",
+    "cancel": "취소",
+    "startTest": "테스트 시작",
+    "takeTest": "테스트 받기",
+    "retakeTest": "테스트 다시하기",
+    "viewResults": "결과 보기",
+    "shareResults": "결과 공유",
+    "loading": "로딩 중...",
+    "saving": "저장 중...",
+    "completed": "완료",
+    "error": "오류",
+    "success": "성공",
+    "warning": "경고",
+    "confirm": "확인",
+    "yes": "예",
+    "no": "아니오",
+    "ok": "확인",
+    "tryAgain": "다시 시도",
+    "duration": "소요시간",
+    "accuracy": "정확도",
+    "category": "카테고리",
+    "difficulty": "난이도",
+    "yourResult": "당신의 결과",
+    "resultSummary": "결과 요약",
+    "shareOnSocial": "소셜 미디어에 공유",
+    "copyLink": "링크 복사",
+    "downloadResult": "결과 다운로드",
+    "enterYourName": "이름을 입력해 주세요",
+    "examples": "예시:",
+    "lastNameKo": "성 (姓)",
+    "firstNameKo": "이름 (名)",
+    "questionExample": "질문 예시:",
+    "startAssessment": "평가 시작하기 ✨",
+    "backToTests": "테스트로 돌아가기",
+    "resumeTestTitle": "테스트를 재개하시겠습니까?",
+    "testInProgress": "진행 중인 테스트가 있습니다",
+    "completedQuestions": "완료된 질문 수",
+    "outOf": "/",
+    "questions": "질문",
+    "lastUpdated": "마지막 업데이트:",
+    "resumeTest": "테스트 재개",
+    "percentComplete": "% 완료",
+    "startFresh": "처음부터 다시",
+    "previous": "이전",
+    "saveExit": "저장 후 종료",
+    "progressSaved": "진행상황이 자동 저장됩니다",
+    "answersSaved": "답변이 저장되고 있습니다",
+    "yourName": "당신의 이름",
+    "chooseOptionBelow": "가장 공감되는 옵션을 선택해주세요",
+    "questionsRemaining": "개 질문 남음"
+  },
+  "scale": {
+    "notReally": "별로 아니요",
+    "totally": "완전 맞아요!",
+    "getsStuckEasily": "잘 막혀요",
+    "problemSolver": "문제 해결사!",
+    "needsHelp": "도움이 필요해요",
+    "figuresItOut": "스스로 해결해요!",
+    "notInnovative": "별로 혁신적이지 않아요",
+    "veryInnovative": "매우 혁신적이에요!",
+    "poorDecisions": "판단이 서툴러요",
+    "greatDecisions": "판단이 뛰어나요!",
+    "strugglesAdapting": "적응을 어려워해요",
+    "adaptsWell": "잘 적응해요!",
+    "notCalm": "차분하지 않아요",
+    "veryCalm": "매우 차분해요!",
+    "getsOverwhelmed": "쉽게 압도됨",
+    "staysCalm": "침착함 유지",
+    "quietReserved": "조용하고 내성적",
+    "outgoingEnergetic": "외향적이고 활발함",
+    "selfFocused": "자기 중심적",
+    "considersOthers": "타인을 배려함",
+    "unreliable": "신뢰할 수 없음",
+    "dependable": "믿을 수 있음",
+    "closedToChange": "변화에 폐쇄적",
+    "embracesNewIdeas": "새로운 아이디어 수용",
+    "poorCommunicator": "소통 능력 부족",
+    "excellentCommunicator": "뛰어난 소통가",
+    "limitedSelfAwareness": "자기 인식 부족",
+    "highlySelfAware": "높은 자기 인식",
+    "missesSocialCues": "사회적 신호 놓침",
+    "attunedToOthers": "타인의 감정 파악",
+    "avoidsConflict": "갈등 회피",
+    "resolvesConstructively": "건설적 해결",
+    "defensiveResistant": "방어적이고 저항적",
+    "welcomesGrowth": "성장 기회 환영",
+    "waitsDirection": "지시 대기",
+    "proactiveLeader": "적극적 리더",
+    "blamesOthers": "남 탓",
+    "takesResponsibility": "책임감 있음",
+    "tacticalOnly": "전술적 사고만",
+    "strategicVision": "전략적 비전",
+    "worksIsolation": "혼자 일함",
+    "excellentTeamPlayer": "뛰어난 팀원",
+    "performanceDrops": "성과 저하",
+    "thrivesUnderPressure": "압박감 속에서 발휘",
+    "conventionalThinking": "관습적 사고",
+    "highlyInnovative": "매우 혁신적",
+    "avoidsLearning": "학습 회피",
+    "continuousLearner": "지속적 학습자",
+    "inconsistentQuality": "일관성 없는 품질",
+    "highStandards": "높은 기준",
+    "littleInfluence": "영향력 부족",
+    "highlyPersuasive": "높은 설득력",
+    "questionableEthics": "의심스러운 윤리",
+    "strongEthicalCompass": "강한 윤리의식",
+    "notSupportive": "지지하지 않음",
+    "incrediblySupportive": "매우 지지적",
+    "cannotTrust": "신뢰할 수 없음",
+    "completelyTrustworthy": "완전히 신뢰할 수 있음",
+    "dampensMood": "분위기 저하",
+    "bringsJoy": "기쁨을 가져다줌",
+    "poorListener": "경청 부족",
+    "deeplyEmpathetic": "깊은 공감능력",
+    "exclusive": "배타적",
+    "highlyInclusive": "매우 포용적",
+    "frequentlyCancels": "약속을 자주 취소",
+    "alwaysReliable": "항상 믿을 수 있음",
+    "putsOnAct": "가식적",
+    "completelyAuthentic": "완전히 진실함",
+    "overstepsBoundaries": "경계선 침범",
+    "perfectlyRespectful": "완벽하게 존중",
+    "makesConflictsWorse": "갈등 악화",
+    "resolvesGracefully": "우아하게 해결",
+    "fairWeatherFriend": "페어 웨더 프렌드",
+    "deeplyLoyal": "깊은 충성심",
+    "emotionallyDistant": "감정적으로 거리감",
+    "deeplySupportive": "깊은 지지",
+    "poorFamilyCommunicator": "가족 소통 부족",
+    "excellentFamilyCommunicator": "뛰어난 가족 소통가",
+    "createsMoreConflict": "갈등 조장",
+    "helpsResolvePeacefully": "평화롭게 해결 도움",
+    "avoidsResponsibility": "책임 회피",
+    "takesFullResponsibility": "완전한 책임감",
+    "emotionallyReactive": "감정적 반응",
+    "emotionallyBalanced": "감정적 균형",
+    "selfCentered": "자기중심적",
+    "familyFocused": "가족 중심적",
+    "deeplyCaring": "깊은 관심",
+    "boundaryIssues": "경계 문제",
+    "healthyBoundaries": "건강한 경계",
+    "disregardsTraditions": "전통 무시",
+    "upholdsFamilyValues": "가족 가치 수호",
+    "becomesUnavailable": "이용할 수 없게 됨",
+    "stepsUpStrongly": "강하게 나서줌",
+    "hindersGroupWork": "그룹 작업 방해",
+    "enhancesTeamLearning": "팀 학습 향상",
+    "givesUpEasily": "쉽게 포기",
+    "perseveresChallenges": "도전 지속",
+    "keepsKnowledgePrivate": "지식 독점",
+    "freelySharesHelps": "자유롭게 공유하고 도움",
+    "acceptsWithoutQuestion": "의문 없이 수용",
+    "strongCriticalThinker": "강한 비판적 사고자",
+    "lowMotivation": "낮은 동기",
+    "highlyMotivatedLearn": "높은 학습 동기",
+    "questionableIntegrity": "의심스러운 진실성",
+    "strongAcademicIntegrity": "강한 학업 진실성",
+    "poorFeedbackSkills": "피드백 기술 부족",
+    "excellentFeedbackSkills": "뛰어난 피드백 기술",
+    "limitedCuriosity": "제한된 호기심",
+    "intellectuallyCurious": "지적 호기심",
+    "ineffectivePartner": "비효과적 파트너",
+    "excellentStudyPartner": "뛰어난 스터디 파트너",
+    "repeatsMistakes": "실수 반복",
+    "learnsQuicklyErrors": "실수에서 빠른 학습",
+    "actionsContradictValues": "행동과 가치 불일치",
+    "valueActionAlignment": "가치와 행동 일치",
+    "strugglesRecover": "회복 어려움",
+    "highlyResilient": "높은 회복력",
+    "poorSelfControl": "자제력 부족",
+    "poorSelfDiscipline": "자제력 부족",
+    "excellentSelfDiscipline": "뛰어난 자기 절제",
+    "pessimistic": "비관적",
+    "highlyOptimistic": "매우 낙관적",
+    "arrogant": "오만함",
+    "genuinelyHumble": "진정으로 겸손함",
+    "lacksCompassion": "연민 부족",
+    "deeplyCompassionate": "깊은 연민",
+    "avoidsDifficultStands": "어려운 입장 회피",
+    "courageouslyPrincipled": "용기 있는 원칙주의",
+    "takesForGranted": "당연하게 여김",
+    "deeplyGrateful": "깊은 감사",
+    "poorLifeBalance": "삶의 균형 부족",
+    "excellentWorkLifeBalance": "뛰어난 일과 삶의 균형",
+    "stagnant": "정체됨",
+    "constantlyGrowing": "지속적 성장",
+    "strugglesWithChange": "변화를 어려워함",
+    "adaptsWellToChange": "변화에 잘 적응함",
+    "slowLearner": "배우는 게 느려요",
+    "fastLearner": "배우는 게 빨라요!",
+    "slowRecovery": "회복이 느려요",
+    "quickRecovery": "빨리 회복해요!",
+    "strugglesConnecting": "친해지기 어려워해요",
+    "connectsWell": "잘 친해져요!",
+    "notReliable": "별로 믿을 수 없어요",
+    "veryReliable": "매우 믿을 만해요!",
+    "notWelcoming": "별로 친근하지 않아요",
+    "veryWelcoming": "매우 친근해요!",
+    "makesMoodWorse": "분위기를 안 좋게 해요",
+    "makesMoodBetter": "분위기를 좋게 해요!",
+    "disorganized": "정리를 잘 못해요",
+    "organized": "정리를 잘해요!",
+    "oftenLate": "자주 늦어요",
+    "punctual": "시간을 잘 지켜요!",
+    "unreliableCommitments": "약속을 잘 안 지켜요",
+    "reliableCommitments": "약속을 잘 지켜요!",
+    "missesDetails": "세부사항을 놓쳐요",
+    "attentiveToDetails": "세부사항을 잘 챙겨요!",
+    "prettyAwkward": "좀 어색해요",
+    "superConfident": "아주 자신감 있어요!",
+    "confusing": "헷갈려요",
+    "crystalClear": "아주 명확해요!",
+    "always": "항상!",
+    "makesWorse": "더 나쁘게 만들어요",
+    "helpsSolve": "해결에 도움이 되요!",
+    "definitely": "확실히!",
+    "veryAware": "아주 잘 알고 있어요!",
+    "notMuch": "별로 안 그래요",
+    "superCaring": "아주 배려심이 많아요!",
+    "getsOverwhelmed": "당황해요",
+    "staysCalm": "침착해요!",
+    "totallyClueless": "전혀 모르겠어요",
+    "superIntuitive": "아주 직감적이에요!",
+    "prettyBasic": "꽤 평범해요",
+    "superCreative": "아주 창의적이에요!",
+    "sticksToBasics": "기본에 충실해요",
+    "alwaysInnovating": "항상 혁신해요!",
+    "questionableChoices": "의심스러운 선택들",
+    "greatJudgment": "훌륭한 판단력!",
+    "getsUpsetStressed": "화나거나 스트레스 받아요",
+    "totallyFlexible": "완전히 유연해요!",
+    "prettyRigid": "꽤 경직되어 있어요",
+    "superAdaptable": "아주 적응력이 좋아요!",
+    "takesForever": "너무 오래 걸려요",
+    "superQuick": "아주 빨라요!",
+    "staysDown": "계속 침체되어 있어요",
+    "bouncesBackFast": "빨리 회복해요!",
+    "strugglesWithThis": "이걸 어려워해요",
+    "naturalAtIt": "천재적이에요!",
+    "completely": "완전히!",
+    "prettyShyAwkward": "꽤 수줍거나 어색해요",
+    "socialButterfly": "사교적이에요!",
+    "totalMess": "완전 엉망이에요",
+    "superOrganized": "아주 잘 정리해요!",
+    "alwaysLate": "항상 늦어요",
+    "alwaysOnTime": "항상 시간을 지켜요!",
+    "superReliable": "아주 믿을 만해요!",
+    "prettyCareless": "꽤 대충해요",
+    "detailOriented": "세심해요!"
+  },
+  "results": {
+    "page_title": "테스트 결과",
+    "take_test": "다른 테스트 하기",
+    "back_home": "홈으로 돌아가기",
+    "total_completed": "총 완료된 테스트",
+    "showing_recent": "최근 결과 표시",
+    "show_all_results": "모든 결과 표시", 
+    "show_recent_only": "최근 결과만 표시",
+    "result": "개 결과",
+    "results": "개 결과", 
+    "no_results_title": "아직 테스트 결과가 없습니다",
+    "no_results_message": "아직 성격 테스트를 완료하지 않았습니다. 오늘 자기 발견의 여정을 시작해보세요!",
+    "take_first_test": "테스트 하기",
+    "signin_required_title": "로그인이 필요합니다",
+    "signin_required_message": "테스트 결과를 보려면 로그인이 필요합니다.",
+    "go_to_homepage": "홈페이지로 이동",
+    "pending_invitations": "대기 중인 피드백 초대",
+    "waiting_response": "응답 대기 중",
+    "dimensions": {
+      "score": "점수",
+      "total": "총점",
+      "percentage": "백분율",
+      "level": "수준",
+      "description": "설명",
+      "correctAnswers": "정답"
+    },
+    "mbtiTraits": {
+      "extraversionIntroversion": "외향성/내향성",
+      "sensingIntuition": "감각/직관",
+      "thinkingFeeling": "사고/감정",
+      "judgingPerceiving": "판단/인식",
+      "extraversion": "외향성",
+      "introversion": "내향성",
+      "sensing": "감각",
+      "intuition": "직관",
+      "thinking": "사고",
+      "feeling": "감정",
+      "judging": "판단",
+      "perceiving": "인식"
+    },
+    "sections": {
+      "yourStrengths": "당신의 강점",
+      "potentialChallenges": "잠재적 도전",
+      "careerSuggestions": "직업 제안",
+      "personalityBreakdown": "당신의 성격 분석",
+      "compatibleTypes": "호환 가능한 유형",
+      "growthAreas": "성장 영역"
+    },
+    "sharing": {
+      "mbtiShareText": "저는 {type} 에너지({title})이고 솔직히 제게 완벽해요! 당신의 바이브는? 🔥",
+      "bigFiveShareText": "빅파이브 성격 결과를 받았는데 정말 정확해요! {summary}",
+      "defaultShareText": "제 성격 유형을 발견했는데 너무 정확해요! 당신도 확인해보세요!"
+    },
+    "bigFiveTraits": {
+      "openness": "경험에 대한 개방성",
+      "conscientiousness": "성실성",
+      "extraversion": "외향성",
+      "agreeableness": "친화성",
+      "neuroticism": "신경증",
+      "high": "높음",
+      "low": "낮음",
+      "average": "평균"
+    },
+    "labels": {
+      "yourResult": "당신의 결과",
+      "score": "점수",
+      "traits": "특성",
+      "summary": "요약",
+      "recommendations": "권장사항",
+      "shareYourResults": "결과 공유하기"
+    },
+    "signin_required_title": "로그인이 필요합니다",
+    "signin_required_message": "테스트 결과를 확인하려면 로그인이 필요합니다.",
+    "go_to_homepage": "홈으로 가기",
+    "page_title": "내 테스트 결과",
+    "no_results_title": "결과 없음",
+    "take_test": "다른 테스트 하기",
+    "back_home": "홈으로 돌아가기",
+    "total_completed": "완료된 테스트",
+    "iqResults": {
+      "categories": {
+        "exceptionallyGifted": "예외적으로 뛰어난 재능! 🧠✨",
+        "highlyGifted": "매우 뛰어난 재능! 🚀",
+        "aboveAverage": "평균 이상의 지능! 📈",
+        "average": "평균 지능! 👍",
+        "belowAverage": "평균 이하 지능",
+        "lowAverage": "평균 하위 지능"
+      },
+      "descriptions": {
+        "exceptionallyGifted": "당신의 인지 능력은 정말로 뛰어나고 드뭅니다.",
+        "highlyGifted": "당신은 영재 범위에 속하는 뛰어난 지적 능력을 가지고 있습니다.",
+        "aboveAverage": "당신의 인지 능력은 대부분의 사람들보다 뛰어납니다.",
+        "average": "당신의 인지 능력은 일반적인 범위에 있습니다.",
+        "belowAverage": "당신의 인지 능력은 낮은 범위에 있지만 여전히 정상적인 변화 범위 내에 있습니다.",
+        "lowAverage": "이는 추가적인 지원이나 연습이 도움이 될 수 있는 영역을 시사합니다."
+      },
+      "percentiles": {
+        "exceptional": "99.9백분위수",
+        "highly": "98백분위수",
+        "above": "84백분위수",
+        "average": "50백분위수",
+        "below": "16백분위수",
+        "low": "2백분위수"
+      },
+      "population": {
+        "exceptional": "단지 0.1%의 사람들만이 이 점수를 받습니다",
+        "highly": "약 2%의 사람들이 이 범위에 있습니다",
+        "above": "약 16%의 사람들이 이 범위에 있습니다",
+        "average": "약 68%의 사람들이 이 범위에 있습니다",
+        "below": "약 16%의 사람들이 이 범위에 있습니다",
+        "low": "약 2%의 사람들이 이 범위에 있습니다"
+      },
+      "shareText": "방금 IQ 테스트를 받았는데 {score}점을 받았어요! 이것은 저를 {percentile}에 위치시킵니다. 당신의 인지적 초능력은 무엇인가요? 🧠"
+    },
+    "iqQuestions": [
+      {
+        "text": "어떤 단어가 속하지 않나요: 사과, 오렌지, 바나나, 당근, 포도?",
+        "options": [
+          "사과",
+          "오렌지",
+          "당근",
+          "포도"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "이 패턴에서 다음에 오는 것은: ○ △ ○ △ △ ○ △ △ △ ?",
+        "options": [
+          "○",
+          "△",
+          "○ △",
+          "△ △"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "5대의 기계가 5분 동안 5개의 위젯을 만든다면, 100대의 기계가 100개의 위젯을 만드는 데 얼마나 걸릴까요?",
+        "options": [
+          "5분",
+          "20분",
+          "100분",
+          "500분"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "빠진 숫자는 무엇입니까: 3, 7, 15, 31, ?",
+        "options": [
+          "47",
+          "63",
+          "71",
+          "127"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "책이 읽기에 해당한다면 포크는 무엇에 해당합니까:",
+        "options": [
+          "먹기",
+          "부엌",
+          "숟가락",
+          "음식"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "어떤 도형이 유추를 완성합니까? 원이 구에 해당한다면 정사각형은 무엇에 해당합니까:",
+        "options": [
+          "직사각형",
+          "삼각형",
+          "정육면체",
+          "피라미드"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "다음 숫자는 무엇입니까: 1, 4, 9, 16, 25, ?",
+        "options": [
+          "30",
+          "35",
+          "36",
+          "49"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "일부 Flib이 Glob이고 어떤 Glob도 Blob이 아니라면:",
+        "options": [
+          "일부 Flib은 Blob입니다",
+          "어떤 Flib도 Blob이 아닙니다",
+          "모든 Flib은 Blob입니다",
+          "일부 Flib은 Blob이 아닙니다"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "다음에 오는 것은: Z, Y, X, W, V, ?",
+        "options": [
+          "U",
+          "T",
+          "S",
+          "R"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "'FICAPICO' 글자를 재배열하면 다음의 이름을 얻습니다:",
+        "options": [
+          "국가",
+          "동물",
+          "바다",
+          "행성"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "물음표를 대체해야 하는 숫자는: 4, 9, 16, 25, 36, ?",
+        "options": [
+          "42",
+          "49",
+          "56",
+          "64"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "물이 얼음에 해당한다면 우유는 무엇에 해당합니까:",
+        "options": [
+          "치즈",
+          "소",
+          "흰색",
+          "액체"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "순서를 완성하세요: 2, 6, 12, 20, 30, ?",
+        "options": [
+          "40",
+          "42",
+          "45",
+          "48"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "이 글자들로 어떤 단어를 만들 수 있나요: GADRUACOIN?",
+        "options": [
+          "GRADUATION",
+          "RADIATION",
+          "TRADITION",
+          "GENERATION"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "A = 1, B = 2, C = 3이라면... 'CAB'는 얼마입니까?",
+        "options": [
+          "6",
+          "8",
+          "9",
+          "12"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "다음에 오는 것은: 1, 1, 2, 3, 5, 8, ?",
+        "options": [
+          "11",
+          "13",
+          "15",
+          "21"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "산이 계곡에 해당한다면 봉우리는 무엇에 해당합니까:",
+        "options": [
+          "언덕",
+          "바닥",
+          "골짜기",
+          "높음"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "어떤 숫자가 맞지 않나요: 4, 6, 8, 9, 10, 12?",
+        "options": [
+          "4",
+          "6",
+          "9",
+          "10"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "나를 다른 어떤 숫자와 곱해도 답은 항상 같을 것입니다. 나는 어떤 숫자일까요?",
+        "options": [
+          "0",
+          "1",
+          "10",
+          "100"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "다음에 오는 글자는: A, E, I, O, ?",
+        "options": [
+          "U",
+          "Y",
+          "B",
+          "F"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "시계가 시간에 해당한다면 온도계는 무엇에 해당합니까:",
+        "options": [
+          "열",
+          "추위",
+          "온도",
+          "날씨"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "완성하세요: 7, 14, 28, 56, ?",
+        "options": [
+          "84",
+          "98",
+          "112",
+          "168"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "어떤 모양이 다릅니까?",
+        "options": [
+          "3개 변이 있는 삼각형",
+          "4개 변이 있는 정사각형",
+          "5개 변이 있는 오각형",
+          "7개 변이 있는 육각형"
+        ],
+        "correct": 3
+      },
+      {
+        "text": "빠진 숫자는: 8, 27, 64, ?",
+        "options": [
+          "100",
+          "125",
+          "144",
+          "169"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "개가 강아지에 해당한다면 고양이는 무엇에 해당합니까:",
+        "options": [
+          "새끼고양이",
+          "고양잇과",
+          "야옹",
+          "애완동물"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "어떤 것이 속하지 않나요: 장미, 튤립, 당근, 데이지?",
+        "options": [
+          "장미",
+          "튤립",
+          "당근",
+          "데이지"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "다음에 오는 것은: 100, 95, 85, 70, 50, ?",
+        "options": [
+          "25",
+          "30",
+          "35",
+          "40"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "모든 정사각형은 직사각형이지만 모든 직사각형이 정사각형은 아니라면, 확실히 직사각형이지만 정사각형이 아닐 수도 있는 도형은:",
+        "options": [
+          "항상 정사각형",
+          "절대 정사각형이 아님",
+          "때때로 정사각형",
+          "결정할 수 없음"
+        ],
+        "correct": 2
+      },
+      {
+        "text": "패턴에서 다음에 오는 것은: 3, 6, 11, 18, 27, ?",
+        "options": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "패턴을 완성하는 숫자는: 1, 8, 27, 64, ?",
+        "options": [
+          "100",
+          "125",
+          "144",
+          "216"
+        ],
+        "correct": 1
+      },
+      {
+        "text": "오늘이 수요일이라면, 100일 후는 무슨 요일일까요?",
+        "options": [
+          "월요일",
+          "화요일",
+          "수요일",
+          "목요일"
+        ],
+        "correct": 3
+      }
+    ],
+    "bigFiveQuestions": [
+      {
+        "text": "나는 수다스럽다",
+        "dimension": "extraversion",
+        "reverse": false,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "나는 다른 사람들의 잘못을 찾는 경향이 있다",
+        "dimension": "agreeableness",
+        "reverse": true,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "text": "나는 일을 철저히 한다",
+        "dimension": "conscientiousness",
+        "reverse": false,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "나는 우울하고 슬퍼한다",
+        "dimension": "neuroticism",
+        "reverse": false,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "나는 독창적이고 새로운 아이디어를 제시한다",
+        "dimension": "openness",
+        "reverse": false,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "나는 내성적이다",
+        "dimension": "extraversion",
+        "reverse": true,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "text": "나는 다른 사람들에게 도움이 되고 이타적이다",
+        "dimension": "agreeableness",
+        "reverse": false,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "나는 때때로 부주의하다",
+        "dimension": "conscientiousness",
+        "reverse": true,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "text": "나는 평온하고 스트레스를 잘 다룬다",
+        "dimension": "neuroticism",
+        "reverse": true,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "text": "나는 예술적인 경험을 좋아하지 않는다",
+        "dimension": "openness",
+        "reverse": true,
+        "options": [
+          "전혀 그렇지 않다",
+          "그렇지 않다",
+          "보통이다",
+          "그렇다",
+          "매우 그렇다"
+        ],
+        "scores": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      }
+    ],
+    "mbtiQuestions": [
+      {
+        "text": "네트워킹 이벤트에 2시간 참석했습니다. 기분이 어떠신가요?",
+        "options": [
+          "활기차고 흥미진진 - 많은 새로운 사람들을 만났어요",
+          "정신적으로 피곤하지만 성취감 - 집에 갈 준비됨"
+        ],
+        "dimension": "E/I",
+        "trait": [
+          "E",
+          "I"
+        ]
+      },
+      {
+        "text": "프로젝트 계획을 세울 때:",
+        "options": [
+          "자세한 일정표와 체크리스트를 만든다",
+          "큰 그림만 정하고 진행하면서 조정한다"
+        ],
+        "dimension": "J/P",
+        "trait": [
+          "J",
+          "P"
+        ]
+      },
+      {
+        "text": "어려운 결정을 내릴 때 더 중요하게 여기는 것은:",
+        "options": [
+          "논리적 분석과 객관적 사실",
+          "사람들에게 미칠 영향과 가치"
+        ],
+        "dimension": "T/F",
+        "trait": [
+          "T",
+          "F"
+        ]
+      },
+      {
+        "text": "새로운 아이디어에 대해 배울 때 선호하는 방식은:",
+        "options": [
+          "현실적인 예시와 실용적인 적용법을 통해",
+          "이론적 개념과 추상적 가능성을 통해"
+        ],
+        "dimension": "S/N",
+        "trait": [
+          "S",
+          "N"
+        ]
+      },
+      {
+        "text": "직장에서 에너지를 얻는 원천은:",
+        "options": [
+          "동료들과의 협업과 회의를 통해",
+          "혼자 집중해서 작업할 때"
+        ],
+        "dimension": "E/I",
+        "trait": [
+          "E",
+          "I"
+        ]
+      },
+      {
+        "text": "휴가 계획을 세울 때:",
+        "options": [
+          "미리 상세하게 예약하고 일정을 짜둔다",
+          "자유롭게 두고 현장에서 결정한다"
+        ],
+        "dimension": "J/P",
+        "trait": [
+          "J",
+          "P"
+        ]
+      },
+      {
+        "text": "팀에서 갈등이 생겼을 때 중점을 두는 것은:",
+        "options": [
+          "문제를 객관적으로 분석하여 해결책 찾기",
+          "모든 사람의 감정을 고려하여 조화 찾기"
+        ],
+        "dimension": "T/F",
+        "trait": [
+          "T",
+          "F"
+        ]
+      },
+      {
+        "text": "정보를 처리할 때 더 신뢰하는 것은:",
+        "options": [
+          "직접 경험하고 관찰한 구체적 사실",
+          "패턴을 파악하고 연결점을 찾는 직관"
+        ],
+        "dimension": "S/N",
+        "trait": [
+          "S",
+          "N"
+        ]
+      },
+      {
+        "text": "친구들과 모임에서 당신은:",
+        "options": [
+          "대화를 주도하고 여러 사람과 이야기한다",
+          "소수의 가까운 친구와 깊은 대화를 한다"
+        ],
+        "dimension": "E/I",
+        "trait": [
+          "E",
+          "I"
+        ]
+      },
+      {
+        "text": "작업 환경에서 선호하는 스타일은:",
+        "options": [
+          "명확한 마감일과 체계적인 절차",
+          "융통성 있는 스케줄과 창의적 자유"
+        ],
+        "dimension": "J/P",
+        "trait": [
+          "J",
+          "P"
+        ]
+      },
+      {
+        "text": "비판을 받을 때 먼저 드는 생각은:",
+        "options": [
+          "이 피드백이 사실에 근거한 것인가?",
+          "이 사람이 나를 어떻게 느끼고 있을까?"
+        ],
+        "dimension": "T/F",
+        "trait": [
+          "T",
+          "F"
+        ]
+      },
+      {
+        "text": "문제 해결에 접근하는 방식:",
+        "options": [
+          "검증된 방법과 과거 경험을 활용한다",
+          "새로운 관점과 창의적 아이디어를 모색한다"
+        ],
+        "dimension": "S/N",
+        "trait": [
+          "S",
+          "N"
+        ]
+      },
+      {
+        "text": "업무 후 재충전하는 방법:",
+        "options": [
+          "동료들과 저녁 식사하며 하루를 나눈다",
+          "혼자 조용한 시간을 가지며 생각한다"
+        ],
+        "dimension": "E/I",
+        "trait": [
+          "E",
+          "I"
+        ]
+      },
+      {
+        "text": "새로운 프로젝트를 시작할 때:",
+        "options": [
+          "모든 세부사항을 계획하고 단계별로 진행",
+          "전반적인 방향만 정하고 필요에 따라 조정"
+        ],
+        "dimension": "J/P",
+        "trait": [
+          "J",
+          "P"
+        ]
+      },
+      {
+        "text": "의사결정 기준으로 더 중요하게 여기는 것:",
+        "options": [
+          "효율성과 논리적 결과",
+          "사람들의 만족도와 화합"
+        ],
+        "dimension": "T/F",
+        "trait": [
+          "T",
+          "F"
+        ]
+      },
+      {
+        "text": "학습할 때 더 흥미를 느끼는 것:",
+        "options": [
+          "구체적인 사실과 실무적인 기술",
+          "이론과 개념적 이해"
+        ],
+        "dimension": "S/N",
+        "trait": [
+          "S",
+          "N"
+        ]
+      }
+    ],
+    "eqQuestions": [
+      {
+        "text": "스트레스받을 때 내 감정을 얼마나 잘 파악할 수 있나요?",
+        "options": [
+          "전혀 파악하지 못한다",
+          "거의 파악하지 못한다",
+          "보통이다",
+          "잘 파악한다",
+          "매우 잘 파악한다"
+        ],
+        "dimension": "self-awareness",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "화가 날 때 감정을 조절하는 능력은 어떤가요?",
+        "options": [
+          "전혀 조절하지 못한다",
+          "거의 조절하지 못한다",
+          "보통이다",
+          "잘 조절한다",
+          "매우 잘 조절한다"
+        ],
+        "dimension": "self-regulation",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "다른 사람이 슬퍼할 때 그 감정을 얼마나 잘 이해하나요?",
+        "options": [
+          "전혀 이해하지 못한다",
+          "거의 이해하지 못한다",
+          "보통이다",
+          "잘 이해한다",
+          "매우 잘 이해한다"
+        ],
+        "dimension": "empathy",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "갈등 상황에서 해결책을 찾는 능력은?",
+        "options": [
+          "전혀 못한다",
+          "거의 못한다",
+          "보통이다",
+          "잘한다",
+          "매우 잘한다"
+        ],
+        "dimension": "social-skills",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "내 감정이 행동에 미치는 영향을 인식하나요?",
+        "options": [
+          "전혀 인식하지 못한다",
+          "거의 인식하지 못한다",
+          "보통이다",
+          "잘 인식한다",
+          "매우 잘 인식한다"
+        ],
+        "dimension": "self-awareness",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "좌절스러운 상황에서 침착함을 유지하는 정도는?",
+        "options": [
+          "전혀 유지하지 못한다",
+          "거의 유지하지 못한다",
+          "보통이다",
+          "잘 유지한다",
+          "매우 잘 유지한다"
+        ],
+        "dimension": "self-regulation",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "친구가 기쁠 때 그 기쁨을 함께 느끼나요?",
+        "options": [
+          "전혀 느끼지 못한다",
+          "거의 느끼지 못한다",
+          "보통이다",
+          "잘 느낀다",
+          "매우 잘 느낀다"
+        ],
+        "dimension": "empathy",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "새로운 사람들과 관계를 형성하는 능력은?",
+        "options": [
+          "전혀 못한다",
+          "거의 못한다",
+          "보통이다",
+          "잘한다",
+          "매우 잘한다"
+        ],
+        "dimension": "social-skills",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "내 강점과 약점을 정확히 파악하고 있나요?",
+        "options": [
+          "전혀 파악하지 못한다",
+          "거의 파악하지 못한다",
+          "보통이다",
+          "잘 파악한다",
+          "매우 잘 파악한다"
+        ],
+        "dimension": "self-awareness",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "충동적인 반응을 자제하는 능력은?",
+        "options": [
+          "전혀 자제하지 못한다",
+          "거의 자제하지 못한다",
+          "보통이다",
+          "잘 자제한다",
+          "매우 잘 자제한다"
+        ],
+        "dimension": "self-regulation",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "타인의 비언어적 신호(표정, 몸짓)를 읽는 능력은?",
+        "options": [
+          "전혀 읽지 못한다",
+          "거의 읽지 못한다",
+          "보통이다",
+          "잘 읽는다",
+          "매우 잘 읽는다"
+        ],
+        "dimension": "empathy",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "팀워크에서 협력하는 능력은?",
+        "options": [
+          "전혀 못한다",
+          "거의 못한다",
+          "보통이다",
+          "잘한다",
+          "매우 잘한다"
+        ],
+        "dimension": "social-skills",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "내 감정의 원인을 파악하는 능력은?",
+        "options": [
+          "전혀 파악하지 못한다",
+          "거의 파악하지 못한다",
+          "보통이다",
+          "잘 파악한다",
+          "매우 잘 파악한다"
+        ],
+        "dimension": "self-awareness",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "스트레스 상황에서 냉정을 유지하는 정도는?",
+        "options": [
+          "전혀 유지하지 못한다",
+          "거의 유지하지 못한다",
+          "보통이다",
+          "잘 유지한다",
+          "매우 잘 유지한다"
+        ],
+        "dimension": "self-regulation",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "다른 사람의 관점에서 생각하는 능력은?",
+        "options": [
+          "전혀 못한다",
+          "거의 못한다",
+          "보통이다",
+          "잘한다",
+          "매우 잘한다"
+        ],
+        "dimension": "empathy",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "text": "어려운 대화를 효과적으로 이끌어가는 능력은?",
+        "options": [
+          "전혀 못한다",
+          "거의 못한다",
+          "보통이다",
+          "잘한다",
+          "매우 잘한다"
+        ],
+        "dimension": "social-skills",
+        "scores": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  },
+  "categories": {
+    "all": "전체",
+    "knowYourself": "🧠 나를 알아가기",
+    "howOthersSeeMe": "👥 다른 사람들이 보는 나",
+    "knowYourselfTitle": "🧠 나를 알아가기",
+    "knowYourselfSubtitle": "과학적으로 검증된 평가를 통해 당신의 내면적 성격, 강점, 고유한 특성을 발견하세요",
+    "howOthersSeeTitle": "👥 다른 사람들이 보는 나",
+    "howOthersSubtitle": "솔직한 피드백을 받고 친구, 가족, 동료들이 당신을 어떻게 실제로 인식하는지 발견하세요"
+  },
+  "tests": {
+    "page_title": "성격 테스트",
+    "categories": {
+      "know-yourself": "나를 알아가기",
+      "know-yourself_desc": "당신의 성격 특성과 강점을 발견하세요",
+      "how-others-see-me": "남들이 나를 어떻게 보는지",
+      "how-others-see-me_desc": "친구와 동료들로부터 피드백을 받으세요",
+      "couple-compatibility": "커플 궁합",
+      "couple-compatibility_desc": "파트너와의 관계 역학을 분석해보세요"
+    },
+    "requires_feedback": "피드백 필요",
+    "compatibility_test": "궁합 테스트",
+      "title": "남들이 나를 어떻게 보는지? 360° 피드백",
+      "description": "친구, 가족, 동료, 학우들이 당신을 어떻게 보는지 알아보세요! 관계 카테고리별로 맞춤형 질문을 통해 종합적인 피드백을 받아보세요.",
+      "categories": {
+        "work": "직장 동료",
+        "friends": "친구",
+        "family": "가족",
+        "academic": "학업 파트너",
+        "general": "일반적 관계"
+      },
+      "universal": {
+        "q1": "이 사람은 스트레스나 압박 상황에서도 감정을 잘 조절하고 차분함을 유지하나요?",
+        "q2": "이 사람은 새로운 상황이나 예상치 못한 변화에 얼마나 잘 적응하나요?",
+        "q3": "이 사람은 목표를 향해 꾸준히 노력하며 자기 관리를 잘 하나요?",
+        "q4": "이 사람은 다른 사람들과 어울리고 사회적 상황에서 에너지를 얻는 편인가요?",
+        "q5": "이 사람은 새로운 아이디어나 경험에 얼마나 개방적이고 호기심을 보이나요?",
+        "q6": "이 사람은 다른 사람의 감정과 관점을 잘 이해하고 공감하나요?",
+        "q7": "이 사람은 자신의 생각과 감정을 명확하고 효과적으로 표현하나요?",
+        "q8": "이 사람은 갈등 상황에서 건설적으로 문제를 해결하려고 노력하나요?",
+        "q9": "이 사람을 얼마나 신뢰할 수 있으며, 약속을 잘 지키나요?",
+        "q10": "이 사람은 다른 사람을 도우려고 하며 배려심이 많나요?"
+      },
+      "work": {
+        "q11": "이 사람은 업무 프로젝트나 팀 활동에서 주도적인 역할을 맡으려고 하나요?",
+        "q12": "이 사람은 업무상 결정을 내릴 때 논리적이고 체계적으로 접근하나요?",
+        "q13": "이 사람은 동료들과 협력하여 팀 목표를 달성하는 데 기여하나요?",
+        "q14": "이 사람은 업무 관련 피드백을 받아들이고 개선하려고 노력하나요?",
+        "q15": "이 사람은 업무 환경에서 혁신적인 아이디어나 해결책을 제시하나요?",
+        "q16": "이 사람은 업무 스트레스나 마감 압박을 잘 관리하나요?",
+        "q17": "이 사람은 동료들에게 도움이나 지원을 제공하려고 하나요?",
+        "q18": "이 사람은 업무 관련 회의나 발표에서 자신의 의견을 효과적으로 전달하나요?",
+        "q19": "이 사람은 업무 관련 약속이나 책임을 성실히 이행하나요?",
+        "q20": "이 사람은 전문적 성장과 학습에 관심을 보이고 노력하나요?"
+      },
+      "friends": {
+        "q11": "이 사람은 친구로서 얼마나 재미있고 즐거운 사람인가요?",
+        "q12": "이 사람은 친구들과의 약속을 얼마나 잘 지키나요?",
+        "q13": "이 사람은 친구가 힘들 때 얼마나 잘 지지해주나요?",
+        "q14": "이 사람은 친구들과 얼마나 진솔하고 솔직하게 소통하나요?",
+        "q15": "이 사람은 친구들의 비밀을 얼마나 잘 지켜주나요?",
+        "q16": "이 사람은 그룹 활동이나 모임에서 얼마나 적극적으로 참여하나요?",
+        "q17": "이 사람은 친구들의 의견이나 조언을 얼마나 잘 들어주나요?",
+        "q18": "이 사람은 친구들과의 갈등을 얼마나 성숙하게 해결하나요?",
+        "q19": "이 사람은 친구들에게 얼마나 긍정적인 에너지를 주나요?",
+        "q20": "이 사람은 오랜 우정을 유지하는 데 얼마나 노력하나요?"
+      },
+      "family": {
+        "q11": "이 사람은 가족 내에서 얼마나 책임감 있게 행동하나요?",
+        "q12": "이 사람은 가족들과의 소통에서 얼마나 인내심을 보이나요?",
+        "q13": "이 사람은 가족의 전통이나 가치를 얼마나 존중하나요?",
+        "q14": "이 사람은 가족 구성원들을 얼마나 잘 돌보나요?",
+        "q15": "이 사람은 가족 내 갈등 상황에서 얼마나 현명하게 대처하나요?",
+        "q16": "이 사람은 가족 행사나 모임에 얼마나 적극적으로 참여하나요?",
+        "q17": "이 사람은 가족들의 감정이나 필요를 얼마나 잘 파악하나요?",
+        "q18": "이 사람은 가족에게 얼마나 신뢰할 만한 사람인가요?",
+        "q19": "이 사람은 가족 구성원들에게 얼마나 좋은 역할모델이 되나요?",
+        "q20": "이 사람은 가족의 화목과 단결에 얼마나 기여하나요?"
+      },
+      "academic": {
+        "q11": "이 사람은 학업 그룹 과제에서 얼마나 성실하게 참여하나요?",
+        "q12": "이 사람은 학우들과 지식이나 정보를 얼마나 잘 공유하나요?",
+        "q13": "이 사람은 학업적 토론에서 얼마나 건설적으로 참여하나요?",
+        "q14": "이 사람은 동급생들을 얼마나 잘 도와주나요?",
+        "q15": "이 사람은 학업 스트레스 상황에서 얼마나 침착함을 유지하나요?",
+        "q16": "이 사람은 새로운 학습 방법이나 아이디어에 얼마나 개방적인가요?",
+        "q17": "이 사람은 학업 관련 약속이나 일정을 얼마나 잘 지키나요?",
+        "q18": "이 사람은 학습 그룹에서 얼마나 긍정적인 분위기를 만드나요?",
+        "q19": "이 사람은 학업적 목표 달성에 얼마나 헌신적인가요?",
+        "q20": "이 사람은 후배나 동급생들에게 얼마나 좋은 멘토가 되나요?"
+      },
+      "general": {
+        "q11": "이 사람은 일상생활에서 얼마나 긍정적인 태도를 유지하나요?",
+        "q12": "이 사람은 다른 사람들과의 약속을 얼마나 잘 지키나요?",
+        "q13": "이 사람은 어려운 상황에서 얼마나 도움이 되는 사람인가요?",
+        "q14": "이 사람은 다양한 사람들과 얼마나 잘 어울리나요?",
+        "q15": "이 사람은 자신의 실수나 잘못을 얼마나 솔직하게 인정하나요?",
+        "q16": "이 사람은 새로운 사람들과 관계를 맺는 데 얼마나 적극적인가요?",
+        "q17": "이 사람은 다른 사람들의 의견을 얼마나 존중하나요?",
+        "q18": "이 사람은 사회적 상황에서 얼마나 적절하게 행동하나요?",
+        "q19": "이 사람은 주변 사람들에게 얼마나 좋은 영향을 미치나요?",
+        "q20": "이 사람은 전반적으로 얼마나 성숙한 사람인가요?"
+      },
+      "ui": {
+        "title": "피드백 요청",
+        "request_message": "{name}이 피드백을 요청했습니다",
+        "instructions": "다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.",
+        "question_progress": "질문 {current}/{total}",
+        "think_about": "이 질문에 답할 때 {name}을 생각해 주세요.",
+        "anonymous_notice": "이 피드백은 완전히 익명입니다. {name}은 종합 결과만 볼 수 있으며 개별 응답이나 응답자가 누구인지는 알 수 없습니다.",
+        "submit_button": "제출하기",
+        "loading": "피드백 양식을 불러오는 중...",
+        "submitting": "피드백을 제출하는 중...",
+        "thank_you": "감사합니다!",
+        "submitted_message": "{name}에 대한 피드백이 성공적으로 제출되었습니다.",
+        "submitted_description": "{name}은 귀하가 피드백을 제공했다는 알림을 받게 됩니다. 귀하의 응답은 익명으로 유지되며 그들의 성격과 행동에 대한 소중한 통찰을 제공하는 데 도움이 될 것입니다."
+      },
+      "scale": {
+        "1": "전혀 그렇지 않다",
+        "2": "그렇지 않다", 
+        "3": "보통이다",
+        "4": "그렇다",
+        "5": "매우 그렇다",
+        "never": "전혀 그렇지 않다",
+        "always": "매우 그렇다"
+      }
+    },
+    "mbti": {
+      "title": "MBTI 클래식",
+      "description": "마이어스-브릭스 성격 유형을 종합적으로 평가해보세요."
+    },
+    "feedback360": {
+      "title": "360° 피드백",
+      "description": "다른 사람들로부터 당신의 성격과 행동 패턴에 대한 종합적인 피드백을 받아보세요."
+    },
+    "enneagram": {
+      "title": "에니어그램",
+      "description": "고대의 지혜인 에니어그램을 통해 당신의 핵심 동기와 성격 유형을 발견해보세요."
+    },
+    "couple": {
+      "title": "커플 궁합",
+      "description": "종합적인 평가를 통해 파트너와의 관계 역학과 궁합을 분석해보세요.",
+      "questions": {
+        "q1": "이상적인 금요일 밤은?",
+        "q2": "함께하고 싶은 꿈의 휴가는?",
+        "q3": "주말을 보내는 가장 좋아하는 방법은?",
+        "q4": "아침형 인간인가요, 밤형 인간인가요?",
+        "q5": "특별한 날은 어떻게 기념하고 싶나요?",
+        "q6": "연애에서 가장 중요한 것은?",
+        "q7": "갈등이 생겼을 때 어떻게 해결하나요?",
+        "q8": "가장 중요한 사랑의 언어는?",
+        "q9": "함께하는 시간과 각자의 시간, 어느 정도가 적당한가요?",
+        "q10": "파트너에게서 가장 중요하게 생각하는 것은?",
+        "q11": "돈에 대한 철학은?",
+        "q12": "음식 취향은?",
+        "q13": "계획을 세우는 스타일은?",
+        "q14": "사교 활동 선호도는?",
+        "q15": "소통 스타일은?"
+      },
+      "options": {
+        "q1_a": "집에서 영화 보며 편안히",
+        "q1_b": "친구들과 파티하러 나가기",
+        "q1_c": "로맨틱한 저녁 데이트",
+        "q1_d": "함께 게임하기",
+        "q2_a": "해변 휴가",
+        "q2_b": "산악 어드벤처",
+        "q2_c": "도시 여행과 탐험",
+        "q2_d": "집에서 보내는 스테이케이션",
+        "q3_a": "야외 모험",
+        "q3_b": "박물관과 문화 활동",
+        "q3_c": "집에서 함께 쉬기",
+        "q3_d": "친구들과 사교 모임",
+        "q4_a": "아침형 인간 (오전 활동형)",
+        "q4_b": "밤형 인간 (저녁 활동형)",
+        "q4_c": "상황에 따라 유연하게",
+        "q5_a": "많은 사람들과 큰 파티",
+        "q5_b": "둘만의 친밀한 저녁",
+        "q5_c": "함께하는 모험 여행",
+        "q5_d": "집에서 간단한 축하",
+        "q6_a": "신뢰와 정직",
+        "q6_b": "재미와 웃음",
+        "q6_c": "열린 소통",
+        "q6_d": "서로에 대한 지지",
+        "q7_a": "즉시 대화로 해결",
+        "q7_b": "먼저 진정한 후 대화",
+        "q7_c": "함께 타협점 찾기",
+        "q7_d": "가능하면 갈등 피하기",
+        "q8_a": "인정하는 말",
+        "q8_b": "함께하는 양질의 시간",
+        "q8_c": "신체적 접촉과 애정",
+        "q8_d": "봉사하는 행동",
+        "q8_e": "선물 받기",
+        "q9_a": "많은 시간을 함께",
+        "q9_b": "함께하는 시간과 각자 시간의 균형",
+        "q9_c": "충분한 독립적인 시간 필요",
+        "q9_d": "그때그때 기분에 따라",
+        "q10_a": "유머 감각",
+        "q10_b": "지성과 재치",
+        "q10_c": "친절함과 공감능력",
+        "q10_d": "야망과 추진력",
+        "q11_a": "미래를 위해 저축",
+        "q11_b": "경험에 투자",
+        "q11_c": "균형잡힌 금전 관리",
+        "q11_d": "현재를 즐기며 살기",
+        "q12_a": "집에서 함께 요리하기",
+        "q12_b": "새로운 레스토랑 시도",
+        "q12_c": "편안한 음식 선호",
+        "q12_d": "건강한 식단 중시",
+        "q13_a": "상세한 계획과 일정",
+        "q13_b": "유연한 계획",
+        "q13_c": "즉흥적인 모험",
+        "q13_d": "흐름에 따라가기",
+        "q14_a": "큰 그룹과 파티 선호",
+        "q14_b": "가까운 친구들과의 소모임",
+        "q14_c": "우리 둘만의 시간 선호",
+        "q14_d": "그때 기분에 따라 다름",
+        "q15_a": "직접적이고 솔직한 소통",
+        "q15_b": "부드럽고 지지적인 접근",
+        "q15_c": "장난스럽고 유머러스하게",
+        "q15_d": "신중하고 조심스러운 말"
+      }
+    },
+    "general_knowledge": {
+      "title": "일반 상식 챌린지",
+      "description": "매주 업데이트되는 다양한 주제의 퀴즈로 당신의 지식을 테스트해보세요.",
+      "questions": {
+        "q1": "고대 도시 페트라는 어디에 있나요?",
+        "q2": "밤하늘에서 가장 밝게 보이는 행성은?",
+        "q3": "모나리자를 그린 화가는?",
+        "q4": "지구에서 가장 큰 바다는?",
+        "q5": "로미오와 줄리엣을 쓴 작가는?",
+        "q6": "우주에서 가장 많은 원소는?",
+        "q7": "타이타닉이 침몰한 연도는?",
+        "q8": "세계에서 가장 긴 강은?",
+        "q9": "상대성이론을 개발한 사람은?",
+        "q10": "면적이 가장 큰 대륙은?"
+      },
+      "options": {
+        "q1_a": "이집트",
+        "q1_b": "중국",
+        "q1_c": "페루",
+        "q1_d": "요단",
+        "q2_a": "수성",
+        "q2_b": "금성",
+        "q2_c": "화성",
+        "q2_d": "목성",
+        "q3_a": "레오나르도 다 빈치",
+        "q3_b": "미켈란젤로",
+        "q3_c": "파블로 피카소",
+        "q3_d": "빈센트 반 고흐",
+        "q4_a": "태평양",
+        "q4_b": "대서양",
+        "q4_c": "인도양",
+        "q4_d": "북극해",
+        "q5_a": "윌리엄 셰익스피어",
+        "q5_b": "찰스 디킨스",
+        "q5_c": "제인 오스틴",
+        "q5_d": "J.R.R. 톨킨",
+        "q6_a": "수소",
+        "q6_b": "헬륨",
+        "q6_c": "산소",
+        "q6_d": "탄소",
+        "q7_a": "1912년",
+        "q7_b": "1914년",
+        "q7_c": "1916년",
+        "q7_d": "1918년",
+        "q8_a": "나일강",
+        "q8_b": "아마존강",
+        "q8_c": "양쯔강",
+        "q8_d": "미시시피강",
+        "q9_a": "알베르트 아인슈타인",
+        "q9_b": "아이작 뉴턴",
+        "q9_c": "찰스 다윈",
+        "q9_d": "갈릴레오 갈릴레이",
+        "q10_a": "아시아",
+        "q10_b": "아프리카",
+        "q10_c": "북아메리카",
+        "q10_d": "남아메리카"
+      }
+    },
+    "math_speed": {
+      "title": "수학 스피드 테스트",
+      "description": "시간 제한 하에서 빠른 연산 문제를 풀어보세요. 당신의 수학적 두뇌는 얼마나 빠른가요?",
+      "questions": {
+        "q1": "8 + 9는?",
+        "q2": "8 × 9는?",
+        "q3": "91 ÷ 7은?",
+        "q4": "77 × 2는?",
+        "q5": "64의 제곱근은?"
+      },
+      "options": {
+        "q1_a": "15",
+        "q1_b": "17",
+        "q1_c": "19",
+        "q1_d": "21",
+        "q2_a": "56",
+        "q2_b": "64",
+        "q2_c": "72",
+        "q2_d": "81",
+        "q3_a": "12",
+        "q3_b": "13",
+        "q3_c": "14",
+        "q3_d": "15",
+        "q4_a": "144",
+        "q4_b": "154",
+        "q4_c": "164",
+        "q4_d": "174",
+        "q5_a": "7",
+        "q5_b": "8",
+        "q5_c": "9",
+        "q5_d": "10"
+      }
+    },
+    "memory_power": {
+      "title": "기억력 테스트",
+      "description": "패턴 인식과 순서 기억으로 당신의 기억력에 도전해보세요. 당신의 두뇌는 얼마나 예리한가요?",
+      "questions": {
+        "q1": "이 순서를 기억하세요: 3, 7, 2, 9, 1. 패턴에서 다음에 올 숫자는?",
+        "q2": "이 패턴을 공부하세요: 원, 정사각형, 삼각형, 원, 정사각형, ?",
+        "q3": "'사과, ?, 의자, 문'에서 빠진 단어는?",
+        "q3_memorize": "이 단어들을 외우세요: 사과, 책, 의자, 문"
+      },
+      "options": {
+        "q1_a": "5, 8, 4",
+        "q1_b": "4, 6, 3",
+        "q1_c": "6, 1, 5",
+        "q1_d": "8, 3, 6",
+        "q2_a": "원",
+        "q2_b": "정사각형",
+        "q2_c": "삼각형",
+        "q2_d": "다이아몬드",
+        "q3_a": "책",
+        "q3_b": "테이블",
+        "q3_c": "창문",
+        "q3_d": "램프"
+      }
+    },
+    "country_match": {
+      "title": "어떤 나라가 당신의 성격과 맞나요?",
+      "description": "당신의 성격 선호도와 일치하는 나라의 라이프스타일과 문화를 발견해보세요. 공유하기 좋은 결과!",
+      "questions": {
+        "q1": "언제 가장 활력을 느끼나요?",
+        "q2": "이상적인 음식 스타일은?",
+        "q3": "완벽한 휴가지는?",
+        "q4": "사교성은 어느 정도인가요?",
+        "q5": "이상적인 기후는?",
+        "q6": "어떤 맛이 가장 매력적인가요?",
+        "q7": "가장 좋아하는 재미있는 활동은?",
+        "q8": "이상적인 휴가 스타일은?",
+        "q9": "인생에서 가장 중요하게 생각하는 것은?",
+        "q10": "선호하는 라이프스타일 페이스는?"
+      },
+      "options": {
+        "q1_a": "이른 아침 (일출의 에너지)",
+        "q1_b": "늦은 밤 (올빼미 기질)",
+        "q1_c": "오후 (시에스타 시간)",
+        "q1_d": "영감이 떠오를 때",
+        "q2_a": "파스타와 피자",
+        "q2_b": "스시와 라멘",
+        "q2_c": "타코와 부리또",
+        "q2_d": "크루아상과 치즈",
+        "q3_a": "해변과 햇살",
+        "q3_b": "산과 하이킹",
+        "q3_c": "도시 문화와 박물관",
+        "q3_d": "시골의 평화",
+        "q4_a": "매우 사교적 (큰 모임 좋아함)",
+        "q4_b": "어느 정도 사교적 (작은 모임)",
+        "q4_c": "소그룹 선호",
+        "q4_d": "고독을 사랑함",
+        "q5_a": "따뜻하고 열대 기후",
+        "q5_b": "온화하고 쾌적한 기후",
+        "q5_c": "사계절이 뚜렷한 기후",
+        "q5_d": "시원하고 상쾌한 기후",
+        "q6_a": "매콤하고 진한 맛",
+        "q6_b": "달콤하고 포근한 맛",
+        "q6_c": "신선하고 건강한 맛",
+        "q6_d": "진하고 풍부한 맛",
+        "q7_a": "춤과 음악",
+        "q7_b": "독서와 학습",
+        "q7_c": "스포츠와 게임",
+        "q7_d": "예술과 공예",
+        "q8_a": "모험과 탐험",
+        "q8_b": "럭셔리와 편안함",
+        "q8_c": "문화유적과 역사",
+        "q8_d": "자연과 야생동물",
+        "q9_a": "가족과 전통",
+        "q9_b": "혁신과 기술",
+        "q9_c": "일과 삶의 균형",
+        "q9_d": "공동체와 남을 돕는 것",
+        "q10_a": "빠르고 역동적인",
+        "q10_b": "여유롭고 느긋한",
+        "q10_c": "체계적이고 조직적인",
+        "q10_d": "자발적이고 유연한"
+      }
+    },
+    "mental_age": {
+      "title": "당신의 정신 연령은?",
+      "description": "당신의 선택, 유머, 직감을 바탕으로 정신적 나이를 알아보세요. 젊은 마음의 소유자인가요, 아니면 늙은 영혼인가요?",
+      "questions": {
+        "q1": "자유 시간을 어떻게 보내는 것을 선호하나요?",
+        "q2": "어떤 유형의 유머를 가장 즐기나요?",
+        "q3": "흥미진진한 소식을 어떻게 처리하나요?",
+        "q4": "스타일 접근법은?",
+        "q5": "이상적인 금요일 밤은?",
+        "q6": "기술에 대한 접근 방식은?",
+        "q7": "인생에서 가장 중요한 것은?",
+        "q8": "돈을 어떻게 관리하나요?",
+        "q9": "문제를 어떻게 다루나요?",
+        "q10": "엔터테인먼트를 어떻게 선택하나요?"
+      },
+      "options": {
+        "q1_a": "비디오 게임하기",
+        "q1_b": "좋은 책 읽기",
+        "q1_c": "소셜 미디어 둘러보기",
+        "q1_d": "정원 가꾸기나 수공예",
+        "q2_a": "밈과 인터넷 농담",
+        "q2_b": "위트 있는 말장난",
+        "q2_c": "신체적 코미디와 슬랩스틱",
+        "q2_d": "건조하고 비꼬는 유머",
+        "q3_a": "즉시 모든 사람에게 문자",
+        "q3_b": "바로 누군가에게 전화",
+        "q3_c": "생각해본 후 응답",
+        "q3_d": "정중한 편지 작성",
+        "q4_a": "최신 트렌드 따라가기",
+        "q4_b": "편안한 클래식 스타일",
+        "q4_c": "실용적이고 기능적",
+        "q4_d": "깨끗하고 이용 가능한 것",
+        "q5_a": "친구들과 파티",
+        "q5_b": "파트너와 멋진 저녁식사",
+        "q5_c": "집에서 영화 감상",
+        "q5_d": "책과 함께 일찍 잠자리",
+        "q6_a": "최신 앱과 기기",
+        "q6_b": "신중한 연구 후 채택",
+        "q6_c": "필요할 때만 사용",
+        "q6_d": "간단하고 시도된 방법",
+        "q7_a": "재미와 모험",
+        "q7_b": "성장과 학습",
+        "q7_c": "관계와 가족",
+        "q7_d": "안정성과 보안",
+        "q8_a": "즉흥적으로 지출",
+        "q8_b": "균형 잡힌 예산",
+        "q8_c": "신중하게 저축",
+        "q8_d": "보수적으로 투자",
+        "q9_a": "즉시 도움 요청",
+        "q9_b": "논리적으로 분석",
+        "q9_c": "다양한 의견 수집",
+        "q9_d": "과거 경험 활용",
+        "q10_a": "바이럴 비디오와 트렌드",
+        "q10_b": "고품질 영화와 쇼",
+        "q10_c": "뉴스와 다큐멘터리",
+        "q10_d": "클래식 문학과 음악"
+      }
+    },
+    "spirit_animal": {
+      "title": "당신의 영적 동물은?",
+      "description": "성격 특성과 자연적 직관을 바탕으로 당신의 수호 동물을 발견해보세요. 아름답고 의미 있는 결과를 공유하세요!",
+      "questions": {
+        "q1": "그룹 프로젝트에서 자연스럽게...",
+        "q2": "이상적인 환경은...",
+        "q3": "가장 중요하게 여기는 것은?",
+        "q4": "도전에 직면했을 때...",
+        "q5": "어떤 시간대가 당신의 영혼에 말하나요?",
+        "q6": "당신의 완벽한 은신처는?",
+        "q7": "가장 매력적인 활동은?",
+        "q8": "다른 사람과 어떻게 소통하나요?",
+        "q9": "어떤 날씨가 당신의 기분을 가장 좋게 하나요?",
+        "q10": "당신의 내면의 소명은?"
+      },
+      "options": {
+        "q1_a": "그룹을 이끈다",
+        "q1_b": "다른 사람을 지원한다",
+        "q1_c": "독립적으로 일한다",
+        "q1_d": "관찰하고 분석한다",
+        "q2_a": "바다 깊은 곳",
+        "q2_b": "숲과 나무들",
+        "q2_c": "산꼭대기",
+        "q2_d": "넓은 평원",
+        "q3_a": "힘과 용기",
+        "q3_b": "지혜와 지능",
+        "q3_c": "충성과 우정",
+        "q3_d": "자유와 독립",
+        "q4_a": "정면으로 맞선다",
+        "q4_b": "먼저 생각하고 전략을 짠다",
+        "q4_c": "다른 사람의 도움을 구한다",
+        "q4_d": "기다리고 관찰한다",
+        "q5_a": "밝은 대낮",
+        "q5_b": "신비로운 밤",
+        "q5_c": "신선한 새벽",
+        "q5_d": "평화로운 일몰",
+        "q6_a": "고대 동굴",
+        "q6_b": "높은 나뭇가지",
+        "q6_c": "지하 굴",
+        "q6_d": "넓은 초원",
+        "q7_a": "사냥과 추적",
+        "q7_b": "탐험과 등반",
+        "q7_c": "수영과 잠수",
+        "q7_d": "날기와 비상",
+        "q8_a": "포효와 큰 소리",
+        "q8_b": "우아한 몸짓",
+        "q8_c": "재빠른 움직임",
+        "q8_d": "조용한 관찰",
+        "q9_a": "폭풍우 치는 날",
+        "q9_b": "맑고 화창한 날",
+        "q9_c": "안개 낀 신비로운 날",
+        "q9_d": "고요하고 잔잔한 날",
+        "q10_a": "영토를 보호하고 지키기",
+        "q10_b": "지혜를 나누고 가르치기",
+        "q10_c": "무리를 돌보고 양육하기",
+        "q10_d": "자유롭게 탐험하고 발견하기"
+      }
+    },
+    "bigfive": {
+      "title": "빅파이브 성격 평가",
+      "description": "과학적으로 검증된 5개 성격 차원으로 당신을 완전히 분석해보세요",
+      "questions": {
+        "q1": "낯설고 독특해 보이는 음식이라도 새로운 레스토랑과 요리를 시도하는 것을 좋아합니다",
+        "q2": "새로운 장르를 탐구하기보다는 이미 좋아한다고 알고 있는 영화와 음악을 고수하는 편입니다",
+        "q3": "추상 미술을 즐기고 그것이 무엇을 나타내는지 분석하며 시간을 보낼 수 있습니다",
+        "q4": "철학적이거나 이론적인 대화보다는 실용적이고 현실적인 토론을 선호합니다",
+        "q5": "안전지대를 벗어나더라도 새로운 경험과 모험을 적극적으로 추구합니다",
+        "q6": "글쓰기, 그림 그리기, 음악 만들기 같은 창의적인 활동을 즐깁니다",
+        "q7": "혁신적인 접근법을 시도하기보다는 전통적인 방식으로 일을 처리하는 것을 선호합니다",
+        "q8": "종종 공상에 빠져들고 생생한 상상력을 가지고 있습니다",
+        "q9": "다양한 문화와 삶의 방식에 대해 배우는 것을 즐깁니다",
+        "q10": "추상적인 이론보다는 구체적인 사실을 선호합니다"
+      },
+      "scale": {
+        "strongly_agree": "매우 그렇다",
+        "somewhat_agree": "어느 정도 그렇다", 
+        "neither_agree": "보통이다",
+        "somewhat_disagree": "별로 그렇지 않다",
+        "strongly_disagree": "전혀 그렇지 않다"
+      },
+      "results": {
+        "profile": "빅파이브 성격 프로필"
+      }
+    },
+    "relationship": {
+      "title": "사랑의 언어 테스트",
+      "description": "당신의 주요 사랑 언어를 발견해보세요"
+    },
+    "love_language": {
+      "title": "Love Language Test",
+      "description": "당신이 사랑을 주고받는 방식을 발견해보세요"
+    },
+    "brain_teaser": {
+      "title": "Brain Teaser Challenge",
+      "description": "창의적 사고력과 문제해결능력을 테스트해보세요"
+    },
+    "emotional_intelligence": {
+      "title": "Emotional Intelligence",
+      "description": "감정을 이해하고 관리하는 능력을 측정해보세요"
+    },
+    "adhd_assessment": {
+      "title": "ADHD Self-Assessment",
+      "description": "주의력 결핍 과잉행동 장애 특성을 확인해보세요"
+    },
+    "anxiety_check": {
+      "title": "Anxiety Self-Check",
+      "description": "불안 수준과 대처 능력을 평가해보세요"
+    },
+    "self_reflection": {
+      "title": "Hard Self-Reflection",
+      "description": "깊이 있는 자기 성찰을 통해 진정한 자아를 발견하세요"
+    },
+    "character_strengths": {
+      "title": "Character Strengths",
+      "description": "당신의 핵심 강점과 덕목을 찾아보세요"
+    },
+    "career_path": {
+      "title": "Career Path Finder",
+      "description": "당신에게 맞는 이상적인 직업과 진로를 찾아보세요"
+    },
+    "relationship_style": {
+      "title": "Relationship Style",
+      "description": "당신의 연애 스타일과 관계 패턴을 분석해보세요"
+    },
+    "leadership": {
+      "title": "Leadership Assessment",
+      "description": "리더십 스타일과 역량을 종합적으로 평가해보세요"
+    },
+    "creativity": {
+      "title": "Creativity Test",
+      "description": "창의성 지수와 혁신적 사고력을 측정해보세요"
+    },
+    "stress_management": {
+      "title": "Stress Management",
+      "description": "스트레스 관리 능력과 회복탄력성을 평가해보세요"
+    },
+    "communication_style": {
+      "title": "Communication Style",
+      "description": "당신만의 소통 방식과 의사소통 패턴을 분석해보세요"
+    },
+    "who_knows_me": {
+      "title": "See Who Knows Me Best",
+      "description": "누가 당신을 가장 잘 아는지 재미있게 알아보세요"
+    },
+    "perception_360": {
+      "title": "360 Perception About Me",
+      "description": "다양한 관점에서 보는 당신의 모습을 종합해보세요"
+    },
+    "share_results": {
+      "title": "Share Your Results",
+      "description": "커플이 함께 결과를 공유하고 비교해보세요"
+    },
+    "compatibility_analysis": {
+      "title": "Compatibility Analysis",
+      "description": "당신과 파트너의 호환성을 과학적으로 분석해보세요"
+    },
+    "relationship_growth": {
+      "title": "Relationship Growth",
+      "description": "관계 발전을 위한 맞춤형 조언과 가이드를 받아보세요"
+    },
+    "takeTest": "테스트 하기",
+    "new": "🔥 새로운",
+    "trending": "🔥 트렌딩",
+    "popular": "✨ 인기",
+    "mbti.title": "16가지 성격 유형 (MBTI)",
+    "bigfive.title": "빅파이브 성격 검사",
+    "lovelanguage.title": "사랑의 언어 테스트",
+    "iq.title": "두뇌 테스트 챌린지",
+    "eq.title": "감성지능 (EQ)",
+    "ei.title": "감성지능",
+    "adhd.title": "ADHD 자가진단",
+    "anxiety.title": "불안 자가점검",
+    "depression.title": "기분 자기성찰",
+    "strengths.title": "캐릭터 강점",
+    "careerpath.title": "진로 탐색기",
+    "relationshipstyle.title": "연애 스타일",
+    "askfriends.title": "누가 나를 가장 잘 아는지 보기",
+    "360assessment.title": "360도 나에 대한 인식",
+    "mbti.description": "나를 정말로 알 수 있는 최고의 성격 테스트! INTJ 전략가 타입인가요, ENFP 활동가 타입인가요? 지금 바로 확인해보세요! 💅",
+    "bigfive.description": "심리학자들이 인정하는 과학적 성격 테스트예요. 5가지 핵심 성격 특성으로 나를 분석해보세요! 🧠",
+    "lovelanguage.description": "격려의 말, 함께하는 시간, 신체적 접촉? 어떻게 사랑을 주고받는 것이 가장 좋은지 발견하세요! 💖",
+    "iq.description": "재미있는 논리 퍼즐과 두뇌 게임이에요! 단순히 재미를 위한 것으로, 실제 IQ 테스트는 전문가가 진행해야 해요. 도전해볼까요? 🤓",
+    "eq.description": "내 감정과 다른 사람의 감정을 얼마나 잘 이해할까요? 자기인식, 공감능력, 사회적 기술을 확인해보세요! 💝",
+    "ei.description": "내 감정과 다른 사람의 감정을 얼마나 잘 이해할까요? 자기인식, 공감능력, 사회적 기술을 확인해보세요! 💝",
+    "adhd.description": "당신만의 독특한 주의력과 에너지 패턴을 발견하세요! 이것은 재미있는 자기성찰을 위한 것입니다 - 의학적 평가가 아닙니다. ⚡",
+    "anxiety.description": "스트레스와 압박을 어떻게 다루는지 발견하세요! 이것은 재미와 자기 인식을 위한 것입니다 - 의학적 조언이 아닙니다. 💚",
+    "depression.description": "감정을 어떻게 처리하는지 이해하세요! 이것은 자기성찰과 오락을 위한 것입니다 - 정신건강 평가가 아닙니다. 🌻",
+    "strengths.description": "핵심 캐릭터 강점을 발견하세요! 창의성부터 리더십, 친절함까지 - 당신을 독특하게 멋지게 만드는 것을 발견하세요! ✨",
+    "careerpath.description": "내 성격에 맞는 직업을 발견하세요! 리더, 창작자, 도우미, 분석가, 기업가 중 어느 것인가요? 🚀",
+    "relationshipstyle.description": "어떻게 사랑하고 다른 사람들과 연결되나요? 나만의 독특한 연애 스타일과 사랑에서의 매력을 발견하세요! ✨",
+    "askfriends.description": "자신에 대한 질문을 만들고, 당신의 답변을 제공한 다음, 누가 당신을 가장 잘 아는지 확인해보세요! 친구들이 당신의 답을 맞춰보려고 할 거예요.",
+    "360assessment.description": "성장과 이해를 위한 진지한 다각도 피드백입니다. 친구, 가족, 동료들로부터 정직한 통찰을 얻어보세요.",
+    "meta.duration": "⏱️ 8분",
+    "meta.duration5": "⏱️ 5분",
+    "meta.duration6": "⏱️ 6분",
+    "meta.duration7": "⏱️ 7분",
+    "meta.duration8": "⏱️ 8분",
+    "meta.duration10": "⏱️ 10분",
+    "meta.duration12": "⏱️ 12분",
+    "meta.duration15": "⏱️ 15분",
+    "meta.accurate": "🎯 매우 정확",
+    "meta.scienceBased": "🔬 과학적 근거",
+    "meta.researchGrade": "🎯 연구급",
+    "meta.mostAccurate": "🏆 가장 정확",
+    "meta.relationship": "💝 관계",
+    "meta.couplesFriendly": "❤️ 커플 친화적",
+    "meta.funGame": "🎮 재미있는 게임",
+    "meta.brainTraining": "🧠 두뇌 훈련",
+    "meta.careerFocused": "🎯 진로 중심",
+    "meta.leadership": "💼 리더십",
+    "meta.teamwork": "🤝 팀워크",
+    "meta.selfReflection": "🔍 자기성찰",
+    "meta.notMedical": "⚠️ 의료용 아님",
+    "meta.wellness": "🧘 웰니스",
+    "meta.moodTracking": "🌈 기분 추적",
+    "meta.strengthsBased": "🌟 강점 기반",
+    "meta.personalGrowth": "🎯 개인 성장",
+    "meta.careerFocus": "💼 진로 중심",
+    "meta.personalized": "🎯 개인화",
+    "meta.relationships": "💕 관계",
+    "meta.connection": "🤝 연결",
+    "meta.socialApp": "📱 소셜",
+    "meta.socialPeople": "👥 소셜",
+    "meta.viral": "🔥 바이럴",
+    "meta.detailed": "📊 상세",
+    "meta.couples": "💕 커플",
+    "meta.instant": "⚡ 즉시",
+    "meta.fun": "😄 재미",
+    "meta.insights": "💡 통찰",
+    "meta.guidance": "📝 가이드",
+    "meta.improvement": "📈 개선",
+    "page_title": "성격 테스트 ✨",
+    "sectionTitle": "성격 발견하기 ✨",
+    "disclaimer": "🎯 Important: For Entertainment & Self-Reflection Only",
+    "disclaimerText": "These assessments are designed for fun and self-reflection, not professional diagnosis. If you need mental health support, please consult a licensed healthcare provider.",
+    "requires_feedback": "피드백 필요",
+    "compatibility_test": "궁합 테스트",
+    "categories": {
+      "know_yourself": "🧠 나를 알아가기",
+      "know_yourself_desc": "과학적으로 검증된 평가를 통해 당신의 내면적 성격, 강점, 고유한 특성을 발견하세요",
+      "how_others_see_me": "👥 다른 사람들이 보는 나",
+      "how_others_see_me_desc": "솔직한 피드백을 받고 친구, 가족, 동료들이 당신을 어떻게 실제로 인식하는지 발견하세요",
+      "couple_compatibility": "💕 커플 궁합",
+      "couple_compatibility_desc": "관계 역학을 분석하고 파트너와의 호환성을 발견하세요"
+    },
+    "mbti": {
+      "title": "16가지 성격 유형 (MBTI)",
+      "description": "나를 정말로 알 수 있는 최고의 성격 테스트! INTJ 전략가 타입인가요, ENFP 활동가 타입인가요? 지금 바로 확인해보세요! 💅",
+      "questions": {
+        "q1": "네트워킹 이벤트에 2시간 참석했습니다. 기분이 어떠신가요?",
+        "q2": "주말에 무엇을 하시겠습니까?",
+        "q3": "직장에서 에너지를 얻는 원천은:",
+        "q4": "친구들과 모임에서 당신은:",
+        "q5": "업무 후 재충전하는 방법:",
+        "q6": "새로운 프로젝트에서 선호하는 것:",
+        "q7": "파티에서 어떻게 시간을 보내나요?",
+        "q8": "어려운 결정을 내릴 때:",
+        "q9": "휴식 시간에 선호하는 것:",
+        "q10": "새로운 사람들을 만날 때:",
+        "q11": "회의에서 당신의 역할:",
+        "q12": "스트레스를 받을 때:",
+        "q13": "전화 통화와 문자 메시지 중:",
+        "q14": "그룹 활동에서:",
+        "q15": "생각을 정리할 때:",
+        "q16": "새로운 아이디어에 대해 배울 때 선호하는 방식은:",
+        "q17": "정보를 처리할 때 더 신뢰하는 것은:",
+        "q18": "문제 해결에 접근하는 방식:",
+        "q19": "학습할 때 더 흥미를 느끼는 것:",
+        "q20": "업무에서 중요하게 여기는 것:",
+        "q21": "미래에 대해 생각할 때:",
+        "q22": "계획을 세울 때 중점을 두는 것:",
+        "q23": "새로운 기술을 배울 때:",
+        "q24": "변화에 대한 당신의 태도:",
+        "q25": "창의적인 작업에서:",
+        "q26": "세부사항에 대한 관심:",
+        "q27": "시간 관리에서 중요한 것:",
+        "q28": "새로운 환경에서:",
+        "q29": "문제를 분석할 때:",
+        "q30": "목표 설정에서:",
+        "q31": "어려운 결정을 내릴 때 더 중요하게 여기는 것은:",
+        "q32": "팀에서 갈등이 생겼을 때 중점을 두는 것은:",
+        "q33": "비판을 받을 때 먼저 드는 생각은:",
+        "q34": "의사결정 기준으로 더 중요하게 여기는 것:",
+        "q35": "다른 사람을 판단할 때:",
+        "q36": "업무 환경에서 중시하는 것:",
+        "q37": "피드백을 줄 때:",
+        "q38": "갈등 해결에서:",
+        "q39": "성과를 평가할 때:",
+        "q40": "팀 프로젝트에서:",
+        "q41": "규칙과 관련해서:",
+        "q42": "실수를 했을 때:",
+        "q43": "다른 사람의 의견과 다를 때:",
+        "q44": "중요한 결정에서:",
+        "q45": "협상에서:",
+        "q46": "프로젝트 계획을 세울 때:",
+        "q47": "휴가 계획을 세울 때:",
+        "q48": "새로운 프로젝트를 시작할 때:",
+        "q49": "작업 환경에서 선호하는 스타일은:",
+        "q50": "일정 관리에서:",
+        "q51": "변화에 대한 반응:",
+        "q52": "업무 마감일이 다가올 때:",
+        "q53": "선택의 여지가 있을 때:",
+        "q54": "계획이 바뀔 때:",
+        "q55": "새로운 기회가 생겼을 때:",
+        "q56": "하루 일과에서:",
+        "q57": "장기 프로젝트에서:",
+        "q58": "즉석에서 결정해야 할 때:",
+        "q59": "여러 가지 옵션 중에서:",
+        "q60": "미완성된 일에 대해:"
+      },
+      "options": {
+        "q1_a": "활기차고 흥미진진 - 많은 새로운 사람들을 만났어요",
+        "q1_b": "정신적으로 피곤하지만 성취감 - 집에 갈 준비됨",
+        "q2_a": "친구들과 다양한 사교 활동하기",
+        "q2_b": "혼자서 조용히 취미 생활 즐기기",
+        "q3_a": "동료들과의 협업과 회의를 통해",
+        "q3_b": "혼자 집중해서 작업할 때",
+        "q4_a": "대화를 주도하고 여러 사람과 이야기한다",
+        "q4_b": "소수의 가까운 친구와 깊은 대화를 한다",
+        "q5_a": "동료들과 저녁 식사하며 하루를 나눈다",
+        "q5_b": "혼자 조용한 시간을 가지며 생각한다",
+        "q6_a": "팀원들과 브레인스토밍 하기",
+        "q6_b": "혼자서 깊이 생각해보기",
+        "q7_a": "여러 사람들과 활발하게 대화하기",
+        "q7_b": "한두 명과 깊은 대화하기",
+        "q8_a": "다른 사람들의 의견을 많이 듣는다",
+        "q8_b": "혼자서 충분히 생각한 후 결정한다",
+        "q9_a": "친구들과 함께하는 활동",
+        "q9_b": "혼자만의 시간",
+        "q10_a": "쉽게 대화를 시작한다",
+        "q10_b": "상대방이 먼저 말 걸기를 기다린다",
+        "q11_a": "적극적으로 발언하고 아이디어 제시",
+        "q11_b": "신중하게 듣고 필요할 때만 발언",
+        "q12_a": "친구들과 이야기하며 해결책 찾기",
+        "q12_b": "혼자서 조용히 문제 해결하기",
+        "q13_a": "전화 통화로 직접 대화하기",
+        "q13_b": "문자나 이메일로 소통하기",
+        "q14_a": "다른 사람들을 동기부여하고 이끈다",
+        "q14_b": "조용히 자신의 역할에 충실한다",
+        "q15_a": "다른 사람들과 토론하며",
+        "q15_b": "혼자서 조용히 정리하며",
+        "q16_a": "현실적인 예시와 실용적인 적용법을 통해",
+        "q16_b": "이론적 개념과 추상적 가능성을 통해",
+        "q17_a": "직접 경험하고 관찰한 구체적 사실",
+        "q17_b": "패턴을 파악하고 연결점을 찾는 직관",
+        "q18_a": "검증된 방법과 과거 경험을 활용한다",
+        "q18_b": "새로운 관점과 창의적 아이디어를 모색한다",
+        "q19_a": "구체적인 사실과 실무적인 기술",
+        "q19_b": "이론과 개념적 이해",
+        "q20_a": "실질적인 결과와 즉시 적용 가능한 것",
+        "q20_b": "혁신적인 아이디어와 미래 가능성",
+        "q21_a": "현실적인 계획과 달성 가능한 목표",
+        "q21_b": "큰 꿈과 무한한 가능성",
+        "q22_a": "구체적인 단계와 세부 사항",
+        "q22_b": "전체적인 비전과 방향성",
+        "q23_a": "단계별로 체계적으로 배우기",
+        "q23_b": "전체적인 그림을 먼저 이해하기",
+        "q24_a": "신중하게 검토한 후 받아들인다",
+        "q24_b": "새로운 가능성으로 받아들인다",
+        "q25_a": "기존 방법을 개선하는 것",
+        "q25_b": "완전히 새로운 것을 만들어내는 것",
+        "q26_a": "세부사항까지 꼼꼼히 확인한다",
+        "q26_b": "큰 그림에 더 집중한다",
+        "q27_a": "일정을 정확히 지키는 것",
+        "q27_b": "융통성 있게 조정하는 것",
+        "q28_a": "주변을 자세히 관찰한다",
+        "q28_b": "새로운 가능성을 상상한다",
+        "q29_a": "사실을 차례대로 분석한다",
+        "q29_b": "전체적인 패턴을 파악한다",
+        "q30_a": "구체적이고 측정 가능한 목표",
+        "q30_b": "비전과 영감을 주는 목표",
+        "q31_a": "논리적 분석과 객관적 사실",
+        "q31_b": "사람들에게 미칠 영향과 가치",
+        "q32_a": "문제를 객관적으로 분석하여 해결책 찾기",
+        "q32_b": "모든 사람의 감정을 고려하여 조화 찾기",
+        "q33_a": "이 피드백이 사실에 근거한 것인가?",
+        "q33_b": "이 사람이 나를 어떻게 느끼고 있을까?",
+        "q34_a": "효율성과 논리적 결과",
+        "q34_b": "사람들의 만족도와 화합",
+        "q35_a": "객관적인 기준과 성과로",
+        "q35_b": "그 사람의 상황과 노력으로",
+        "q36_a": "공정성과 일관성",
+        "q36_b": "협력과 상호 배려",
+        "q37_a": "사실에 기반해서 직접적으로",
+        "q37_b": "상대방의 감정을 배려해서 부드럽게",
+        "q38_a": "원칙과 규칙에 따라",
+        "q38_b": "상호 이해와 공감으로",
+        "q39_a": "객관적인 지표와 데이터로",
+        "q39_b": "노력과 개선 과정을 고려해서",
+        "q40_a": "효율적인 업무 분배에 집중",
+        "q40_b": "팀원 간의 화합에 집중",
+        "q41_a": "합리적이면 규칙을 따른다",
+        "q41_b": "상황에 따라 융통성을 발휘한다",
+        "q42_a": "원인을 분석하고 해결방안 모색",
+        "q42_b": "영향을 받는 사람들에게 사과",
+        "q43_a": "논리적 근거로 내 입장 설명",
+        "q43_b": "상대방의 관점을 이해하려 노력",
+        "q44_a": "데이터와 분석을 우선시",
+        "q44_b": "관련된 사람들의 의견을 고려",
+        "q45_a": "사실과 논리에 기반해서",
+        "q45_b": "상호 이익과 관계를 고려해서",
+        "q46_a": "자세한 일정표와 체크리스트를 만든다",
+        "q46_b": "큰 그림만 정하고 진행하면서 조정한다",
+        "q47_a": "미리 상세하게 예약하고 일정을 짜둔다",
+        "q47_b": "자유롭게 두고 현장에서 결정한다",
+        "q48_a": "모든 세부사항을 계획하고 단계별로 진행",
+        "q48_b": "전반적인 방향만 정하고 필요에 따라 조정",
+        "q49_a": "명확한 마감일과 체계적인 절차",
+        "q49_b": "융통성 있는 스케줄과 창의적 자유",
+        "q50_a": "미리 계획하고 일정대로 실행",
+        "q50_b": "상황에 맞춰 유연하게 조정",
+        "q51_a": "충분히 검토한 후 신중하게 적응",
+        "q51_b": "빠르게 받아들이고 적극 활용",
+        "q52_a": "미리 준비해서 여유롭게 완료",
+        "q52_b": "압박감 속에서 집중해서 완료",
+        "q53_a": "빨리 결정하고 실행에 집중",
+        "q53_b": "다양한 옵션을 계속 탐색",
+        "q54_a": "계획 변경을 받아들이기 어렵다",
+        "q54_b": "새로운 기회로 받아들인다",
+        "q55_a": "신중하게 검토한 후 결정",
+        "q55_b": "즉시 새로운 도전으로 받아들임",
+        "q56_a": "규칙적인 루틴을 선호",
+        "q56_b": "매일 다른 스케줄을 선호",
+        "q57_a": "단계별 계획에 따라 진행",
+        "q57_b": "유연하게 상황에 맞춰 진행",
+        "q58_a": "가능한 정보를 빠르게 수집한 후 결정",
+        "q58_b": "직감을 믿고 즉시 결정",
+        "q59_a": "장단점을 분석해서 최선의 선택",
+        "q59_b": "열린 마음으로 다양한 가능성 탐색",
+        "q60_a": "빨리 마무리하고 싶어한다",
+        "q60_b": "새로운 아이디어가 생기면 계속 수정"
+      }
+    },
+    "bigfive": {
+      "title": "빅파이브 성격 평가",
+      "description": "과학적으로 검증된 5개 성격 차원으로 당신을 완전히 분석해보세요",
+      "questions": {
+        "e1": "나는 파티의 중심인물이다",
+        "e2": "나는 사람들과 함께 있으면 편안하다",
+        "e3": "나는 뒤에서 조용히 있는 편이다",
+        "e4": "나는 먼저 대화를 시작한다",
+        "e5": "나는 파티에서 여러 사람들과 대화한다",
+        
+        "a1": "나는 다른 사람의 감정을 잘 느낀다",
+        "a2": "나는 다른 사람의 문제에 관심이 없다",
+        "a3": "나는 마음이 부드럽다",
+        "a4": "나는 다른 사람을 위해 시간을 낸다",
+        "a5": "나는 다른 사람에게 별로 관심이 없다",
+        
+        "c1": "나는 항상 준비를 잘 한다",
+        "c2": "나는 물건을 아무데나 둔다",
+        "c3": "나는 세부사항에 주의를 기울인다",
+        "c4": "나는 일을 엉망으로 만든다",
+        "c5": "나는 해야 할 일을 즉시 처리한다",
+        
+        "n1": "나는 쉽게 스트레스를 받는다",
+        "n2": "나는 대부분 시간 편안하다",
+        "n3": "나는 걱정을 많이 한다",
+        "n4": "나는 쉽게 화가 난다",
+        "n5": "나는 압박감 속에서도 침착함을 유지한다",
+        
+        "o1": "나는 어휘가 풍부하다",
+        "o2": "나는 추상적인 아이디어를 이해하기 어렵다",
+        "o3": "나는 상상력이 풍부하다",
+        "o4": "나는 많은 것들에 관심이 있다",
+        "o5": "나는 상상력이 좋지 않다"
+      },
+      "scale": {
+        "strongly_disagree": "전혀 그렇지 않다",
+        "strongly_agree": "매우 그렇다"
+      }
+    },
+    "enneagram": {
+      "title": "에니어그램 유형",
+      "description": "포괄적인 평가를 통해 당신의 핵심 동기와 성격 유형을 발견해보세요",
+      "questions": {
+        "q1": "어려운 상황에 직면했을 때, 당신의 첫 번째 본능은:",
+        "q2": "관계에서 당신은 다음과 같은 경향이 있습니다:",
+        "q3": "스트레스를 받을 때, 당신은 다음과 같이 행동할 가능성이 높습니다:",
+        "q4": "당신의 가장 큰 강점은 아마도:",
+        "q5": "당신이 가장 두려워하는 것은:",
+        "q6": "직장이나 그룹에서 당신은 일반적으로:",
+        "q7": "결정을 내릴 때, 당신이 가장 의존하는 것은:",
+        "q8": "사람들은 당신을 다음과 같이 묘사할 것입니다:",
+        "q9": "당신의 이상적인 환경은:",
+        "q10": "갈등이 일어날 때, 당신은 다음과 같은 경향이 있습니다:",
+        "q11": "당신이 가장 동기를 받는 것은:",
+        "q12": "사회적 상황에서 당신은:",
+        "q13": "변화에 대한 당신의 접근 방식은:",
+        "q14": "비판을 다루는 방식은:",
+        "q15": "당신의 리더십 스타일은:",
+        "q16": "다른 사람을 도울 때, 당신은 다음을 선호합니다:",
+        "q17": "규칙과 구조에 대한 당신의 관계는:",
+        "q18": "당신의 일상 행동을 이끄는 것은:"
+      },
+      "options": {
+        "q1_a": "옳은 일을 하고 기준을 유지하는 데 집중한다",
+        "q1_b": "모든 사람이 괜찮은지 확인하고 지원을 제공한다",
+        "q1_c": "주도권을 잡고 가장 효율적인 해결책을 찾는다",
+        "q2_a": "다른 사람의 필요를 자신보다 우선시한다",
+        "q2_b": "조화를 추구하고 갈등을 피한다",
+        "q2_c": "안전하기 위해 어느 정도 감정적 거리를 유지한다",
+        "q3_a": "새로운 경험을 찾고 긍정적으로 유지한다",
+        "q3_b": "더욱 강렬하고 감정적이 된다",
+        "q3_c": "물러나서 혼자 생각할 시간이 필요하다",
+        "q4_a": "진실성과 도덕적 명확성",
+        "q4_b": "배려와 도움",
+        "q4_c": "적응력과 성취",
+        "q5_a": "불완전하거나 실수하는 것",
+        "q5_b": "갇히거나 제한받는 느낌",
+        "q5_c": "침해받거나 압도당하는 것",
+        "q6_a": "리더십을 발휘하고 결과를 이끈다",
+        "q6_b": "팀을 지원하고 관계를 유지한다",
+        "q6_c": "유연하게 유지하고 선택권을 열어둔다",
+        "q7_a": "당신의 원칙과 옳다고 느끼는 것",
+        "q7_b": "당신의 감정과 직감",
+        "q7_c": "당신의 분석과 논리적 사고",
+        "q8_a": "도움이 되고 배려심이 깊다",
+        "q8_b": "강하고 자신감이 있다",
+        "q8_c": "느긋하고 호의적이다",
+        "q9_a": "조직적이고 구조화된",
+        "q9_b": "성취 지향적이고 역동적인",
+        "q9_c": "평화롭고 조화로운",
+        "q10_a": "직접적이고 단호하게 대처한다",
+        "q10_b": "모든 사람의 관점을 이해하려고 노력한다",
+        "q10_c": "가능하면 피하고 평화를 추구한다",
+        "q11_a": "개인적 성장과 이해",
+        "q11_b": "보안과 확실성",
+        "q11_c": "흥미와 새로운 가능성",
+        "q12_a": "새로운 사람들을 만나고 경험을 나누는 것을 즐긴다",
+        "q12_b": "익숙한 환경에서 편안함을 느낀다",
+        "q12_c": "상황이 요구하는 대로 적응한다",
+        "q13_a": "개선의 기회로 받아들인다",
+        "q13_b": "신중하고 분석적으로 접근한다",
+        "q13_c": "흐름에 따라가며 필요에 따라 적응한다",
+        "q14_a": "주의 깊게 듣고 개선하려고 노력한다",
+        "q14_b": "상처받지만 관점을 이해하려고 노력한다",
+        "q14_c": "자신을 방어하거나 물러난다",
+        "q15_a": "모범을 보이고 높은 기준을 유지한다",
+        "q15_b": "개인적 인정과 성취를 창출한다",
+        "q15_c": "합의를 구축하고 모든 사람을 만족시킨다",
+        "q16_a": "그들이 스스로 도울 수 있는 도구를 제공한다",
+        "q16_b": "감정적 지원과 관심을 제공한다",
+        "q16_c": "요청받지 않는 한 방해하지 않는다",
+        "q17_a": "명확한 지침과 구조를 감사히 여긴다",
+        "q17_b": "합리적인 경계 내에서 잘 일한다",
+        "q17_c": "유연성과 최소한의 제약을 선호한다",
+        "q18_a": "보안과 안전의 추구",
+        "q18_b": "재미와 자극에 대한 욕구",
+        "q18_c": "정의와 통제의 필요"
+      },
+      "results": {
+        "type1": "완벽주의자 - 당신은 진실성과 개선을 추구하며, 강한 옳고 그름의 감각을 가지고 있습니다.",
+        "type2": "조력자 - 당신은 배려심이 깊고 관대하며, 다른 사람의 필요를 충족시키는 데 집중합니다.",
+        "type3": "성취자 - 당신은 성공 지향적이고 추진력이 있으며, 적응력이 있고 야심적입니다.",
+        "type4": "개인주의자 - 당신은 창의적이고 내성적이며, 진정성과 의미를 추구합니다.",
+        "type5": "조사자 - 당신은 지각력이 있고 독립적이며, 혁신적이고 비밀스럽습니다.",
+        "type6": "충실한 자 - 당신은 책임감이 있고 헌신적이며, 불안하고 의심스러워합니다.",
+        "type7": "열정가 - 당신은 자발적이고 다재다능하며, 산만하고 무절제합니다.",
+        "type8": "도전자 - 당신은 자신감이 있고 단호하며, 대립적이고 위협적입니다.",
+        "type9": "조정자 - 당신은 수용적이고 안심시키며, 안주하고 체념적입니다."
+      },
+      "scale": {
+        "1": "전혀 그렇지 않다",
+        "2": "드물게",
+        "3": "때때로",
+        "4": "자주", 
+        "5": "항상 그렇다"
+      }
+    },
+    "feedback360": {
+      "title": "360도 피드백 평가", 
+      "description": "동료와 친구들로부터 종합적인 피드백을 받아보세요",
+      "ui": {
+        "title": "피드백 요청",
+        "loading": "로딩 중...",
+        "instructions": "다음 질문들에 솔직하게 답변해 주세요. 귀하의 응답은 익명으로 처리됩니다.",
+        "thank_you": "감사합니다!",
+        "submitted_message": "{name}을 위한 피드백이 성공적으로 제출되었습니다.",
+        "submitted_description": "{name}은 귀하의 통찰력을 받게 되며, 귀하의 신원은 완전히 익명으로 유지됩니다.",
+        "submitting": "피드백을 제출하는 중...",
+        "scale_labels": {
+          "not_at_all": "전혀 그렇지 않다",
+          "always": "매우 그렇다"
+        }
+      },
+      "universal": {
+        "q1": "이 사람은 스트레스나 압박 상황에서도 감정을 잘 조절하고 차분함을 유지하나요?",
+        "q2": "이 사람은 새로운 상황이나 예상치 못한 변화에 얼마나 잘 적응하나요?",
+        "q3": "이 사람은 목표를 향해 꾸준히 노력하며 자기 관리를 잘 하나요?",
+        "q4": "이 사람은 다른 사람들과 어울리고 사회적 상황에서 에너지를 얻는 편인가요?",
+        "q5": "이 사람은 새로운 아이디어나 경험에 얼마나 개방적이고 호기심을 보이나요?",
+        "q6": "이 사람은 다른 사람의 감정과 관점을 잘 이해하고 공감하나요?",
+        "q7": "이 사람은 자신의 생각과 감정을 명확하고 효과적으로 표현하나요?",
+        "q8": "이 사람은 갈등 상황에서 건설적으로 문제를 해결하려고 노력하나요?",
+        "q9": "이 사람을 얼마나 신뢰할 수 있으며, 약속을 잘 지키나요?",
+        "q10": "이 사람은 다른 사람을 도우려고 하며 배려심이 많나요?"
+      },
+      "work": {
+        "q11": "이 사람은 업무 프로젝트나 팀 활동에서 주도적인 역할을 맡으려고 하나요?",
+        "q12": "이 사람은 업무상 결정을 내릴 때 논리적이고 체계적으로 접근하나요?",
+        "q13": "이 사람은 동료들과 협력하여 팀 목표를 달성하는 데 기여하나요?",
+        "q14": "이 사람은 업무 관련 피드백을 받아들이고 개선하려고 노력하나요?",
+        "q15": "이 사람은 업무 환경에서 혁신적인 아이디어나 해결책을 제시하나요?",
+        "q16": "이 사람은 업무 스트레스나 마감 압박을 잘 관리하나요?",
+        "q17": "이 사람은 동료들에게 도움이나 지원을 제공하려고 하나요?",
+        "q18": "이 사람은 업무 관련 회의나 발표에서 자신의 의견을 효과적으로 전달하나요?",
+        "q19": "이 사람은 업무 관련 약속이나 책임을 성실히 이행하나요?",
+        "q20": "이 사람은 전문적 성장과 학습에 관심을 보이고 노력하나요?"
+      },
+      "friends": {
+        "q11": "이 사람은 친구 모임에서 분위기를 주도하거나 활동을 제안하나요?",
+        "q12": "이 사람은 친구의 문제나 고민을 들어주고 조언을 해주나요?",
+        "q13": "이 사람은 친구들과의 약속을 지키고 신뢰할 수 있나요?",
+        "q14": "이 사람은 친구들과 함께 있을 때 재미있고 즐거운 분위기를 만드나요?",
+        "q15": "이 사람은 친구의 성공이나 좋은 일을 진심으로 축하해주나요?",
+        "q16": "이 사람은 친구가 어려울 때 실질적인 도움을 제공하려고 하나요?",
+        "q17": "이 사람은 친구들과의 갈등이 생겼을 때 먼저 화해하려고 노력하나요?",
+        "q18": "이 사람은 친구들의 다양한 의견이나 선택을 존중하나요?",
+        "q19": "이 사람은 친구들과 깊이 있는 대화를 나누는 것을 좋아하나요?",
+        "q20": "이 사람은 오랜 우정을 유지하고 소중히 여기나요?"
+      },
+      "family": {
+        "q11": "이 사람은 가족 내에서 중요한 결정을 내릴 때 적극적으로 참여하나요?",
+        "q12": "이 사람은 가족 구성원들의 감정과 필요를 잘 파악하고 배려하나요?",
+        "q13": "이 사람은 가족 행사나 모임을 계획하고 준비하는 데 참여하나요?",
+        "q14": "이 사람은 가족 간의 갈등이나 문제를 해결하는 데 건설적으로 기여하나요?",
+        "q15": "이 사람은 가족 구성원들과 정기적으로 소통하고 연락을 유지하나요?",
+        "q16": "이 사람은 가족의 전통이나 가치를 존중하고 이어가려고 하나요?",
+        "q17": "이 사람은 가족 구성원이 어려울 때 우선적으로 도움을 제공하나요?",
+        "q18": "이 사람은 가족 내에서 긍정적이고 따뜻한 분위기를 만드는 데 기여하나요?",
+        "q19": "이 사람은 가족 구성원들의 개인적인 성장과 목표를 지지하나요?",
+        "q20": "이 사람은 가족에 대한 책임감을 갖고 헌신적으로 행동하나요?"
+      },
+      "academic": {
+        "q11": "이 사람은 학업 관련 그룹 프로젝트나 스터디에서 주도적 역할을 하나요?",
+        "q12": "이 사람은 학습 목표를 세우고 체계적으로 공부하나요?",
+        "q13": "이 사람은 동료 학생들과 지식이나 정보를 공유하려고 하나요?",
+        "q14": "이 사람은 교수나 선생님으로부터의 피드백을 적극적으로 활용하나요?",
+        "q15": "이 사람은 학업에 관련된 새로운 방법이나 접근법을 시도해보나요?",
+        "q16": "이 사람은 시험이나 발표 등 학업 스트레스를 잘 관리하나요?",
+        "q17": "이 사람은 학업적으로 어려움을 겪는 동료를 도와주려고 하나요?",
+        "q18": "이 사람은 수업이나 세미나에서 적극적으로 질문하고 참여하나요?",
+        "q19": "이 사람은 과제나 시험 준비를 성실하고 꼼꼼하게 하나요?",
+        "q20": "이 사람은 자신의 전공 분야에 대한 깊은 관심과 열정을 보이나요?"
+      },
+      "general": {
+        "q11": "이 사람은 일반적인 사회 상황에서 자신감 있게 행동하나요?",
+        "q12": "이 사람은 문제 상황에서 실용적이고 효과적인 해결책을 찾나요?",
+        "q13": "이 사람은 다른 사람들과 함께 일하거나 활동할 때 팀워크를 발휘하나요?",
+        "q14": "이 사람은 자신의 실수나 부족함을 인정하고 개선하려고 노력하나요?",
+        "q15": "이 사람은 창의적이고 독창적인 아이디어나 관점을 제시하나요?",
+        "q16": "이 사람은 예상치 못한 상황이나 위기에 침착하게 대응하나요?",
+        "q17": "이 사람은 다른 사람이 도움이 필요할 때 기꺼이 시간을 내어 돕나요?",
+        "q18": "이 사람은 자신의 의견을 표현할 때 상대방을 존중하며 소통하나요?",
+        "q19": "이 사람은 자신이 한 약속이나 말에 대해 책임감을 갖고 행동하나요?",
+        "q20": "이 사람은 전반적으로 긍정적이고 희망적인 태도를 유지하나요?"
+      },
+      "scale": {
+        "never": "전혀 그렇지 않다",
+        "rarely": "거의 그렇지 않다", 
+        "sometimes": "때때로 그렇다",
+        "often": "자주 그렇다",
+        "always": "항상 그렇다"
+      }
+    },
+    "couple": {
+      "title": "💕 커플 궁합 테스트",
+      "description": "당신과 파트너의 궁합을 알아보세요! 먼저 테스트를 완료한 후 파트너에게 초대장을 보내세요. 퍼센티지 기반 궁합 점수와 재미있는 결과를 받아보실 수 있습니다.",
+      "waiting_description": "파트너가 테스트를 완료하면 궁합 결과를 확인할 수 있습니다. 15가지 관계 영역을 비교하여 궁합 퍼센티지를 계산해드립니다.",
+      "invitation_sent": "초대장이 전송되었습니다! 파트너가 이메일로 테스트 참여 안내를 받게 됩니다.",
+      "questions": {
+        "q1": "이상적인 금요일 밤은?",
+        "q2": "함께 가고 싶은 꿈의 여행지는?",
+        "q3": "주말을 보내는 좋아하는 방식은?",
+        "q4": "아침형인가요, 저녁형인가요?",
+        "q5": "특별한 날을 어떻게 축하하고 싶나요?",
+        "q6": "연애에서 가장 중요한 것은?",
+        "q7": "갈등을 어떻게 해결하나요?",
+        "q8": "가장 중요한 사랑의 언어는?",
+        "q9": "함께 보내는 시간 vs 혼자만의 시간?",
+        "q10": "파트너에게서 가장 중요하게 생각하는 것은?",
+        "q11": "돈에 대한 철학은?",
+        "q12": "음식 취향은?",
+        "q13": "계획 스타일은?",
+        "q14": "사교 성향은?",
+        "q15": "의사소통 스타일은?"
+      },
+      "options": {
+        "q1_a": "영화 감상 & 휴식",
+        "q1_b": "외출해서 파티",
+        "q1_c": "로맨틱 디너",
+        "q1_d": "게임하기",
+        "q2_a": "바다",
+        "q2_b": "산",
+        "q2_c": "도시 여행",
+        "q2_d": "집에서 휴가",
+        "q3_a": "야외 모험",
+        "q3_b": "박물관/문화 활동",
+        "q3_c": "집에서 휴식",
+        "q3_d": "사교 모임",
+        "q4_a": "아침형 인간",
+        "q4_b": "올빼미족",
+        "q4_c": "유연함",
+        "q5_a": "큰 파티",
+        "q5_b": "소박한 디너",
+        "q5_c": "모험 여행",
+        "q5_d": "집에서 간단히",
+        "q6_a": "신뢰",
+        "q6_b": "재미",
+        "q6_c": "소통",
+        "q6_d": "지지",
+        "q7_a": "즉시 대화",
+        "q7_b": "시간을 두고 진정",
+        "q7_c": "타협점 찾기",
+        "q7_d": "갈등 피하기",
+        "q8_a": "격려의 말",
+        "q8_b": "함께하는 시간",
+        "q8_c": "신체적 접촉",
+        "q8_d": "봉사의 행동",
+        "q8_e": "선물",
+        "q9_a": "많은 시간 함께",
+        "q9_b": "균형잡힌 시간",
+        "q9_c": "독립성 필요",
+        "q9_d": "기분에 따라",
+        "q10_a": "유머감각",
+        "q10_b": "지적 능력",
+        "q10_c": "친절함",
+        "q10_d": "야망",
+        "q11_a": "미래를 위한 저축",
+        "q11_b": "경험에 투자",
+        "q11_c": "균형잡힌 접근",
+        "q11_d": "현재를 즐기기",
+        "q12_a": "집에서 요리",
+        "q12_b": "새로운 맛집 탐방",
+        "q12_c": "편안한 음식",
+        "q12_d": "건강한 식단",
+        "q13_a": "세부 계획",
+        "q13_b": "유연한 계획",
+        "q13_c": "즉흥적",
+        "q13_d": "흐름에 맡기기",
+        "q14_a": "큰 그룹 모임 좋아함",
+        "q14_b": "소수의 친구들",
+        "q14_c": "둘만의 시간",
+        "q14_d": "기분에 따라 다름",
+        "q15_a": "직설적이고 솔직함",
+        "q15_b": "부드럽고 지지적",
+        "q15_c": "장난스럽고 유머러스",
+        "q15_d": "신중하고 배려심 많음"
+      },
+      "results": {
+        "compatibility_areas": {
+          "fun_lifestyle": "재미 & 라이프스타일",
+          "values_trust": "가치관 & 신뢰",
+          "communication": "소통",
+          "lifestyle_habits": "생활 습관",
+          "romance_love": "로맨스 & 사랑"
+        },
+        "share_prompts": {
+          "title": "궁합 결과를 공유하세요!",
+          "description": "여러분의 궁합을 세상에 알려보세요!",
+          "copy_link": "링크 복사",
+          "share_twitter": "트위터 공유",
+          "share_facebook": "페이스북 공유",
+          "share_instagram": "인스타그램 스토리 공유"
+        }
+      }
+    },
+  "couples": {
+    "title": "커플 궁합 ❤️",
+    "subtitle": "각자 테스트를 해보고, 연인과 함께 우리의 궁합과 관계 스타일을 알아보세요! 💕",
+    "shareResults": "결과 공유하기",
+    "shareDesc": "어떤 테스트를 한 후에도 고유한 공유 ID를 받아 파트너와 연결하고 서로의 바이브를 비교하세요!",
+    "shareButton": "파트너와 연결하기",
+    "compatibility": "궁합 분석",
+    "compatibilityDesc": "우리의 관계 스타일과 소통 방식, 잘 맞는 부분과 성장할 부분을 자세히 알아보세요!",
+    "compatibilityButton": "우리 궁합 보기",
+    "growth": "관계 성장",
+    "growthDesc": "둘 다의 성격 유형과 결과를 바탕으로 유대를 강화할 팁과 전략을 발견하세요!",
+    "growthButton": "함께 성장하기"
+  },
+  "whyChoose": {
+    "title": "왜 PersonaTests를 선택해야 할까요? ✨",
+    "scientific": "진짜 과학적",
+    "scientificDesc": "우리의 테스트는 진짜 심리학 연구에 기반하고 있습니다. 단순한 랜덤 질문이 아닙니다. 진지합니다! 🧠",
+    "instant": "즉시 결과",
+    "instantDesc": "성격 분석을 즉시 받아보세요. 기다림도, 지연도 없이, 순수한 즉석 만족! ⚡",
+    "safe": "당신의 비밀은 안전합니다",
+    "safeDesc": "답변을 비공개로 유지합니다. 데이터 판매도, 이상한 이메일도 없습니다. 당신과 결과만! 🔒",
+    "everywhere": "어디서나 작동",
+    "everywhereDesc": "핸드폰, 노트북, 태블릿에서 테스트를 하세요 - 말 그대로 어디서나 성격을 발견할 수 있습니다! 📱",
+    "researchBased": "📚 연구 기반",
+    "validatedMethods": "🎯 검증된 방법",
+    "psychologyDriven": "🧠 심리학 기반",
+    "immediate": "⚡ 즉시",
+    "fastProcessing": "🚀 빠른 처리",
+    "userFriendly": "👆 User-Friendly",
+    "comprehensive": "📋 Comprehensive",
+    "actionable": "💡 Actionable",
+    "growthFocused": "🌱 Growth-Focused",
+    "evidenceBased": "🔬 Evidence-Based",
+    "practical": "🎯 Practical",
+    "insightful": "🔍 Insightful",
+    "realTimeAnalysis": "📊 실시간 분석",
+    "privacyFirst": "🔒 개인정보 우선",
+    "dataProtection": "🛡️ 데이터 보호",
+    "noSpam": "✨ 스팸 없음",
+    "mobileFriendly": "📱 모바일 친화적",
+    "crossPlatform": "💻 크로스 플랫폼",
+    "anyDevice": "🌐 모든 기기"
+  },
+  "whyMatters": {
+    "title": "성격 테스트가 중요한 이유",
+    "selfAwareness": "자기 이해",
+    "selfAwarenessDesc": "내 성향과 강점, 성장할 부분을 알고 더 나은 인생 선택을 해보세요.",
+    "careerDevelopment": "진로 개발",
+    "careerDevelopmentDesc": "내 성격에 맞는 직업을 찾아 직업 만족도와 성공률을 높여보세요.",
+    "betterRelationships": "더 좋은 관계",
+    "betterRelationshipsDesc": "개인적이든 업무적이든 더 나은 소통과 이해로 관계를 개선해보세요."
+  },
+  "blog": {
+    "title": "심리학 인사이트 & 팁 📚",
+    "subtitle": "성격 심리학, 자기계발, 관계에 대한 통찰력을 배워보세요",
+    "coming_soon": "더 많은 심리학 기사와 인사이트가 곧 공개됩니다! ✨"
+  },
+  "about": {
+    "hero": {
+      "title": "PersonaTests 소개 ✨",
+      "subtitle": "세계에서 가장 매력적인 성격 테스트 플랫폼의 이야기를 발견해보세요"
+    },
+    "mission": {
+      "title": "우리의 사명 🎯",
+      "paragraph1": "PersonaTests에서는 자신의 성격을 이해하는 것이 잠재력을 발휘하는 열쇠라고 믿습니다. 우리의 사명은 과학적으로 뒷받침된 성격 평가를 전 세계 사람들에게 접근 가능하고 매력적이며 진정으로 도움이 되도록 만드는 것입니다.",
+      "paragraph2": "우리는 복잡한 심리학 연구의 세계를 재미있고 상호작용적인 경험으로 변화시켜 여러분이 누구인지, 어떻게 생각하는지, 무엇이 여러분을 독특하게 만드는지에 대한 진정한 통찰력을 제공합니다."
+    },
+    "different": {
+      "title": "우리의 차별점 🌟",
+      "scientific": {
+        "title": "🔬 과학적 기반",
+        "description": "우리의 테스트는 빅파이브 모델, 마이어스-브릭스 유형 지표 원리, 감정지능 이론을 포함한 검증된 프레임워크를 기반으로 수십 년간의 심리학 연구를 바탕으로 구축되었습니다."
+      },
+      "modern": {
+        "title": "⚡ 현대적 경험",
+        "description": "우리는 매력적인 인터페이스, 즉시 결과, 자기 발견을 재미있게 만드는 소셜 공유 기능으로 디지털 시대의 성격 테스트를 재구상했습니다."
+      },
+      "privacy": {
+        "title": "🔒 프라이버시 우선",
+        "description": "여러분의 성격 데이터는 여러분의 것입니다. 우리는 절대 여러분의 정보를 판매하지 않으며, 테스트는 익명으로 진행할 수 있고 결과는 여러분의 재량에 따라서만 공유됩니다."
+      },
+      "global": {
+        "title": "🌍 글로벌 접근성",
+        "description": "문화적 적응과 함께 9개 이상의 언어로 제공되며, 우리의 테스트는 모든 장치에서 작동하고 모든 사람이 포용적이고 접근 가능하도록 설계되었습니다."
+      }
+    },
+    "tests": {
+      "title": "우리의 테스트 컬렉션 📚",
+      "description": "우리는 여러분의 심리적 프로필의 다양한 측면을 보여주도록 설계된 포괄적인 성격 평가 제품군을 제공합니다:",
+      "types": {
+        "title": "16가지 성격 유형",
+        "description": "칼 융의 심리 유형과 마이어스-브릭스 프레임워크를 기반으로 함"
+      },
+      "bigfive": {
+        "title": "빅파이브 성격",
+        "description": "수십 년의 연구 검증을 거친 성격 심리학의 황금 표준"
+      },
+      "emotional": {
+        "title": "감정 지능",
+        "description": "감정을 효과적으로 이해하고 관리하는 능력 측정"
+      },
+      "specialized": {
+        "title": "전문 평가",
+        "description": "DISC, 갈등 스타일, 강점 평가, 관계 호환성"
+      }
+    },
+    "quality": {
+      "title": "품질 및 정확성 🎯",
+      "commitment": "과학적 엄격함에 대한 우리의 약속",
+      "frameworks": "검증된 프레임워크: 모든 테스트는 동료 검토를 거친 심리학 연구와 확립된 성격 모델을 기반으로 합니다",
+      "improvement": "지속적인 개선: 성격 심리학의 최신 발견을 바탕으로 평가를 정기적으로 업데이트합니다",
+      "reliability": "통계적 신뢰성: 우리의 테스트는 일관되고 의미 있는 결과를 보장하기 위해 엄격한 통계 분석을 거칩니다",
+      "cultural": "문화적 적응: 질문과 해석이 다양한 문화적 맥락과 언어에 맞게 조정됩니다",
+      "ethical": "윤리적 기준: APA 심리학 테스트 지침을 따르고 엄격한 윤리적 기준을 유지합니다"
+    },
+    "values": {
+      "title": "우리의 가치 💎",
+      "scientific": {
+        "title": "과학적 무결성",
+        "description": "연구에 뒷받침된 증거 기반 접근법"
+      },
+      "experience": {
+        "title": "사용자 경험",
+        "description": "심리학을 접근 가능하고 매력적으로 만들기"
+      },
+      "privacy": {
+        "title": "프라이버시 보호",
+        "description": "여러분의 데이터 보안이 최우선입니다"
+      },
+      "inclusion": {
+        "title": "글로벌 포용",
+        "description": "문화와 언어를 넘나드는 접근성"
+      }
+    },
+    "community": {
+      "title": "우리 커뮤니티에 참여하세요 🤝",
+      "question": "여러분의 성격을 발견할 준비가 되셨나요?",
+      "description": "이미 PersonaTests로 독특한 성격 통찰력을 발견한 수백만 명의 사람들과 함께하세요."
+    },
+    "footer": {
+      "copyright": "© 2025 PersonaTests. 모든 권리 보유. 진정한 성격 발견을 위해 ✨로 제작되었습니다."
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact Us - PersonaTests",
+    "hero": {
+      "title": "Contact Us 💬",
+      "subtitle": "We'd love to hear from you! Get support, share feedback, or ask questions."
+    },
+    "form": {
+      "title": "📝 Send Us a Message",
+      "name": "Name *",
+      "email": "Email *",
+      "subject": "Subject *",
+      "message": "Message *",
+      "selectTopic": "Select a topic...",
+      "messagePlaceholder": "Please describe your question or issue in detail...",
+      "sendButton": "Send Message 📤"
+    },
+    "responseTime": "💚 We typically respond within 24-48 hours. For urgent issues, please check our FAQ page first!",
+    "quickSupport": {
+      "title": "Quick Support",
+      "description": "Check our FAQ page for immediate answers to common questions",
+      "link": "Visit FAQ Page →"
+    },
+    "company": {
+      "title": "PersonaTests",
+      "subtitle": "Digital Personality Assessment Platform",
+      "purpose": "Created for entertainment and self-discovery",
+      "operating": "Operating since 2025"
+    },
+    "responseTimes": {
+      "title": "📅 Response Times",
+      "general": "General Support",
+      "generalTime": "24-48 hours",
+      "privacy": "Privacy Requests",
+      "privacyTime": "48-72 hours",
+      "business": "Business Inquiries",
+      "businessTime": "3-5 business days"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions 🤔",
+      "delete": {
+        "question": "How do I delete my account and data?",
+        "answer": "Email privacy@personatests.com with your account email address. We'll delete all your data within 30 days as required by GDPR and CCPA."
+      },
+      "accurate": {
+        "question": "Are your personality tests accurate?",
+        "answer": "Our tests are based on established psychological frameworks but are for entertainment and self-reflection only. They're not professional psychological assessments."
+      },
+      "employment": {
+        "question": "Can I use test results for employment decisions?",
+        "answer": "No. Our tests are for entertainment only and should never be used for medical, employment, or legal decisions. Only licensed professionals can provide such assessments."
+      },
+      "premium": {
+        "question": "How do premium reports work?",
+        "answer": "Premium reports ($2.99) provide detailed insights and are delivered via email within 24 hours. All payments are securely processed through Stripe."
+      }
+    },
+    "backToTests": "Back to Tests"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy - PersonaTests",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated:",
+    "infoCollected": {
+      "title": "Information We Collect",
+      "description": "When you use PersonaTests, we collect:",
+      "responses": "Your responses to personality tests",
+      "results": "Test results and personality type information",
+      "email": "Email address if you create an account",
+      "usage": "Usage data to improve our services"
+    },
+    "howWeUse": {
+      "title": "How We Use Your Information",
+      "description": "We use your information to:",
+      "personalized": "Provide personalized test results",
+      "saveHistory": "Save your test history (if you create an account)",
+      "improve": "Improve our personality tests and user experience",
+      "sendUpdates": "Send you test results and updates (with your consent)"
+    },
+    "thirdParty": {
+      "title": "Third-Party Services & Advertising",
+      "googleAdSense": {
+        "title": "Google AdSense",
+        "description": "We use Google AdSense to display advertisements on our website. Google and its partners use cookies and other technologies to:",
+        "serveAds": "Serve ads based on your visits to this site and other sites on the Internet",
+        "measure": "Measure ad effectiveness and provide reporting",
+        "interestBased": "Provide interest-based advertising across the web",
+        "preventFraud": "Prevent fraudulent activity and improve ad quality",
+        "yourChoicesTitle": "Your Choices:",
+        "optOutGoogle": "You can opt out of personalized advertising by visiting <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" style=\"color: #4f46e5;\">Google's Ad Settings</a>",
+        "optOutDAA": "You can also opt out via the <a href=\"https://optout.aboutads.info/\" target=\"_blank\" style=\"color: #4f46e5;\">Digital Advertising Alliance</a>",
+        "optOutEU": "European users can visit <a href=\"https://www.youronlinechoices.eu/\" target=\"_blank\" style=\"color: #4f46e5;\">Your Online Choices</a>",
+        "moreInfo": "For more information about Google's privacy practices, please visit <a href=\"https://policies.google.com/privacy\" target=\"_blank\" style=\"color: #4f46e5;\">Google's Privacy Policy</a>."
+      },
+      "otherServices": {
+        "title": "Other Third-Party Services",
+        "description": "We also use the following third-party services:",
+        "analytics": "Google Analytics: 웹사이트 분석 및 사용자 행동 인사이트를 위해",
+        "stripe": "Stripe: 프리미엄 리포트의 안전한 결제 처리를 위해",
+        "firebase": "Firebase: 사용자 인증과 안전한 데이터 저장을 위해",
+        "emailjs": "EmailJS: 이메일을 통한 프리미엄 리포트 전달을 위해"
+      }
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "description": "We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, no internet transmission is completely secure."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "description": "You have the right to:",
+      "access": "Access your personal data",
+      "correct": "Correct inaccurate data",
+      "delete": "Delete your account and data",
+      "object": "Object to data processing"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "이 개인정보 보호정책에 대해 질문이 있으시면 privacy@personatests.com으로 연락해 주세요"
+    },
+    "backToTests": "Back to Tests"
+  },
+  "terms": {
+    "pageTitle": "Terms of Service - PersonaTests",
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated:",
+    "acceptance": {
+      "title": "Acceptance of Terms",
+      "description": "By using PersonaTests, you agree to these Terms of Service. If you don't agree, please don't use our service."
+    },
+    "description": {
+      "title": "Description of Service",
+      "description": "PersonaTests provides personality tests and assessments for entertainment and self-discovery purposes. Our tests are not professional psychological evaluations."
+    },
+    "responsibilities": {
+      "title": "User Responsibilities",
+      "intro": "You agree to:",
+      "accurate": "Provide accurate information when taking tests",
+      "lawful": "Use our service for lawful purposes only",
+      "respect": "Respect the intellectual property rights of PersonaTests",
+      "noReverse": "Not attempt to reverse engineer or copy our tests"
+    },
+    "disclaimer": {
+      "title": "Important Medical & Legal Disclaimer",
+      "warning": "⚠️ Entertainment Only - Not Medical or Professional Services",
+      "intro": "ALL TESTS ARE FOR ENTERTAINMENT AND SELF-REFLECTION PURPOSES ONLY. Our assessments are NOT:",
+      "notMedical": "Medical diagnoses or screenings",
+      "notProfessional": "Professional psychological evaluations",
+      "notSubstitute": "Substitute for licensed mental health care",
+      "notEmployment": "Appropriate for employment or legal decisions",
+      "notValidated": "Clinically validated diagnostic instruments",
+      "mentalHealth": "Mental Health Disclaimer: Tests related to mental health topics (anxiety, depression, ADHD-like symptoms) are purely for fun and cannot diagnose any condition. Only licensed healthcare professionals can provide mental health diagnoses.",
+      "iq": "IQ Disclaimer: Our \"Brain Teaser Challenge\" is not a real IQ test. Authentic IQ testing requires professional administration by qualified psychologists using standardized instruments.",
+      "help": "If you need professional help, please contact: Licensed therapists or your healthcare provider.",
+      "acknowledgment": "By using this website, you acknowledge that you understand these tests are for entertainment only and will not use results for medical, professional, or legal purposes."
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "description": "All content on PersonaTests, including tests, questions, and results, is owned by PersonaTests and protected by copyright laws."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "description": "PersonaTests is provided \"as is\" without warranties. We are not liable for any damages resulting from your use of our service."
+    },
+    "changes": {
+      "title": "Changes to Terms",
+      "description": "We may update these terms at any time. Continued use of our service constitutes acceptance of updated terms."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Questions about these terms? Contact us at: support@personatests.com"
+    },
+    "backToTests": "Back to Tests"
+  },
+  "360assessment": {
+    "badge": "🔍 MULTI-PERSPECTIVE REVIEW",
+    "heroTitle": "360 Perception About Me 🎯",
+    "heroSubtitle": "Discover how others perceive you from multiple angles. Get honest insights from people who know you in different contexts - friends, colleagues, family - to understand your impact and areas for growth.",
+    "steps": {
+      "setup": "Setup",
+      "share": "Share",
+      "results": "Results"
+    },
+    "tabs": {
+      "personal": "👤 Personal Info",
+      "areas": "📊 Feedback Areas",
+      "reviewers": "👥 Reviewers",
+      "preview": "👀 Preview"
+    },
+    "personalInfo": {
+      "title": "Let's start with the basics about you! 😊",
+      "fullName": "Full Name *",
+      "namePlaceholder": "Your full name",
+      "email": "Email Address *",
+      "emailPlaceholder": "your@email.com",
+      "jobTitle": "Job Title",
+      "jobPlaceholder": "Your current role",
+      "company": "Organization",
+      "companyPlaceholder": "Company or organization",
+      "whyFeedback": "Why do you want feedback? (Optional)",
+      "purposePlaceholder": "Just curious about myself, want to improve at work, working on personal growth, etc."
+    },
+    "feedbackAreas": {
+      "whatFeedbackTitle": "What do you want feedback about? Pick your favorites! ✨",
+      "areas": {
+        "leadership": {
+          "title": "How I Lead & Take Charge",
+          "desc": "Do I inspire people? Am I good at making decisions? Do I motivate others?"
+        },
+        "communication": {
+          "title": "How I Talk & Listen",
+          "desc": "Am I a good listener? Do I explain things clearly? How's my texting game?"
+        },
+        "teamwork": {
+          "title": "How I Work With Others",
+          "desc": "Am I easy to work with? Do I help teammates? How do I handle drama?"
+        },
+        "emotional-intelligence": {
+          "title": "My Emotional Side",
+          "desc": "Do I read people well? Am I aware of my feelings? How empathetic am I?"
+        },
+        "problem-solving": {
+          "title": "How I Handle Problems",
+          "desc": "Am I creative with solutions? Do I think things through? Can I figure stuff out?"
+        },
+        "adaptability": {
+          "title": "How I Handle Change",
+          "desc": "Do I roll with the punches? Am I flexible? How do I deal when things get crazy?"
+        },
+        "interpersonal": {
+          "title": "How I Connect With People",
+          "desc": "Do people trust me? Am I good at making friends? Do I build solid relationships?"
+        },
+        "work-style": {
+          "title": "How I Get Things Done",
+          "desc": "Am I organized? Do I meet deadlines? Can people count on me to deliver?"
+        }
+      }
+    },
+    "reviewers": {
+      "whoKnowsYou": "Who knows you well enough to give honest feedback? 😊",
+      "relationshipLabels": {
+        "Manager/Supervisor": "Manager/Supervisor",
+        "Colleagues/Peers": "Colleagues/Peers",
+        "Direct Reports": "Direct Reports",
+        "Clients/Customers": "Clients/Customers",
+        "Friends": "Friends",
+        "Family": "Family",
+        "Teacher": "Teacher",
+        "Student": "Student"
+      },
+      "peopleCount": {
+        "1-2 people": "1-2 people",
+        "3-5 people": "3-5 people",
+        "2-4 people": "2-4 people",
+        "1-3 people": "1-3 people",
+        "2-5 people": "2-5 people"
+      }
+    },
+    "preview": {
+      "lookingGood": "Looking good! Let's make sure everything's right 🔍",
+      "assessmentSubject": "Assessment Subject",
+      "feedbackAreas": "Feedback Areas",
+      "reviewerTypes": "Reviewer Types",
+      "notSet": "Not set",
+      "noneSelected": "None selected"
+    },
+    "startButton": "Start My Assessment"
+  },
+  "footer": {
+    "description": "당신을 이해하는 과학적으로 백업된 테스트로 성격을 발견하세요.",
+    "popularTests": "인기 테스트",
+    "sixteenTypes": "16가지 성격 유형",
+    "bigFive": "빅파이브 테스트",
+    "brainTeaser": "두뇌 도전",
+    "moreInfo": "추가 정보",
+    "aboutUs": "소개",
+    "blog": "블로그",
+    "privacyPolicy": "개인정보 보호정책",
+    "termsOfService": "서비스 약관"
+  },
+  "test": {
+    "completed_title": "테스트 완료!",
+    "completed_message": "결과가 성공적으로 저장되었습니다.",
+    "view_results": "내 결과 보기",
+    "take_another": "다른 테스트 하기",
+    "invite_feedback_title": "다른 사람들에게 피드백 요청하기",
+    "invite_feedback_description": "친구와 동료들에게 당신에 대한 피드백을 요청하여 완전한 그림을 얻어보세요.",
+    "invite_partner_title": "파트너 초대하기",
+    "invite_partner_description": "파트너에게 초대장을 보내서 궁합 테스트의 파트너 부분을 완료하도록 하세요. 파트너가 완료하면 두 분 모두 결과를 받게 됩니다.",
+    "your_name_for_partner": "당신의 이름 (파트너가 누가 초대했는지 알 수 있도록)",
+    "partner_email": "파트너의 이메일 주소",
+    "partner_email_placeholder": "파트너의 이메일 주소를 입력하세요",
+    "partner_name": "파트너의 이름",
+    "partner_name_placeholder": "파트너의 이름을 입력하세요 (예: Sarah, Mike)",
+    "send_partner_invitation": "💕 파트너 초대장 보내기",
+    "sending_invitation": "초대장 보내는 중..."
+  },
+  "invitation": {
+    "selector": {
+      "title": "어떤 방법으로 피드백을 수집하시겠습니까?",
+      "subtitle": "상황과 개인정보 보호 선호도에 가장 적합한 방법을 선택하세요.",
+      "selected": "선택됨:"
+    },
+    "privacy": {
+      "standard": "일반 개인정보 보호",
+      "high": "높은 개인정보 보호",
+      "maximum": "최대 개인정보 보호",
+      "flexible": "유연한 개인정보 보호"
+    },
+    "effort": {
+      "easy": "간단한 설정",
+      "manual": "수동 공유",
+      "veryeasy": "매우 쉬움",
+      "custom": "맞춤 설정"
+    },
+    "change_method": "방법 변경",
+    "email": {
+      "title": "이메일 초대장",
+      "description": "특정 사람들에게 직접 이메일 초대장 보내기",
+      "pro1": "높은 응답률",
+      "pro2": "받은편지함으로 직접 전달",
+      "pro3": "친숙한 과정",
+      "con1": "이메일 주소가 기록됨",
+      "con2": "수신자가 이메일 계정을 가지고 있어야 함"
+    },
+    "codes": {
+      "title": "익명 코드",
+      "description": "문자, 채팅 또는 직접 만나서 수동으로 공유할 코드 생성",
+      "pro1": "완전한 익명성",
+      "pro2": "이메일 추적 없음",
+      "pro3": "유연한 공유 방법",
+      "con1": "낮은 응답률",
+      "con2": "코드를 잃어버릴 수 있음",
+      "generate": {
+        "title": "익명 피드백 코드 생성",
+        "subtitle": "최대 개인정보 보호를 위해 문자, 채팅 또는 직접 만나서 공유할 수 있는 코드 생성",
+        "button": "익명 코드 생성"
+      },
+      "generated": {
+        "title": "당신의 익명 피드백 코드"
+      },
+      "count": {
+        "label": "생성할 코드 수"
+      },
+      "expiry": {
+        "label": "만료 기간 (일)"
+      },
+      "copyall": "모두 복사",
+      "generating": "코드 생성 중...",
+      "sharing": {
+        "title": "이 코드들을 공유하는 방법",
+        "url": "피드백 URL:",
+        "message": "샘플 메시지:",
+        "sample": "안녕하세요! 개인적 성장을 위한 익명 피드백을 수집하고 있습니다. {url}에 가서 코드 [CODE]를 사용해 주세요. 5-10분 정도 걸립니다. 감사합니다!",
+        "tip1": "문자, 카카오톡, 디스코드 또는 직접 만나서 공유",
+        "tip2": "각 코드는 여러 번 사용 가능",
+        "tip3": "코드는 {date}에 만료됨"
+      }
+    },
+    "link": {
+      "title": "공유 가능한 링크",
+      "description": "소셜 미디어나 그룹에서 공유할 하나의 링크 생성",
+      "pro1": "광범위하게 쉽게 공유",
+      "pro2": "소셜 미디어에 적합",
+      "pro3": "개별 추적 없음",
+      "con1": "누가 응답하는지 제어할 수 없음",
+      "con2": "무작위 응답 가능성",
+      "generate": {
+        "title": "공유 가능한 피드백 링크 생성",
+        "subtitle": "소셜 미디어, 그룹 채팅 또는 온라인 어디에서나 공유할 하나의 링크 생성",
+        "button": "공유 가능한 링크 생성"
+      },
+      "generated": {
+        "title": "공유 가능한 피드백 링크가 준비되었습니다!"
+      },
+      "expiry": {
+        "label": "링크 만료 기간"
+      },
+      "limit": {
+        "label": "응답 제한 (선택사항)"
+      },
+      "generating": "링크 생성 중...",
+      "info": {
+        "expires": "만료일: {date}",
+        "limit": "최대 응답 수: {count}",
+        "responses": "현재 응답 수: {count}"
+      },
+      "social": {
+        "title": "소셜 미디어에서 공유"
+      },
+      "qr": {
+        "title": "QR 코드",
+        "description": "스캔하여 피드백 양식에 접근"
+      },
+      "tips": {
+        "title": "공유 팁",
+        "tip1": "소셜 미디어 게시물과 그룹 채팅에 적합",
+        "tip2": "링크를 가진 누구나 피드백 제공 가능",
+        "tip3": "응답은 완전히 익명",
+        "tip4": "다양한 피드백을 위해 여러 곳에 게시하는 것을 고려하세요"
+      }
+    },
+    "mixed": {
+      "title": "여러 방법",
+      "description": "다른 상황에 맞는 다양한 초대 방법 사용",
+      "pro1": "모든 방법의 장점",
+      "pro2": "다른 관계에 맞게 적응",
+      "pro3": "최대 유연성",
+      "con1": "더 복잡한 설정",
+      "con2": "여러 방법을 관리해야 함"
+    }
+  },
+  "results": {
+    "personalityType": "당신의 성격 유형",
+    "keyTraits": "주요 특성",
+    "strengths": "당신의 강점",
+    "growthOpportunities": "성장 기회",
+    "aboutType": "당신의 유형에 대해",
+    "no_results_title": "아직 완료된 테스트가 없습니다",
+    "no_results_message": "성격 테스트를 완료하여 개인화된 결과와 통찰력을 확인해보세요!",
+    "take_first_test": "첫 번째 테스트 하기",
+    "signin_required_title": "로그인이 필요합니다",
+    "signin_required_message": "테스트 결과를 보려면 로그인이 필요합니다.",
+    "go_to_homepage": "홈페이지로 이동",
+    "page_title": "내 테스트 결과",
+    "take_test": "테스트 하기",
+    "back_home": "홈으로 돌아가기",
+    "indicators": {
+      "strongPreference": "강한 선호",
+      "clearTendency": "뚜렷한 경향",
+      "moderateLean": "적당한 기울기",
+      "balanced": "균형적"
+    },
+    "dimensions": {
+      "score": "점수",
+      "total": "총점", 
+      "percentage": "백분율",
+      "level": "수준",
+      "description": "설명",
+      "correctAnswers": "정답",
+      "Leadership & Initiative": "리더십과 주도성",
+      "Communication & Social Skills": "소통과 사회적 기술", 
+      "Teamwork & Collaboration": "팀워크와 협업",
+      "Emotional Intelligence & Empathy": "감정 지능과 공감",
+      "Problem Solving & Creativity": "문제 해결과 창의성",
+      "Adaptability & Flexibility": "적응성과 유연성",
+      "Social & Relationship Skills": "사회적 관계 기술",
+      "Organization & Reliability": "조직력과 신뢰성",
+      "Emotional Stability": "감정 안정성",
+      "Extraversion": "외향성",
+      "Agreeableness": "호감성",
+      "Conscientiousness": "성실성",
+      "Openness": "경험에 대한 개방성",
+      "Communication": "의사소통",
+      "Self-Awareness": "자기 인식",
+      "Social Awareness": "사회적 인식",
+      "Conflict Resolution": "갈등 해결",
+      "Growth Mindset": "성장 마인드셋",
+      "Leadership & Initiative": "리더십과 주도성",
+      "Collaboration & Support": "협업과 지원",
+      "Innovation & Adaptability": "혁신과 적응성",
+      "Communication & Helping": "소통과 도움",
+      "Reliability & Growth": "신뢰성과 성장",
+      "compatibility": "호환성 준비도",
+      "personality": "성격 점수",
+      "1": "유형 1 - 완벽주의자",
+      "2": "유형 2 - 조력자",
+      "3": "유형 3 - 성취자",
+      "4": "유형 4 - 개성적인 사람",
+      "5": "유형 5 - 탐구자",
+      "6": "유형 6 - 충실한 사람",
+      "7": "유형 7 - 열정적인 사람",
+      "8": "유형 8 - 도전자",
+      "9": "유형 9 - 조정자",
+      "mentalAge": "정신적 나이",
+      "category": "인생 단계",
+      "Young Spirit": "젊은 영혼",
+      "Balanced Soul": "균형잡힌 영혼",
+      "Wise Heart": "지혜로운 마음",
+      "E": "외향성",
+      "I": "내향성",
+      "S": "감각",
+      "N": "직관",
+      "T": "사고",
+      "F": "감정",
+      "J": "판단",
+      "P": "인식",
+      "country": "국가 매칭",
+      "🇯🇵 Japan": "일본",
+      "🇮🇹 Italy": "이탈리아",
+      "🇲🇽 Mexico": "멕시코",
+      "🇫🇷 France": "프랑스",
+      "🇳🇴 Norway": "노르웨이",
+      "🇧🇷 Brazil": "브라질",
+      "🇪🇸 Spain": "스페인",
+      "🇦🇺 Australia": "호주",
+      "🇰🇷 South Korea": "한국",
+      "countryData": "국가 정보",
+      "allScores": "모든 점수",
+      "animal": "정신적 동물",
+      "animalData": "동물 정보",
+      "mentalAge": "정신 연령",
+      "description": "설명",
+      "category": "인생 단계",
+      "emoji": "기호",
+      "ageRange": "연령 범위"
+    },
+    "strengthPrefix": "뛰어난",
+    "developmentPrefix": "발전시켜야 할"
+  },
+  "emailSignup": {
+    "title": "당신의 360도 피드백 프로필에 대한 더 많은 통찰력을 원하시나요?",
+    "description": "개인화된 팁, 자세한 분석, 독점적인 성격 통찰력을 이메일로 받아보세요.",
+    "buttonText": "무료 성격 통찰력 받기",
+    "freeText": "100% 무료",
+    "unsubscribeText": "언제든지 구독 취소",
+    "noSpamText": "스팸 없음"
+  },
+  "feedbackInvite": {
+    "nameQuestion": "친구들이 피드백을 줄 때 어떤 이름을 사용해야 하나요?",
+    "exampleText": "질문 예시:",
+    "exampleQuestion": "이 사람은 자신의 아이디어나 관점을 다른 사람들에게 효과적으로 전달하나요?",
+    "exampleQuestionFallback": "이 사람은 다른 사람들과 함께 일하거나 활동할 때 팀워크를 발휘하나요?",
+    "namePlaceholder": "이름 입력 (예: 철수, 영희)",
+    "emailPlaceholder": "이메일 주소 입력",
+    "addAnother": "다른 사람 추가",
+    "sendInvitations": "초대장 보내기",
+    "sending": "보내는 중..."
+  },
+  "results": {
+    "personalityType": "당신의 성격 유형",
+    "keyTraits": "주요 특성",
+    "aboutType": "성격 유형 정보",
+    "indicators": {
+      "strongPreference": "강한 선호",
+      "clearTendency": "명확한 경향", 
+      "moderateLean": "중간 정도",
+      "balanced": "균형적"
+    },
+    "bigfive": {
+      "profile": "빅파이브 프로필",
+      "traits": {
+        "extraversion": "외향성",
+        "agreeableness": "호감성", 
+        "conscientiousness": "성실성",
+        "neuroticism": "감정 안정성",
+        "openness": "경험에 대한 개방성"
+      },
+      "description": "빅파이브 성격 평가는 성격의 다섯 가지 주요 차원에서 당신의 핵심 특성을 드러냅니다. 이러한 과학적으로 검증된 특성들은 당신의 행동 패턴, 선호도, 자연스러운 성향을 설명하는 데 도움이 됩니다."
+    }
+  },
+  "tests": {
+    "bigfive": {
+      "title": "빅파이브 성격 평가",
+      "questions": {
+        "e1": "나는 파티의 중심인물이다",
+        "e2": "나는 사람들과 함께 있으면 편안하다",
+        "e3": "나는 뒤에서 조용히 있는 편이다",
+        "e4": "나는 먼저 대화를 시작한다",
+        "e5": "나는 파티에서 여러 사람들과 대화한다",
+        
+        "a1": "나는 다른 사람의 감정을 잘 느낀다",
+        "a2": "나는 다른 사람의 문제에 관심이 없다",
+        "a3": "나는 마음이 부드럽다",
+        "a4": "나는 다른 사람을 위해 시간을 낸다",
+        "a5": "나는 다른 사람에게 별로 관심이 없다",
+        
+        "c1": "나는 항상 준비를 잘 한다",
+        "c2": "나는 물건을 아무데나 둔다",
+        "c3": "나는 세부사항에 주의를 기울인다",
+        "c4": "나는 일을 엉망으로 만든다",
+        "c5": "나는 해야 할 일을 즉시 처리한다",
+        
+        "n1": "나는 쉽게 스트레스를 받는다",
+        "n2": "나는 대부분의 시간 편안하다",
+        "n3": "나는 일들을 걱정한다",
+        "n4": "나는 거의 우울하지 않다",
+        "n5": "나는 쉽게 동요한다",
+        
+        "o1": "나는 어휘력이 풍부하다",
+        "o2": "나는 추상적인 아이디어를 이해하기 어렵다",
+        "o3": "나는 상상력이 풍부하다",
+        "o4": "나는 많은 것들에 관심이 있다",
+        "o5": "나는 상상력이 좋지 않다"
+      },
+      "scale": {
+        "strongly_disagree": "전혀 그렇지 않다",
+        "disagree": "그렇지 않다",
+        "neutral": "보통이다",
+        "agree": "그렇다",
+        "strongly_agree": "매우 그렇다"
+      },
+      "results": {
+        "description": "빅파이브 성격 평가는 성격의 다섯 가지 주요 차원에서 당신의 핵심 특성을 드러냅니다. 이러한 과학적으로 검증된 특성들은 당신의 행동 패턴, 선호도, 자연스러운 성향을 설명하는 데 도움이 됩니다."
+      }
+    },
+    "enneagram": {
+      "title": "에니어그램 유형",
+      "description": "포괄적인 평가를 통해 당신의 핵심 동기와 성격 유형을 발견해보세요",
+      "questions": {
+        "q1": "어려운 상황에 직면했을 때, 당신의 첫 번째 본능은:",
+        "q2": "관계에서 당신은 다음과 같은 경향이 있습니다:",
+        "q3": "스트레스를 받을 때, 당신은 다음과 같이 행동할 가능성이 높습니다:",
+        "q4": "당신의 가장 큰 강점은 아마도:",
+        "q5": "당신이 가장 두려워하는 것은:",
+        "q6": "직장이나 그룹에서 당신은 일반적으로:",
+        "q7": "결정을 내릴 때, 당신이 가장 의존하는 것은:",
+        "q8": "사람들은 당신을 다음과 같이 묘사할 것입니다:",
+        "q9": "당신의 이상적인 환경은:",
+        "q10": "갈등이 일어날 때, 당신은 다음과 같은 경향이 있습니다:",
+        "q11": "당신이 가장 동기를 받는 것은:",
+        "q12": "사회적 상황에서 당신은:",
+        "q13": "변화에 대한 당신의 접근 방식은:",
+        "q14": "비판을 다루는 방식은:",
+        "q15": "당신의 리더십 스타일은:",
+        "q16": "다른 사람을 도울 때, 당신은 다음을 선호합니다:",
+        "q17": "규칙과 구조에 대한 당신의 관계는:",
+        "q18": "당신의 일상 행동을 이끄는 것은:"
+      },
+      "options": {
+        "q1_a": "옳은 일을 하고 기준을 유지하는 데 집중한다",
+        "q1_b": "모든 사람이 괜찮은지 확인하고 지원을 제공한다",
+        "q1_c": "주도권을 잡고 가장 효율적인 해결책을 찾는다",
+        "q2_a": "다른 사람의 필요를 자신보다 우선시한다",
+        "q2_b": "조화를 추구하고 갈등을 피한다",
+        "q2_c": "안전하기 위해 어느 정도 감정적 거리를 유지한다",
+        "q3_a": "새로운 경험을 찾고 긍정적으로 유지한다",
+        "q3_b": "더욱 강렬하고 감정적이 된다",
+        "q3_c": "물러나서 혼자 생각할 시간이 필요하다",
+        "q4_a": "진실성과 도덕적 명확성",
+        "q4_b": "배려와 도움",
+        "q4_c": "적응력과 성취",
+        "q5_a": "불완전하거나 실수하는 것",
+        "q5_b": "갇히거나 제한받는 느낌",
+        "q5_c": "침해받거나 압도당하는 것",
+        "q6_a": "리더십을 발휘하고 결과를 이끈다",
+        "q6_b": "팀을 지원하고 관계를 유지한다",
+        "q6_c": "유연하게 유지하고 선택권을 열어둔다",
+        "q7_a": "당신의 원칙과 옳다고 느끼는 것",
+        "q7_b": "당신의 감정과 직감",
+        "q7_c": "당신의 분석과 논리적 사고",
+        "q8_a": "도움이 되고 배려심이 깊다",
+        "q8_b": "강하고 자신감이 있다",
+        "q8_c": "느긋하고 호의적이다",
+        "q9_a": "조직적이고 구조화된",
+        "q9_b": "성취 지향적이고 역동적인",
+        "q9_c": "평화롭고 조화로운",
+        "q10_a": "직접적이고 단호하게 대처한다",
+        "q10_b": "모든 사람의 관점을 이해하려고 노력한다",
+        "q10_c": "가능하면 피하고 평화를 추구한다",
+        "q11_a": "개인적 성장과 이해",
+        "q11_b": "보안과 확실성",
+        "q11_c": "흥미와 새로운 가능성",
+        "q12_a": "새로운 사람들을 만나고 경험을 나누는 것을 즐긴다",
+        "q12_b": "익숙한 환경에서 편안함을 느낀다",
+        "q12_c": "상황이 요구하는 대로 적응한다",
+        "q13_a": "개선의 기회로 받아들인다",
+        "q13_b": "신중하고 분석적으로 접근한다",
+        "q13_c": "흐름에 따라가며 필요에 따라 적응한다",
+        "q14_a": "주의 깊게 듣고 개선하려고 노력한다",
+        "q14_b": "상처받지만 관점을 이해하려고 노력한다",
+        "q14_c": "자신을 방어하거나 물러난다",
+        "q15_a": "모범을 보이고 높은 기준을 유지한다",
+        "q15_b": "개인적 인정과 성취를 창출한다",
+        "q15_c": "합의를 구축하고 모든 사람을 만족시킨다",
+        "q16_a": "그들이 스스로 도울 수 있는 도구를 제공한다",
+        "q16_b": "감정적 지원과 관심을 제공한다",
+        "q16_c": "요청받지 않는 한 방해하지 않는다",
+        "q17_a": "명확한 지침과 구조를 감사히 여긴다",
+        "q17_b": "합리적인 경계 내에서 잘 일한다",
+        "q17_c": "유연성과 최소한의 제약을 선호한다",
+        "q18_a": "보안과 안전의 추구",
+        "q18_b": "재미와 자극에 대한 욕구",
+        "q18_c": "정의와 통제의 필요"
+      },
+      "results": {
+        "type1": "완벽주의자 - 당신은 진실성과 개선을 추구하며, 강한 옳고 그름의 감각을 가지고 있습니다.",
+        "type2": "조력자 - 당신은 배려심이 깊고 관대하며, 다른 사람의 필요를 충족시키는 데 집중합니다.",
+        "type3": "성취자 - 당신은 성공 지향적이고 추진력이 있으며, 적응력이 있고 야심적입니다.",
+        "type4": "개인주의자 - 당신은 창의적이고 내성적이며, 진정성과 의미를 추구합니다.",
+        "type5": "조사자 - 당신은 지각력이 있고 독립적이며, 혁신적이고 비밀스럽습니다.",
+        "type6": "충실한 자 - 당신은 책임감이 있고 헌신적이며, 불안하고 의심스러워합니다.",
+        "type7": "열정가 - 당신은 자발적이고 다재다능하며, 산만하고 무절제합니다.",
+        "type8": "도전자 - 당신은 자신감이 있고 단호하며, 대립적이고 위협적입니다.",
+        "type9": "조정자 - 당신은 수용적이고 안심시키며, 안주하고 체념적입니다."
+      }
+    }
+  },
+  "Emotional Stability": "감정 안정성",
+  "Extraversion": "외향성",
+  "Agreeableness": "호감성", 
+  "Conscientiousness": "성실성",
+  "Openness": "경험에 대한 개방성",
+  "A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.": "리더십, 소통, 팀워크, 감정 지능, 문제 해결, 적응성, 대인관계 기술, 업무 스타일을 다각도로 평가하는 포괄적인 360도 평가입니다.",
+  "admin": {
+    "title": "관리 패널",
+    "questions": {
+      "title": "일반 상식 문제",
+      "description": "일반 상식 테스트 문제 데이터베이스를 관리하세요",
+      "upload_sample": "샘플 문제 업로드",
+      "add_question": "새 문제 추가",
+      "stats": "데이터베이스 통계",
+      "total_questions": "총 문제 수",
+      "active_questions": "활성 문제",
+      "categories": "카테고리",
+      "languages_supported": "지원 언어"
+    },
+    "navigation": {
+      "admin": "관리",
+      "questions": "문제",
+      "management": "관리"
+    },
+    "access": {
+      "required": "관리자 권한 필요",
+      "privileges": "이 페이지에 접근하려면 관리자 권한이 필요합니다."
+    }
+  }
+}
