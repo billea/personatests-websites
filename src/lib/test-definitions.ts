@@ -1860,7 +1860,7 @@ const feedback360Scoring: ScoringFunction = (answers) => {
   return {
     scores: percentageScores,
     type: 'tests.feedback360.title',
-    description_key: 'A comprehensive 360-degree assessment evaluating leadership, communication, teamwork, emotional intelligence, problem-solving, adaptability, interpersonal skills, and work style from multiple perspectives.',
+    description_key: 'tests.feedback360.description',
     traits: strengths,
     strengths: strengths.map(area => `${area}`),
     recommendations: developmentAreas.map(area => `${area}`)
