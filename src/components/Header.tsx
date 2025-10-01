@@ -7,7 +7,7 @@ import { useAuth } from "@/components/providers/auth-provider";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useState, useEffect } from "react";
-import { getEnabledLanguages, LanguageConfig } from "@/lib/firestore";
+import { getEnabledLanguages, LanguageConfig, isUserAdmin } from "@/lib/firestore";
 
 export default function Header() {
     const pathname = usePathname();
@@ -17,6 +17,7 @@ export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
     const [enabledLanguages, setEnabledLanguages] = useState<LanguageConfig[]>([]);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     // Extract locale from pathname
     const locale = pathname.split('/')[1] || 'en';
@@ -44,6 +45,25 @@ export default function Header() {
 
         loadEnabledLanguages();
     }, []);
+
+    // Check admin role
+    useEffect(() => {
+        const checkAdminRole = async () => {
+            if (user && !authLoading) {
+                try {
+                    const adminStatus = await isUserAdmin(user.uid);
+                    setIsAdmin(adminStatus);
+                } catch (error) {
+                    console.error('Error checking admin role:', error);
+                    setIsAdmin(false);
+                }
+            } else {
+                setIsAdmin(false);
+            }
+        };
+
+        checkAdminRole();
+    }, [user, authLoading]);
 
     const handleSignOut = async () => {
         try {
@@ -144,7 +164,7 @@ export default function Header() {
                             </Link>
                         )}
 
-                        {user && (
+                        {user && isAdmin && (
                             <Link
                                 href={`/${locale}/admin`}
                                 className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg border-2 border-orange-200 ${
@@ -318,7 +338,7 @@ export default function Header() {
                                 </Link>
                             )}
 
-                            {user && (
+                            {user && isAdmin && (
                                 <Link
                                     href={`/${locale}/admin`}
                                     onClick={() => setIsMobileMenuOpen(false)}

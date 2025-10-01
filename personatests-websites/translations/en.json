@@ -1148,9 +1148,9 @@
     "personalityType": "Your Personality Type",
     "keyTraits": "Your Key Traits",
     "strengths": "Your Strengths",
-    "strengthPrefix": "✓",
+    "strengthPrefix": "Strong in",
     "growthOpportunities": "Growth Opportunities",
-    "developmentPrefix": "💡",
+    "developmentPrefix": "Opportunity to develop",
     "aboutType": "About Your Type",
     "feedback360Profile": "360° Feedback Profile",
     "indicators": {

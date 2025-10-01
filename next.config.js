@@ -19,8 +19,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // Use timestamp to avoid caching issues - force cache bust for infinite loop fix
-    return `build-infinite-loop-fix-${Date.now()}`
+    // Use timestamp to avoid caching issues - FORCE TRANSLATION REFRESH
+    return `translation-fix-force-refresh-${Date.now()}`
   },
   
   // Reduce build cache issues

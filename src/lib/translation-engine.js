@@ -1,5 +1,5 @@
 // Enhanced translation engine with cache-busting and debugging
-// Updated: 2025-09-13 for translation fix deployment
+// Updated: 2025-10-01 for translation debugging - cache bust v4 FORCE REFRESH
 export class TranslationEngine {
     constructor() {
         this.translations = {};
@@ -51,15 +51,7 @@ export class TranslationEngine {
             const data = await response.json();
             this.translations[lang] = data;
             console.log(`Successfully loaded ${lang} with ${Object.keys(data).length} top-level keys`);
-            
-            // Debug results structure specifically
-            if (data.results) {
-                console.log(`🔍 Results structure for ${lang}:`, {
-                    topLevelKeys: Object.keys(data.results),
-                    hasDimensions: !!data.results.dimensions,
-                    dimensionsKeys: data.results.dimensions ? Object.keys(data.results.dimensions) : 'MISSING'
-                });
-            }
+
         } catch (error) {
             console.error(`Error loading language ${lang}:`, error);
             // If a language fails to load, we'll fall back to English, which is already loaded.
@@ -75,11 +67,17 @@ export class TranslationEngine {
 
     // The core translation function.
     t(key) {
+        // Cache-bust debug marker
+        if (key === 'results.strengths') {
+            console.log('🚀 NEW TRANSLATION ENGINE LOADED - v4-FORCE-REFRESH-2025-10-01');
+        }
+
         // Ensure translations are loaded
         if (!this.translations[this.currentLanguage] && !this.translations['en']) {
             console.warn(`Translation files not loaded yet for key: ${key}`);
             return key;
         }
+
 
         // Get the value from the current language's dictionary.
         let value = key.split('.').reduce((obj, k) => obj?.[k], this.translations[this.currentLanguage]);
@@ -98,6 +96,9 @@ export class TranslationEngine {
                     currentLangKeys: this.translations[this.currentLanguage] ? Object.keys(this.translations[this.currentLanguage]) : 'none',
                     englishKeys: this.translations['en'] ? Object.keys(this.translations['en']) : 'none'
                 });
+                console.log('🔍 FULL RESULTS OBJECT:', this.translations['en']?.results);
+                console.log('🔍 STRENGTHS KEY:', this.translations['en']?.results?.strengths);
+                console.log('🔍 STRENGTH PREFIX KEY:', this.translations['en']?.results?.strengthPrefix);
 
                 if (key.includes('results.dimensions')) {
                     console.log(`🔍 DEBUG results structure:`, {

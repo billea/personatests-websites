@@ -2931,10 +2931,10 @@ export const deleteContactMessage = async (messageId: string): Promise<void> => 
  */
 export const getContactMessagesByStatus = async (status: ContactMessage['status']): Promise<ContactMessage[]> => {
   try {
+    // Simple query without composite index requirement
     const q = query(
       collection(firestore, 'contactMessages'),
-      where('status', '==', status),
-      orderBy('createdAt', 'desc')
+      where('status', '==', status)
     );
 
     const querySnapshot = await getDocs(q);
@@ -2947,7 +2947,12 @@ export const getContactMessagesByStatus = async (status: ContactMessage['status'
       } as ContactMessage);
     });
 
-    return messages;
+    // Sort in memory to avoid index requirements
+    return messages.sort((a, b) => {
+      const aTime = a.createdAt?.toMillis() || 0;
+      const bTime = b.createdAt?.toMillis() || 0;
+      return bTime - aTime; // Descending order (newest first)
+    });
   } catch (error) {
     console.error('❌ Error fetching contact messages by status:', error);
     throw error;
@@ -3046,13 +3051,8 @@ export const getUserProfile = async (userId: string): Promise<UserProfile | null
  */
 export const getLanguageConfigs = async (): Promise<LanguageConfig[]> => {
   try {
-    const q = query(
-      collection(firestore, 'languageConfigs'),
-      orderBy('isDefault', 'desc'),
-      orderBy('name', 'asc')
-    );
-
-    const querySnapshot = await getDocs(q);
+    // Simple query without composite index requirement
+    const querySnapshot = await getDocs(collection(firestore, 'languageConfigs'));
     const configs: LanguageConfig[] = [];
 
     querySnapshot.forEach((doc) => {
@@ -3062,7 +3062,14 @@ export const getLanguageConfigs = async (): Promise<LanguageConfig[]> => {
       } as LanguageConfig);
     });
 
-    return configs;
+    // Sort in memory to avoid index requirements
+    return configs.sort((a, b) => {
+      // Default language first
+      if (a.isDefault && !b.isDefault) return -1;
+      if (!a.isDefault && b.isDefault) return 1;
+      // Then by name
+      return a.name.localeCompare(b.name);
+    });
   } catch (error) {
     console.error('❌ Error fetching language configs:', error);
     // Return default English config if database fails
@@ -3096,6 +3103,68 @@ export const getEnabledLanguages = async (): Promise<LanguageConfig[]> => {
       completionPercentage: 100,
       lastUpdated: Timestamp.now()
     }];
+  }
+};
+
+/**
+ * Initializes default language configurations
+ */
+export const initializeDefaultLanguages = async (): Promise<void> => {
+  try {
+    const existingConfigs = await getDocs(collection(firestore, 'languageConfigs'));
+
+    // Only initialize if no configs exist
+    if (existingConfigs.empty) {
+      const defaultLanguages = [
+        {
+          code: 'en',
+          name: 'English',
+          flag: '🇺🇸',
+          isEnabled: true,
+          isDefault: true,
+          completionPercentage: 100,
+          lastUpdated: serverTimestamp()
+        },
+        {
+          code: 'ko',
+          name: '한국어',
+          flag: '🇰🇷',
+          isEnabled: false, // Disabled initially as requested
+          isDefault: false,
+          completionPercentage: 95,
+          lastUpdated: serverTimestamp()
+        },
+        {
+          code: 'es',
+          name: 'Español',
+          flag: '🇪🇸',
+          isEnabled: false,
+          isDefault: false,
+          completionPercentage: 80,
+          lastUpdated: serverTimestamp()
+        },
+        {
+          code: 'fr',
+          name: 'Français',
+          flag: '🇫🇷',
+          isEnabled: false,
+          isDefault: false,
+          completionPercentage: 75,
+          lastUpdated: serverTimestamp()
+        }
+      ];
+
+      const batch = writeBatch(firestore);
+      defaultLanguages.forEach((lang) => {
+        const docRef = doc(collection(firestore, 'languageConfigs'));
+        batch.set(docRef, lang);
+      });
+
+      await batch.commit();
+      console.log('✅ Default language configurations initialized');
+    }
+  } catch (error) {
+    console.error('❌ Error initializing default languages:', error);
   }
 };
 

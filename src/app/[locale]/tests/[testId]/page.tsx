@@ -2024,7 +2024,7 @@ export default function TestPage() {
                                 {/* Result description if available */}
                                 {completedTestResult.description_key && (
                                     <p className="text-gray-100 text-lg leading-relaxed max-w-2xl mx-auto text-enhanced">
-                                        {completedTestResult.description_key}
+                                        {t(completedTestResult.description_key) || completedTestResult.description_key}
                                     </p>
                                 )}
                             </div>
@@ -2163,14 +2163,14 @@ export default function TestPage() {
 
                         {completedTestResult && completedTestResult.strengths && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.strengths">
+                                <h3 className="text-xl font-bold mb-4 text-white">
                                     💪 {t('results.strengths') || 'Your Strengths'}
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {completedTestResult.strengths.map((strength: string, index: number) => (
                                         <div key={index} className="flex items-center text-white/90">
-                                            <span className="text-green-400 mr-2">✓</span>
-                                            {t('results.strengthPrefix') || 'Strong in'} {t(`results.dimensions.${strength}`) || strength}
+                                            <span className="text-green-400 mr-2">{t('results.strengthPrefix') || '✓'}</span>
+                                            {t(`results.dimensions.${strength}`) || strength}
                                         </div>
                                     ))}
                                 </div>
@@ -2179,14 +2179,14 @@ export default function TestPage() {
 
                         {completedTestResult && completedTestResult.recommendations && (
                             <div className="mb-8 p-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.growthOpportunities">
+                                <h3 className="text-xl font-bold mb-4 text-white">
                                     🎯 {t('results.growthOpportunities') || 'Growth Opportunities'}
                                 </h3>
                                 <div className="space-y-3">
                                     {completedTestResult.recommendations.map((rec: string, index: number) => (
                                         <div key={index} className="flex items-start text-white/90">
-                                            <span className="text-blue-400 mr-2 mt-1">💡</span>
-                                            <span>{t('results.developmentPrefix') || 'Focus on developing'} {t(`results.dimensions.${rec}`) || rec}</span>
+                                            <span className="text-blue-400 mr-2 mt-1">{t('results.developmentPrefix') || '💡'}</span>
+                                            <span>{t(`results.dimensions.${rec}`) || rec}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -2196,7 +2196,7 @@ export default function TestPage() {
                         {/* Personality Description */}
                         {completedTestResult && completedTestResult.description_key && (
                             <div className="mb-8 p-6 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-sm border border-white/30 rounded-lg">
-                                <h3 className="text-xl font-bold mb-4 text-white" data-translate="results.aboutType">
+                                <h3 className="text-xl font-bold mb-4 text-white">
                                     🧠 {t('results.aboutType') || 'About Your Type'}
                                 </h3>
                                 <p className="text-white/90 text-lg leading-relaxed">
@@ -2515,6 +2515,21 @@ export default function TestPage() {
     }
 
     const currentQuestion = testDefinition.questions[currentQuestionIndex];
+    if (['spirit-animal', 'mental-age', 'country-match'].includes(testId) && currentQuestion) {
+        console.log(`🔍 ${testId.toUpperCase()} Question Debug:`, {
+            questionIndex: currentQuestionIndex,
+            questionId: currentQuestion.id,
+            hasOptions: !!currentQuestion.options,
+            optionsCount: currentQuestion.options?.length,
+            firstOptionValue: currentQuestion.options?.[0]?.value,
+            lastOptionValue: currentQuestion.options?.[currentQuestion.options?.length - 1]?.value,
+            allOptionValues: currentQuestion.options?.map(o => o.value),
+            allOptionTextKeys: currentQuestion.options?.map(o => o.text_key)
+        });
+
+        // Additional debugging for options consistency
+        console.log(`🔍 ${testId.toUpperCase()} Options Detail:`, currentQuestion.options);
+    }
     
     // For 360-degree test, get the translated text and personalize with user's name
     const getDisplayedQuestionText = () => {
@@ -2839,7 +2854,7 @@ export default function TestPage() {
                                 </div>
 
                                 {currentQuestion.type === 'multiple_choice' && currentQuestion.options && !showMemoryPhase && (
-                        <div className="grid gap-5 md:gap-6">
+                        <div className="grid gap-5 md:gap-6" key={`options-${currentQuestion.id}`}>
                             {currentQuestion.options.map((option, index) => {
                                 const optionEmojis = ['✨', '🌟', '💫', '⭐'];
                                 const gradients = [
@@ -2848,12 +2863,23 @@ export default function TestPage() {
                                     'from-blue-400 to-indigo-500',
                                     'from-emerald-400 to-teal-500'
                                 ];
+
+                                // Debug logging for options rendering
+                                if (['spirit-animal', 'mental-age', 'country-match'].includes(testId)) {
+                                    console.log(`🔍 ${testId.toUpperCase()} Rendering Option ${index}:`, {
+                                        value: option.value,
+                                        text_key: option.text_key,
+                                        questionId: currentQuestion.id
+                                    });
+                                }
+
                                 return (
                                     <button
-                                        key={index}
+                                        key={`${currentQuestion.id}-${option.value}-${index}`}
                                         onClick={() => handleAnswer(option.value)}
                                         className="group relative w-full p-7 md:p-8 text-left bg-black/20 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-black/30 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl text-white overflow-hidden"
                                         data-translate={option.text_key}
+                                        data-option-id={`${currentQuestion.id}-${option.value}`}
                                     >
                                         {/* Hover background effect */}
                                         <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${gradients[index % gradients.length]}`}></div>
