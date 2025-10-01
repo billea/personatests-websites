@@ -1363,6 +1363,16 @@
     "growthOpportunities": "Growth Opportunities",
     "developmentPrefix": "Opportunity to develop",
     "feedback360Profile": "360° Feedback Profile",
+    "dimensions": {
+      "Leadership": "Leadership",
+      "Organization": "Organization",
+      "Efficiency": "Efficiency",
+      "Responsibility": "Responsibility",
+      "Listen to different perspectives": "Listen to different perspectives",
+      "Show flexibility": "Show flexibility",
+      "Appreciate others' contributions": "Appreciate others' contributions",
+      "Consider emotional aspects": "Consider emotional aspects"
+    },
     "indicators": {
       "strongPreference": "Strong preference",
       "clearTendency": "Clear tendency",
