@@ -1,0 +1,5840 @@
+[
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Apple",
+          "Banana",
+          "Cherry",
+          "Date"
+        ],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Apple",
+          "b": "Banana",
+          "c": "Cherry",
+          "d": "Date"
+        },
+        "explanation": "The second word was Banana",
+        "tags": [
+          "word-sequence",
+          "position"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "사과",
+          "바나나",
+          "체리",
+          "대추"
+        ],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "사과",
+          "b": "바나나",
+          "c": "체리",
+          "d": "대추"
+        },
+        "explanation": "두 번째 단어는 바나나였습니다",
+        "tags": [
+          "단어순서",
+          "위치"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "3",
+          "7",
+          "2",
+          "9",
+          "5"
+        ],
+        "question": "What was the third number in the sequence?",
+        "options": {
+          "a": "7",
+          "b": "9",
+          "c": "2",
+          "d": "5"
+        },
+        "explanation": "The third number was 2",
+        "tags": [
+          "number-sequence",
+          "recall"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "3",
+          "7",
+          "2",
+          "9",
+          "5"
+        ],
+        "question": "순서에서 세 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "7",
+          "b": "9",
+          "c": "2",
+          "d": "5"
+        },
+        "explanation": "세 번째 숫자는 2였습니다",
+        "tags": [
+          "숫자순서",
+          "기억"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Dog",
+          "Cat",
+          "Bird",
+          "Fish",
+          "Mouse"
+        ],
+        "question": "What was the first animal in the list?",
+        "options": {
+          "a": "Dog",
+          "b": "Cat",
+          "c": "Bird",
+          "d": "Fish"
+        },
+        "explanation": "The first animal was Dog",
+        "tags": [
+          "animals",
+          "first-position"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "개",
+          "고양이",
+          "새",
+          "물고기",
+          "쥐"
+        ],
+        "question": "목록의 첫 번째 동물은 무엇이었나요?",
+        "options": {
+          "a": "개",
+          "b": "고양이",
+          "c": "새",
+          "d": "물고기"
+        },
+        "explanation": "첫 번째 동물은 개였습니다",
+        "tags": [
+          "동물",
+          "첫위치"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "42",
+          "18",
+          "73",
+          "29",
+          "56",
+          "84",
+          "15"
+        ],
+        "question": "What number came after 29?",
+        "options": {
+          "a": "73",
+          "b": "84",
+          "c": "15",
+          "d": "56"
+        },
+        "explanation": "56 came after 29 in the sequence",
+        "tags": [
+          "number-sequence",
+          "following"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "42",
+          "18",
+          "73",
+          "29",
+          "56",
+          "84",
+          "15"
+        ],
+        "question": "29 다음에 온 숫자는 무엇이었나요?",
+        "options": {
+          "a": "73",
+          "b": "84",
+          "c": "15",
+          "d": "56"
+        },
+        "explanation": "순서에서 29 다음은 56이었습니다",
+        "tags": [
+          "숫자순서",
+          "다음"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Mountain",
+          "River",
+          "Forest",
+          "Desert",
+          "Ocean",
+          "Valley"
+        ],
+        "question": "Which word came between Forest and Ocean?",
+        "options": {
+          "a": "River",
+          "b": "Desert",
+          "c": "Valley",
+          "d": "Mountain"
+        },
+        "explanation": "Desert came between Forest and Ocean",
+        "tags": [
+          "nature",
+          "sequence-between"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "산",
+          "강",
+          "숲",
+          "사막",
+          "바다",
+          "계곡"
+        ],
+        "question": "숲과 바다 사이에 온 단어는 무엇이었나요?",
+        "options": {
+          "a": "강",
+          "b": "사막",
+          "c": "계곡",
+          "d": "산"
+        },
+        "explanation": "숲과 바다 사이에는 사막이 있었습니다",
+        "tags": [
+          "자연",
+          "사이순서"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Red",
+          "Blue",
+          "Red",
+          "Blue"
+        ],
+        "question": "What color pattern was shown?",
+        "options": {
+          "a": "Red, Red, Blue, Blue",
+          "b": "Blue, Red, Blue, Red",
+          "c": "Red, Blue, Red, Blue",
+          "d": "Red, Blue, Blue, Red"
+        },
+        "explanation": "The pattern was Red, Blue, Red, Blue",
+        "tags": [
+          "colors",
+          "alternating-pattern"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "빨강",
+          "파랑",
+          "빨강",
+          "파랑"
+        ],
+        "question": "어떤 색깔 패턴이 보여졌나요?",
+        "options": {
+          "a": "빨강, 빨강, 파랑, 파랑",
+          "b": "파랑, 빨강, 파랑, 빨강",
+          "c": "빨강, 파랑, 빨강, 파랑",
+          "d": "빨강, 파랑, 파랑, 빨강"
+        },
+        "explanation": "패턴은 빨강, 파랑, 빨강, 파랑이었습니다",
+        "tags": [
+          "색깔",
+          "교대패턴"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "147",
+          "258",
+          "369",
+          "741",
+          "852",
+          "963",
+          "417",
+          "528",
+          "639"
+        ],
+        "question": "What number came before 852?",
+        "options": {
+          "a": "741",
+          "b": "369",
+          "c": "963",
+          "d": "417"
+        },
+        "explanation": "741 came before 852 in the sequence",
+        "tags": [
+          "long-sequence",
+          "three-digit"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "147",
+          "258",
+          "369",
+          "741",
+          "852",
+          "963",
+          "417",
+          "528",
+          "639"
+        ],
+        "question": "852 앞에 온 숫자는 무엇이었나요?",
+        "options": {
+          "a": "741",
+          "b": "369",
+          "c": "963",
+          "d": "417"
+        },
+        "explanation": "순서에서 852 앞에는 741이 있었습니다",
+        "tags": [
+          "긴순서",
+          "세자리수"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Telescope",
+          "Microscope",
+          "Calculator",
+          "Computer",
+          "Smartphone",
+          "Television",
+          "Radio",
+          "Camera"
+        ],
+        "question": "What came between Computer and Television?",
+        "options": {
+          "a": "Calculator",
+          "b": "Camera",
+          "c": "Radio",
+          "d": "Smartphone"
+        },
+        "explanation": "Smartphone came between Computer and Television",
+        "tags": [
+          "technology",
+          "complex-sequence"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "망원경",
+          "현미경",
+          "계산기",
+          "컴퓨터",
+          "스마트폰",
+          "텔레비전",
+          "라디오",
+          "카메라"
+        ],
+        "question": "컴퓨터와 텔레비전 사이에 온 것은 무엇이었나요?",
+        "options": {
+          "a": "계산기",
+          "b": "카메라",
+          "c": "라디오",
+          "d": "스마트폰"
+        },
+        "explanation": "컴퓨터와 텔레비전 사이에는 스마트폰이 있었습니다",
+        "tags": [
+          "기술",
+          "복잡한순서"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Circle",
+          "Square",
+          "Triangle",
+          "Circle",
+          "Square",
+          "Triangle"
+        ],
+        "question": "What shape pattern was repeated?",
+        "options": {
+          "a": "Circle, Triangle, Square",
+          "b": "Circle, Square, Triangle",
+          "c": "Square, Circle, Triangle",
+          "d": "Triangle, Circle, Square"
+        },
+        "explanation": "The repeating pattern was Circle, Square, Triangle",
+        "tags": [
+          "shapes",
+          "repeating-pattern"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "원",
+          "사각형",
+          "삼각형",
+          "원",
+          "사각형",
+          "삼각형"
+        ],
+        "question": "어떤 도형 패턴이 반복되었나요?",
+        "options": {
+          "a": "원, 삼각형, 사각형",
+          "b": "원, 사각형, 삼각형",
+          "c": "사각형, 원, 삼각형",
+          "d": "삼각형, 원, 사각형"
+        },
+        "explanation": "반복된 패턴은 원, 사각형, 삼각형이었습니다",
+        "tags": [
+          "도형",
+          "반복패턴"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Book",
+          "Pen",
+          "Paper"
+        ],
+        "question": "What was the last item shown?",
+        "options": {
+          "a": "Book",
+          "b": "Pen",
+          "c": "Paper",
+          "d": "Pencil"
+        },
+        "explanation": "Paper was the last item in the sequence",
+        "tags": [
+          "school-items",
+          "last-position"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "책",
+          "펜",
+          "종이"
+        ],
+        "question": "마지막에 보여진 아이템은 무엇이었나요?",
+        "options": {
+          "a": "책",
+          "b": "펜",
+          "c": "종이",
+          "d": "연필"
+        },
+        "explanation": "순서의 마지막은 종이였습니다",
+        "tags": [
+          "학용품",
+          "마지막위치"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "91",
+          "37",
+          "64",
+          "28",
+          "55",
+          "19"
+        ],
+        "question": "Which number appeared twice?",
+        "options": {
+          "a": "None appeared twice",
+          "b": "37",
+          "c": "64",
+          "d": "28"
+        },
+        "explanation": "No number appeared twice in the sequence",
+        "tags": [
+          "duplicates",
+          "observation"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "91",
+          "37",
+          "64",
+          "28",
+          "55",
+          "19"
+        ],
+        "question": "어떤 숫자가 두 번 나타났나요?",
+        "options": {
+          "a": "두 번 나타난 숫자가 없음",
+          "b": "37",
+          "c": "64",
+          "d": "28"
+        },
+        "explanation": "순서에서 두 번 나타난 숫자는 없었습니다",
+        "tags": [
+          "중복",
+          "관찰"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Large Red Circle",
+          "Small Blue Square",
+          "Large Red Circle",
+          "Small Blue Square",
+          "Large Red Circle"
+        ],
+        "question": "What was the complete pattern?",
+        "options": {
+          "a": "Large circles and small squares alternating",
+          "b": "Red and blue alternating",
+          "c": "Circles and squares alternating",
+          "d": "Large Red Circle, Small Blue Square alternating"
+        },
+        "explanation": "The pattern alternated between Large Red Circle and Small Blue Square",
+        "tags": [
+          "complex-pattern",
+          "multiple-attributes"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "큰 빨간 원",
+          "작은 파란 사각형",
+          "큰 빨간 원",
+          "작은 파란 사각형",
+          "큰 빨간 원"
+        ],
+        "question": "완전한 패턴은 무엇이었나요?",
+        "options": {
+          "a": "큰 원과 작은 사각형이 교대",
+          "b": "빨강과 파랑이 교대",
+          "c": "원과 사각형이 교대",
+          "d": "큰 빨간 원, 작은 파란 사각형이 교대"
+        },
+        "explanation": "패턴은 큰 빨간 원과 작은 파란 사각형이 교대로 나타났습니다",
+        "tags": [
+          "복잡한패턴",
+          "다중속성"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Piano",
+          "Guitar",
+          "Violin",
+          "Drums",
+          "Flute",
+          "Trumpet"
+        ],
+        "question": "How many instruments were shown?",
+        "options": {
+          "a": "5",
+          "b": "6",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "There were 6 instruments in total",
+        "tags": [
+          "counting",
+          "musical-instruments"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "피아노",
+          "기타",
+          "바이올린",
+          "드럼",
+          "플루트",
+          "트럼펫"
+        ],
+        "question": "총 몇 개의 악기가 보여졌나요?",
+        "options": {
+          "a": "5",
+          "b": "6",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "총 6개의 악기가 있었습니다",
+        "tags": [
+          "세기",
+          "악기"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "4",
+          "7"
+        ],
+        "question": "What was the middle number?",
+        "options": {
+          "a": "1",
+          "b": "3",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "4 was the middle number in the sequence",
+        "tags": [
+          "middle-position",
+          "short-sequence"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "4",
+          "7"
+        ],
+        "question": "가운데 숫자는 무엇이었나요?",
+        "options": {
+          "a": "1",
+          "b": "3",
+          "c": "7",
+          "d": "4"
+        },
+        "explanation": "순서의 가운데 숫자는 4였습니다",
+        "tags": [
+          "가운데위치",
+          "짧은순서"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Up",
+          "Down",
+          "Up",
+          "Down",
+          "Up"
+        ],
+        "question": "What direction pattern was shown?",
+        "options": {
+          "a": "Up, Down alternating",
+          "b": "Down, Up alternating",
+          "c": "All Up",
+          "d": "All Down"
+        },
+        "explanation": "The pattern alternated between Up and Down, starting with Up",
+        "tags": [
+          "directions",
+          "simple-alternating"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "위",
+          "아래",
+          "위",
+          "아래",
+          "위"
+        ],
+        "question": "어떤 방향 패턴이 보여졌나요?",
+        "options": {
+          "a": "위, 아래가 교대",
+          "b": "아래, 위가 교대",
+          "c": "모두 위",
+          "d": "모두 아래"
+        },
+        "explanation": "패턴은 위로 시작해서 위와 아래가 교대로 나타났습니다",
+        "tags": [
+          "방향",
+          "간단한교대"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Elephant",
+          "Mouse",
+          "Lion",
+          "Ant",
+          "Tiger",
+          "Butterfly",
+          "Bear"
+        ],
+        "question": "Which animal came immediately after Lion?",
+        "options": {
+          "a": "Mouse",
+          "b": "Tiger",
+          "c": "Ant",
+          "d": "Butterfly"
+        },
+        "explanation": "Ant came immediately after Lion in the sequence",
+        "tags": [
+          "animals",
+          "immediate-following"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "코끼리",
+          "쥐",
+          "사자",
+          "개미",
+          "호랑이",
+          "나비",
+          "곰"
+        ],
+        "question": "사자 바로 다음에 온 동물은 무엇이었나요?",
+        "options": {
+          "a": "쥐",
+          "b": "호랑이",
+          "c": "개미",
+          "d": "나비"
+        },
+        "explanation": "순서에서 사자 바로 다음에는 개미가 있었습니다",
+        "tags": [
+          "동물",
+          "바로다음"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "hard",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "23",
+          "67",
+          "45",
+          "89",
+          "12",
+          "34",
+          "78",
+          "56"
+        ],
+        "question": "What was the sum of the first and last numbers?",
+        "options": {
+          "a": "77",
+          "b": "79",
+          "c": "81",
+          "d": "75"
+        },
+        "explanation": "First number (23) + Last number (56) = 79",
+        "tags": [
+          "calculation",
+          "first-last"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "23",
+          "67",
+          "45",
+          "89",
+          "12",
+          "34",
+          "78",
+          "56"
+        ],
+        "question": "첫 번째와 마지막 숫자의 합은 얼마였나요?",
+        "options": {
+          "a": "77",
+          "b": "79",
+          "c": "81",
+          "d": "75"
+        },
+        "explanation": "첫 번째 숫자(23) + 마지막 숫자(56) = 79",
+        "tags": [
+          "계산",
+          "첫-마지막"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Small",
+          "Medium",
+          "Large",
+          "Small",
+          "Medium",
+          "Large",
+          "Small"
+        ],
+        "question": "What size pattern was repeated?",
+        "options": {
+          "a": "Small, Large, Medium",
+          "b": "Large, Medium, Small",
+          "c": "Medium, Small, Large",
+          "d": "Small, Medium, Large"
+        },
+        "explanation": "The repeating pattern was Small, Medium, Large",
+        "tags": [
+          "sizes",
+          "three-part-pattern"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "작음",
+          "보통",
+          "큼",
+          "작음",
+          "보통",
+          "큼",
+          "작음"
+        ],
+        "question": "어떤 크기 패턴이 반복되었나요?",
+        "options": {
+          "a": "작음, 큼, 보통",
+          "b": "큼, 보통, 작음",
+          "c": "보통, 작음, 큼",
+          "d": "작음, 보통, 큼"
+        },
+        "explanation": "반복된 패턴은 작음, 보통, 큼이었습니다",
+        "tags": [
+          "크기",
+          "세부분패턴"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Monday",
+          "Wednesday",
+          "Friday",
+          "Sunday"
+        ],
+        "question": "Which day of the week was missing from this sequence?",
+        "options": {
+          "a": "Tuesday",
+          "b": "Thursday",
+          "c": "Saturday",
+          "d": "None missing"
+        },
+        "explanation": "Tuesday was the first missing day in the sequence",
+        "tags": [
+          "days-of-week",
+          "missing-item"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "월요일",
+          "수요일",
+          "금요일",
+          "일요일"
+        ],
+        "question": "이 순서에서 빠진 요일은 무엇이었나요?",
+        "options": {
+          "a": "화요일",
+          "b": "목요일",
+          "c": "토요일",
+          "d": "빠진 것 없음"
+        },
+        "explanation": "순서에서 처음 빠진 요일은 화요일이었습니다",
+        "tags": [
+          "요일",
+          "빠진항목"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "8",
+          "15",
+          "8",
+          "22",
+          "8"
+        ],
+        "question": "Which number appeared most frequently?",
+        "options": {
+          "a": "15",
+          "b": "22",
+          "c": "8",
+          "d": "All appeared equally"
+        },
+        "explanation": "The number 8 appeared 3 times, more than any other",
+        "tags": [
+          "frequency",
+          "repetition"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "8",
+          "15",
+          "8",
+          "22",
+          "8"
+        ],
+        "question": "어떤 숫자가 가장 많이 나타났나요?",
+        "options": {
+          "a": "15",
+          "b": "22",
+          "c": "8",
+          "d": "모두 똑같이"
+        },
+        "explanation": "숫자 8이 3번으로 가장 많이 나타났습니다",
+        "tags": [
+          "빈도",
+          "반복"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Dog",
+          "Lion",
+          "Bird",
+          "Cat",
+          "Elephant",
+          "Tiger"
+        ],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Bird",
+          "b": "Lion",
+          "c": "Dog",
+          "d": "Cat"
+        },
+        "explanation": "The second word was Lion",
+        "tags": [
+          "word-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "개",
+          "사자",
+          "새",
+          "고양이",
+          "코끼리",
+          "호랑이"
+        ],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "새",
+          "b": "사자",
+          "c": "개",
+          "d": "고양이"
+        },
+        "explanation": "두 번째 단어는 사자였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Gold",
+          "White",
+          "Orange",
+          "Blue",
+          "Brown"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "White",
+          "b": "Orange",
+          "c": "Blue",
+          "d": "Gold"
+        },
+        "explanation": "The fourth word was Blue",
+        "tags": [
+          "word-sequence",
+          "position",
+          "colors"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "금색",
+          "흰색",
+          "주황색",
+          "파란색",
+          "갈색"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "흰색",
+          "b": "주황색",
+          "c": "파란색",
+          "d": "금색"
+        },
+        "explanation": "네 번째 단어는 파란색였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "colors"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Giraffe",
+          "Bird",
+          "Rabbit",
+          "Elephant",
+          "Cat"
+        ],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Rabbit",
+          "b": "Elephant",
+          "c": "Bird",
+          "d": "Giraffe"
+        },
+        "explanation": "The second word was Bird",
+        "tags": [
+          "word-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "기린",
+          "새",
+          "토끼",
+          "코끼리",
+          "고양이"
+        ],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "토끼",
+          "b": "코끼리",
+          "c": "새",
+          "d": "기린"
+        },
+        "explanation": "두 번째 단어는 새였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Peach",
+          "Kiwi",
+          "Pineapple",
+          "Lemon"
+        ],
+        "question": "What was the first word in the sequence?",
+        "options": {
+          "a": "Pineapple",
+          "b": "Kiwi",
+          "c": "Peach",
+          "d": "Lemon"
+        },
+        "explanation": "The first word was Peach",
+        "tags": [
+          "word-sequence",
+          "position",
+          "fruits"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "복숭아",
+          "키위",
+          "파인애플",
+          "레몬"
+        ],
+        "question": "순서에서 첫 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "파인애플",
+          "b": "키위",
+          "c": "복숭아",
+          "d": "레몬"
+        },
+        "explanation": "첫 번째 단어는 복숭아였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "fruits"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Canada",
+          "Mexico",
+          "Brazil",
+          "Australia",
+          "Italy",
+          "India"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "Brazil",
+          "b": "Canada",
+          "c": "Australia",
+          "d": "Mexico"
+        },
+        "explanation": "The fourth word was Australia",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "캐나다",
+          "멕시코",
+          "브라질",
+          "호주",
+          "이탈리아",
+          "인도"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "브라질",
+          "b": "캐나다",
+          "c": "호주",
+          "d": "멕시코"
+        },
+        "explanation": "네 번째 단어는 호주였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Australia",
+          "Japan",
+          "India",
+          "Canada"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "Australia",
+          "b": "India",
+          "c": "Japan",
+          "d": "Canada"
+        },
+        "explanation": "The fourth word was Canada",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "호주",
+          "일본",
+          "인도",
+          "캐나다"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "호주",
+          "b": "인도",
+          "c": "일본",
+          "d": "캐나다"
+        },
+        "explanation": "네 번째 단어는 캐나다였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Black",
+          "Gold",
+          "Brown",
+          "Orange"
+        ],
+        "question": "What was the third word in the sequence?",
+        "options": {
+          "a": "Orange",
+          "b": "Gold",
+          "c": "Black",
+          "d": "Brown"
+        },
+        "explanation": "The third word was Brown",
+        "tags": [
+          "word-sequence",
+          "position",
+          "colors"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "검은색",
+          "금색",
+          "갈색",
+          "주황색"
+        ],
+        "question": "순서에서 세 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "주황색",
+          "b": "금색",
+          "c": "검은색",
+          "d": "갈색"
+        },
+        "explanation": "세 번째 단어는 갈색였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "colors"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Pineapple",
+          "Watermelon",
+          "Kiwi",
+          "Orange",
+          "Strawberry",
+          "Peach"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "Kiwi",
+          "b": "Orange",
+          "c": "Watermelon",
+          "d": "Pineapple"
+        },
+        "explanation": "The fourth word was Orange",
+        "tags": [
+          "word-sequence",
+          "position",
+          "fruits"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "파인애플",
+          "수박",
+          "키위",
+          "오렌지",
+          "딸기",
+          "복숭아"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "키위",
+          "b": "오렌지",
+          "c": "수박",
+          "d": "파인애플"
+        },
+        "explanation": "네 번째 단어는 오렌지였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "fruits"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Japan",
+          "Australia",
+          "India",
+          "Canada"
+        ],
+        "question": "What was the third word in the sequence?",
+        "options": {
+          "a": "India",
+          "b": "Canada",
+          "c": "Australia",
+          "d": "Japan"
+        },
+        "explanation": "The third word was India",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "일본",
+          "호주",
+          "인도",
+          "캐나다"
+        ],
+        "question": "순서에서 세 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "인도",
+          "b": "캐나다",
+          "c": "호주",
+          "d": "일본"
+        },
+        "explanation": "세 번째 단어는 인도였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "France",
+          "Italy",
+          "Germany",
+          "India"
+        ],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Germany",
+          "b": "Italy",
+          "c": "India",
+          "d": "France"
+        },
+        "explanation": "The second word was Italy",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "프랑스",
+          "이탈리아",
+          "독일",
+          "인도"
+        ],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "독일",
+          "b": "이탈리아",
+          "c": "인도",
+          "d": "프랑스"
+        },
+        "explanation": "두 번째 단어는 이탈리아였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Watermelon",
+          "Lemon",
+          "Strawberry",
+          "Kiwi"
+        ],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Kiwi",
+          "b": "Lemon",
+          "c": "Strawberry",
+          "d": "Watermelon"
+        },
+        "explanation": "The second word was Lemon",
+        "tags": [
+          "word-sequence",
+          "position",
+          "fruits"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "수박",
+          "레몬",
+          "딸기",
+          "키위"
+        ],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "키위",
+          "b": "레몬",
+          "c": "딸기",
+          "d": "수박"
+        },
+        "explanation": "두 번째 단어는 레몬였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "fruits"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Musician",
+          "Chef",
+          "Engineer",
+          "Lawyer",
+          "Teacher"
+        ],
+        "question": "What was the fifth word in the sequence?",
+        "options": {
+          "a": "Musician",
+          "b": "Teacher",
+          "c": "Engineer",
+          "d": "Chef"
+        },
+        "explanation": "The fifth word was Teacher",
+        "tags": [
+          "word-sequence",
+          "position",
+          "occupations"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "음악가",
+          "요리사",
+          "엔지니어",
+          "변호사",
+          "선생님"
+        ],
+        "question": "순서에서 다섯 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "음악가",
+          "b": "선생님",
+          "c": "엔지니어",
+          "d": "요리사"
+        },
+        "explanation": "다섯 번째 단어는 선생님였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "occupations"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Rabbit",
+          "Monkey",
+          "Giraffe",
+          "Dog",
+          "Cat",
+          "Horse"
+        ],
+        "question": "What was the first word in the sequence?",
+        "options": {
+          "a": "Giraffe",
+          "b": "Dog",
+          "c": "Monkey",
+          "d": "Rabbit"
+        },
+        "explanation": "The first word was Rabbit",
+        "tags": [
+          "word-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "토끼",
+          "원숭이",
+          "기린",
+          "개",
+          "고양이",
+          "말"
+        ],
+        "question": "순서에서 첫 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "기린",
+          "b": "개",
+          "c": "원숭이",
+          "d": "토끼"
+        },
+        "explanation": "첫 번째 단어는 토끼였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Canada",
+          "Brazil",
+          "Australia",
+          "France"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "France",
+          "b": "Brazil",
+          "c": "Australia",
+          "d": "Canada"
+        },
+        "explanation": "The fourth word was France",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "캐나다",
+          "브라질",
+          "호주",
+          "프랑스"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "프랑스",
+          "b": "브라질",
+          "c": "호주",
+          "d": "캐나다"
+        },
+        "explanation": "네 번째 단어는 프랑스였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Lawyer",
+          "Doctor",
+          "Writer",
+          "Artist",
+          "Nurse",
+          "Teacher"
+        ],
+        "question": "What was the first word in the sequence?",
+        "options": {
+          "a": "Artist",
+          "b": "Doctor",
+          "c": "Writer",
+          "d": "Lawyer"
+        },
+        "explanation": "The first word was Lawyer",
+        "tags": [
+          "word-sequence",
+          "position",
+          "occupations"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "변호사",
+          "의사",
+          "작가",
+          "예술가",
+          "간호사",
+          "선생님"
+        ],
+        "question": "순서에서 첫 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "예술가",
+          "b": "의사",
+          "c": "작가",
+          "d": "변호사"
+        },
+        "explanation": "첫 번째 단어는 변호사였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "occupations"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Green",
+          "White",
+          "Gold",
+          "Pink",
+          "Blue"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "White",
+          "b": "Pink",
+          "c": "Gold",
+          "d": "Green"
+        },
+        "explanation": "The fourth word was Pink",
+        "tags": [
+          "word-sequence",
+          "position",
+          "colors"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "초록색",
+          "흰색",
+          "금색",
+          "분홍색",
+          "파란색"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "흰색",
+          "b": "분홍색",
+          "c": "금색",
+          "d": "초록색"
+        },
+        "explanation": "네 번째 단어는 분홍색였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "colors"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Artist",
+          "Writer",
+          "Lawyer",
+          "Teacher"
+        ],
+        "question": "What was the third word in the sequence?",
+        "options": {
+          "a": "Lawyer",
+          "b": "Writer",
+          "c": "Teacher",
+          "d": "Artist"
+        },
+        "explanation": "The third word was Lawyer",
+        "tags": [
+          "word-sequence",
+          "position",
+          "occupations"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "예술가",
+          "작가",
+          "변호사",
+          "선생님"
+        ],
+        "question": "순서에서 세 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "변호사",
+          "b": "작가",
+          "c": "선생님",
+          "d": "예술가"
+        },
+        "explanation": "세 번째 단어는 변호사였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "occupations"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Yellow",
+          "Red",
+          "Brown",
+          "Blue"
+        ],
+        "question": "What was the third word in the sequence?",
+        "options": {
+          "a": "Blue",
+          "b": "Red",
+          "c": "Brown",
+          "d": "Yellow"
+        },
+        "explanation": "The third word was Brown",
+        "tags": [
+          "word-sequence",
+          "position",
+          "colors"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "노란색",
+          "빨간색",
+          "갈색",
+          "파란색"
+        ],
+        "question": "순서에서 세 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "파란색",
+          "b": "빨간색",
+          "c": "갈색",
+          "d": "노란색"
+        },
+        "explanation": "세 번째 단어는 갈색였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "colors"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Canada",
+          "Italy",
+          "Mexico",
+          "Germany"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "Italy",
+          "b": "Canada",
+          "c": "Germany",
+          "d": "Mexico"
+        },
+        "explanation": "The fourth word was Germany",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "캐나다",
+          "이탈리아",
+          "멕시코",
+          "독일"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "이탈리아",
+          "b": "캐나다",
+          "c": "독일",
+          "d": "멕시코"
+        },
+        "explanation": "네 번째 단어는 독일였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Lion",
+          "Fish",
+          "Horse",
+          "Bird"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "Bird",
+          "b": "Horse",
+          "c": "Fish",
+          "d": "Lion"
+        },
+        "explanation": "The fourth word was Bird",
+        "tags": [
+          "word-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "사자",
+          "물고기",
+          "말",
+          "새"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "새",
+          "b": "말",
+          "c": "물고기",
+          "d": "사자"
+        },
+        "explanation": "네 번째 단어는 새였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Cat",
+          "Fish",
+          "Tiger",
+          "Dog",
+          "Lion"
+        ],
+        "question": "What was the third word in the sequence?",
+        "options": {
+          "a": "Cat",
+          "b": "Fish",
+          "c": "Dog",
+          "d": "Tiger"
+        },
+        "explanation": "The third word was Tiger",
+        "tags": [
+          "word-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "고양이",
+          "물고기",
+          "호랑이",
+          "개",
+          "사자"
+        ],
+        "question": "순서에서 세 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "고양이",
+          "b": "물고기",
+          "c": "개",
+          "d": "호랑이"
+        },
+        "explanation": "세 번째 단어는 호랑이였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Purple",
+          "Gray",
+          "Gold",
+          "Blue",
+          "Black",
+          "Pink"
+        ],
+        "question": "What was the second word in the sequence?",
+        "options": {
+          "a": "Purple",
+          "b": "Gray",
+          "c": "Gold",
+          "d": "Blue"
+        },
+        "explanation": "The second word was Gray",
+        "tags": [
+          "word-sequence",
+          "position",
+          "colors"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "보라색",
+          "회색",
+          "금색",
+          "파란색",
+          "검은색",
+          "분홍색"
+        ],
+        "question": "순서에서 두 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "보라색",
+          "b": "회색",
+          "c": "금색",
+          "d": "파란색"
+        },
+        "explanation": "두 번째 단어는 회색였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "colors"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Italy",
+          "Canada",
+          "France",
+          "Mexico"
+        ],
+        "question": "What was the fourth word in the sequence?",
+        "options": {
+          "a": "France",
+          "b": "Mexico",
+          "c": "Italy",
+          "d": "Canada"
+        },
+        "explanation": "The fourth word was Mexico",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "이탈리아",
+          "캐나다",
+          "프랑스",
+          "멕시코"
+        ],
+        "question": "순서에서 네 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "프랑스",
+          "b": "멕시코",
+          "c": "이탈리아",
+          "d": "캐나다"
+        },
+        "explanation": "네 번째 단어는 멕시코였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Peach",
+          "Watermelon",
+          "Orange",
+          "Mango"
+        ],
+        "question": "What was the first word in the sequence?",
+        "options": {
+          "a": "Peach",
+          "b": "Orange",
+          "c": "Watermelon",
+          "d": "Mango"
+        },
+        "explanation": "The first word was Peach",
+        "tags": [
+          "word-sequence",
+          "position",
+          "fruits"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "복숭아",
+          "수박",
+          "오렌지",
+          "망고"
+        ],
+        "question": "순서에서 첫 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "복숭아",
+          "b": "오렌지",
+          "c": "수박",
+          "d": "망고"
+        },
+        "explanation": "첫 번째 단어는 복숭아였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "fruits"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "word_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "Italy",
+          "Mexico",
+          "France",
+          "Australia"
+        ],
+        "question": "What was the first word in the sequence?",
+        "options": {
+          "a": "France",
+          "b": "Australia",
+          "c": "Italy",
+          "d": "Mexico"
+        },
+        "explanation": "The first word was Italy",
+        "tags": [
+          "word-sequence",
+          "position",
+          "countries"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "이탈리아",
+          "멕시코",
+          "프랑스",
+          "호주"
+        ],
+        "question": "순서에서 첫 번째 단어는 무엇이었나요?",
+        "options": {
+          "a": "프랑스",
+          "b": "호주",
+          "c": "이탈리아",
+          "d": "멕시코"
+        },
+        "explanation": "첫 번째 단어는 이탈리아였습니다",
+        "tags": [
+          "단어순서",
+          "위치",
+          "countries"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "4",
+          "8",
+          "16",
+          "32",
+          "64",
+          "128"
+        ],
+        "question": "What was the second number in the sequence?",
+        "options": {
+          "a": "13",
+          "b": "18",
+          "c": "1",
+          "d": "8"
+        },
+        "explanation": "The second number was 8",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "4",
+          "8",
+          "16",
+          "32",
+          "64",
+          "128"
+        ],
+        "question": "순서에서 두 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "13",
+          "b": "18",
+          "c": "1",
+          "d": "8"
+        },
+        "explanation": "두 번째 숫자는 8였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13"
+        ],
+        "question": "What was the fifth number in the sequence?",
+        "options": {
+          "a": "-10",
+          "b": "15",
+          "c": "5",
+          "d": "12"
+        },
+        "explanation": "The fifth number was 5",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13"
+        ],
+        "question": "순서에서 다섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "-10",
+          "b": "15",
+          "c": "5",
+          "d": "12"
+        },
+        "explanation": "다섯 번째 숫자는 5였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13",
+          "21"
+        ],
+        "question": "What was the second number in the sequence?",
+        "options": {
+          "a": "-11",
+          "b": "-6",
+          "c": "1",
+          "d": "-2"
+        },
+        "explanation": "The second number was 1",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13",
+          "21"
+        ],
+        "question": "순서에서 두 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "-11",
+          "b": "-6",
+          "c": "1",
+          "d": "-2"
+        },
+        "explanation": "두 번째 숫자는 1였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "What was the fourth number in the sequence?",
+        "options": {
+          "a": "6",
+          "b": "3",
+          "c": "10",
+          "d": "-4"
+        },
+        "explanation": "The fourth number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "순서에서 네 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "6",
+          "b": "3",
+          "c": "10",
+          "d": "-4"
+        },
+        "explanation": "네 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "question": "What was the third number in the sequence?",
+        "options": {
+          "a": "11",
+          "b": "-7",
+          "c": "2",
+          "d": "-3"
+        },
+        "explanation": "The third number was 2",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "question": "순서에서 세 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "11",
+          "b": "-7",
+          "c": "2",
+          "d": "-3"
+        },
+        "explanation": "세 번째 숫자는 2였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "question": "What was the fourth number in the sequence?",
+        "options": {
+          "a": "3",
+          "b": "9",
+          "c": "10",
+          "d": "8"
+        },
+        "explanation": "The fourth number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "question": "순서에서 네 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "3",
+          "b": "9",
+          "c": "10",
+          "d": "8"
+        },
+        "explanation": "네 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "What was the first number in the sequence?",
+        "options": {
+          "a": "12",
+          "b": "-4",
+          "c": "1",
+          "d": "-1"
+        },
+        "explanation": "The first number was 1",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "순서에서 첫 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "12",
+          "b": "-4",
+          "c": "1",
+          "d": "-1"
+        },
+        "explanation": "첫 번째 숫자는 1였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "What was the fourth number in the sequence?",
+        "options": {
+          "a": "4",
+          "b": "-3",
+          "c": "3",
+          "d": "12"
+        },
+        "explanation": "The fourth number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "순서에서 네 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "4",
+          "b": "-3",
+          "c": "3",
+          "d": "12"
+        },
+        "explanation": "네 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "48",
+          "93",
+          "52",
+          "82",
+          "93",
+          "54"
+        ],
+        "question": "What was the third number in the sequence?",
+        "options": {
+          "a": "50",
+          "b": "32",
+          "c": "52",
+          "d": "75"
+        },
+        "explanation": "The third number was 52",
+        "tags": [
+          "number-sequence",
+          "position",
+          "random"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "48",
+          "93",
+          "52",
+          "82",
+          "93",
+          "54"
+        ],
+        "question": "순서에서 세 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "50",
+          "b": "32",
+          "c": "52",
+          "d": "75"
+        },
+        "explanation": "세 번째 숫자는 52였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "random"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13",
+          "21"
+        ],
+        "question": "What was the second number in the sequence?",
+        "options": {
+          "a": "1",
+          "b": "6",
+          "c": "-3",
+          "d": "-6"
+        },
+        "explanation": "The second number was 1",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13",
+          "21"
+        ],
+        "question": "순서에서 두 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "1",
+          "b": "6",
+          "c": "-3",
+          "d": "-6"
+        },
+        "explanation": "두 번째 숫자는 1였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "5",
+          "10",
+          "20",
+          "40",
+          "80",
+          "160"
+        ],
+        "question": "What was the first number in the sequence?",
+        "options": {
+          "a": "2",
+          "b": "5",
+          "c": "6",
+          "d": "9"
+        },
+        "explanation": "The first number was 5",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "5",
+          "10",
+          "20",
+          "40",
+          "80",
+          "160"
+        ],
+        "question": "순서에서 첫 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "2",
+          "b": "5",
+          "c": "6",
+          "d": "9"
+        },
+        "explanation": "첫 번째 숫자는 5였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "15",
+          "18",
+          "21",
+          "24",
+          "27"
+        ],
+        "question": "What was the second number in the sequence?",
+        "options": {
+          "a": "19",
+          "b": "9",
+          "c": "18",
+          "d": "12"
+        },
+        "explanation": "The second number was 18",
+        "tags": [
+          "number-sequence",
+          "position",
+          "arithmetic"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "15",
+          "18",
+          "21",
+          "24",
+          "27"
+        ],
+        "question": "순서에서 두 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "19",
+          "b": "9",
+          "c": "18",
+          "d": "12"
+        },
+        "explanation": "두 번째 숫자는 18였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "arithmetic"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "2",
+          "6",
+          "18",
+          "54",
+          "162",
+          "486",
+          "1458"
+        ],
+        "question": "What was the sixth number in the sequence?",
+        "options": {
+          "a": "478",
+          "b": "487",
+          "c": "489",
+          "d": "486"
+        },
+        "explanation": "The sixth number was 486",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "2",
+          "6",
+          "18",
+          "54",
+          "162",
+          "486",
+          "1458"
+        ],
+        "question": "순서에서 여섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "478",
+          "b": "487",
+          "c": "489",
+          "d": "486"
+        },
+        "explanation": "여섯 번째 숫자는 486였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13",
+          "21"
+        ],
+        "question": "What was the fourth number in the sequence?",
+        "options": {
+          "a": "-4",
+          "b": "7",
+          "c": "10",
+          "d": "3"
+        },
+        "explanation": "The fourth number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8",
+          "13",
+          "21"
+        ],
+        "question": "순서에서 네 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "-4",
+          "b": "7",
+          "c": "10",
+          "d": "3"
+        },
+        "explanation": "네 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "13",
+          "18",
+          "23",
+          "28",
+          "33",
+          "38"
+        ],
+        "question": "What was the fifth number in the sequence?",
+        "options": {
+          "a": "37",
+          "b": "42",
+          "c": "33",
+          "d": "24"
+        },
+        "explanation": "The fifth number was 33",
+        "tags": [
+          "number-sequence",
+          "position",
+          "arithmetic"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "13",
+          "18",
+          "23",
+          "28",
+          "33",
+          "38"
+        ],
+        "question": "순서에서 다섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "37",
+          "b": "42",
+          "c": "33",
+          "d": "24"
+        },
+        "explanation": "다섯 번째 숫자는 33였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "arithmetic"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "14",
+          "17",
+          "20",
+          "23",
+          "26"
+        ],
+        "question": "What was the fifth number in the sequence?",
+        "options": {
+          "a": "35",
+          "b": "29",
+          "c": "26",
+          "d": "27"
+        },
+        "explanation": "The fifth number was 26",
+        "tags": [
+          "number-sequence",
+          "position",
+          "arithmetic"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "14",
+          "17",
+          "20",
+          "23",
+          "26"
+        ],
+        "question": "순서에서 다섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "35",
+          "b": "29",
+          "c": "26",
+          "d": "27"
+        },
+        "explanation": "다섯 번째 숫자는 26였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "arithmetic"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "57",
+          "89",
+          "11",
+          "74",
+          "19",
+          "8",
+          "3"
+        ],
+        "question": "What was the fifth number in the sequence?",
+        "options": {
+          "a": "87",
+          "b": "54",
+          "c": "19",
+          "d": "63"
+        },
+        "explanation": "The fifth number was 19",
+        "tags": [
+          "number-sequence",
+          "position",
+          "random"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "57",
+          "89",
+          "11",
+          "74",
+          "19",
+          "8",
+          "3"
+        ],
+        "question": "순서에서 다섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "87",
+          "b": "54",
+          "c": "19",
+          "d": "63"
+        },
+        "explanation": "다섯 번째 숫자는 19였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "random"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "4",
+          "12",
+          "36",
+          "108",
+          "324",
+          "972",
+          "2916"
+        ],
+        "question": "What was the second number in the sequence?",
+        "options": {
+          "a": "12",
+          "b": "2",
+          "c": "6",
+          "d": "-2"
+        },
+        "explanation": "The second number was 12",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "4",
+          "12",
+          "36",
+          "108",
+          "324",
+          "972",
+          "2916"
+        ],
+        "question": "순서에서 두 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "12",
+          "b": "2",
+          "c": "6",
+          "d": "-2"
+        },
+        "explanation": "두 번째 숫자는 12였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "40",
+          "90",
+          "39",
+          "54",
+          "88",
+          "13",
+          "65"
+        ],
+        "question": "What was the fifth number in the sequence?",
+        "options": {
+          "a": "84",
+          "b": "21",
+          "c": "88",
+          "d": "62"
+        },
+        "explanation": "The fifth number was 88",
+        "tags": [
+          "number-sequence",
+          "position",
+          "random"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "40",
+          "90",
+          "39",
+          "54",
+          "88",
+          "13",
+          "65"
+        ],
+        "question": "순서에서 다섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "84",
+          "b": "21",
+          "c": "88",
+          "d": "62"
+        },
+        "explanation": "다섯 번째 숫자는 88였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "random"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "3",
+          "6",
+          "12",
+          "24",
+          "48",
+          "96"
+        ],
+        "question": "What was the sixth number in the sequence?",
+        "options": {
+          "a": "96",
+          "b": "91",
+          "c": "95",
+          "d": "102"
+        },
+        "explanation": "The sixth number was 96",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "3",
+          "6",
+          "12",
+          "24",
+          "48",
+          "96"
+        ],
+        "question": "순서에서 여섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "96",
+          "b": "91",
+          "c": "95",
+          "d": "102"
+        },
+        "explanation": "여섯 번째 숫자는 96였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "74",
+          "10",
+          "9",
+          "89",
+          "87",
+          "46",
+          "32"
+        ],
+        "question": "What was the second number in the sequence?",
+        "options": {
+          "a": "57",
+          "b": "27",
+          "c": "5",
+          "d": "10"
+        },
+        "explanation": "The second number was 10",
+        "tags": [
+          "number-sequence",
+          "position",
+          "random"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "74",
+          "10",
+          "9",
+          "89",
+          "87",
+          "46",
+          "32"
+        ],
+        "question": "순서에서 두 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "57",
+          "b": "27",
+          "c": "5",
+          "d": "10"
+        },
+        "explanation": "두 번째 숫자는 10였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "random"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "What was the fourth number in the sequence?",
+        "options": {
+          "a": "3",
+          "b": "-5",
+          "c": "12",
+          "d": "7"
+        },
+        "explanation": "The fourth number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5",
+          "8"
+        ],
+        "question": "순서에서 네 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "3",
+          "b": "-5",
+          "c": "12",
+          "d": "7"
+        },
+        "explanation": "네 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "3",
+          "6",
+          "12",
+          "24",
+          "48",
+          "96",
+          "192"
+        ],
+        "question": "What was the first number in the sequence?",
+        "options": {
+          "a": "-7",
+          "b": "16",
+          "c": "7",
+          "d": "3"
+        },
+        "explanation": "The first number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "3",
+          "6",
+          "12",
+          "24",
+          "48",
+          "96",
+          "192"
+        ],
+        "question": "순서에서 첫 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "-7",
+          "b": "16",
+          "c": "7",
+          "d": "3"
+        },
+        "explanation": "첫 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "question": "What was the fourth number in the sequence?",
+        "options": {
+          "a": "11",
+          "b": "3",
+          "c": "10",
+          "d": "0"
+        },
+        "explanation": "The fourth number was 3",
+        "tags": [
+          "number-sequence",
+          "position",
+          "fibonacci"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "1",
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "question": "순서에서 네 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "11",
+          "b": "3",
+          "c": "10",
+          "d": "0"
+        },
+        "explanation": "네 번째 숫자는 3였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "fibonacci"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "number_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "3",
+          "9",
+          "27",
+          "81",
+          "243",
+          "729"
+        ],
+        "question": "What was the sixth number in the sequence?",
+        "options": {
+          "a": "729",
+          "b": "726",
+          "c": "730",
+          "d": "716"
+        },
+        "explanation": "The sixth number was 729",
+        "tags": [
+          "number-sequence",
+          "position",
+          "geometric"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "3",
+          "9",
+          "27",
+          "81",
+          "243",
+          "729"
+        ],
+        "question": "순서에서 여섯 번째 숫자는 무엇이었나요?",
+        "options": {
+          "a": "729",
+          "b": "726",
+          "c": "730",
+          "d": "716"
+        },
+        "explanation": "여섯 번째 숫자는 729였습니다",
+        "tags": [
+          "숫자순서",
+          "위치",
+          "geometric"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🟢",
+          "🟠",
+          "🟣",
+          "🔹"
+        ],
+        "question": "What was the second image in the sequence?",
+        "options": {
+          "a": "🔺",
+          "b": "🟡",
+          "c": "🔸",
+          "d": "🟠"
+        },
+        "explanation": "The second image was 🟠",
+        "tags": [
+          "image-sequence",
+          "position",
+          "shapes"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🟢",
+          "🟠",
+          "🟣",
+          "🔹"
+        ],
+        "question": "순서에서 두 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🔺",
+          "b": "🟡",
+          "c": "🔸",
+          "d": "🟠"
+        },
+        "explanation": "두 번째 이미지는 🟠였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "shapes"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🟠",
+          "💎",
+          "🟣",
+          "⚫"
+        ],
+        "question": "What was the third image in the sequence?",
+        "options": {
+          "a": "🔸",
+          "b": "🔴",
+          "c": "🟣",
+          "d": "🔺"
+        },
+        "explanation": "The third image was 🟣",
+        "tags": [
+          "image-sequence",
+          "position",
+          "shapes"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🟠",
+          "💎",
+          "🟣",
+          "⚫"
+        ],
+        "question": "순서에서 세 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🔸",
+          "b": "🔴",
+          "c": "🟣",
+          "d": "🔺"
+        },
+        "explanation": "세 번째 이미지는 🟣였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "shapes"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🟡",
+          "🔸",
+          "🔵",
+          "🟢"
+        ],
+        "question": "What was the second image in the sequence?",
+        "options": {
+          "a": "🟣",
+          "b": "💎",
+          "c": "🔸",
+          "d": "🔺"
+        },
+        "explanation": "The second image was 🔸",
+        "tags": [
+          "image-sequence",
+          "position",
+          "shapes"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🟡",
+          "🔸",
+          "🔵",
+          "🟢"
+        ],
+        "question": "순서에서 두 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🟣",
+          "b": "💎",
+          "c": "🔸",
+          "d": "🔺"
+        },
+        "explanation": "두 번째 이미지는 🔸였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "shapes"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🚒",
+          "🚓",
+          "🚕",
+          "🏎"
+        ],
+        "question": "What was the fourth image in the sequence?",
+        "options": {
+          "a": "🚚",
+          "b": "🚗",
+          "c": "🏎",
+          "d": "🚎"
+        },
+        "explanation": "The fourth image was 🏎",
+        "tags": [
+          "image-sequence",
+          "position",
+          "transport"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🚒",
+          "🚓",
+          "🚕",
+          "🏎"
+        ],
+        "question": "순서에서 네 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🚚",
+          "b": "🚗",
+          "c": "🏎",
+          "d": "🚎"
+        },
+        "explanation": "네 번째 이미지는 🏎였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "transport"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🐸",
+          "🐭",
+          "🦊",
+          "🐰",
+          "🐼"
+        ],
+        "question": "What was the third image in the sequence?",
+        "options": {
+          "a": "🦊",
+          "b": "🐯",
+          "c": "🐨",
+          "d": "🐱"
+        },
+        "explanation": "The third image was 🦊",
+        "tags": [
+          "image-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🐸",
+          "🐭",
+          "🦊",
+          "🐰",
+          "🐼"
+        ],
+        "question": "순서에서 세 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🦊",
+          "b": "🐯",
+          "c": "🐨",
+          "d": "🐱"
+        },
+        "explanation": "세 번째 이미지는 🦊였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🚌",
+          "🚎",
+          "🚕",
+          "🚚"
+        ],
+        "question": "What was the fourth image in the sequence?",
+        "options": {
+          "a": "🚗",
+          "b": "🚚",
+          "c": "🚒",
+          "d": "🏎"
+        },
+        "explanation": "The fourth image was 🚚",
+        "tags": [
+          "image-sequence",
+          "position",
+          "transport"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🚌",
+          "🚎",
+          "🚕",
+          "🚚"
+        ],
+        "question": "순서에서 네 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🚗",
+          "b": "🚚",
+          "c": "🚒",
+          "d": "🏎"
+        },
+        "explanation": "네 번째 이미지는 🚚였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "transport"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "😉",
+          "😊",
+          "😄",
+          "😇"
+        ],
+        "question": "What was the fourth image in the sequence?",
+        "options": {
+          "a": "😇",
+          "b": "🙃",
+          "c": "😃",
+          "d": "😍"
+        },
+        "explanation": "The fourth image was 😇",
+        "tags": [
+          "image-sequence",
+          "position",
+          "faces"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "😉",
+          "😊",
+          "😄",
+          "😇"
+        ],
+        "question": "순서에서 네 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "😇",
+          "b": "🙃",
+          "c": "😃",
+          "d": "😍"
+        },
+        "explanation": "네 번째 이미지는 😇였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "faces"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "✈️",
+          "🚚",
+          "🚐",
+          "🚎"
+        ],
+        "question": "What was the third image in the sequence?",
+        "options": {
+          "a": "🚒",
+          "b": "🚙",
+          "c": "🚓",
+          "d": "🚐"
+        },
+        "explanation": "The third image was 🚐",
+        "tags": [
+          "image-sequence",
+          "position",
+          "transport"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "✈️",
+          "🚚",
+          "🚐",
+          "🚎"
+        ],
+        "question": "순서에서 세 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🚒",
+          "b": "🚙",
+          "c": "🚓",
+          "d": "🚐"
+        },
+        "explanation": "세 번째 이미지는 🚐였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "transport"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "😀",
+          "😉",
+          "😁",
+          "😍"
+        ],
+        "question": "What was the second image in the sequence?",
+        "options": {
+          "a": "😌",
+          "b": "🙃",
+          "c": "🥰",
+          "d": "😉"
+        },
+        "explanation": "The second image was 😉",
+        "tags": [
+          "image-sequence",
+          "position",
+          "faces"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "😀",
+          "😉",
+          "😁",
+          "😍"
+        ],
+        "question": "순서에서 두 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "😌",
+          "b": "🙃",
+          "c": "🥰",
+          "d": "😉"
+        },
+        "explanation": "두 번째 이미지는 😉였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "faces"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🍎",
+          "🥭",
+          "🍇",
+          "🍍",
+          "🥥"
+        ],
+        "question": "What was the fourth image in the sequence?",
+        "options": {
+          "a": "🥝",
+          "b": "🍑",
+          "c": "🍍",
+          "d": "🥕"
+        },
+        "explanation": "The fourth image was 🍍",
+        "tags": [
+          "image-sequence",
+          "position",
+          "food"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🍎",
+          "🥭",
+          "🍇",
+          "🍍",
+          "🥥"
+        ],
+        "question": "순서에서 네 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🥝",
+          "b": "🍑",
+          "c": "🍍",
+          "d": "🥕"
+        },
+        "explanation": "네 번째 이미지는 🍍였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "food"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🐹",
+          "🐻",
+          "🐯",
+          "🐰"
+        ],
+        "question": "What was the second image in the sequence?",
+        "options": {
+          "a": "🐸",
+          "b": "🐻",
+          "c": "🐭",
+          "d": "🦊"
+        },
+        "explanation": "The second image was 🐻",
+        "tags": [
+          "image-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🐹",
+          "🐻",
+          "🐯",
+          "🐰"
+        ],
+        "question": "순서에서 두 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🐸",
+          "b": "🐻",
+          "c": "🐭",
+          "d": "🦊"
+        },
+        "explanation": "두 번째 이미지는 🐻였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🚎",
+          "🚓",
+          "🚑",
+          "🚒"
+        ],
+        "question": "What was the second image in the sequence?",
+        "options": {
+          "a": "🚓",
+          "b": "🏎",
+          "c": "✈️",
+          "d": "🚚"
+        },
+        "explanation": "The second image was 🚓",
+        "tags": [
+          "image-sequence",
+          "position",
+          "transport"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🚎",
+          "🚓",
+          "🚑",
+          "🚒"
+        ],
+        "question": "순서에서 두 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🚓",
+          "b": "🏎",
+          "c": "✈️",
+          "d": "🚚"
+        },
+        "explanation": "두 번째 이미지는 🚓였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "transport"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🐼",
+          "🐯",
+          "🐱",
+          "🐨",
+          "🦊"
+        ],
+        "question": "What was the third image in the sequence?",
+        "options": {
+          "a": "🐱",
+          "b": "🐸",
+          "c": "🐹",
+          "d": "🐭"
+        },
+        "explanation": "The third image was 🐱",
+        "tags": [
+          "image-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🐼",
+          "🐯",
+          "🐱",
+          "🐨",
+          "🦊"
+        ],
+        "question": "순서에서 세 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🐱",
+          "b": "🐸",
+          "c": "🐹",
+          "d": "🐭"
+        },
+        "explanation": "세 번째 이미지는 🐱였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🐶",
+          "🦊",
+          "🐹",
+          "🦁"
+        ],
+        "question": "What was the fourth image in the sequence?",
+        "options": {
+          "a": "🐱",
+          "b": "🦁",
+          "c": "🐻",
+          "d": "🐰"
+        },
+        "explanation": "The fourth image was 🦁",
+        "tags": [
+          "image-sequence",
+          "position",
+          "animals"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🐶",
+          "🦊",
+          "🐹",
+          "🦁"
+        ],
+        "question": "순서에서 네 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🐱",
+          "b": "🦁",
+          "c": "🐻",
+          "d": "🐰"
+        },
+        "explanation": "네 번째 이미지는 🦁였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "animals"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "image_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "🔺",
+          "⚫",
+          "🔸",
+          "🔵",
+          "🔹"
+        ],
+        "question": "What was the first image in the sequence?",
+        "options": {
+          "a": "🟠",
+          "b": "🟢",
+          "c": "🔺",
+          "d": "🟣"
+        },
+        "explanation": "The first image was 🔺",
+        "tags": [
+          "image-sequence",
+          "position",
+          "shapes"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "🔺",
+          "⚫",
+          "🔸",
+          "🔵",
+          "🔹"
+        ],
+        "question": "순서에서 첫 번째 이미지는 무엇이었나요?",
+        "options": {
+          "a": "🟠",
+          "b": "🟢",
+          "c": "🔺",
+          "d": "🟣"
+        },
+        "explanation": "첫 번째 이미지는 🔺였습니다",
+        "tags": [
+          "이미지순서",
+          "위치",
+          "shapes"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "★",
+          "♦",
+          "†",
+          "★",
+          "♦",
+          "†",
+          "★"
+        ],
+        "question": "What was the second item in the pattern?",
+        "options": {
+          "a": "♦",
+          "b": "§",
+          "c": "▲",
+          "d": "●"
+        },
+        "explanation": "The second item was ♦",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "symbols"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "★",
+          "♦",
+          "†",
+          "★",
+          "♦",
+          "†",
+          "★"
+        ],
+        "question": "패턴에서 두 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "♦",
+          "b": "§",
+          "c": "▲",
+          "d": "●"
+        },
+        "explanation": "두 번째 항목은 ♦였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "symbols"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "J",
+          "I",
+          "H",
+          "G",
+          "F"
+        ],
+        "question": "What was the second item in the pattern?",
+        "options": {
+          "a": "L",
+          "b": "S",
+          "c": "Z",
+          "d": "I"
+        },
+        "explanation": "The second item was I",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "letters"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "J",
+          "I",
+          "H",
+          "G",
+          "F"
+        ],
+        "question": "패턴에서 두 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "L",
+          "b": "S",
+          "c": "Z",
+          "d": "I"
+        },
+        "explanation": "두 번째 항목은 I였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "letters"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "d",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "E",
+          "F",
+          "E",
+          "F",
+          "E",
+          "F"
+        ],
+        "question": "What was the fifth item in the pattern?",
+        "options": {
+          "a": "B",
+          "b": "G",
+          "c": "C",
+          "d": "E"
+        },
+        "explanation": "The fifth item was E",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "letters"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "E",
+          "F",
+          "E",
+          "F",
+          "E",
+          "F"
+        ],
+        "question": "패턴에서 다섯 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "B",
+          "b": "G",
+          "c": "C",
+          "d": "E"
+        },
+        "explanation": "다섯 번째 항목은 E였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "letters"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "J",
+          "K",
+          "J",
+          "K",
+          "J"
+        ],
+        "question": "What was the fifth item in the pattern?",
+        "options": {
+          "a": "G",
+          "b": "J",
+          "c": "I",
+          "d": "M"
+        },
+        "explanation": "The fifth item was J",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "letters"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "J",
+          "K",
+          "J",
+          "K",
+          "J"
+        ],
+        "question": "패턴에서 다섯 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "G",
+          "b": "J",
+          "c": "I",
+          "d": "M"
+        },
+        "explanation": "다섯 번째 항목은 J였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "letters"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "G",
+          "H",
+          "G",
+          "H",
+          "G",
+          "H"
+        ],
+        "question": "What was the sixth item in the pattern?",
+        "options": {
+          "a": "K",
+          "b": "Z",
+          "c": "H",
+          "d": "F"
+        },
+        "explanation": "The sixth item was H",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "letters"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "G",
+          "H",
+          "G",
+          "H",
+          "G",
+          "H"
+        ],
+        "question": "패턴에서 여섯 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "K",
+          "b": "Z",
+          "c": "H",
+          "d": "F"
+        },
+        "explanation": "여섯 번째 항목은 H였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "letters"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "A",
+          "B",
+          "A",
+          "B",
+          "A",
+          "B"
+        ],
+        "question": "What was the fourth item in the pattern?",
+        "options": {
+          "a": "B",
+          "b": "@",
+          "c": "Z",
+          "d": "W"
+        },
+        "explanation": "The fourth item was B",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "letters"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "A",
+          "B",
+          "A",
+          "B",
+          "A",
+          "B"
+        ],
+        "question": "패턴에서 네 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "B",
+          "b": "@",
+          "c": "Z",
+          "d": "W"
+        },
+        "explanation": "네 번째 항목은 B였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "letters"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C",
+          "3"
+        ],
+        "question": "What was the first item in the pattern?",
+        "options": {
+          "a": "T",
+          "b": "I",
+          "c": "A",
+          "d": "P"
+        },
+        "explanation": "The first item was A",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "mixed"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C",
+          "3"
+        ],
+        "question": "패턴에서 첫 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "T",
+          "b": "I",
+          "c": "A",
+          "d": "P"
+        },
+        "explanation": "첫 번째 항목은 A였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "mixed"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "question": "What was the second item in the pattern?",
+        "options": {
+          "a": "K",
+          "b": "X",
+          "c": "G",
+          "d": "H"
+        },
+        "explanation": "The second item was K",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "letters"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "question": "패턴에서 두 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "K",
+          "b": "X",
+          "c": "G",
+          "d": "H"
+        },
+        "explanation": "두 번째 항목은 K였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "letters"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C"
+        ],
+        "question": "What was the first item in the pattern?",
+        "options": {
+          "a": "A",
+          "b": "R",
+          "c": "P",
+          "d": "F"
+        },
+        "explanation": "The first item was A",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "mixed"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C"
+        ],
+        "question": "패턴에서 첫 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "A",
+          "b": "R",
+          "c": "P",
+          "d": "F"
+        },
+        "explanation": "첫 번째 항목은 A였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "mixed"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C",
+          "3",
+          "D"
+        ],
+        "question": "What was the sixth item in the pattern?",
+        "options": {
+          "a": "9",
+          "b": "3",
+          "c": "5",
+          "d": "4"
+        },
+        "explanation": "The sixth item was 3",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "mixed"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C",
+          "3",
+          "D"
+        ],
+        "question": "패턴에서 여섯 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "9",
+          "b": "3",
+          "c": "5",
+          "d": "4"
+        },
+        "explanation": "여섯 번째 항목은 3였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "mixed"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "♥",
+          "§",
+          "※",
+          "♥",
+          "§",
+          "※"
+        ],
+        "question": "What was the fourth item in the pattern?",
+        "options": {
+          "a": "♥",
+          "b": "♠",
+          "c": "♣",
+          "d": "†"
+        },
+        "explanation": "The fourth item was ♥",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "symbols"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "♥",
+          "§",
+          "※",
+          "♥",
+          "§",
+          "※"
+        ],
+        "question": "패턴에서 네 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "♥",
+          "b": "♠",
+          "c": "♣",
+          "d": "†"
+        },
+        "explanation": "네 번째 항목은 ♥였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "symbols"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "easy",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C"
+        ],
+        "question": "What was the fourth item in the pattern?",
+        "options": {
+          "a": "3",
+          "b": "5",
+          "c": "2",
+          "d": "6"
+        },
+        "explanation": "The fourth item was 2",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "mixed"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C"
+        ],
+        "question": "패턴에서 네 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "3",
+          "b": "5",
+          "c": "2",
+          "d": "6"
+        },
+        "explanation": "네 번째 항목은 2였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "mixed"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "a",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "♠",
+          "†",
+          "★",
+          "♠",
+          "†",
+          "★"
+        ],
+        "question": "What was the fifth item in the pattern?",
+        "options": {
+          "a": "†",
+          "b": "※",
+          "c": "¶",
+          "d": "■"
+        },
+        "explanation": "The fifth item was †",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "symbols"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "♠",
+          "†",
+          "★",
+          "♠",
+          "†",
+          "★"
+        ],
+        "question": "패턴에서 다섯 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "†",
+          "b": "※",
+          "c": "¶",
+          "d": "■"
+        },
+        "explanation": "다섯 번째 항목은 †였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "symbols"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "b",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "♣",
+          "♠",
+          "♣",
+          "♠",
+          "♣",
+          "♠"
+        ],
+        "question": "What was the first item in the pattern?",
+        "options": {
+          "a": "★",
+          "b": "♣",
+          "c": "§",
+          "d": "¶"
+        },
+        "explanation": "The first item was ♣",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "symbols"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "♣",
+          "♠",
+          "♣",
+          "♠",
+          "♣",
+          "♠"
+        ],
+        "question": "패턴에서 첫 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "★",
+          "b": "♣",
+          "c": "§",
+          "d": "¶"
+        },
+        "explanation": "첫 번째 항목은 ♣였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "symbols"
+        ]
+      }
+    },
+    "isActive": true
+  },
+  {
+    "category": "pattern_sequence",
+    "difficulty": "medium",
+    "memorizationTime": 10,
+    "correctAnswer": "c",
+    "defaultLanguage": "en",
+    "availableLanguages": [
+      "en",
+      "ko"
+    ],
+    "translations": {
+      "en": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C",
+          "3"
+        ],
+        "question": "What was the third item in the pattern?",
+        "options": {
+          "a": "K",
+          "b": "A",
+          "c": "B",
+          "d": "G"
+        },
+        "explanation": "The third item was B",
+        "tags": [
+          "pattern-sequence",
+          "position",
+          "mixed"
+        ]
+      },
+      "ko": {
+        "memorizationContent": [
+          "A",
+          "1",
+          "B",
+          "2",
+          "C",
+          "3"
+        ],
+        "question": "패턴에서 세 번째 항목은 무엇이었나요?",
+        "options": {
+          "a": "K",
+          "b": "A",
+          "c": "B",
+          "d": "G"
+        },
+        "explanation": "세 번째 항목은 B였습니다",
+        "tags": [
+          "패턴순서",
+          "위치",
+          "mixed"
+        ]
+      }
+    },
+    "isActive": true
+  }
+]
