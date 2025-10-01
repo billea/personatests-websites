@@ -1313,9 +1313,14 @@
     "personalityType": "Your Personality Type",
     "keyTraits": "Your Key Traits",
     "aboutType": "About Your Type",
+    "strengths": "Your Strengths",
+    "strengthPrefix": "Strong in",
+    "growthOpportunities": "Growth Opportunities",
+    "developmentPrefix": "Opportunity to develop",
+    "feedback360Profile": "360° Feedback Profile",
     "indicators": {
       "strongPreference": "Strong preference",
-      "clearTendency": "Clear tendency", 
+      "clearTendency": "Clear tendency",
       "moderateLean": "Moderate lean",
       "balanced": "Balanced"
     },

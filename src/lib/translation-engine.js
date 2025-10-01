@@ -1,5 +1,5 @@
 // Enhanced translation engine with cache-busting and debugging
-// Updated: 2025-10-01 for translation debugging - cache bust v4 FORCE REFRESH
+// Updated: 2025-10-01 for translation debugging - cache bust v5 FINAL FIX
 export class TranslationEngine {
     constructor() {
         this.translations = {};
@@ -69,7 +69,7 @@ export class TranslationEngine {
     t(key) {
         // Cache-bust debug marker
         if (key === 'results.strengths') {
-            console.log('🚀 NEW TRANSLATION ENGINE LOADED - v4-FORCE-REFRESH-2025-10-01');
+            console.log('🚀 NEW TRANSLATION ENGINE LOADED - v5-FINAL-FIX-2025-10-01');
         }
 
         // Ensure translations are loaded
