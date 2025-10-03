@@ -101,12 +101,16 @@ export class TranslationEngine {
                 console.log('🔍 STRENGTH PREFIX KEY:', this.translations['en']?.results?.strengthPrefix);
 
                 if (key.includes('results.dimensions')) {
-                    console.log(`🔍 DEBUG results structure:`, {
+                    console.log(`🔍 DEBUG results.dimensions structure for key: ${key}:`, {
+                        fullKey: key,
+                        keyParts: key.split('.'),
+                        lastPart: key.split('.').pop(),
                         currentLang: this.translations[this.currentLanguage]?.results,
                         english: this.translations['en']?.results,
                         dimensionsExist: !!this.translations['en']?.results?.dimensions,
                         dimensionsKeys: Object.keys(this.translations['en']?.results?.dimensions || {}),
-                        specificKeyTest: this.translations['en']?.results?.dimensions?.[key.split('.').pop()]
+                        specificKeyTest: this.translations['en']?.results?.dimensions?.[key.split('.').pop()],
+                        fullLookupResult: key.split('.').reduce((obj, k) => obj?.[k], this.translations['en'])
                     });
                 }
             }

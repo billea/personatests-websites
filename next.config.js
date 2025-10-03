@@ -20,7 +20,7 @@ const nextConfig = {
   // File system optimizations for Windows
   generateBuildId: async () => {
     // Use timestamp to avoid caching issues - FORCE TRANSLATION REFRESH
-    return `translation-BIG-FIVE-${Date.now()}`
+    return `translation-DIMENSION-KEYS-FIXED-${Date.now()}`
   },
   
   // Reduce build cache issues
