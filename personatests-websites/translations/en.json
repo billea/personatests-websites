@@ -393,6 +393,9 @@
       "scale": {
         "strongly_disagree": "Strongly Disagree",
         "strongly_agree": "Strongly Agree"
+      },
+      "results": {
+        "description": "Your Big Five personality assessment reveals your core traits across five major dimensions of personality. These scientifically validated traits help explain your behavior patterns, preferences, and natural tendencies."
       }
     },
     "enneagram": {
