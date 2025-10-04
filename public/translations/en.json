@@ -1374,7 +1374,9 @@
       "Listen to different perspectives": "Listen to different perspectives",
       "Show flexibility": "Show flexibility",
       "Appreciate others' contributions": "Appreciate others' contributions",
-      "Consider emotional aspects": "Consider emotional aspects"
+      "Consider emotional aspects": "Consider emotional aspects",
+      "compatibility": "Compatibility Readiness",
+      "personality": "Personality Score"
     },
     "indicators": {
       "strongPreference": "Strong preference",
