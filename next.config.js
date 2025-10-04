@@ -19,8 +19,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // EMERGENCY CACHE BYPASS - Force complete refresh with ultra-aggressive cache busting
-    return `translation-EMERGENCY-CACHE-BYPASS-${Date.now()}`
+    // FIXED PLACEMENT - Couple compatibility keys now in correct dimensions object
+    return `translation-FIXED-PLACEMENT-${Date.now()}`
   },
   
   // Reduce build cache issues
