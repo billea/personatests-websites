@@ -7,7 +7,7 @@ export class TranslationEngine {
     }
 
     async init(defaultLang = 'en') {
-        console.log('🚀 CACHE-FIX TranslationEngine v6-COMPATIBILITY-FIX-2025-10-04 init called with defaultLang:', defaultLang);
+        console.log('🚨 EMERGENCY BYPASS TranslationEngine v7-EMERGENCY-CACHE-BYPASS-2025-10-04 init called with defaultLang:', defaultLang);
         
         // 1. Always load English as the ultimate fallback.
         await this.loadLanguage('en');
@@ -38,10 +38,12 @@ export class TranslationEngine {
         //     return; // Already loaded
         // }
         try {
-            // Ultra-aggressive cache busting for couple compatibility fix
-            const cacheBuster = `compatibility-fix-${Date.now()}-${Math.random()}`;
-            const url = `/translations/${lang}.json?v=${cacheBuster}`;
-            console.log(`🚀 CACHE-BUST Loading language ${lang} from:`, url);
+            // EMERGENCY CACHE BYPASS - Ultra-aggressive with timestamp and random
+            const timestamp = Date.now();
+            const random = Math.random().toString(36).substring(7);
+            const cacheBuster = `emergency-bypass-${timestamp}-${random}`;
+            const url = `/translations/${lang}.json?v=${cacheBuster}&t=${timestamp}&r=${random}&force=true`;
+            console.log(`🚨 EMERGENCY CACHE BYPASS Loading language ${lang} from:`, url);
             const response = await fetch(url, {
                 cache: 'no-cache',  // Force no cache
                 headers: {
@@ -80,9 +82,9 @@ export class TranslationEngine {
 
     // The core translation function.
     t(key) {
-        // Cache-bust debug marker
+        // Emergency cache bypass debug marker
         if (key === 'results.strengths') {
-            console.log('🚀 NEW TRANSLATION ENGINE LOADED - v6-COMPATIBILITY-FIX-2025-10-04');
+            console.log('🚨 EMERGENCY BYPASS TRANSLATION ENGINE LOADED - v7-EMERGENCY-CACHE-BYPASS-2025-10-04');
         }
 
         // Ensure translations are loaded

@@ -19,8 +19,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // Use timestamp to avoid caching issues - FORCE COMPLETE REFRESH - COUPLE COMPATIBILITY FINAL FIX
-    return `translation-COUPLE-COMPATIBILITY-FINAL-FIX-${Date.now()}`
+    // EMERGENCY CACHE BYPASS - Force complete refresh with ultra-aggressive cache busting
+    return `translation-EMERGENCY-CACHE-BYPASS-${Date.now()}`
   },
   
   // Reduce build cache issues
