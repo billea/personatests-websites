@@ -135,8 +135,33 @@ export class TranslationEngine {
                             dimensionsExist: !!this.translations['en']?.results?.dimensions,
                             compatibilityKey: this.translations['en']?.results?.dimensions?.compatibility,
                             personalityKey: this.translations['en']?.results?.dimensions?.personality,
-                            allDimensionKeys: this.translations['en']?.results?.dimensions ? Object.keys(this.translations['en'].results.dimensions) : 'none'
+                            allDimensionKeys: this.translations['en']?.results?.dimensions ? Object.keys(this.translations['en'].results.dimensions) : 'none',
+                            firstFewDimensionEntries: this.translations['en']?.results?.dimensions ? Object.entries(this.translations['en'].results.dimensions).slice(0, 10) : 'none',
+                            rawDimensionsObject: this.translations['en']?.results?.dimensions
                         });
+
+                        // Test if the keys might be named differently
+                        const dims = this.translations['en']?.results?.dimensions;
+                        if (dims) {
+                            console.log('🔍 SEARCHING FOR COMPATIBILITY KEYS:', {
+                                hasCompatibility: 'compatibility' in dims,
+                                hasPersonality: 'personality' in dims,
+                                compatibilityVariants: [
+                                    dims['compatibility'],
+                                    dims['Compatibility'],
+                                    dims['COMPATIBILITY'],
+                                    dims['compatibility-readiness'],
+                                    dims['compatibilityReadiness']
+                                ],
+                                personalityVariants: [
+                                    dims['personality'],
+                                    dims['Personality'],
+                                    dims['PERSONALITY'],
+                                    dims['personality-score'],
+                                    dims['personalityScore']
+                                ]
+                            });
+                        }
                     }
                 }
             }
