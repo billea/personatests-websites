@@ -19,8 +19,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // Use timestamp to avoid caching issues - FORCE TRANSLATION REFRESH
-    return `translation-BIGFIVE-RESULTS-FIXED-${Date.now()}`
+    // Use timestamp to avoid caching issues - FORCE TRANSLATION REFRESH - NETLIFY DEPLOY
+    return `translation-NETLIFY-DEPLOY-FIXED-${Date.now()}`
   },
   
   // Reduce build cache issues
