@@ -7,7 +7,7 @@ export class TranslationEngine {
     }
 
     async init(defaultLang = 'en') {
-        console.log('🚨 EMERGENCY BYPASS TranslationEngine v7-EMERGENCY-CACHE-BYPASS-2025-10-04 init called with defaultLang:', defaultLang);
+        console.log('☢️ NUCLEAR BYPASS TranslationEngine v8-NUCLEAR-CACHE-BYPASS-2025-10-04 init called with defaultLang:', defaultLang);
         
         // 1. Always load English as the ultimate fallback.
         await this.loadLanguage('en');
@@ -38,11 +38,12 @@ export class TranslationEngine {
         //     return; // Already loaded
         // }
         try {
-            // EMERGENCY CACHE BYPASS - Ultra-aggressive with timestamp and random
+            // NUCLEAR CACHE BYPASS - Force complete browser refresh with special URL
             const timestamp = Date.now();
             const random = Math.random().toString(36).substring(7);
-            const cacheBuster = `emergency-bypass-${timestamp}-${random}`;
-            const url = `/translations/${lang}.json?v=${cacheBuster}&t=${timestamp}&r=${random}&force=true`;
+            const sessionId = Math.random().toString(36).substring(2);
+            const cacheBuster = `nuclear-${timestamp}-${random}-${sessionId}`;
+            const url = `/translations/${lang}.json?nuclear=${cacheBuster}&bypass=${timestamp}&session=${sessionId}&force=reload&cache=false`;
             console.log(`🚨 EMERGENCY CACHE BYPASS Loading language ${lang} from:`, url);
             const response = await fetch(url, {
                 cache: 'no-cache',  // Force no cache
@@ -82,9 +83,9 @@ export class TranslationEngine {
 
     // The core translation function.
     t(key) {
-        // Emergency cache bypass debug marker
+        // Nuclear cache bypass debug marker
         if (key === 'results.strengths') {
-            console.log('🚨 EMERGENCY BYPASS TRANSLATION ENGINE LOADED - v7-EMERGENCY-CACHE-BYPASS-2025-10-04');
+            console.log('☢️ NUCLEAR BYPASS TRANSLATION ENGINE LOADED - v8-NUCLEAR-CACHE-BYPASS-2025-10-04');
         }
 
         // Ensure translations are loaded

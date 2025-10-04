@@ -19,8 +19,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // FIXED PLACEMENT - Couple compatibility keys now in correct dimensions object
-    return `translation-FIXED-PLACEMENT-${Date.now()}`
+    // NUCLEAR CACHE BYPASS - Final attempt to force browser refresh
+    return `translation-NUCLEAR-CACHE-BYPASS-${Date.now()}`
   },
   
   // Reduce build cache issues
