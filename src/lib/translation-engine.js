@@ -38,19 +38,32 @@ export class TranslationEngine {
         //     return; // Already loaded
         // }
         try {
-            const url = `/translations/${lang}.json?v=${new Date().getTime()}`;
-            console.log(`Loading language ${lang} from:`, url);
-            const response = await fetch(url, { 
+            // Ultra-aggressive cache busting for couple compatibility fix
+            const cacheBuster = `compatibility-fix-${Date.now()}-${Math.random()}`;
+            const url = `/translations/${lang}.json?v=${cacheBuster}`;
+            console.log(`🚀 CACHE-BUST Loading language ${lang} from:`, url);
+            const response = await fetch(url, {
                 cache: 'no-cache',  // Force no cache
                 headers: {
                     'Cache-Control': 'no-cache, no-store, must-revalidate',
-                    'Pragma': 'no-cache'
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
                 }
             });
             if (!response.ok) throw new Error(`Failed to load ${lang}.json: ${response.status} ${response.statusText}`);
             const data = await response.json();
             this.translations[lang] = data;
             console.log(`Successfully loaded ${lang} with ${Object.keys(data).length} top-level keys`);
+
+            // Debug compatibility keys specifically
+            if (data.results && data.results.dimensions) {
+                console.log(`🔍 COMPATIBILITY KEYS CHECK:`, {
+                    compatibilityExists: !!data.results.dimensions.compatibility,
+                    personalityExists: !!data.results.dimensions.personality,
+                    compatibilityValue: data.results.dimensions.compatibility,
+                    personalityValue: data.results.dimensions.personality
+                });
+            }
 
         } catch (error) {
             console.error(`Error loading language ${lang}:`, error);
@@ -69,7 +82,7 @@ export class TranslationEngine {
     t(key) {
         // Cache-bust debug marker
         if (key === 'results.strengths') {
-            console.log('🚀 NEW TRANSLATION ENGINE LOADED - v5-FINAL-FIX-2025-10-01');
+            console.log('🚀 NEW TRANSLATION ENGINE LOADED - v6-COMPATIBILITY-FIX-2025-10-04');
         }
 
         // Ensure translations are loaded
