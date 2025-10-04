@@ -7,7 +7,7 @@ export class TranslationEngine {
     }
 
     async init(defaultLang = 'en') {
-        console.log('TranslationEngine init called with defaultLang:', defaultLang);
+        console.log('🚀 CACHE-FIX TranslationEngine v6-COMPATIBILITY-FIX-2025-10-04 init called with defaultLang:', defaultLang);
         
         // 1. Always load English as the ultimate fallback.
         await this.loadLanguage('en');
@@ -123,8 +123,21 @@ export class TranslationEngine {
                         dimensionsExist: !!this.translations['en']?.results?.dimensions,
                         dimensionsKeys: Object.keys(this.translations['en']?.results?.dimensions || {}),
                         specificKeyTest: this.translations['en']?.results?.dimensions?.[key.split('.').pop()],
-                        fullLookupResult: key.split('.').reduce((obj, k) => obj?.[k], this.translations['en'])
+                        fullLookupResult: key.split('.').reduce((obj, k) => obj?.[k], this.translations['en']),
+                        fullTranslationObj: this.translations['en']
                     });
+
+                    // Special check for couple compatibility keys
+                    if (key === 'results.dimensions.compatibility' || key === 'results.dimensions.personality') {
+                        console.log(`🚨 COUPLE COMPATIBILITY KEY DEBUG for ${key}:`, {
+                            translationsLoaded: !!this.translations['en'],
+                            resultsExist: !!this.translations['en']?.results,
+                            dimensionsExist: !!this.translations['en']?.results?.dimensions,
+                            compatibilityKey: this.translations['en']?.results?.dimensions?.compatibility,
+                            personalityKey: this.translations['en']?.results?.dimensions?.personality,
+                            allDimensionKeys: this.translations['en']?.results?.dimensions ? Object.keys(this.translations['en'].results.dimensions) : 'none'
+                        });
+                    }
                 }
             }
         }
