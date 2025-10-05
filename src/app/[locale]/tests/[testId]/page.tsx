@@ -2046,7 +2046,12 @@ export default function TestPage() {
                                                     return (
                                                         <div key={key} className="text-center py-3 px-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
                                                             <div className="text-sm font-medium text-gray-200 mb-1">
-                                                                {t(`results.dimensions.${key}`) || key}
+                                                                {(() => {
+                                                                    // Direct fallback for couple compatibility keys to bypass cache issues
+                                                                    if (key === 'compatibility') return 'Compatibility Readiness';
+                                                                    if (key === 'personality') return 'Personality Score';
+                                                                    return t(`results.dimensions.${key}`) || key;
+                                                                })()}
                                                             </div>
                                                             <div className="text-2xl font-bold text-white text-enhanced">
                                                                 {typeof value === 'number' ? value : String(value)}

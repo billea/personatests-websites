@@ -19,8 +19,8 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // NUCLEAR CACHE BYPASS - Final attempt to force browser refresh
-    return `translation-NUCLEAR-CACHE-BYPASS-${Date.now()}`
+    // DIRECT FALLBACK SOLUTION - Bypass translation cache entirely
+    return `DIRECT-FALLBACK-FIX-${Date.now()}`
   },
   
   // Reduce build cache issues
