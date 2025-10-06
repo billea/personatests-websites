@@ -1,0 +1,3 @@
+FORCE NETLIFY DEPLOYMENT - Translation fix deployed
+Timestamp: 2025-01-27 - Direct fallback solution for couple compatibility translation keys
+Fix: compatibility -> "Compatibility Readiness", personality -> "Personality Score"
