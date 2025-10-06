@@ -313,6 +313,7 @@ interface FeedbackInvitationResponse {
     link: string;
   }>;
   message: string;
+  error?: string; // Optional error property for email failures
 }
 
 /**
