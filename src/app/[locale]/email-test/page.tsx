@@ -94,7 +94,12 @@ export default function EmailTestPage() {
             );
 
             console.log('✅ Couple invitation result:', result);
-            setStatus('✅ Couple compatibility invitation sent! Check your email.');
+
+            if (result.success) {
+                setStatus('✅ Couple compatibility invitation sent! Check your email.');
+            } else {
+                setStatus(`❌ ${result.message || 'Email sending failed'}`);
+            }
 
         } catch (error: any) {
             console.error('❌ Couple invitation failed:', error);

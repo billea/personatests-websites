@@ -412,6 +412,14 @@ export const sendCoupleCompatibilityInvitation = async (
       // Use dedicated couple compatibility template
       const templateId = 'template_m5atn39'; // Couple compatibility specific template
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+
+      // Enhanced validation with helpful error messages
+      if (!serviceId) {
+        throw new Error('EmailJS Service ID not configured. Please set NEXT_PUBLIC_EMAILJS_SERVICE_ID environment variable. Visit https://dashboard.emailjs.com/admin to get your Service ID.');
+      }
+      if (!publicKey) {
+        throw new Error('EmailJS Public Key not configured. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY environment variable. Visit https://dashboard.emailjs.com/admin to get your Public Key.');
+      }
       
       console.log(`=== [${callId}] COUPLE COMPATIBILITY EMAILJS DEBUG ===`);
       console.log('Service ID:', serviceId);
@@ -444,8 +452,24 @@ export const sendCoupleCompatibilityInvitation = async (
       // }
 
     } catch (emailError: any) {
-      console.warn('Email sending failed - invitation link can be shared manually:', emailError);
-      // Continue even if email fails - user can share the link manually
+      console.error('❌ EMAIL SENDING FAILED:', emailError);
+      console.error('Email error details:', {
+        message: emailError.message || 'Unknown error',
+        status: emailError.status || 'No status',
+        text: emailError.text || 'No text'
+      });
+
+      // Return partial success with error details
+      return {
+        success: false,
+        invitationsSent: 0,
+        invitations: [{
+          email: partnerEmail,
+          link: invitationUrl
+        }],
+        message: `Email sending failed: ${emailError.message || 'Unknown error'}. You can manually share this link: ${invitationUrl}`,
+        error: emailError.message || 'Email service error'
+      };
     }
 
     return {
