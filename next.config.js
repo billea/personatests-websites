@@ -19,7 +19,7 @@ const nextConfig = {
   
   // File system optimizations for Windows
   generateBuildId: async () => {
-    // DIRECT FALLBACK SOLUTION - Bypass translation cache entirely
+    // DIRECT FALLBACK SOLUTION - Bypass translation cache entirely - FORCE NETLIFY DEPLOY
     return `DIRECT-FALLBACK-FIX-${Date.now()}`
   },
   
