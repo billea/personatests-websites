@@ -2099,7 +2099,12 @@ export default function TestPage() {
                                                         .map(([dimension, value]) => (
                                                             <div key={dimension} className="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/20 text-center">
                                                                 <div className="text-sm font-medium text-gray-200 mb-2">
-                                                                    {t(`results.dimensions.${dimension}`) || dimension}
+                                                                    {(() => {
+                                                                        // Direct fallback for couple compatibility keys to bypass cache issues
+                                                                        if (dimension === 'compatibility') return 'Compatibility Readiness';
+                                                                        if (dimension === 'personality') return 'Personality Score';
+                                                                        return t(`results.dimensions.${dimension}`) || dimension;
+                                                                    })()}
                                                                 </div>
                                                                 <div className="text-2xl font-bold text-white">
                                                                     {typeof value === 'number' ? value : String(value).slice(0, 20)}
