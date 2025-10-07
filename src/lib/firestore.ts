@@ -411,7 +411,7 @@ export const sendCoupleCompatibilityInvitation = async (
 
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
       // Use dedicated couple compatibility template
-      const templateId = 'template_m5atn39'; // Couple compatibility specific template
+      const templateId = 'template_360_feedback_request'; // Using existing template
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
       // Enhanced validation with helpful error messages
