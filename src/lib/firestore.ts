@@ -410,8 +410,8 @@ export const sendCoupleCompatibilityInvitation = async (
       };
 
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      // Use dedicated couple compatibility template
-      const templateId = 'template_360_feedback_request'; // Using existing template
+      // Use dedicated couple compatibility template (falls back to 360 feedback template if not configured)
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_TEMPLATE_ID || 'template_couple_compatibility';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
       // Enhanced validation with helpful error messages

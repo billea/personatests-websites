@@ -9,12 +9,12 @@ This is a multilingual personality testing platform built with Next.js 15, React
 ## Development Commands
 
 ### Core Development
-- `npm run dev` - Start Next.js development server on port 3000 (Playwright configured for port 3004)
+- `npm run dev` - Start Next.js development server (default port 3000)
 - `npm run dev:clean` - Clean cache and start dev server
-- `npm run dev:stable` - Start ultra-stable development environment (batch script for Windows)
-- `npm run build` - Build production version (generates static export for Netlify)
+- `npm run dev:stable` - Start ultra-stable development environment (Windows batch script with enhanced stability)
+- `npm run build` - Build production version (generates static export in `/out` directory)
 - `npm run start` - Start production build locally
-- `npm run clean` - Clean cache and temporary files (runs cache-cleanup.js)
+- `npm run clean` - Clean Next.js cache and temporary files (runs cache-cleanup.js script)
 
 ### Single Test Execution
 - For E2E tests: `npx playwright test tests/specific-test.spec.ts`
@@ -61,12 +61,12 @@ This is a multilingual personality testing platform built with Next.js 15, React
 - `@playwright/test` - End-to-end testing framework with multi-browser support
 - `@tailwindcss/postcss` - PostCSS plugin for Tailwind CSS 4
 
-### Development Architecture Patterns
-- **Static Export Configuration**: Uses `output: 'export'` for Netlify deployment compatibility
-- **Dynamic Routing**: `[locale]` folder structure for internationalization with fallback routes
-- **TypeScript Path Aliases**: `@/*` maps to `./src/*` for cleaner imports
-- **Windows Compatibility**: Aggressive caching disabled and polling-based file watching for development stability
-- **Cache Busting**: Timestamp-based build IDs to prevent infinite development loops
+### Critical Architecture Patterns
+- **Static Export**: Uses `output: 'export'` in `next.config.js` - NO server-side rendering, all pages are pre-rendered at build time for Netlify hosting
+- **Dynamic Routing**: `[locale]` folder structure handles internationalization (e.g., `/en/tests`, `/ko/tests`)
+- **TypeScript Path Aliases**: `@/*` maps to `./src/*` (configured in tsconfig.json)
+- **Windows Optimization**: Development mode uses polling-based file watching (500ms) and disabled webpack caching to prevent infinite rebuild loops
+- **Cache Busting**: Build IDs include timestamps (`DIRECT-FALLBACK-FIX-${Date.now()}`) to force fresh translation loading
 
 ## Project Architecture
 
@@ -144,19 +144,18 @@ public/
 
 ### Getting Started
 1. Install dependencies: `npm install`
-2. Install Firebase CLI: `npm install -g firebase-tools`
-3. Install function dependencies: `cd functions && npm install`
+2. Install Firebase CLI globally: `npm install -g firebase-tools`
+3. Install function dependencies: `cd functions && npm install && cd ..`
 4. Install Playwright browsers: `npm run test:install`
-5. Start development server: `npm run dev` or `npm run dev:stable` (for Windows stability)
-6. Access application at `http://localhost:3004` (configured in Playwright)
+5. Start development server: `npm run dev` (use `npm run dev:stable` on Windows if experiencing cache issues)
+6. Access application at `http://localhost:3000` (Playwright tests use port 3004 via `webServer` config)
 
-### Important Configuration Notes
-- **Static Export**: Project is configured for static export (`output: 'export'` in next.config.js)
-- **Windows Optimization**: Special webpack configuration for Windows file system compatibility
-- **Cache Management**: Aggressive cache busting with timestamp-based build IDs
-- **Port Configuration**: Development server configured for port 3004 in Playwright config
-- **Functions Development**: Node.js 20 runtime with separate package.json in `/functions` directory
-- **Translation Loading**: Client-side translation files with cache-busting timestamps
+### Critical Configuration Notes
+- **Static Export Mode**: `output: 'export'` means NO server-side APIs, Firebase Functions, or dynamic API routes work during build - only client-side Firebase SDK calls work
+- **Playwright Port**: Tests configured for port 3004 in `playwright.config.ts` but dev server runs on port 3000 by default - Playwright auto-starts the server
+- **Functions Deployment**: Node.js 20 runtime with separate `package.json` in `/functions` directory - deployed separately via `npm run firebase:functions`
+- **Translation Cache**: Translation files loaded with nuclear cache-busting (`nuclear-${timestamp}-${random}-${sessionId}`) to prevent stale translations in development
+- **Windows Development**: If experiencing infinite rebuild loops, use `npm run dev:stable` which runs the `dev-ultra-stable.bat` script
 
 ### Testing Strategy
 - **Unit Testing**: Not currently implemented (focused on integration testing)
@@ -214,12 +213,12 @@ firebase functions:config:set \
 
 ## Testing and Quality Assurance
 
-### End-to-End Testing
-- **Playwright Configuration**: Tests run on multiple browsers (Chromium, Firefox, WebKit) and mobile viewports (Pixel 5, iPhone 12)
-- **Test Scenarios**: Complete user workflows from authentication to result viewing
-- **Base URL**: Tests configured for `http://localhost:3004` by default, but can be configured to run against deployed site (https://korean-mbti-platform.netlify.app)
-- **CI/CD**: Configured for continuous integration with retry logic (2 retries on CI)
-- **Test Commands**: Use `npm run test:e2e:ui` for interactive testing with Playwright UI
+### End-to-End Testing with Playwright
+- **Test Configuration**: `playwright.config.ts` defines 5 projects (Chromium, Firefox, WebKit, Mobile Chrome, Mobile Safari)
+- **Auto Dev Server**: Playwright runs `npm run dev` automatically before tests and waits for `http://localhost:3004`
+- **Single Test Execution**: `npx playwright test tests/auth.spec.ts --project=chromium` for targeted testing
+- **Interactive Mode**: `npm run test:e2e:ui` opens Playwright UI for debugging and watching tests
+- **CI Mode**: Retries failing tests 2 times on CI, runs serially (workers: 1) to avoid race conditions
 
 ### Manual Testing Workflows
 Refer to `TESTING_GUIDE.md` for comprehensive testing procedures:
@@ -265,17 +264,25 @@ No client-side environment variables required. Firebase configuration is include
 
 ## Critical Development Notes
 
-### Test System Architecture
-- **Test Definitions**: All tests defined in `src/lib/test-definitions.ts` with TypeScript interfaces
-- **Scoring Algorithms**: Each test has custom scoring functions for different personality frameworks
-- **Dynamic Question Loading**: Questions loaded from database with real-time progress tracking
-- **Translation Integration**: All test content uses translation keys for multilingual support
+### Test System Architecture (`src/lib/test-definitions.ts`)
+All personality tests are defined as TypeScript objects with this structure:
+- **Test Definition**: Interface with `id`, `category`, `title_key`, `questions[]`, `scoring()` function
+- **Question Types**: `multiple_choice` (MBTI binary), `scale` (1-5 rating for Big Five), `text` (open-ended)
+- **Scoring Functions**: Pure functions taking `answers` object, returning `TestResult` with scores and type
+- **Translation Keys**: All text uses dot notation keys (e.g., `tests.mbti.questions.q1`) resolved by `translation-engine.js`
+- **No Database Storage**: Test questions are code-defined, not stored in Firestore - only results are persisted
 
-### Translation System Implementation
-- **MutationObserver Pattern**: DOM changes automatically trigger retranslation
-- **Fallback Hierarchy**: Missing translations fall back to English with console warnings
-- **Cache Prevention**: Translation files loaded with timestamp parameters to prevent caching
-- **Locale Routing**: URL structure `/[locale]/page` with automatic language detection
+**Adding New Tests**: Define in `test-definitions.ts` → export from `TEST_REGISTRY` → automatically appears in UI
+
+### Translation System Implementation (`src/lib/translation-engine.js`)
+Custom i18n system built from scratch (not using next-intl or i18next):
+- **MutationObserver**: Watches DOM and auto-translates any element with `data-translate="key.path"` attribute
+- **Client-Side Only**: Translation JSON files loaded via fetch from `public/translations/{lang}.json`
+- **Fallback Chain**: Requested language → English → display key if translation missing
+- **URL Routing**: Next.js `[locale]` dynamic route segments handle language switching (e.g., `/en/tests`, `/ko/tests`)
+- **Cache Busting**: Files loaded with `nuclear-${timestamp}-${random}` query params to force fresh loads in development
+
+**Adding Translations**: Edit `public/translations/en.json` (source of truth) → copy structure to other language files
 
 ### Firebase Architecture Specifics
 - **Security Rules**: Users can only access their own data, feedback requires valid tokens
@@ -286,28 +293,24 @@ No client-side environment variables required. Firebase configuration is include
 ## Troubleshooting Common Issues
 
 ### Development Environment
-- **Infinite Loops**: Use `npm run dev:stable` on Windows if experiencing build loops
-- **Cache Issues**: Run `npm run clean` to clear Next.js cache and temporary files
-- **Port Conflicts**: Playwright expects dev server on port 3004, adjust if needed
+- **Infinite Rebuild Loops**: Run `npm run dev:stable` (Windows batch script disables aggressive caching)
+- **Stale Cache**: Run `npm run clean` to delete `.next` cache directory
+- **Build Failures**: Check if `functions/` directory Node.js version matches (requires Node.js 20)
+- **Port Already in Use**: Kill process on port 3000 or set custom port: `PORT=3005 npm run dev`
 
-### Authentication Problems
-- Ensure Google OAuth is enabled in Firebase Console
-- Check browser popup blocking settings
-- Verify Firebase project permissions and API keys
+### Translation Not Updating
+- Translation files cached despite nuclear cache-busting? Check `public/translations/` files are actually modified
+- Missing keys show in console as warnings - check browser DevTools console for `Translation key not found`
+- MutationObserver watches DOM changes - if translations aren't applying, check `translation-engine.js` initialization
 
-### Email Functionality
-- Confirm EmailJS configuration in Firebase Functions with `firebase functions:config:get`
-- Check EmailJS service status and template configuration
-- Monitor Firebase Functions logs with `firebase functions:log`
+### Authentication & Firebase
+- Google OAuth popup blocked? Check browser settings and Firebase Console authorized domains
+- "Permission denied" errors? Review Firestore security rules - users can only access their own `testResults`
+- EmailJS not working? Verify Firebase Functions config: `firebase functions:config:get` should show emailjs keys
 
-### Translation Issues
-- Verify translation JSON files exist in `public/translations/`
-- Check browser console for missing translation key warnings
-- Ensure MutationObserver is properly initialized in translation-engine.js
-
-### Database Access
-- Review Firestore security rules for proper user access
-- Check Firebase Console for permission denied errors
-- Verify user authentication state before database operations
+### Testing Issues
+- Playwright can't find dev server? It auto-starts on port 3004 - check `playwright.config.ts` webServer config
+- Tests timing out? Increase `timeout` in test files or use `--timeout=60000` flag
+- Single test execution: Use `npx playwright test <file> --project=chromium --headed --debug` for step-through debugging
 
 This project represents a complete full-stack personality testing platform with advanced social features and comprehensive multilingual support, ready for production deployment and further enhancement.
