@@ -411,7 +411,8 @@ export const sendCoupleCompatibilityInvitation = async (
 
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
       // Use dedicated couple compatibility template (falls back to 360 feedback template if not configured)
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_TEMPLATE_ID || 'template_couple_compatibility';
+      // Temporarily using 360 feedback template until couple compatibility template is created
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_COUPLE_TEMPLATE_ID || 'template_360_feedback_request';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
       // Enhanced validation with helpful error messages
