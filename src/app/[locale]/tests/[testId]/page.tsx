@@ -2286,7 +2286,7 @@ export default function TestPage() {
                                             value={partnerNameInput || ''}
                                             onChange={(e) => setPartnerNameInput(e.target.value)}
                                             placeholder={t('test.partner_name_placeholder') || 'Enter your partner\'s first name (e.g., Sarah, Mike)'}
-                                            className="w-full p-3 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                            className="w-full p-3 bg-white/90 border border-white/30 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                         />
                                     </div>
                                     <div className="mb-4">
@@ -2298,7 +2298,7 @@ export default function TestPage() {
                                             value={feedbackEmails[0]?.email || ''}
                                             onChange={(e) => updateEmail(0, e.target.value)}
                                             placeholder={t('test.partner_email_placeholder') || 'Enter your partner\'s email address'}
-                                            className="w-full p-3 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                            className="w-full p-3 bg-white/90 border border-white/30 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                         />
                                     </div>
                                     <div className="flex justify-center mb-4">
@@ -2351,7 +2351,7 @@ export default function TestPage() {
                                                                     value={participant.name}
                                                                     onChange={(e) => updateName(index, e.target.value)}
                                                                     placeholder={t('feedbackInvite.namePlaceholder') || 'Enter name (e.g., John, Sarah)'}
-                                                                    className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                                    className="flex-1 p-2 bg-white/90 border border-white/30 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                                                 />
                                                                 {feedbackEmails.length > 1 && (
                                                                     <button
@@ -2368,7 +2368,7 @@ export default function TestPage() {
                                                                 value={participant.email}
                                                                 onChange={(e) => updateEmail(index, e.target.value)}
                                                                 placeholder={t('feedbackInvite.emailPlaceholder') || 'Enter email address'}
-                                                                className="w-full p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+                                                                className="w-full p-2 bg-white/90 border border-white/30 rounded text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
                                                             />
                                                         </div>
                                                     ))}
@@ -2437,14 +2437,14 @@ export default function TestPage() {
                                                                         value={participant.name}
                                                                         onChange={(e) => updateName(index, e.target.value)}
                                                                         placeholder="Name"
-                                                                        className="flex-1 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 text-sm"
+                                                                        className="flex-1 p-2 bg-white/90 border border-white/30 rounded text-gray-900 placeholder-gray-500 text-sm"
                                                                     />
                                                                     <input
                                                                         type="email"
                                                                         value={participant.email}
                                                                         onChange={(e) => updateEmail(index, e.target.value)}
                                                                         placeholder="Email"
-                                                                        className="flex-2 p-2 bg-white/10 border border-white/30 rounded text-white placeholder-white/60 text-sm"
+                                                                        className="flex-2 p-2 bg-white/90 border border-white/30 rounded text-gray-900 placeholder-gray-500 text-sm"
                                                                     />
                                                                 </div>
                                                             ))}
