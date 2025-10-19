@@ -380,7 +380,7 @@ export const sendCoupleCompatibilityInvitation = async (
     }
 
     // Create invitation URL - point directly to the couple compatibility test
-    const baseUrl = 'https://korean-mbti-platform.netlify.app';
+    const baseUrl = 'https://personatests.com';
     const invitationUrl = `${baseUrl}/${language}/tests/couple-compatibility?invitation=${invitationId}&token=${encodeURIComponent(invitationToken)}&partner=${encodeURIComponent(userName)}&testResultId=${encodeURIComponent(testResultId)}&email=${encodeURIComponent(partnerEmail)}&inviterEmail=${encodeURIComponent(ownerEmail || 'unknown@example.com')}`;
 
     console.log('Generated couple compatibility invitation URL:', invitationUrl);
@@ -767,7 +767,7 @@ export const sendCoupleCompatibilityResults = async (
     const resultTier = getCompatibilityTier(compatibilityPercentage);
     
     // Email parameters for both partners
-    const baseUrl = 'https://korean-mbti-platform.netlify.app';
+    const baseUrl = 'https://personatests.com';
     const signupUrl1 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner2Name)}&source=couple-email`;
     const signupUrl2 = `${baseUrl}/${language}/auth?action=signup&redirect=${encodeURIComponent(`/${language}/results`)}&partner=${encodeURIComponent(partner1Name)}&source=couple-email`;
     
