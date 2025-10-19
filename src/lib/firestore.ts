@@ -355,7 +355,7 @@ export const sendCoupleCompatibilityInvitation = async (
     const invitationId = `couple_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
     
     const invitationData = {
-      inviterUserId: userId,
+      inviterUid: userId, // Fixed: Changed from inviterUserId to match security rules
       participantEmail: partnerEmail,
       testId: 'couple-compatibility',
       testResultId: testResultId,
